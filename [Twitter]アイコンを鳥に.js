@@ -23,6 +23,7 @@
 	const loadingBirdColor = "rgba(29,161,242,1.00)";
 	let currentUrl = document.location.href;
 	var updating = false;
+	window.addEventListener("scroll", update);
 	locationChange();
 	const style = document.createElement("style");
 	style.innerHTML = `
@@ -46,9 +47,13 @@
 		if(updating) return;
 		updating = true;
 		document.head.querySelector('meta[property="og:title"]').content = document.head.querySelector('meta[property="og:title"]').content.replace(/X$/,"Twitter");
-		document.querySelectorAll('[data-testid="trend"]>div span').forEach(b=>{b.innerText = b.innerText.replace(/(\d+)\sPosts/g, '$1 Tweets')});
+		document.querySelectorAll('[data-testid="trend"]>div span').forEach((b)=>{
+			if(b.innerText.match(/(\d+)\sPosts/)){
+				b.innerText = b.innerText.replace(/(\d+)\sPosts/g, '$1 Tweets');
+			}
+		});
 		document.title = document.title.replace(/X$/,"Twitter");
-		setTimeout(() => {updating = false;}, 500);
+		setTimeout(() => {updating = false}, 500);
 	}
 	function locationChange(){
 		const observer = new MutationObserver(mutations => {
