@@ -2,7 +2,7 @@
 // @name		[Twitter]アイコンを鳥に
 // @name:ja		[Twitter]アイコンを鳥に
 // @name:en			[Twitter] ashes to ashes, dust to dust, bird to bird.
-// @version			1145141919810.0.6
+// @version			1145141919810.0.7
 // @description			Twitterのアイコンを鳥に戻します。
 // @description:ja			Twitterのアイコンを鳥に戻します。
 // @description:en			Change the Twitter icon back a bird.
@@ -22,6 +22,7 @@
 	const twitterColor = "rgb(29, 155, 240)";
 	const loadingBirdColor = "rgba(29,161,242,1.00)";
 	let currentUrl = document.location.href;
+	var updating = false;
 	locationChange();
 	const style = document.createElement("style");
 	style.innerHTML = `
@@ -41,14 +42,20 @@
 		color: ${loadingBirdColor};
 	}
 	`;
+	function update() {
+		if(updating) return;
+		updating = true;
+		document.head.querySelector('meta[property="og:title"]').content = document.head.querySelector('meta[property="og:title"]').content.replace(/X$/,"Twitter");
+		document.querySelectorAll('[data-testid="trend"]>div span').forEach(b=>{b.innerText = b.innerText.replace(/(\d+)\sPosts/g, '$1 Tweets')});
+		document.title = document.title.replace(/X$/,"Twitter");
+		setTimeout(() => {updating = false;}, 500);
+	}
 	function locationChange(){
 		const observer = new MutationObserver(mutations => {
+			update();
 			mutations.forEach(() => {
-				document.title = document.title.replace(/X$/,"Twitter");
-				document.head.querySelector('meta[property="og:title"]').content = document.head.querySelector('meta[property="og:title"]').content.replace(/X$/,"Twitter");
 				if(currentUrl !== document.location.href){
 					currentUrl = document.location.href;
-					document.title = document.title.replace(/X$/,"Twitter");
 				}
 			});
 		});
