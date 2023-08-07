@@ -33,7 +33,7 @@
 // @license			MIT
 // ==/UserScript==
 
-(function() {
+(function(){
 	'use strict';
 	const desktop_env = {'tweet_field': 'article[data-testid="tweet"]','retweeted': '[data-testid="socialContext"]','liked_color': 'r-vkub15','liked':'M20.884 13.19c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.3-.504-.3c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z'};
 	const mobile_env = {'tweet_field': 'article[data-testid="tweet"]','retweeted': '[data-testid="socialContext"]','liked_color': 'r-vkub15','liked':'M20.884 13.19c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.3-.504-.3c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z'};
@@ -78,6 +78,7 @@
 		"display_method": "表示方法",
 		"default": "デフォルトの",
 		"language": "言語",
+		"webhook_not_set": "ウェブフックが設定されていません。",
 	};
 
 	Text.en = {
@@ -102,6 +103,7 @@
 		"display_method": "Display Method",
 		"default": "default",
 		"language": "Language",
+		"webhook_not_set": "Webhook is not set.",
 	};
 	let env_Text = Text[script_settings.lang] || Text.en;
 	var env_selector;
@@ -195,7 +197,10 @@
 				const selectedNumber = dropdown_send_image.value;
 				const send_post_tweet = dropdown_post_quote.value === 'true';
 				const useGraphql = dropdown_use_graphql.value === 'true';
-				let num = new Date().getTime();
+				if(!selectedServer){
+					customAlert(env_Text.webhook_not_set);
+					return;
+				}
 				let send_page;
 				if(selectedNumber != 5){
 					send_page = [selectedNumber-1]
@@ -332,7 +337,7 @@
 					"value": `[${env_Text.link_to_tweet}](${tweet_url})` + `\n[TwitterID: ${twitter_user_data.ID}](https://twitter.com/intent/user?user_id=${twitter_user_data.ID})` + if_exsit_return_text(twitter_tweet_data.media[0]?.url,`\n[${env_Text.link_to_image}](${image_url_to_original(twitter_tweet_data.media[0]?.url)})`) + if_exsit_return_text(twitter_user_data.pixiv_url,`\n[Pixiv](${twitter_user_data.pixiv_url})`)
 				},{
 					"name": env_Text.engagement,
-					"value": `${env_Text.likes} ${round_half_up(twitter_tweet_data.retweet_count,env_Text.roundingScale,env_Text.decimalPlaces,env_Text.units)}:recycle:	${env_Text.retweets} ${round_half_up(twitter_tweet_data.favorite_count,env_Text.roundingScale,env_Text.decimalPlaces,env_Text.units)}:heart:`
+					"value": `${env_Text.retweets} ${round_half_up(twitter_tweet_data.retweet_count,env_Text.roundingScale,env_Text.decimalPlaces,env_Text.units)}:recycle:	${env_Text.likes} ${round_half_up(twitter_tweet_data.favorite_count,env_Text.roundingScale,env_Text.decimalPlaces,env_Text.units)}:heart:`
 				},{
 					"name": env_Text.postedDate,
 					"value": twitter_tweet_data.created_at
@@ -892,46 +897,46 @@
 			document.getElementById('defaultWebhook').value = storedSettings.defaultWebhook;
 		}
 		document.getElementById('displayMethod').value = storedSettings.displayMethod || env_Text.display_everywhere;
-		function customAlert(message){
-			let overlay = document.createElement('div');
-			overlay.style.position = 'fixed';
-			overlay.style.top = '0';
-			overlay.style.left = '0';
-			overlay.style.width = '100%';
-			overlay.style.height = '100%';
-			overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-			overlay.style.zIndex = '9999';
-
-			let alertBox = document.createElement('div');
-			alertBox.style.position = 'absolute';
-			alertBox.style.top = '50%';
-			alertBox.style.left = '50%';
-			alertBox.style.transform = 'translate(-50%, -50%)';
-			alertBox.style.padding = '20px';
-			alertBox.style.backgroundColor = 'white';
-			alertBox.style.border = '1px solid black';
-			alertBox.style.zIndex = '10000';
-
-			let alertMessage = document.createElement('p');
-			alertMessage.textContent = message;
-
-			let closeButton = document.createElement('button');
-			closeButton.textContent = env_Text.close;
-			closeButton.addEventListener('click', () => {
-				document.body.removeChild(overlay);
-			});
-
-			alertBox.appendChild(alertMessage);
-			alertBox.appendChild(closeButton);
-			overlay.appendChild(alertBox);
-			document.body.appendChild(overlay);
-		}
 		function encodeBase64(data){
 			return btoa(data);
 		}
 		function decodeBase64(encodedData){
 			return atob(encodedData);
 		}
+	}
+	function customAlert(message){
+		let overlay = document.createElement('div');
+		overlay.style.position = 'fixed';
+		overlay.style.top = '0';
+		overlay.style.left = '0';
+		overlay.style.width = '100%';
+		overlay.style.height = '100%';
+		overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+		overlay.style.zIndex = '9999';
+
+		let alertBox = document.createElement('div');
+		alertBox.style.position = 'absolute';
+		alertBox.style.top = '50%';
+		alertBox.style.left = '50%';
+		alertBox.style.transform = 'translate(-50%, -50%)';
+		alertBox.style.padding = '20px';
+		alertBox.style.backgroundColor = 'white';
+		alertBox.style.border = '1px solid black';
+		alertBox.style.zIndex = '10000';
+
+		let alertMessage = document.createElement('p');
+		alertMessage.textContent = message;
+
+		let closeButton = document.createElement('button');
+		closeButton.textContent = env_Text.close;
+		closeButton.addEventListener('click', () => {
+			document.body.removeChild(overlay);
+		});
+
+		alertBox.appendChild(alertMessage);
+		alertBox.appendChild(closeButton);
+		overlay.appendChild(alertBox);
+		document.body.appendChild(overlay);
 	}
 	function init(){
 		if(script_settings.displayMethod == "method1"){
