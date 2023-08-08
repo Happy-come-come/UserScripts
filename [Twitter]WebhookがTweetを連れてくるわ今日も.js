@@ -2,11 +2,15 @@
 // @name			[Twitter]WebhookがTweetを連れてくるわ今日も
 // @name:ja			[Twitter]WebhookがTweetを連れてくるわ今日も
 // @name:en			Webhook brings tweets to Discord.
+// @name:zh-CN			Webhook brings tweets to Discord.
+// @name:ko			Webhook brings tweets to Discord.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			1145141919810.0.1
+// @version			1145141919810.0.3
 // @description		ツイートをTwitterからDiscordにウェブフックでポストします。
 // @description:ja			ツイートをTwitterからDiscordにウェブフックでポストします。
 // @description:en			Post tweets from Twitter to Discord using webhooks.
+// @description:zh-cn			使用webhooks将Twitter的推文发送到Discord。
+// @description:ko			웹훅을 사용하여 Twitter의 트윗을 Discord에 게시합니다.
 // @author			ゆにてぃー
 // @match			https://twitter.com/*
 // @connect			discord.com
@@ -77,8 +81,9 @@
 		"save_settings": "設定を保存",
 		"display_method": "表示方法",
 		"default": "デフォルトの",
-		"language": "言語",
+		"language": "Language",
 		"webhook_not_set": "ウェブフックが設定されていません。",
+		"when_webhook_url_invalid": "正しいDiscordのWebhookのURLではありません。",
 	};
 
 	Text.en = {
@@ -104,6 +109,58 @@
 		"default": "default",
 		"language": "Language",
 		"webhook_not_set": "Webhook is not set.",
+		"when_webhook_url_invalid": "It is not a valid Discord Webhook URL.",
+	};
+	Text.ko = {
+		"various_links": "다양한 링크",
+		"link_to_tweet": "트윗으로",
+		"link_to_image": "이미지 링크",
+		"engagement": "참여",
+		"likes": "좋아요",
+		"retweets": "리트윗",
+		"units": "k",
+		"roundingScale": 1000,
+		"decimalPlaces": 1,
+		"postedDate": "게시 날짜",
+		"quotedTweet": "↓♻️인용 트윗♻️↓",
+		"submit": "제출",
+		"close": "닫기",
+		"display_everywhere": "어디서나 표시",
+		"tweet_details_only": "트윗 세부 정보만",
+		"when_webhook_name_duplicate": "웹훅 이름이 중복됩니다.",
+		"cancel": "취소",
+		"save_settings": "설정 저장",
+		"display_method": "표시 방법",
+		"default": "기본",
+		"language": "Language",
+		"webhook_not_set": "웹훅이 설정되지 않았습니다.",
+		"when_webhook_url_invalid": "这不是有效的Discord Webhook URL.",
+	};
+
+	Text["zh-CN"] = {
+		"various_links": "各种链接",
+		"link_to_tweet": "到推文",
+		"link_to_image": "图片链接",
+		"engagement": "参与度",
+		"likes": "点赞",
+		"retweets": "转推",
+		"units": "k",
+		"roundingScale": 1000,
+		"decimalPlaces": 1,
+		"postedDate": "发布日期",
+		"quotedTweet": "↓♻️引用推文♻️↓",
+		"submit": "提交",
+		"close": "关闭",
+		"display_everywhere": "随处显示",
+		"tweet_details_only": "仅推文详情",
+		"when_webhook_name_duplicate": "Webhook名称重复。",
+		"cancel": "取消",
+		"save_settings": "保存设置",
+		"display_method": "显示方法",
+		"default": "默认",
+		"language": "Language",
+		"webhook_not_set": "Webhook未设置。",
+		"when_webhook_url_invalid": "유효한 Discord Webhook URL이 아닙니다.",
 	};
 	let env_Text = Text[script_settings.lang] || Text.en;
 	var env_selector;
@@ -823,13 +880,27 @@
 			let data = [];
 			let names = [];
 			let hasDuplicate = false;
+			let hasInvalidWebhook = false;
 			let webhookElements = document.getElementById('webhooks').children;
+		
+			// Webhookの正規表現
+			let webhookPattern = /^https:\/\/discord\.com\/api\/webhooks\/\d+\/[A-Za-z0-9_-]+$/;
+		
 			for(let elem of webhookElements){
 				let name = elem.querySelector('.webhookName').value;
-				let url = elem.querySelector('.webhookUrl').value.replace('https://discord.com/api/webhooks/', '');
+				let url = elem.querySelector('.webhookUrl').value;
+		
 				if(name && url){
+					if(!/^https:\/\/discord\.com\/api\/webhooks\/[\w-]+\/[\w-]+$/.test(url)){
+						elem.querySelector('.webhookUrl').style.backgroundColor = 'red';
+						hasInvalidWebhook = true; // 無効なWebhookを検出
+						continue;
+					}else{
+						elem.querySelector('.webhookUrl').style.backgroundColor = '';
+					}
+		
 					// URLをBase64エンコード
-					let encodedUrl = encodeBase64(url);
+					let encodedUrl = encodeBase64(url.replace('https://discord.com/api/webhooks/', ''));
 					if(names.includes(name)){
 						hasDuplicate = true;
 						elem.querySelector('.webhookName').style.backgroundColor = 'red';
@@ -844,7 +915,10 @@
 				customAlert(env_Text.when_webhook_name_duplicate);
 				return;
 			}
-
+			if(hasInvalidWebhook){
+				customAlert(env_Text.when_webhook_url_invalid);
+				return;
+			}
 			// 設定をJSON形式で保存
 			let selectedLanguage = document.getElementById('languageSelect').value;
 			let settings = {
