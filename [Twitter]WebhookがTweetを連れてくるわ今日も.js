@@ -5,7 +5,7 @@
 // @name:zh-CN			Webhook brings tweets to Discord.
 // @name:ko			Webhook brings tweets to Discord.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			1145141919810.0.3
+// @version			1145141919810.0.4
 // @description		ツイートをTwitterからDiscordにウェブフックでポストします。
 // @description:ja			ツイートをTwitterからDiscordにウェブフックでポストします。
 // @description:en			Post tweets from Twitter to Discord using webhooks.
@@ -277,14 +277,14 @@
 						payload.content = tmp.content;
 					}
 					formData.append('payload_json', JSON.stringify(payload));
-					console.log(formData)
+					//console.log(formData)
 					if(tmp.files){
 						tmp.files.forEach((file, index) => {
 							formData.append(`file${index}`, file.attachment, file.name);
 						});
 					}
 					let res = await request(new sendObject(selectedServer,formData));
-					console.log(res)
+					//console.log(res)
 					await sleep(1000)
 				}
 			});
@@ -317,8 +317,9 @@
 					twitter_user_data.name = tweet_user_data_json.legacy.name;
 					twitter_user_data.profile_image = tweet_user_data_json.legacy.profile_image_url_https.replace('_normal.','.');;
 					twitter_user_data.urls = tweet_user_data_json.legacy.entities;
-					twitter_tweet_data.hashtags = get_only_particular_key_value(tweet_tweet_data_json.entities,"hashtags.text",[]);
-					twitter_tweet_data.user_mentions = get_only_particular_key_value(tweet_tweet_data_json.entities,"user_mentions.screen_name",[]);
+					twitter_tweet_data.hashtags = get_only_particular_key_value(tweet_tweet_data_json.entities,"hashtags",[]);
+					twitter_tweet_data.user_mentions = get_only_particular_key_value(tweet_tweet_data_json.entities,"user_mentions",[]);
+					twitter_tweet_data.symbols = get_only_particular_key_value(tweet_tweet_data_json.entities,"symbols",[]);
 					break;
 				case "1_1":
 					tweet_user_data_json = tweet_data.user;
@@ -328,8 +329,9 @@
 					twitter_user_data.name = tweet_user_data_json.name;
 					twitter_user_data.profile_image = tweet_user_data_json.profile_image_url_https.replace('_normal.','.');;
 					twitter_user_data.urls = tweet_user_data_json.entities;
-					twitter_tweet_data.hashtags = get_only_particular_key_value(tweet_tweet_data_json.entities,"hashtags.text",[]);
-					twitter_tweet_data.user_mentions = get_only_particular_key_value(tweet_tweet_data_json.entities,"user_mentions.screen_name",[]);
+					twitter_tweet_data.hashtags = get_only_particular_key_value(tweet_tweet_data_json.entities,"hashtags",[]);
+					twitter_tweet_data.user_mentions = get_only_particular_key_value(tweet_tweet_data_json.entities,"user_mentions",[]);
+					twitter_tweet_data.symbols = get_only_particular_key_value(tweet_tweet_data_json.entities,"symbols",[]);
 					break;
 			}
 			try{
@@ -346,25 +348,71 @@
 			twitter_tweet_data.created_at = new Date(tweet_tweet_data_json.created_at).toLocaleString(timeZoneObject.locale, { timeZone: timeZoneObject.timeZone });
 			twitter_tweet_data.urls = tweet_tweet_data_json.entities.urls;
 			twitter_tweet_data.media = make_media_list(twitter_tweet_data.extended_entities,select_pages);
-			twitter_tweet_data.hashtags.forEach(target => {
-				twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(`(#|＃)${target}(?=(\\s|$|\\u3000|\\W)(?!\\.|,))`, 'gu'), `[#${target}](https://twitter.com/hashtag/${target})`);
-			});
-			twitter_tweet_data.user_mentions.forEach(target =>{
-				twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(`@${target}(?=(\\s|$|\\u3000|\\W)(?!\\.|,))`, 'gu'), `[@${target}](https://twitter.com/${target})`);
-			});
 			try{
 				//文が長すぎるとエラーになるので一定の長さで切る。
 				//普通のツイートではそんなことありえないが、Blueでは長いツイートが可能なのでそれに対応している。
-				let note_tweet = tweet_data.result.note_tweet?.note_tweet_results.result||tweet_data.result.tweet.note_tweet.note_tweet_results.result;
-				twitter_tweet_data.full_text = str_max_length(note_tweet.text,7000);
-				twitter_tweet_data.urls = note_tweet.entity_set.urls;
-				get_only_particular_key_value(note_tweet.entity_set,"hashtags.text",[]).forEach(target =>{
-					twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(`(#|＃)${target}(?=(\\s|$|\\u3000|\\W)(?!\\.|,))`, 'gu'), `[#${target}](https://twitter.com/hashtag/${target})`);
-				});
-				get_only_particular_key_value(note_tweet.entity_set,"user_mentions.screen_name",[]).forEach(target =>{
-					twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(`@${target}(?=(\\s|$|\\u3000|\\W)(?!\\.|,))`, 'gu'), `[@${target}](https://twitter.com/${target})`);
-				});
+				if(tweet_data.APIsource == "graphql"){
+					let note_tweet = tweet_data.result.note_tweet?.note_tweet_results.result||tweet_data.result.tweet.note_tweet.note_tweet_results.result;
+					twitter_tweet_data.full_text = note_tweet.text;
+					twitter_tweet_data.urls = note_tweet.entity_set.urls;
+					twitter_tweet_data.hashtags = get_only_particular_key_value(note_tweet.entity_set,"hashtags",[]);
+					twitter_tweet_data.user_mentions = get_only_particular_key_value(note_tweet.entity_set,"user_mentions",[]);
+					twitter_tweet_data.symbols = get_only_particular_key_value(note_tweet.entity_set,"symbols",[]);
+				}
 			}catch{}
+			console.log(twitter_tweet_data.full_text)
+			// hashtags, mentions, symbolsを一つの配列に結合
+			function countSurrogatePairs(str){
+				return Array.from(str).filter(char => char.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/)).length;
+			}
+			let combined = [].concat(
+				twitter_tweet_data.hashtags.map(tag => ({
+					type: 'hashtag',
+					indices: tag.indices,
+					text: tag.text
+				})),
+				twitter_tweet_data.user_mentions.map(mention => ({
+					type: 'mention',
+					indices: mention.indices,
+					text: mention.screen_name
+				})),
+				twitter_tweet_data.symbols.map(symbol => ({
+					type: 'symbol',
+					indices: symbol.indices,
+					text: symbol.text
+				}))
+			);
+
+
+			// combinedをindicesの順にソート
+			combined.sort((a, b) => b.indices[0] - a.indices[0]);
+			let transformedText = twitter_tweet_data.full_text;
+
+			combined.forEach(item => {
+				let start = item.indices[0];
+				let end = item.indices[1];
+
+				// サロゲートペアの数をカウントして調整
+				const adjustment = countSurrogatePairs(transformedText.slice(0, end));
+				start += adjustment;
+				end += adjustment;
+
+				let replacement = '';
+				switch(item.type){
+					case 'hashtag':
+						replacement = `[#${item.text}](https://twitter.com/hashtag/${item.text})`;
+						break;
+					case 'mention':
+						replacement = `[@${item.text}](https://twitter.com/${item.text})`;
+						break;
+					case 'symbol':
+						replacement = `[$${item.text}](https://twitter.com/search?q=%24${item.text}&src=cashtag_click)`;
+						break;
+				}
+				transformedText = transformedText.slice(0, start) + replacement + transformedText.slice(end);
+			});
+			twitter_tweet_data.full_text = str_max_length(transformedText,7000);
+
 			try{
 				//複数メディアをつけるオプションのときに動画があるとうまくいかないので。
 				if(select_pages.length > 1 && ! twitter_tweet_data.media.every(v => v.media_type == "photo")){
@@ -430,8 +478,8 @@
 		async function get_Tweet_data(){
 			let response;
 			if(use_graphQL){
-				response = await request(new requestObject_twitter_graphQL(tweet_id));
-				response = response.response.entries[response.entries.findIndex((tmp) => tmp.entryId == `tweet-${tweet_id}`)].content.itemContent.tweet_results;
+				response = (await request(new requestObject_twitter_graphQL(tweet_id))).response.data.threaded_conversation_with_injections_v2.instructions[0];
+				response = response.entries[response.entries.findIndex((tmp) => tmp.entryId == `tweet-${tweet_id}`)].content.itemContent.tweet_results;
 				response.APIsource = 'graphql';
 			}else{
 				response = await request(new requestObject_twitter_1_1(tweet_id));
@@ -673,9 +721,12 @@
 		//ツイート内のt.coで短縮されたリンクをもとにのリンクにもどす。
 		try{
 			if(typeof full_text !== "undefined"){
+				/*
 				full_text = full_text.replace(/\&amp\;/g,'&');
 				full_text = full_text.replace(/\&gt\;/g,'\\>');
 				full_text = full_text.replace(/\&lt\;/g,'\\<');
+				*/
+				full_text = decodeHtml(full_text);
 				if(typeof urls !== "undefined"){
 					for(let i=0;i<=urls.length-1;i++){
 						if(urls[i].expanded_url.length > 200){
@@ -882,14 +933,14 @@
 			let hasDuplicate = false;
 			let hasInvalidWebhook = false;
 			let webhookElements = document.getElementById('webhooks').children;
-		
+
 			// Webhookの正規表現
 			let webhookPattern = /^https:\/\/discord\.com\/api\/webhooks\/\d+\/[A-Za-z0-9_-]+$/;
-		
+
 			for(let elem of webhookElements){
 				let name = elem.querySelector('.webhookName').value;
 				let url = elem.querySelector('.webhookUrl').value;
-		
+
 				if(name && url){
 					if(!/^https:\/\/discord\.com\/api\/webhooks\/[\w-]+\/[\w-]+$/.test(url)){
 						elem.querySelector('.webhookUrl').style.backgroundColor = 'red';
@@ -898,7 +949,7 @@
 					}else{
 						elem.querySelector('.webhookUrl').style.backgroundColor = '';
 					}
-		
+
 					// URLをBase64エンコード
 					let encodedUrl = encodeBase64(url.replace('https://discord.com/api/webhooks/', ''));
 					if(names.includes(name)){
@@ -928,10 +979,10 @@
 				lang: selectedLanguage
 			};
 			localStorage.setItem('webhook_brings_tweets_to_discord', JSON.stringify(settings));
-	
+
 			// 保存した設定を再度読み込む
 			storedSettings = JSON.parse(localStorage.getItem('webhook_brings_tweets_to_discord') || '{}');
-	
+
 			script_settings = {
 				"displayMethod": storedSettings.displayMethod || 'method1',
 				"lang": storedSettings.lang || GetCookie("lang") || 'en',
@@ -949,7 +1000,7 @@
 				})(storedSettings.data)
 			};
 			env_Text = Text[script_settings.lang] || Text.en;
-	
+
 			// 設定画面を閉じる
 			div.remove();
 		});
@@ -1011,6 +1062,11 @@
 		alertBox.appendChild(closeButton);
 		overlay.appendChild(alertBox);
 		document.body.appendChild(overlay);
+	}
+	function decodeHtml(html) {
+		var txt = document.createElement("textarea");
+		txt.innerHTML = html;
+		return txt.value;
 	}
 	function init(){
 		if(script_settings.displayMethod == "method1"){
