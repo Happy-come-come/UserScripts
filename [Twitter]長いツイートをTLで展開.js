@@ -36,9 +36,6 @@
 			const urls = note_tweet.entity_set.urls;
 			const tweet_node = element.parentNode.parentNode.querySelector('[data-testid="tweetText"]');
 			var new_tweet_text = note_tweet.text;
-			urls.forEach(target =>{
-				new_tweet_text = new_tweet_text.replace(new RegExp(`${target.url}(?=(\\s|$|\\u3000|\\W)(?!\\.|,))`, 'gu'), `<a class="${link_class}" dir="ltr" role="link" href="${target.url}">${target.display_url}</a>`);
-			});
 			function countSurrogatePairs(str){
 				return Array.from(str).filter(char => char.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/)).length;
 			}
@@ -89,7 +86,9 @@
 				transformedText = transformedText.slice(0, start) + replacement + transformedText.slice(end);
 			});
 			new_tweet_text = transformedText;
-
+			urls.forEach(target =>{
+				new_tweet_text = new_tweet_text.replace(new RegExp(`${target.url}(?=(\\s|$|\\u3000|\\W)(?!\\.|,))`, 'gu'), `<a class="${link_class}" dir="ltr" role="link" href="${target.url}">${target.display_url}</a>`);
+			});
 			var new_tweet_node = document.createElement("span");
 			new_tweet_node.className = 'css-901oao css-16my406 r-1tl8opc r-bcqeeo r-qvutc0';
 			new_tweet_node.innerHTML = new_tweet_text;
