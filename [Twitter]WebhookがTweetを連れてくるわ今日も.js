@@ -360,7 +360,7 @@
 					twitter_tweet_data.symbols = get_only_particular_key_value(note_tweet.entity_set,"symbols",[]);
 				}
 			}catch{}
-			console.log(twitter_tweet_data.full_text)
+			//console.log(twitter_tweet_data.full_text)
 			// hashtags, mentions, symbolsを一つの配列に結合
 			function countSurrogatePairs(str){
 				return Array.from(str).filter(char => char.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/)).length;
