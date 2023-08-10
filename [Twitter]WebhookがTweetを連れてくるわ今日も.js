@@ -5,7 +5,7 @@
 // @name:zh-CN			Webhook brings tweets to Discord.
 // @name:ko			Webhook brings tweets to Discord.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			1145141919810.0.5
+// @version			1145141919810.0.6
 // @description		ツイートをTwitterからDiscordにウェブフックでポストします。
 // @description:ja			ツイートをTwitterからDiscordにウェブフックでポストします。
 // @description:en			Post tweets from Twitter to Discord using webhooks.
@@ -441,7 +441,7 @@
 			tmpEmbed.author = {
 				"name": twitter_user_data.name,
 				"url": `https://twitter.com/${twitter_user_data.screen_name}`,
-				"icon_url": `attachment://${twitter_user_data.profile_image.split('/').pop()}`
+				"icon_url": `attachment://${twitter_user_data.profile_image.split('/').pop().replace(/^_*/,'')}`
 			};
 			tmpEmbed.description = replace_t_co_to_original_url(twitter_tweet_data.full_text,twitter_tweet_data.urls,twitter_tweet_data.media);
 			tmpEmbed.thumbnail = {"url": "https://pbs.twimg.com/profile_images/1488548719062654976/u6qfBBkF_400x400.jpg"};
@@ -834,14 +834,17 @@
 		let downloadPromises = mediaUrlArray.map(async (target) => {
 			if(!target.url)return;
 			let image;
+			let name;
 			if(target.url.match(/https?:\/\/pbs\.twimg\.com\/media\//)){
 				image = await request(new requestObject_binary_data(image_url_to_original(target.url)));
+				name = target.url.split('/').pop();
 			}else{
 				image = await request(new requestObject_binary_data(target.url));
+				name = target.url.split('/').pop().replace(/^_*/,'');
 			}
 			return {
 				"attachment": image.response,
-				"name": target.url.split('/').pop(),
+				"name": name,
 			};
 		});
 		return remove_null_from_array(await Promise.all(downloadPromises));
