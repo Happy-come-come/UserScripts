@@ -5,7 +5,7 @@
 // @name:zh-CN			Webhook brings tweets to Discord.
 // @name:ko			Webhook brings tweets to Discord.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			1145141919810.0.6
+// @version			1145141919810.0.7
 // @description		ツイートをTwitterからDiscordにウェブフックでポストします。
 // @description:ja			ツイートをTwitterからDiscordにウェブフックでポストします。
 // @description:en			Post tweets from Twitter to Discord using webhooks.
@@ -46,7 +46,7 @@
 	let script_settings = {
 		"displayMethod": storedSettings.displayMethod || 'method1',
 		"lang": storedSettings.lang || GetCookie("lang") || 'en',
-		"defaultWebhook": storedSettings.data?.defaultWebhook,
+		"defaultWebhook": storedSettings.defaultWebhook,
 		"webHooks": (function(data){
 				let webhooks = {};
 				if(data && Array.isArray(data)){
@@ -192,7 +192,7 @@
 				const option = document.createElement('option');
 				option.value = script_settings.webHooks[server];
 				option.textContent = server;
-				if(server === script_settings.defaultWebhook){
+				if(server == script_settings.defaultWebhook){
 					option.selected = true;
 				}
 				dropdown_select_server.appendChild(option);
@@ -998,7 +998,7 @@
 			script_settings = {
 				"displayMethod": storedSettings.displayMethod || 'method1',
 				"lang": storedSettings.lang || GetCookie("lang") || 'en',
-				"defaultWebhook": storedSettings.data?.defaultWebhook,
+				"defaultWebhook": storedSettings.defaultWebhook,
 				"webHooks": (function(data){
 					let webhooks = {};
 					if(data && Array.isArray(data)){
