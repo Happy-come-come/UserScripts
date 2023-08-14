@@ -5,7 +5,7 @@
 // @name:zh-CN			Webhook brings tweets to Discord.
 // @name:ko			Webhook brings tweets to Discord.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			1145141919810.0.7
+// @version			1145141919810.0.12
 // @description		ツイートをTwitterからDiscordにウェブフックでポストします。
 // @description:ja			ツイートをTwitterからDiscordにウェブフックでポストします。
 // @description:en			Post tweets from Twitter to Discord using webhooks.
@@ -85,6 +85,7 @@
 		"language": "Language",
 		"webhook_not_set": "ウェブフックが設定されていません。",
 		"when_webhook_url_invalid": "正しいDiscordのWebhookのURLではありません。",
+		"when_post_failed": "以下のURLのポストに失敗しました。",
 	};
 
 	Text.en = {
@@ -111,6 +112,7 @@
 		"language": "Language",
 		"webhook_not_set": "Webhook is not set.",
 		"when_webhook_url_invalid": "It is not a valid Discord Webhook URL.",
+		"when_post_failed": "Failed to post the following URL.",
 	};
 	Text.ko = {
 		"various_links": "다양한 링크",
@@ -135,7 +137,8 @@
 		"default": "기본",
 		"language": "Language",
 		"webhook_not_set": "웹훅이 설정되지 않았습니다.",
-		"when_webhook_url_invalid": "这不是有效的Discord Webhook URL.",
+		"when_webhook_url_invalid": "유효한 Discord Webhook URL이 아닙니다.",
+		"when_post_failed": "다음 URL 게시에 실패했습니다.",
 	};
 
 	Text["zh-CN"] = {
@@ -161,7 +164,8 @@
 		"default": "默认",
 		"language": "Language",
 		"webhook_not_set": "Webhook未设置。",
-		"when_webhook_url_invalid": "유효한 Discord Webhook URL이 아닙니다.",
+		"when_webhook_url_invalid": "这不是有效的Discord Webhook URL.",
+		"when_post_failed": "以下URL发布失败。",
 	};
 	let env_Text = Text[script_settings.lang] || Text.en;
 	var env_selector;
@@ -247,6 +251,19 @@
 			button.textContent = env_Text.submit;
 			flexContainer.appendChild(button);
 
+			dropdown_select_server.addEventListener('change', () => {
+				button.disabled = false;
+			});
+			dropdown_send_image.addEventListener('change', () => {
+				button.disabled = false;
+			});
+			dropdown_post_quote.addEventListener('change', () => {
+				button.disabled = false;
+			});
+			dropdown_use_graphql.addEventListener('change', () => {
+				button.disabled = false;
+			});
+
 			// ボタンのクリックイベントを監視
 			button.addEventListener('click',async function(){
 				// ここでドロップダウンの選択値に基づいて処理を行う
@@ -287,10 +304,10 @@
 					try{
 						let res = await request(new sendObject(selectedServer,formData));
 						if(res.statusText == "Bad Request"){
-							customAlert(payload.embeds[0].url);
+							customAlert(`${env_Text,when_post_failed}\n${payload.embeds[0].url}`);
 						}
 					}catch(error){
-						customAlert(payload.embeds[0].url);
+						customAlert(`${env_Text,when_post_failed}\n${payload.embeds[0].url}`);
 						console.log(error);
 					}
 					//console.log(res)
@@ -347,7 +364,7 @@
 				twitter_user_data.pixiv_url = await find_pixiv_link(twitter_user_data.urls);
 			}catch(error){
 				console.log("pixivのURLの取得に失敗しました。");
-				console.log(error);
+				throw(error);
 			}
 			twitter_tweet_data.full_text = replace_null_to_something(tweet_tweet_data_json.full_text);
 			twitter_tweet_data.extended_entities = tweet_tweet_data_json.extended_entities;
@@ -487,11 +504,11 @@
 		async function get_Tweet_data(){
 			let response;
 			if(use_graphQL){
-				response = (await request(new requestObject_twitter_graphQL(tweet_id))).response.data.threaded_conversation_with_injections_v2.instructions[0];
+				response = (await request(new requestObject_twitter_graphQL(tweet_id),3)).response.data.threaded_conversation_with_injections_v2.instructions[0];
 				response = response.entries[response.entries.findIndex((tmp) => tmp.entryId == `tweet-${tweet_id}`)].content.itemContent.tweet_results;
 				response.APIsource = 'graphql';
 			}else{
-				response = await request(new requestObject_twitter_1_1(tweet_id));
+				response = await request(new requestObject_twitter_1_1(tweet_id),3);
 				response = response.response[0];
 				response.APIsource = '1_1';
 			}
@@ -831,23 +848,35 @@
 	}
 	async function fetchImages(mediaUrlArray){
 		if(mediaUrlArray?.length == 0) return;
-		let downloadPromises = mediaUrlArray.map(async (target) => {
-			if(!target.url)return;
-			let image;
-			let name;
-			if(target.url.match(/https?:\/\/pbs\.twimg\.com\/media\//)){
-				image = await request(new requestObject_binary_data(image_url_to_original(target.url)));
-				name = target.url.split('/').pop();
-			}else{
-				image = await request(new requestObject_binary_data(target.url));
-				name = target.url.split('/').pop().replace(/^_*/,'');
-			}
-			return {
-				"attachment": image.response,
-				"name": name,
-			};
-		});
+		let downloadPromises = mediaUrlArray.map(fetchImage);
 		return remove_null_from_array(await Promise.all(downloadPromises));
+		async function fetchImage(target) {
+			let retryCount = 5; // リトライ回数を設定
+			while(retryCount > 0){
+				if(!target.url) return;
+				let image;
+				let name;
+				if(target.url.match(/https?:\/\/pbs\.twimg\.com\/media\//)){
+					image = await request(new requestObject_binary_data(image_url_to_original(target.url)),3);
+					name = target.url.split('/').pop();
+				}else{
+					image = await request(new requestObject_binary_data(target.url),3);
+					name = target.url.split('/').pop().replace(/^_*/, '');
+				}
+		
+				// ダウンロードした画像データのサイズを確認
+				if(image.response.size > 1024){
+					return {
+						"attachment": image.response,
+						"name": name,
+					};
+				}else{
+					retryCount--;
+				}
+			}
+			console.warn(`Failed to download image after multiple retries: ${target.url}`);
+			return null;
+		}
 	}
 	function remove_null_from_array(arr){
 		return arr.filter(function(x){return !(x === null || x === undefined || x === "")});
@@ -1015,6 +1044,7 @@
 
 			// 設定画面を閉じる
 			div.remove();
+			document.querySelectorAll('.quickDimg').forEach((target)=>{target.remove()});
 		});
 		// 初期設定を読み込む
 		let storedSettings = JSON.parse(localStorage.getItem('webhook_brings_tweets_to_discord') || '{}');
@@ -1083,7 +1113,7 @@
 	function init(){
 		if(script_settings.displayMethod == "method1"){
 			main(document.querySelectorAll(env_selector.tweet_field));
-		}else if(document.location.href.match(/https?:\/\/twitter\.com\/\w+\/status\/(\d+)/)){
+		}else if(document.location.href.match(/https?:\/\/twitter\.com\/\w+\/status\/(\d+)(?!\/photo\/\d+)/)){
 			main(document.querySelectorAll(env_selector.tweet_field));
 		}
 	}
@@ -1199,26 +1229,37 @@
 			this.package = null;
 		}
 	}
-	async function request(object, timeout = 60000) {
-		return new Promise((resolve, reject) => {
-			GM_xmlhttpRequest({
-				method: object.method,
-				url: object.url,
-				headers: object.headers,
-				responseType: object.respType,
-				data: object.body,
-				anonymous: object.anonymous,
-				timeout: timeout,
-				onload: function(responseDetails){
-					return resolve(responseDetails);
-				},
-				ontimeout: function(responseDetails){
-					return reject(`[request]time out:\nresponse ${responseDetails}`);
-				},
-				onerror: function(responseDetails){
-					return reject(`[request]error:\nresponse ${responseDetails}`);
+	async function request(object, maxRetries = 0, timeout = 60000){
+		let retryCount = 0;
+		while(retryCount <= maxRetries){
+			try{
+				return await new Promise((resolve, reject) => {
+					GM_xmlhttpRequest({
+						method: object.method,
+						url: object.url,
+						headers: object.headers,
+						responseType: object.respType,
+						data: object.body,
+						anonymous: object.anonymous,
+						timeout: timeout,
+						onload: function(responseDetails){
+							resolve(responseDetails);
+						},
+						ontimeout: function(responseDetails){
+							reject(`[request]time out:\nresponse ${responseDetails}`);
+						},
+						onerror: function(responseDetails){
+							reject(`[request]error:\nresponse ${responseDetails}`);
+						}
+					});
+				});
+			}catch(error){
+				retryCount++;
+				console.warn(`Retry ${retryCount}: Failed to fetch ${object.url}. Reason: ${error}`);
+				if(retryCount === maxRetries){
+					throw new Error(`Failed to fetch ${object.url} after ${maxRetries} retries.`);
 				}
-			});
-		});
+			}
+		}
 	}
 })();
