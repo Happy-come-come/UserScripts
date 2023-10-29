@@ -5,7 +5,7 @@
 // @name:zh-CN			Webhook brings tweets to Discord.
 // @name:ko			Webhook brings tweets to Discord.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			1145141919810.0.12
+// @version			1145141919810.0.19
 // @description		ツイートをTwitterからDiscordにウェブフックでポストします。
 // @description:ja			ツイートをTwitterからDiscordにウェブフックでポストします。
 // @description:en			Post tweets from Twitter to Discord using webhooks.
@@ -13,6 +13,9 @@
 // @description:ko			웹훅을 사용하여 Twitter의 트윗을 Discord에 게시합니다.
 // @author			ゆにてぃー
 // @match			https://twitter.com/*
+// @match			https://mobile.twitter.com/*
+// @match			https://x.com/*
+// @match			https://X.com/*
 // @connect			discord.com
 // @connect			api.twitter.com
 // @connect			api.fanbox.cc
@@ -304,10 +307,10 @@
 					try{
 						let res = await request(new sendObject(selectedServer,formData));
 						if(res.statusText == "Bad Request"){
-							customAlert(`${env_Text,when_post_failed}\n${payload.embeds[0].url}`);
+							customAlert(`${env_Text.when_post_failed}`,payload.embeds[0].url);
 						}
 					}catch(error){
-						customAlert(`${env_Text,when_post_failed}\n${payload.embeds[0].url}`);
+						customAlert(`${env_Text.when_post_failed}`,payload.embeds[0].url);
 						console.log(error);
 					}
 					//console.log(res)
@@ -319,8 +322,14 @@
 	}
 	async function make_send_data(tweet_link,select_pages = [1],send_quoted_tweet,use_graphQL){
 		const tweet_id = tweet_link.match(/https?:\/\/twitter\.com\/\w+\/status\/(\d+)/)[1];
-		let tweet_data = await get_Tweet_data();
-		let return_object = await make_embeds();
+		let tweet_data,return_object;
+		try{
+			tweet_data = await get_Tweet_data();
+			return_object = await make_embeds();
+		}catch(error){
+			customAlert(`${env_Text.when_post_failed}`,tweet_link);
+			console.error(error);
+		}
 		if(send_quoted_tweet && return_object[return_object.length - 1].quoted_tweet_data){
 			tweet_data = return_object.pop().quoted_tweet_data;
 			return_object = return_object.concat([{content: env_Text.quotedTweet}],await make_embeds(1));
@@ -388,9 +397,6 @@
 			}catch{}
 			//console.log(twitter_tweet_data.full_text)
 			// hashtags, mentions, symbolsを一つの配列に結合
-			function countSurrogatePairs(str){
-				return Array.from(str).filter(char => char.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/)).length;
-			}
 			let combined = [].concat(
 				twitter_tweet_data.hashtags.map(tag => ({
 					type: 'hashtag',
@@ -413,7 +419,15 @@
 			// combinedをindicesの順にソート
 			combined.sort((a, b) => b.indices[0] - a.indices[0]);
 			let transformedText = twitter_tweet_data.full_text;
-
+			function countSurrogatePairs(str){
+				return Array.from(str).filter(char => char.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/)).length;
+			}
+			const currentTimeMillis = new Date().getTime();
+			const linkTextStart = `linkTextStart${currentTimeMillis}`;
+			const linkTextEnd = `linkTextEnd${currentTimeMillis}`;
+			const linkUrlStart = `linkUrlStart${currentTimeMillis}`;
+			const linkUrlEnd = `linkUrlEnd${currentTimeMillis}`;
+			const hashtag = `hashtag${currentTimeMillis}`
 			combined.forEach(item => {
 				let start = item.indices[0];
 				let end = item.indices[1];
@@ -426,19 +440,30 @@
 				let replacement = '';
 				switch(item.type){
 					case 'hashtag':
-						replacement = `[#${item.text}](https://twitter.com/hashtag/${item.text})`;
+						replacement = `${linkTextStart}${hashtag}${item.text}${linkTextEnd}${linkUrlStart}https://twitter.com/hashtag/${item.text}${linkUrlEnd}`;
 						break;
 					case 'mention':
-						replacement = `[@${item.text}](https://twitter.com/${item.text})`;
+						replacement = `${linkTextStart}@${item.text}${linkTextEnd}${linkUrlStart}https://twitter.com/${item.text}${linkUrlEnd}`;
 						break;
 					case 'symbol':
-						replacement = `[$${item.text}](https://twitter.com/search?q=%24${item.text}&src=cashtag_click)`;
+						replacement = `${linkTextStart}$${item.text}${linkTextEnd}${linkUrlStart}https://twitter.com/search?q=%24${item.text}&src=cashtag_click${linkUrlEnd}`;
 						break;
 				}
 				transformedText = transformedText.slice(0, start) + replacement + transformedText.slice(end);
 			});
 			twitter_tweet_data.full_text = str_max_length(transformedText,7000);
-
+			//マークダウンにならないでほしいやつのエスケープ
+			let escapeCharacters = ['|', '*', '_', '`', '~', '[', ']', '(', ')', '>', '#', '-'];
+			escapeCharacters.forEach(char => {
+				let regExp = new RegExp('\\' + char, 'g');
+				twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(regExp, '\\' + char);
+			});
+			//マークダウンになって欲しいやつは戻す
+			twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(linkTextStart, 'g'), '[');
+			twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(linkTextEnd, 'g'), ']');
+			twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(linkUrlStart, 'g'), '(');
+			twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(linkUrlEnd, 'g'), ')');
+			twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(hashtag, 'g'), '#');
 			try{
 				//複数メディアをつけるオプションのときに動画があるとうまくいかないので。
 				if(select_pages.length > 1 && ! twitter_tweet_data.media.every(v => v.media_type == "photo")){
@@ -456,7 +481,7 @@
 			tmpEmbed.title = "Tweet";
 			tmpEmbed.url = tweet_url;
 			tmpEmbed.author = {
-				"name": twitter_user_data.name,
+				"name": `${twitter_user_data.name} (@${twitter_user_data.screen_name})`,
 				"url": `https://twitter.com/${twitter_user_data.screen_name}`,
 				"icon_url": `attachment://${twitter_user_data.profile_image.split('/').pop().replace(/^_*/,'')}`
 			};
@@ -629,7 +654,7 @@
 						if(response_data_urls.find(function(element){return element.match(Pixiv_url_regex)}) !== undefined){
 							return resolve(response_data_urls.find(function(element){return element.match(Pixiv_url_regex)}));
 						}else if(response_data_urls.find(function(element){return element.match(Fanbox_url_regex)}) !== undefined){
-							return when_fanbox(response_data_urls.find(function(element){return element.match(Fanbox_url_regex)}));
+							return resolve(when_fanbox(response_data_urls.find(function(element){return element.match(Fanbox_url_regex)})));
 						}else{
 							return reject(undefined);
 						}
@@ -756,9 +781,9 @@
 				if(typeof urls !== "undefined"){
 					for(let i=0;i<=urls.length-1;i++){
 						if(urls[i].expanded_url.length > 200){
-							full_text = full_text.replace(urls[i].url,`[${urls[i].expanded_url.slice(0,150)}](${urls[i].expanded_url})... `);
+							full_text = full_text.replace(urls[i].url,`[${decodeURI(urls[i].expanded_url).slice(0,150)}](${decodeURI(urls[i].expanded_url)}) ... `);
 						}else{
-							full_text = full_text.replace(urls[i].url,urls[i].expanded_url);
+							full_text = full_text.replace(urls[i].url,decodeURI(urls[i].expanded_url));
 						}
 					}
 				}
@@ -863,7 +888,7 @@
 					image = await request(new requestObject_binary_data(target.url),3);
 					name = target.url.split('/').pop().replace(/^_*/, '');
 				}
-		
+
 				// ダウンロードした画像データのサイズを確認
 				if(image.response.size > 1024){
 					return {
@@ -921,6 +946,8 @@
 		div.style.backgroundColor = 'white'; // 背景色を白に設定
 		div.style.border = '1px solid black'; // 枠線を追加
 		div.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)'; // 影を追加
+		div.style.maxHeight = '80vh'; // 画面の高さの80%を最大高さとして設定
+		div.style.overflowY = 'auto'; // 必要に応じて垂直スクロールバーを表示
 		document.body.appendChild(div);
 
 		let closeBtn = document.createElement('button');
@@ -1071,7 +1098,7 @@
 			return atob(encodedData);
 		}
 	}
-	function customAlert(message){
+	function customAlert(message, url){
 		let overlay = document.createElement('div');
 		overlay.style.position = 'fixed';
 		overlay.style.top = '0';
@@ -1090,9 +1117,11 @@
 		alertBox.style.backgroundColor = 'white';
 		alertBox.style.border = '1px solid black';
 		alertBox.style.zIndex = '10000';
+		alertBox.style.maxWidth = '80%'; // ボックスの最大幅を設定してテキストを折り返します
+		alertBox.style.whiteSpace = 'pre-wrap'; // 改行と空白を保持します
 
 		let alertMessage = document.createElement('p');
-		alertMessage.textContent = message;
+		alertMessage.innerHTML = message.replace(/\n/g, '<br>'); // \nを<br>に置き換えて改行を表示します
 
 		let closeButton = document.createElement('button');
 		closeButton.textContent = env_Text.close;
@@ -1101,6 +1130,18 @@
 		});
 
 		alertBox.appendChild(alertMessage);
+
+		// URLが提供された場合、それを表示するa要素を作成します
+		if(url){
+			let urlElement = document.createElement('a');
+			urlElement.href = url;
+			urlElement.textContent = url;
+			urlElement.style.display = 'block';
+			urlElement.style.marginTop = '10px';
+			urlElement.target = '_blank';
+			urlElement.rel = 'noopener';
+			alertBox.appendChild(urlElement);
+		}
 		alertBox.appendChild(closeButton);
 		overlay.appendChild(alertBox);
 		document.body.appendChild(overlay);
@@ -1138,7 +1179,6 @@
 			this.respType = 'json';
 			this.url = "https://discord.com/api/webhooks/" + atob(webhook);
 			this.headers = {
-				//'Content-Type': 'multipart/form-data'
 			};
 			this.package = null;
 			this.anonymous = true;

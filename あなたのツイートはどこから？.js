@@ -9,9 +9,12 @@
 // @author			ゆにてぃー
 // @match			https://twitter.com/*
 // @match			https://mobile.twitter.com/*
+// @match			https://x.com/*
+// @match			https://X.com/*
 // @connect			api.twitter.com
-// @icon			https://www.google.com/s2/favicons?sz=64&domain=twitter.com
+// @icon			data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJkSURBVHgB7VZBbtpQEH3zIW0WVYuXVaH4Bs0NSk4AOUFhEarskhMknIDsqkKlcIT0BNAT1D1B3ZJK3dmVuirwp/MhVmzAxiagKBJv9+ePZ97M/JkxsMMODwzChlD84FWQp3MxeCDHAhiumB+MJrr1+8Ryw3p/9+H4DctfIPCq49Xlw8Kv99YlMuB19885gy/i7llziwGfFFWJyR02XzSCuwiBUse7BlFVaz5LS8KQVkRXaXRJsqImfDjKSZBNyzEyFWFKVJ4KFbWLElUao6KbSk8i9TXgTPaorxTskPwOxa7/9baGt4zg8oQbNyfWYJlRU0/KUx9ZwNwYNq1ecFRzl18QpW0bB0Ks//KjV1uwlbuLJA3GxEdh5wb5yGEPl3qMd2xecYQHKnlFlVLX95kxYCFKGg5IlU2a0uLpCM68LEJA+sJ/Dm6Jy3aMjQIRakRUm+UuvfOp/X34iQSejeFo0Hdx4optG5uFH/R+GHNvANcm3VtwLs+Lvy2TRwhIOnrYHhysIuDKcCDwGbYAjglOzQt+HssElF6dvoNNOZeuCSbfSgIGMjILMo4/ExZf7TqghNLmlwm1gpSC2tmaLAZMvWGz0Iu7XpqBm2NrQNN5cD+Y5ZOTdZyok3RZMusZOJUN+QZrQFb0oQkG6xIIYHe8A03Unx/Ryd6jS2ctAsbxmFRVynGKlM5na5ePVkUe0p+h9MmraS2zXqYgmSWjOPtElHbLTVB3Q79gqQlMScxqXpeav0UWiGMmXKSNOpZAAPvKs/U/1MRoxRxl+5WD+psUy2D5IdmRVoWjnqDnLlkyO+zwaPAf1zXwZL751PUAAAAASUVORK5CYII=
 // @grant			GM_xmlhttpRequest
+// @grant			GM_registerMenuCommand
 // @license			MIT
 // ==/UserScript==
 
@@ -129,13 +132,13 @@ function request(object, func, timeout = 60000){
 	function locationChange(){
 		const observer = new MutationObserver(mutations => {
 			mutations.forEach(() => {
-				if (currentUrl !== document.location.href){
+				if(currentUrl !== document.location.href){
 					currentUrl = document.location.href;
 					main();
 				}
 			});
 		});
-		const target = document.body;
+		const target = document.getElementById("react-root");
 		const config = {childList: true,subtree: true};
 		observer.observe(target, config);
 	}
