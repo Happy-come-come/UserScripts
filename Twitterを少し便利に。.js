@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			1.0.0.10
+// @version			1.0.0.13
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -41,7 +41,7 @@
 // @run-at			document-idle
 // ==/UserScript==
 
-(function(){
+(async function(){
 	'use strict';
 	const commonselectors = {
 		'tweet_field': 'article[data-testid="tweet"]',
@@ -56,7 +56,7 @@
 			"1": {"count": "rgb(247, 249, 249)","text": "rgb(139, 152, 165)"},
 			"2": {"count": "rgb(231, 233, 234)","text": "rgb(113, 118, 123)"},
 		},
-	}
+	};
 	const desktop_selectors = {
 		'time_line_media_field': '.css-1dbjc4n.r-1p0dtai.r-1mlwlqe.r-1d2f490.r-11wrixw.r-61z16t.r-1udh08x.r-u8s1d.r-zchlnj.r-ipm5af.r-417010',
 		'media_field': '.css-1dbjc4n.r-1ssbvtb.r-1s2bzr4',
@@ -150,6 +150,10 @@
 			"Export": "エクスポート",
 			"Inport": "インポート",
 		},
+		"ForDebug": {
+			"functionName": "デバッグ用",
+			"get": "取得",
+		},
 		"webhook_brings_tweets_to_discord": {
 			"functionName": "WebhookがTweetを連れてくるわ今日も",
 			"link_to_tweet": "ツイートへ",
@@ -226,6 +230,10 @@
 			"Export": "Export",
 			"Inport": "Inport",
 		},
+		"ForDebug": {
+			"functionName": "Debug",
+			"get": "get",
+		},
 		"webhook_brings_tweets_to_discord": {
 			"functionName": "webhook brings tweets to discord",
 			"link_to_tweet": "To Tweet",
@@ -288,16 +296,14 @@
 
 	let env_Text = Text[script_settings.lang] || Text.ja;
 
-	locationChange();
-
 	async function main(refresh = false){
 		const selector = refresh ? 'article[data-testid="tweet"]' : 'article[data-testid="tweet"]:not(.checked-tweet)';
-		const tweets = Array.from(document.querySelectorAll(selector)).map(tweet => {
+		const tweets = Array.from(reactRoot.querySelectorAll(selector)).map(tweet => {
+			tweet.classList.add('checked-tweet');
 			const link = tweet.querySelector(`[data-testid="User-Name"] a[aria-label], ${env_selector.info_field} a[aria-label]`);
 			if(link){
 				const match = link.href.match(/twitter\.com\/[^/]+\/status\/(\d+)/);
 				if(match){
-					tweet.classList.add('checked-tweet');
 					return { id: match[1], link: link.href, node: tweet, screenName: (tweet.querySelector('[data-testid="User-Name"]>div>div>a')?.href?.split("/")[3] || undefined) };
 				}
 			}
@@ -358,7 +364,7 @@
 			footer.appendChild(clonedNode);
 		});
 		function copyToClipboard(text){
-			navigator.clipboard.writeText(text).then(function() {
+			navigator.clipboard.writeText(text).then(function(){
 				//console.log('クリップボードにコピーしました！');
 			}).catch(function(err) {
 				console.error('コピーに失敗しました:', err);
@@ -1158,11 +1164,19 @@
 		});
 		let currentScreenName = extractUserName(currentUrl);
 		const uniqueScreenNames = [...new Set(todo.map(item => item.screenName))];
+		let promises = [];
 		if(currentScreenName && !(scriptDataStore?.Show_me_your_Pixiv?.lastGetUserScreenName == currentScreenName)){
+			(async()=>{
+				try{
+					const display_pixiv_link_in_profile_field = await wait_load_Element(`div.display_pixiv_link_in_profile`,100,5,'querySelector');
+					display_pixiv_link_in_profile_field.remove();
+				}catch{}
+			})();
 			scriptDataStore.Show_me_your_Pixiv.lastGetUserScreenName = currentScreenName;
-			await addPixivLinksToScriptDataStore([currentScreenName],true);
+			promises.push(addPixivLinksToScriptDataStore([currentScreenName],true));
 		}
-		await addPixivLinksToScriptDataStore(uniqueScreenNames);
+		promises.push(addPixivLinksToScriptDataStore(uniqueScreenNames));
+		await Promise.all(promises);
 
 		todo.forEach(item => {
 			const node = item.node;
@@ -1173,10 +1187,13 @@
 		if(scriptDataStore.Show_me_your_Pixiv[currentScreenName]?.pixiv_url && !currentUrl.match(new RegExp(`${currentScreenName}/status`))){
 			const profile_field = (await wait_load_Element(env_selector.profile_field_Header_Items))[0];
 			currentScreenName = extractUserName(currentUrl);
-			if(!profile_field.querySelector(".display_pixiv_link") && scriptDataStore.Show_me_your_Pixiv[currentScreenName]?.pixiv_url){
+			if(profile_field && !profile_field.querySelector(`.display_pixiv_link_in_profile_${currentScreenName}`) && scriptDataStore.Show_me_your_Pixiv[currentScreenName]?.pixiv_url){
+				let display_pixiv_link_in_profile_field = document.createElement("div");
+				display_pixiv_link_in_profile_field.className = `display_pixiv_link_in_profile display_pixiv_link_in_profile_${currentScreenName}`;
 				let brElement = document.createElement("br");
-				profile_field.appendChild(brElement);
-				profile_field.appendChild(makeLinkElement(scriptDataStore.Show_me_your_Pixiv[currentScreenName]?.pixiv_url, "Pixiv🔗", "display_pixiv_link"));
+				display_pixiv_link_in_profile_field.appendChild(brElement);
+				display_pixiv_link_in_profile_field.appendChild(makeLinkElement(scriptDataStore.Show_me_your_Pixiv[currentScreenName]?.pixiv_url, "Pixiv🔗", "display_pixiv_link"));
+				profile_field.appendChild(display_pixiv_link_in_profile_field)
 			}
 		}
 		localStorage.setItem('user_pixvi_link_collection', JSON.stringify(scriptDataStore.Show_me_your_Pixiv));
@@ -1197,7 +1214,6 @@
 /////////////////////////////////////////////////////////////////////
 ///////////////////////////ここから汎用関数///////////////////////////
 /////////////////////////////////////////////////////////////////////
-
 	function update(){
 		if(updating) return;
 		updating = true;
@@ -1231,6 +1247,7 @@
 					if(extractTweetId(currentUrl))getTweetData(extractTweetId(currentUrl),"graphQL");
 					if(extractUserName(currentUrl))getTweetData(extractUserName(currentUrl),"user");
 				}catch(error){console.error(error)}
+				addEventToScrollSnapSwipeableList();
 				main();
 			}
 		});
@@ -1238,19 +1255,46 @@
 		const config = {childList: true,subtree: true};
 		observer.observe(target, config);
 	}
-	function wait_load_Element(Element_Name,interval = 100,retry = 25){
+	async function addEventToScrollSnapSwipeableList(){
+		try{
+			if(!currentUrl.match(/home$/))return;
+			const element = await wait_load_Element('[data-testid="ScrollSnap-SwipeableList"]:not(.Make_Twitter_little_useful_do_main_function)',200,10,'querySelector');
+			element.classList.add("Make_Twitter_little_useful_do_main_function");
+			element.addEventListener("click", async () => {
+				await sleep(500);
+				update();
+			});
+		}catch{}
+	}
+	async function addEventToHomeButton(){
+		const element = await wait_load_Element('[data-testid="AppTabBar_Home_Link"]:not(.Make_Twitter_little_useful_do_main_function)',200,10,'querySelector');
+		element.classList.add("Make_Twitter_little_useful_do_main_function");
+		element.addEventListener("click", update);
+	}
+	function wait_load_Element(Element_Name, interval = 100, retry = 25, searchFunction = 'querySelectorAll', searchPlace = document){
 		return new Promise((resolve, reject) => {
 			const MAX_RETRY_COUNT = retry;
 			let retry_counter = 0;
 			let set_interval_id = setInterval(find_target_element, interval);
+			let searchFn;
+			switch(searchFunction){
+				case 'querySelector':
+					searchFn = () => searchPlace.querySelector(Element_Name);
+					break;
+				case 'getElementById':
+					searchFn = () => searchPlace.getElementById(Element_Name);
+					break;
+				default:
+					searchFn = () => searchPlace.querySelectorAll(Element_Name);
+			}
 			function find_target_element(){
 				retry_counter++;
 				if(retry_counter > MAX_RETRY_COUNT){
 					clearInterval(set_interval_id);
 					return reject("Max retry count reached");
 				}
-				let target_elements = document.querySelectorAll(`${Element_Name}`);
-				if(target_elements.length > 0){
+				let target_elements = searchFn();
+				if((target_elements instanceof NodeList && target_elements.length > 0) || target_elements){
 					clearInterval(set_interval_id);
 					return resolve(target_elements);
 				}
@@ -1377,7 +1421,7 @@
 	}
 	async function find_pixiv_link(urls){
 		const Pixiv_url_regex = /^https?:\/\/(((www|touch)\.)?pixiv\.(net\/([a-z]{2}\/)?((member(_illust)?\.php\?id\=|(users|u)\/)[0-9]*)|me\/.*))/;
-		const Fanbox_url_regex = /^https?:(\/\/www\.pixiv\.net\/fanbox\/creator\/[0-9]*|\/\/.*\.fanbox\.cc\/?@[\w]*)/;
+		const Fanbox_url_regex = /^https?:\/\/(www\.pixiv\.net\/fanbox\/creator\/[0-9]*|(.*\.)?fanbox\.cc\/?(@.*)?)/;
 		return new Promise(async function(resolve){
 			let tmp_urls = urls;
 			let Pixiv_url;
@@ -1480,8 +1524,8 @@
 						if(fanbox_url.match(/^https?:\/\/www\.pixiv\.net\/fanbox\/creator\/[0-9]*/)){
 							return resolve(fanbox_url.replace('fanbox/creator', 'users'));
 						}else{
-							const fanbox_name = fanbox_url.match(/https:\/\/(?:www\.)?fanbox\.cc\/(?:@)?([^\/]+)/)[1];
-							const fanbox_response = await request(new requestObject_fanbox(`https://api.fanbox.cc/creator.get?creatorId=${fanbox_name}`,`https://${fanbox_name}.fanbox.cc`));
+							const fanbox_name = fanbox_url.match(/https?:\/\/(?:www\.)?(?:fanbox\.cc\/@([^\/]+)|([^\.]+)\.fanbox\.cc)/);
+							const fanbox_response = await request(new requestObject_fanbox(`https://api.fanbox.cc/creator.get?creatorId=${fanbox_name[1] || fanbox_name[2]}`,`https://${fanbox_name[1] || fanbox_name[2]}.fanbox.cc`));
 							if(fanbox_response.status == "404") return reject(undefined);
 							tmp_pixiv_url = findMatch_from_array(fanbox_response.response.body.profileLinks,Pixiv_url_regex,true);
 							if(tmp_pixiv_url !== undefined){
@@ -1515,17 +1559,13 @@
 			return original_value;
 		}
 	}
-	function findMatch_from_array(arr, regex, is_strict = false){
-		for(let i = 0; i < arr.length; i++){
-			if(regex.test(arr[i])){
-				if(is_strict === true){
-					return arr[i].match(regex)[0];
-				}else{
-					return arr[i];
-				}
-			}
+	function findMatch_from_array(arr, regex, returnMatchedSubstring = false){
+		const matchedElement = arr.find(element => regex.test(element));
+		if(matchedElement && returnMatchedSubstring){
+			const matchResult = matchedElement.match(regex);
+			return matchResult ? matchResult[0] : undefined;
 		}
-		return undefined;
+		return matchedElement;
 	}
 	async function fetchAndProcessTwitterApi(method,id = undefined,forceFetch = false){
 		return new Promise(async (resolve, reject) => {
@@ -1974,6 +2014,96 @@
 			document.getElementById("importFile").addEventListener("change", importSettings);
 			pages[pageName].saveFunction = save;
 			function save(){
+				return;
+			}
+		}
+		function createDebugPage(){
+			const pageName = "ForDebug";
+			const textData = env_Text[pageName];
+			let contents = createPage(pageName);
+			contents.header.innerHTML = `<span style="font-size: 2em; font-weight: 700">${textData.functionName}</span>`;
+			contents.footer.innerHTML = "";
+			let mainContent = contents.main;
+			let mainContainer = document.createElement("div");
+			mainContainer.className = `${pageName}MainContents`
+			mainContainer.style.display = "flex";
+			mainContainer.style.flexDirection = "column";
+			let showTweetDataContainer = makeInputMenu('showTweetData');
+			mainContainer.appendChild(showTweetDataContainer);
+			
+			let showUserByScreenNameDataContainer = makeInputMenu('showUserByScreenNameData');
+			mainContainer.appendChild(showUserByScreenNameDataContainer);
+			
+			let showUserByUserIDContainer = makeInputMenu('showUserByUserID');
+			mainContainer.appendChild(showUserByUserIDContainer);
+			mainContent.appendChild(mainContainer);
+			pages[pageName].saveFunction = save;
+			function makeInputMenu(name){
+				let container = document.createElement('div');
+				container.className = `${name}`;
+				container.style.display = 'flex';
+				container.style.flexDirection = 'column';
+
+				let title = document.createElement('span');
+				title.className = "item_name";
+				title.innerText = name;
+				container.appendChild(title);
+			
+				let inputElement = document.createElement('input');
+				inputElement.className = `${name}InputElement`;
+				inputElement.type = 'text';
+				inputElement.style.width = 'fit-content'
+				container.appendChild(inputElement);
+				let selectContainer = document.createElement('div');
+				let useMethod, isForce;
+				if(name !== 'showUserByUserID'){
+					useMethod = document.createElement('select');
+					useMethod.className = `${name}SelectElement`;
+					['graphQL','1_1'].forEach(value => {
+						const option = document.createElement('option');
+						option.value = value;
+						option.textContent = value;
+						useMethod.appendChild(option);
+					});
+					selectContainer.appendChild(useMethod);
+				
+					isForce = document.createElement('select');
+					isForce.className = `${name}SelectElement`;
+					['false','true'].forEach(value => {
+						const option = document.createElement('option');
+						option.value = value;
+						option.textContent = value;
+						isForce.appendChild(option);
+					});
+					selectContainer.appendChild(isForce);
+				}
+				const button = document.createElement('button');
+				button.className = `${name}ButtonElement`;
+				button.textContent = textData.get;
+				button.addEventListener('click', whenButtonClicked);
+				selectContainer.appendChild(button);
+				container.appendChild(selectContainer);
+			
+				return container;
+				async function whenButtonClicked(){
+					const inputValue = inputElement?.value;
+					const selectedMethod = useMethod?.value;
+					const forceValue = isForce?.value;
+					switch(name){
+						case('showTweetData'):
+							console.log(await getTweetData(inputValue,selectedMethod,(forceValue === "true"? true :false)));
+							break;
+						case('showUserByScreenNameData'):
+							console.log(await getTweetData(inputValue,(selectedMethod === "1_1" ? "user_1_1" : "user"),(forceValue === "true"? true :false)));
+							break;
+						case('showUserByUserID'):
+							console.log(fetchedTweetsUserData[inputValue]);
+							break;
+					}
+				}
+			}
+			function save(){
+				return;
 			}
 		}
 		function createStylePage(){
@@ -2295,6 +2425,7 @@
 		creategGeneralPage();
 		createWebhook_brings_tweets_to_discordPage();
 		createAdvancedPage();
+		createDebugPage();
 		showPage('general');
 	}
 	GM_registerMenuCommand('script settings', openSettings);
@@ -2356,7 +2487,7 @@
 		let retryCount = 0;
 		while(retryCount <= maxRetries){
 			try{
-				return await new Promise((resolve, reject) => {
+				return new Promise((resolve, reject) => {
 					GM_xmlhttpRequest({
 						method: object.method,
 						url: object.url,
@@ -2658,7 +2789,7 @@
 	}
 	class requestObject_binary_head{
 		constructor(URL, addtional_cookie = undefined) {
-			this.method = 'HEAD'; // ここを 'HEAD' に変更
+			this.method = 'HEAD';
 			this.url = `${URL}`;
 			this.body = null;
 			this.encoding = null;
@@ -2695,8 +2826,14 @@
 	}
 	async function test(){
 	}
+	const reactRoot = document.getElementById("react-root");
+	locationChange();
 	main();
 	//fetchAndProcessTwitterApi("TL");
 	if(currentUrl.match(/https?:\/\/twitter\.com\/[\w]*\/status\/[0-9]*/))fetchAndProcessTwitterApi("graphQL",extractTweetId(currentUrl));
 	window.addEventListener("scroll", update);
+	try{
+		addEventToScrollSnapSwipeableList();
+		addEventToHomeButton();
+	}catch{}
 })();
