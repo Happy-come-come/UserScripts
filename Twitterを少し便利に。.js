@@ -554,7 +554,8 @@
 		});
 		async function make_send_data(tweet_link,select_pages = [1],send_quoted_tweet,use_graphQL){
 			const tweet_id = tweet_link.match(/https?:\/\/twitter\.com\/\w+\/status\/(\d+)/)[1];
-			let tweet_data,return_object,apiType;
+			let textData = Text[script_settings.webhook_brings_tweets_to_discord.lang].webhook_brings_tweets_to_discord;
+			let tweet_data,quoted_data,return_object,apiType;
 			try{
 				if(use_graphQL){
 					apiType = "graphQL";
@@ -562,14 +563,15 @@
 					apiType = "1_1"
 				}
 				tweet_data = await getTweetData(tweet_id,apiType);
+				quoted_data = tweet_data.quoted_status_result?.result || tweet_data.quoted_status;
 				return_object = await make_embeds();
 			}catch(error){
 				console.log({user: fetchedTweetsUserDataByUserName,tweets: fetchedTweets});
 				customAlert(`${textData.when_post_failed}`,tweet_link);
 				console.error(error);
 			}
-			if(send_quoted_tweet && return_object[return_object.length - 1].quoted_tweet_data){
-				tweet_data = return_object.pop().quoted_tweet_data;
+			if(send_quoted_tweet && quoted_data){
+				tweet_data = quoted_data;
 				return_object = return_object.concat([{content: textData.quotedTweet}],await make_embeds(1));
 			}
 			return return_object;
@@ -615,7 +617,7 @@
 					//文が長すぎるとエラーになるので一定の長さで切る。
 					//普通のツイートではそんなことありえないが、Blueでは長いツイートが可能なのでそれに対応している。
 					if(use_graphQL){
-						let note_tweet = tweet_data.result.note_tweet?.note_tweet_results.result||tweet_data.result.tweet.note_tweet.note_tweet_results.result;
+						let note_tweet = tweet_data.note_tweet?.note_tweet_results.result;
 						twitter_tweet_data.full_text = note_tweet.text;
 						twitter_tweet_data.urls = note_tweet.entity_set.urls;
 						twitter_tweet_data.hashtags = get_only_particular_key_value(note_tweet.entity_set,"hashtags",[]);
@@ -762,11 +764,6 @@
 					twitter_tweet_data.media.videos.forEach(video => {
 						tmp_return_object.push({"content": video.url});
 					});
-				}
-				if(send_quoted_tweet && quoted_tweet_mode == 0 && (tweet_tweet_data_json.result?.quoted_status_result||tweet_tweet_data_json.quoted_status)){
-					let tmp_quoted_data = tweet_tweet_data_json.result?.quoted_status_result||tweet_tweet_data_json.quoted_status;
-					tmp_quoted_data.APIsource = tweet_data.APIsource;
-					tmp_return_object.push({"quoted_tweet_data": tmp_quoted_data});
 				}
 				return tmp_return_object;
 			}
