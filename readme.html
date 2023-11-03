@@ -1,0 +1,157 @@
+<div class="atFirst">
+	<h1>Twitterを少し便利に。</h1>
+	<p style="display:flex; flex-direction:column; font-weight: 700;">
+		<span>このスクリプトは私がTwitter用に作成したスクリプトをまとめたものです。</span>
+		<span>過去に制作したスクリプト以外の機能強化版です。</span>
+		<span>新しい機能もあります。</span>
+		<span>設定画面から機能を有効にしなければなにも起こりません。</span>
+	<p>
+</div>
+<div class="second">
+	<h2>機能紹介</h2>
+	<details>
+		<summary>あなたのツイートはどこから？</summary>
+		<div class="introduction">
+			「あなたのツイートはどこから？」についてです。
+			<ul>
+				<li>ツイートの作成クライアントの表示</li>
+				どのクライアントからツイートされたかを表示します。<br>
+				例としては「Twitter Web App」、「Twitter for Android」などです。
+				<li>動画のURLの表示</li>
+				Twitterの動画は通常直リンを取得することができませんが、添付されている動画の最も画質の良いmp4ファイルへのリンクを表示します。<br>
+				それにより動画のダウンロードも可能になります。
+				<details>
+					<summary>参考スクリーンショット</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Hello_tweet_where_are_you_from_introduction_01.jpg" width="100%" height="auto">
+				</details>
+			</ul>
+		</div>
+	</details>
+	<details>
+		<summary>長いツイートをTLで展開</summary>
+		「長いツイートをTLで展開」についてです。
+		Twitterに課金することで通常よりも長い文面のツイート(Note Tweet)ができるようになります。
+		しかし、通常それはツイートをクリックして詳細表示しなければ全文読むことができないのでそれを解消する機能です。
+		<ul>
+			<li>TLにあるツイートを展開</li>
+			<details>
+				<summary>参考スクリーンショット</summary>
+				<table width="100%">
+					<tr>
+						<td align="center" valign="bottom">
+							<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_01.jpg" alt="Before" width="80%" height="auto">
+							<br>Before
+						</td>
+						<td align="center">
+						→
+						</td>
+						<td align="center" valign="bottom">
+							<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_02.jpg" alt="After" width="80%" height="auto">
+							<br>After
+						</td>
+					</tr>
+				</table>
+			</details>
+			<li>引用されたツイートも展開できます</li>
+			<details>
+				<summary>参考スクリーンショット</summary>
+				<table width="100%">
+					<tr>
+						<td align="center" valign="bottom">
+							<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_03.jpg" alt="Before" width="80%" height="auto">
+							<br>Before
+						</td>
+						<td align="center">
+						→
+						</td>
+						<td align="center" valign="bottom">
+							<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_04.jpg" alt="After" width="80%" height="auto">
+							<br>After
+						</td>
+					</tr>
+				</table>
+			</details>
+		</ul>
+	</details>
+	<details>
+		<summary>PixivのリンクをTweetに添えて</summary>
+		<div class="introduction">
+			「PixivのリンクをTweetに添えて」についてです。
+			画像などがあるツイートの下側にその人のプロフィール欄にあるリンクから探し出したPixivのリンクを表示します。
+			Fanboxなどのファンサイトの中や、litlinkのようなサービスからも探します。
+			<ul>
+				<li>画像などがあるツイートの下側に表示</li>
+				<details>
+					<summary>参考スクリーンショット</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Show_me_your_Pixiv_introduction_01.jpg" width="100%" height="auto">
+				</details>
+				<li>プロフィール欄の下に表示</li>
+				<details>
+					<summary>参考スクリーンショット</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Show_me_your_Pixiv_introduction_02.jpg" width="100%" height="auto">
+				</details>
+			</ul>
+		</div>
+	</details>
+	<!-- template
+	<details>
+		<summary>機能名</summary>
+		「」についてです。
+		<ul>
+			<details>
+				<summary>参考スクリーンショット</summary>
+				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/General_Settings_ja.jpg" width="100%" height="auto">
+			</details>
+		</ul>
+	</details>
+	-->
+</div>
+<div class="third">
+	<h2>設定</h2>
+	<details>
+	<summary>設定の開き方</summary>
+		<ol>
+			<li>ブラウザの拡張機能の拡張機能の一覧からTampermonkeyをクリックする</li>
+			<li>このスクリプトの名前の下にある「script settings」をクリックする</li>
+			<details>
+				<summary>参考スクリーンショット</summary>
+				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/General_Settings_ja.jpg" width="100%" height="auto">
+			</details>
+		</ol>
+	</details>
+	<details>
+	<summary>設定項目</summary>
+	<ul>
+		<details>
+			<summary>全体の設定</summary>
+			<h3>「全体」というタブの設定についてです。</h3>
+			<ul>
+				<li>機能の有効化</li>
+				先程の設定画面の「全体」タブのトグルボタンをクリックし、「Save」ボタンを押す。
+				<li>言語設定</li>
+				「Language」の右のプルダウンリストから変えたい言語にする。
+			</ul>
+		</details>
+		<details>
+		<summary>機能ごとの設定</summary>
+		機能ごとの設定についてです。
+		<ul>
+			<li>リスト1</li>
+			<li>リスト2</li>
+			<li>リスト3</li>
+		</ul>
+		</details>
+		<!-- template
+		<details>
+			<summary>の設定</summary>
+			「」というタブの設定についてです。
+			<ul>
+				<li>リスト1</li>
+				<li>リスト2</li>
+				<li>リスト3</li>
+			</ul>
+		</details>
+		-->
+	</ul>
+	</details>
+</div>
