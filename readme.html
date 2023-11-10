@@ -8,7 +8,7 @@
 	<p>
 </div>
 <div class="second">
-	<h2>機能紹介</h2>
+	<h2>機能紹介(機能名をクリックすると展開されます)</h2>
 	<details>
 		<summary>あなたのツイートはどこから？</summary>
 		<div class="introduction">
@@ -25,6 +25,7 @@
 					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Hello_tweet_where_are_you_from_introduction_01.jpg" width="40%" height="auto">
 				</details>
 			</ul>
+			<hr>
 		</div>
 	</details>
 	<details>
@@ -72,6 +73,7 @@
 				</table>
 			</details>
 		</ul>
+		<hr>
 	</details>
 	<details>
 		<summary>PixivのリンクをTweetに添えて</summary>
@@ -91,12 +93,13 @@
 					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Show_me_your_Pixiv_introduction_02.jpg" width="30%" height="auto">
 				</details>
 			</ul>
+			<hr>
 		</div>
 	</details>
 	<details>
-		<summary>返ってこい！リツイート欄！ </summary>
+		<summary>返ってこい！リツイート欄！</summary>
 		<div class="introduction">
-			「返ってこい！リツイート欄！ 」についてです。
+			「返ってこい！リツイート欄！」についてです。
 			詳細表示したツイートの引用などの一覧画面を簡単に表示できなくなったのでそれを解消する機能です。
 			<ul>
 				<li>詳細表示したツイートの下側に表示します</li>
@@ -105,6 +108,94 @@
 					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Engagement_Restorer_introduction_01_ja.jpg" width="30%" height="auto">
 				</details>
 			</ul>
+			<hr>
+		</div>
+	</details>
+	<details>
+		<summary>こっそりいいね</summary>
+		<div class="introduction">
+			「こっそりいいね 」についてです。
+			誰かがリツイートしたツイートがTLに流れてきたとき、それを「いいね」するとリツイートした人にも通知が行ってしまうので、それを回避するためのボタンを作る機能です。
+			この機能でいいねしたあと、ツイートが画面外に消えると再びそのツイートを表示したとき見かけ上いいねができてないように表示されますが実際にはできているので安心してください。
+			<ul>
+				<li>リツイートされたツイートのいいね欄の右側にボタンを表示します</li>
+				<details>
+					<summary>参考スクリーンショット</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/sneakilyFavorite_introduction_01_ja.jpg" width="30%" height="auto">
+				</details>
+			</ul>
+			<hr>
+		</div>
+	</details>
+	<details>
+	<summary>WebhookがTweetを連れてくるわ今日も</summary>
+		<div class="introduction">
+			「WebhookがTweetを連れてくるわ今日も」についてです。
+			この機能はツイートをDiscordにWebhookを使い、送信します。
+			自身のAPIを使うため、送信するツイートが鍵垢のツイートでも送ることができます。
+			画像などメディアをダウンロードして送信し直すので保存用や魚拓としても利用できます。
+			<ul>
+				<li>ツイートの下部に送信するためのプルダウンやボタンを表示します</li>
+				<details>
+					<summary>参考スクリーンショット</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/webhook_brings_tweets_to_discord_introduction_01_ja.jpg" width="50%" height="auto">
+				</details>
+				<li>送信してみた例</li>
+				<details>
+					<summary>参考スクリーンショット</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/webhook_brings_tweets_to_discord_introduction_02_ja.jpg" width="50%" height="auto">
+				</details>
+				左の方のプルダウンリストを「true」にすると引用ツイートも送信できる。
+				右の方のプルダウンリストを「true」にすると長いツイート(Note Tweet)も送信できる。
+				<details>
+					<summary>参考スクリーンショット</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/webhook_brings_tweets_to_discord_introduction_03_ja.jpg" width="50%" height="auto">
+				</details>
+			</ul>
+			<hr>
+		</div>
+	</details>
+	<details>
+		<summary>フォロワーを直接表示</summary>
+		<div class="introduction">
+			「フォロワーを直接表示」についてです。
+			現在Twitterではプロフィール欄などからフォロワーをクリックして表示すると、「認証済みのフォロワー」というタブが開きますが通常のフォロワー欄を最初から開くようにする機能です。
+			<hr>
+		</div>
+	</details>
+	<details>
+		<summary>アナリティクスを非表示にする</summary>
+		<div class="introduction">
+			「アナリティクスを非表示にする」についてです。
+			ツイートに表示されてるツイートを表示した回数を隠すための機能です。
+			<hr>
+		</div>
+	</details>
+	<details>
+		<summary>ツイートを共有ボタンを復活させる(モバイル用)</summary>
+		<div class="introduction">
+			「ツイートを共有ボタンを復活させる(モバイル用) 」についてです。
+			最近の改変でモバイル版のTwitter Web Appの共有ボタンがTLで表示されなくなってしまいました。
+			この機能では共有ボタンを追加し、クリックするだけでそのツイートのリンクをコピーできるようにします。
+			<details>
+				<summary>参考スクリーンショット</summary>
+				<table width="100%">
+					<tr>
+						<td align="center" valign="bottom">
+							<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/shareTweet_Restorer_for_mobile_introduction_01.jpg" alt="Before" width="80%" height="auto">
+							<br>Before
+						</td>
+						<td align="center">
+						<span>→&nbsp;&nbsp;&nbsp;</span>
+						</td>
+						<td align="center" valign="bottom">
+							<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/shareTweet_Restorer_for_mobile_introduction_02.jpg" alt="After" width="80%" height="auto">
+							<br>After
+						</td>
+					</tr>
+				</table>
+			</details>
+			<hr>
 		</div>
 	</details>
 	<!-- template
@@ -147,13 +238,13 @@
 			</ul>
 		</details>
 		<details>
-		<summary>機能ごとの設定</summary>
-		機能ごとの設定についてです。
-		<ul>
-			<li>リスト1</li>
-			<li>リスト2</li>
-			<li>リスト3</li>
-		</ul>
+			<summary>機能ごとの設定</summary>
+			機能ごとの設定についてです。
+			<ul>
+				<li>リスト1</li>
+				<li>リスト2</li>
+				<li>リスト3</li>
+			</ul>
 		</details>
 		<!-- template
 		<details>
@@ -169,3 +260,245 @@
 	</ul>
 	</details>
 </div>
+
+<hr><hr>
+
+<div class="atFirst">
+	<h1>Make Twitter a bit more convenient.</h1>
+	<p style="display:flex; flex-direction:column; font-weight: 700;">
+		<span>This script is a compilation of scripts I created for Twitter.</span>
+		<span>It's an enhanced version with features beyond those I've made in the past.</span>
+		<span>New features are also included.</span>
+		<span>Nothing will happen unless you enable the functions from the settings screen.</span>
+	<p>
+</div>
+<div class="second">
+	<h2>Feature Introduction (Click the feature name to expand)</h2>
+	<details>
+		<summary>Hello tweet where are you from</summary>
+		<div class="introduction">
+			About 'Hello tweet where are you from':
+			<ul>
+				<li>Display of the tweet creation client</li>
+				It shows from which client the tweet was posted, such as "Twitter Web App", "Twitter for Android", etc.
+				<li>Display of video URLs</li>
+				Normally, it's not possible to obtain direct links to Twitter videos, but this feature displays a link to the highest quality mp4 file of the attached video.<br>
+				This allows for the video to be downloaded as well.
+				<details>
+					<summary>Reference Screenshot</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Hello_tweet_where_are_you_from_introduction_01.jpg" width="40%" height="auto">
+				</details>
+			</ul>
+			<hr>
+		</div>
+	</details>
+	<details>
+		<summary>Note Tweet expander</summary>
+		About 'Note Tweet expander':
+		By subscribing to Twitter, you can tweet longer text (Note Tweet) than usual.
+		However, normally you cannot read the full text without clicking on the tweet to view it in detail, so this feature solves that problem.
+		<ul>
+			<li>Expands tweets in the TL</li>
+			<details>
+				<summary>Reference Screenshot</summary>
+				<table width="100%">
+					<tr>
+						<td align="center" valign="bottom">
+							<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_01.jpg" alt="Before" width="80%" height="auto">
+							<br>Before
+						</td>
+						<td align="center">
+						→
+						</td>
+						<td align="center" valign="bottom">
+							<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_02.jpg" alt="After" width="80%" height="auto">
+							<br>After
+						</td>
+					</tr>
+				</table>
+			</details>
+			<li>Quoted tweets can also be expanded</li>
+			<details>
+				<summary>Reference Screenshot</summary>
+				<table width="100%">
+					<tr>
+						<td align="center" valign="bottom">
+							<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_03.jpg" alt="Before" width="80%" height="auto">
+							<br>Before
+						</td>
+						<td align="center">
+						→
+						</td>
+						<td align="center" valign="bottom">
+							<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_04.jpg" alt="After" width="80%" height="auto">
+							<br>After
+						</td>
+					</tr>
+				</table>
+			</details>
+		</ul>
+		<hr>
+	</details>
+	<details>
+		<summary>Show me your Pixiv</summary>
+		<div class="introduction">
+			About 'Show me your Pixiv':
+			Tweets with images will display a link to the Pixiv profile found in the user's profile section.
+			It also searches from fan sites like Fanbox or services like litlink.
+			<ul>
+				<li>Displayed under tweets with images</li>
+				<details>
+					<summary>Reference Screenshot</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Show_me_your_Pixiv_introduction_01.jpg" width="30%" height="auto">
+				</details>
+				<li>Displayed under the profile section</li>
+				<details>
+					<summary>Reference Screenshot</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Show_me_your_Pixiv_introduction_02.jpg" width="30%" height="auto">
+				</details>
+			</ul>
+			<hr>
+		</div>
+	</details>
+	<details>
+		<summary>Engagement Restorer</summary>
+		<div class="introduction">
+			About 'Engagement Restorer':
+			It has become difficult to easily display the overview screen of quotes and such for tweets viewed in detail, so this feature solves that problem.
+			<ul>
+				<li>Displayed under the detailed view of tweets</li>
+				<details>
+					<summary>Reference Screenshot</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Engagement_Restorer_introduction_01_en.jpg" width="30%" height="auto">
+				</details>
+			</ul>
+			<hr>
+		</div>
+	</details>
+	<details>
+		<summary>sneakilyFavorite</summary>
+		<div class="introduction">
+			About 'sneakilyFavorite':
+			When a tweet retweeted by someone appears in your TL, and you 'like' it, the person who retweeted it also receives a notification. This feature creates a button to avoid that.
+			Even after you 'like' a tweet using this feature and the tweet disappears off-screen, when it reappears it may look as if it hasn't been 'liked', but rest assured it has been.
+			<ul>
+				<li>A button is displayed to the right of the 'like' section of the retweeted tweet</li>
+				<details>
+					<summary>Reference Screenshot</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/sneakilyFavorite_introduction_01_en.jpg" width="30%" height="auto">
+				</details>
+			</ul>
+			<hr>
+		</div>
+	</details>
+	<details>
+		<summary>webhook brings tweets to discord</summary>
+		<div class="introduction">
+			About 'webhook brings tweets to discord':
+			This feature sends tweets to Discord using a webhook.
+			Since it uses your own API, you can send tweets even if they are from private accounts.
+			It downloads and resends media such as images, so it can be used for saving or as a web archive.
+			<ul>
+				<li>A dropdown and button for sending are displayed under the tweet</li>
+				<details>
+					<summary>Reference Screenshot</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/webhook_brings_tweets_to_discord_introduction_01_en.jpg" width="50%" height="auto">
+				</details>
+				<li>An example of a sent tweet</li>
+				<details>
+					<summary>Reference Screenshot</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/webhook_brings_tweets_to_discord_introduction_02_en.jpg" width="50%" height="auto">
+				</details>
+				If you set the left dropdown to 'true', you can also send quoted tweets.
+				If you set the right dropdown to 'true', you can also send long tweets (Note Tweet).
+				<details>
+					<summary>Reference Screenshot</summary>
+					<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/webhook_brings_tweets_to_discord_introduction_03_en.jpg" width="50%" height="auto">
+				</details>
+			</ul>
+			<hr>
+		</div>
+	</details>
+	<details>
+		<summary>showFollowers</summary>
+		<div class="introduction">
+			About 'showFollowers':
+			Currently on Twitter, when you click on followers from the profile section, a tab for 'Verified followers' opens, but this feature makes it so that the regular followers section opens right away.
+			<hr>
+		</div>
+	</details>
+	<details>
+		<summary>hideAnalytics</summary>
+		<div class="introduction">
+			About 'hideAnalytics':
+			This function hides the number of times a tweet has been viewed that is displayed on the tweet.
+			<hr>
+		</div>
+	</details>
+	<details>
+		<summary>shareTweet Restorer for mobile</summary>
+		<div class="introduction">
+			About 'shareTweet Restorer for mobile':
+			The share button on the mobile version of the Twitter Web App has recently disappeared from the TL.
+			This function adds a share button, and with a single click, you can copy the link to that tweet.
+			<details>
+				<summary>Reference Screenshot</summary>
+				<table width="100%">
+					<tr>
+						<td align="center" valign="bottom">
+							<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/shareTweet_Restorer_for_mobile_introduction_01.jpg" alt="Before" width="80%" height="auto">
+							<br>Before
+						</td>
+						<td align="center">
+						<span>→&nbsp;&nbsp;&nbsp;</span>
+						</td>
+						<td align="center" valign="bottom">
+							<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/shareTweet_Restorer_for_mobile_introduction_02.jpg" alt="After" width="80%" height="auto">
+							<br>After
+						</td>
+					</tr>
+				</table>
+			</details>
+			<hr>
+		</div>
+	</details>
+</div>
+<div class="third">
+	<h2>Settings</h2>
+	<details>
+	<summary>How to open settings</summary>
+		<ol>
+			<li>Click on Tampermonkey from the list of browser extensions</li>
+			<li>Click on 'script settings' under the name of this script</li>
+			<details>
+				<summary>Reference Screenshot</summary>
+				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/General_Settings_en.jpg" width="100%" height="auto">
+			</details>
+		</ol>
+	</details>
+	<details>
+	<summary>Settings items</summary>
+	<ul>
+		<details>
+			<summary>General settings</summary>
+			<h3>About the 'General' tab settings:</h3>
+			<ul>
+				<li>Enabling features</li>
+				Click the toggle button in the 'General' tab of the settings screen and press the 'Save' button.
+				<li>Language settings</li>
+				Change to the desired language from the dropdown list to the right of 'Language'.
+			</ul>
+		</details>
+		<details>
+			<summary>Individual feature settings</summary>
+			About individual feature settings:
+			<ul>
+				<li>List 1</li>
+				<li>List 2</li>
+				<li>List 3</li>
+			</ul>
+		</details>
+	</ul>
+	</details>
+</div>
+
