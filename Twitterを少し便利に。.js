@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			1.0.0.14
+// @version			1.0.1.21
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -34,6 +34,8 @@
 // @connect			twpf.jp
 // @connect			lab.syncer.jp
 // @connect			geek-website.com
+// @connect			ci-en.dlsite.com
+// @connect			dl.dropboxusercontent.com
 // @icon			data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJkSURBVHgB7VZBbtpQEH3zIW0WVYuXVaH4Bs0NSk4AOUFhEarskhMknIDsqkKlcIT0BNAT1D1B3ZJK3dmVuirwp/MhVmzAxiagKBJv9+ePZ97M/JkxsMMODwzChlD84FWQp3MxeCDHAhiumB+MJrr1+8Ryw3p/9+H4DctfIPCq49Xlw8Kv99YlMuB19885gy/i7llziwGfFFWJyR02XzSCuwiBUse7BlFVaz5LS8KQVkRXaXRJsqImfDjKSZBNyzEyFWFKVJ4KFbWLElUao6KbSk8i9TXgTPaorxTskPwOxa7/9baGt4zg8oQbNyfWYJlRU0/KUx9ZwNwYNq1ecFRzl18QpW0bB0Ks//KjV1uwlbuLJA3GxEdh5wb5yGEPl3qMd2xecYQHKnlFlVLX95kxYCFKGg5IlU2a0uLpCM68LEJA+sJ/Dm6Jy3aMjQIRakRUm+UuvfOp/X34iQSejeFo0Hdx4optG5uFH/R+GHNvANcm3VtwLs+Lvy2TRwhIOnrYHhysIuDKcCDwGbYAjglOzQt+HssElF6dvoNNOZeuCSbfSgIGMjILMo4/ExZf7TqghNLmlwm1gpSC2tmaLAZMvWGz0Iu7XpqBm2NrQNN5cD+Y5ZOTdZyok3RZMusZOJUN+QZrQFb0oQkG6xIIYHe8A03Unx/Ryd6jS2ctAsbxmFRVynGKlM5na5ePVkUe0p+h9MmraS2zXqYgmSWjOPtElHbLTVB3Q79gqQlMScxqXpeav0UWiGMmXKSNOpZAAPvKs/U/1MRoxRxl+5WD+psUy2D5IdmRVoWjnqDnLlkyO+zwaPAf1zXwZL751PUAAAAASUVORK5CYII=
 // @grant			GM_xmlhttpRequest
 // @grant			GM_registerMenuCommand
@@ -48,9 +50,13 @@
 		'retweeted': '[data-testid="socialContext"]',
 		'liked_color': 'r-vkub15',
 		'liked': 'M20.884 13.19c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.3-.504-.3c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z',
-		'info_field': '.css-1dbjc4n.r-1d09ksm.r-1471scf.r-18u37iz.r-1wbh5a2',
-		'click_media_field': '.css-1dbjc4n.r-1p0dtai.r-1mlwlqe.r-1d2f490.r-dnmrzs.r-1udh08x.r-u8s1d.r-zchlnj.r-ipm5af.r-417010',
+		'info_field': '.r-1d09ksm.r-1471scf.r-18u37iz.r-1wbh5a2',
+		'click_media_field': '.r-1p0dtai.r-1mlwlqe.r-1d2f490.r-dnmrzs.r-1udh08x.r-u8s1d.r-zchlnj.r-ipm5af.r-417010',
 		'profile_field_Header_Items': '[data-testid="UserProfileHeader_Items"]',
+		'link': {
+			nomal: "css-1jxf684 r-bcqeeo r-1ttztb7 r-qvutc0 r-poiln3 r-1loqt21",
+			hovered: "css-1jxf684 r-bcqeeo r-1ttztb7 r-qvutc0 r-poiln3 r-1ny4l3l r-1ddef8g r-tjvw6i r-1loqt21"
+		},
 		'engagementsTextColor': {
 			"0": {"count": "rgb(15, 20, 25)","text": "rgb(83, 100, 113)"},
 			"1": {"count": "rgb(247, 249, 249)","text": "rgb(139, 152, 165)"},
@@ -58,16 +64,16 @@
 		},
 	};
 	const desktop_selectors = {
-		'time_line_media_field': '.css-1dbjc4n.r-1p0dtai.r-1mlwlqe.r-1d2f490.r-11wrixw.r-61z16t.r-1udh08x.r-u8s1d.r-zchlnj.r-ipm5af.r-417010',
-		'media_field': '.css-1dbjc4n.r-1ssbvtb.r-1s2bzr4',
-		'profileField': '.css-1dbjc4n.r-1ifxtd0.r-ymttw5.r-ttdzmv',
-		'followersLink': '.css-4rbku5.css-18t94o4.css-901oao.r-vlxjld.r-1loqt21.r-1tl8opc.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-qvutc0',
+		'time_line_media_field': '.r-1p0dtai.r-1mlwlqe.r-1d2f490.r-11wrixw.r-61z16t.r-1udh08x.r-u8s1d.r-zchlnj.r-ipm5af.r-417010',
+		'media_field': '.r-9aw3ui.r-1s2bzr4',
+		'profileField': '.r-1ifxtd0.r-ymttw5.r-ttdzmv',
+		'followersLink': '.r-bcqeeo.r-qvutc0.r-1tl8opc.r-a023e6.r-rjixqe.r-16dba41.r-1loqt21',
 	};
 	const mobile_selectors = {
-		'time_line_media_field': '.css-1dbjc4n.r-1p0dtai.r-1mlwlqe.r-1d2f490.r-1udh08x.r-u8s1d.r-zchlnj.r-ipm5af.r-417010',
-		'media_field': '.css-1dbjc4n.r-1s367qj.r-a1ub67',
-		'profileField': '.css-1dbjc4n.r-ku1wi2.r-1j3t67a.r-1b3ntt7',
-		'followersLink': '.css-4rbku5.css-18t94o4.css-901oao.r-vlxjld.r-1loqt21.r-1tl8opc.r-1b43r93.r-16dba41.r-hjklzo.r-bcqeeo.r-qvutc0',
+		'time_line_media_field': '.r-1p0dtai.r-1mlwlqe.r-1d2f490.r-1udh08x.r-u8s1d.r-zchlnj.r-ipm5af.r-417010',
+		'media_field': '.r-9aw3ui.r-a1ub67 > .r-9aw3ui',
+		'profileField': '.r-ku1wi2.r-1j3t67a.r-1b3ntt7',
+		'followersLink': '.r-bcqeeo.r-qvutc0.r-1tl8opc.r-1b43r93.r-hjklzo.r-16dba41.r-1loqt21',
 	};
 	const deny_names = ["home", "explore", "notifications", "messages", "i", "settings", "tos", "privacy", "compose", "search"];
 	const denyNamesRegex = new RegExp(`https://twitter\\.com/((?!${deny_names.join('|')})[^/]+)`, 'i');
@@ -88,6 +94,7 @@
 	let isFunctionRunning = {
 		Hello_tweet_where_are_you_from: false,
 		Engagement_Restorer: false,
+		Show_all_Medias: false,
 	};
 	let storedSettings = {
 		'Make_Twitter_little_useful': JSON.parse(localStorage.getItem('Make_Twitter_little_useful') || '{}'),
@@ -97,6 +104,7 @@
 		'Note_Tweet_expander': JSON.parse(localStorage.getItem('Note_Tweet_expander') || '{}'),
 		'sneakilyFavorite': JSON.parse(localStorage.getItem('sneakilyFavorite') || '{}'),
 		'Engagement_Restorer': JSON.parse(localStorage.getItem('Engagement_Restorer') || '{}'),
+		'Show_all_Medias': JSON.parse(localStorage.getItem('Show_all_Medias') || '{}'),
 	};
 	let script_settings = {};
 	script_settings['webhook_brings_tweets_to_discord'] = {
@@ -127,11 +135,20 @@
 			"showFollowers": storedSettings.Make_Twitter_little_useful?.featuresToggle?.showFollowers || false,
 			"hideAnalytics": storedSettings.Make_Twitter_little_useful?.featuresToggle?.hideAnalytics || false,
 			"shareTweet_Restorer_for_mobile": storedSettings.Make_Twitter_little_useful?.featuresToggle?.shareTweet_Restorer_for_mobile || false,
+			"Show_all_Medias": storedSettings.Make_Twitter_little_useful?.featuresToggle?.Show_all_Medias || false,
+			"show_me_big_pics": storedSettings.Make_Twitter_little_useful?.featuresToggle?.show_me_big_pics || false,
 		},
 		"lang": storedSettings.Make_Twitter_little_useful?.featuresToggle?.lang || GetCookie("lang") || "en",
 	};
+	script_settings['Show_all_Medias'] = {
+		"displayMethod": typeof storedSettings.Show_all_Medias?.displayMethod === 'number' ? storedSettings.Show_all_Medias.displayMethod : 1,
+		"onlyRemoveBlur": storedSettings.Show_all_Medias?.onlyRemoveBlur || false,
+		"removeBlur": storedSettings.Show_all_Medias?.removeBlur || false,
+	}
 	let scriptDataStore = {
 		"Show_me_your_Pixiv": JSON.parse(localStorage.getItem('user_pixvi_link_collection') || "{}"),
+		"Show_all_Medias": {},
+		"createTwitterArticle": {}
 	};
 	let Text = {};
 	Text.ja = {
@@ -180,6 +197,7 @@
 			"when_post_failed": "以下のURLのポストに失敗しました。",
 			"various_links": "各種リンク",
 			"Video_Download_Option": "動画をダウンロードしてファイルとして送信する",
+			"complete": "完了",
 		},
 		"Engagement_Restorer": {
 			"functionName": "返ってこい！リツイート欄！",
@@ -202,6 +220,13 @@
 		},
 		"Show_me_your_Pixiv": {
 			"functionName": "PixivのリンクをTweetに添えて",
+			"collectionMethod": "Pixivリンクの収集方法",
+			"everywhere": "どこでも",
+			"atProfile": "プロフィールで",
+			"never": "新規では収集しない",
+			"faildAddPixivUrlList": "データのダウンロードに失敗しました",
+			"successAddPixivUrlList": "データのダウンロードに成功しました",
+			"addPixivUrlListTitle": "URL対応表をインポートする"
 		},
 		"showFollowers": {
 			"functionName": "フォロワーを直接表示",
@@ -211,6 +236,19 @@
 		},
 		"shareTweet_Restorer_for_mobile": {
 			"functionName": "ツイートを共有ボタンを復活させる(モバイル用)",
+		},
+		"Show_all_Medias": {
+			"functionName": "メディア欄に全ての画像を表示",
+			"units": "万",
+			"roundingScale": 10000,
+			"decimalPlaces": 2,
+			"expand": "展開",
+			"likeTweet": "ツイートのように",
+			"removeBlur": "R-18のモザイクを削除(メディア欄のみ)",
+			"onlyRemoveBlur": "モザイクの削除のみ",
+		},
+		"show_me_big_pics": {
+			"functionName": "でかい画像を見せないさい"
 		},
 	};
 
@@ -260,6 +298,7 @@
 			"when_post_failed": "Failed to post the following URL.",
 			"various_links": "Various Links",
 			"Video_Download_Option": "Download videos and send them.",
+			"complete": "OK",
 		},
 		"Engagement_Restorer": {
 			"functionName": "Engagement Restorer",
@@ -282,6 +321,13 @@
 		},
 		"Show_me_your_Pixiv": {
 			"functionName": "Show me your Pixiv",
+			"collectionMethod": "Pixiv link collection method",
+			"everywhere": "Everywhere",
+			"atProfile": "At profile",
+			"never": "never",
+			"faildAddPixivUrlList": "Faild download pixiv url list",
+			"successAddPixivUrlList": "Success download pixiv url list",
+			"addPixivUrlListTitle": "Importing URL correspondence table"
 		},
 		"showFollowers": {
 			"functionName": "showFollowers",
@@ -292,14 +338,27 @@
 		"shareTweet_Restorer_for_mobile": {
 			"functionName": "shareTweet Restorer(for mobile)",
 		},
+		"Show_all_Medias": {
+			"functionName": "Show all Medias",
+			"units": "k",
+			"roundingScale": 1000,
+			"decimalPlaces": 1,
+			"expand": "expand",
+			"likeTweet": "like tweet",
+			"removeBlur": "Remove R-18 blur (media section only)",
+			"onlyRemoveBlur": "Only remove R-18 blur",
+		},
+		"show_me_big_pics": {
+			"functionName": "show me big pics"
+		},
 	};
 
 	let env_Text = Text[script_settings.lang] || Text.ja;
 
 	async function main(refresh = false){
-		const selector = refresh ? 'article[data-testid="tweet"]' : 'article[data-testid="tweet"]:not(.checked-tweet)';
+		const selector = refresh ? 'article[data-testid="tweet"]' : 'article[data-testid="tweet"]:not([mtlu_checked="true"])';
 		const tweets = Array.from(reactRoot.querySelectorAll(selector)).map(tweet => {
-			tweet.classList.add('checked-tweet');
+			tweet.setAttribute('mtlu_checked', "true");
 			const link = tweet.querySelector(`[data-testid="User-Name"] a[aria-label], ${env_selector.info_field} a[aria-label]`);
 			if(link){
 				const match = link.href.match(/twitter\.com\/[^/]+\/status\/(\d+)/);
@@ -338,7 +397,213 @@
 		if(isMobile && featurestoggle.shareTweet_Restorer_for_mobile){
 			shareTweet_Restorer_for_mobile(tweets);
 		}
+		if(currentUrl.match(/twitter\.com\/([\w]*\/media|search\?q\=.*&f=media)/) && featurestoggle.Show_all_Medias){
+			Show_all_Medias(currentUrl);
+		}
+		/*
+		if(tweets && featurestoggle.show_me_big_pics){
+			show_me_big_pics(tweets);
+		}
+		*/
 		//if(currentUrl.match(/https?:\/\/twitter\.com\/[\w]*\/status\/[0-9]*/))console.log(await waitForTweetData(extractTweetId(currentUrl)))
+	}
+	async function show_me_big_pics(tweets){
+		tweets.forEach(tweet=>{
+			const imgNode = tweet.node.querySelectorAll(`${env_selector.media_field} .r-16y2uox.r-1pi2tsx.r-13qz1uu a [data-testid="tweetPhoto"] img`);
+			if(!imgNode)return;
+			imgNode.forEach(async (node)=>{
+				const imageUrl = node.src;
+				node.src = imageUrl.replace(/\&name\=.*/,'&name=orig');
+			});
+		});
+	}
+	async function Show_all_Medias(triggeredUrl){
+		if(isFunctionRunning.Hello_tweet_where_are_you_from)return;
+		isFunctionRunning.Hello_tweet_where_are_you_from = true;
+		try{
+			if(script_settings.Show_all_Medias.displayMethod === 0 || script_settings.Show_all_Medias.onlyRemoveBlur){
+				expand();
+			}else{
+				likeTweet();
+			}
+		}catch(error){
+			console.error(error);
+		}finally{
+			isFunctionRunning.Hello_tweet_where_are_you_from = false;
+		}
+		script_settings.Show_all_Medias.removeBlur
+		function expand(){
+			const mediaPlace = document.querySelector('[data-testid="primaryColumn"] section');
+			const madiaRow = mediaPlace.querySelectorAll(`.r-18u37iz.r-9aw3ui.r-4amgru.r-14gqq1x:not(.Show_all_Medias_checked)`);
+			const blurSvgPath = 'path[d="M3.693 21.707l-1.414-1.414 2.429-2.429c-2.479-2.421-3.606-5.376-3.658-5.513l-.131-.352.131-.352c.133-.353 3.331-8.648 10.937-8.648 2.062 0 3.989.621 5.737 1.85l2.556-2.557 1.414 1.414L3.693 21.707zm-.622-9.706c.356.797 1.354 2.794 3.051 4.449l2.417-2.418c-.361-.609-.553-1.306-.553-2.032 0-2.206 1.794-4 4-4 .727 0 1.424.192 2.033.554l2.263-2.264C14.953 5.434 13.512 5 11.986 5c-5.416 0-8.258 5.535-8.915 7.001zM11.986 10c-1.103 0-2 .897-2 2 0 .178.023.352.067.519l2.451-2.451c-.167-.044-.341-.067-.519-.067zm10.951 1.647l.131.352-.131.352c-.133.353-3.331 8.648-10.937 8.648-.709 0-1.367-.092-2-.223v-2.047c.624.169 1.288.27 2 .27 5.415 0 8.257-5.533 8.915-7-.252-.562-.829-1.724-1.746-2.941l1.438-1.438c1.53 1.971 2.268 3.862 2.33 4.027z"]';
+			if(madiaRow.length === 0)return;
+			const screenName = currentUrl.split('/')[3];
+			madiaRow.forEach(n=>{
+				n.classList.add('Show_all_Medias_checked');
+				n.style.flexWrap = 'wrap';
+			});
+			const mediaNodes = Array.from(mediaPlace.querySelectorAll(`li:not(.Show_all_Medias_checked)`)).filter(node => {
+				node.classList.add('Show_all_Medias_checked');
+				const blurSvgNode = node.querySelector(blurSvgPath);
+				if(script_settings.Show_all_Medias.removeBlur && blurSvgNode){
+					blurSvgNode.parentNode.parentNode.parentNode.querySelector('[role="button"]').click();
+				}
+				return node.querySelector('path[d="M2 8.5C2 7.12 3.12 6 4.5 6h11C16.88 6 18 7.12 18 8.5v11c0 1.38-1.12 2.5-2.5 2.5h-11C3.12 22 2 20.88 2 19.5v-11zM19.5 4c.28 0 .5.22.5.5v13.45c1.14-.23 2-1.24 2-2.45v-11C22 3.12 20.88 2 19.5 2h-11c-1.21 0-2.22.86-2.45 2H19.5z"]');
+			});
+			if(mediaNodes.length === 0 || script_settings.Show_all_Medias.onlyRemoveBlur)return;
+			mediaNodes.forEach(node => {
+				const svgElement = node.querySelector('svg');
+				const numberSpan = document.createElement('span');
+				numberSpan.textContent = '1';
+				numberSpan.style.position = 'absolute';
+				numberSpan.style.color = 'black';
+				numberSpan.style.left = 'calc(87.3%)';
+				numberSpan.style.top = 'calc(86.3%)';
+				numberSpan.className = 'indexNum';
+				svgElement.parentNode.appendChild(numberSpan);
+			});
+			mediaNodes.forEach(async n=>{
+				n.classList.add('Show_all_Medias_checked');
+				const parent = n.parentNode;
+				const mediaLinkNode = n.querySelector('a');
+				const tweetID = mediaLinkNode.href.match(/twitter\.com\/[^/]+\/status\/(\d+)/)[1];
+				if(!fetchedTweets[tweetID])await fetchAndProcessTwitterApi('userMedia',screenName);
+				const tweetData = await getTweetData(tweetID,"graphQL");
+				const mediaData = tweetData.legacy.entities.media;
+				if(mediaData.length == 1)return;
+				let beforeNode = n;
+				for(let i = 1;i<mediaData.length;i++){
+					const currentMedia = mediaData[i];
+					const currentImage = currentMedia.media_url_https;
+					const currentImageExtention = currentImage.split('.').pop();
+					const clonedNode = n.cloneNode(true);
+					const clonedNodeLinkNode = clonedNode.querySelector('a');
+					const clonedNodeImage = clonedNodeLinkNode.querySelector('img');
+					const clonedNodeDisplayImage = clonedNodeImage.previousElementSibling;
+					clonedNode.id = clonedNode.id + `_${i+1}`;
+					if(!currentMedia.type === "photo")clonedNodeLinkNode.appendChild(makeVideoDurationElement(currentMedia.video_info?.duration_millis,(currentMedia.type === "animated_gif")));
+					clonedNodeLinkNode.href = `https://twitter.com/${screenName}/status/${tweetID}/${currentMedia.type === "video" ? 'video' : 'photo'}/${i+1}`;
+					clonedNodeImage.src = `${currentImage.replace('.' + currentImageExtention,'')}?format=${currentImageExtention}&name=orig`;
+					clonedNodeDisplayImage.style.backgroundImage = `url(${currentImage.replace('.' + currentImageExtention,'')}?format=${currentImageExtention}&name=small)`;
+					clonedNodeLinkNode.addEventListener('click',e=>{
+						e.preventDefault();
+						displayTarget(mediaLinkNode,i);
+					});
+					clonedNode.querySelector('.indexNum').textContent = (i+1);
+					parent.insertBefore(clonedNode, beforeNode.nextSibling);
+					beforeNode = clonedNode;
+					const blurSvgNode = clonedNode.querySelector(blurSvgPath);
+					if(blurSvgNode){
+						const tmpNode = blurSvgNode.parentNode.parentNode.parentNode;
+						tmpNode.querySelector('[role="button"]').addEventListener('click',e=>{
+							const tmpNode2 = tmpNode.parentNode.querySelector('div');
+							tmpNode.remove();
+							tmpNode2.className = tmpNode2.classList[0];
+						});
+					}
+				}
+			});
+		}
+		function likeTweet(){
+			const mediaPlace = document.querySelector('[data-testid="primaryColumn"] section');
+			const madiaRow = mediaPlace?.querySelectorAll(`.r-18u37iz.r-9aw3ui.r-4amgru.r-14gqq1x`);
+			if(!(madiaRow?.length > 0))return;
+			let mediaNodes = [];
+			madiaRow.forEach(node => {
+				if(!node.querySelector('[Show_all_Medias_Check="true"]')){
+					const checkNode = document.createElement('div');
+					checkNode.setAttribute('Show_all_Medias_Check','true');
+					node.appendChild(checkNode);
+					node.style.flexWrap = 'wrap';
+					node.style.padding = '0px';
+					node.style.margin = '0px';
+					node.style.gap = '0px';
+					mediaNodes.push(...node.querySelectorAll('li'));
+				}
+			});
+			if(mediaNodes.length === 0)return;
+			const processNode = async (n)=>{
+				const mediaLinkNode = n.querySelector('a');
+				const tweetID = mediaLinkNode.href.match(/twitter\.com\/[^/]+\/status\/(\d+)/)[1];
+				const screenName = mediaLinkNode.href.match(/twitter\.com\/(\w+)/)[1];
+				if(!fetchedTweets[tweetID]){
+					if(triggeredUrl.match(/twitter\.com\/([\w]*\/media)/))await fetchAndProcessTwitterApi('userMedia', screenName);
+					//if(triggeredUrl.match(/search\?q\=.*&f=media/))await fetchAndProcessTwitterApi('mediaSearch', (new URL(triggeredUrl)).searchParams.get('q'));
+				}
+				n.style.width = "100%";
+				let tweetData = await getTweetData(tweetID, "graphQL");
+				if(n.querySelector('path[d="M2 8.5C2 7.12 3.12 6 4.5 6h11C16.88 6 18 7.12 18 8.5v11c0 1.38-1.12 2.5-2.5 2.5h-11C3.12 22 2 20.88 2 19.5v-11zM19.5 4c.28 0 .5.22.5.5v13.45c1.14-.23 2-1.24 2-2.45v-11C22 3.12 20.88 2 19.5 2h-11c-1.21 0-2.22.86-2.45 2H19.5z"]')){
+					if(!(tweetData.extended_entities?.media?.length >= 2))tweetData = await getTweetData(tweetID, "graphQL");
+				}
+				let article = await createTwitterArticle(tweetData, tweetID, n, true);
+				try{
+					const articleImages = article.querySelectorAll('[data-testid="tweetPhoto"]');
+					for(let i=0; i<articleImages.length; i++){
+						if(articleImages[i].querySelector('img')){
+							articleImages[i].addEventListener('click', e=>{
+								e.preventDefault();
+								displayTarget(mediaLinkNode, i);
+							});
+						}
+					}
+					article.addEventListener('click',async e=>{
+						const ctaIdValues = ['Name-Place', 'mediaRoot', 'footer', 'quoted-place'];
+						if(e.target.tagName === 'A' || e.target.closest('a'))return;
+						const hasCtaId = ctaIdValues.some(ctaIdValue =>
+							e.target.getAttribute('cta-id') === ctaIdValue || e.target.closest(`[cta-id="${ctaIdValue}"]`)
+						);
+						if(hasCtaId)return;
+						mediaLinkNode.click();
+						if(isMobile){
+
+						}else{
+							(await wait_load_Element(`div[data-viewportview="true"] a[href="/${screenName}/status/${tweetID}"]`,20,50,'querySelector')).click()
+						}
+					});
+				}catch(error){
+					console.error(error);
+				}
+				n.firstChild.style.display = "none";
+				n.appendChild(article);
+			};
+			Promise.all(Array.from(mediaNodes).map(n => processNode(n)));
+		}
+		async function displayTarget(node,page){
+			node.click();
+			await wait_load_Element('[data-testid="swipe-to-dismiss"]', 100, 25, 'querySelector');
+			for(let i=1;i<=page;i++){
+				simulateKey(39, 'keydown', document.body);
+				//(await wait_load_Element('[data-testid="Carousel-NavRight"]', 100, 25, 'querySelector')).click();
+			}
+		}
+		function makeVideoDurationElement(duration,isGif){
+			let text;
+			if(isGif){
+				text = "GIF"
+			}else{
+				const durationSeconds = Math.floor(duration / 1000);
+				const min = Math.floor(durationSeconds / 60);
+				const sec = durationSeconds % 60;
+				text = `${min}:${sec.toString().padStart(2, '0')}`;
+			}
+			const outerDiv = document.createElement('div');
+			outerDiv.classList.add('r-1awozwy', 'r-k200y', 'r-z2wwpe', 'r-z80fyv', 'r-1777fci', 'r-s1qlax', 'r-13w96dm', 'r-1nlw0im', 'r-u8s1d', 'r-1r74h94', 'r-633pao');
+
+			const innerDiv = document.createElement('div');
+			innerDiv.setAttribute('dir', 'ltr');
+			innerDiv.style.color = 'rgb(255, 255, 255)';
+			innerDiv.style.textOverflow = 'unset';
+			innerDiv.classList.add('r-bcqeeo', 'r-qvutc0', 'r-1tl8opc', 'r-q4m81j', 'r-n6v787', 'r-1cwl3u0', 'r-16dba41', 'r-lrvibr');
+
+			const span = document.createElement('span');
+			span.style.textOverflow = 'unset';
+			span.classList.add('r-bcqeeo', 'r-qvutc0', 'r-1tl8opc');
+			span.textContent = text;
+
+			innerDiv.appendChild(span);
+			outerDiv.appendChild(innerDiv);
+			return outerDiv;
+		}
 	}
 	function shareTweet_Restorer_for_mobile(tweetNodes){
 		tweetNodes.forEach(async (tweet)=>{
@@ -354,7 +619,7 @@
 			let newPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 			newPath.setAttribute('d', 'M17 4c-1.1 0-2 .9-2 2 0 .33.08.65.22.92C15.56 7.56 16.23 8 17 8c1.1 0 2-.9 2-2s-.9-2-2-2zm-4 2c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4c-1.17 0-2.22-.5-2.95-1.3l-4.16 2.37c.07.3.11.61.11.93s-.04.63-.11.93l4.16 2.37c.73-.8 1.78-1.3 2.95-1.3 2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4c0-.32.04-.63.11-.93L8.95 14.7C8.22 15.5 7.17 16 6 16c-2.21 0-4-1.79-4-4s1.79-4 4-4c1.17 0 2.22.5 2.95 1.3l4.16-2.37c-.07-.3-.11-.61-.11-.93zm-7 4c-1.1 0-2 .9-2 2s.9 2 2 2c.77 0 1.44-.44 1.78-1.08.14-.27.22-.59.22-.92s-.08-.65-.22-.92C7.44 10.44 6.77 10 6 10zm11 6c-.77 0-1.44.44-1.78 1.08-.14.27-.22.59-.22.92 0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2z');
 			clonedSvg.appendChild(newPath);
-			clonedSvg.style.color = color[GetCookie("night_mode")];
+			clonedSvg.style.color = color[getDarkMode()];
 			clonedSvg.addEventListener('click', () => {
 				copyToClipboard(tweet.link);
 			});
@@ -363,15 +628,20 @@
 			});
 			footer.appendChild(clonedNode);
 		});
-		function copyToClipboard(text){
-			navigator.clipboard.writeText(text).then(function(){
-				//console.log('クリップボードにコピーしました！');
-			}).catch(function(err) {
-				console.error('コピーに失敗しました:', err);
-			});
-		}
 	}
 	async function showFollowers(){
+		try{
+			if(!/\/verified_followers$/.test(currentUrl))return;
+			const screenName = extractUserName(currentUrl);
+			const safeScreenName = screenName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+			const pattern = new RegExp(`${safeScreenName}/verified_followers$`);
+			if(!pattern.test(currentUrl))return;
+			const followersTab = await wait_load_Element(`a[role="tab"][href="/${screenName}/followers"]`,100,10,'querySelector');
+			if(followersTab.getAttribute('showFollowersChecked') == "true")return;
+			followersTab.click();
+			followersTab.setAttribute('showFollowersChecked',"true");
+		}catch(error){console.error(error)}
+		/*
 		try{
 			const screenName = extractUserName(currentUrl);
 			if(currentUrl.match(new RegExp(`${screenName}$`))){
@@ -397,12 +667,13 @@
 				}
 			});
 		}
+		*/
 	}
 	function hideAnalytics(tweetNodes){
 		try{
 			tweetNodes.forEach(t=>{
 				if(t.id === extractTweetId(currentUrl))return;
-				let analytics = t.node.querySelector('div[id][role="group"] a[role="link"]').parentNode || t.node.querySelector('[d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z"]').findParent('div.css-1dbjc4n.r-13awgt0.r-18u37iz.r-1h0z5md');
+				let analytics = t.node.querySelector('div[id][role="group"] a[role="link"]').parentNode || t.node.querySelector('[d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z"]').findParent('div.r-13awgt0.r-18u37iz.r-1h0z5md');
 				analytics.style.display = "none";
 			});
 		}catch(error){console.error(error)}
@@ -465,7 +736,8 @@
 			dropdown_post_quote.addEventListener('click', (event) => {
 				event.stopPropagation();
 			});
-
+			/*
+			もういらない
 			const dropdown_use_graphql = document.createElement('select');
 			dropdown_use_graphql.className = "quickDimgPullDown quickDimgPullDown4";
 			['false','true'].forEach(value => {
@@ -479,24 +751,21 @@
 			dropdown_use_graphql.addEventListener('click', (event) => {
 				event.stopPropagation();
 			});
+			*/
 			// ボタンを作成
 			const button = document.createElement('button');
 			button.className = "quickDimgButton";
 			button.textContent = textData.submit;
 			flexContainer.appendChild(button);
 
-			dropdown_select_server.addEventListener('change', () => {
+			function reEnableButton(){
 				button.disabled = false;
-			});
-			dropdown_send_image.addEventListener('change', () => {
-				button.disabled = false;
-			});
-			dropdown_post_quote.addEventListener('change', () => {
-				button.disabled = false;
-			});
-			dropdown_use_graphql.addEventListener('change', () => {
-				button.disabled = false;
-			});
+				button.textContent = textData.submit;
+			}
+			dropdown_select_server.addEventListener('change', reEnableButton);
+			dropdown_send_image.addEventListener('change', reEnableButton);
+			dropdown_post_quote.addEventListener('change', reEnableButton);
+			//dropdown_use_graphql.addEventListener('change', reEnableButton);
 
 			// ボタンのクリックイベントを監視
 			button.addEventListener('click',async function(){
@@ -505,7 +774,7 @@
 				const selectedServer = dropdown_select_server.value;
 				const selectedNumber = dropdown_send_image.value;
 				const send_post_tweet = dropdown_post_quote.value === 'true';
-				const useGraphql = dropdown_use_graphql.value === 'true';
+				//const useGraphql = dropdown_use_graphql.value === 'true';
 				if(!selectedServer){
 					customAlert(textData.webhook_not_set);
 					return;
@@ -516,8 +785,8 @@
 				}else{
 					send_page = [0,1,2,3]
 				}
-				const body = await make_send_data(tweet_link,send_page,send_post_tweet,useGraphql);
-				await sleep(300)
+				const body = await make_send_data(tweet_link,send_page,send_post_tweet);
+				await sleep(300);
 				for(let target in body){
 					let formData = new FormData();
 					let payload = {};
@@ -545,10 +814,12 @@
 						customAlert(`${textData.when_post_failed}`,payload.embeds[0].url);
 						console.log({user: fetchedTweetsUserDataByUserName,tweets: fetchedTweets});
 						console.log(error);
+						throw(error);
 					}
 					//console.log(res)
-					await sleep(1000)
+					await sleep(1000);
 				}
+				button.textContent = textData.complete;
 			});
 			fotter.parentNode.appendChild(flexContainer);
 		});
@@ -557,12 +828,14 @@
 			let textData = Text[script_settings.webhook_brings_tweets_to_discord.lang].webhook_brings_tweets_to_discord;
 			let tweet_data,quoted_data,return_object,apiType;
 			try{
+				/*
 				if(use_graphQL){
 					apiType = "graphQL";
 				}else{
 					apiType = "1_1"
 				}
-				tweet_data = await getTweetData(tweet_id,apiType);
+				*/
+				tweet_data = await getTweetData(tweet_id,"graphQL");
 				quoted_data = tweet_data.quoted_status_result?.result || tweet_data.quoted_status;
 				return_object = await make_embeds();
 			}catch(error){
@@ -657,7 +930,8 @@
 				const linkTextEnd = `linkTextEnd${currentTimeMillis}`;
 				const linkUrlStart = `linkUrlStart${currentTimeMillis}`;
 				const linkUrlEnd = `linkUrlEnd${currentTimeMillis}`;
-				const hashtag = `hashtag${currentTimeMillis}`
+				const hashtag = `hashtag${currentTimeMillis}`;
+				const underbarEscape = `underbarEscape${currentTimeMillis}`;
 				combined.forEach(item => {
 					let start = item.indices[0];
 					let end = item.indices[1];
@@ -666,7 +940,7 @@
 					const adjustment = countSurrogatePairs(transformedText.slice(0, end));
 					start += adjustment;
 					end += adjustment;
-
+					item.text = item.text.replace(/_/g, underbarEscape);
 					let replacement = '';
 					switch(item.type){
 						case 'hashtag':
@@ -683,7 +957,7 @@
 				});
 				twitter_tweet_data.full_text = str_max_length(transformedText,7000);
 				//マークダウンにならないでほしいやつのエスケープ
-				let escapeCharacters = ['|', '*', '_', '`', '~', '[', ']', '(', ')', '>', '#', '-'];
+				let escapeCharacters = ['\\', '|', '*', '_', '`', '~', '[', ']', '(', ')', '>', '#', '-'];
 				escapeCharacters.forEach(char => {
 					let regExp = new RegExp('\\' + char, 'g');
 					twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(regExp, '\\' + char);
@@ -694,6 +968,7 @@
 				twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(linkUrlStart, 'g'), '(');
 				twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(linkUrlEnd, 'g'), ')');
 				twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(hashtag, 'g'), '#');
+				twitter_tweet_data.full_text = twitter_tweet_data.full_text.replace(new RegExp(underbarEscape, 'g'), '_');
 				/*
 				try{
 					if(select_pages.length > 1 && ! twitter_tweet_data.media.every(v => v.media_type == "photo")){
@@ -767,7 +1042,7 @@
 				}
 				return tmp_return_object;
 			}
-			async function downloadVideo(url){
+			function downloadVideo(url){
 				return new Promise(async (resolve) => {
 					if((await request(new requestObject_binary_head(url))).responseHeaders.match(/content-length: ?(\d+)/)[1] < 24117249){
 						return resolve({"files": [{attachment: (await request(new requestObject_binary_data(url))).response, name: url.split('/').pop()}]});
@@ -900,7 +1175,7 @@
 			}
 		}
 	}
-	async function sneakilyFavorite(tweetNodes){
+	function sneakilyFavorite(tweetNodes){
 		tweetNodes.forEach(function(element){
 			const node = element.node;
 			if(node.querySelector(".sneakilyFavorite") || ! node.querySelector(env_selector.retweeted) || !node.querySelector('[data-testid="like"]')) return;
@@ -941,7 +1216,7 @@
 			if(!target_node)return;
 			const engagemants_aria = target_node.querySelector('[role="group"]');
 			if(!engagemants_aria)return;
-			let envEngagementsTextColor = env_selector.engagementsTextColor[GetCookie("night_mode") || "0"];
+			let envEngagementsTextColor = env_selector.engagementsTextColor[getDarkMode() || "0"];
 			const flexContainer = document.createElement('div');
 			flexContainer.style.display = 'flex';
 			flexContainer.style.justifyContent = 'space-between';
@@ -995,8 +1270,8 @@
 		}
 		async function clickTab(name,target_node){
 			target_node.querySelector('[data-testid="caret"]').click();
-			document.querySelector('[data-testid="tweetEngagements"]').click();
-			const engagemants_aria = (await wait_load_Element('nav[aria-live="polite"]'))[0];
+			(await wait_load_Element('[data-testid="tweetEngagements"]',10,20,'querySelector')).click();
+			const engagemants_aria = (await wait_load_Element('nav[aria-live="polite"]',20,20,'querySelector'));
 			const regex = new RegExp(name + '$');
 			engagemants_aria.querySelectorAll('[role="presentation"] a').forEach((e)=>{
 				if(e.href.match(regex)) e.click();
@@ -1012,8 +1287,11 @@
 			const info_selector = target_node.childNodes[0].className;
 			let client_text = document.createElement("div");
 			client_text.dir = "ltr";
-			client_text.innerHTML = `<span class="display_twitter_client ${info_selector}" style="">${tweet_data.source.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')}</span>`;
+			client_text.innerHTML = `<span class="display_twitter_client" style="">${tweet_data.source.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')}</span>`;
+			client_text.className = info_selector;
+			client_text.style.color = ["rgb(83, 100, 113)","rgb(139, 152, 165)","rgb(113, 118, 123)"][getDarkMode()];
 			target_node.appendChild(client_text);
+			client_text.className = "";
 			const media_data = tweet_data.legacy?.extended_entities?.media || tweet_data.extended_entities?.media;
 			if(!media_data)return;
 			const video_data = media_data.map((mediaItem, index) => {
@@ -1030,13 +1308,7 @@
 			show_video_url.className = "display_video_url";
 			show_video_url.style.whiteSpace = "pre";
 			for(let video of video_data){
-				let video_url = document.createElement("a");
-				video_url.href = video.url;
-				video_url.textContent = `${video.index + 1}:video_url`;
-				video_url.className = "css-4rbku5 css-18t94o4 css-901oao css-16my406 r-1cvl2hr r-1loqt21 r-poiln3 r-bcqeeo r-qvutc0";
-				video_url.style.color = "rgb(29, 155, 240)";
-				video_url.target = "_blank";
-				video_url.rel = "noopener";
+				let video_url = makeLinkElement(video.url,`${video.index + 1}:video_url`);
 				show_video_url.appendChild(video_url);
 				if(video !== video_data[video_data.length - 1]){
 					show_video_url.appendChild(document.createTextNode('   '));
@@ -1053,7 +1325,7 @@
 	}
 
 	async function Note_Tweet_expander(tweetNodes){
-		const link_class = "r-18u37iz css-4rbku5 css-18t94o4 css-901oao css-16my406 r-1cvl2hr r-1loqt21 r-poiln3 r-bcqeeo r-qvutc0";
+		const link_class = "css-1jxf684 r-bcqeeo r-1ttztb7 r-qvutc0 r-poiln3 r-1loqt21";
 		tweetNodes.forEach(async function(target){
 			const tweet_node = target.node;
 			const elements = tweet_node.querySelectorAll('[data-testid="tweetText"]');
@@ -1061,7 +1333,7 @@
 			if(show_more_link[0])show_more_link[0].style.display = "none";
 			if(show_more_link[1])show_more_link[1].style.display = "none";
 			elements.forEach(async (element,index) =>{
-				if(!element.innerText.match(/…$/)){
+				if(!(element.innerText.match(/…$/) || (show_more_link[index]?.tagName.toLowerCase() == "div"))){
 					element.classList.add('tweetExpanderChecked');
 					//if(element.innerText.split('\n').length >= 10)
 					element.style.webkitLineClamp = null;
@@ -1086,7 +1358,7 @@
 				const user_mentions = note_tweet.entity_set?.user_mentions || [];
 				const symbols = note_tweet.entity_set?.symbols || [];
 				const urls = note_tweet.entity_set?.urls;
-				var new_tweet_text = note_tweet.text;
+				let new_tweet_text = note_tweet.text;
 				function countSurrogatePairs(str){
 					return Array.from(str).filter(char => char.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/)).length;
 				}
@@ -1123,20 +1395,20 @@
 					let replacement = '';
 					switch(item.type){
 						case 'hashtag':
-							replacement = `<a class="${link_class}" dir="ltr" role="link" href="https://twitter.com/hashtag/${item.text}" target="_blank" rel="noopener">#${item.text}</a>`;
+							replacement = `<a class="${link_class}" style="text-decoration: none;color:rgb(29, 155, 240)" dir="ltr" role="link" href="https://twitter.com/hashtag/${item.text}" target="_blank" rel="noopener">#${item.text}</a>`;
 							break;
 						case 'mention':
-							replacement = `<a class="${link_class}" dir="ltr" role="link" href="https://twitter.com/${item.text}" target="_blank" rel="noopener">@${item.text}</a>`;
+							replacement = `<a class="${link_class}" style="text-decoration: none;color:rgb(29, 155, 240)" dir="ltr" role="link" href="https://twitter.com/${item.text}" target="_blank" rel="noopener">@${item.text}</a>`;
 							break;
 						case 'symbol':
-							replacement = `<a class="${link_class}" dir="ltr" role="link" href="https://twitter.com/search?q=%24${item.text}&src=cashtag_click" target="_blank" rel="noopener">$${item.text}</a>`;
+							replacement = `<a class="${link_class}" style="text-decoration: none;color:rgb(29, 155, 240)" dir="ltr" role="link" href="https://twitter.com/search?q=%24${item.text}&src=cashtag_click" target="_blank" rel="noopener">$${item.text}</a>`;
 							break;
 					}
 					transformedText = transformedText.slice(0, start) + replacement + transformedText.slice(end);
 				});
 				new_tweet_text = transformedText;
 				urls.forEach(target =>{
-					new_tweet_text = new_tweet_text.replace(new RegExp(`${target.url}(?=(\\s|$|\\u3000|\\W)(?!\\.|,))`, 'gu'), `<a class="${link_class}" dir="ltr" role="link" href="${target.url}" target="_blank" rel="noopener">${target.display_url}</a>`);
+					new_tweet_text = new_tweet_text.replace(new RegExp(`${target.url}(?=(\\s|$|\\u3000|\\W)(?!\\.|,))`, 'gu'), `<a class="${link_class}" style="text-decoration: none;color:rgb(29, 155, 240)" dir="ltr" role="link" href="${target.url}" target="_blank" rel="noopener">${target.display_url}</a>`);
 				});
 				var new_tweet_node = document.createElement("span");
 				new_tweet_node.className = 'css-901oao css-16my406 r-1tl8opc r-bcqeeo r-qvutc0';
@@ -1151,6 +1423,7 @@
 	}
 
 	async function Show_me_your_Pixiv(tweets){
+		const collectionMethod = storedSettings.Show_me_your_Pixiv?.showMeYourPixivCollectionMethod;
 		let todo = [];
 		tweets.forEach(tweet => {
 			const node = tweet.node.querySelector(`${env_selector.media_field}:not(.display_pixiv_link)`);
@@ -1162,7 +1435,7 @@
 		let currentScreenName = extractUserName(currentUrl);
 		const uniqueScreenNames = [...new Set(todo.map(item => item.screenName))];
 		let promises = [];
-		if(currentScreenName && !(scriptDataStore?.Show_me_your_Pixiv?.lastGetUserScreenName == currentScreenName)){
+		if(currentScreenName && !(scriptDataStore?.Show_me_your_Pixiv?.lastGetUserScreenName == currentScreenName) && (collectionMethod === 0 || collectionMethod === 1 || !collectionMethod)){
 			(async()=>{
 				try{
 					const display_pixiv_link_in_profile_field = await wait_load_Element(`div.display_pixiv_link_in_profile`,100,5,'querySelector');
@@ -1172,7 +1445,7 @@
 			scriptDataStore.Show_me_your_Pixiv.lastGetUserScreenName = currentScreenName;
 			promises.push(addPixivLinksToScriptDataStore([currentScreenName],true));
 		}
-		promises.push(addPixivLinksToScriptDataStore(uniqueScreenNames));
+		if(collectionMethod === 0)promises.push(addPixivLinksToScriptDataStore(uniqueScreenNames));
 		await Promise.all(promises);
 
 		todo.forEach(item => {
@@ -1194,19 +1467,7 @@
 			}
 		}
 		localStorage.setItem('user_pixvi_link_collection', JSON.stringify(scriptDataStore.Show_me_your_Pixiv));
-		function makeLinkElement(href,text,additionalClass){
-			let new_content = document.createElement("a");
-			new_content.style.color = "rgb(29, 155, 240)";
-			new_content.style.width = "fit-content";
-			new_content.href = href;
-			new_content.textContent = text;
-			new_content.className = `${additionalClass} css-4rbku5 css-18t94o4 css-901oao css-16my406 r-1cvl2hr r-1loqt21 r-poiln3 r-bcqeeo r-qvutc0`;
-			new_content.target = "_blank";
-			new_content.rel = "noopener";
-			return new_content;
-		}
 	}
-
 
 /////////////////////////////////////////////////////////////////////
 ///////////////////////////ここから汎用関数///////////////////////////
@@ -1251,6 +1512,40 @@
 		const target = document.getElementById("react-root");
 		const config = {childList: true,subtree: true};
 		observer.observe(target, config);
+	}
+	function copyToClipboard(text){
+		navigator.clipboard.writeText(text).then(function(){
+			displayToast('Copied!');
+		}).catch(function(err) {
+			console.error('コピーに失敗しました:', err);
+		});
+	}
+	function simulateKey(keyCode, type, element) {
+		let event = new KeyboardEvent(type, {
+			key: keyCode,
+			keyCode: keyCode,
+			which: keyCode,
+			bubbles: true
+		});
+		element.dispatchEvent(event);
+	}
+	function makeLinkElement(href,text,additionalClass = ""){
+		let new_content = document.createElement("a");
+		new_content.style.color = "rgb(29, 155, 240)";
+		new_content.style.width = "fit-content";
+		new_content.href = href;
+		new_content.textContent = text;
+		new_content.className = `${additionalClass} css-1jxf684 r-bcqeeo r-1ttztb7 r-qvutc0 r-poiln3 r-1loqt21`;
+		new_content.target = "_blank";
+		new_content.rel = "noopener";
+		new_content.addEventListener('mouseenter', function(){
+			new_content.classList.add('r-1ny4l3l', 'r-1ddef8g', 'r-tjvw6i');
+		});
+		new_content.addEventListener('mouseleave', function(){
+			new_content.classList.remove('r-1ny4l3l', 'r-1ddef8g', 'r-tjvw6i');
+		});
+
+		return new_content;
 	}
 	async function addEventToScrollSnapSwipeableList(){
 		try{
@@ -1342,7 +1637,7 @@
 			return '0' == result && 1 / value == -(1 / 0) ? '-0' : result;
 		}
 	}
-	async function sleep(time){
+	function sleep(time){
 		return new Promise((resolve)=>{
 			setTimeout(()=>{return resolve(time)}, time);
 		});
@@ -1375,8 +1670,9 @@
 	async function addPixivLinksToScriptDataStore(ScreenNames,force = false){
 		let promises = ScreenNames.map(async screen_name => {
 			if((!((scriptDataStore.Show_me_your_Pixiv[screen_name]?.pixiv_url) === undefined))&&!force)return "Already exists";
-			if((((scriptDataStore.Show_me_your_Pixiv[screen_name]?.Create_date || 0) + 604800000) <= new Date().getTime()) || force){
-				let userEntitiesData = await getTweetData(screen_name,"user_1_1");
+			//if((((scriptDataStore.Show_me_your_Pixiv[screen_name]?.Create_date || 0) + 604800000) <= new Date().getTime()) || force){
+			if(force){
+				let userEntitiesData = await getTweetData(screen_name,"user");
 				userEntitiesData = userEntitiesData.legacy?.entities || userEntitiesData.entities;
 				const end_stat = await find_pixiv_link(extractUrls(userEntitiesData));
 				if(end_stat == "Too Many Requests"){
@@ -1448,7 +1744,7 @@
 					let get_url_promise_list = [];
 					urls_in_profile.forEach(target=>{
 						switch(true){
-							case /^https?:\/\/((skeb\.jp\/\@.*)|(fantia\.jp\/(fanclubs\/[0-9])?.*)|(.*\.booth\.pm)|(.*linktr\.ee)|(.*profcard\.info)|(.*lit\.link)|(potofu\.me)|(.*\.carrd\.co)|(.*\.tumblr\.com$)|(twpf\.jp))\/?/.test(target):
+							case /^https?:\/\/((fantia\.jp\/(fanclubs\/[0-9])?.*)|(.*\.booth\.pm)|(.*linktr\.ee)|(.*profcard\.info)|(.*lit\.link)|(potofu\.me)|(.*\.carrd\.co)|(.*\.tumblr\.com$)|(twpf\.jp)|(ci\-en\.dlsite\.com\/creator\/[0-9]*))\/?/.test(target):
 								get_url_promise_list.push(new Promise(
 									async function(resolve,reject){
 										try{
@@ -1464,6 +1760,17 @@
 									async function(resolve,reject){
 										try{
 											return resolve(await when_general(`${target.match(/^https?:\/\/.*\.creatorlink\.net/)[0]}\/Contact`));
+										}catch(error){
+											return reject(error);
+										}
+									}
+								));
+								break;
+							case /^https?:\/\/skeb\.jp\/\@.*/.test(target):
+								get_url_promise_list.push(new Promise(
+									async function(resolve,reject){
+										try{
+											return resolve(await when_skeb(target.replace(/^https?:\/\/skeb\.jp\/\@/,'')));
 										}catch(error){
 											return reject(error);
 										}
@@ -1492,9 +1799,10 @@
 					}
 				}
 				return resolve(null);
-				async function when_general(target_url){
+				function when_general(target_url){
 					return new Promise(async function(resolve,reject){
 						const response_data = await request(new requestObject(target_url.replace(/^https?/,"https")));
+						console.log({url:target_url.replace(/^https?/,"https"), response:response_data})
 						let response_data_urls = response_data.response.split(/\"|\<|\>/).filter(function(data_str){return data_str.match(/^https?:(\/\/(((www|touch)\.)?pixiv\.(net\/([a-z]{2}\/)?((member(_illust)?\.php\?id\=|(users|u|fanbox\/creator)\/)[0-9].*)|me\/.*))|.*\.fanbox\.cc\/?)$/)});
 						if(response_data_urls.find(function(element){return element.match(Pixiv_url_regex)}) !== undefined){
 							return resolve(response_data_urls.find(function(element){return element.match(Pixiv_url_regex)}));
@@ -1505,18 +1813,30 @@
 						}
 					});
 				}
-				async function when_pixiv_sketch(target_url){
-						return new Promise(async function(resolve,reject){
-							const response_data = await request(new requestObject(target_url));
-							let User_id = response_data.response.split(',').filter(function(data_str){return data_str.match(/\\"pixiv_user_id\\":\\"[0-9]*\\"/)});
-							if(User_id){
-								return resolve("https://www.pixiv.net/users/" + User_id[0].split(/\"|\\/)[6]);
-							}else{
-								return reject(undefined);
-							}
-						});
-					}
-				async function when_fanbox(fanbox_url){
+				function when_skeb(target){
+					return new Promise(async function(resolve,reject){
+						const response_data = await request(new requestObject_skeb(`https://skeb.jp/api/users/${target}`,`https://skeb.jp/@${target}`));
+						//console.log({url:`https://skeb.jp/api/users/${target}`,skeb_url: `https://skeb.jp/@${target}`,response_data: response_data})
+						let User_id = response_data.response.pixiv_id;
+						if(User_id){
+							return resolve("https://www.pixiv.net/users/" + User_id);
+						}else{
+							return reject(undefined);
+						}
+					});
+				}
+				function when_pixiv_sketch(target_url){
+					return new Promise(async function(resolve,reject){
+						const response_data = await request(new requestObject(target_url));
+						let User_id = response_data.response.split(',').filter(function(data_str){return data_str.match(/\\"pixiv_user_id\\":\\"[0-9]*\\"/)});
+						if(User_id){
+							return resolve("https://www.pixiv.net/users/" + User_id[0].split(/\"|\\/)[6]);
+						}else{
+							return reject(undefined);
+						}
+					});
+				}
+				function when_fanbox(fanbox_url){
 					return new Promise(async function(resolve,reject){
 						if(fanbox_url.match(/^https?:\/\/www\.pixiv\.net\/fanbox\/creator\/[0-9]*/)){
 							return resolve(fanbox_url.replace('fanbox/creator', 'users'));
@@ -1564,7 +1884,8 @@
 		}
 		return matchedElement;
 	}
-	async function fetchAndProcessTwitterApi(method,id = undefined,forceFetch = false){
+	function fetchAndProcessTwitterApi(method,id = undefined,forceFetch = false){
+		let response;
 		return new Promise(async (resolve, reject) => {
 			try{
 				switch(method){
@@ -1572,18 +1893,25 @@
 					case 'forYou':
 						await getTL();
 						break;
+					case 'userMedia':
+						await getUserMedia();
+						break;
+					case 'mediaSearch':
+						await getMediaSerch();
+						break;
 					case 'graphQL':
-						if(fetchedTweets[id] && !(forceFetch === true))return resolve(fetchedTweets[id]);
+						if((fetchedTweets[id]?.API_type === "graphQL") && !(forceFetch === true))return resolve(fetchedTweets[id]);
 						await graphQL();
 						break;
 					case 'user':
 						await getUser();
 						break;
 					case 'user_1_1':
-						await getUser1_1();
-						break;
+						//await getUser1_1();
+						//break;
 					case '1_1':
-						await get1_1();
+						//await get1_1();
+						console.log('twitter API v1.1でツイートのデータを収集することはできなくなりました。');
 						break;
 					default:
 						console.warn("なにか間違ってないか？")
@@ -1592,9 +1920,57 @@
 				return resolve("OK!");
 			}catch(error){
 				console.error(error);
+				console.error(response);
 				throw new Error(`Failed to fetch API data.\nmethod: ${method}\nid: ${id}`);
 			}
 		});
+		async function getMediaSerch(){
+			let url = 'https://twitter.com/i/api/graphql/Aj1nGkALq99Xg3XI0OZBtw/SearchTimeline'
+			let variables = {
+				"rawQuery": encodeURIComponent(id),
+				"count": 50,
+				"querySource": "recent_search_click",
+				"product": "Media"
+			}
+			if(scriptDataStore.Show_all_Medias[(await encodeBase64(id))]?.cursor){
+				variables.cursor = scriptDataStore.Show_all_Medias[(await encodeBase64(id))]?.cursor;
+			}
+			response = await request(new requestObject_twitter_get_search_media(url,variables));
+			if(!response.status === "200")throw new Error(`Failed to fetch`);
+			const instructions = response.response.data.search_by_raw_query.search_timeline.timeline.instructions;
+			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
+			if(!scriptDataStore.Show_all_Medias[(await encodeBase64(id))])scriptDataStore.Show_all_Medias[(await encodeBase64(id))] = {};
+			scriptDataStore.Show_all_Medias[(await encodeBase64(id))].cursor = TimelineAddEntries.entries.find(element => element.entryId.match(/^cursor-bottom/)).content.value;
+			const tweetData = instructions[0]?.moduleItems || TimelineAddEntries.entries;
+			processgraphQL(tweetData);
+			return "OK";
+		}
+		async function getUserMedia(){
+			let userData = await getTweetData(id,"user")
+			let userID = userData.rest_id || userData.id_str;
+			let url = 'https://twitter.com/i/api/graphql/dQAjBEzWOl_hQwnc1sLUsA/UserMedia'
+			let variables = {
+				"userId": `${userID}`,
+				"count": 200,
+				"includePromotedContent": false,
+				"withClientEventToken": false,
+				"withBirdwatchNotes": false,
+				"withVoice": true,
+				"withV2Timeline": true
+			};
+			if(scriptDataStore.Show_all_Medias[id]?.cursor){
+				variables.cursor = scriptDataStore.Show_all_Medias[id]?.cursor;
+			}
+			response = await request(new requestObject_twitter_get_user_media(url,variables));
+			if(!response.status === "200")throw new Error(`Failed to fetch`);
+			const instructions = response.response.data.user.result.timeline_v2.timeline.instructions;
+			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
+			if(!scriptDataStore.Show_all_Medias[id])scriptDataStore.Show_all_Medias[id] = {};
+			scriptDataStore.Show_all_Medias[id].cursor = TimelineAddEntries.entries.find(element => element.entryId.match(/^cursor-bottom/)).content.value;
+			const tweetData = instructions[0]?.moduleItems || TimelineAddEntries.entries[0]?.content?.items;
+			processgraphQL(tweetData);
+			return "OK";
+		}
 		async function getTL(){
 			let requestObject;
 			if(method == 'TL'){
@@ -1602,26 +1978,27 @@
 			}else{
 				requestObject = new requestObject_twitter_time_line_forYou();
 			}
-			const response = await request(requestObject);
+			response = await request(requestObject);
 			if(!response.status === "200")throw new Error(`Failed to fetch`);
 			processgraphQL(response.response.data.home.home_timeline_urt.instructions[0].entries);
 		}
 		async function graphQL(){
-			const response = await request(new requestObject_twitter_api_graphql(id));
+			response = await request(new requestObject_twitter_api_graphql(id));
 			if(!response.status === "200")throw new Error(`Failed to fetch`);
 			processgraphQL(response.response.data.threaded_conversation_with_injections_v2.instructions[0].entries);
 		}
 		async function getUser(){
-			if(fetchedTweetsUserDataByUserName[id]?.API_type === "graphQL")return;
-			const response = await request(new requestObject_twitter_get_user_by_screenname(id));
+			if(fetchedTweetsUserDataByUserName[id]?.API_type === "graphQL" && !forceFetch)return;
+			response = await request(new requestObject_twitter_get_user_by_screenname(id));
 			if(!response.status === "200")throw new Error(`Failed to fetch`);
 			const userData = response.response.data.user.result;
 			fetchedTweetsUserData[userData.rest_id] = {...userData,"API_type": "graphQL"};
 			fetchedTweetsUserDataByUserName[userData.legacy.screen_name] = fetchedTweetsUserData[userData.rest_id];
+			return "OK";
 		}
 		async function getUser1_1(){
-			if(fetchedTweetsUserDataByUserName[id])return;
-			const response = await request(new requestObject_twitter_get_user_by_screenname_1_1(id));
+			if(fetchedTweetsUserDataByUserName[id] && !forceFetch)return;
+			response = await request(new requestObject_twitter_get_user_by_screenname_1_1(id));
 			if(!response.status === "200")throw new Error(`Failed to fetch`);
 			if(response.response.status && !(fetchedTweets[response.response.status?.id_str]?.API_type === "graphQL")){
 				fetchedTweets[response.response.status.id_str] = {...response.response.status,"API_type": "1_1"};
@@ -1629,11 +2006,12 @@
 			}
 			fetchedTweetsUserData[response.response.id_str] = {...response.response,"API_type": "1_1"};
 			fetchedTweetsUserDataByUserName[response.response.screen_name] = fetchedTweetsUserData[response.response.id_str];
+			return "OK";
 		}
 		async function get1_1(){
 			const idsToFetch = forceFetch ? id : id.filter(singleId => !(fetchedTweets[singleId]?.API_type === "graphQL"));
 			if(idsToFetch.length === 0) return;
-			const response = await request(new requestObject_twitter_api_v1_1(idsToFetch.join(",")));
+			response = await request(new requestObject_twitter_api_v1_1(idsToFetch.join(",")));
 			if(!response.status === "200")throw new Error(`Failed to fetch`);
 			response.response.forEach((tweetData)=>{
 				if(tweetData.quoted_status){
@@ -1655,32 +2033,45 @@
 				tweetData.user = fetchedTweetsUserData[tweetData.user.id_str];
 				fetchedTweets[tweetData.id_str] = {...tweetData,"API_type": "1_1"};
 			});
+			return "OK";
 		}
 		function processgraphQL(entries){
 			if(!entries)return null;
 			entries.forEach(entry=>{
-				let tweetData = entry.content?.itemContent?.tweet_results?.result?.tweet || entry.content?.itemContent?.tweet_results?.result;
+				const tmpData = entry.content?.itemContent?.tweet_results || entry.item?.itemContent?.tweet_results;
+				let tweetData = tmpData?.result?.tweet || tmpData?.result;
+				if(tweetData?.tombstone)return;
 				if(!tweetData)return;
-				if(tweetData.quoted_status_result){
-					let quoted = tweetData.quoted_status_result.result;
-					fetchedTweetsUserData[quoted.core.user_results.result.rest_id] = {...quoted.core.user_results.result,"API_type": "graphQL"};
-					fetchedTweetsUserDataByUserName[quoted.core.user_results.result.legacy.screen_name] = fetchedTweetsUserData[quoted.core.user_results.result.rest_id];
-					quoted.core.user_results.result = fetchedTweetsUserData[quoted.core.user_results.result.rest_id];
-					fetchedTweets[quoted.rest_id] = {...quoted,"API_type": "graphQL"};
-					tweetData.quoted_status_result.result = fetchedTweets[quoted.rest_id];
+				try{
+					if(tweetData.quoted_status_result){
+						let quoted = tweetData.quoted_status_result.result?.tweet || tweetData.quoted_status_result.tweet || tweetData.quoted_status_result?.result;
+						fetchedTweetsUserData[quoted.core.user_results.result.rest_id] = {...quoted.core.user_results.result,"API_type": "graphQL"};
+						fetchedTweetsUserDataByUserName[quoted.core.user_results.result.legacy.screen_name] = fetchedTweetsUserData[quoted.core.user_results.result.rest_id];
+						quoted.core.user_results.result = fetchedTweetsUserData[quoted.core.user_results.result.rest_id];
+						fetchedTweets[quoted.rest_id] = {...quoted,"API_type": "graphQL"};
+						tweetData.quoted_status_result.result = fetchedTweets[quoted.rest_id];
+					}
+					fetchedTweetsUserData[tweetData.core.user_results.result.rest_id] = {...tweetData.core.user_results.result,"API_type": "graphQL"};
+					fetchedTweetsUserDataByUserName[tweetData.core.user_results.result.legacy.screen_name] = fetchedTweetsUserData[tweetData.core.user_results.result.rest_id];
+					tweetData.core.user_results.result = fetchedTweetsUserData[tweetData.core.user_results.result.rest_id];
+					fetchedTweets[tweetData.rest_id] = {...tweetData,"API_type": "graphQL"};
+				}catch(error){
+					console.error
+					console.error({error: `processgraphQL error.\ndetails: ${error}`,apiResponse:tweetData});
 				}
-				fetchedTweetsUserData[tweetData.core.user_results.result.rest_id] = {...tweetData.core.user_results.result,"API_type": "graphQL"};
-				fetchedTweetsUserDataByUserName[tweetData.core.user_results.result.legacy.screen_name] = fetchedTweetsUserData[tweetData.core.user_results.result.rest_id];
-				tweetData.core.user_results.result = fetchedTweetsUserData[tweetData.core.user_results.result.rest_id];
-				fetchedTweets[tweetData.rest_id] = {...tweetData,"API_type": "graphQL"};
 			});
+			return "OK";
 		}
 	}
-	async function getTweetData(id, method = '1_1', forceFetch = false){
+	async function getTweetData(id, method = 'graphQL', forceFetch = false){
 		const dataStore = method === 'user' || method === 'user_1_1' ? fetchedTweetsUserDataByUserName : fetchedTweets;
 		let ids;
 		if(typeof id === 'string'){
-			if(dataStore[id] && !forceFetch) return dataStore[id];
+			if(dataStore[id] && !forceFetch){
+				if((method === "user" || method === "graphQL") && dataStore[id].API_type !== '1_1'){
+					return dataStore[id];
+				}
+			}
 			ids = [id];
 		}else if(Array.isArray(id)){
 			if(!forceFetch && id.every(singleId => dataStore[singleId] && !(dataStore[singleId].API_type === '1_1' && method !== 'graphQL')))return id.map(singleId => (dataStore[singleId]));
@@ -1706,7 +2097,7 @@
 			}
 		}
 	}
-	async function waitForTweetData(id, method = "1_1", retry = 30, span = 100){
+	function waitForTweetData(id, method = "graphQL", retry = 30, span = 100){
 		let dataStore = method === 'user' || method === 'user_1_1' ? fetchedTweetsUserDataByUserName : fetchedTweets;
 		if(typeof id === 'string'){
 			if(dataStore[id]?.API_type === method)return dataStore[id];
@@ -1748,16 +2139,33 @@
 	async function getFileSize(url){
 		return (await request(new requestObject_binary_head(url))).responseHeaders.match(/content-length: ?(\d+)/)[1];
 	}
-	function decodeHtml(html) {
+	function decodeHtml(html){
 		var txt = document.createElement("textarea");
 		txt.innerHTML = html;
 		return txt.value;
 	}
-	function encodeBase64(data){
-		return btoa(data);
+	async function encodeBase64(data){
+		const blob = new Blob([data], {type: 'text/plain; charset=UTF-8'});
+		const reader = new FileReader();
+		return new Promise((resolve, reject) => {
+			reader.onloadend = () => resolve(reader.result.split(',')[1]);
+			reader.onerror = reject;
+			reader.readAsDataURL(blob);
+		});
 	}
 	function decodeBase64(encodedData){
-		return atob(encodedData);
+		const bytes = atob(encodedData).split('').map(char => char.charCodeAt(0));
+		return new TextDecoder().decode(new Uint8Array(bytes));
+	}
+	function getDarkMode(){
+		try{
+			const color = ["#FFFFFF","#15202B","#000000"];
+			const themeColor = document.querySelector('head > meta[name="theme-color"]').content;
+			const darkModeNum = color.indexOf(themeColor);
+			return darkModeNum || null;
+		}catch{
+			return 0;
+		}
 	}
 	function openSettings(){
 		let container = document.createElement('div');
@@ -1814,6 +2222,7 @@
 			});
 		});
 		fotter.appendChild(cancelButton);
+
 		/////////////////////////////////////////////
 		/*
 		function createPageTemplate(){
@@ -1821,13 +2230,28 @@
 			const textData = env_Text[pageName];
 			const thisStoredSettings = storedSettings[pageName];
 			let thisScriptSettings = script_settings[pageName];
+			const settingEntries = [
+				{id: 'settings1', name: "設定1", type: 'radioButton', option: ['option1', 'option2', 'option3']},
+				{id: 'settings2', name: "設定2", type: 'textBox'},
+				{id: 'settings3', name: "設定3", type: 'toggleSwitch'},
+			];
 			let contents = createPage(pageName,pageName,textData.functionName);
 			let mainContent = contents.main;
 			mainContent.innerHTML = `
 			<div class="${pageName}MainContents">
-				<span class="item_name">hogehoge</span>
 			</div>
 			`;
+			settingEntries.map(setting => {
+				let settingElement = createSettingsElement(setting);
+				let container = document.createElement('div');
+				container.className = 'setting-item';
+				let label = document.createElement('span');
+				label.className = 'item_name';
+				label.textContent = setting.name;
+				container.appendChild(label);
+				container.appendChild(settingElement);
+				mainContent.firstChild.appendChild(container);
+			});
 			let style = document.createElement('style');
 			style.className = `settingCss ${pageName}`
 			style.textContent = `
@@ -1856,6 +2280,7 @@
 				{id: 'hideAnalytics', name: env_Text.hideAnalytics.functionName},
 				{id: 'webhook_brings_tweets_to_discord', name: env_Text.webhook_brings_tweets_to_discord.functionName},
 				{id: 'shareTweet_Restorer_for_mobile', name: env_Text.shareTweet_Restorer_for_mobile.functionName},
+				{id: 'Show_all_Medias', name: env_Text.Show_all_Medias.functionName},
 			];
 			let featureListContent = features.map(feature => {
 				return `
@@ -1938,6 +2363,143 @@
 				localStorage.setItem('Make_Twitter_little_useful', JSON.stringify(thisScript_settings));
 				storedSettings[pageName] = JSON.parse(localStorage.getItem('webhook_brings_tweets_to_discord') || '{}');
 				env_Text = Text[thisScript_settings.lang];
+			}
+		}
+		function createShowMeYourPixiv(){
+			const pageName = "Show_me_your_Pixiv";
+			const textData = env_Text[pageName];
+			const thisStoredSettings = storedSettings[pageName];
+			let thisScriptSettings = script_settings[pageName];
+			const settingEntries = [
+				{id: 'showMeYourPixivCollectionMethod', name: textData.collectionMethod, type: 'radioButton', option: [textData.everywhere, textData.atProfile, textData.never]},
+				//{id: 'settings2', name: "設定2", type: 'textBox'},
+				//{id: 'settings3', name: "設定3", type: 'toggleSwitch'},
+			];
+			let contents = createPage(pageName,pageName,textData.functionName);
+			let mainContent = contents.main;
+			mainContent.innerHTML = `
+			<div class="${pageName}MainContents">
+			</div>
+			`;
+			settingEntries.map(setting => {
+				let settingElement = createSettingsElement(setting,thisStoredSettings[setting.id]);
+				let container = document.createElement('div');
+				container.className = 'setting-item';
+				let label = document.createElement('span');
+				label.className = `${setting.id}`;
+				label.textContent = setting.name;
+				container.appendChild(label);
+				container.appendChild(settingElement);
+				mainContent.appendChild(container);
+			});
+			const addPixivUrlListContainer = document.createElement('div');
+			const addPixivUrlListTitle = document.createElement('span');
+			addPixivUrlListTitle.innerText = textData.addPixivUrlListTitle;
+			const addPixivUrlListButton = document.createElement('button');
+			addPixivUrlListButton.textContent = "download";
+			addPixivUrlListButton.addEventListener('click',async () =>{
+				await addPixivUrlList();
+			});
+			addPixivUrlListContainer.appendChild(addPixivUrlListTitle);
+			addPixivUrlListContainer.appendChild(addPixivUrlListButton);
+			mainContent.querySelector('.setting-item').appendChild(addPixivUrlListContainer);
+			document.head.appendChild(style);
+			pages[pageName].saveFunction = save;
+			function save(){
+				const settingsToSave = {};
+				settingEntries.forEach(setting => {
+					let value,selectedRadio;
+					switch(setting.type){
+						case 'radioButton':
+							selectedRadio = document.querySelector(`input[name="${setting.id}"]:checked`);
+							value = selectedRadio ? parseInt(selectedRadio.value, 10) : null;
+							break;
+
+						case 'textBox':
+							value = document.getElementById(setting.id).value;
+							break;
+
+						case 'toggleSwitch':
+							value = document.querySelector(`[id="${setting.id}"] input[type="checkbox"]`).checked;
+							break;
+					}
+					settingsToSave[setting.id] = value;
+				});
+				localStorage.setItem(pageName, JSON.stringify(settingsToSave));
+				script_settings['Show_me_your_Pixiv'] = settingsToSave;
+			}
+			async function addPixivUrlList(){
+				const downloadData = JSON.parse((await request(new requestObject('https://dl.dropboxusercontent.com/s/v38cx9ra0nul3q7nzajf1/pixiv.json?rlkey=6ectu9b9r4npbkavceq8t2gmg'))).response);
+				if(!(Object.keys(downloadData).length > 100)){
+					customAlert(textData.faildAddPixivUrlList);
+					return;
+				}
+				scriptDataStore.Show_me_your_Pixiv = {...scriptDataStore.Show_me_your_Pixiv,...downloadData};
+				localStorage.setItem('user_pixvi_link_collection', JSON.stringify(scriptDataStore.Show_me_your_Pixiv));
+				customAlert(textData.successAddPixivUrlList);
+			}
+		}
+		function createShowAllMediasSettingPage(){
+			const pageName = "Show_all_Medias";
+			const textData = env_Text[pageName];
+			const thisStoredSettings = storedSettings[pageName];
+			let thisScriptSettings = script_settings[pageName];
+			const settingEntries = [
+				{id: 'displayMethod', name: textData.displayMethod, type: 'radioButton', option: [textData.expand ,textData.likeTweet]},
+				{id: 'removeBlur', name: textData.removeBlur, type: 'toggleSwitch'},
+				{id: 'onlyRemoveBlur', name: textData.onlyRemoveBlur, type: 'toggleSwitch'},
+				//{id: 'settings2', name: "設定2", type: 'textBox'},
+				//{id: 'settings3', name: "設定3", type: 'toggleSwitch'},
+			];
+			let contents = createPage(pageName,pageName,textData.functionName);
+			let mainContent = contents.main;
+			mainContent.innerHTML = `
+			<div class="${pageName}MainContents">
+			</div>
+			`;
+			settingEntries.map(setting => {
+				let settingElement = createSettingsElement(setting,thisStoredSettings[setting.id]);
+				let container = document.createElement('div');
+				container.className = 'setting-item';
+				let label = document.createElement('span');
+				label.className = `${setting.id}`;
+				label.textContent = setting.name;
+				container.appendChild(label);
+				container.appendChild(settingElement);
+				mainContent.appendChild(container);
+			});
+			/*
+			let style = document.createElement('style');
+			style.className = `settingCss ${pageName}`
+			style.textContent = `
+
+			`;
+			*/
+
+			document.head.appendChild(style);
+			pages[pageName].saveFunction = save;
+			function save(){
+				const settingsToSave = {};
+				settingEntries.forEach(setting => {
+					let value,selectedRadio;
+					switch(setting.type){
+						case 'radioButton':
+							selectedRadio = document.querySelector(`input[name="${setting.id}"]:checked`);
+							value = selectedRadio ? parseInt(selectedRadio.value, 10) : null;
+							break;
+
+						case 'textBox':
+							value = document.getElementById(setting.id).value;
+							break;
+
+						case 'toggleSwitch':
+							value = document.querySelector(`[id="${setting.id}"] input[type="checkbox"]`).checked;
+							break;
+					}
+					settingsToSave[setting.id] = value;
+				});
+				localStorage.setItem(pageName, JSON.stringify(settingsToSave));
+				script_settings['Show_all_Medias'] = settingsToSave
 			}
 		}
 		function createAdvancedPage(){
@@ -2027,10 +2589,10 @@
 			mainContainer.style.flexDirection = "column";
 			let showTweetDataContainer = makeInputMenu('showTweetData');
 			mainContainer.appendChild(showTweetDataContainer);
-			
+
 			let showUserByScreenNameDataContainer = makeInputMenu('showUserByScreenNameData');
 			mainContainer.appendChild(showUserByScreenNameDataContainer);
-			
+
 			let showUserByUserIDContainer = makeInputMenu('showUserByUserID');
 			mainContainer.appendChild(showUserByUserIDContainer);
 			mainContent.appendChild(mainContainer);
@@ -2045,7 +2607,7 @@
 				title.className = "item_name";
 				title.innerText = name;
 				container.appendChild(title);
-			
+
 				let inputElement = document.createElement('input');
 				inputElement.className = `${name}InputElement`;
 				inputElement.type = 'text';
@@ -2063,7 +2625,7 @@
 						useMethod.appendChild(option);
 					});
 					selectContainer.appendChild(useMethod);
-				
+
 					isForce = document.createElement('select');
 					isForce.className = `${name}SelectElement`;
 					['false','true'].forEach(value => {
@@ -2080,7 +2642,7 @@
 				button.addEventListener('click', whenButtonClicked);
 				selectContainer.appendChild(button);
 				container.appendChild(selectContainer);
-			
+
 				return container;
 				async function whenButtonClicked(){
 					const inputValue = inputElement?.value;
@@ -2243,7 +2805,7 @@
 				}
 			}
 			pages[pageName].saveFunction = save;
-			function save(){
+			async function save(){
 				let data = [];
 				let names = [];
 				let hasDuplicate = false;
@@ -2264,7 +2826,7 @@
 						}
 
 						// URLをBase64エンコード
-						let encodedUrl = encodeBase64(url.replace('https://discord.com/api/webhooks/', ''));
+						let encodedUrl = await encodeBase64(url.replace('https://discord.com/api/webhooks/', ''));
 						if(names.includes(name)){
 							hasDuplicate = true;
 							elem.querySelector('.webhook-name').style.backgroundColor = 'red';
@@ -2377,6 +2939,46 @@
 			makeChangePageButton(name,buttonText)
 			return {"all": page,"header": header,"main": contentContainer,"footer": footer};
 		}
+		function createSettingsElement(setting, storedValue){
+			let element,checkbox,slider;
+			switch(setting.type){
+				case 'radioButton':
+					element = document.createElement('div');
+					setting.option.forEach((opt, index) => {
+						let label = document.createElement('label');
+						let radioButton = document.createElement('input');
+						radioButton.type = 'radio';
+						radioButton.name = setting.id;
+						radioButton.value = index;
+						if(storedValue === index){
+							radioButton.checked = true;
+						}
+						label.appendChild(radioButton);
+						label.appendChild(document.createTextNode(opt));
+						element.appendChild(label);
+					});
+					break;
+				case 'textBox':
+					element = document.createElement('input');
+					element.type = 'text';
+					element.id = setting.id;
+					element.value = storedValue || '';
+					break;
+				case 'toggleSwitch':
+					element = document.createElement('label');
+					element.className = 'switch';
+					element.id = setting.id;
+					checkbox = document.createElement('input');
+					checkbox.type = 'checkbox';
+					checkbox.checked = storedValue || false;
+					slider = document.createElement('span');
+					slider.className = 'slider';
+					element.appendChild(checkbox);
+					element.appendChild(slider);
+					break;
+			}
+			return element;
+		}
 		function showPage(name){
 			for(let key in pages){
 				if(key === name){
@@ -2395,14 +2997,24 @@
 			homeButton.addEventListener('click', () => showPage(name));
 			nav.appendChild(homeButton);
 		}
-		function saveAll(){
+		async function saveAll(){
 			for(let key in pages){
-				pages[key].saveFunction();
+				await pages[key].saveFunction();
 			}
 			container.remove();
 			document.head.querySelectorAll('style.settingCss').forEach(s=>{
 				s.remove();
 			});
+			storedSettings = {
+				'Make_Twitter_little_useful': JSON.parse(localStorage.getItem('Make_Twitter_little_useful') || '{}'),
+				'webhook_brings_tweets_to_discord': JSON.parse(localStorage.getItem('webhook_brings_tweets_to_discord') || '{}'),
+				'Hello_tweet_where_are_you_from': JSON.parse(localStorage.getItem('Hello_tweet_where_are_you_from') || '{}'),
+				'Show_me_your_Pixiv': JSON.parse(localStorage.getItem('Show_me_your_Pixiv') || '{}'),
+				'Note_Tweet_expander': JSON.parse(localStorage.getItem('Note_Tweet_expander') || '{}'),
+				'sneakilyFavorite': JSON.parse(localStorage.getItem('sneakilyFavorite') || '{}'),
+				'Engagement_Restorer': JSON.parse(localStorage.getItem('Engagement_Restorer') || '{}'),
+				'Show_all_Medias': JSON.parse(localStorage.getItem('Show_all_Medias') || '{}'),
+			}
 		}
 		let style = document.createElement('style');
 		style.className = "settingCss"
@@ -2420,6 +3032,8 @@
 		`;
 		document.head.appendChild(style);
 		creategGeneralPage();
+		createShowAllMediasSettingPage();
+		createShowMeYourPixiv();
 		createWebhook_brings_tweets_to_discordPage();
 		createAdvancedPage();
 		createDebugPage();
@@ -2480,7 +3094,8 @@
 		overlay.appendChild(alertBox);
 		document.body.appendChild(overlay);
 	}
-	async function request(object, maxRetries = 0, timeout = 60000){
+
+	function request(object, maxRetries = 0, timeout = 60000){
 		let retryCount = 0;
 		while(retryCount <= maxRetries){
 			try{
@@ -2497,10 +3112,12 @@
 							return resolve(responseDetails);
 						},
 						ontimeout: function(responseDetails){
-							reject(`[request]time out:\nresponse ${responseDetails}`);
+							console.warn(responseDetails);
+							return reject(`[request]time out:\nresponse ${responseDetails}`);
 						},
 						onerror: function(responseDetails){
-							reject(`[request]error:\nresponse ${responseDetails}`);
+							console.warn(responseDetails);
+							return reject(`[request]error:\nresponse ${responseDetails}`);
 						}
 					});
 				});
@@ -2513,6 +3130,1663 @@
 			}
 		}
 	}
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////CTA/////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+	let ctaEngagementStore = {};
+	async function createTwitterArticle(targetTweetData,tweetId,appendParentNode,noAppend = false){
+		let texts = {};
+		texts.ja = {
+			"units": "万",
+			"roundingScale": 10000,
+			"decimalPlaces": 2,
+			"retweet": "リツイート",
+			"like": "いいね",
+			"bookmark": "ブックマーク",
+			"doneRetweet": "リツイートしました",
+			"doneLike": "いいねしました",
+			"doneBookmark": "ブックマークしました",
+			"faildRetweet": "リツイートに失敗しました",
+			"faildUnRetweet": "リツイートの取り消しに失敗しました",
+			"faildLike": "いいねにしっぱいしました",
+			"faildUnLike": "いいねの取り消しに失敗しました",
+			"faildBookmark": "ブックマークに失敗しました",
+			"faildUnBookmark": "ブックマークの取り消しに失敗しました",
+			"unRetweet": "リツイートを取り消しました",
+			"unLike": "いいねを取り消しました",
+			"unBookmark": "ブックマークを取り消しました",
+		};
+		texts.en = {
+			"units": "k",
+			"roundingScale": 1000,
+			"decimalPlaces": 1,
+			"retweet": "Retweet",
+			"like": "Like",
+			"bookmark": "Bookmark",
+			"doneRetweet": "Retweeted",
+			"doneLike": "Liked",
+			"doneBookmark": "Bookmarked",
+			"faildRetweet": "Failed to Retweet",
+			"faildUnRetweet": "Failed to Undo Retweet",
+			"faildLike": "Failed to Like",
+			"faildUnLike": "Failed to Undo Like",
+			"faildBookmark": "Failed to Bookmark",
+			"faildUnBookmark": "Failed to Undo Bookmark",
+			"unRetweet": "Retweet Undone",
+			"unLike": "Like Undone",
+			"unBookmark": "Bookmark Undone",
+		};
+		let textData = GetCookie("lang") === "ja" ? texts.ja : texts.en;
+		let night_mode = getDarkMode() || 0;
+		let colors = {
+			"fontColor": ['rgb(15, 20, 25)','rgb(247, 249, 249)','rgb(231, 233, 234)'][night_mode],
+			"fontColorDark": ['rgb(83, 100, 113)','rgb(139, 152, 165)','rgb(113, 118, 123)'][night_mode],
+			"backgroundColor": ['rgba(255,255,255,1.00)','rgb(21, 32, 43)','rgba(0, 0, 0, 1.00)'][night_mode],
+			"borderBottomColor": ['rgb(239, 243, 244)','rgb(56, 68, 77)','rgb(47, 51, 54)'][night_mode],
+		}
+		let tweetData = await tweetDataProsess(targetTweetData,tweetId);
+		let quotedTweetData = targetTweetData.quoted_status_result?.result || targetTweetData.quoted_status || null;
+		if(quotedTweetData){
+			quotedTweetData = await tweetDataProsess(quotedTweetData);
+		}
+		let tweetNode = document.createElement('div');
+		let headerNode = createHeaderNode();
+		let avatarNode = createAvatarNode();
+		let authorNode = createAuthorNode();
+		let textNode = createTextNode();
+		let mediaNode = createMediaNode();
+		let quotedNode = createQuotedNode();
+		let engagementsNode = createEngagementNode();
+		tweetNode.innerHTML = `
+			<div data-testid="cellInnerDiv" style="width: 100%;">
+				<div class="cta-base cta-display-block cta-outline-style-none" style="border-bottom-color: ${colors.borderBottomColor}; border-bottom-width: 1px;">
+					<div class="cta-base">
+						<article aria-labelledby="" role="article" tabindex="0" class="cta-base cta-flex-direction-row cta-overflow-hidden cta-padding-right cta-padding-left cta-transition-duration cta-transition-property cta-outline-style-none cta-cursor-pointer" data-testid="tweet">
+							<div class="cta-base cta-flex-direction-column cta-flex-grow-1 cta-flex-shrink-1">
+								<div class="cta-base cta-flex-grow-1 cta-flex-shrink-1 cta-outline-style-none" cta-id="header">
+								<!--ヘッダー-->
+									<div class="cta-base cta-flex-direction-row" cta-id="avatar-place">
+									<!--アバター-->
+										<div class="cta-base cta-flex-basis-0px cta-flex-grow-1 cta-justify-content-center cta-padding-bottom" cta-id="main">
+										<!--ユーザー名とか-->
+										<!--ツイートのテキスト-->
+										<!--メディア-->
+										<!--引用-->
+										<!--エンゲージメントとか-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		`.replace(/\t|\n/g, '');
+		if(headerNode)tweetNode.querySelector('[cta-id="header"]').insertBefore(headerNode.firstChild, tweetNode.querySelector('[cta-id="header"]').firstChild);
+		if(avatarNode)tweetNode.querySelector('[cta-id="avatar-place"]').insertBefore(avatarNode.firstChild, tweetNode.querySelector('[cta-id="avatar-place"]').firstChild);
+		if(authorNode)tweetNode.querySelector('[cta-id="main"]').appendChild(authorNode.firstChild);
+		if(textNode)tweetNode.querySelector('[cta-id="main"]').appendChild(textNode.firstChild);
+		if(mediaNode)tweetNode.querySelector('[cta-id="main"]').appendChild(mediaNode.firstChild);
+		if(quotedNode)tweetNode.querySelector('[cta-id="main"]').appendChild(quotedNode.firstChild);
+		if(engagementsNode)tweetNode.querySelector('[cta-id="main"]').appendChild(engagementsNode.firstChild);
+		if(noAppend){
+			return tweetNode.firstChild;
+		}else{
+			appendParentNode.appendChild(tweetNode.firstChild);
+			return "finished";
+		}
+		async function tweetDataProsess(tweetData,tweetId){
+			let twitter_user_data = {};
+			let twitter_tweet_data = {};
+			let tweet_user_data_json = {};
+			let tweet_tweet_data_json = {};
+			tweet_user_data_json = tweetData.core?.user_results?.result || tweetData.user?.result || tweetData.user;
+			tweet_tweet_data_json = tweetData.legacy || tweetData;
+			if(!(tweet_user_data_json&&tweet_tweet_data_json)){
+				tweetData = await getTweetData(tweetId,'graphQL',true);
+				tweet_user_data_json = tweetData.core?.user_results?.result || tweetData.user?.result || tweetData.user;
+				tweet_tweet_data_json = tweetData.legacy || tweetData;
+			}
+			twitter_user_data.ID = tweet_user_data_json.rest_id || tweet_user_data_json.id_str;
+			twitter_user_data.screen_name = tweet_user_data_json.legacy?.screen_name || tweet_user_data_json.screen_name;
+			twitter_user_data.name = tweet_user_data_json.legacy?.name || tweet_user_data_json.name;
+			twitter_user_data.profile_image = tweet_user_data_json.legacy?.profile_image_url_https || tweet_user_data_json.profile_image_url_https;
+			twitter_user_data.urls = tweet_user_data_json.legacy?.entities || tweet_user_data_json.entities || [];
+			twitter_user_data.is_blue_verified = tweet_user_data_json.is_blue_verified || false;
+			twitter_user_data.profile_image_shape = tweet_user_data_json.profile_image_shape || "Circle";
+			twitter_user_data.protected = tweet_user_data_json.legacy?.protected || tweet_user_data_json.protected || false;
+			twitter_user_data.verified_type = tweet_user_data_json.legacy?.verified_type || false;
+			twitter_tweet_data.hashtags = tweet_tweet_data_json.entities.hashtags || [];
+			twitter_tweet_data.user_mentions = tweet_tweet_data_json.entities.user_mentions || [];
+			twitter_tweet_data.symbols = tweet_tweet_data_json.entities.symbols || [];
+			twitter_tweet_data.full_text = tweet_tweet_data_json.full_text || "";
+			twitter_tweet_data.extended_entities = tweet_tweet_data_json.extended_entities;
+			twitter_tweet_data.retweet_count = tweet_tweet_data_json.retweet_count;
+			twitter_tweet_data.favorite_count = tweet_tweet_data_json.favorite_count;
+			twitter_tweet_data.reply_count = tweet_tweet_data_json.reply_count || 0;
+			twitter_tweet_data.id = tweet_tweet_data_json.id_str;
+			twitter_tweet_data.created_at = tweet_tweet_data_json.created_at;
+			twitter_tweet_data.date = new Date(tweet_tweet_data_json.created_at);
+			twitter_tweet_data.urls = tweet_tweet_data_json.entities.urls;
+			twitter_tweet_data.media = twitter_tweet_data.extended_entities.media;
+			twitter_tweet_data.favorited = ctaEngagementStore[twitter_tweet_data.id]?.favorited || tweet_tweet_data_json.favorited || false;
+			twitter_tweet_data.retweeted = ctaEngagementStore[twitter_tweet_data.id]?.retweeted || tweet_tweet_data_json.retweeted || false;
+			twitter_tweet_data.bookmarked = ctaEngagementStore[twitter_tweet_data.id]?.bookmarked || tweet_tweet_data_json.bookmarked || false;
+			twitter_tweet_data.analytics = tweetData.views?.count;
+			twitter_tweet_data.lang = tweet_tweet_data_json.lang;
+			try{
+				if(tweetData.note_tweet){
+					let note_tweet = tweetData.note_tweet?.note_tweet_results.result;
+					twitter_tweet_data.full_text = note_tweet.text;
+					twitter_tweet_data.urls = note_tweet.entity_set.urls;
+					twitter_tweet_data.hashtags = note_tweet.entity_set.hashtags || [];
+					twitter_tweet_data.user_mentions = note_tweet.entity_set.user_mentions || [];
+					twitter_tweet_data.symbols = note_tweet.entity_set.symbols || [];
+				}
+			}catch{}
+			if(twitter_tweet_data.favorited === true){
+				if(!ctaEngagementStore[twitter_tweet_data.id])ctaEngagementStore[twitter_tweet_data.id] = {};
+				ctaEngagementStore[twitter_tweet_data.id].favorited = true;
+			}
+			if(twitter_tweet_data.retweeted === true){
+				if(!ctaEngagementStore[twitter_tweet_data.id])ctaEngagementStore[twitter_tweet_data.id] = {};
+				ctaEngagementStore[twitter_tweet_data.id].retweeted = true;
+			}
+			if(twitter_tweet_data.bookmarked === true){
+				if(!ctaEngagementStore[twitter_tweet_data.id])ctaEngagementStore[twitter_tweet_data.id] = {};
+				ctaEngagementStore[twitter_tweet_data.id].bookmarked = true;
+			}
+			return {"tweetData": twitter_tweet_data, "userData": twitter_user_data};
+		}
+		function createHeaderNode(){
+			let node = document.createElement('div');
+			node.innerHTML = `
+				<div class="cta-base">
+					<div class="cta-base cta-flex-direction-row">
+							<div style="padding-top: calc(2.122%);" class="cta-base cta-flex-basis-0px cta-flex-grow-1"></div>
+					</div>
+				</div>
+			`.replace(/\t|\n/g, '');
+			return node;
+		}
+		function createAvatarNode(){
+			let node = document.createElement('div');
+			node.innerHTML = `
+				<div class="cta-base cta-flex-grow-0 cta-margin-right-big cta-flex-basis-icon cta-align-items-center" cta-id="avatar">
+					<div class="cta-base" data-testid="Tweet-User-Avatar">
+						<div class="cta-base cta-flex-grow-0 cta-flex-shrink-1 cta-width-100per">
+							<div class="cta-base cta-overflow-visible cta-display-block" style="width: 40px; height: 40px;" data-testid="UserAvatar-Container-${tweetData.userData.screen_name}">
+								<div class="cta-display-block cta-width-100per" style="padding-bottom: 100%;"></div>
+								<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+									<div class="cta-base cta-display-block cta-height-100per cta-width-100per cta-position-absolute cta-arrangement-center cta-overflow-visible">
+										<div class="cta-display-block cta-width-100per" style="padding-bottom: 100%;"></div>
+										<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+											<div class="cta-base ${tweetData.userData.profile_image_shape === "Square" ? 'cta-shape-square' : 'cta-shape-circle'} cta-overflow-hidden cta-position-absolute cta-icon-position-fix" style="width: calc(100% + 4px); height: calc(100% + 4px);">
+												<a href="/${tweetData.userData.screen_name}" aria-hidden="true" role="link" tabindex="-1" class="cta-base cta-height-100per cta-width-100per cta-transition-duration cta-transition-property cta-outline-style-none cta-cursor-pointer" style="background-color: rgba(0, 0, 0, 0);" target="_blank" rel="noopener noreferrer nofollow">
+													<div class="cta-base ${tweetData.userData.profile_image_shape === "Square" ? 'cta-shape-square' : 'cta-shape-circle'} cta-overflow-hidden cta-pointer-events-none cta-position-absolute cta-arrangement-center" style="width: calc(100% - 4px); height: calc(100% - 4px);">
+														<div class="cta-base cta-height-100per cta-width-100per" style="background-color: rgba(0, 0, 0, 0);"></div>
+													</div>
+													<div class="cta-base ${tweetData.userData.profile_image_shape === "Square" ? 'cta-shape-square' : 'cta-shape-circle'} cta-overflow-hidden cta-pointer-events-none cta-position-absolute cta-arrangement-center" style="width: calc(100% - 4px); height: calc(100% - 4px);">
+														<div class="cta-base cta-height-100per cta-width-100per"></div>
+													</div>
+													<div class="cta-base ${tweetData.userData.profile_image_shape === "Square" ? 'cta-shape-square' : 'cta-shape-circle'} cta-overflow-hidden cta-pointer-events-none cta-position-absolute cta-arrangement-center" style="background-color: ${colors.backgroundColor}; width: calc(100% - 4px); height: calc(100% - 4px);">
+														<div class="cta-base cta-display-block cta-overflow-hidden" style="">
+															<div class="cta-display-block cta-width-100per" style="padding-bottom: 100%;"></div>
+															<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+																<div aria-label="" class="cta-base cta-flex-basis-auto cta-overflow-hidden cta-z-index-0" style="position: absolute; inset: 0px;">
+																	<div class="cta-base cta-transparent-background cta-background-position-center cta-background-no-repeat cta-bottom-0px cta-height-100per cta-left-0px cta-position-absolute cta-right-0px cta-top-0px cta-width-100per cta-z-index--1 cta-background-size-cover" style="background-image: url(&quot;${tweetData.userData.profile_image}&quot;);"></div>
+																	<img alt="" draggable="true" src="${tweetData.userData.profile_image}" class="cta-img-css">
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="cta-base ${tweetData.userData.profile_image_shape === "Square" ? 'cta-shape-square' : 'cta-shape-circle'} cta-overflow-hidden cta-position-absolute cta-arrangement-center" style="width: calc(100% - 4px); height: calc(100% - 4px);">
+														<div class="cta-base cta-icon-box-shadow cta-height-100per cta-width-100per cta-transition-duration cta-transition-property cta-outline-style-none"></div>
+													</div>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			`.replace(/\t|\n/g, '');
+			return node;
+		}
+		function createAuthorNode(){
+			let authorNode = document.createElement('div');
+			authorNode.innerHTML = `
+				<div class="cta-base cta-margin-bottom-small">
+					<div class="cta-base cta-align-items-start cta-flex-direction-row cta-justify-content-space-between">
+						<div class="cta-base cta-align-items-baseline cta-flex-direction-row cta-flex-shrink-1" cta-id="Name-Place">
+							<div class="cta-base cta-flex-shrink-1 cta-max-width-100per cta-outline-style-none">
+								<div class="cta-base cta-flex-shrink-1 cta-max-width-100per cta-outline-style-none cta-align-items-center cta-flex-direction-row" id="" data-testid="User-Name">
+									<div class="cta-base cta-align-items-center cta-flex-direction-row cta-flex-shrink-1 cta-max-width-100per">
+										<div class="cta-base cta-flex-shrink-1 cta-max-width-100per">
+											<a href="/${tweetData.userData.screen_name}" role="link" class="cta-base cta-flex-shrink-1 cta-max-width-100per cta-outline-style-none cta-cursor-pointer" target="_blank" rel="noopener noreferrer nofollow">
+												<div class="cta-base cta-align-items-center cta-flex-direction-row cta-flex-shrink-1 cta-max-width-100per">
+													<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family cta-font-size cta-line-height cta-font-bold cta-align-items-center cta-display-flex cta-overflow-hidden cta-white-space-nowrap" style="color: ${colors.fontColor}; text-overflow: unset;">
+														<span class="cta-text2-css cta-max-width-100per cta-overflow-hidden cta-white-space-nowrap cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;">
+															<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;">${tweetData.userData.name}</span>
+														</span>
+													</div>
+													<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family cta-font-size cta-line-height cta-font-normal cta-display-inline-flex cta-flex-direction-row cta-flex-shrink-0" style="color: ${colors.fontColor}; text-overflow: unset;">
+														<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family cta-align-items-center cta-display-inline-flex" style="text-overflow: unset;" cta-id="account-status">
+														<!--鍵のアイコンとか-->
+														</span>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="cta-base cta-flex-direction-row cta-flex-shrink-1" style="margin-left: 4px;">
+										<div class="cta-base cta-align-items-baseline cta-flex-direction-row cta-flex-shrink-1">
+											<div class="cta-base cta-flex-shrink-1 cta-max-width-100per">
+												<a href="/${tweetData.userData.screen_name}" role="link" tabindex="-1" class="cta-base cta-flex-shrink-1 cta-max-width-100per cta-outline-style-none cta-cursor-pointer" target="_blank" rel="noopener noreferrer nofollow">
+													<div dir="ltr" class="cta-text-css cta-max-width-100per cta-overflow-hidden cta-white-space-nowrap cta-min-width-0px cta-overflow-wrap-break-word cta-provisional-font-family cta-font-size cta-line-height cta-font-normal cta-flex-direction-row cta-font-feature-settings-ss01" style="color: ${colors.fontColorDark}; text-overflow: unset;">
+														<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;">@${tweetData.userData.screen_name}</span>
+													</div>
+												</a>
+											</div>
+											<div dir="ltr" aria-hidden="true" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family cta-font-size cta-line-height cta-font-normal cta-flex-shrink-0 cta-side-padding-4px" style="color: ${colors.fontColorDark}; text-overflow: unset;">
+												<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;">·</span>
+											</div>
+											<div class="cta-base cta-flex-direction-row cta-flex-shrink-0">
+												<a href="/${tweetData.userData.screen_name}/status/${tweetData.tweetData.id}" dir="ltr" aria-label="" role="link" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family cta-font-size cta-line-height cta-font-normal cta-display-inline-flex cta-flex-shrink-0 cta-flex-wrap-wrap cta-gap-4px cta-white-space-nowrap cta-cursor-pointer" style="color: ${colors.fontColorDark}; text-overflow: unset;" target="_blank" rel="noopener noreferrer nofollow">
+													<time datetime="${tweetData.tweetData.date.toISOString()}">${tweetData.tweetData.date.toLocaleDateString(GetCookie('lang'), {month: 'long', day: 'numeric'})}</time>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cta-base" style="margin-left: 8px;">
+							<div class="cta-base cta-align-items-center cta-flex-direction-row cta-gap-8px cta-justify-content-space-between">
+								<div class="cta-base cta-align-items-center cta-display-flex cta-flex-direction-row">
+									<div class="cta-base">
+										<div class="cta-base cta-flex-direction-row cta-justify-content-flex-start">
+											<div aria-expanded="false" aria-haspopup="menu" aria-label="もっと見る" role="button" tabindex="0" class="cta-base cta-justify-content-center cta-min-height-20px cta-overflow-visible cta-user-select-none cta-cursor-pointer cta-outline-style-none" data-testid="caret">
+												<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-provisional-font-family cta-font-size cta-line-height cta-font-normal cta-align-items-center cta-display-flex cta-justify-content-flex-start cta-transition-duration cta-svg-transition-property-color cta-white-space-nowrap" style="color: ${colors.fontColorDark}; text-overflow: unset;">
+													<div class="cta-base cta-display-inline-flex">
+														<div class="cta-base cta-display-inline-flex cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px cta-transparent-background cta-shape-circle cta-margin--8px cta-transition-duration cta-transition-property cta-outline-style-none"></div>
+														<svg viewBox="0 0 24 24" aria-hidden="true" class="cta-display-inline-block cta-fill-currentcolor cta-max-width-100per cta-position-relative cta-vertical-align-text-bottom cta-user-select-none cta-svg-height cta-svg-width">
+															<g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g>
+														</svg>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			`.replace(/\t|\n/g, '');
+			authorNode = appendAccountStatusIcon(authorNode,tweetData);
+			return authorNode;
+		}
+		function createTextNode(isQuoted = false){
+			let currentTweetData;
+			if(isQuoted){
+				currentTweetData = quotedTweetData;
+			}else{
+				currentTweetData = tweetData;
+			}
+			if(!currentTweetData.tweetData.full_text)return null;
+			let textNode = document.createElement('div');
+			textNode.innerHTML = `<div class="cta-base" cta-id="tweetMainText"><div dir="auto" lang="${currentTweetData.tweetData.lang}" class="cta-text-css cta-box-orient-vertical cta-max-width-100per cta-overflow-hidden cta-min-width-0px cta-overflow-wrap-break-word cta-provisional-font-family cta-font-size cta-line-height cta-font-normal cta-position-relative" style="color: ${colors.fontColor}; text-overflow: unset; display: -webkit-box; ${isQuoted === true ? '' : "margin-top: 4px;"}" id="" data-testid="tweetText"><span class="cta-text2-css rcta-min-width-0px cta-overflow-wrap-break-word cta-font-family">${tweetTextProsser(currentTweetData.tweetData.full_text,currentTweetData.tweetData.hashtags,currentTweetData.tweetData.user_mentions,currentTweetData.tweetData.symbols,currentTweetData.tweetData.urls,currentTweetData.tweetData.media)}</span></div></div>`;
+			return textNode;
+		}
+		function createMediaNode(isQuoted = false){
+			let currentTweetData;
+			if(isQuoted){
+				currentTweetData = quotedTweetData;
+			}else{
+				currentTweetData = tweetData;
+			}
+			if(!currentTweetData.tweetData.media)return null;
+			let medias = currentTweetData.tweetData.media;
+			let mediaNode = document.createElement('div');
+			mediaNode.innerHTML = `
+				<div aria-labelledby="" class="cta-base cta-gap-12px cta-margin-top">
+					<div class="cta-base cta-gap-4px">
+						<div class="cta-base">
+							<div class="cta-base">
+								<div class="cta-base cta-border cta-border-radius-16px cta-overflow-hidden cta-transition-duration cta-transition-property cta-outline-style-none" cta-id="mediaRoot">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			`.replace(/\t|\n/g, '');
+			let mediaBox = document.createElement('div');
+			switch(medias.length){
+				case 1:
+					let imageHeight;
+					if(medias[0].type === "photo"){
+						const elementWidth = appendParentNode.clientWidth;
+						const displayWidth = elementWidth * 0.856;
+						const imagesize = medias[0].original_info || Object.entries(medias[0].sizes).filter(([key]) => key !== 'thumb').reduce((largest, current) => current[1].w > largest[1].w ? current : largest)[1];
+						const aspectRatio = (imagesize.width || imagesize.w) / (imagesize.height || imagesize.h);
+						imageHeight = displayWidth / aspectRatio;
+					}
+					mediaBox.innerHTML = `
+						<div class="cta-base" cta-id="media1" style="max-height:82vh;width: 100%; ${medias[0].type === "photo" ? `height:${imageHeight}px` : ''}">
+						<!--ここにメディア-->
+						</div>
+					`.replace(/\t|\n/g, '');
+				break;
+				case 2:
+					mediaBox.innerHTML = `
+						<div class="cta-base cta-display-block cta-overflow-hidden">
+							<div class="cta-display-block cta-width-100per" style="padding-bottom: 56.25%;"></div>
+							<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+								<div class="cta-base cta-height-100per cta-width-100per cta-flex-direction-row">
+									<div class="cta-base cta-flex-basis-0px cta-flex-grow-1 cta-position-relative cta-margin-right-small" cta-id="media1">
+									<!--ここにメディア-->
+									</div>
+									<div class="cta-base cta-flex-basis-0px cta-flex-grow-1 cta-position-relative" cta-id="media2">
+									<!--ここにメディア-->
+									</div>
+								</div>
+							</div>
+						</div>
+					`.replace(/\t|\n/g, '');
+				break;
+				case 3:
+					mediaBox.innerHTML = `
+						<div class="cta-base cta-display-block cta-overflow-hidden">
+							<div class="cta-display-block cta-width-100per" style="padding-bottom: 56.25%;"></div>
+							<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+								<div class="cta-base cta-height-100per cta-width-100per cta-flex-direction-row">
+									<div class="cta-base cta-flex-basis-0px cta-flex-grow-1 cta-position-relative cta-margin-right-small" cta-id="media1">
+									<!--ここにメディア-->
+									</div>
+									<div class="cta-base cta-flex-basis-0px cta-flex-grow-1 cta-flex-direction-column">
+										<div class="cta-base cta-flex-basis-0px cta-flex-grow-1 cta-position-relative cta-margin-bottom-small" cta-id="media2">
+										<!--ここにメディア-->
+										</div>
+										<div class="cta-base cta-flex-basis-0px cta-flex-grow-1 cta-position-relative" cta-id="media3">
+										<!--ここにメディア-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					`.replace(/\t|\n/g, '');
+				break;
+				case 4:
+					mediaBox.innerHTML = `
+						<div class="cta-base cta-display-block cta-overflow-hidden">
+							<div class="cta-display-block cta-width-100per" style="padding-bottom: 56.25%;"></div>
+							<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+								<div class="cta-base cta-height-100per cta-width-100per cta-flex-direction-column">
+									<div class="cta-base cta-margin-bottom-small cta-flex-basis-0px cta-flex-grow-1 cta-flex-direction-row">
+										<div class="cta-base cta-flex-basis-0px cta-flex-grow-1 cta-position-relative cta-margin-right-small" cta-id="media1">
+										<!--ここにメディア-->
+										</div>
+										<div class="cta-base cta-flex-basis-0px cta-flex-grow-1 cta-position-relative" cta-id="media2">
+										<!--ここにメディア-->
+										</div>
+									</div>
+									<div class="cta-base cta-flex-basis-0px cta-flex-grow-1 cta-flex-direction-row">
+										<div class="cta-base cta-flex-basis-0px cta-flex-grow-1 cta-position-relative cta-margin-right-small" cta-id="media3">
+										<!--ここにメディア-->
+										</div>
+										<div class="cta-base cta-flex-basis-0px cta-flex-grow-1 cta-position-relative" cta-id="media4">
+										<!--ここにメディア-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					`.replace(/\t|\n/g, '');
+				break;
+			}
+			for(let i=0;i<medias.length;i++){
+				let media = medias[i];
+				let tmp = document.createElement('div');
+				switch(media.type){
+					case "photo":
+						tmp.innerHTML = `
+							<div class="cta-base cta-flex-grow-1 cta-height-100per cta-width-100per">
+								<a href="${media.expanded_url.replace(/1$/,i+1)}" role="link" class="cta-base cta-height-100per cta-outline-style-none cta-cursor-pointer" target="_blank" rel="noopener noreferrer nofollow">
+									<div class="cta-base cta-bottom-0px cta-left-0px cta-overflow-hidden cta-position-absolute cta-right-0px cta-top-0px">
+										<div aria-label="画像" class="cta-base cta-flex-basis-auto cta-overflow-hidden cta-z-index-0" style="position: absolute; inset: 0px; margin: 0px;" data-testid="tweetPhoto">
+											<div class="cta-base cta-transparent-background cta-background-position-center cta-background-no-repeat cta-bottom-0px cta-height-100per cta-left-0px cta-position-absolute cta-right-0px cta-top-0px cta-width-100per cta-z-index--1 cta-background-size-cover" style="background-image: url(&quot;${media.media_url_https}&quot;); ${medias.length === 1 ? "background-size: 100% auto;" : ""}"></div>
+											<img alt="画像" draggable="true" src="${media.media_url_https}" class="cta-img-css">
+										</div>
+									</div>
+								</a>
+							</div>
+						`.replace(/\t|\n/g, '');
+					break;
+					case "video":
+						tmp.innerHTML = `
+							<div class="cta-base cta-height-100per" data-testid="tweetPhoto">
+								<div class="cta-base">
+									<div class="cta-base cta-display-block cta-overflow-hidden">
+										<div class="cta-display-block cta-width-100per" style="padding-bottom: 56.0784%;"></div>
+										<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+											<div class="cta-base cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px" data-testid="placementTracking">
+												<div class="cta-base cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px" data-testid="videoPlayer">
+													<div class="cta-base cta-display-block cta-overflow-hidden cta-position-relative cta-height-100per cta-width-100per">
+														<div class="cta-display-block cta-width-100per" style="padding-bottom: 56.0784%;"></div>
+														<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+															<div data-testid="videoComponent" style="height: 100%; position: relative; transform: translateZ(0px); width: 100%;">
+																<div style="height: 100%; position: absolute; width: 100%;">
+																	<div style="position: relative; width: 100%; height: 100%; background-color: transparent; overflow: hidden;">
+																		<video preload="none" tabindex="-1" playsinline="" aria-label="埋め込み動画" style="width: 100%; height: 100%; position: absolute; background-color: black; top: 0%; left: 0%; transform: rotate(0deg) scale(1.005);" poster="${media.media_url_https}" src="${media.video_info.variants.filter(obj => obj.content_type !== 'application/x-mpegURL').reduce((a, b) => a.bitrate > b.bitrate ? a : b).url.split('?')[0]}" type="video/mp4" controls=""></video>
+																	</div>
+																</div>
+																<!--
+																<div tabindex="0" class="cta-base cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px">
+																	<div class="cta-base cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px">
+																		<div class="cta-base cta-bottom-0px cta-cursor-pointer cta-left-0px cta-position-absolute cta-right-0px cta-top-0px" data-testid="video-player-mini-ui-"></div>
+																		<div class="cta-base cta-flex-direction-row cta-position-absolute r-rki7wi r-161ttwi cta-pointer-events-none">
+																			<div class="cta-base cta-align-items-center r-k200y r-z2wwpe r-z80fyv cta-justify-content-center r-13w96dm cta-flex-direction-row r-mk0yit r-rjfia r-6t5ypu r-kicko2 r-1dpl46z r-notknq cta-pointer-events-none">
+																				<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family r-q4m81j r-n6v787 r-1cwl3u0 cta-font-normal cta-user-select-none" style="color: rgb(255, 255, 255); text-overflow: unset;">
+																					<div class="cta-base cta-align-items-center cta-display-flex cta-flex-direction-row">
+																						<div aria-label="一時停止" role="button" tabindex="0" class="cta-base cta-display-inline-flex r-tuq35u cta-pointer-events-auto cta-cursor-pointer cta-transition-duration cta-transition-property cta-outline-style-none">
+																							<svg viewBox="0 0 24 24" aria-hidden="true" class="cta-display-inline-block cta-fill-currentcolor cta-max-width-100per cta-position-relative cta-vertical-align-text-bottom cta-user-select-none r-tbmifm r-16eto9q">
+																								<g><path d="M4 2h5v20H4V2zm11 20h5V2h-5v20z"></path></g>
+																							</svg>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div style="transition-duration: 250ms; transition-property: opacity, height; transition-timing-function: ease; will-change: opacity; opacity: 0;"></div>
+																	</div>
+																</div>
+																-->
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						`.replace(/\t|\n/g, '');
+					break;
+					case "animated_gif":
+						tmp.innerHTML = `
+							<div class="cta-base cta-height-100per" data-testid="tweetPhoto">
+								<div class="cta-base">
+									<div class="cta-base cta-display-block cta-overflow-hidden">
+										<div class="cta-display-block cta-width-100per" style="padding-bottom: 56.0784%;"></div>
+										<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+											<div class="cta-base cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px" data-testid="placementTracking">
+												<div class="cta-base cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px" data-testid="videoPlayer">
+													<div class="cta-base cta-display-block cta-overflow-hidden cta-position-relative cta-height-100per cta-width-100per">
+														<div class="cta-display-block cta-width-100per" style="padding-bottom: 56.0784%;"></div>
+														<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+															<div data-testid="videoComponent" style="height: 100%; position: relative; transform: translateZ(0px); width: 100%;">
+																<div style="height: 100%; position: absolute; width: 100%;">
+																	<div style="position: relative; width: 100%; height: 100%; background-color: transparent; overflow: hidden;">
+																		<video loop preload="auto" tabindex="-1" playsinline autoplay muted aria-label="埋め込み動画" style="width: 100%; height: 100%; position: absolute; background-color: black; top: 0%; left: 0%; transform: rotate(0deg) scale(1.005);" poster="${media.media_url_https}" src="${media.video_info.variants.filter(obj => obj.content_type !== 'application/x-mpegURL').reduce((a, b) => a.bitrate > b.bitrate ? a : b).url.split('?')[0]}" type="video/mp4"></video>
+																	</div>
+																</div>
+																<!--
+																<div tabindex="0" class="cta-base cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px">
+																	<div class="cta-base cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px">
+																		<div class="cta-base cta-bottom-0px cta-cursor-pointer cta-left-0px cta-position-absolute cta-right-0px cta-top-0px" data-testid="video-player-mini-ui-"></div>
+																		<div class="cta-base cta-flex-direction-row cta-position-absolute r-rki7wi r-161ttwi cta-pointer-events-none">
+																			<div class="cta-base cta-align-items-center r-k200y r-z2wwpe r-z80fyv cta-justify-content-center r-13w96dm cta-flex-direction-row r-mk0yit r-rjfia r-zmljjp r-t12b5v r-6t5ypu r-kicko2 cta-margin-right-small cta-pointer-events-none">
+																				<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family r-q4m81j r-n6v787 r-1cwl3u0 cta-font-normal cta-user-select-none" style="color: rgb(255, 255, 255); text-overflow: unset;">
+																					<div class="cta-base cta-align-items-center cta-display-flex cta-flex-direction-row">
+																						<div aria-label="プレイ" role="button" tabindex="0" class="cta-base cta-display-inline-flex r-tuq35u cta-pointer-events-auto cta-cursor-pointer cta-transition-duration cta-transition-property cta-outline-style-none">
+																							<svg viewBox="0 0 24 24" aria-hidden="true" class="cta-display-inline-block cta-fill-currentcolor cta-max-width-100per cta-position-relative cta-vertical-align-text-bottom cta-user-select-none r-tbmifm r-16eto9q">
+																								<g><path d="M21 12L4 2v20l17-10z"></path></g>
+																							</svg>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="cta-base cta-align-items-center r-k200y r-z2wwpe r-z80fyv cta-justify-content-center cta-side-padding-4px r-13w96dm r-pm2fo r-ou6ah9 r-1dpl46z r-notknq cta-pointer-events-none">
+																				<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family r-q4m81j r-n6v787 r-1cwl3u0 cta-font-bold cta-user-select-none" style="color: rgb(255, 255, 255); text-overflow: unset;">
+																					<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;">GIF</span>
+																				</div>
+																			</div>
+																		</div>
+																		<div style="transition-duration: 250ms; transition-property: opacity, height; transition-timing-function: ease; will-change: opacity; opacity: 0;"></div>
+																	</div>
+																</div>
+																-->
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						`.replace(/\t|\n/g, '');
+						let video = tmp.querySelector('video');
+						tmp.querySelector('video').addEventListener('click', function(){
+							if(video.paused){
+								video.play();
+							}else{
+								video.pause();
+							}
+						});
+					break;
+				}
+				mediaBox.querySelector(`[cta-id="media${i+1}"]`).appendChild(tmp.firstChild);
+			}
+			if(isQuoted){
+				return mediaBox;
+			}else{
+				mediaNode.querySelector('[cta-id="mediaRoot"]').appendChild(mediaBox.firstChild);
+				return mediaNode;
+			}
+		}
+		function createQuotedNode(){
+			if(!quotedTweetData)return null;
+			let node = document.createElement('div');
+			node.innerHTML =`
+				<div aria-labelledby="" class="cta-base cta-gap-12px cta-margin-top" cta-id="quoted-place">
+					<div class="cta-base">
+						<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family cta-font-size cta-line-height cta-font-normal cta-overflow-hidden cta-position-absolute" style="color: ${colors.fontColor}; text-overflow: unset; border-width: 0px; clip: rect(1px, 1px, 1px, 1px); height: 1px; width: 1px; padding: 0px;">
+							<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;">引用</span>
+						</div>
+						<div tabindex="0" class="cta-base cta-overflow-hidden cta-border-radius-16px cta-transition-duration cta-transition-property cta-outline-style-none cta-cursor-pointer" role="link" style="min-height: 64px; border-width: 1px; border-color:${colors.borderBottomColor}">
+							<div class="cta-base">
+								<div class="cta-base cta-flex-direction-column cta-side-margin-12px cta-margin-top">
+									<div class="cta-base cta-align-items-center cta-flex-direction-row cta-flex-shrink-1">
+										<div class="cta-base cta-flex-shrink-1 cta-overflow-hidden">
+											<div class="cta-base cta-flex-direction-row cta-max-width-100per" style="align-items: flex-start;">
+												<div class="cta-base" data-testid="Tweet-User-Avatar" style="margin-right: 4px;">
+													<div class="cta-base cta-flex-shrink-1 cta-max-width-100per">
+														<div class="cta-base cta-display-block cta-overflow-visible" style="width: 20px; height: 20px;" data-testid="UserAvatar-Container-${quotedTweetData.userData.screen_name}">
+															<div class="cta-display-block cta-width-100per" style="padding-bottom: 100%;"></div>
+															<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+																<div class="cta-base cta-display-block cta-height-100per cta-width-100per cta-position-absolute cta-arrangement-center cta-overflow-visible">
+																	<div class="cta-display-block cta-width-100per" style="padding-bottom: 100%;"></div>
+																	<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+																		<div class="cta-base ${quotedTweetData.userData.profile_image_shape === "Square" ? 'cta-shape-square' : 'cta-shape-circle'} cta-overflow-hidden cta-position-absolute cta-icon-position-fix" style="width: calc(100% + 4px); height: calc(100% + 4px);">
+																			<div aria-hidden="true" role="presentation" tabindex="-1" class="cta-base cta-height-100per cta-width-100per cta-outline-style-none" style="background-color: rgba(0, 0, 0, 0);">
+																				<div class="cta-base ${quotedTweetData.userData.profile_image_shape === "Square" ? 'cta-shape-square' : 'cta-shape-circle'} cta-overflow-hidden cta-pointer-events-none cta-position-absolute cta-arrangement-center" style="width: calc(100% - 4px); height: calc(100% - 4px);">
+																					<div class="cta-base cta-height-100per cta-width-100per" style="background-color: rgba(0, 0, 0, 0);"></div>
+																				</div>
+																				<div class="cta-base ${quotedTweetData.userData.profile_image_shape === "Square" ? 'cta-shape-square' : 'cta-shape-circle'} cta-overflow-hidden cta-pointer-events-none cta-position-absolute cta-arrangement-center" style="width: calc(100% - 4px); height: calc(100% - 4px);">
+																					<div class="cta-base cta-height-100per cta-width-100per"></div>
+																				</div>
+																				<div class="cta-base ${quotedTweetData.userData.profile_image_shape === "Square" ? 'cta-shape-square' : 'cta-shape-circle'} cta-overflow-hidden cta-pointer-events-none cta-position-absolute cta-arrangement-center" style="background-color: ${colors.backgroundColor}; width: calc(100% - 4px); height: calc(100% - 4px);">
+																					<div class="cta-base cta-display-block cta-overflow-hidden">
+																						<div class="cta-display-block cta-width-100per" style="padding-bottom: 100%;"></div>
+																						<div class="cta-bottom-0px cta-height-100per cta-position-absolute cta-left-0px cta-top-0px cta-width-100per">
+																							<div aria-label="" class="cta-base cta-flex-basis-auto cta-overflow-hidden cta-z-index-0" style="position: absolute; inset: 0px;">
+																								<div class="cta-base cta-transparent-background cta-background-position-center cta-background-no-repeat cta-bottom-0px cta-height-100per cta-left-0px cta-position-absolute cta-right-0px cta-top-0px cta-width-100per cta-z-index--1 cta-background-size-cover" style="background-image: url(&quot;${quotedTweetData.userData.profile_image}&quot;);"></div>
+																								<img alt="" draggable="true" src="${quotedTweetData.userData.profile_image}" class="cta-img-css">
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="cta-base ${quotedTweetData.userData.profile_image_shape === "Square" ? 'cta-shape-square' : 'cta-shape-circle'} cta-overflow-hidden cta-position-absolute cta-arrangement-center" style="width: calc(100% - 4px); height: calc(100% - 4px);">
+																					<div class="cta-base cta-icon-box-shadow cta-height-100per cta-width-100per cta-outline-style-none"></div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="cta-base cta-flex-shrink-1 cta-max-width-100per cta-outline-style-none">
+													<div class="cta-base cta-flex-shrink-1 cta-max-width-100per cta-outline-style-none cta-align-items-center cta-flex-direction-row" data-testid="User-Name">
+														<div class="cta-base cta-align-items-center cta-flex-direction-row cta-flex-shrink-1 cta-max-width-100per">
+															<div class="cta-base cta-flex-shrink-1 cta-max-width-100per">
+																<div class="cta-base cta-flex-shrink-1 cta-max-width-100per cta-outline-style-none">
+																	<div class="cta-base cta-align-items-center cta-flex-direction-row cta-flex-shrink-1 cta-max-width-100per">
+																		<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family cta-font-size cta-line-height cta-font-bold cta-align-items-center cta-display-flex cta-overflow-hidden cta-white-space-nowrap" style="color: ${colors.fontColor}; text-overflow: unset;">
+																			<span class="cta-text2-css cta-max-width-100per cta-overflow-hidden cta-white-space-nowrap cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;">
+																				<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;">${quotedTweetData.userData.name}</span>
+																			</span>
+																		</div>
+																		<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family cta-font-size cta-line-height cta-font-normal cta-display-inline-flex cta-flex-direction-row cta-flex-shrink-0" style="color: ${colors.fontColor}; text-overflow: unset;">
+																			<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family cta-align-items-center cta-display-inline-flex" style="text-overflow: unset;" cta-id="account-status">
+																				<!--鍵のアイコンとか-->
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="cta-base cta-flex-direction-row cta-flex-shrink-1" style="margin-left: 4px;">
+															<div class="cta-base cta-align-items-baseline cta-flex-direction-row cta-flex-shrink-1">
+																<div class="cta-base cta-flex-shrink-1 cta-max-width-100per">
+																	<div tabindex="-1" class="cta-base cta-flex-shrink-1 cta-max-width-100per cta-outline-style-none">
+																		<div dir="ltr" class="cta-text-css cta-max-width-100per cta-overflow-hidden cta-white-space-nowrap cta-min-width-0px cta-overflow-wrap-break-word cta-provisional-font-family cta-font-size cta-line-height cta-font-normal cta-flex-direction-row cta-font-feature-settings-ss01" style="color: ${colors.fontColorDark}; text-overflow: unset;">
+																			<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;">@${quotedTweetData.userData.screen_name}</span>
+																		</div>
+																	</div>
+																</div>
+																<div dir="ltr" aria-hidden="true" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family cta-font-size cta-line-height cta-font-normal cta-flex-shrink-0 cta-side-padding-4px" style="color: ${colors.fontColorDark}; text-overflow: unset;">
+																	<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;">·</span>
+																</div>
+																<div class="cta-base cta-flex-direction-row cta-flex-shrink-0">
+																	<div class="cta-base cta-align-items-baseline cta-flex-direction-row cta-flex-shrink-1">
+																		<div dir="ltr" aria-label="" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family cta-font-size cta-line-height cta-font-normal cta-display-inline-flex cta-flex-shrink-0 cta-flex-wrap-wrap cta-gap-4px cta-white-space-nowrap" style="color: ${colors.fontColorDark}; text-overflow: unset;">
+																			<time datetime="${quotedTweetData.tweetData.date.toISOString()}">${quotedTweetData.tweetData.date.toLocaleDateString(GetCookie('lang'), {month: 'long', day: 'numeric'})}</time>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="cta-base cta-side-margin-12px" style="margin-bottom: 12px;" cta-id="quoted-text">
+									<!--ここにテキスト -->
+								</div>
+								<div class="cta-base" style="margin-top: 4px;">
+									<div class="cta-base">
+										<div class="cta-base cta-transition-duration cta-transition-property cta-outline-style-none" cta-id="quoted-media">
+											<!--引用のメディア-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			`.replace(/\t|\n/g, '');
+			node = appendAccountStatusIcon(node,quotedTweetData)
+			let textNode = createTextNode(true);
+			let mediaNode = createMediaNode(true);
+			if(textNode)node.querySelector('[cta-id="quoted-text"]').appendChild(textNode.firstChild.firstChild);
+			if(mediaNode)node.querySelector('[cta-id="quoted-media"]').appendChild(mediaNode.firstChild);
+			return node;
+		}
+		function createEngagementNode(){
+			let engagementNode = document.createElement('div');
+			let retweetPath = 'M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z';
+			let retweetedPath = 'M4.75 3.79l4.603 4.3-1.706 1.82L6 8.38v7.37c0 .97.784 1.75 1.75 1.75H13V20H7.75c-2.347 0-4.25-1.9-4.25-4.25V8.38L1.853 9.91.147 8.09l4.603-4.3zm11.5 2.71H11V4h5.25c2.347 0 4.25 1.9 4.25 4.25v7.37l1.647-1.53 1.706 1.82-4.603 4.3-4.603-4.3 1.706-1.82L18 15.62V8.25c0-.97-.784-1.75-1.75-1.75z';
+			let likedPath = 'M20.884 13.19c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.3-.504-.3c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z';
+			let likePath = 'M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.561-1.13-1.666-1.84-2.908-1.91zm4.187 7.69c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.3-.504-.3c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z';
+			let bookmarkedPath = 'M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5z';
+			let bookmarkPath = 'M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z';
+			engagementNode.innerHTML = `
+				<div class="cta-base" cta-id="footer">
+					<div class="cta-base">
+						<div aria-label="0 件のリツイート、リツイートしました、0 件の表示" role="group" class="cta-base cta-column-gap-4px cta-flex-direction-row cta-justify-content-space-between cta-max-width-600px cta-margin-top" id="">
+							<div class="cta-base cta-flex-direction-row cta-justify-content-flex-start cta-flex-1-1-0per">
+								<div aria-label="0 件の返信。返信する" role="button" tabindex="0" class="cta-base cta-justify-content-center cta-min-height-20px cta-overflow-visible cta-user-select-none cta-cursor-pointer cta-outline-style-none" data-testid="reply" style="opacity: 0.5;">
+									<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-provisional-font-family cta-font-size cta-line-height cta-font-normal cta-align-items-center cta-display-flex cta-justify-content-flex-start cta-transition-duration cta-svg-transition-property-color cta-white-space-nowrap" style="text-overflow: unset; color: ${colors.fontColorDark};">
+										<div class="cta-base cta-display-inline-flex">
+											<div class="cta-base cta-display-inline-flex cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px cta-transparent-background cta-shape-circle cta-margin--8px cta-transition-duration cta-transition-property cta-outline-style-none"></div>
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="cta-display-inline-block cta-fill-currentcolor cta-max-width-100per cta-position-relative cta-vertical-align-text-bottom cta-user-select-none cta-svg-height cta-svg-width">
+												<g><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z"></path></g>
+											</svg>
+										</div>
+										<div class="cta-base cta-display-inline-flex cta-overflow-hidden">
+											<span data-testid="app-text-transition-container" style="transition-property: transform; transition-duration: 0.3s; transform: translate3d(0px, 0px, 0px);"><span class="cta-text2-css cta-overflow-wrap-break-word cta-font-family cta-engagement-text" style="text-overflow: unset;">
+												<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;" cta-id="reply-text">${tweetData.tweetData.reply_count === 0 ? "" : round_half_up(tweetData.tweetData.reply_count,textData.roundingScale,textData.decimalPlaces,textData.units)}</span>
+											</span></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cta-base cta-flex-direction-row cta-justify-content-flex-start cta-flex-1-1-0per">
+								<div aria-expanded="false" aria-haspopup="menu" aria-label="0件のリツイート件。リツイートしました" role="button" tabindex="0" class="cta-base cta-justify-content-center cta-min-height-20px cta-overflow-visible cta-user-select-none cta-cursor-pointer cta-outline-style-none" data-testid="${ctaEngagementStore[tweetData.tweetData.id]?.retweeted === true ? 'un' : ""}retweet" cta-id="retweet">
+									<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-provisional-font-family cta-font-size cta-line-height cta-font-normal cta-align-items-center cta-display-flex cta-justify-content-flex-start cta-transition-duration cta-svg-transition-property-color cta-white-space-nowrap" style="color: ${ctaEngagementStore[tweetData.tweetData.id]?.retweeted === true ? 'rgb(0, 186, 124)' : colors.fontColorDark}; text-overflow: unset;">
+										<div class="cta-base cta-display-inline-flex">
+											<div class="cta-base cta-display-inline-flex cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px cta-transparent-background cta-shape-circle cta-margin--8px cta-transition-duration cta-transition-property cta-outline-style-none"></div>
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="cta-display-inline-block cta-fill-currentcolor cta-max-width-100per cta-position-relative cta-vertical-align-text-bottom cta-user-select-none cta-svg-height cta-svg-width">
+												<g><path d="${ctaEngagementStore[tweetData.tweetData.id]?.retweeted === true ? retweetedPath: retweetPath}"></path></g>
+											</svg>
+										</div>
+										<div class="cta-base cta-display-inline-flex cta-overflow-hidden">
+											<span data-testid="app-text-transition-container" style="transition-property: transform; transition-duration: 0.3s; transform: translate3d(0px, 0px, 0px);"><span class="cta-text2-css cta-overflow-wrap-break-word cta-font-family cta-engagement-text" style="text-overflow: unset;">
+												<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;" cta-id="retweet-text">${tweetData.tweetData.retweet_count === 0 ? "" : round_half_up(tweetData.tweetData.retweet_count,textData.roundingScale,textData.decimalPlaces,textData.units)}</span>
+											</span></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cta-base cta-flex-direction-row cta-justify-content-flex-start cta-flex-1-1-0per">
+								<div aria-label="0 件のいいね。いいねする" role="button" tabindex="0" class="cta-base cta-justify-content-center cta-min-height-20px cta-overflow-visible cta-user-select-none cta-cursor-pointer cta-outline-style-none" data-testid="${ctaEngagementStore[tweetData.tweetData.id]?.favorited === true ? 'un' : ""}like" cta-id="like">
+									<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-provisional-font-family cta-font-size cta-line-height cta-font-normal cta-align-items-center cta-display-flex cta-justify-content-flex-start cta-transition-duration cta-svg-transition-property-color cta-white-space-nowrap" style="color: ${ctaEngagementStore[tweetData.tweetData.id]?.favorited === true ? 'rgb(249, 24, 128)' : colors.fontColorDark}; text-overflow: unset;">
+										<div class="cta-base cta-display-inline-flex">
+											<div class="cta-base cta-display-inline-flex cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px cta-transparent-background cta-shape-circle cta-margin--8px cta-transition-duration cta-transition-property cta-outline-style-none"></div>
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="cta-display-inline-block cta-fill-currentcolor cta-max-width-100per cta-position-relative cta-vertical-align-text-bottom cta-user-select-none cta-svg-height cta-svg-width">
+												<g><path d="${ctaEngagementStore[tweetData.tweetData.id]?.favorited === true ? likedPath: likePath}"></path></g>
+											</svg>
+										</div>
+										<div class="cta-base cta-display-inline-flex cta-overflow-hidden">
+											<span data-testid="app-text-transition-container" style="transition-property: transform; transition-duration: 0.3s; transform: translate3d(0px, 0px, 0px);"><span class="cta-text2-css cta-overflow-wrap-break-word cta-font-family cta-engagement-text" style="text-overflow: unset;">
+												<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;" cta-id="like-text">${tweetData.tweetData.favorite_count === 0 ? "" : round_half_up(tweetData.tweetData.favorite_count,textData.roundingScale,textData.decimalPlaces,textData.units)}</span>
+											</span></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cta-base cta-flex-direction-row cta-justify-content-flex-start cta-flex-1-1-0per">
+								<a href="/${tweetData.tweetData.screen_name}/status/${tweetData.tweetData.id}/analytics" aria-label="0 件の表示。ツイートアナリティクスを表示" role="link" class="cta-base cta-justify-content-center cta-min-height-20px cta-overflow-visible cta-user-select-none cta-outline-style-none cta-cursor-pointer" target="_blank" rel="noopener noreferrer nofollow">
+									<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-provisional-font-family cta-font-size cta-line-height cta-font-normal cta-align-items-center cta-display-flex cta-justify-content-flex-start cta-transition-duration cta-svg-transition-property-color cta-white-space-nowrap" style="color: ${colors.fontColorDark}; text-overflow: unset;">
+										<div class="cta-base cta-display-inline-flex">
+											<div class="cta-base cta-display-inline-flex cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px cta-transparent-background cta-shape-circle cta-margin--8px cta-transition-duration cta-transition-property cta-outline-style-none"></div>
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="cta-display-inline-block cta-fill-currentcolor cta-max-width-100per cta-position-relative cta-vertical-align-text-bottom cta-user-select-none cta-svg-height cta-svg-width">
+												<g><path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z"></path></g>
+											</svg>
+										</div>
+										<div class="cta-base cta-display-inline-flex cta-overflow-hidden">
+											<span data-testid="app-text-transition-container" style="transition-property: transform; transition-duration: 0.3s; transform: translate3d(0px, 0px, 0px);"><span class="cta-text2-css cta-overflow-wrap-break-word cta-font-family cta-engagement-text" style="text-overflow: unset;">
+												<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;" cta-id="analytics-text">${tweetData.tweetData.analytics === 0 ? "" : tweetData.tweetData.analytics || ""}</span>
+											</span></span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="cta-base cta-flex-direction-row cta-justify-content-flex-start" style="margin-right: 8px;">
+								<div aria-label="ブックマーク" role="button" tabindex="0" class="cta-base cta-justify-content-center cta-min-height-20px cta-overflow-visible cta-user-select-none cta-cursor-pointer cta-outline-style-none" data-testid="${ctaEngagementStore[tweetData.tweetData.id]?.bookmarked === true ? 'un' : ""}bookmark" cta-id="bookmark">
+									<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-provisional-font-family cta-font-size cta-line-height cta-font-normal cta-align-items-center cta-display-flex cta-justify-content-flex-start cta-transition-duration cta-svg-transition-property-color cta-white-space-nowrap" style="color: ${ctaEngagementStore[tweetData.tweetData.id]?.bookmarked === true ? 'rgb(29, 155, 240)' : colors.fontColorDark}; text-overflow: unset;">
+										<div class="cta-base cta-display-inline-flex">
+											<div class="cta-base cta-display-inline-flex cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px cta-transparent-background cta-shape-circle cta-margin--8px cta-transition-duration cta-transition-property cta-outline-style-none"></div>
+											<svg viewBox="0 0 24 24" aria-hidden="true" class="cta-display-inline-block cta-fill-currentcolor cta-max-width-100per cta-position-relative cta-vertical-align-text-bottom cta-user-select-none cta-svg-height cta-svg-width">
+												<g><path d="${ctaEngagementStore[tweetData.tweetData.id]?.bookmarked === true ? bookmarkedPath : bookmarkPath}"></path></g>
+											</svg>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cta-base" style="transform: rotate(0deg) scale(1) translate3d(0px, 0px, 0px); justify-content: inherit; display: inline-grid;" cta-id="share-button">
+								<div class="cta-base cta-flex-direction-row cta-justify-content-flex-start">
+									<div aria-disabled="true" aria-expanded="false" aria-haspopup="menu" aria-label="ツイートを共有" role="button" tabindex="-1" class="cta-base cta-justify-content-center cta-min-height-20px cta-overflow-visible cta-user-select-none cta-outline-style-none">
+										<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-provisional-font-family cta-font-size cta-line-height cta-font-normal cta-align-items-center cta-display-flex cta-justify-content-flex-start cta-transition-duration cta-svg-transition-property-color cta-white-space-nowrap" style="color: ${colors.fontColorDark}; text-overflow: unset;">
+											<div class="cta-base cta-display-inline-flex">
+												<div class="cta-base cta-display-inline-flex cta-bottom-0px cta-left-0px cta-position-absolute cta-right-0px cta-top-0px cta-transparent-background cta-transition-duration cta-transition-property cta-outline-style-none"></div>
+												<svg viewBox="0 0 24 24" aria-hidden="true" class="cta-display-inline-block cta-fill-currentcolor cta-max-width-100per cta-position-relative cta-vertical-align-text-bottom cta-user-select-none cta-svg-height cta-svg-width">
+													<g><path d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z"></path></g>
+												</svg>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			`.replace(/\t|\n/g, '');
+			let currentTweetID = tweetData.tweetData.id;
+			let currentScreenName = tweetData.userData.screen_name;
+			let retweetNode = engagementNode.querySelector('[cta-id="retweet"]');
+			let likeNode = engagementNode.querySelector('[cta-id="like"]');
+			let bookmarkNode = engagementNode.querySelector('[cta-id="bookmark"]');
+			retweetNode.addEventListener('click',whenClickRetweet);
+			likeNode.addEventListener('click',whenClickLike);
+			bookmarkNode.addEventListener('click',whenClickBookmark);
+			engagementNode.querySelector('[cta-id="share-button"]').addEventListener('click',async function(){
+				copyToClipboard(`https://twitter.com/${currentScreenName}/status/${currentTweetID}`);
+			});
+			return engagementNode;
+
+			async function whenClickRetweet(event){
+				event.currentTarget.removeEventListener('click', whenClickRetweet);
+				if(!ctaEngagementStore[currentTweetID])ctaEngagementStore[currentTweetID] = {};
+				let countTextNode = retweetNode.querySelector('[cta-id="retweet-text"]');
+				let countText = Number(countTextNode.innerText);
+				try{
+					if(retweetNode.getAttribute('data-testid') === 'retweet'){
+						let resp = await request(new requestObject_twitter_CreateRetweet(currentTweetID));
+						if(!(resp.status === 200)){
+							displayToast(textData.faildRetweet);
+							return;
+						}
+						displayToast(textData.doneRetweet);
+						retweetNode.setAttribute('data-testid','unretweet');
+						retweetNode.firstChild.style.color = "rgb(0, 186, 124)";
+						retweetNode.querySelector('path').setAttribute('d',retweetedPath);
+						if(!isNaN(countText))countTextNode.innerText = Number(countTextNode.innerText) + 1;
+						ctaEngagementStore[currentTweetID].retweeted = true;
+					}else{
+						let resp = await request(new requestObject_twitter_DeleteRetweet(currentTweetID));
+						if(!(resp.status === 200)){
+							displayToast(textData.faildUnRetweet);
+							return;
+						}
+						displayToast(textData.unRetweet);
+						retweetNode.setAttribute('data-testid','retweet');
+						retweetNode.firstChild.style.color = colors.fontColorDark;
+						retweetNode.querySelector('path').setAttribute('d',retweetPath);
+						if(!isNaN(countText)){
+							if((Number(countTextNode.innerText) - 1)>0){
+								countTextNode.innerText = Number(countTextNode.innerText) - 1;
+							}else{
+								countTextNode.innerText = "";
+							}
+						}
+						ctaEngagementStore[currentTweetID].retweeted = false;
+					}
+				}catch(error){
+					console.error(error);
+				}finally{
+					retweetNode.addEventListener('click', whenClickRetweet);
+				}
+			}
+			async function whenClickLike(event){
+				event.currentTarget.removeEventListener('click', whenClickLike);
+				if(!ctaEngagementStore[currentTweetID])ctaEngagementStore[currentTweetID] = {};
+				let countTextNode = likeNode.querySelector('[cta-id="like-text"]');
+				let countText = Number(countTextNode.innerText);
+				try{
+					if(likeNode.getAttribute('data-testid') === 'like'){
+						let resp = await request(new requestObject_twitter_FavoriteTweet(currentTweetID));
+						if(!(resp.status === 200)){
+							displayToast(textData.faildRetweet);
+							return;
+						}
+						likeNode.setAttribute('data-testid','unlike');
+						likeNode.firstChild.style.color = "rgb(249, 24, 128)";
+						likeNode.querySelector('path').setAttribute('d',likedPath);
+						if(!isNaN(countText))countTextNode.innerText = Number(countTextNode.innerText) + 1;
+						ctaEngagementStore[currentTweetID].favorited = true;
+					}else{
+						let resp = await request(new requestObject_twitter_UnfavoriteTweet(currentTweetID));
+						console.log(resp)
+						if(!(resp.status === 200)){
+							displayToast(textData.faildUnRetweet);
+							return;
+						}
+						likeNode.setAttribute('data-testid','like');
+						likeNode.firstChild.style.color = colors.fontColorDark;
+						likeNode.querySelector('path').setAttribute('d',likePath);
+						if(!isNaN(countText)){
+							if((Number(countTextNode.innerText) - 1)>0){
+								countTextNode.innerText = Number(countTextNode.innerText) - 1;
+							}else{
+								countTextNode.innerText = "";
+							}
+						}
+						ctaEngagementStore[currentTweetID].favorited = false;
+					}
+				}catch(error){
+					console.error(error);
+				}finally{
+					likeNode.addEventListener('click', whenClickLike);
+				}
+			}
+			async function whenClickBookmark(event){
+				event.currentTarget.removeEventListener('click', whenClickBookmark);
+				if(!ctaEngagementStore[currentTweetID])ctaEngagementStore[currentTweetID] = {};
+				try{
+					if(bookmarkNode.getAttribute('data-testid') === 'bookmark'){
+						let resp = await request(new requestObject_twitter_CreateBookmark(currentTweetID));
+						if(!(resp.status === 200)){
+							displayToast(textData.faildRetweet);
+							return;
+						}
+						displayToast(textData.doneBookmark);
+						bookmarkNode.setAttribute('data-testid','unbookmark');
+						bookmarkNode.firstChild.style.color = "rgb(29, 155, 240)";
+						bookmarkNode.querySelector('path').setAttribute('d',bookmarkedPath);
+						ctaEngagementStore[currentTweetID].bookmarked = true;
+					}else{
+						let resp = await request(new requestObject_twitter_DeleteBookmark(currentTweetID));
+						if(!(resp.status === 200)){
+							displayToast(textData.faildUnRetweet);
+							return;
+						}
+						displayToast(textData.unBookmark);
+						bookmarkNode.setAttribute('data-testid','bookmark');
+						bookmarkNode.firstChild.style.color = colors.fontColorDark;
+						bookmarkNode.querySelector('path').setAttribute('d',bookmarkPath);
+						ctaEngagementStore[currentTweetID].bookmarked = false;
+					}
+				}catch(error){
+					console.error(error);
+				}finally{
+					bookmarkNode.addEventListener('click', whenClickBookmark);
+				}
+			}
+		}
+		function tweetTextProsser(text,hashtags,user_mentions,symbols,urls,media){
+			let link_class = 'cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family-inherit cta-cursor-pointer';
+			function countSurrogatePairs(str){
+				return Array.from(str).filter(char => char.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/)).length;
+			}
+			let combined = [].concat(
+				hashtags.map(tag => ({
+					type: 'hashtag',
+					indices: tag.indices,
+					text: tag.text
+				})),
+				user_mentions.map(mention => ({
+					type: 'mention',
+					indices: mention.indices,
+					text: mention.screen_name
+				})),
+				symbols.map(symbol => ({
+					type: 'symbol',
+					indices: symbol.indices,
+					text: symbol.text
+				}))
+			);
+			// combinedをindicesの順にソート
+			combined.sort((a, b) => b.indices[0] - a.indices[0]);
+			let transformedText = text;
+
+			combined.forEach(item => {
+				let start = item.indices[0];
+				let end = item.indices[1];
+
+				// サロゲートペアの数をカウントして調整
+				const adjustment = countSurrogatePairs(transformedText.slice(0, end));
+				start += adjustment;
+				end += adjustment;
+
+				let replacement = '';
+				switch(item.type){
+					case 'hashtag':
+						replacement = `<a class="${link_class}" style="text-decoration: none;color:rgb(29, 155, 240)" dir="ltr" role="link" href="https://twitter.com/hashtag/${item.text}" target="_blank" rel="noopener noreferrer nofollow">#${item.text}</a>`;
+						break;
+					case 'mention':
+						replacement = `<a class="${link_class}" style="text-decoration: none;color:rgb(29, 155, 240)" dir="ltr" role="link" href="https://twitter.com/${item.text}" target="_blank" rel="noopener noreferrer nofollow">@${item.text}</a>`;
+						break;
+					case 'symbol':
+						replacement = `<a class="${link_class}" style="text-decoration: none;color:rgb(29, 155, 240)" dir="ltr" role="link" href="https://twitter.com/search?q=%24${item.text}&src=cashtag_click" target="_blank" rel="noopener noreferrer nofollow">$${item.text}</a>`;
+						break;
+				}
+				transformedText = transformedText.slice(0, start) + replacement + transformedText.slice(end);
+			});
+			text = transformedText;
+			urls.forEach(target =>{
+				text = text.replace(new RegExp(`${target.url}(?=(\\s|$|\\u3000|\\W)(?!\\.|,))`, 'gu'), `<a class="${link_class}" style="text-decoration: none;color:rgb(29, 155, 240)" dir="ltr" role="link" href="${target.url}" target="_blank" rel="noopener noreferrer nofollow">${target.display_url}</a>`);
+			});
+			media.forEach(m=>{
+				text = text.replace(m.url,'');
+			});
+			return text;
+		}
+		function appendAccountStatusIcon(node,tweetData){
+			let accountStatusNode = node.querySelector('[cta-id="account-status"]');
+			if(tweetData.userData.protected){
+				let iconLock = document.createElement('div');
+				iconLock.innerHTML = `
+					<svg viewBox="0 0 24 24" aria-label="非公開アカウント" role="img" class="cta-display-inline-block cta-fill-currentcolor cta-svg-height cta-position-relative cta-vertical-align-text-bottom cta-user-select-none cta-margin-left-small cta-svg-max-height cta-svg-max-width" data-testid="icon-lock" style="color: ${colors.fontColor}">
+						<g><path d="M17.5 7H17v-.25c0-2.76-2.24-5-5-5s-5 2.24-5 5V7h-.5C5.12 7 4 8.12 4 9.5v9C4 19.88 5.12 21 6.5 21h11c1.39 0 2.5-1.12 2.5-2.5v-9C20 8.12 18.89 7 17.5 7zM13 14.73V17h-2v-2.27c-.59-.34-1-.99-1-1.73 0-1.1.9-2 2-2 1.11 0 2 .9 2 2 0 .74-.4 1.39-1 1.73zM15 7H9v-.25c0-1.66 1.35-3 3-3 1.66 0 3 1.34 3 3V7z"></path></g>
+					</svg>
+				`.replace(/\t|\n/g, '');
+				accountStatusNode.appendChild(iconLock.firstChild);
+			}
+			if(tweetData.userData.verified_type === "Business"){
+				let iconVerifiedBussiness = document.createElement('div');
+				iconVerifiedBussiness.innerHTML = `
+					<svg viewBox="0 0 22 22" aria-label="認証済みアカウント" role="img" class="cta-display-inline-block cta-fill-currentcolor cta-svg-height cta-position-relative cta-vertical-align-text-bottom cta-user-select-none cta-svg-max-height cta-svg-max-width cta-margin-left-small" data-testid="icon-verified">
+						<g>
+							<linearGradient gradientUnits="userSpaceOnUse" id="38-a" x1="4.411" x2="18.083" y1="2.495" y2="21.508">
+								<stop offset="0" stop-color="#f4e72a"></stop>
+								<stop offset=".539" stop-color="#cd8105"></stop>
+								<stop offset=".68" stop-color="#cb7b00"></stop>
+								<stop offset="1" stop-color="#f4ec26"></stop>
+								<stop offset="1" stop-color="#f4e72a"></stop>
+							</linearGradient>
+							<linearGradient gradientUnits="userSpaceOnUse" id="38-b" x1="5.355" x2="16.361" y1="3.395" y2="19.133">
+								<stop offset="0" stop-color="#f9e87f"></stop>
+								<stop offset=".406" stop-color="#e2b719"></stop>
+								<stop offset=".989" stop-color="#e2b719"></stop>
+							</linearGradient>
+							<g clip-rule="evenodd" fill-rule="evenodd">
+								<path d="M13.324 3.848L11 1.6 8.676 3.848l-3.201-.453-.559 3.184L2.06 8.095 3.48 11l-1.42 2.904 2.856 1.516.559 3.184 3.201-.452L11 20.4l2.324-2.248 3.201.452.559-3.184 2.856-1.516L18.52 11l1.42-2.905-2.856-1.516-.559-3.184zm-7.09 7.575l3.428 3.428 5.683-6.206-1.347-1.247-4.4 4.795-2.072-2.072z" fill="url(#38-a)"></path>
+								<path d="M13.101 4.533L11 2.5 8.899 4.533l-2.895-.41-.505 2.88-2.583 1.37L4.2 11l-1.284 2.627 2.583 1.37.505 2.88 2.895-.41L11 19.5l2.101-2.033 2.895.41.505-2.88 2.583-1.37L17.8 11l1.284-2.627-2.583-1.37-.505-2.88zm-6.868 6.89l3.429 3.428 5.683-6.206-1.347-1.247-4.4 4.795-2.072-2.072z" fill="url(#38-b)"></path>
+								<path d="M6.233 11.423l3.429 3.428 5.65-6.17.038-.033-.005 1.398-5.683 6.206-3.429-3.429-.003-1.405.005.003z" fill="#d18800"></path>
+							</g>
+						</g>
+					</svg>
+				`.replace(/\t|\n/g, '');
+				accountStatusNode.appendChild(iconVerifiedBussiness.firstChild);
+			}else if(tweetData.userData.is_blue_verified){
+				let iconVerified = document.createElement('div');
+				iconVerified.innerHTML = `
+					<svg viewBox="0 0 22 22" aria-label="認証済みアカウント" role="img" class="cta-display-inline-block cta-fill-currentcolor cta-svg-height cta-position-relative cta-vertical-align-text-bottom cta-user-select-none cta-svg-max-height cta-svg-max-width cta-margin-left-small" data-testid="icon-verified" style="color: rgb(29, 155, 240);">
+						<g><path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.854-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.688-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.634.433 1.218.877 1.688.47.443 1.054.747 1.687.878.633.132 1.29.084 1.897-.136.274.586.705 1.084 1.246 1.439.54.354 1.17.551 1.816.569.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.239 1.266.296 1.903.164.636-.132 1.22-.447 1.68-.907.46-.46.776-1.044.908-1.681s.075-1.299-.165-1.903c.586-.274 1.084-.705 1.439-1.246.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"></path></g>
+					</svg>
+				`.replace(/\t|\n/g, '');
+				accountStatusNode.appendChild(iconVerified.firstChild);
+			}
+			return node;
+		}
+	}
+	async function displayToast(text){
+		try{
+			let node = document.createElement('div');
+			node.innerHTML = `
+				<div class="cta-base cta-backface-visibility-hidden cta-right-0px cta-position-fixed cta-left-0px cta-bottom-0px cta-pointer-events-none" cta-id="custom-alert">
+					<div class="cta-base cta-pointer-events-none">
+						<div class="cta-base cta-pointer-events-none">
+							<div class="cta-base cta-pointer-events-none cta-side-margin-auto cta-width-100per cta-max-width-600px">
+								<div role="alert" class="cta-base cta-align-items-center cta-background-color-twitterblue cta-flex-direction-row cta-justify-content-space-between cta-pointer-events-auto cta-align-self-center" style="transition-property: opacity; transition-duration: 170ms; transition-timing-function: cubic-bezier(0, 0, 1, 1); opacity: 1; padding: 12px; top: calc(env(safe-area-inset-bottom) - 53); border-radius: 4px; margin-bottom: 32px;" data-testid="toast">
+									<div dir="ltr" class="cta-text-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family cta-font-size cta-line-height cta-font-normal cta-flex-shrink-1" style="color: rgb(255, 255, 255); text-overflow: unset; padding-left: 12px; padding-right: 12px;">
+										<span class="cta-text2-css cta-min-width-0px cta-overflow-wrap-break-word cta-font-family" style="text-overflow: unset;">${text}</span>
+									</div>
+									<div aria-hidden="true" class="cta-base cta-flex-direction-row"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			`.replace(/\t|\n/g, '');
+			document.getElementById("react-root").appendChild(node.firstChild);
+			await sleep(2000);
+			node.remove();
+		}catch(error){
+			console.error(error);
+		}finally{
+			let node = document.querySelector('[cta-id="custom-alert"]');
+			if(node)node.remove();
+		}
+	}
+	class requestObject_twitter_UnfavoriteTweet{
+		constructor(tweetID){
+			this.method = 'POST';
+			this.respType = 'json';
+			this.url = 'https://twitter.com/i/api/graphql/ZYKSe-w7KEslx3JhSIk5LA/UnfavoriteTweet';
+			this.body = `{"variables":{"tweet_id":"${tweetID}"},"queryId":"ZYKSe-w7KEslx3JhSIk5LA"}`;
+			this.headers = {
+				'Content-Type': 'application/json',
+				'User-agent': userAgent,
+				'accept': '*/*',
+				'Accept-Encoding': 'br, gzip, deflate',
+				'Origin': 'https://twitter.com',
+				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
+				"x-csrf-token": GetCookie("ct0"),
+				'Sec-Fetch-Site': 'same-origin',
+			};
+			this.package = null;
+			this.anonymous = false;
+		}
+	}
+	class requestObject_twitter_CreateRetweet{
+		constructor(tweetID){
+			this.method = 'POST';
+			this.respType = 'json';
+			this.url = 'https://twitter.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet';
+			this.body = `{"variables":{"tweet_id":"${tweetID}","dark_request":false},"queryId":"ojPdsZsimiJrUGLR1sjUtA"}`;
+			this.headers = {
+				'Content-Type': 'application/json',
+				'User-agent': userAgent,
+				'accept': '*/*',
+				'Accept-Encoding': 'br, gzip, deflate',
+				'Origin': 'https://twitter.com',
+				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
+				"x-csrf-token": GetCookie("ct0"),
+				'Sec-Fetch-Site': 'same-origin',
+			};
+			this.package = null;
+			this.anonymous = false;
+		}
+	}
+	class requestObject_twitter_DeleteRetweet{
+		constructor(tweetID){
+			this.method = 'POST';
+			this.respType = 'json';
+			this.url = 'https://twitter.com/i/api/graphql/iQtK4dl5hBmXewYZuEOKVw/DeleteRetweet';
+			this.body = `{"variables":{"source_tweet_id":"${tweetID}","dark_request":false},"queryId":"iQtK4dl5hBmXewYZuEOKVw"}`;
+			this.headers = {
+				'Content-Type': 'application/json',
+				'User-agent': userAgent,
+				'accept': '*/*',
+				'Accept-Encoding': 'br, gzip, deflate',
+				'Origin': 'https://twitter.com',
+				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
+				"x-csrf-token": GetCookie("ct0"),
+				'Sec-Fetch-Site': 'same-origin',
+			};
+			this.package = null;
+			this.anonymous = false;
+		}
+	}
+	class requestObject_twitter_CreateBookmark{
+		constructor(tweetID){
+			this.method = 'POST';
+			this.respType = 'json';
+			this.url = 'https://twitter.com/i/api/graphql/aoDbu3RHznuiSkQ9aNM67Q/CreateBookmark';
+			this.body = `{"variables":{"tweet_id":"${tweetID}"},"queryId":"aoDbu3RHznuiSkQ9aNM67Q"}`;
+			this.headers = {
+				'Content-Type': 'application/json',
+				'User-agent': userAgent,
+				'accept': '*/*',
+				'Accept-Encoding': 'br, gzip, deflate',
+				'Origin': 'https://twitter.com',
+				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
+				"x-csrf-token": GetCookie("ct0"),
+				'Sec-Fetch-Site': 'same-origin',
+				'Sec-Fetch-Mode': 'navigate',
+			};
+			this.package = null;
+			this.anonymous = false;
+		}
+	}
+	class requestObject_twitter_DeleteBookmark{
+		constructor(tweetID){
+			this.method = 'POST';
+			this.respType = 'json';
+			this.url = 'https://twitter.com/i/api/graphql/Wlmlj2-xzyS1GN3a6cj-mQ/DeleteBookmark';
+			this.body = `{"variables":{"tweet_id":"${tweetID}"},"queryId":"Wlmlj2-xzyS1GN3a6cj-mQ"}`;
+			this.headers = {
+				'Content-Type': 'application/json',
+				'User-agent': userAgent,
+				'accept': '*/*',
+				'Accept-Encoding': 'br, gzip, deflate',
+				'Origin': 'https://twitter.com',
+				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
+				"x-csrf-token": GetCookie("ct0"),
+				'Sec-Fetch-Site': 'same-origin',
+				'Sec-Fetch-Mode': 'navigate',
+			};
+			this.package = null;
+			this.anonymous = false;
+		}
+	}
+	function appendCtaCss(){
+		let style = document.createElement('style');
+		style.className = `cta-css`
+		style.textContent = `
+			.cta-base {
+				/*css-175oi2r*/
+				align-items: stretch;
+				background-color: rgba(0, 0, 0, 0.00);
+				border: 0 solid black;
+				box-sizing: border-box;
+				display: flex;
+				flex-basis: auto;
+				flex-direction: column;
+				flex-shrink: 0;
+				list-style: none;
+				margin: 0px;
+				min-height: 0px;
+				min-width: 0px;
+				padding: 0px;
+				position: relative;
+				text-decoration: none;
+				z-index: 0;
+			}
+			.cta-img-css {
+				/*css-9pa8cd*/
+				inset: 0px;
+				height: 100%;
+				opacity: 0;
+				position: absolute;
+				width: 100%;
+				z-index: -1;
+			}
+			.cta-text-css {
+				/*css-1rynq56*/
+				background-color: rgba(0, 0, 0, 0);
+				border: 0px solid black;
+				box-sizing: border-box;
+				color: rgb(0, 0, 0);
+				display: inline;
+				font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				list-style: none;
+				margin: 0px;
+				padding: 0px;
+				text-align: inherit;
+				text-decoration: none;
+				white-space: pre-wrap;
+				overflow-wrap: break-word;
+			}
+			.cta-text2-css {
+				/*css-1qaijid*/
+				background-color: rgba(0, 0, 0, 0);
+				border: 0px solid black;
+				box-sizing: border-box;
+				color: inherit;
+				display: inline;
+				font: inherit;
+				list-style: none;
+				margin: 0px;
+				padding: 0px;
+				text-align: inherit;
+				text-decoration: none;
+				white-space: inherit;
+				overflow-wrap: break-word;
+			}
+			.cta-flex-direction-row {
+				/*r-18u37iz*/
+				flex-direction: row;
+			}
+			.cta-overflow-hidden {
+				/*r-1udh08x*/
+				overflow-x: hidden;
+				overflow-y: hidden;
+			}
+			.cta-overflow-visible {
+				/*r-bztko3*/
+				overflow-x: visible;
+				overflow-y: visible;
+			}
+			.cta-padding-left {
+				/*r-1qhn6m8*/
+				padding-left: calc(2.678%);
+			}
+			.cta-padding-bottom {
+				/*r-kzbkwu*/
+				padding-bottom: 12px;
+			}
+			.cta-padding-right {
+				/*r-i023vh*/
+				padding-right: calc(2.678%);
+			}
+			.cta-transition-duration {
+				/*r-o7ynqc*/
+				transition-duration: 0.2s;
+			}
+			.cta-transition-property {
+				/*r-6416eg*/
+				-moz-transition-property: background-color, box-shadow;
+				-webkit-transition-property: background-color, box-shadow;
+				transition-property: background-color, box-shadow;
+			}
+			.cta-outline-style-none {
+				/*r-1ny4l3l*/
+				outline-style: none;
+			}
+			.cta-cursor-pointer {
+				/*r-1loqt21*/
+				cursor: pointer;
+			}
+			.cta-flex-direction-column {
+				/*r-eqz5dr*/
+				flex-direction: column;
+			}
+			.cta-flex-grow-0 {
+				/*r-18kxxzh*/
+				flex-grow: 0;
+			}
+			.cta-flex-grow-1 {
+				/*r-16y2uox*/
+				flex-grow: 1;
+			}
+			.cta-flex-shrink-1 {
+				/*r-1wbh5a2*/
+				flex-shrink: 1;
+			}
+			.cta-flex-basis-0px {
+				/*r-1iusvr4*/
+				flex-basis: 0px;
+			}
+			.cta-padding-top {
+				/*r-ttdzmv*/
+				padding-top: calc(2.122%);
+			}
+			.cta-margin-right-big {
+				/*r-1b7u577*/
+				margin-right: calc(2.122%);
+			}
+			.cta-margin-right-small {
+				/*r-a5pmau*/
+				margin-right: calc(0.356%);
+			}
+			.cta-margin-top {
+				/*r-1s2bzr4*/
+				margin-top: 12px;
+			}
+			.cta-flex-basis-icon {
+				/*r-onrtq4*/
+				flex-basis: calc(7.07%);
+			}
+			.cta-align-items-center {
+				/*r-1awozwy*/
+				align-items: center;
+			}
+			.cta-width-100per {
+				/*r-13qz1uu*/
+				width: 100%;
+			}
+			.cta-display-block {
+				/*r-1adg3ll*/
+				display: block;
+			}
+			.cta-left-0px {
+				/*r-1d2f490*/
+				left: 0px;
+			}
+			.cta-top-0px {
+				/*r-ipm5af*/
+				top: 0px;
+			}
+			.cta-right-0px {
+				/*r-zchlnj*/
+				right: 0px;
+			}
+			.cta-bottom-0px {
+				/*r-1p0dtai*/
+				bottom: 0px;
+			}
+			.cta-height-100per {
+				/*r-1pi2tsx*/
+				height: 100%;
+			}
+			.cta-position-absolute {
+				/*r-u8s1d*/
+				position: absolute;
+			}
+			.cta-arrangement-center	{
+				/*r-1wyvozj*/
+				/*r-1v2oles*/
+				/*r-desppf*/
+				left: 50%;
+				top: 50%;
+				transform: translateX(-50%) translateY(-50%);
+			}
+			.cta-icon-position-fix {
+				/*r-ggadg3*/
+				/*r-8jfcpp*/
+				left: calc(-0.356%);
+				top: calc(-0.356%);
+			}
+			.cta-shape-circle {
+				/*r-sdzlij*/
+				border-bottom-left-radius: 9999px;
+				border-bottom-right-radius: 9999px;
+				border-top-left-radius: 9999px;
+				border-top-right-radius: 9999px;
+			}
+			.cta-shape-square {
+				/*clip-path: url("#shape-square-rx-16");*/
+				border-bottom-left-radius: 4px;
+				border-bottom-right-radius: 4px;
+				border-top-left-radius: 4px;
+				border-top-right-radius: 4px;
+			}
+			.cta-pointer-events-none {
+				/*r-633pao*/
+				pointer-events: none !important;
+			}
+			.cta-flex-basis-auto {
+				/*r-1mlwlqe*/
+				flex-basis: auto;
+			}
+			.cta-z-index-0 {
+				/*r-417010*/
+				z-index: 0;
+			}
+			.cta-z-index--1 {
+				/*r-1wyyakw*/
+				z-index: -1;
+			}
+			.cta-display-inline-block {
+				/*r-4qtqp9*/
+				display: inline-block;
+			}
+			.cta-transparent-background {
+				/*r-1niwhzg*/
+				background-color: rgba(0, 0, 0, 0.00);
+			}
+			.cta-background-position-center {
+				/*r-vvn4in*/
+				background-position: center center;
+			}
+			.cta-background-no-repeat {
+				/*r-u6sd8q*/
+				background-repeat: no-repeat;
+			}
+			.cta-background-size-cover {
+				/*r-4gszlv*/
+				background-size: cover;
+			}
+			.cta-icon-box-shadow {
+				/*r-172uzmj*/
+				box-shadow: rgba(255, 255, 255, 0.03) 0px 0px 2px inset;
+			}
+			.cta-justify-content-center {
+				/*r-1777fci*/
+				justify-content: center;
+			}
+			.cta-justify-content-flex-start {
+				/*r-1h0z5md*/
+				justify-content: flex-start;
+			}
+			.cta-margin-bottom-small {
+				/*r-zl2h9q*/
+				margin-bottom: 2px;
+			}
+			.cta-margin-left-small {
+				/*r-9cviqr*/
+				margin-left: 2px;
+			}
+			.cta-align-items-start {
+				/*r-k4xj1c*/
+				align-items: start;
+			}
+			.cta-justify-content-space-between {
+				/*r-1wtj0ep*/
+				justify-content: space-between;
+			}
+			.cta-align-items-baseline {
+				/*r-1d09ksm*/
+				align-items: baseline;
+			}
+			.cta-max-width-100per {
+				/*r-dnmrzs*/
+				max-width: 100%;
+			}
+			.cta-min-width-0px {
+				/*r-bcqeeo*/
+				min-width: 0px;
+			}
+			.cta-overflow-wrap-break-word {
+				/*r-qvutc0*/
+				overflow-wrap: break-word;
+			}
+			.cta-font-family {
+				/*r-1tl8opc*/
+				font-family: "Segoe UI", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+			}
+			.cta-provisional-font-family {
+				/*r-37j5jr*/
+				font-family: "TwitterChirp", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			}
+			.cta-font-size {
+				/*r-a023e6*/
+				font-size: 1em;
+			}
+			.cta-line-height {
+				/*r-rjixqe*/
+				line-height: 1.25em;
+			}
+			.cta-font-bold {
+				/*r-b88u0q*/
+				font-weight: 700;
+			}
+			.cta-font-normal {
+				/*r-16dba41*/
+				font-weight: 400;
+			}
+			.cta-display-flex {
+				/*r-6koalj*/
+				display: flex;
+			}
+			.cta-flex-shrink-0 {
+				/*r-1q142lx*/
+				flex-shrink: 0;
+			}
+			.cta-display-inline-flex {
+				/*r-xoduu5*/
+				display: inline-flex;
+			}
+			.cta-white-space-nowrap {
+				/*r-3s2u2q*/
+				white-space: nowrap;
+			}
+			.cta-fill-currentcolor {
+				/*r-yyyyoo*/
+				fill: currentcolor;
+			}
+			.cta-svg-height {
+				/*r-1xvli5t*/
+				height: 1.25em;
+			}
+			.cta-svg-width {
+				/*r-1hdv0qi*/
+				width: 1.25em;
+			}
+			.cta-svg-max-height {
+				/*r-f9ja8p*/
+				max-height: 1.25em;
+			}
+			.cta-svg-max-width {
+				/*r-og9te1*/
+				max-width: 1.25em;
+			}
+			.cta-svg-transition-property-color {
+				/*r-clp7b1*/
+				transition-property: color;
+			}
+			.cta-position-relative {
+				/*r-bnwqim*/
+				position: relative;
+			}
+			.cta-vertical-align-text-bottom {
+				/*r-1plcrui*/
+				vertical-align: text-bottom;
+			}
+			.cta-user-select-none {
+				/*r-lrvibr*/
+				user-select: none;
+			}
+			.cta-gap-4px {
+				/*r-9aw3ui*/
+				gap: 4px;
+			}
+			.cta-gap-8px {
+				/*r-1cmwbt1*/
+				gap: 8px;
+			}
+			.cta-gap-12px {
+				/*r-1ssbvtb*/
+				gap: 12px;
+			}
+			.cta-min-height-20px {
+				/*r-bt1l66*/
+				min-height: 20px;
+			}
+			.cta-margin--8px {
+				/*r-xf4iuw*/
+				margin: -8px;
+			}
+			.cta-box-orient-vertical {
+				/*r-8akbws*/
+				-moz-box-orient: vertical;
+				-webkit-box-orient: vertical;
+			}
+			.cta-font-family-inherit {
+				/*r-poiln3*/
+				font-family: inherit;
+			}
+			.cta-font-size-0px {
+				/*r-hiw28u*/
+				/*r-qvk6io*/
+				font-size: 0px;
+				line-height: 0px;
+			}
+			.cta-border {
+				/*r-18bvks7*/
+				/*r-1phboty*/
+				/*r-rs99b7*/
+				/*js制御*/
+				border-color: rgb(56, 68, 77);
+				border-style: solid;
+				overflow: hidden;
+				border-width: 1px;
+			}
+			.cta-border-radius-16px {
+				/*r-1867qdf*/
+				border-radius: 16px;
+			}
+			.cta-column-gap-4px {
+				/*r-1kbdv8c*/
+				column-gap: 4px;
+			}
+			.cta-max-width-600px {
+				/*r-1ye8kvj*/
+				max-width: 600px;
+			}
+			.cta-flex-1-1-0per {
+				/*r-13awgt0*/
+				flex: 1 1 0%;
+			}
+			.cta-engagement-text {
+				/*r-1pn2ns4*/
+				/*r-n6v787*/
+				/*r-1cwl3u0*/
+				/*r-1k6nrdp*/
+				padding-left: 4px;
+				padding-right: 4px;
+				line-height: 16px;
+				font-size: 13px;
+				min-width: calc(1em + 24px);
+			}
+			.cta-backface-visibility-hidden {
+				/*r-aqfbo4*/
+				backface-visibility: hidden;
+			}
+			.cta-position-fixed {
+				/*r-1xcajam*/
+				position: fixed;
+			}
+			.cta-pointer-events-none {
+				/*r-12vffkv*/
+				pointer-events: none !important;
+			}
+			.cta-background-color-twitterblue {
+				/*r-l5o3uw*/
+				background-color: rgb(29, 155, 240);
+			}
+			.cta-pointer-events-auto {
+				/*r-105ug2t*/
+				pointer-events: auto !important;
+			}
+			.cta-align-self-center {
+				/*r-1kihuf0*/
+				align-self: center;
+			}
+			.cta-side-margin-auto {
+				/*r-1jgb5lz*/
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.cta-side-margin-12px {
+				/*r-1fz3rvf*/
+				margin-left: 12px;
+				margin-right: 12px;
+			}
+			.cta-font-feature-settings-ss01 {
+				/*r-1wvb978*/
+				font-feature-settings: "ss01";
+			}
+			.cta-side-padding-4px {
+				/*r-s1qlax*/
+				padding-left: 4px;
+				padding-right: 4px;
+			}
+			.cta-flex-wrap-wrap {
+				/*r-1w6e6rj*/
+				flex-wrap: wrap;
+			}
+		`.replace(/\t|\n/g, '');
+		document.head.appendChild(style);
+	}
+	appendCtaCss();
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
 	class requestObject_twitter_api_v1_1{
 		constructor(ID,endpoints = "lookup"){
 			this.method = 'GET';
@@ -2540,7 +4814,6 @@
 			this.url = `https://twitter.com/i/api/graphql/TuC3CinYecrqAyqccUyFhw/TweetDetail?variables=%7B%22focalTweetId%22%3A%22${ID}%22%2C%22referrer%22%3A%22home%22%2C%22with_rux_injections%22%3Afalse%2C%22includePromotedContent%22%3Atrue%2C%22withCommunity%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withArticleRichContent%22%3Atrue%2C%22withBirdwatchNotes%22%3Atrue%2C%22withVoice%22%3Atrue%2C%22withV2Timeline%22%3Atrue%7D&features=%7B%22rweb_lists_timeline_redesign_enabled%22%3Atrue%2C%22responsive_web_graphql_exclude_directive_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22tweetypie_unmention_optimization_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Atrue%2C%22responsive_web_media_download_video_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticleRichContentState%22%3Atrue%7D`;
 			this.body = null;
 			this.headers = {
-				"Content-Type": "application/json",
 				'User-agent': userAgent,
 				'accept': '*/*',
 				'Accept-Encoding': 'br, gzip, deflate',
@@ -2737,6 +5010,23 @@
 			this.anonymous = true;
 		}
 	}
+	class requestObject_skeb{
+		constructor(URL,skeb_URL){
+			this.method = 'GET';
+			this.respType = 'json';
+			this.url = `${URL}`;
+			this.body = null;
+			this.headers = {
+				'User-agent': userAgent,
+				'Referer': skeb_URL,
+				'Alt-Used': 'skeb.jp',
+				'Authorization': 'Bearer null',
+				"Sec-Fetch-Mode": "cors",
+				"Sec-Fetch-Site": "same-site",
+				'Accept-Encoding': 'br, gzip, deflate',
+			};
+		}
+	}
 	class requestObject_fanbox{
 		constructor(URL,fanbox_URL){
 			this.method = 'GET';
@@ -2819,6 +5109,85 @@
 				"Sec-Fetch-Site": "same-origin"
 			};
 			this.package = null;
+		}
+	}
+
+	class requestObject_twitter_get_user_media{
+		constructor(url,variables){
+			this.method = 'GET';
+			this.respType = 'json';
+			this.url = `${url}?variables=${encodeURIComponent(JSON.stringify(variables))}&features=${encodeURIComponent(JSON.stringify({
+				"responsive_web_graphql_exclude_directive_enabled": true,
+				"verified_phone_label_enabled": false,
+				"responsive_web_home_pinned_timelines_enabled": true,
+				"creator_subscriptions_tweet_preview_api_enabled": true,
+				"responsive_web_graphql_timeline_navigation_enabled": true,
+				"responsive_web_graphql_skip_user_profile_image_extensions_enabled": false,
+				"c9s_tweet_anatomy_moderator_badge_enabled": true,
+				"tweetypie_unmention_optimization_enabled": true,
+				"responsive_web_edit_tweet_api_enabled": true,
+				"graphql_is_translatable_rweb_tweet_is_translatable_enabled": true,
+				"view_counts_everywhere_api_enabled": true,
+				"longform_notetweets_consumption_enabled": true,
+				"responsive_web_twitter_article_tweet_consumption_enabled": false,
+				"tweet_awards_web_tipping_enabled": false,
+				"freedom_of_speech_not_reach_fetch_enabled": true,
+				"standardized_nudges_misinfo": true,
+				"tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": true,
+				"longform_notetweets_rich_text_read_enabled": true,
+				"longform_notetweets_inline_media_enabled": true,
+				"responsive_web_media_download_video_enabled": false,
+				"responsive_web_enhance_cards_enabled": false
+			}))}`;
+			this.body = null;
+			this.headers = {
+				'User-agent': userAgent,
+				'accept': '*/*',
+				'Accept-Encoding': 'br, gzip, deflate',
+				'authorization': `Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA`,
+				'x-csrf-token': GetCookie("ct0"),
+			};
+			this.package = null;
+			this.anonymous = false;
+		}
+	}
+	class requestObject_twitter_get_search_media{
+		constructor(url,variables){
+			this.method = 'GET';
+			this.respType = 'json';
+			this.url = `${url}?variables=${encodeURIComponent(JSON.stringify(variables))}&features=${encodeURIComponent(JSON.stringify({
+				"responsive_web_graphql_exclude_directive_enabled": true,
+				"verified_phone_label_enabled": false,
+				"creator_subscriptions_tweet_preview_api_enabled": true,
+				"responsive_web_graphql_timeline_navigation_enabled": true,
+				"responsive_web_graphql_skip_user_profile_image_extensions_enabled": false,
+				"c9s_tweet_anatomy_moderator_badge_enabled": true,
+				"tweetypie_unmention_optimization_enabled": true,
+				"responsive_web_edit_tweet_api_enabled": true,
+				"graphql_is_translatable_rweb_tweet_is_translatable_enabled": true,
+				"view_counts_everywhere_api_enabled": true,
+				"longform_notetweets_consumption_enabled": true,
+				"responsive_web_twitter_article_tweet_consumption_enabled": false,
+				"tweet_awards_web_tipping_enabled": false,
+				"freedom_of_speech_not_reach_fetch_enabled": true,
+				"standardized_nudges_misinfo": true,
+				"tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": true,
+				"rweb_video_timestamps_enabled": true,
+				"longform_notetweets_rich_text_read_enabled": true,
+				"longform_notetweets_inline_media_enabled": true,
+				"responsive_web_media_download_video_enabled": false,
+				"responsive_web_enhance_cards_enabled": false
+			}))}`;
+			this.body = null;
+			this.headers = {
+				'User-agent': userAgent,
+				'accept': '*/*',
+				'Accept-Encoding': 'br, gzip, deflate',
+				'authorization': `Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA`,
+				'x-csrf-token': GetCookie("ct0"),
+			};
+			this.package = null;
+			this.anonymous = false;
 		}
 	}
 	async function test(){
