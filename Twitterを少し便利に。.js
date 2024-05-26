@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			1.0.1.21
+// @version			1.0.1.29
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -76,7 +76,7 @@
 		'followersLink': '.r-bcqeeo.r-qvutc0.r-1tl8opc.r-1b43r93.r-hjklzo.r-16dba41.r-1loqt21',
 	};
 	const deny_names = ["home", "explore", "notifications", "messages", "i", "settings", "tos", "privacy", "compose", "search"];
-	const denyNamesRegex = new RegExp(`https://twitter\\.com/((?!${deny_names.join('|')})[^/]+)`, 'i');
+	const denyNamesRegex = new RegExp(`https?://[\\w]{1,}\\.com/((?!${deny_names.join('|')})[^/]+)`, 'i');
 	let currentUrl = document.location.href;
 	let updating = false;
 	const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -147,6 +147,7 @@
 	}
 	let scriptDataStore = {
 		"Show_me_your_Pixiv": JSON.parse(localStorage.getItem('user_pixvi_link_collection') || "{}"),
+		"Show_me_your_Pixiv_dataBase": (await getFromIndexedDB('Show_me_your_Pixiv','pixiv_link_collection_dataBase')|| {}),
 		"Show_all_Medias": {},
 		"createTwitterArticle": {}
 	};
@@ -361,7 +362,7 @@
 			tweet.setAttribute('mtlu_checked', "true");
 			const link = tweet.querySelector(`[data-testid="User-Name"] a[aria-label], ${env_selector.info_field} a[aria-label]`);
 			if(link){
-				const match = link.href.match(/twitter\.com\/[^/]+\/status\/(\d+)/);
+				const match = link.href.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/);
 				if(match){
 					return { id: match[1], link: link.href, node: tweet, screenName: (tweet.querySelector('[data-testid="User-Name"]>div>div>a')?.href?.split("/")[3] || undefined) };
 				}
@@ -369,7 +370,7 @@
 		}).filter(Boolean);
 		//console.log(tweets)
 		const featurestoggle = script_settings.Make_Twitter_little_useful.featuresToggle;
-		const isTweetDetail = !!currentUrl.match(/twitter\.com\/[\w]*\/status\/[0-9]*/);
+		const isTweetDetail = !!currentUrl.match(/[\w]{1,}\.com\/[\w]*\/status\/[0-9]*/);
 		if(isTweetDetail && featurestoggle.Hello_tweet_where_are_you_from){
 			Hello_tweet_where_are_you_from();
 		}
@@ -397,7 +398,7 @@
 		if(isMobile && featurestoggle.shareTweet_Restorer_for_mobile){
 			shareTweet_Restorer_for_mobile(tweets);
 		}
-		if(currentUrl.match(/twitter\.com\/([\w]*\/media|search\?q\=.*&f=media)/) && featurestoggle.Show_all_Medias){
+		if(currentUrl.match(/[\w]{1,}\.com\/([\w]*\/media|search\?q\=.*&f=media)/) && featurestoggle.Show_all_Medias){
 			Show_all_Medias(currentUrl);
 		}
 		/*
@@ -434,7 +435,7 @@
 		script_settings.Show_all_Medias.removeBlur
 		function expand(){
 			const mediaPlace = document.querySelector('[data-testid="primaryColumn"] section');
-			const madiaRow = mediaPlace.querySelectorAll(`.r-18u37iz.r-9aw3ui.r-4amgru.r-14gqq1x:not(.Show_all_Medias_checked)`);
+			const madiaRow = mediaPlace.querySelectorAll(`.r-18u37iz.r-9aw3ui.r-1537yvj.r-14gqq1x:not(.Show_all_Medias_checked)`);
 			const blurSvgPath = 'path[d="M3.693 21.707l-1.414-1.414 2.429-2.429c-2.479-2.421-3.606-5.376-3.658-5.513l-.131-.352.131-.352c.133-.353 3.331-8.648 10.937-8.648 2.062 0 3.989.621 5.737 1.85l2.556-2.557 1.414 1.414L3.693 21.707zm-.622-9.706c.356.797 1.354 2.794 3.051 4.449l2.417-2.418c-.361-.609-.553-1.306-.553-2.032 0-2.206 1.794-4 4-4 .727 0 1.424.192 2.033.554l2.263-2.264C14.953 5.434 13.512 5 11.986 5c-5.416 0-8.258 5.535-8.915 7.001zM11.986 10c-1.103 0-2 .897-2 2 0 .178.023.352.067.519l2.451-2.451c-.167-.044-.341-.067-.519-.067zm10.951 1.647l.131.352-.131.352c-.133.353-3.331 8.648-10.937 8.648-.709 0-1.367-.092-2-.223v-2.047c.624.169 1.288.27 2 .27 5.415 0 8.257-5.533 8.915-7-.252-.562-.829-1.724-1.746-2.941l1.438-1.438c1.53 1.971 2.268 3.862 2.33 4.027z"]';
 			if(madiaRow.length === 0)return;
 			const screenName = currentUrl.split('/')[3];
@@ -466,7 +467,7 @@
 				n.classList.add('Show_all_Medias_checked');
 				const parent = n.parentNode;
 				const mediaLinkNode = n.querySelector('a');
-				const tweetID = mediaLinkNode.href.match(/twitter\.com\/[^/]+\/status\/(\d+)/)[1];
+				const tweetID = mediaLinkNode.href.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/)[1];
 				if(!fetchedTweets[tweetID])await fetchAndProcessTwitterApi('userMedia',screenName);
 				const tweetData = await getTweetData(tweetID,"graphQL");
 				const mediaData = tweetData.legacy.entities.media;
@@ -506,7 +507,7 @@
 		}
 		function likeTweet(){
 			const mediaPlace = document.querySelector('[data-testid="primaryColumn"] section');
-			const madiaRow = mediaPlace?.querySelectorAll(`.r-18u37iz.r-9aw3ui.r-4amgru.r-14gqq1x`);
+			const madiaRow = mediaPlace?.querySelectorAll(`.r-18u37iz.r-9aw3ui.r-1537yvj.r-14gqq1x`);
 			if(!(madiaRow?.length > 0))return;
 			let mediaNodes = [];
 			madiaRow.forEach(node => {
@@ -524,10 +525,10 @@
 			if(mediaNodes.length === 0)return;
 			const processNode = async (n)=>{
 				const mediaLinkNode = n.querySelector('a');
-				const tweetID = mediaLinkNode.href.match(/twitter\.com\/[^/]+\/status\/(\d+)/)[1];
-				const screenName = mediaLinkNode.href.match(/twitter\.com\/(\w+)/)[1];
+				const tweetID = mediaLinkNode.href.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/)[1];
+				const screenName = mediaLinkNode.href.match(/[\w]{1,}\.com\/(\w+)/)[1];
 				if(!fetchedTweets[tweetID]){
-					if(triggeredUrl.match(/twitter\.com\/([\w]*\/media)/))await fetchAndProcessTwitterApi('userMedia', screenName);
+					if(triggeredUrl.match(/[\w]{1,}\.com\/([\w]*\/media)/))await fetchAndProcessTwitterApi('userMedia', screenName);
 					//if(triggeredUrl.match(/search\?q\=.*&f=media/))await fetchAndProcessTwitterApi('mediaSearch', (new URL(triggeredUrl)).searchParams.get('q'));
 				}
 				n.style.width = "100%";
@@ -621,7 +622,7 @@
 			clonedSvg.appendChild(newPath);
 			clonedSvg.style.color = color[getDarkMode()];
 			clonedSvg.addEventListener('click', () => {
-				copyToClipboard(tweet.link);
+				copyToClipboard(tweet.link.replace(/https?:\/\/x.com/,'https://twitter.com'));
 			});
 			clonedNode.addEventListener('click', (event) => {
 				event.stopPropagation();
@@ -824,7 +825,7 @@
 			fotter.parentNode.appendChild(flexContainer);
 		});
 		async function make_send_data(tweet_link,select_pages = [1],send_quoted_tweet,use_graphQL){
-			const tweet_id = tweet_link.match(/https?:\/\/twitter\.com\/\w+\/status\/(\d+)/)[1];
+			const tweet_id = tweet_link.match(/https?:\/\/[\w]{1,}\.com\/\w+\/status\/(\d+)/)[1];
 			let textData = Text[script_settings.webhook_brings_tweets_to_discord.lang].webhook_brings_tweets_to_discord;
 			let tweet_data,quoted_data,return_object,apiType;
 			try{
@@ -873,7 +874,7 @@
 				twitter_tweet_data.symbols = tweet_tweet_data_json.entities.symbols || [];
 				try{
 					await addPixivLinksToScriptDataStore([twitter_user_data.screen_name],true);
-					twitter_user_data.pixiv_url = scriptDataStore.Show_me_your_Pixiv[twitter_user_data.screen_name]?.pixiv_url;
+					twitter_user_data.pixiv_url = getPixivUrlWithScreenName(twitter_user_data.screen_name);
 				}catch(error){
 					console.log("pixivのURLの取得に失敗しました。");
 					throw(error);
@@ -889,14 +890,12 @@
 				try{
 					//文が長すぎるとエラーになるので一定の長さで切る。
 					//普通のツイートではそんなことありえないが、Blueでは長いツイートが可能なのでそれに対応している。
-					if(use_graphQL){
-						let note_tweet = tweet_data.note_tweet?.note_tweet_results.result;
-						twitter_tweet_data.full_text = note_tweet.text;
-						twitter_tweet_data.urls = note_tweet.entity_set.urls;
-						twitter_tweet_data.hashtags = get_only_particular_key_value(note_tweet.entity_set,"hashtags",[]);
-						twitter_tweet_data.user_mentions = get_only_particular_key_value(note_tweet.entity_set,"user_mentions",[]);
-						twitter_tweet_data.symbols = get_only_particular_key_value(note_tweet.entity_set,"symbols",[]);
-					}
+					let note_tweet = tweet_data.note_tweet?.note_tweet_results.result;
+					twitter_tweet_data.full_text = note_tweet.text;
+					twitter_tweet_data.urls = note_tweet.entity_set.urls;
+					twitter_tweet_data.hashtags = get_only_particular_key_value(note_tweet.entity_set,"hashtags",[]);
+					twitter_tweet_data.user_mentions = get_only_particular_key_value(note_tweet.entity_set,"user_mentions",[]);
+					twitter_tweet_data.symbols = get_only_particular_key_value(note_tweet.entity_set,"symbols",[]);
 				}catch{}
 				//console.log(twitter_tweet_data.full_text)
 				// hashtags, mentions, symbolsを一つの配列に結合
@@ -1202,10 +1201,10 @@
 		});
 	}
 	async function Engagement_Restorer(){
-		if(!currentUrl.match(/https?\:\/\/twitter\.com\/\w*\/status\/[0-9]*($|\?.*)/) || document.getElementById('restoreEngagements') || isFunctionRunning.Engagement_Restorer)return;
+		if(!currentUrl.match(/https?\:\/\/[\w]{1,}\.com\/\w*\/status\/[0-9]*($|\?.*)/) || document.getElementById('restoreEngagements') || isFunctionRunning.Engagement_Restorer)return;
 		isFunctionRunning.Engagement_Restorer = true;
 		try{
-			const tweetLink = currentUrl.match(/https?\:\/\/twitter\.com\/\w*\/status\/[0-9].*/)[0];
+			const tweetLink = currentUrl.match(/https?\:\/\/[\w]{1,}\.com\/\w*\/status\/[0-9].*/)[0];
 			const tweetId = tweetLink.match(/\/status\/(\d+)/)[1];
 			const response = (await getTweetData(tweetId,"graphQL")).legacy;
 			const engagemants = {"favorite_count": response.favorite_count,"quote_count": response.quote_count,"retweet_count": response.retweet_count};
@@ -1262,7 +1261,7 @@
 				});
 				flexContainer.appendChild(newLink);
 			});
-			if(currentUrl.match(/https?\:\/\/twitter\.com\/\w*\/status\/[0-9]*($|\?.*)/))engagemants_aria.parentNode.prepend(flexContainer);
+			if(currentUrl.match(/https?\:\/\/[\w]{1,}\.com\/\w*\/status\/[0-9]*($|\?.*)/))engagemants_aria.parentNode.prepend(flexContainer);
 		}catch(error){
 			console.error(error)
 		}finally{
@@ -1451,22 +1450,22 @@
 		todo.forEach(item => {
 			const node = item.node;
 			const screen_name = item.screenName;
-			const pixiv_url = scriptDataStore.Show_me_your_Pixiv[screen_name]?.pixiv_url;
+			const pixiv_url = getPixivUrlWithScreenName(screen_name);
 			if(pixiv_url && node && !(node?.querySelector(".display_pixiv_link")))node.appendChild(makeLinkElement(pixiv_url,"Pixiv🔗","display_pixiv_link"));
 		});
-		if(scriptDataStore.Show_me_your_Pixiv[currentScreenName]?.pixiv_url && !currentUrl.match(new RegExp(`${currentScreenName}/status`))){
+		if(getPixivUrlWithScreenName(currentScreenName) && !currentUrl.match(new RegExp(`${currentScreenName}/status`))){
 			const profile_field = (await wait_load_Element(env_selector.profile_field_Header_Items))[0];
 			currentScreenName = extractUserName(currentUrl);
-			if(profile_field && !profile_field.querySelector(`.display_pixiv_link_in_profile_${currentScreenName}`) && scriptDataStore.Show_me_your_Pixiv[currentScreenName]?.pixiv_url){
+			let pixivUrl = getPixivUrlWithScreenName(currentScreenName);
+			if(profile_field && !profile_field.querySelector(`.display_pixiv_link_in_profile_${currentScreenName}`) && pixivUrl){
 				let display_pixiv_link_in_profile_field = document.createElement("div");
 				display_pixiv_link_in_profile_field.className = `display_pixiv_link_in_profile display_pixiv_link_in_profile_${currentScreenName}`;
 				let brElement = document.createElement("br");
 				display_pixiv_link_in_profile_field.appendChild(brElement);
-				display_pixiv_link_in_profile_field.appendChild(makeLinkElement(scriptDataStore.Show_me_your_Pixiv[currentScreenName]?.pixiv_url, "Pixiv🔗", "display_pixiv_link"));
+				display_pixiv_link_in_profile_field.appendChild(makeLinkElement(pixivUrl, "Pixiv🔗", "display_pixiv_link"));
 				profile_field.appendChild(display_pixiv_link_in_profile_field)
 			}
 		}
-		localStorage.setItem('user_pixvi_link_collection', JSON.stringify(scriptDataStore.Show_me_your_Pixiv));
 	}
 
 /////////////////////////////////////////////////////////////////////
@@ -1480,7 +1479,7 @@
 		setTimeout(() => {updating = false;}, 600);
 	}
 	function extractTweetId(url){
-		const match = url.match(/twitter\.com\/[^/]+\/status\/(\d+)/);
+		const match = url.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/);
 		return match ? match[1] : null;
 	}
 	function extractUserName(url){
@@ -1696,6 +1695,7 @@
 				console.error(`Failure: ${result.reason}`);
 			}
 		});
+		localStorage.setItem('user_pixvi_link_collection', JSON.stringify(scriptDataStore.Show_me_your_Pixiv));
 		return "finished!";
 		function extractUrls(entities){
 			let urls = [];
@@ -1710,6 +1710,21 @@
 				});
 			}
 			return urls;
+		}
+	}
+	function getPixivUrlWithScreenName(screenName){
+		let pixivUrl = scriptDataStore.Show_me_your_Pixiv[screenName]?.pixiv_url;
+		if(pixivUrl){
+			return pixivUrl;
+		}else{
+			pixivUrl = scriptDataStore.Show_me_your_Pixiv_dataBase[screenName];
+			if(Array.isArray(pixivUrl)){
+				return `https://www.pixiv.net/users/${pixivUrl[0]}`;
+			}else if(pixivUrl){
+				return `https://www.pixiv.net/users/${pixivUrl}`;
+			}else{
+				return null;
+			}
 		}
 	}
 	async function find_pixiv_link(urls){
@@ -1925,7 +1940,7 @@
 			}
 		});
 		async function getMediaSerch(){
-			let url = 'https://twitter.com/i/api/graphql/Aj1nGkALq99Xg3XI0OZBtw/SearchTimeline'
+			let url = 'https://x.com/i/api/graphql/Aj1nGkALq99Xg3XI0OZBtw/SearchTimeline'
 			let variables = {
 				"rawQuery": encodeURIComponent(id),
 				"count": 50,
@@ -1948,7 +1963,7 @@
 		async function getUserMedia(){
 			let userData = await getTweetData(id,"user")
 			let userID = userData.rest_id || userData.id_str;
-			let url = 'https://twitter.com/i/api/graphql/dQAjBEzWOl_hQwnc1sLUsA/UserMedia'
+			let url = 'https://x.com/i/api/graphql/dQAjBEzWOl_hQwnc1sLUsA/UserMedia'
 			let variables = {
 				"userId": `${userID}`,
 				"count": 200,
@@ -2166,6 +2181,87 @@
 		}catch{
 			return 0;
 		}
+	}
+	function openIndexedDB(dbName, storeName){
+		return new Promise((resolve, reject) => {
+			let request = indexedDB.open(dbName);
+
+			request.onerror = (event) => {
+				reject("Database error: " + event.target.errorCode);
+			};
+
+			request.onsuccess = (event) => {
+				let db = event.target.result;
+				if(db.objectStoreNames.contains(storeName)){
+					resolve(db);
+				}else{
+					db.close();
+					let newVersion = db.version + 1;
+					let versionRequest = indexedDB.open(dbName, newVersion);
+					versionRequest.onupgradeneeded = (event) => {
+						db = event.target.result;
+						db.createObjectStore(storeName, { keyPath: 'id' });
+					};
+					versionRequest.onsuccess = (event) => {
+						resolve(event.target.result);
+					};
+					versionRequest.onerror = (event) => {
+						reject("Database error: " + event.target.errorCode);
+					};
+				}
+			};
+
+			request.onupgradeneeded = (event) => {
+				let db = event.target.result;
+				db.createObjectStore(storeName, { keyPath: 'id' });
+			};
+		});
+	}
+
+	function saveToIndexedDB(dbName, storeName, data, id = 522){
+		return new Promise(async (resolve, reject) => {
+			try{
+				let db = await openIndexedDB(dbName, storeName);
+				let transaction = db.transaction(storeName, 'readwrite');
+				let store = transaction.objectStore(storeName);
+				let putRequest = store.put({ id: id, data: data });
+
+				putRequest.onsuccess = () => {
+					resolve("Data saved successfully.");
+				};
+
+				putRequest.onerror = (event) => {
+					reject("Data save error: " + event.target.errorCode);
+				};
+			}catch(error){
+				reject(error);
+			}
+		});
+	}
+
+	function getFromIndexedDB(dbName, storeName, id = 522){
+		return new Promise(async (resolve, reject) => {
+			try{
+				let db = await openIndexedDB(dbName, storeName);
+				let transaction = db.transaction(storeName, 'readonly');
+				let store = transaction.objectStore(storeName);
+				let getRequest = store.get(id);
+
+				getRequest.onsuccess = (event) => {
+					if(event.target.result){
+						resolve(event.target.result.data);
+					}else{
+						resolve(null);
+					}
+				};
+
+				getRequest.onerror = (event) => {
+					reject("Data fetch error: " + event.target.errorCode);
+				};
+			}catch(error){
+				reject(error);
+			}
+		});
 	}
 	function openSettings(){
 		let container = document.createElement('div');
@@ -2429,13 +2525,13 @@
 				script_settings['Show_me_your_Pixiv'] = settingsToSave;
 			}
 			async function addPixivUrlList(){
-				const downloadData = JSON.parse((await request(new requestObject('https://dl.dropboxusercontent.com/s/v38cx9ra0nul3q7nzajf1/pixiv.json?rlkey=6ectu9b9r4npbkavceq8t2gmg'))).response);
+				const downloadData = JSON.parse((await request(new requestObject('https://dl.dropboxusercontent.com/s/stvehlbre5gir6xtaxgz8/screenName2PixivID.json?rlkey=0vqz5kb333fehmcd1xtftj9b5'))).response);
 				if(!(Object.keys(downloadData).length > 100)){
 					customAlert(textData.faildAddPixivUrlList);
 					return;
 				}
-				scriptDataStore.Show_me_your_Pixiv = {...scriptDataStore.Show_me_your_Pixiv,...downloadData};
-				localStorage.setItem('user_pixvi_link_collection', JSON.stringify(scriptDataStore.Show_me_your_Pixiv));
+				scriptDataStore.Show_me_your_Pixiv_dataBase = downloadData;
+				await saveToIndexedDB('Show_me_your_Pixiv','pixiv_link_collection_dataBase',downloadData);
 				customAlert(textData.successAddPixivUrlList);
 			}
 		}
@@ -4192,14 +4288,13 @@
 		constructor(tweetID){
 			this.method = 'POST';
 			this.respType = 'json';
-			this.url = 'https://twitter.com/i/api/graphql/ZYKSe-w7KEslx3JhSIk5LA/UnfavoriteTweet';
+			this.url = `https://${window.location.hostname}/i/api/graphql/ZYKSe-w7KEslx3JhSIk5LA/UnfavoriteTweet`;
 			this.body = `{"variables":{"tweet_id":"${tweetID}"},"queryId":"ZYKSe-w7KEslx3JhSIk5LA"}`;
 			this.headers = {
 				'Content-Type': 'application/json',
 				'User-agent': userAgent,
 				'accept': '*/*',
 				'Accept-Encoding': 'br, gzip, deflate',
-				'Origin': 'https://twitter.com',
 				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
 				"x-csrf-token": GetCookie("ct0"),
 				'Sec-Fetch-Site': 'same-origin',
@@ -4212,14 +4307,13 @@
 		constructor(tweetID){
 			this.method = 'POST';
 			this.respType = 'json';
-			this.url = 'https://twitter.com/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet';
+			this.url = `https://${window.location.hostname}/i/api/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet`;
 			this.body = `{"variables":{"tweet_id":"${tweetID}","dark_request":false},"queryId":"ojPdsZsimiJrUGLR1sjUtA"}`;
 			this.headers = {
 				'Content-Type': 'application/json',
 				'User-agent': userAgent,
 				'accept': '*/*',
 				'Accept-Encoding': 'br, gzip, deflate',
-				'Origin': 'https://twitter.com',
 				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
 				"x-csrf-token": GetCookie("ct0"),
 				'Sec-Fetch-Site': 'same-origin',
@@ -4232,14 +4326,13 @@
 		constructor(tweetID){
 			this.method = 'POST';
 			this.respType = 'json';
-			this.url = 'https://twitter.com/i/api/graphql/iQtK4dl5hBmXewYZuEOKVw/DeleteRetweet';
+			this.url = `https://${window.location.hostname}/i/api/graphql/iQtK4dl5hBmXewYZuEOKVw/DeleteRetweet`;
 			this.body = `{"variables":{"source_tweet_id":"${tweetID}","dark_request":false},"queryId":"iQtK4dl5hBmXewYZuEOKVw"}`;
 			this.headers = {
 				'Content-Type': 'application/json',
 				'User-agent': userAgent,
 				'accept': '*/*',
 				'Accept-Encoding': 'br, gzip, deflate',
-				'Origin': 'https://twitter.com',
 				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
 				"x-csrf-token": GetCookie("ct0"),
 				'Sec-Fetch-Site': 'same-origin',
@@ -4252,14 +4345,13 @@
 		constructor(tweetID){
 			this.method = 'POST';
 			this.respType = 'json';
-			this.url = 'https://twitter.com/i/api/graphql/aoDbu3RHznuiSkQ9aNM67Q/CreateBookmark';
+			this.url = `https://${window.location.hostname}/i/api/graphql/aoDbu3RHznuiSkQ9aNM67Q/CreateBookmark`;
 			this.body = `{"variables":{"tweet_id":"${tweetID}"},"queryId":"aoDbu3RHznuiSkQ9aNM67Q"}`;
 			this.headers = {
 				'Content-Type': 'application/json',
 				'User-agent': userAgent,
 				'accept': '*/*',
 				'Accept-Encoding': 'br, gzip, deflate',
-				'Origin': 'https://twitter.com',
 				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
 				"x-csrf-token": GetCookie("ct0"),
 				'Sec-Fetch-Site': 'same-origin',
@@ -4273,14 +4365,13 @@
 		constructor(tweetID){
 			this.method = 'POST';
 			this.respType = 'json';
-			this.url = 'https://twitter.com/i/api/graphql/Wlmlj2-xzyS1GN3a6cj-mQ/DeleteBookmark';
+			this.url = `https://${window.location.hostname}/i/api/graphql/Wlmlj2-xzyS1GN3a6cj-mQ/DeleteBookmark`;
 			this.body = `{"variables":{"tweet_id":"${tweetID}"},"queryId":"Wlmlj2-xzyS1GN3a6cj-mQ"}`;
 			this.headers = {
 				'Content-Type': 'application/json',
 				'User-agent': userAgent,
 				'accept': '*/*',
 				'Accept-Encoding': 'br, gzip, deflate',
-				'Origin': 'https://twitter.com',
 				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
 				"x-csrf-token": GetCookie("ct0"),
 				'Sec-Fetch-Site': 'same-origin',
@@ -4811,7 +4902,7 @@
 		constructor(ID){
 			this.method = 'GET';
 			this.respType = 'json';
-			this.url = `https://twitter.com/i/api/graphql/TuC3CinYecrqAyqccUyFhw/TweetDetail?variables=%7B%22focalTweetId%22%3A%22${ID}%22%2C%22referrer%22%3A%22home%22%2C%22with_rux_injections%22%3Afalse%2C%22includePromotedContent%22%3Atrue%2C%22withCommunity%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withArticleRichContent%22%3Atrue%2C%22withBirdwatchNotes%22%3Atrue%2C%22withVoice%22%3Atrue%2C%22withV2Timeline%22%3Atrue%7D&features=%7B%22rweb_lists_timeline_redesign_enabled%22%3Atrue%2C%22responsive_web_graphql_exclude_directive_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22tweetypie_unmention_optimization_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Atrue%2C%22responsive_web_media_download_video_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticleRichContentState%22%3Atrue%7D`;
+			this.url = `https://${window.location.hostname}/i/api/graphql/TuC3CinYecrqAyqccUyFhw/TweetDetail?variables=%7B%22focalTweetId%22%3A%22${ID}%22%2C%22referrer%22%3A%22home%22%2C%22with_rux_injections%22%3Afalse%2C%22includePromotedContent%22%3Atrue%2C%22withCommunity%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withArticleRichContent%22%3Atrue%2C%22withBirdwatchNotes%22%3Atrue%2C%22withVoice%22%3Atrue%2C%22withV2Timeline%22%3Atrue%7D&features=%7B%22rweb_lists_timeline_redesign_enabled%22%3Atrue%2C%22responsive_web_graphql_exclude_directive_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22tweetypie_unmention_optimization_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Atrue%2C%22responsive_web_media_download_video_enabled%22%3Atrue%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticleRichContentState%22%3Atrue%7D`;
 			this.body = null;
 			this.headers = {
 				'User-agent': userAgent,
@@ -4828,14 +4919,13 @@
 		constructor(ID){
 			this.method = 'GET';
 			this.respType = 'json';
-			this.url = `https://api.twitter.com/graphql/rePnxwe9LZ51nQ7Sn_xN_A/UserByScreenName?variables=%7B%22screen_name%22%3A%22${ID}%22%2C%22withSafetyModeUserFields%22%3Afalse%2C%22withSuperFollowsUserFields%22%3Afalse%7D&features=%7B%22responsive_web_twitter_blue_verified_badge_is_enabled%22%3Afalse%2C%22responsive_web_graphql_exclude_directive_enabled%22%3Afalse%2C%22verified_phone_label_enabled%22%3Afalse%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Afalse%7D`;
+			this.url = `https://${window.location.hostname}/i/api/graphql/rePnxwe9LZ51nQ7Sn_xN_A/UserByScreenName?variables=%7B%22screen_name%22%3A%22${ID}%22%2C%22withSafetyModeUserFields%22%3Afalse%2C%22withSuperFollowsUserFields%22%3Afalse%7D&features=%7B%22responsive_web_twitter_blue_verified_badge_is_enabled%22%3Afalse%2C%22responsive_web_graphql_exclude_directive_enabled%22%3Afalse%2C%22verified_phone_label_enabled%22%3Afalse%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Afalse%7D`;
 			this.body = null;
 			this.headers = {
 				"Content-Type": "application/json",
 				'User-agent': userAgent,
 				'accept': '*/*',
-				'Referer': "https://twitter.com/",
-				'Host': 'api.twitter.com',
+				'Referer': `https://${window.location.hostname}/`,
 				'Accept-Encoding': 'br, gzip, deflate',
 				'authorization': `Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA`,
 				'x-csrf-token': GetCookie("ct0"),
@@ -4856,7 +4946,6 @@
 				'User-agent': userAgent,
 				'accept': '*/*',
 				'Referer': "https://twitter.com/",
-				'Host': 'api.twitter.com',
 				'Accept-Encoding': 'br, gzip, deflate',
 				'authorization': `Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA`,
 				'x-csrf-token': GetCookie("ct0"),
@@ -4870,7 +4959,7 @@
 		constructor(){
 			this.method = 'POST';
 			this.respType = 'json';
-			this.url = `https://twitter.com/i/api/graphql/HnVOsy-Rh_0Cuq06_z9lGA/HomeLatestTimeline`;
+			this.url = `https://${window.location.hostname}/i/api/graphql/HnVOsy-Rh_0Cuq06_z9lGA/HomeLatestTimeline`;
 			this.body = JSON.stringify({
 				"variables": {
 					"count": 100,
@@ -4906,8 +4995,7 @@
 				"Content-Type": "application/json",
 				'User-agent': userAgent,
 				'accept': '*/*',
-				'Referer': "https://twitter.com/",
-				'Host': 'twitter.com',
+				'Referer': `https://${window.location.hostname}/`,
 				'Accept-Encoding': 'br, gzip, deflate',
 				'authorization': `Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA`,
 				'x-csrf-token': GetCookie("ct0"),
@@ -4920,7 +5008,7 @@
 		constructor(){
 			this.method = 'POST';
 			this.respType = 'json';
-			this.url = `https://twitter.com/i/api/graphql/-8TWbLqVU1ROq-eeErVc2w/HomeTimeline`;
+			this.url = `https://${window.location.hostname}/i/api/graphql/-8TWbLqVU1ROq-eeErVc2w/HomeTimeline`;
 			this.body = JSON.stringify({
 				"variables": {
 					"count": 100,
@@ -4957,8 +5045,7 @@
 				"Content-Type": "application/json",
 				'User-agent': userAgent,
 				'accept': '*/*',
-				'Referer': "https://twitter.com/",
-				'Host': 'twitter.com',
+				'Referer': `https://${window.location.hostname}/`,
 				'Accept-Encoding': 'br, gzip, deflate',
 				'authorization': `Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA`,
 				'x-csrf-token': GetCookie("ct0"),
@@ -4971,7 +5058,7 @@
 		constructor(URL){
 			this.method = 'POST';
 			this.respType = 'json';
-			this.url = 'https://twitter.com/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet';
+			this.url = `https://${window.location.hostname}/i/api/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet`;
 			this.body = `{"variables":{"tweet_id":"${URL.split('/').pop()}"},"queryId":"lI07N6Otwv1PhnEgXILM7A"}`;
 			this.headers = {
 				'Content-Type': 'application/json',
@@ -4979,7 +5066,7 @@
 				'accept': '*/*',
 				'Referer': URL,
 				'Accept-Encoding': 'br, gzip, deflate',
-				'Origin': 'https://twitter.com',
+				'Origin': `https://${window.location.hostname}`,
 				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
 				"x-csrf-token": GetCookie("ct0"),
 				'Sec-Fetch-Site': 'same-origin',
@@ -5192,11 +5279,40 @@
 	}
 	async function test(){
 	}
+	async function isFirstTime(){
+		if(!(await getFromIndexedDB('Show_me_your_Pixiv','pixiv_link_collection_dataBase'))){
+			const downloadData = JSON.parse((await request(new requestObject('https://dl.dropboxusercontent.com/s/stvehlbre5gir6xtaxgz8/screenName2PixivID.json?rlkey=0vqz5kb333fehmcd1xtftj9b5'))).response);
+			scriptDataStore.Show_me_your_Pixiv_dataBase = downloadData;
+			await saveToIndexedDB('Show_me_your_Pixiv','pixiv_link_collection_dataBase',downloadData);
+		}
+		if(localStorage.getItem('Make_Twitter_little_useful'))return;
+		const settings = '{"Make_Twitter_little_useful_script_SettingsData":{"Make_Twitter_little_useful":{"featuresToggle":{"webhook_brings_tweets_to_discord":false,"Engagement_Restorer":true,"sneakilyFavorite":false,"Hello_tweet_where_are_you_from":true,"Note_Tweet_expander":true,"Show_me_your_Pixiv":false,"showFollowers":true,"hideAnalytics":false,"shareTweet_Restorer_for_mobile":false,"Show_all_Medias":false,"show_me_big_pics":false},"lang":"ja"},"webhook_brings_tweets_to_discord":{"data":[],"downloadVideo":null,"defaultWebhook":"","displayMethod":"method1","lang":"ja"},"Hello_tweet_where_are_you_from":{},"Show_me_your_Pixiv":{"showMeYourPixivCollectionMethod":1},"Note_Tweet_expander":{},"sneakilyFavorite":{},"Engagement_Restorer":{},"Show_all_Medias":{"displayMethod":null,"removeBlur":false,"onlyRemoveBlur":false}}}';
+		const importedData = JSON.parse(settings);
+		if(!importedData || !importedData.Make_Twitter_little_useful_script_SettingsData){
+			throw new Error("Invalid data format");
+		}
+		const importedSettings = importedData.Make_Twitter_little_useful_script_SettingsData;
+		for(let key in importedSettings){
+			localStorage.setItem(key, JSON.stringify(importedSettings[key]));
+		}
+		storedSettings = {
+			'Make_Twitter_little_useful': JSON.parse(localStorage.getItem('Make_Twitter_little_useful') || '{}'),
+			'webhook_brings_tweets_to_discord': JSON.parse(localStorage.getItem('webhook_brings_tweets_to_discord') || '{}'),
+			'Hello_tweet_where_are_you_from': JSON.parse(localStorage.getItem('Hello_tweet_where_are_you_from') || '{}'),
+			'Show_me_your_Pixiv': JSON.parse(localStorage.getItem('Show_me_your_Pixiv') || '{}'),
+			'Note_Tweet_expander': JSON.parse(localStorage.getItem('Note_Tweet_expander') || '{}'),
+			'sneakilyFavorite': JSON.parse(localStorage.getItem('sneakilyFavorite') || '{}'),
+			'Engagement_Restorer': JSON.parse(localStorage.getItem('Engagement_Restorer') || '{}'),
+			'Show_all_Medias': JSON.parse(localStorage.getItem('Show_all_Medias') || '{}'),
+		}
+		openSettings();
+	}
+	await isFirstTime();
 	const reactRoot = document.getElementById("react-root");
 	locationChange();
 	main();
 	//fetchAndProcessTwitterApi("TL");
-	if(currentUrl.match(/https?:\/\/twitter\.com\/[\w]*\/status\/[0-9]*/))fetchAndProcessTwitterApi("graphQL",extractTweetId(currentUrl));
+	if(currentUrl.match(/https?:\/\/[\w]{1,}\.com\/[\w]*\/status\/[0-9]*/))fetchAndProcessTwitterApi("graphQL",extractTweetId(currentUrl));
 	window.addEventListener("scroll", update);
 	try{
 		addEventToScrollSnapSwipeableList();
