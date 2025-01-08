@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			1.0.1.29
+// @version			1.0.1.51
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -14,6 +14,7 @@
 // @match			https://X.com/*
 // @connect			twitter.com
 // @connect			api.twitter.com
+// @connect			api.x.com
 // @connect			api.fanbox.cc
 // @connect			pbs.twimg.com
 // @connect			abs.twimg.com
@@ -36,6 +37,7 @@
 // @connect			geek-website.com
 // @connect			ci-en.dlsite.com
 // @connect			dl.dropboxusercontent.com
+// @connect			video-ft.twimg.com
 // @icon			data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJkSURBVHgB7VZBbtpQEH3zIW0WVYuXVaH4Bs0NSk4AOUFhEarskhMknIDsqkKlcIT0BNAT1D1B3ZJK3dmVuirwp/MhVmzAxiagKBJv9+ePZ97M/JkxsMMODwzChlD84FWQp3MxeCDHAhiumB+MJrr1+8Ryw3p/9+H4DctfIPCq49Xlw8Kv99YlMuB19885gy/i7llziwGfFFWJyR02XzSCuwiBUse7BlFVaz5LS8KQVkRXaXRJsqImfDjKSZBNyzEyFWFKVJ4KFbWLElUao6KbSk8i9TXgTPaorxTskPwOxa7/9baGt4zg8oQbNyfWYJlRU0/KUx9ZwNwYNq1ecFRzl18QpW0bB0Ks//KjV1uwlbuLJA3GxEdh5wb5yGEPl3qMd2xecYQHKnlFlVLX95kxYCFKGg5IlU2a0uLpCM68LEJA+sJ/Dm6Jy3aMjQIRakRUm+UuvfOp/X34iQSejeFo0Hdx4optG5uFH/R+GHNvANcm3VtwLs+Lvy2TRwhIOnrYHhysIuDKcCDwGbYAjglOzQt+HssElF6dvoNNOZeuCSbfSgIGMjILMo4/ExZf7TqghNLmlwm1gpSC2tmaLAZMvWGz0Iu7XpqBm2NrQNN5cD+Y5ZOTdZyok3RZMusZOJUN+QZrQFb0oQkG6xIIYHe8A03Unx/Ryd6jS2ctAsbxmFRVynGKlM5na5ePVkUe0p+h9MmraS2zXqYgmSWjOPtElHbLTVB3Q79gqQlMScxqXpeav0UWiGMmXKSNOpZAAPvKs/U/1MRoxRxl+5WD+psUy2D5IdmRVoWjnqDnLlkyO+zwaPAf1zXwZL751PUAAAAASUVORK5CYII=
 // @grant			GM_xmlhttpRequest
 // @grant			GM_registerMenuCommand
@@ -45,6 +47,7 @@
 
 (async function(){
 	'use strict';
+
 	const commonselectors = {
 		'tweet_field': 'article[data-testid="tweet"]',
 		'retweeted': '[data-testid="socialContext"]',
@@ -76,7 +79,7 @@
 		'followersLink': '.r-bcqeeo.r-qvutc0.r-1tl8opc.r-1b43r93.r-hjklzo.r-16dba41.r-1loqt21',
 	};
 	const deny_names = ["home", "explore", "notifications", "messages", "i", "settings", "tos", "privacy", "compose", "search"];
-	const denyNamesRegex = new RegExp(`https?://[\\w]{1,}\\.com/((?!${deny_names.join('|')})[^/]+)`, 'i');
+	const denyNamesRegex = new RegExp(`https?://(x|twitter)\\.com/(?!(${deny_names.join('|')})(?:\\?|/|$))[\\w]{3,}`, 'ig');
 	let currentUrl = document.location.href;
 	let updating = false;
 	const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -105,6 +108,7 @@
 		'sneakilyFavorite': JSON.parse(localStorage.getItem('sneakilyFavorite') || '{}'),
 		'Engagement_Restorer': JSON.parse(localStorage.getItem('Engagement_Restorer') || '{}'),
 		'Show_all_Medias': JSON.parse(localStorage.getItem('Show_all_Medias') || '{}'),
+		'quickShareTweetLink': JSON.parse(localStorage.getItem('quickShareTweetLink') || '{}'),
 	};
 	let script_settings = {};
 	script_settings['webhook_brings_tweets_to_discord'] = {
@@ -134,9 +138,10 @@
 			"Show_me_your_Pixiv": storedSettings.Make_Twitter_little_useful?.featuresToggle?.Show_me_your_Pixiv || false,
 			"showFollowers": storedSettings.Make_Twitter_little_useful?.featuresToggle?.showFollowers || false,
 			"hideAnalytics": storedSettings.Make_Twitter_little_useful?.featuresToggle?.hideAnalytics || false,
-			"shareTweet_Restorer_for_mobile": storedSettings.Make_Twitter_little_useful?.featuresToggle?.shareTweet_Restorer_for_mobile || false,
+			"quickShareTweetLink": storedSettings.Make_Twitter_little_useful?.featuresToggle?.quickShareTweetLink || false,
 			"Show_all_Medias": storedSettings.Make_Twitter_little_useful?.featuresToggle?.Show_all_Medias || false,
 			"show_me_big_pics": storedSettings.Make_Twitter_little_useful?.featuresToggle?.show_me_big_pics || false,
+			"returnFavorites": storedSettings.Make_Twitter_little_useful?.featuresToggle?.returnFavorites || false,
 		},
 		"lang": storedSettings.Make_Twitter_little_useful?.featuresToggle?.lang || GetCookie("lang") || "en",
 	};
@@ -149,7 +154,8 @@
 		"Show_me_your_Pixiv": JSON.parse(localStorage.getItem('user_pixvi_link_collection') || "{}"),
 		"Show_me_your_Pixiv_dataBase": (await getFromIndexedDB('Show_me_your_Pixiv','pixiv_link_collection_dataBase')|| {}),
 		"Show_all_Medias": {},
-		"createTwitterArticle": {}
+		"createTwitterArticle": {},
+		"returnFavorites": {}
 	};
 	let Text = {};
 	Text.ja = {
@@ -157,6 +163,7 @@
 		"close": "閉じる",
 		"general": "全体",
 		"featureToggle": "使う機能の切り替え",
+		"copied": "クリップボードにコピー",
 		"style": {
 			"functionName": "スタイル",
 		},
@@ -235,9 +242,6 @@
 		"hideAnalytics": {
 			"functionName": "アナリティクスを非表示にする",
 		},
-		"shareTweet_Restorer_for_mobile": {
-			"functionName": "ツイートを共有ボタンを復活させる(モバイル用)",
-		},
 		"Show_all_Medias": {
 			"functionName": "メディア欄に全ての画像を表示",
 			"units": "万",
@@ -251,6 +255,17 @@
 		"show_me_big_pics": {
 			"functionName": "でかい画像を見せないさい"
 		},
+		"returnFavorites": {
+			"functionName": "いいね欄を見る",
+			"like": "いいね",
+			"more": "更に読み込む"
+		},
+		"quickShareTweetLink": {
+			"functionName": "ツイートリンクを素早くコピー",
+			"selectDomain": "ドメインの選択",
+			"other": "その他",
+			"useOther": "その他のドメイン",
+		}
 	};
 
 	Text.en = {
@@ -258,6 +273,7 @@
 		"close": "Close",
 		"general": "General",
 		"featureToggle": "Feature Toggle",
+		"copied": "Copied!",
 		"style": {
 			"functionName": "style",
 		},
@@ -336,9 +352,6 @@
 		"hideAnalytics": {
 			"functionName": "hideAnalytics",
 		},
-		"shareTweet_Restorer_for_mobile": {
-			"functionName": "shareTweet Restorer(for mobile)",
-		},
 		"Show_all_Medias": {
 			"functionName": "Show all Medias",
 			"units": "k",
@@ -352,13 +365,24 @@
 		"show_me_big_pics": {
 			"functionName": "show me big pics"
 		},
+		"returnFavorites": {
+			"functionName": "returnFavorites",
+			"like": "Like",
+			"more": "more"
+		},
+		"quickShareTweetLink": {
+			"functionName": "quick Share TweetLink",
+			"selectDomain": "Select domain",
+			"other": "Other",
+			"useOther": "Use other domain",
+		}
 	};
 
 	let env_Text = Text[script_settings.lang] || Text.ja;
 
 	async function main(refresh = false){
 		const selector = refresh ? 'article[data-testid="tweet"]' : 'article[data-testid="tweet"]:not([mtlu_checked="true"])';
-		const tweets = Array.from(reactRoot.querySelectorAll(selector)).map(tweet => {
+		const tweets = Array.from(document.querySelectorAll(selector)).map(tweet => {
 			tweet.setAttribute('mtlu_checked', "true");
 			const link = tweet.querySelector(`[data-testid="User-Name"] a[aria-label], ${env_selector.info_field} a[aria-label]`);
 			if(link){
@@ -395,12 +419,17 @@
 		if(tweets && featurestoggle.hideAnalytics){
 			hideAnalytics(tweets);
 		}
-		if(isMobile && featurestoggle.shareTweet_Restorer_for_mobile){
-			shareTweet_Restorer_for_mobile(tweets);
+		if(featurestoggle.quickShareTweetLink){
+			quickShareTweetLink(tweets);
 		}
 		if(currentUrl.match(/[\w]{1,}\.com\/([\w]*\/media|search\?q\=.*&f=media)/) && featurestoggle.Show_all_Medias){
 			Show_all_Medias(currentUrl);
 		}
+		/*
+		if(featurestoggle.returnFavorites){
+			returnFavorites();
+		}
+		*/
 		/*
 		if(tweets && featurestoggle.show_me_big_pics){
 			show_me_big_pics(tweets);
@@ -408,6 +437,206 @@
 		*/
 		//if(currentUrl.match(/https?:\/\/twitter\.com\/[\w]*\/status\/[0-9]*/))console.log(await waitForTweetData(extractTweetId(currentUrl)))
 	}
+	/*
+	async function returnFavorites(){
+		const urlPattern = /https:\/\/(x|twitter)\.com\/[^\/]{2,}(\/(with_replies|highlights|articles|media))?$/;
+		const screenName = extractUserName(currentUrl);
+		const residual_object = document.querySelector('.returnFavorites_display_button');
+		if(residual_object){
+			if(!residual_object.childNodes[0].href.includes(`${screenName}/likes`))residual_object.remove();
+		}
+		if(!urlPattern.test(currentUrl) || !screenName) return;
+		const snapList = await wait_load_Element('[data-testid="ScrollSnap-List"]', 20, 30, 'querySelector');
+		if(!snapList) return;
+		if(snapList.querySelector(`[href="/${screenName}/likes"]`)) return;
+		const functionsText = env_Text.returnFavorites;
+		let night_mode = getDarkMode() || 0;
+		let colors = {
+			"fontColor": ['rgb(15, 20, 25)', 'rgb(247, 249, 249)', 'rgb(231, 233, 234)'][night_mode],
+			"fontColorDark": ['rgb(83, 100, 113)', 'rgb(139, 152, 165)', 'rgb(113, 118, 123)'][night_mode],
+			"backgroundColor": ['rgba(255,255,255,1.00)', 'rgb(21, 32, 43)', 'rgba(0, 0, 0, 1.00)'][night_mode],
+			"borderBottomColor": ['rgb(239, 243, 244)', 'rgb(56, 68, 77)', 'rgb(47, 51, 54)'][night_mode],
+		};
+		const newButton = snapList.querySelector('[aria-selected="false"]').parentNode.cloneNode(true);
+		newButton.classList.add('returnFavorites_display_button');
+		newButton.querySelector('span').textContent = functionsText.like;
+		newButton.querySelector('a').href = `/${screenName}/likes`;
+		newButton.addEventListener('click', e => {
+			e.preventDefault();
+			if (document.querySelector('.returnFavorites_overlay')) return;
+			createDisplayPlace();
+			createArticles();
+		});
+		snapList.childNodes.forEach(e => {
+			e.addEventListener('click', e => {
+				const target = document.querySelector('.returnFavorites_overlay');
+				if(target)target.remove();
+			});
+		});
+		if(urlPattern.test(currentUrl) || screenName == extractUserName(currentUrl))snapList.appendChild(newButton);
+
+		async function createArticles(max_id = null) {
+			const tweetList = await get1_1_favorite(screenName, max_id);
+			const contentsContainer = document.querySelector('.returnFavorites_contents');
+			if(tweetList.length <= 1 && [...tweetList][0] == max_id){
+				customAlert("no more favorite");
+				return "max";
+			}
+			for(let tweetID of tweetList){
+				if(tweetID == max_id)continue;
+				try {
+					await createTwitterArticle(fetchedTweets[tweetID], tweetID, contentsContainer, false, 'returnFavorites');
+				} catch (error) {
+					console.error(error);
+					console.error({ error: error, tweetData: fetchedTweets[tweetID] });
+				}
+			}
+			const moreButton = document.createElement('button');
+			moreButton.style.backgroundColor = 'rgb(29, 155, 240)';
+			moreButton.style.borderRadius = '9999px';
+			moreButton.style.minHeight = '2em';
+			moreButton.style.minWidth = '5em';
+			moreButton.style.alignSelf = 'center';
+			moreButton.style.padding = '0px 1em 0px 1em'
+			moreButton.style.cursor = 'pointer';
+			moreButton.style.margin = '40px 0px 40px 0px';
+			const moreButtonText = document.createElement('span');
+			moreButtonText.style.color = 'rgb(255, 255, 255)';
+			moreButtonText.style.height = '1em';
+			moreButtonText.textContent = functionsText.more;
+			moreButton.appendChild(moreButtonText);
+			moreButton.addEventListener('click',async e=>{
+				moreButton.disabled = true;
+				let res = await createArticles([...tweetList].pop());
+				moreButton.remove();
+			});
+			contentsContainer.appendChild(moreButton);
+			main();
+		}
+
+		function createDisplayPlace() {
+			const targetElement = document.querySelector('[data-testid="primaryColumn"] section');
+			const { overlay, contentsWrapper, contentsContainer } = createOverlay(targetElement);
+
+			window.addEventListener('scroll', () => {
+				updateOverlayPosition(overlay, contentsWrapper, targetElement);
+			});
+
+			window.addEventListener('resize', () => {
+				updateOverlayPosition(overlay, contentsWrapper, targetElement);
+			});
+			function createOverlay(targetElement) {
+				const rect = targetElement.getBoundingClientRect();
+				const overlay = document.createElement('div');
+				overlay.classList.add('returnFavorites_overlay');
+				overlay.style.width = '100%';
+				overlay.style.height = '100vh'; // オーバーレイ全体の高さをウィンドウの高さに設定
+				overlay.style.top = '0';
+				overlay.style.left = '0';
+				overlay.style.backgroundColor = "rgba(0,0,0,0.5)"; // 半透明の背景色を設定
+				overlay.style.position = 'fixed'; // 固定位置に変更
+				overlay.style.pointerEvents = 'auto';
+				overlay.style.overflow = 'hidden'; // オーバーレイ全体のスクロールを無効にする
+				overlay.style.transition = "top 0.3s ease, width 0.3s ease";
+				overlay.style.cursor = 'default';
+				overlay.style.zIndex = '1000';
+				overlay.addEventListener('click', (e) => {
+					e.stopPropagation();
+					overlay.remove();
+				});
+
+
+				const contentsWrapper = document.createElement('div');
+				contentsWrapper.style.width = `${rect.width}px`;
+				contentsWrapper.style.height = 'calc(100vh - 30px)'; // 30px を除いた高さ
+				contentsWrapper.style.overflow = 'hidden'; // コンテンツのスクロールを無効にする
+				contentsWrapper.style.margin = '30px auto 30px auto'; // 上部に30pxの余白を設定
+				contentsWrapper.style.backgroundColor = colors.backgroundColor;
+				contentsWrapper.addEventListener('click', (e) => {
+					e.stopPropagation();
+				});
+				const contentsContainer = document.createElement('div');
+				contentsContainer.classList.add('returnFavorites_contents');
+				contentsContainer.style.width = '100%';
+				contentsContainer.style.height = '100%';
+				contentsContainer.style.display = 'block';
+				contentsContainer.style.overflowY = 'auto'; // コンテンツのスクロールを有効にする
+
+				contentsWrapper.appendChild(contentsContainer);
+				overlay.appendChild(contentsWrapper);
+
+				document.body.appendChild(overlay);
+
+				// contentsContainer 内でスクロールイベントをキャプチャして、ページ全体のスクロールを防ぐ
+				contentsContainer.addEventListener('wheel', (e) => {
+					if (
+						(contentsContainer.scrollTop === 0 && e.deltaY < 0) ||
+						(contentsContainer.scrollTop + contentsContainer.clientHeight >= contentsContainer.scrollHeight && e.deltaY > 0)
+					) {
+						e.preventDefault();
+					}
+				}, { passive: false });
+
+				return { overlay, contentsWrapper, contentsContainer };
+			}
+
+			function updateOverlayPosition(overlay, contentsWrapper, targetElement) {
+				const rect = targetElement.getBoundingClientRect();
+				const topPosition = Math.max(rect.top + window.scrollY, 30);
+				overlay.style.top = `${topPosition}px`;
+
+				// ウィンドウの上部30pxに達した場合に幅を100%に変更
+				if (window.scrollY >= rect.top + window.scrollY - 30) {
+					overlay.style.width = '100%';
+					overlay.style.left = '0';
+					overlay.style.pointerEvents = 'none'; // 透明部分はクリック可能にする
+					contentsWrapper.style.width = `${rect.width}px`;
+					contentsWrapper.style.margin = '30px auto 0';
+					contentsContainer.style.overflowY = 'auto'; // コンテンツのスクロールを有効にする
+				} else {
+					overlay.style.width = `${rect.width}px`;
+					overlay.style.left = `${rect.left + window.scrollX}px`;
+					overlay.style.pointerEvents = 'auto'; // オーバーレイ内は相互作用可能にする
+					contentsContainer.style.overflowY = 'auto'; // コンテンツのスクロールを有効にする
+				}
+			}
+		}
+		async function get1_1_favorite(screen_name = undefined,since_id = null){
+			if(!screen_name) return;
+			try{
+				let response = await request(new requestObject_twitter_api_v1_1_favorites(screen_name,since_id));
+				console.log(response)
+				if(!response.status === "200")throw new Error(`Failed to fetch`);
+				const idStrSet = new Set();
+				response.response.forEach((tweetData)=>{
+					if(tweetData.quoted_status){
+						let quoted = tweetData.quoted_status;
+						if(!(fetchedTweetsUserData[quoted.user.id_str]?.API_type === "graphQL")){
+							fetchedTweetsUserData[quoted.user.id_str] = {...quoted.user,"API_type": "1_1"};
+							fetchedTweetsUserDataByUserName[quoted.user.screen_name] = fetchedTweetsUserData[quoted.user.id_str];
+						}
+						quoted.user = fetchedTweetsUserData[quoted.user.id_str];
+						if(!(fetchedTweets[quoted.id_str]?.API_type === "graphQL")){
+							fetchedTweets[quoted.id_str] = {...quoted,"API_type": "1_1"};
+						}
+						tweetData.quoted_status = fetchedTweets[quoted.id_str];
+					}
+					if(!(fetchedTweetsUserData[tweetData.user.id_str]?.API_type === "graphQL")){
+						fetchedTweetsUserData[tweetData.user.id_str] = {...tweetData.user,"API_type": "1_1"};
+						fetchedTweetsUserDataByUserName[tweetData.user.screen_name] = fetchedTweetsUserData[tweetData.user.id_str];
+					}
+					tweetData.user = fetchedTweetsUserData[tweetData.user.id_str];
+					fetchedTweets[tweetData.id_str] = {...tweetData,"API_type": "1_1"};
+					idStrSet.add(tweetData.id_str);
+				});
+				return new Set(Array.from(idStrSet).sort((a, b) => b.localeCompare(a)));
+			}catch(error){
+				console.error(error);
+				customAlert('List fetch failed');
+			}
+		}
+	}
+	*/
 	async function show_me_big_pics(tweets){
 		tweets.forEach(tweet=>{
 			const imgNode = tweet.node.querySelectorAll(`${env_selector.media_field} .r-16y2uox.r-1pi2tsx.r-13qz1uu a [data-testid="tweetPhoto"] img`);
@@ -606,13 +835,24 @@
 			return outerDiv;
 		}
 	}
-	function shareTweet_Restorer_for_mobile(tweetNodes){
+	function quickShareTweetLink(tweetNodes){
 		tweetNodes.forEach(async (tweet)=>{
 			let color = ['rgb(83, 100, 113)','rgb(139, 152, 165)','rgb(113, 118, 123)'];
 			let footer = tweet.node.querySelector('div[id][role="group"]');
-			let lastChild = footer.lastElementChild;
-			let clonedNode = lastChild.cloneNode(true);
-			clonedNode.style.marginLeft = "1em";
+			let caret = tweet.node.querySelector('[data-testid="caret"]').parentNode.parentNode;
+			let clonedNode;
+			if(caret){
+				clonedNode = caret.cloneNode(true);
+				//clonedNode.style.paddingTop = "1px";
+			}else{
+				clonedNode = footer.lastElementChild.cloneNode(true);
+			}
+			let svgClassList = footer.firstChild.querySelector('svg').classList;
+			clonedNode.querySelector('button').setAttribute('data-testid','quickShare');
+			clonedNode.style.marginLeft = "0.5em";
+			clonedNode.style.justifyContent = 'inherit';
+			clonedNode.style.display = 'inline-grid';
+			clonedNode.style.transform = 'rotate(0deg) scale(1) translate3d(0px, 0px, 0px)';
 			let clonedSvg = clonedNode.querySelector('svg');
 			while(clonedSvg.firstChild){
 				clonedSvg.removeChild(clonedSvg.firstChild);
@@ -621,9 +861,31 @@
 			newPath.setAttribute('d', 'M17 4c-1.1 0-2 .9-2 2 0 .33.08.65.22.92C15.56 7.56 16.23 8 17 8c1.1 0 2-.9 2-2s-.9-2-2-2zm-4 2c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4c-1.17 0-2.22-.5-2.95-1.3l-4.16 2.37c.07.3.11.61.11.93s-.04.63-.11.93l4.16 2.37c.73-.8 1.78-1.3 2.95-1.3 2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4c0-.32.04-.63.11-.93L8.95 14.7C8.22 15.5 7.17 16 6 16c-2.21 0-4-1.79-4-4s1.79-4 4-4c1.17 0 2.22.5 2.95 1.3l4.16-2.37c-.07-.3-.11-.61-.11-.93zm-7 4c-1.1 0-2 .9-2 2s.9 2 2 2c.77 0 1.44-.44 1.78-1.08.14-.27.22-.59.22-.92s-.08-.65-.22-.92C7.44 10.44 6.77 10 6 10zm11 6c-.77 0-1.44.44-1.78 1.08-.14.27-.22.59-.22.92 0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2z');
 			clonedSvg.appendChild(newPath);
 			clonedSvg.style.color = color[getDarkMode()];
-			clonedSvg.addEventListener('click', () => {
-				copyToClipboard(tweet.link.replace(/https?:\/\/x.com/,'https://twitter.com'));
+			clonedSvg.classList = svgClassList;
+			clonedNode.addEventListener('click', () => {
+				let useDomain = ['x.com', 'twitter.com', 'vxtwitter.com', 'ohter'][storedSettings.quickShareTweetLink?.domain] || " ";
+				if(!(useDomain?.match(/(x\.com|twitter\.com|vxtwitter\.com)/))){
+					if(storedSettings.quickShareTweetLink?.otherDomain){
+						useDomain = storedSettings.quickShareTweetLink.otherDomain;
+					}else{
+						useDomain = "x.com";
+					}
+				}
+				copyToClipboard(tweet.link.replace(/https?:\/\/(x|twitter)\.com/,`https://${useDomain}`));
 			});
+			function resetStyles() {
+				clonedSvg.parentNode.firstChild.style.backgroundColor = '';
+				clonedSvg.style.color = color[getDarkMode()];
+			}
+
+			clonedNode.addEventListener('mouseover', function() {
+				clonedSvg.parentNode.firstChild.style.backgroundColor = 'rgba(29, 155, 240, 0.1)';
+				clonedSvg.style.color = 'rgb(29, 155, 240)';
+			});
+
+			clonedNode.addEventListener('mouseout', resetStyles);
+			clonedNode.addEventListener('touchend', resetStyles);
+			clonedNode.addEventListener('touchcancel', resetStyles);
 			clonedNode.addEventListener('click', (event) => {
 				event.stopPropagation();
 			});
@@ -784,7 +1046,7 @@
 				if(selectedNumber != 5){
 					send_page = [selectedNumber-1]
 				}else{
-					send_page = [0,1,2,3]
+					send_page = [0,1,2,3];
 				}
 				const body = await make_send_data(tweet_link,send_page,send_post_tweet);
 				await sleep(300);
@@ -806,7 +1068,7 @@
 						});
 					}
 					try{
-						let res = await request(new sendObject_to_discord_webhook(selectedServer,formData));
+						let res = await request(new sendObject_to_discord_webhook(selectedServer,formData),1,6000000);
 						if(res.statusText == "Bad Request"){
 							console.log({user: fetchedTweetsUserDataByUserName,tweets: fetchedTweets});
 							customAlert(`${textData.when_post_failed}`,payload.embeds[0].url);
@@ -855,10 +1117,45 @@
 				let tmp_return_object = [];
 				let twitter_user_data = {};
 				let twitter_tweet_data = {};
+				let tweet_tweet_card_data = {};
 				let tweet_user_data_json = {};
 				let tweet_tweet_data_json = {};
+				let tweet_tweet_card_json = {};
 				tweet_user_data_json = tweet_data.core?.user_results?.result || tweet_data.user?.result || tweet_data.user;
 				tweet_tweet_data_json = tweet_data.legacy || tweet_data;
+				tweet_tweet_card_json = tweet_data.card?.legacy || tweet_data.card;
+				tweet_tweet_card_data.media = {images:[], videos:[]};
+				if(tweet_tweet_card_json){
+					tweet_tweet_card_json.binding_values?.forEach(v=>{
+						try{
+							let urlObj;
+							switch(v.key){
+								case 'broadcast_pre_live_slate':
+									tweet_tweet_card_data.broadcast_pre_live_slate = {media_type: "photo",url: v.value.image_value.url};
+									tweet_tweet_card_data.media.images.push(tweet_tweet_card_data.broadcast_pre_live_slate);
+									break;
+								case 'photo_image_full_size_original':
+									urlObj = new URL(v.value.image_value.url);
+									tweet_tweet_card_data.photo_image_full_size = {media_type: "photo",url: `${urlObj.origin}${urlObj.pathname}.${urlObj.searchParams.get('format') || 'jpg'}`};
+									tweet_tweet_card_data.media.images.push(tweet_tweet_card_data.photo_image_full_size);
+									break;
+								case 'unified_card':
+									tweet_tweet_card_data.unified_card = make_media_list({media: Object.values(JSON.parse(v.value.string_value).media_entities)},[0,1,2,3]);
+									if(tweet_tweet_card_data.unified_card.images){
+										tweet_tweet_card_data.media.images.push(...tweet_tweet_card_data.unified_card.images);
+									}
+									if(tweet_tweet_card_data.unified_card.videos){
+										tweet_tweet_card_data.media.videos.push(...tweet_tweet_card_data.unified_card.videos);
+									}
+									break;
+								default:
+									break;
+							}
+						}catch(error){
+							//console.error(v)
+						}
+					});
+				}
 				if(!(tweet_user_data_json&&tweet_tweet_data_json)){
 					tweet_data = await getTweetData(tweet_id,apiType,true);
 					tweet_user_data_json = tweet_data.core?.user_results?.result || tweet_data.user?.result || tweet_data.user;
@@ -867,7 +1164,7 @@
 				twitter_user_data.ID = tweet_user_data_json.rest_id || tweet_user_data_json.id_str;
 				twitter_user_data.screen_name = tweet_user_data_json.legacy?.screen_name || tweet_user_data_json.screen_name;
 				twitter_user_data.name = tweet_user_data_json.legacy?.name || tweet_user_data_json.name;
-				twitter_user_data.profile_image = tweet_user_data_json.legacy?.profile_image_url_https.replace('_normal.','.') || tweet_user_data_json.profile_image_url_https.replace('_normal.','.');
+				twitter_user_data.profile_image = (tweet_user_data_json.legacy?.profile_image_url_https || tweet_user_data_json.profile_image_url_https).replace(/(_normal|_x96)\./,'.');
 				twitter_user_data.urls = tweet_user_data_json.legacy?.entities || tweet_user_data_json.entities || [];
 				twitter_tweet_data.hashtags = tweet_tweet_data_json.entities.hashtags || [];
 				twitter_tweet_data.user_mentions = tweet_tweet_data_json.entities.user_mentions || [];
@@ -887,6 +1184,8 @@
 				twitter_tweet_data.created_at = new Date(tweet_tweet_data_json.created_at).toLocaleString(timeZoneObject.locale, { timeZone: timeZoneObject.timeZone });
 				twitter_tweet_data.urls = tweet_tweet_data_json.entities.urls;
 				twitter_tweet_data.media = make_media_list(twitter_tweet_data.extended_entities,select_pages);
+				twitter_tweet_data.media.images.push(...tweet_tweet_card_data.media.images);
+				twitter_tweet_data.media.videos.push(...tweet_tweet_card_data.media.videos);
 				try{
 					//文が長すぎるとエラーになるので一定の長さで切る。
 					//普通のツイートではそんなことありえないが、Blueでは長いツイートが可能なのでそれに対応している。
@@ -916,7 +1215,6 @@
 						text: symbol.text
 					}))
 				);
-
 
 				// combinedをindicesの順にソート
 				combined.sort((a, b) => b.indices[0] - a.indices[0]);
@@ -954,7 +1252,7 @@
 					}
 					transformedText = transformedText.slice(0, start) + replacement + transformedText.slice(end);
 				});
-				twitter_tweet_data.full_text = str_max_length(transformedText,7000);
+				twitter_tweet_data.full_text = str_max_length(transformedText,6200);
 				//マークダウンにならないでほしいやつのエスケープ
 				let escapeCharacters = ['\\', '|', '*', '_', '`', '~', '[', ']', '(', ')', '>', '#', '-'];
 				escapeCharacters.forEach(char => {
@@ -980,19 +1278,21 @@
 					}
 				}catch{}
 				*/
-				let tweet_url;
+				let tweet_url = `https://twitter.com/${twitter_user_data.screen_name}/status/${twitter_tweet_data.id}`;
+				/*
 				if(!quoted_tweet_mode == 1){
 					tweet_url = tweet_link;
 				}else{
 					tweet_url = `https://twitter.com/${twitter_user_data.screen_name}/status/${twitter_tweet_data.id}`;
 				}
+				*/
 				tmpEmbed.color = 1940464;
 				tmpEmbed.title = "Tweet";
 				tmpEmbed.url = tweet_url;
 				tmpEmbed.author = {
 					"name": `${twitter_user_data.name} (@${twitter_user_data.screen_name})`,
 					"url": `https://twitter.com/${twitter_user_data.screen_name}`,
-					"icon_url": `attachment://profile_images.${twitter_user_data.profile_image.split('.').pop()}`
+					"icon_url": `attachment://profile_images.${((new URL(twitter_user_data.profile_image)).searchParams.get('format') || 'jpg')}`
 				};
 				tmpEmbed.description = replace_t_co_to_original_url(twitter_tweet_data.full_text,twitter_tweet_data.urls,twitter_tweet_data.media);
 				tmpEmbed.thumbnail = {"url": "https://pbs.twimg.com/profile_images/1488548719062654976/u6qfBBkF_400x400.jpg"};
@@ -1043,9 +1343,14 @@
 			}
 			function downloadVideo(url){
 				return new Promise(async (resolve) => {
-					if((await request(new requestObject_binary_head(url))).responseHeaders.match(/content-length: ?(\d+)/)[1] < 24117249){
+					//上限は「24117249」だったけどユーザーのアップロード上限が10MBになっちゃったので「10485760」にするかもしれない
+					//console.log((await request(new requestObject_binary_head(url))).responseHeaders);
+					const fileSize = await getFileSize(url);
+					if(fileSize < 24117249){
 						return resolve({"files": [{attachment: (await request(new requestObject_binary_data(url))).response, name: url.split('/').pop()}]});
 					}else{
+						const file = (await request(new requestObject_binary_data(url))).response;
+						if(file.arrayBuffer() < 24117249)return resolve({"files": [{attachment: file, name: url.split('/').pop()}]});
 						return resolve({"content": url});
 					}
 				});
@@ -1081,7 +1386,9 @@
 						//メディアがくっついてるツイートは末尾にメディアのURLが付随しているためそれを消す。
 						if(typeof media_urls !== "undefined"){
 							(media_urls.images || []).concat(media_urls.videos || []).forEach(u=>{
-								full_text = full_text.replace(u.tco_url,"");
+								if(u.tco_url){
+									full_text = full_text.replace(u.tco_url,"");
+								}
 							});
 						}
 					}
@@ -1150,16 +1457,16 @@
 						if(!target.url) return;
 						let image;
 						let name;
-						if(target.url.match(/https?:\/\/pbs\.twimg\.com\/media\//)){
+						if(target.url.match(/https?:\/\/pbs\.twimg\.com\/(media|card_img)\//)){
 							image = await request(new requestObject_binary_data(image_url_to_original(target.url)),3);
 							name = target.url.split('/').pop();
 						}else{
 							image = await request(new requestObject_binary_data(target.url),3);
-							name = "profile_images." + target.url.split('.').pop();
+							name = "profile_images." + ((new URL(target.url)).searchParams.get('format') || 'jpg');
 						}
 
 						// ダウンロードした画像データのサイズを確認
-						if(image.response.size > 1024){
+						if(image.response.size > 1025){
 							return {
 								"attachment": image.response,
 								"name": name,
@@ -1327,6 +1634,9 @@
 		const link_class = "css-1jxf684 r-bcqeeo r-1ttztb7 r-qvutc0 r-poiln3 r-1loqt21";
 		tweetNodes.forEach(async function(target){
 			const tweet_node = target.node;
+			if(tweet_node.getAttribute('cta-id') === 'returnFavorites'){
+				return;
+			}
 			const elements = tweet_node.querySelectorAll('[data-testid="tweetText"]');
 			const show_more_link = tweet_node.querySelectorAll('[data-testid="tweet-text-show-more-link"]');
 			if(show_more_link[0])show_more_link[0].style.display = "none";
@@ -1406,7 +1716,8 @@
 					transformedText = transformedText.slice(0, start) + replacement + transformedText.slice(end);
 				});
 				new_tweet_text = transformedText;
-				urls.forEach(target =>{
+				const seen = new Set();
+				urls.filter(target => !seen.has(target.url) && seen.add(target.url)).forEach(target =>{
 					new_tweet_text = new_tweet_text.replace(new RegExp(`${target.url}(?=(\\s|$|\\u3000|\\W)(?!\\.|,))`, 'gu'), `<a class="${link_class}" style="text-decoration: none;color:rgb(29, 155, 240)" dir="ltr" role="link" href="${target.url}" target="_blank" rel="noopener">${target.display_url}</a>`);
 				});
 				var new_tweet_node = document.createElement("span");
@@ -1425,7 +1736,7 @@
 		const collectionMethod = storedSettings.Show_me_your_Pixiv?.showMeYourPixivCollectionMethod;
 		let todo = [];
 		tweets.forEach(tweet => {
-			const node = tweet.node.querySelector(`${env_selector.media_field}:not(.display_pixiv_link)`);
+			const node = tweet.node.querySelector(`${env_selector.media_field},[cta-id="mediaContainer"]:not(.display_pixiv_link)`);
 			const screenName = tweet.screenName;
 			if(node){
 				todo.push({node:node,screenName:screenName});
@@ -1451,13 +1762,13 @@
 			const node = item.node;
 			const screen_name = item.screenName;
 			const pixiv_url = getPixivUrlWithScreenName(screen_name);
-			if(pixiv_url && node && !(node?.querySelector(".display_pixiv_link")))node.appendChild(makeLinkElement(pixiv_url,"Pixiv🔗","display_pixiv_link"));
+			if(pixiv_url && !(pixiv_url?.match(/(?:users\/|member.php\?id=)(11|9949830|15241365)(\/|$)/)) && node && !(node?.querySelector(".display_pixiv_link")))node.appendChild(makeLinkElement(pixiv_url,"Pixiv🔗","display_pixiv_link"));
 		});
 		if(getPixivUrlWithScreenName(currentScreenName) && !currentUrl.match(new RegExp(`${currentScreenName}/status`))){
 			const profile_field = (await wait_load_Element(env_selector.profile_field_Header_Items))[0];
 			currentScreenName = extractUserName(currentUrl);
 			let pixivUrl = getPixivUrlWithScreenName(currentScreenName);
-			if(profile_field && !profile_field.querySelector(`.display_pixiv_link_in_profile_${currentScreenName}`) && pixivUrl){
+			if(profile_field && !profile_field.querySelector(`.display_pixiv_link_in_profile_${currentScreenName}`) && pixivUrl && !(pixivUrl?.match(/(?:users\/|member.php\?id=)(11|9949830|15241365)(\/|$)/))){
 				let display_pixiv_link_in_profile_field = document.createElement("div");
 				display_pixiv_link_in_profile_field.className = `display_pixiv_link_in_profile display_pixiv_link_in_profile_${currentScreenName}`;
 				let brElement = document.createElement("br");
@@ -1478,13 +1789,16 @@
 		main();
 		setTimeout(() => {updating = false;}, 600);
 	}
+	function debug(log){
+		console.log(log);
+	}
 	function extractTweetId(url){
 		const match = url.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/);
 		return match ? match[1] : null;
 	}
 	function extractUserName(url){
 		const match = url.match(denyNamesRegex);
-		return match ? match[1] : null;
+		return match ? match[0].split('/')[3] : null;
 	}
 	function findParent(element, selector){
 		let current = element;
@@ -1514,7 +1828,7 @@
 	}
 	function copyToClipboard(text){
 		navigator.clipboard.writeText(text).then(function(){
-			displayToast('Copied!');
+			displayToast(env_Text.copied);
 		}).catch(function(err) {
 			console.error('コピーに失敗しました:', err);
 		});
@@ -1560,7 +1874,9 @@
 	async function addEventToHomeButton(){
 		const element = await wait_load_Element('[data-testid="AppTabBar_Home_Link"]:not(.Make_Twitter_little_useful_do_main_function)',200,10,'querySelector');
 		element.classList.add("Make_Twitter_little_useful_do_main_function");
-		element.addEventListener("click", update);
+		element.addEventListener("click", async ()=>{
+			update();
+		});
 	}
 	function wait_load_Element(Element_Name, interval = 100, retry = 25, searchFunction = 'querySelectorAll', searchPlace = document){
 		return new Promise((resolve, reject) => {
@@ -1655,10 +1971,10 @@
 				throw new Error(`Invalid URL: ${url}`);
 			}
 			const response = await request(new requestObject_url_expand(url));
-			return{
+			return ({
 				original: url,
 				expanded: response.response
-			};
+			});
 		}
 		const results = await Promise.all(urls.map(url => expandURL(url)));
 		if(!isInputArray){
@@ -1676,7 +1992,7 @@
 				const end_stat = await find_pixiv_link(extractUrls(userEntitiesData));
 				if(end_stat == "Too Many Requests"){
 					console.log("API limit.");
-				}else if(!end_stat){
+				}else if(!end_stat || end_stat?.match(/(?:users\/|member.php\?id=)(11|9949830|15241365)(\/|$)/)){
 					scriptDataStore.Show_me_your_Pixiv[screen_name] = {"pixiv_url": null,"Create_date": new Date().getTime()};
 					return `${screen_name}: Pixivリンクなし`;
 				}else{
@@ -1759,6 +2075,17 @@
 					let get_url_promise_list = [];
 					urls_in_profile.forEach(target=>{
 						switch(true){
+							case /^https?:\/\/sketch\.pixiv\.net\//.test(target):
+								get_url_promise_list.push(new Promise(
+									async function(resolve,reject){
+										try{
+											return resolve(await when_pixiv_sketch(target));
+										}catch(error){
+											return reject(error);
+										}
+									}
+								));
+								break;
 							case /^https?:\/\/((fantia\.jp\/(fanclubs\/[0-9])?.*)|(.*\.booth\.pm)|(.*linktr\.ee)|(.*profcard\.info)|(.*lit\.link)|(potofu\.me)|(.*\.carrd\.co)|(.*\.tumblr\.com$)|(twpf\.jp)|(ci\-en\.dlsite\.com\/creator\/[0-9]*))\/?/.test(target):
 								get_url_promise_list.push(new Promise(
 									async function(resolve,reject){
@@ -1786,17 +2113,6 @@
 									async function(resolve,reject){
 										try{
 											return resolve(await when_skeb(target.replace(/^https?:\/\/skeb\.jp\/\@/,'')));
-										}catch(error){
-											return reject(error);
-										}
-									}
-								));
-								break;
-							case /^https?:\/\/sketch\.pixiv\.net\//.test(target):
-								get_url_promise_list.push(new Promise(
-									async function(resolve,reject){
-										try{
-											return resolve(await when_pixiv_sketch(target));
 										}catch(error){
 											return reject(error);
 										}
@@ -1842,10 +2158,10 @@
 				}
 				function when_pixiv_sketch(target_url){
 					return new Promise(async function(resolve,reject){
-						const response_data = await request(new requestObject(target_url));
-						let User_id = response_data.response.split(',').filter(function(data_str){return data_str.match(/\\"pixiv_user_id\\":\\"[0-9]*\\"/)});
+						const response_data = await request(new requestObject(target_url,"GET","","",true));
+						let User_id = response_data.response.split(',').filter(function(data_str){return data_str.match(/\\"pixiv_user_id\\":\\"[\d]+\\"/)});
 						if(User_id){
-							return resolve("https://www.pixiv.net/users/" + User_id[0].split(/\"|\\/)[6]);
+							return resolve("https://www.pixiv.net/users/" + User_id[0].match(/[\d]+/)[0]);
 						}else{
 							return reject(undefined);
 						}
@@ -2059,12 +2375,14 @@
 				if(!tweetData)return;
 				try{
 					if(tweetData.quoted_status_result){
-						let quoted = tweetData.quoted_status_result.result?.tweet || tweetData.quoted_status_result.tweet || tweetData.quoted_status_result?.result;
-						fetchedTweetsUserData[quoted.core.user_results.result.rest_id] = {...quoted.core.user_results.result,"API_type": "graphQL"};
-						fetchedTweetsUserDataByUserName[quoted.core.user_results.result.legacy.screen_name] = fetchedTweetsUserData[quoted.core.user_results.result.rest_id];
-						quoted.core.user_results.result = fetchedTweetsUserData[quoted.core.user_results.result.rest_id];
-						fetchedTweets[quoted.rest_id] = {...quoted,"API_type": "graphQL"};
-						tweetData.quoted_status_result.result = fetchedTweets[quoted.rest_id];
+						if(Object.keys(tweetData.quoted_status_result).length !== 0){
+							let quoted = tweetData.quoted_status_result.result?.tweet || tweetData.quoted_status_result.tweet || tweetData.quoted_status_result?.result;
+							fetchedTweetsUserData[quoted.core.user_results.result.rest_id] = {...quoted.core.user_results.result,"API_type": "graphQL"};
+							fetchedTweetsUserDataByUserName[quoted.core.user_results.result.legacy.screen_name] = fetchedTweetsUserData[quoted.core.user_results.result.rest_id];
+							quoted.core.user_results.result = fetchedTweetsUserData[quoted.core.user_results.result.rest_id];
+							fetchedTweets[quoted.rest_id] = {...quoted,"API_type": "graphQL"};
+							tweetData.quoted_status_result.result = fetchedTweets[quoted.rest_id];
+						}
 					}
 					fetchedTweetsUserData[tweetData.core.user_results.result.rest_id] = {...tweetData.core.user_results.result,"API_type": "graphQL"};
 					fetchedTweetsUserDataByUserName[tweetData.core.user_results.result.legacy.screen_name] = fetchedTweetsUserData[tweetData.core.user_results.result.rest_id];
@@ -2151,9 +2469,14 @@
 			}
 		});
 	}
+
 	async function getFileSize(url){
-		return (await request(new requestObject_binary_head(url))).responseHeaders.match(/content-length: ?(\d+)/)[1];
+		const response = await request(new requestObject_binary_head(url));
+		const fileSizeTmp = response.responseHeaders.match(/content-length:\s*(\d+)/i);
+		const fileSize = fileSizeTmp ? parseInt(fileSizeTmp[1], 10) : null;
+		return fileSize;
 	}
+
 	function decodeHtml(html){
 		var txt = document.createElement("textarea");
 		txt.innerHTML = html;
@@ -2264,6 +2587,7 @@
 		});
 	}
 	function openSettings(){
+		if(document.querySelector('.settingWindowContainer'))return;
 		let container = document.createElement('div');
 		container.style.position = 'fixed';
 		container.style.width = '70vw';
@@ -2360,6 +2684,68 @@
 			}
 		}
 		*/
+		function createquickShareTweetLinkSettings(){
+			const pageName = "quickShareTweetLink";
+			const textData = env_Text[pageName];
+			const thisStoredSettings = storedSettings[pageName];
+			let thisScriptSettings = script_settings[pageName];
+			const settingEntries = [
+				{id: 'domain', name: textData.selectDomain, type: 'dropdown', option: ['x.com', 'twitter.com', 'vxtwitter.com', textData.useOther]},
+				{id: 'otherDomain', name: textData.other, type: 'textBox'},
+			];
+			let contents = createPage(pageName,pageName,textData.functionName);
+			let mainContent = contents.main;
+			mainContent.innerHTML = `
+			<div class="${pageName}MainContents">
+			</div>
+			`;
+			settingEntries.map(setting => {
+				let settingElement = createSettingsElement(setting,thisStoredSettings[setting.id]);
+				let container = document.createElement('div');
+				container.className = 'setting-item';
+				let label = document.createElement('span');
+				label.className = `${setting.id}`;
+				label.textContent = setting.name;
+				container.appendChild(label);
+				container.appendChild(settingElement);
+				mainContent.appendChild(container);
+			});
+			let style = document.createElement('style');
+			style.className = `settingCss ${pageName}`
+			style.textContent = `
+
+			`;
+			document.head.appendChild(style);
+			pages[pageName].saveFunction = save;
+			function save(){
+				const settingsToSave = {};
+				settingEntries.forEach(setting => {
+					let value, selectedRadio;
+					switch(setting.type){
+						case 'radioButton':
+							selectedRadio = document.querySelector(`input[name="${setting.id}"]:checked`);
+							value = selectedRadio ? parseInt(selectedRadio.value, 10) : null;
+							break;
+
+						case 'textBox':
+							value = document.getElementById(setting.id).value;
+							break;
+
+						case 'toggleSwitch':
+							value = document.querySelector(`[id="${setting.id}"] input[type="checkbox"]`).checked;
+							break;
+
+						case 'dropdown':
+							value = parseInt(document.getElementById(setting.id).value, 10);
+							break;
+					}
+					settingsToSave[setting.id] = value;
+				});
+				localStorage.setItem(pageName, JSON.stringify(settingsToSave));
+				script_settings[pageName] = settingsToSave;
+			}
+
+		}
 		function creategGeneralPage(){
 			const pageName = "general"
 			let thisScript_settings = script_settings.Make_Twitter_little_useful;
@@ -2375,8 +2761,9 @@
 				{id: 'showFollowers', name: env_Text.showFollowers.functionName},
 				{id: 'hideAnalytics', name: env_Text.hideAnalytics.functionName},
 				{id: 'webhook_brings_tweets_to_discord', name: env_Text.webhook_brings_tweets_to_discord.functionName},
-				{id: 'shareTweet_Restorer_for_mobile', name: env_Text.shareTweet_Restorer_for_mobile.functionName},
+				{id: 'quickShareTweetLink', name: env_Text.quickShareTweetLink.functionName},
 				{id: 'Show_all_Medias', name: env_Text.Show_all_Medias.functionName},
+				//{id: 'returnFavorites', name: env_Text.returnFavorites.functionName},
 			];
 			let featureListContent = features.map(feature => {
 				return `
@@ -2683,16 +3070,15 @@
 			mainContainer.className = `${pageName}MainContents`
 			mainContainer.style.display = "flex";
 			mainContainer.style.flexDirection = "column";
-			let showTweetDataContainer = makeInputMenu('showTweetData');
-			mainContainer.appendChild(showTweetDataContainer);
 
-			let showUserByScreenNameDataContainer = makeInputMenu('showUserByScreenNameData');
-			mainContainer.appendChild(showUserByScreenNameDataContainer);
+			mainContainer.appendChild(makeInputMenu('showTweetData', true));
+			mainContainer.appendChild(makeInputMenu('showUserByScreenNameData', true));
+			mainContainer.appendChild(makeInputMenu('showUserByUserID', false));
+			mainContainer.appendChild(makeExpandUrlMenu());
 
-			let showUserByUserIDContainer = makeInputMenu('showUserByUserID');
-			mainContainer.appendChild(showUserByUserIDContainer);
 			mainContent.appendChild(mainContainer);
 			pages[pageName].saveFunction = save;
+
 			function makeInputMenu(name){
 				let container = document.createElement('div');
 				container.className = `${name}`;
@@ -2757,10 +3143,54 @@
 					}
 				}
 			}
-			function save(){
+
+			function makeExpandUrlMenu(){
+				let container = document.createElement('div');
+				container.className = 'expandUrlContainer';
+				container.style.display = 'flex';
+				container.style.flexDirection = 'column';
+
+				let title = document.createElement('span');
+				title.className = "item_name";
+				title.innerText = 'Expand Short URL';
+				container.appendChild(title);
+
+				let inputContainer = document.createElement('div');
+				inputContainer.style.display = 'flex';
+				inputContainer.style.alignItems = 'center';
+
+				let inputElement = document.createElement('input');
+				inputElement.className = 'expandUrlInputElement';
+				inputElement.type = 'text';
+				inputElement.style.width = 'fit-content';
+				inputContainer.appendChild(inputElement);
+
+				const button = document.createElement('button');
+				button.className = 'expandUrlButtonElement';
+				button.textContent = textData.get;
+				button.style.width = 'fit-content'; // スタイルの追加
+				button.addEventListener('click', async () => {
+					const inputValue = inputElement.value;
+					const expandedUrl = await expand_shortening_link(inputValue);
+					console.log(expandedUrl);
+					let expandedUrlElement = document.querySelector('.expandedUrlElement');
+					if(!expandedUrlElement){
+						expandedUrlElement = document.createElement('div');
+						expandedUrlElement.className = 'expandedUrlElement';
+						container.appendChild(expandedUrlElement);
+					}
+					expandedUrlElement.innerText = expandedUrl.expanded;
+				});
+				inputContainer.appendChild(button);
+				container.appendChild(inputContainer);
+				return container;
+			}
+			function save() {
 				return;
 			}
 		}
+
+
 		function createStylePage(){
 			const pageName = "style";
 			const textData = env_Text[pageName];
@@ -2854,6 +3284,7 @@
 			function addWebhookRow(name = '', url = ''){
 				let row = document.createElement('div');
 				row.className = 'webhook-row';
+				row.draggable = true;
 				row.innerHTML = `
 				<div style="display:flex;border-bottom: 1px solid;flex-wrap: wrap;">
 					<div class="WebhookName">
@@ -2873,7 +3304,44 @@
 					row.remove();
 					updateDefaultWebhookOptions();
 				});
+				row.addEventListener('dragstart', handleDragStart);
+				row.addEventListener('dragover', handleDragOver);
+				row.addEventListener('drop', handleDrop);
+				row.addEventListener('dragend', handleDragEnd);
 				document.getElementById('webhooks').appendChild(row);
+			}
+			function handleDragStart(e){
+				e.dataTransfer.effectAllowed = 'move';
+				e.dataTransfer.setData('text/html', e.target.outerHTML);
+				this.classList.add('dragging');
+			}
+			function handleDragOver(e){
+				e.preventDefault();
+				e.dataTransfer.dropEffect = 'move';
+				this.classList.add('drag-over');
+			}
+			function handleDrop(e){
+				e.stopPropagation();
+				e.preventDefault();
+				if(this.classList.contains('dragging')){
+					return;
+				}
+				let draggingElem = document.querySelector('.dragging');
+				this.insertAdjacentHTML('beforebegin', e.dataTransfer.getData('text/html'));
+				this.previousSibling.querySelector('.removeWebhook').addEventListener('click', () => {
+					this.previousSibling.remove();
+					updateDefaultWebhookOptions();
+				});
+				this.previousSibling.addEventListener('dragstart', handleDragStart);
+				this.previousSibling.addEventListener('dragover', handleDragOver);
+				this.previousSibling.addEventListener('drop', handleDrop);
+				this.previousSibling.addEventListener('dragend', handleDragEnd);
+				draggingElem.remove();
+				updateDefaultWebhookOptions();
+			}
+			function handleDragEnd(){
+				this.classList.remove('dragging');
+				document.querySelectorAll('.webhook-row').forEach(row => row.classList.remove('drag-over'));
 			}
 			//console.log(thisStoredSettings.data)
 			function updateDefaultWebhookOptions(){
@@ -2953,7 +3421,7 @@
 				localStorage.setItem('webhook_brings_tweets_to_discord', JSON.stringify(settings));
 
 				// 保存した設定を再度読み込む
-				storedSettings[pageName] = JSON.parse(localStorage.getItem('webhook_brings_tweets_to_discord') || '{}');
+				storedSettings[pageName] = settings;
 
 				script_settings[pageName] = {
 					"displayMethod": storedSettings[pageName].displayMethod || 'method1',
@@ -3036,7 +3504,7 @@
 			return {"all": page,"header": header,"main": contentContainer,"footer": footer};
 		}
 		function createSettingsElement(setting, storedValue){
-			let element,checkbox,slider;
+			let element, checkbox, slider;
 			switch(setting.type){
 				case 'radioButton':
 					element = document.createElement('div');
@@ -3072,9 +3540,23 @@
 					element.appendChild(checkbox);
 					element.appendChild(slider);
 					break;
+				case 'dropdown':
+					element = document.createElement('select');
+					element.id = setting.id;
+					setting.option.forEach((opt, index) => {
+						let option = document.createElement('option');
+						option.value = index;
+						option.text = opt;
+						if(storedValue === index){
+							option.selected = true;
+						}
+						element.appendChild(option);
+					});
+					break;
 			}
 			return element;
 		}
+
 		function showPage(name){
 			for(let key in pages){
 				if(key === name){
@@ -3110,6 +3592,7 @@
 				'sneakilyFavorite': JSON.parse(localStorage.getItem('sneakilyFavorite') || '{}'),
 				'Engagement_Restorer': JSON.parse(localStorage.getItem('Engagement_Restorer') || '{}'),
 				'Show_all_Medias': JSON.parse(localStorage.getItem('Show_all_Medias') || '{}'),
+				'quickShareTweetLink': JSON.parse(localStorage.getItem('quickShareTweetLink') || '{}'),
 			}
 		}
 		let style = document.createElement('style');
@@ -3131,6 +3614,7 @@
 		createShowAllMediasSettingPage();
 		createShowMeYourPixiv();
 		createWebhook_brings_tweets_to_discordPage();
+		createquickShareTweetLinkSettings();
 		createAdvancedPage();
 		createDebugPage();
 		showPage('general');
@@ -3230,7 +3714,7 @@
 /////////////////////////////////CTA/////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 	let ctaEngagementStore = {};
-	async function createTwitterArticle(targetTweetData,tweetId,appendParentNode,noAppend = false){
+	async function createTwitterArticle(targetTweetData,tweetId,appendParentNode, noAppend = false,tag = undefined){
 		let texts = {};
 		texts.ja = {
 			"units": "万",
@@ -3251,6 +3735,7 @@
 			"unRetweet": "リツイートを取り消しました",
 			"unLike": "いいねを取り消しました",
 			"unBookmark": "ブックマークを取り消しました",
+
 		};
 		texts.en = {
 			"units": "k",
@@ -3294,10 +3779,10 @@
 		let quotedNode = createQuotedNode();
 		let engagementsNode = createEngagementNode();
 		tweetNode.innerHTML = `
-			<div data-testid="cellInnerDiv" style="width: 100%;">
+			<div data-testid="cellInnerDiv" style="width: 100%;" ${tag? `cta-Id=${tag}`: ''}>
 				<div class="cta-base cta-display-block cta-outline-style-none" style="border-bottom-color: ${colors.borderBottomColor}; border-bottom-width: 1px;">
 					<div class="cta-base">
-						<article aria-labelledby="" role="article" tabindex="0" class="cta-base cta-flex-direction-row cta-overflow-hidden cta-padding-right cta-padding-left cta-transition-duration cta-transition-property cta-outline-style-none cta-cursor-pointer" data-testid="tweet">
+						<article aria-labelledby="" role="article" tabindex="0" class="cta-base cta-flex-direction-row cta-overflow-hidden cta-padding-right cta-padding-left cta-transition-duration cta-transition-property cta-outline-style-none cta-cursor-pointer" data-testid="tweet" ${tag? `cta-Id=${tag}`: ''}>
 							<div class="cta-base cta-flex-direction-column cta-flex-grow-1 cta-flex-shrink-1">
 								<div class="cta-base cta-flex-grow-1 cta-flex-shrink-1 cta-outline-style-none" cta-id="header">
 								<!--ヘッダー-->
@@ -3355,7 +3840,7 @@
 			twitter_tweet_data.hashtags = tweet_tweet_data_json.entities.hashtags || [];
 			twitter_tweet_data.user_mentions = tweet_tweet_data_json.entities.user_mentions || [];
 			twitter_tweet_data.symbols = tweet_tweet_data_json.entities.symbols || [];
-			twitter_tweet_data.full_text = tweet_tweet_data_json.full_text || "";
+			twitter_tweet_data.full_text = tweet_tweet_data_json.full_text || tweet_tweet_data_json.text || "";
 			twitter_tweet_data.extended_entities = tweet_tweet_data_json.extended_entities;
 			twitter_tweet_data.retweet_count = tweet_tweet_data_json.retweet_count;
 			twitter_tweet_data.favorite_count = tweet_tweet_data_json.favorite_count;
@@ -3364,7 +3849,7 @@
 			twitter_tweet_data.created_at = tweet_tweet_data_json.created_at;
 			twitter_tweet_data.date = new Date(tweet_tweet_data_json.created_at);
 			twitter_tweet_data.urls = tweet_tweet_data_json.entities.urls;
-			twitter_tweet_data.media = twitter_tweet_data.extended_entities.media;
+			twitter_tweet_data.media = twitter_tweet_data.extended_entities?.media || twitter_tweet_data.entities?.media;
 			twitter_tweet_data.favorited = ctaEngagementStore[twitter_tweet_data.id]?.favorited || tweet_tweet_data_json.favorited || false;
 			twitter_tweet_data.retweeted = ctaEngagementStore[twitter_tweet_data.id]?.retweeted || tweet_tweet_data_json.retweeted || false;
 			twitter_tweet_data.bookmarked = ctaEngagementStore[twitter_tweet_data.id]?.bookmarked || tweet_tweet_data_json.bookmarked || false;
@@ -3551,7 +4036,7 @@
 				<div aria-labelledby="" class="cta-base cta-gap-12px cta-margin-top">
 					<div class="cta-base cta-gap-4px">
 						<div class="cta-base">
-							<div class="cta-base">
+							<div class="cta-base" cta-id="mediaContainer">
 								<div class="cta-base cta-border cta-border-radius-16px cta-overflow-hidden cta-transition-duration cta-transition-property cta-outline-style-none" cta-id="mediaRoot">
 								</div>
 							</div>
@@ -4198,10 +4683,10 @@
 				transformedText = transformedText.slice(0, start) + replacement + transformedText.slice(end);
 			});
 			text = transformedText;
-			urls.forEach(target =>{
+			urls?.forEach(target =>{
 				text = text.replace(new RegExp(`${target.url}(?=(\\s|$|\\u3000|\\W)(?!\\.|,))`, 'gu'), `<a class="${link_class}" style="text-decoration: none;color:rgb(29, 155, 240)" dir="ltr" role="link" href="${target.url}" target="_blank" rel="noopener noreferrer nofollow">${target.display_url}</a>`);
 			});
-			media.forEach(m=>{
+			media?.forEach(m=>{
 				text = text.replace(m.url,'');
 			});
 			return text;
@@ -4255,7 +4740,7 @@
 			return node;
 		}
 	}
-	async function displayToast(text){
+	async function displayToast(text,time = 2000){
 		try{
 			let node = document.createElement('div');
 			node.innerHTML = `
@@ -4275,7 +4760,7 @@
 				</div>
 			`.replace(/\t|\n/g, '');
 			document.getElementById("react-root").appendChild(node.firstChild);
-			await sleep(2000);
+			await sleep(time);
 			node.remove();
 		}catch(error){
 			console.error(error);
@@ -5054,6 +5539,7 @@
 			this.anonymous = false;
 		}
 	}
+
 	class requestObject_twitter_FavoriteTweet{
 		constructor(URL){
 			this.method = 'POST';
@@ -5156,7 +5642,8 @@
 				'Accept-Encoding': 'br, gzip, deflate',
 				'Referer': URL,
 				"Sec-Fetch-Mode": "navigate",
-				'cookie': `${addtional_cookie}`
+				'cookie': `${addtional_cookie}`,
+				'Range': 'bytes=0-24117249'
 			};
 			this.package = null;
 		}
@@ -5168,7 +5655,7 @@
 			this.body = null;
 			this.encoding = null;
 			this.headers = {
-				"Content-Type": "*/*",
+				"Content-Type": "json,*/*",
 				'User-agent': navigator.userAgent || navigator.vendor || window.opera,
 				'accept': '*/*',
 				'Accept-Encoding': 'br, gzip, deflate',
@@ -5180,10 +5667,10 @@
 		}
 	}
 	class requestObject{
-		constructor(URL){
-			this.method = 'GET';
-			this.respType = '';
-			this.url = `${URL}`;
+		constructor(URL, method = 'GET', type = "", cookie = "", anonymous = false){
+			this.method = method;
+			this.respType = type;
+			this.url = URL;
 			this.headers = {
 				"Content-Type": "*/*",
 				'Accept-Encoding': 'br, gzip, deflate',
@@ -5192,13 +5679,14 @@
 				'Referer': URL,
 				"Sec-Fetch-Mode": "navigate",
 				"Sec-Fetch-Dest": "empty",
-    			"Sec-Fetch-Mode": "cors",
-				"Sec-Fetch-Site": "same-origin"
+				"Sec-Fetch-Mode": "cors",
+				"Sec-Fetch-Site": "same-origin",
+				'cookie': `${cookie}`
 			};
 			this.package = null;
+			this.anonymous = anonymous;
 		}
 	}
-
 	class requestObject_twitter_get_user_media{
 		constructor(url,variables){
 			this.method = 'GET';
@@ -5277,35 +5765,56 @@
 			this.anonymous = false;
 		}
 	}
+	class requestObject_twitter_api_v1_1_favorites{
+		constructor(screen_name,max_id = null){
+			this.method = 'GET';
+			this.respType = 'json';
+			this.url = `https://api.${window.location.hostname}/1.1/favorites/list.json?count=200&screen_name=${screen_name}${max_id? `&max_id=${max_id}`: ''}`;
+			this.body = null;
+			this.headers = {
+				"Content-Type": "application/json",
+				'User-agent': userAgent,
+				'accept': '*/*',
+				'Accept-Encoding': 'br, gzip, deflate',
+				'Referer': `https://${window.location.hostname}/`,
+				'Host': `api.${window.location.hostname}`,
+				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAAIK1zgAAAAAA2tUWuhGZ2JceoId5GwYWU5GspY4%3DUq7gzFoCZs1QfwGoVdvSac3IniczZEYXIcDyumCauIXpcAPorE',
+				'x-csrf-token': GetCookie("ct0"),
+			};
+			this.package = null;
+			this.anonymous = false;
+		}
+	}
 	async function test(){
 	}
 	async function isFirstTime(){
+		if(!localStorage.getItem('Make_Twitter_little_useful')){
+			const settings = '{"Make_Twitter_little_useful_script_SettingsData":{"Make_Twitter_little_useful":{"featuresToggle":{"webhook_brings_tweets_to_discord":false,"Engagement_Restorer":true,"sneakilyFavorite":false,"Hello_tweet_where_are_you_from":true,"Note_Tweet_expander":true,"Show_me_your_Pixiv":false,"showFollowers":true,"hideAnalytics":false,"quickShareTweetLink":false,"Show_all_Medias":false,"show_me_big_pics":false},"lang":"ja"},"webhook_brings_tweets_to_discord":{"data":[],"downloadVideo":null,"defaultWebhook":"","displayMethod":"method1","lang":"ja"},"Hello_tweet_where_are_you_from":{},"Show_me_your_Pixiv":{"showMeYourPixivCollectionMethod":1},"Note_Tweet_expander":{},"sneakilyFavorite":{},"Engagement_Restorer":{},"Show_all_Medias":{"displayMethod":null,"removeBlur":false,"onlyRemoveBlur":false}}}';
+			const importedData = JSON.parse(settings);
+			if(!importedData || !importedData.Make_Twitter_little_useful_script_SettingsData){
+				throw new Error("Invalid data format");
+			}
+			const importedSettings = importedData.Make_Twitter_little_useful_script_SettingsData;
+			for(let key in importedSettings){
+				localStorage.setItem(key, JSON.stringify(importedSettings[key]));
+			}
+			storedSettings = {
+				'Make_Twitter_little_useful': JSON.parse(localStorage.getItem('Make_Twitter_little_useful') || '{}'),
+				'webhook_brings_tweets_to_discord': JSON.parse(localStorage.getItem('webhook_brings_tweets_to_discord') || '{}'),
+				'Hello_tweet_where_are_you_from': JSON.parse(localStorage.getItem('Hello_tweet_where_are_you_from') || '{}'),
+				'Show_me_your_Pixiv': JSON.parse(localStorage.getItem('Show_me_your_Pixiv') || '{}'),
+				'Note_Tweet_expander': JSON.parse(localStorage.getItem('Note_Tweet_expander') || '{}'),
+				'sneakilyFavorite': JSON.parse(localStorage.getItem('sneakilyFavorite') || '{}'),
+				'Engagement_Restorer': JSON.parse(localStorage.getItem('Engagement_Restorer') || '{}'),
+				'Show_all_Medias': JSON.parse(localStorage.getItem('Show_all_Medias') || '{}'),
+			}
+			openSettings();
+		}
 		if(!(await getFromIndexedDB('Show_me_your_Pixiv','pixiv_link_collection_dataBase'))){
 			const downloadData = JSON.parse((await request(new requestObject('https://dl.dropboxusercontent.com/s/stvehlbre5gir6xtaxgz8/screenName2PixivID.json?rlkey=0vqz5kb333fehmcd1xtftj9b5'))).response);
 			scriptDataStore.Show_me_your_Pixiv_dataBase = downloadData;
 			await saveToIndexedDB('Show_me_your_Pixiv','pixiv_link_collection_dataBase',downloadData);
 		}
-		if(localStorage.getItem('Make_Twitter_little_useful'))return;
-		const settings = '{"Make_Twitter_little_useful_script_SettingsData":{"Make_Twitter_little_useful":{"featuresToggle":{"webhook_brings_tweets_to_discord":false,"Engagement_Restorer":true,"sneakilyFavorite":false,"Hello_tweet_where_are_you_from":true,"Note_Tweet_expander":true,"Show_me_your_Pixiv":false,"showFollowers":true,"hideAnalytics":false,"shareTweet_Restorer_for_mobile":false,"Show_all_Medias":false,"show_me_big_pics":false},"lang":"ja"},"webhook_brings_tweets_to_discord":{"data":[],"downloadVideo":null,"defaultWebhook":"","displayMethod":"method1","lang":"ja"},"Hello_tweet_where_are_you_from":{},"Show_me_your_Pixiv":{"showMeYourPixivCollectionMethod":1},"Note_Tweet_expander":{},"sneakilyFavorite":{},"Engagement_Restorer":{},"Show_all_Medias":{"displayMethod":null,"removeBlur":false,"onlyRemoveBlur":false}}}';
-		const importedData = JSON.parse(settings);
-		if(!importedData || !importedData.Make_Twitter_little_useful_script_SettingsData){
-			throw new Error("Invalid data format");
-		}
-		const importedSettings = importedData.Make_Twitter_little_useful_script_SettingsData;
-		for(let key in importedSettings){
-			localStorage.setItem(key, JSON.stringify(importedSettings[key]));
-		}
-		storedSettings = {
-			'Make_Twitter_little_useful': JSON.parse(localStorage.getItem('Make_Twitter_little_useful') || '{}'),
-			'webhook_brings_tweets_to_discord': JSON.parse(localStorage.getItem('webhook_brings_tweets_to_discord') || '{}'),
-			'Hello_tweet_where_are_you_from': JSON.parse(localStorage.getItem('Hello_tweet_where_are_you_from') || '{}'),
-			'Show_me_your_Pixiv': JSON.parse(localStorage.getItem('Show_me_your_Pixiv') || '{}'),
-			'Note_Tweet_expander': JSON.parse(localStorage.getItem('Note_Tweet_expander') || '{}'),
-			'sneakilyFavorite': JSON.parse(localStorage.getItem('sneakilyFavorite') || '{}'),
-			'Engagement_Restorer': JSON.parse(localStorage.getItem('Engagement_Restorer') || '{}'),
-			'Show_all_Medias': JSON.parse(localStorage.getItem('Show_all_Medias') || '{}'),
-		}
-		openSettings();
 	}
 	await isFirstTime();
 	const reactRoot = document.getElementById("react-root");
@@ -5318,4 +5827,23 @@
 		addEventToScrollSnapSwipeableList();
 		addEventToHomeButton();
 	}catch{}
+	class requestObjectBinaryData{
+		constructor(URL,addtional_cookie = undefined){
+			this.method = 'GET';
+			this.respType = 'blob';
+			this.url = `${URL}`;
+			this.body = null;
+			this.encoding = null;
+			this.headers = {
+				"Content-Type": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*",
+				'User-agent': navigator.userAgent || navigator.vendor || window.opera,
+				'Accept-Encoding': 'br, gzip, deflate, zstd',
+				'accept': '*/*',
+				'Referer': URL,
+				"Sec-Fetch-Mode": "navigate",
+				'cookie': `${addtional_cookie}`
+			};
+			this.package = null;
+		}
+	}
 })();
