@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.0.0.0
+// @version			2.1.0.0
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -254,6 +254,11 @@
 				},
 			}
 		},
+		"imageZoom": {
+			"settings": {
+				"displayName": "画像をズーム",
+			}
+		},
 		"advance": {
 			"settings": {
 				"displayName": "高度な設定",
@@ -416,6 +421,11 @@
 				},
 			}
 		},
+		"imageZoom": {
+			"settings": {
+				"displayName": "Image Zoom",
+			}
+		},
 		"advance": {
 			"settings": {
 				"displayName": "Advanced Settings",
@@ -499,6 +509,11 @@
 			"isRunning": false,
 			"forPC": true,
 		},
+		"imageZoom": {
+			"function": imageZoom,
+			"isRunning": false,
+			"forPC": true,
+		}
 	}
 
 	async function main(refresh){
@@ -674,7 +689,7 @@
 		async function makeSendData(tweetLink, sendPages, sendQuoteTweet){
 			const timeZoneObject = Intl.DateTimeFormat().resolvedOptions();
 			const tweetId = tweetLink.match(/https?:\/\/[\w]{1,}\.com\/\w+\/status\/(\d+)/)[1];
-			const embedTextData = Text[thisScriptSettings.sendLangage].webhookBringsTweetsToDiscord.embedTextData;
+			const embedTextData = Text[thisScriptSettings.sendLangage || scriptSettings?.makeTwitterLittleUseful?.language || getCookie('lang')].webhookBringsTweetsToDiscord.embedTextData;
 			let tweetApiData = await getTweetData(tweetId,"graphQL");
 			const sendData = await makeEmbeds();
 			if(sendQuoteTweet){
@@ -699,7 +714,7 @@
 				const pixivUrl = getPixivUrlWithScreenName(screenName);
 				const tweetData = tweetApiData.legacy || tweetApiData;
 				const tweetUrl = `https://twitter.com/${screenName}/status/${tweetData.id_str}`;
-				const noteTweet = tweetData.note_tweet?.note_tweet_results.result;
+				const noteTweet = tweetApiData.note_tweet?.note_tweet_results.result;
 				const tweetDataEntities = noteTweet ? noteTweet.entity_set : tweetData.entities;
 				let tweetBodyText = noteTweet ? noteTweet.text : tweetData.full_text;
 				const tweetCardData = tweetApiData.card?.legacy || tweetApiData.card;
@@ -1030,12 +1045,13 @@
 			const tweetId = tweetLink.match(/\/status\/(\d+)/)[1];
 			const response = (await getTweetData(tweetId, "graphQL")).legacy;
 			const engagemants = {"favorite_count": response.favorite_count, "quote_count": response.quote_count, "retweet_count": response.retweet_count};
-			const targetNode = Array.from((await waitElementAndGet({query: 'article[data-testid="tweet"]', searchFunction: "querySelector"}))).find(node => {
+			const targetNode = Array.from((await waitElementAndGet({query: 'article[data-testid="tweet"]', searchFunction: "querySelectorAll"}))).find(node => {
 				const timeParents = Array.from(node.querySelectorAll('time')).map(time => time.parentNode);
 				return timeParents.some(parent => parent.href && parent.href.match(tweetId));
 			});
 			if(!targetNode)return;
 			const engagemantsAria = targetNode.querySelector('[role="group"]');
+			//const engagemantsAria = await waitElementAndGet({query: '[role="group"]', searchFunction: "querySelector", searchPlace: targetNode});
 			if(!engagemantsAria)return;
 			const textData = envText.engagementRestorer;
 			const colors = new Colors();
@@ -1216,7 +1232,8 @@
 		if(document.querySelector('.display_twitter_client') || !currentUrl.match(/[\w]{1,}\.com\/[\w]*\/status\/[0-9]*/))return;
 		const tweetData = await getTweetData(extractTweetId(currentUrl), "graphQL");
 		const thisScriptSettings = scriptSettings.helloTweetWhereAreYouFrom;
-		const targetNode = waitElementAndGet({query: envSelector.infoField, interval: 300, retry: 4});
+		const targetNode = await waitElementAndGet({query: envSelector.infoField, interval: 300, retry: 4});
+		if(!targetNode)return;
 		const colors = new Colors();
 		const container = document.createElement('div');
 		container.style.display = "flex";
@@ -1227,7 +1244,7 @@
 		clientText.textContent = decodeHtml(tweetData.source);
 		container.appendChild(clientText);
 		const mediaData = tweetData.legacy?.extended_entities?.media || tweetData.extended_entities?.media;
-		if(mediaData.length > 0){
+		if(mediaData?.length > 0){
 			const videoUrlContainer = document.createElement('div');
 			mediaData.forEach((m,index)=>{
 				if(!['video', 'animated_gif'].includes(m.type))return;
@@ -1237,7 +1254,7 @@
 			});
 			if(videoUrlContainer.children.length > 0)container.appendChild(videoUrlContainer);
 		}
-		(await targetNode).appendChild(container);
+		targetNode.appendChild(container);
 		return "done";
 	}
 
@@ -1535,6 +1552,112 @@
 		}
 	}
 
+	async function imageZoom(){
+		if(!currentUrl.match(/status\/[\d]+\/(video|photo)/))return;
+		let zoomLevel = scriptSettings.imageZoom?.zoomLevel || 2;
+		let magnifierSize = scriptSettings.imageZoom?.magnifierSize || 100;
+		if(!sessionData.imageZoom?.magnifier){
+			if(!sessionData.imageZoom)sessionData.imageZoom = {};
+			const magnifierImg = document.createElement('img');
+			const magnifier = document.createElement('div');
+			magnifier.style.position = 'absolute';
+			magnifier.style.border = '3px solid #000';
+			magnifier.style.borderRadius = '50%';
+			magnifier.style.cursor = 'none';
+			magnifier.style.display = 'none';
+			magnifier.style.width = `${magnifierSize}px`;
+			magnifier.style.height = `${magnifierSize}px`;
+			magnifier.style.overflow = 'hidden';
+			magnifier.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+			magnifier.appendChild(magnifierImg);
+			sessionData.imageZoom.magnifier = magnifier;
+			sessionData.imageZoom.magnifierImg = magnifierImg;
+			sessionData.imageZoom.zoomLevel = zoomLevel;
+			sessionData.imageZoom.magnifierSize = magnifierSize;
+
+			magnifier.addEventListener('dragstart', (e) => e.preventDefault());
+
+			magnifier.addEventListener('wheel', (e)=>{
+				if(e.ctrlKey){
+					e.preventDefault();
+					sessionData.imageZoom.zoomLevel += e.deltaY * -0.005;
+					sessionData.imageZoom.zoomLevel = Math.min(Math.max(1, sessionData.imageZoom.zoomLevel), 8); // ズームレベルを1から8の範囲に制限
+					const rect = sessionData.imageZoom.target.getBoundingClientRect();
+					const x = e.clientX - rect.left;
+					const y = e.clientY - rect.top;
+					magnifierImg.style.width = `${sessionData.imageZoom.target.width * sessionData.imageZoom.zoomLevel}px`;
+					magnifierImg.style.height = `${sessionData.imageZoom.target.height * sessionData.imageZoom.zoomLevel}px`;
+					magnifierImg.style.left = `-${x * sessionData.imageZoom.zoomLevel - magnifier.offsetWidth / 2}px`;
+					magnifierImg.style.top = `-${y * sessionData.imageZoom.zoomLevel - magnifier.offsetHeight / 2}px`;
+					magnifier.style.left = `${e.pageX - magnifier.offsetWidth / 2}px`;
+					magnifier.style.top = `${e.pageY - magnifier.offsetHeight / 2}px`;
+				}else if(e.shiftKey){
+					e.preventDefault();
+					sessionData.imageZoom.magnifierSize += e.deltaY * -0.1;
+					sessionData.imageZoom.magnifierSize = Math.min(Math.max(50, sessionData.imageZoom.magnifierSize), 400); // ルーペサイズを50から400の範囲に制限
+					magnifier.style.width = `${sessionData.imageZoom.magnifierSize}px`;
+					magnifier.style.height = `${sessionData.imageZoom.magnifierSize}px`;
+					magnifier.style.left = `${e.pageX - magnifier.offsetWidth / 2}px`;
+					magnifier.style.top = `${e.pageY - magnifier.offsetHeight / 2}px`;
+				}
+				clearTimeout(saveTimeout);
+				saveTimeout = setTimeout(() => {
+					scriptSettings.imageZoom = { zoomLevel: sessionData.imageZoom.zoomLevel, magnifierSize: sessionData.imageZoom.magnifierSize };
+					saveSettings();
+				}, 5000);
+			}, { passive: false }); // passive: false を追加してデフォルト動作をキャンセル
+		}
+		const mediaDisplayTree = (await waitElementAndGet({query: '[data-testid="mask"]'})).parentElement;
+		if(!mediaDisplayTree)return;
+		const images = mediaDisplayTree.querySelectorAll('[data-testid="swipe-to-dismiss"]');
+		const magnifier = sessionData.imageZoom.magnifier;
+		const magnifierImg = sessionData.imageZoom.magnifierImg;
+		document.body.appendChild(magnifier);
+		let saveTimeout;
+
+		images.forEach(image =>{
+			image.addEventListener('mousedown', (e)=>{
+				sessionData.imageZoom.target = e.target;
+				if(sessionData.imageZoom.target.tagName !== 'IMG')return;
+				const rect = sessionData.imageZoom.target.getBoundingClientRect();
+				const x = e.clientX - rect.left;
+				const y = e.clientY - rect.top;
+
+				magnifierImg.src = sessionData.imageZoom.target.src;
+				magnifier.style.display = 'block';
+				magnifier.style.left = `${e.pageX - magnifier.offsetWidth / 2}px`;
+				magnifier.style.top = `${e.pageY - magnifier.offsetHeight / 2}px`;
+
+				magnifierImg.style.position = 'absolute';
+				magnifierImg.style.width = `${sessionData.imageZoom.target.width * sessionData.imageZoom.zoomLevel}px`;
+				magnifierImg.style.height = `${sessionData.imageZoom.target.height * sessionData.imageZoom.zoomLevel}px`;
+				magnifierImg.style.left = `-${x * sessionData.imageZoom.zoomLevel - magnifier.offsetWidth / 2}px`;
+				magnifierImg.style.top = `-${y * sessionData.imageZoom.zoomLevel - magnifier.offsetHeight / 2}px`;
+
+				const moveMagnifier = (moveEvent)=>{
+					const moveX = moveEvent.clientX - rect.left;
+					const moveY = moveEvent.clientY - rect.top;
+					magnifier.style.left = `${moveEvent.pageX - magnifier.offsetWidth / 2}px`;
+					magnifier.style.top = `${moveEvent.pageY - magnifier.offsetHeight / 2}px`;
+					magnifierImg.style.left = `${-1 * (moveX * sessionData.imageZoom.zoomLevel - magnifier.offsetWidth / 2)}px`;
+					magnifierImg.style.top = `${-1 * (moveY * sessionData.imageZoom.zoomLevel - magnifier.offsetHeight / 2)}px`;
+					if(moveEvent.clientX < rect.left || moveEvent.clientX > rect.right || moveEvent.clientY < rect.top || moveEvent.clientY > rect.bottom){
+						hideMagnifier();
+					}
+				};
+
+				document.addEventListener('mousemove', moveMagnifier);
+
+				const hideMagnifier = () => {
+					magnifier.style.display = 'none';
+					document.removeEventListener('mousemove', moveMagnifier);
+				};
+				document.addEventListener('mouseup', hideMagnifier, { once: true });
+				sessionData.imageZoom.target.addEventListener('dragstart', (e) => e.preventDefault(), { once: true });
+			});
+		});
+	}
+
 	//############################################################################################################
 	//##################################################汎用関数##################################################
 	//############################################################################################################
@@ -1670,7 +1793,7 @@
 	}
 
 	function _i18n(){
-		envText = Text[scriptSettings?.general?.lang || getCookie('lang')] || Text.en;
+		envText = Text[scriptSettings?.makeTwitterLittleUseful?.language || getCookie('lang')] || Text.en;
 	}
 
 	function getCookie(name){
@@ -2047,6 +2170,7 @@
 		}
 		if(!currentUrl.match(/\.com\/settings/))return;
 		if(document.querySelector('.MTLU_Settings_Button'))return;
+		const colors = new Colors();
 		const tabList = await waitElementAndGet({query: 'main div[role="tablist"]', searchFunction: 'querySelector', ...(start ? {interval: 200, retry: 20} : {interval: 100, retry: 10})});
 		tabList.classList.add('MTLU_Settings_Button_Added');
 		const tabs = Array.from(tabList.querySelectorAll('div[data-testid="activeRoute"]'));
@@ -2062,12 +2186,22 @@
 			const newTabLinkNode = newTab.querySelector('a');
 			newTabLinkNode.href = '#';
 			newTabLinkNode.querySelector('span').textContent = envText.makeTwitterLittleUseful.displaySettingsButtonText;
-			newTabLinkNode.addEventListener('click', () => {
+			newTabLinkNode.addEventListener('click', (event) => {
+				event.preventDefault();
 				createSettingsPage();
 			});
+			if(document.querySelector('.MTLU_Settings_Button'))return;
 			tabList.appendChild(newTab);
+			newTabLinkNode.addEventListener('mouseenter', function(){
+				newTabLinkNode.style.backgroundColor = colors.get('menuHoverEffectLight');
+			});
+			newTabLinkNode.addEventListener('mouseleave', resetColor);
+			newTabLinkNode.addEventListener('touchend', resetColor);
+			newTabLinkNode.addEventListener('touchcancel', resetColor);
+			function resetColor(){
+				newTabLinkNode.style.backgroundColor = '';
+			}
 		}
-
 	}
 
 	function waitElementAndGet({query, searchFunction = 'querySelector', interval = 100, retry = 25, searchPlace = document, faildToThrow = false} = {}){
