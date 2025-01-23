@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.0.0
+// @version			2.1.0.1
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -1230,9 +1230,9 @@
 
 	async function helloTweetWhereAreYouFrom(){
 		if(document.querySelector('.display_twitter_client') || !currentUrl.match(/[\w]{1,}\.com\/[\w]*\/status\/[0-9]*/))return;
+		const targetNode = await waitElementAndGet({query: envSelector.infoField, interval: 300, retry: 4});
 		const tweetData = await getTweetData(extractTweetId(currentUrl), "graphQL");
 		const thisScriptSettings = scriptSettings.helloTweetWhereAreYouFrom;
-		const targetNode = await waitElementAndGet({query: envSelector.infoField, interval: 300, retry: 4});
 		if(!targetNode)return;
 		const colors = new Colors();
 		const container = document.createElement('div');
@@ -1554,6 +1554,7 @@
 
 	async function imageZoom(){
 		if(!currentUrl.match(/status\/[\d]+\/(video|photo)/))return;
+		if(document.querySelector('[imageZoomed="true"]'))return;
 		let zoomLevel = scriptSettings.imageZoom?.zoomLevel || 2;
 		let magnifierSize = scriptSettings.imageZoom?.magnifierSize || 100;
 		if(!sessionData.imageZoom?.magnifier){
@@ -1587,8 +1588,8 @@
 					const y = e.clientY - rect.top;
 					magnifierImg.style.width = `${sessionData.imageZoom.target.width * sessionData.imageZoom.zoomLevel}px`;
 					magnifierImg.style.height = `${sessionData.imageZoom.target.height * sessionData.imageZoom.zoomLevel}px`;
-					magnifierImg.style.left = `-${x * sessionData.imageZoom.zoomLevel - magnifier.offsetWidth / 2}px`;
-					magnifierImg.style.top = `-${y * sessionData.imageZoom.zoomLevel - magnifier.offsetHeight / 2}px`;
+					magnifierImg.style.left = `${-1 * (x * sessionData.imageZoom.zoomLevel - magnifier.offsetWidth / 2)}px`;
+					magnifierImg.style.top = `${-1 * (y * sessionData.imageZoom.zoomLevel - magnifier.offsetHeight / 2)}px`;
 					magnifier.style.left = `${e.pageX - magnifier.offsetWidth / 2}px`;
 					magnifier.style.top = `${e.pageY - magnifier.offsetHeight / 2}px`;
 				}else if(e.shiftKey){
@@ -1609,6 +1610,7 @@
 		}
 		const mediaDisplayTree = (await waitElementAndGet({query: '[data-testid="mask"]'})).parentElement;
 		if(!mediaDisplayTree)return;
+		mediaDisplayTree.setAttribute('imageZoomed', 'true');
 		const images = mediaDisplayTree.querySelectorAll('[data-testid="swipe-to-dismiss"]');
 		const magnifier = sessionData.imageZoom.magnifier;
 		const magnifierImg = sessionData.imageZoom.magnifierImg;
@@ -1616,6 +1618,8 @@
 		let saveTimeout;
 
 		images.forEach(image =>{
+			if(image.getAttribute('eventAdded') === 'true')return;
+			image.setAttribute('eventAdded', 'true');
 			image.addEventListener('mousedown', (e)=>{
 				sessionData.imageZoom.target = e.target;
 				if(sessionData.imageZoom.target.tagName !== 'IMG')return;
@@ -1631,8 +1635,8 @@
 				magnifierImg.style.position = 'absolute';
 				magnifierImg.style.width = `${sessionData.imageZoom.target.width * sessionData.imageZoom.zoomLevel}px`;
 				magnifierImg.style.height = `${sessionData.imageZoom.target.height * sessionData.imageZoom.zoomLevel}px`;
-				magnifierImg.style.left = `-${x * sessionData.imageZoom.zoomLevel - magnifier.offsetWidth / 2}px`;
-				magnifierImg.style.top = `-${y * sessionData.imageZoom.zoomLevel - magnifier.offsetHeight / 2}px`;
+				magnifierImg.style.left = `${-1 * (x * sessionData.imageZoom.zoomLevel - magnifier.offsetWidth / 2)}px`;
+				magnifierImg.style.top = `${-1 * (y * sessionData.imageZoom.zoomLevel - magnifier.offsetHeight / 2)}px`;
 
 				const moveMagnifier = (moveEvent)=>{
 					const moveX = moveEvent.clientX - rect.left;
@@ -3634,7 +3638,13 @@
 			const settingEntries = [
 				{id: 'functionsToggle', type: 'text', text: settingText.functionsToggle, size: "2.5em", weight: "400", position: "left", isHTML: false},
 				...Object.keys(functions)
-					.map(key => ({id: key, name: envText[key].settings.displayName, type: 'toggleSwitch', category: "featuresToggle"})),
+					.map(key => {
+						const func = functions[key];
+						if((func.forPC ? isPC : true && func.forMobile ? isMobile : true)){
+							return {id: key, name: envText[key].settings.displayName, type: 'toggleSwitch', category: "featuresToggle"}
+						}
+						return null;
+				}).filter(item => item !== null),
 				{id: 'functionsToggleFinBorder', type: 'border'},
 				{type: 'text', text: settingText.language, size: "3em", weight: "400", position: "left", isHTML: false},
 				{id: 'language', type: 'dropdown', option: Object.keys(Text).map(key => ({value: key, displayName: key}))},
