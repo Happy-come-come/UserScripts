@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.0.3
+// @version			2.1.0.4
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -359,7 +359,7 @@
 		},
 		"quickShareTweetLink": {
 			"settings": {
-				"displayName": "quick Share TweetLink",
+				"displayName": "quick Copy TweetLink",
 				"copyDomain": "Domain to Use for Copying",
 				"customDomain": "Custom Domain",
 			},
@@ -393,7 +393,7 @@
 		"sneakilyFavorite": {
 			"favorite": "favorite！",
 			"settings": {
-				"displayName": "sneakilyFavorite"
+				"displayName": "sneakily Favorite"
 			}
 		},
 		"showAllMedias": {
@@ -411,7 +411,7 @@
 		},
 		"addMenuButton": {
 			"settings": {
-				"displayName": "Add Menu Button",
+				"displayName": "Add menu buttons",
 				"toAdd": "Buttons to Add",
 				"toAddOptions": {
 					"bookmarkButton": "Bookmark",
@@ -423,7 +423,7 @@
 		},
 		"imageZoom": {
 			"settings": {
-				"displayName": "Image Zoom",
+				"displayName": "Zoom images",
 			}
 		},
 		"advance": {
