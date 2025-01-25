@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.0.1
+// @version			2.1.0.2
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -1556,7 +1556,7 @@
 		if(!currentUrl.match(/status\/[\d]+\/(video|photo)/))return;
 		if(document.querySelector('[imageZoomed="true"]'))return;
 		let zoomLevel = scriptSettings.imageZoom?.zoomLevel || 2;
-		let magnifierSize = scriptSettings.imageZoom?.magnifierSize || 100;
+		let magnifierSize = scriptSettings.imageZoom?.magnifierSize || 250;
 		if(!sessionData.imageZoom?.magnifier){
 			if(!sessionData.imageZoom)sessionData.imageZoom = {};
 			const magnifierImg = document.createElement('img');
@@ -3009,14 +3009,14 @@
 			tweetBodyText = data.text;
 			hashtags = data.entity_set.hashtags || [];
 			urls = data.entity_set.urls || [];
-			mentions = data.entity_set.mentions || [];
+			mentions = data.entity_set.user_mentions || [];
 			symbols = data.entity_set.symbols || [];
 		}else{
 			const data = tweetData.legacy || tweetData;
 			tweetBodyText = data.full_text;
 			hashtags = data.entities.hashtags || [];
 			urls = data.entities.urls || [];
-			mentions = data.entities.mentions || [];
+			mentions = data.entities.user_mentions || [];
 			symbols = data.entities.symbols || [];
 		}
 		const mediaUrls = (tweetData.legacy?.extended_entities?.media || tweetData.extended_entities?.media || []).map(media => media.url);
