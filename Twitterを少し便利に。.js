@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.0.4
+// @version			2.1.0.5
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -1621,6 +1621,7 @@
 			if(image.getAttribute('eventAdded') === 'true')return;
 			image.setAttribute('eventAdded', 'true');
 			image.addEventListener('mousedown', (e)=>{
+				if(e.button === 2)return;
 				sessionData.imageZoom.target = e.target;
 				if(sessionData.imageZoom.target.tagName !== 'IMG')return;
 				const rect = sessionData.imageZoom.target.getBoundingClientRect();
