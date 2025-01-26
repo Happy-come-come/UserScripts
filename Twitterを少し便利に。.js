@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.1.0
+// @version			2.1.1.1
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -183,6 +183,7 @@
 				"displayName": "WebhookがTweetを連れてくるわ今日も",
 				"description": "ツイートをDiscordにWebhookで送信できるようにします",
 				"displayMethod": "表示方法",
+				"defaultWebhook": "デフォルトのWebhook",
 				"displayMethodOptions": {
 					"everywhere": "どこでも表示",
 					"tweetDetailsOnly": "詳細表示したときだけ"
@@ -376,6 +377,7 @@
 				"displayName": "Webhook Brings Tweets to Discord",
 				"description": "Allows you to send tweets to Discord via webhook",
 				"displayMethod": "Display Method",
+				"defaultWebhook": "Default Webhook",
 				"displayMethodOptions": {
 					"everywhere": "Display Everywhere",
 					"tweetDetailsOnly": "Only in Tweet Details"
@@ -1810,18 +1812,21 @@
 				'quickShareTweetLink': JSON.parse(localStorage.getItem('quickShareTweetLink') || '{}'),
 			};
 			const featuresToggle = localStorageSettings.makeTwitterLittleUseful.featuresToggle;
-			localStorageSettings.makeTwitterLittleUseful.featuresToggle = {
-				"webhookBringsTweetsToDiscord": featuresToggle["webhook_brings_tweets_to_discord"] ?? false,
-				"helloTweetWhereAreYouFrom": featuresToggle["Hello_tweet_where_are_you_from"] ?? false,
-				"showMeYourPixiv": featuresToggle["Show_me_your_Pixiv"] ?? false,
-				"noteTweetExpander": featuresToggle["Note_Tweet_expander"] ?? true,
-				"sneakilyFavorite": featuresToggle["sneakilyFavorite"] ?? false,
-				"engagementRestorer": featuresToggle["Engagement_Restorer"] ?? false,
-				"quickShareTweetLink": featuresToggle["quickShareTweetLink"] ?? false,
-				"showFollowers": featuresToggle["showFollowers"] ?? false,
-				"hideAnalytics": featuresToggle["hideAnalytics"] ?? false,
-				"showAllMedias": featuresToggle["Show_all_Medias"] ?? false,
-			}
+			if(featuresToggle){
+				localStorageSettings.makeTwitterLittleUseful.featuresToggle = {
+					"webhookBringsTweetsToDiscord": featuresToggle["webhook_brings_tweets_to_discord"] ?? false,
+					"helloTweetWhereAreYouFrom": featuresToggle["Hello_tweet_where_are_you_from"] ?? false,
+					"showMeYourPixiv": featuresToggle["Show_me_your_Pixiv"] ?? false,
+					"noteTweetExpander": featuresToggle["Note_Tweet_expander"] ?? true,
+					"sneakilyFavorite": featuresToggle["sneakilyFavorite"] ?? false,
+					"engagementRestorer": featuresToggle["Engagement_Restorer"] ?? false,
+					"quickShareTweetLink": featuresToggle["quickShareTweetLink"] ?? false,
+					"showFollowers": featuresToggle["showFollowers"] ?? false,
+					"hideAnalytics": featuresToggle["hideAnalytics"] ?? false,
+					"showAllMedias": featuresToggle["Show_all_Medias"] ?? false,
+				}
+			}else{
+			};
 			scriptSettings = localStorageSettings;
 			return "OK";
 		}
@@ -3830,7 +3835,7 @@
 				}
 			});
 			page.appendChild(createSettingsElement({type: "button", text: "+", position: "left" , event: ()=>{makeNewLow()}}, scriptSetting).container);
-			page.appendChild(createSettingsElement({type: 'text', text: "デフォルトのwebhook", size: "2em", weight: "400", position: "left", isHTML: false}, scriptSetting).container);
+			page.appendChild(createSettingsElement({type: 'text', text: settingText.defaultWebhook, size: "2em", weight: "400", position: "left", isHTML: false}, scriptSetting).container);
 			const defaultWebhookDropdown = createSettingsElement({id: 'defaultWebhook', type: 'dropdown', option: getValueFromObjectByPath(scriptSetting?.data, "name", []).map(key => ({value: key, displayName: key}))}, scriptSetting);
 			page.appendChild(defaultWebhookDropdown.container);
 			for(let i=0;i<settingEntries.length;i++){
