@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.1.2
+// @version			2.1.1.3
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -3700,7 +3700,7 @@
 		*/
 		function createMakeTwitterLittleUsefulSettingsPage(){
 			const settingsTarget = settingTargets.makeTwitterLittleUseful;
-			scriptSettings.makeTwitterLittleUseful.displayChangelog = scriptSettings.makeTwitterLittleUseful.displayChangelog !== undefined ? true : scriptSettings.makeTwitterLittleUseful.displayChangelog;
+			scriptSettings.makeTwitterLittleUseful.displayChangelog = scriptSettings.makeTwitterLittleUseful.displayChangelog === undefined ? true : scriptSettings.makeTwitterLittleUseful.displayChangelog;
 			const scriptSetting = scriptSettings.makeTwitterLittleUseful;
 			const settingText = envText.makeTwitterLittleUseful.settings;
 			const page = createSettingsPageTemplate(settingsTarget.targetName);
@@ -7000,6 +7000,7 @@
 				"updateDate": "2025-01-27 01:00:00",
 			}
 		};
+		if(Object.keys(changelogs).every(version => compareVersions(version, lastScriptVersion) === -1))return;
 		const textData = envText.makeTwitterLittleUseful.displayChangelog;
 		const colors = new Colors();
 		const changelogOverlay = document.createElement('div');
