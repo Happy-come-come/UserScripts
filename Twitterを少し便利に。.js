@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.0.5
+// @version			2.1.1.0
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -127,6 +127,7 @@
 
 	Text.ja = {
 		"makeTwitterLittleUseful": {
+			"scriptName": "Twitterを少し便利に。",
 			"displaySettingsButtonText": "「Twitterを少し便利に。」の設定",
 			"invaildData": "無効なデータです",
 			"copied": "クリップボードにコピーしました",
@@ -138,10 +139,23 @@
 				"bookmark": "ブックマークしました",
 				"deleteBookmark": "ブックマークを取り消しました",
 			},
+			"displayChangelog": {
+				"headerTitle": "更新履歴",
+				"version": "バージョン",
+				"updateDate": "更新日時",
+				"newFeaturesListHeader": "新機能",
+				"neverDisplay": "二度と表示しない",
+				"closeButtonText": "閉じる",
+				"openSettingsButtonText": "設定を開く",
+				"moreInfo": "機能の詳細等は",
+				"here": "こちら",
+				"selfProtection": "更新時、新しい機能が追加されたときのみ表示しています。"
+			},
 			"settings": {
 				"displayName": "一般設定",
 				"functionsToggle": "機能のオン・オフ",
 				"language": "Language",
+				"displayChangelog": "新機能追加時に更新履歴を表示する",
 			},
 		},
 		"webhookBringsTweetsToDiscord": {
@@ -167,6 +181,7 @@
 			},
 			"settings": {
 				"displayName": "WebhookがTweetを連れてくるわ今日も",
+				"description": "ツイートをDiscordにWebhookで送信できるようにします",
 				"displayMethod": "表示方法",
 				"displayMethodOptions": {
 					"everywhere": "どこでも表示",
@@ -183,16 +198,19 @@
 		"noteTweetExpander": {
 			"settings": {
 				"displayName": "長いツイートをTLで展開",
+				"description": "NoteツイートをTLで展開して全文表示します",
 			},
 		},
 		"showMeYourPixiv": {
 			"settings": {
 				"displayName": "PixivのリンクをTweetに添えて",
+				"description": "ツイートの下やプロフィール欄にツイート主のPixivのリンクを表示します",
 			},
 		},
 		"quickShareTweetLink": {
 			"settings": {
 				"displayName": "ツイートリンクを素早くコピー",
+				"description": "ツイートのリンクを即時コピーできるボタンを追加します",
 				"copyDomain": "コピーするときに使うドメイン",
 				"customDomain": "カスタムドメイン",
 			},
@@ -206,27 +224,32 @@
 			"like": "いいね",
 			"settings": {
 				"displayName": "返ってこい！リツイート欄！",
+				"description": "ツイートを詳細表示した際にリツイート数、引用数、いいね数を表示します",
 			}
 		},
 		"hideAnalytics": {
 			"settings": {
 				"displayName": "アナリティクスを非表示にする",
+				"description": "ツイートのアナリティクス数を非表示にします",
 			}
 		},
 		"helloTweetWhereAreYouFrom": {
 			"settings": {
 				"displayName": "あなたのツイートはどこから？",
+				"description": "ツイートを投稿したクライアント名を表示します",
 			}
 		},
 		"showFollowers": {
 			"settings": {
-				"displayName": "フォロワーを直接表示"
+				"displayName": "フォロワーを直接表示",
+				"description": "「認証済みフォロワー」が最初に表示されるのを防ぎます",
 			}
 		},
 		"sneakilyFavorite": {
 			"favorite": "いいね",
 			"settings": {
-				"displayName": "こっそりいいね"
+				"displayName": "こっそりいいね",
+				"description": "リツイートされたツイートをいいねしても相手に通知が行かないボタンを追加します",
 			}
 		},
 		"showAllMedias": {
@@ -235,6 +258,7 @@
 			"decimalPlaces": 2,
 			"settings": {
 				"displayName": "メディア欄に全ての画像を表示",
+				"description": "ツイートのメディア欄にそのツイートの全ての画像を表示します",
 				"displayMethod": "表示方法",
 				"expand": "展開",
 				"likeTweet": "ツイートのように",
@@ -245,6 +269,7 @@
 		"addMenuButton": {
 			"settings": {
 				"displayName": "メニューボタンを追加",
+				"description": "最近変更されたUIにないメニューボタンを追加します",
 				"toAdd": "追加するボタン",
 				"toAddOptions": {
 					"bookmarkButton": "ブックマーク",
@@ -257,6 +282,7 @@
 		"imageZoom": {
 			"settings": {
 				"displayName": "画像をズーム",
+				"description": "詳細表示した画像をクリックすると拡大表示します",
 			}
 		},
 		"advance": {
@@ -294,6 +320,7 @@
 
 	Text.en = {
 		"makeTwitterLittleUseful": {
+			"scriptName": "Make Twitter Little Useful",
 			"displaySettingsButtonText": "Settings for 'Make Twitter Little Useful'",
 			"invaildData": "Invalid data",
 			"copied": "Copied to clipboard",
@@ -305,10 +332,23 @@
 				"bookmark": "Bookmarked",
 				"deleteBookmark": "Unbookmarked",
 			},
+			"displayChangelog": {
+				"headerTitle": "Changelog",
+				"version": "Version",
+				"updateDate": "Update Date",
+				"newFeaturesListHeader": "New Features",
+				"neverDisplay": "Never display again",
+				"closeButtonText": "Close",
+				"openSettingsButtonText": "Open Settings",
+				"moreInfo": "For more details about the features,",
+				"here": "click here",
+				"selfProtection": "Displayed only when new features are added during updates."
+			},
 			"settings": {
 				"displayName": "General Settings",
 				"functionsToggle": "Toggle Functions",
 				"language": "Language",
+				"displayChangelog": "Display changelog when new features are added",
 			},
 		},
 		"webhookBringsTweetsToDiscord": {
@@ -334,6 +374,7 @@
 			},
 			"settings": {
 				"displayName": "Webhook Brings Tweets to Discord",
+				"description": "Allows you to send tweets to Discord via webhook",
 				"displayMethod": "Display Method",
 				"displayMethodOptions": {
 					"everywhere": "Display Everywhere",
@@ -349,17 +390,20 @@
 		},
 		"noteTweetExpander": {
 			"settings": {
-				"displayName": "Note Tweet expander",
+				"displayName": "Note Tweet Expander",
+				"description": "Expands Note Tweets in the timeline to display the full text",
 			},
 		},
 		"showMeYourPixiv": {
 			"settings": {
-				"displayName": "Show me your Pixiv",
+				"displayName": "Show Me Your Pixiv",
+				"description": "Displays the Pixiv link of the tweet author under the tweet or in the profile section",
 			},
 		},
 		"quickShareTweetLink": {
 			"settings": {
-				"displayName": "quick Copy TweetLink",
+				"displayName": "Quick Copy Tweet Link",
+				"description": "Adds a button to instantly copy the tweet link",
 				"copyDomain": "Domain to Use for Copying",
 				"customDomain": "Custom Domain",
 			},
@@ -373,27 +417,32 @@
 			"like": "Like",
 			"settings": {
 				"displayName": "Engagement Restorer",
+				"description": "Displays the number of retweets, quotes, and likes when viewing tweet details",
 			}
 		},
 		"hideAnalytics": {
 			"settings": {
 				"displayName": "Hide Analytics",
+				"description": "Hides the tweet analytics count",
 			}
 		},
 		"helloTweetWhereAreYouFrom": {
 			"settings": {
-				"displayName": "Hello tweet where are you from?",
+				"displayName": "Hello Tweet Where Are You From?",
+				"description": "Displays the client name from which the tweet was posted",
 			}
 		},
 		"showFollowers": {
 			"settings": {
-				"displayName": "Show Followers Directly"
+				"displayName": "Show Followers Directly",
+				"description": "Prevents 'Verified Followers' from being displayed first",
 			}
 		},
 		"sneakilyFavorite": {
-			"favorite": "favorite！",
+			"favorite": "Favorite",
 			"settings": {
-				"displayName": "sneakily Favorite"
+				"displayName": "Sneakily Favorite",
+				"description": "Adds a button to like retweeted tweets without notifying the retweeter",
 			}
 		},
 		"showAllMedias": {
@@ -402,6 +451,7 @@
 			"decimalPlaces": 1,
 			"settings": {
 				"displayName": "Show All Images in Media Section",
+				"description": "Displays all images of the tweet in the media section",
 				"displayMethod": "Display Method",
 				"expand": "Expand",
 				"likeTweet": "Like Tweet",
@@ -411,7 +461,8 @@
 		},
 		"addMenuButton": {
 			"settings": {
-				"displayName": "Add menu buttons",
+				"displayName": "Add Menu Buttons",
+				"description": "Adds menu buttons that are not in the recently changed UI",
 				"toAdd": "Buttons to Add",
 				"toAddOptions": {
 					"bookmarkButton": "Bookmark",
@@ -423,7 +474,8 @@
 		},
 		"imageZoom": {
 			"settings": {
-				"displayName": "Zoom images",
+				"displayName": "Zoom Images",
+				"description": "Enlarges the image when clicked in detail view",
 			}
 		},
 		"advance": {
@@ -3292,15 +3344,15 @@
 		const isMobile = (isMobileDevice());
 		const colors = new Colors();
 		const pages = {nodes:[], selecing:{name: "", node: null}};
-		const settingTargets = {
-			"makeTwitterLittleUseful": {
+		const settingTargetsArray = [
+			{
 				targetName: "makeTwitterLittleUseful",
 				displayName: envText.makeTwitterLittleUseful.settings.displayName,
 				pageGenerateFunction: createMakeTwitterLittleUsefulSettingsPage,
 				settingsNode: null,
 				isFunction: false
 			},
-			"webhookBringsTweetsToDiscord": {
+			{
 				targetName: "webhookBringsTweetsToDiscord",
 				displayName: envText.webhookBringsTweetsToDiscord.settings.displayName,
 				pageGenerateFunction: createWebhookBringsTweetsToDiscordSettingsPage,
@@ -3308,28 +3360,29 @@
 				isFunction: true,
 				specificSave: ()=>{}
 			},
-			"quickShareTweetLink": {
+			{
 				targetName: "quickShareTweetLink",
 				displayName: envText.quickShareTweetLink.settings.displayName,
 				pageGenerateFunction: createQuickShareTweetLinkSettingsPage,
 				settingsNode: null,
 				isFunction: true,
 			},
-			"showAllMedias": {
+			{
 				targetName: "showAllMedias",
 				displayName: envText.showAllMedias.settings.displayName,
 				pageGenerateFunction: createShowAllMediasSettingsPage,
 				settingsNode: null,
 				isFunction: true,
 			},
-			"addMenuButton": {
+			{
 				targetName: "addMenuButton",
 				displayName: envText.addMenuButton.settings.displayName,
 				pageGenerateFunction: createAddMenuButtonSettingsPage,
 				settingsNode: null,
 				isFunction: true,
+				forPC: true,
 			},
-			"advance": {
+			{
 				targetName: "advance",
 				displayName: envText.advance.settings.displayName,
 				pageGenerateFunction: createAdvanceSettingsPage,
@@ -3337,7 +3390,7 @@
 				isFunction: false,
 				needSave: false
 			},
-			"forDebug": {
+			{
 				targetName: "forDebug",
 				displayName: envText.forDebug.settings.displayName,
 				pageGenerateFunction: createForDebugSettingsPage,
@@ -3345,7 +3398,16 @@
 				isFunction: false,
 				needSave: false
 			}
-		};
+		];
+
+		const settingTargets = settingTargetsArray.reduce((acc, target) => {
+			if((target.forPC && !isPC) || (target.forMobile && !isMobile)){
+				return acc;
+			}
+			acc[target.targetName] = target;
+			return acc;
+		}, {});
+
 		const documentRoot = await waitElementAndGet({query: 'body', searchFunction: 'querySelector'});
 		const fragment = document.createDocumentFragment();
 		const settingsPage = document.createElement('div');
@@ -3633,6 +3695,7 @@
 		*/
 		function createMakeTwitterLittleUsefulSettingsPage(){
 			const settingsTarget = settingTargets.makeTwitterLittleUseful;
+			scriptSettings.makeTwitterLittleUseful.displayChangelog = scriptSettings.makeTwitterLittleUseful.displayChangelog !== undefined ? true : scriptSettings.makeTwitterLittleUseful.displayChangelog;
 			const scriptSetting = scriptSettings.makeTwitterLittleUseful;
 			const settingText = envText.makeTwitterLittleUseful.settings;
 			const page = createSettingsPageTemplate(settingsTarget.targetName);
@@ -3649,10 +3712,81 @@
 				{id: 'functionsToggleFinBorder', type: 'border'},
 				{type: 'text', text: settingText.language, size: "3em", weight: "400", position: "left", isHTML: false},
 				{id: 'language', type: 'dropdown', option: Object.keys(Text).map(key => ({value: key, displayName: key}))},
+				{type: 'border', margin: "2em 0 0 0"},
+				{id: 'displayChangelog', type: 'toggleSwitch', name: settingText.displayChangelog},
 			];
 			for(let i=0;i<settingEntries.length;i++){
 				page.appendChild(createSettingsElement(settingEntries[i], scriptSetting).container);
 			}
+			page.querySelectorAll('div[category="featuresToggle"][type="toggleSwitch"]').forEach(e=>{
+				const path1 = "M396.138,85.295c-13.172-25.037-33.795-45.898-59.342-61.03C311.26,9.2,280.435,0.001,246.98,0.001 c-41.238-0.102-75.5,10.642-101.359,25.521c-25.962,14.826-37.156,32.088-37.156,32.088c-4.363,3.786-6.824,9.294-6.721,15.056 c0.118,5.77,2.775,11.186,7.273,14.784l35.933,28.78c7.324,5.864,17.806,5.644,24.875-0.518c0,0,4.414-7.978,18.247-15.88 c13.91-7.85,31.945-14.173,58.908-14.258c23.517-0.051,44.022,8.725,58.016,20.717c6.952,5.941,12.145,12.594,15.328,18.68 c3.208,6.136,4.379,11.5,4.363,15.574c-0.068,13.766-2.742,22.77-6.603,30.442c-2.945,5.729-6.789,10.813-11.738,15.744 c-7.384,7.384-17.398,14.207-28.634,20.479c-11.245,6.348-23.365,11.932-35.612,18.68c-13.978,7.74-28.77,18.858-39.701,35.544 c-5.449,8.249-9.71,17.686-12.416,27.641c-2.742,9.964-3.98,20.412-3.98,31.071c0,11.372,0,20.708,0,20.708 c0,10.719,8.69,19.41,19.41,19.41h46.762c10.719,0,19.41-8.691,19.41-19.41c0,0,0-9.336,0-20.708c0-4.107,0.467-6.755,0.917-8.436 c0.773-2.512,1.206-3.14,2.47-4.668c1.29-1.452,3.895-3.674,8.698-6.331c7.019-3.946,18.298-9.276,31.07-16.176 c19.121-10.456,42.367-24.646,61.972-48.062c9.752-11.686,18.374-25.758,24.323-41.968c6.001-16.21,9.242-34.431,9.226-53.96 C410.243,120.761,404.879,101.971,396.138,85.295z";
+				const path2 = "M228.809,406.44c-29.152,0-52.788,23.644-52.788,52.788c0,29.136,23.637,52.772,52.788,52.772 c29.136,0,52.763-23.636,52.763-52.772C281.572,430.084,257.945,406.44,228.809,406.44z";
+				const descriptionContainer = document.createElement('div');
+				Object.assign(descriptionContainer.style, {
+					position: "relative",
+					display: "flex",
+					left: "-20px",
+				});
+
+				const svg = createSvgElement([path1, path2], "0 0 512 512").svg;
+				Object.assign(svg.style, {
+					width: "1.5em",
+					height: "1.5em",
+					marginLeft: "1em",
+				});
+
+				const description = document.createElement('div');
+				description.textContent = envText[e.getAttribute('settingID')].settings.description;
+				Object.assign(description.style, {
+					position: 'fixed',
+					transform: 'translateX(-50%)',
+					backgroundColor: 'rgba(0, 0, 0, 0.75)',
+					color: colors.get('fontColor'),
+					padding: '5px',
+					borderRadius: '5px',
+					whiteSpace: 'nowrap',
+					display: 'none',
+					zIndex: '20000',
+				});
+
+				svg.addEventListener('mouseenter', () => {
+					appearDescription();
+				});
+				
+				svg.addEventListener('mouseleave', () => {
+					disappearDescription();
+				});
+				
+				svg.addEventListener('click', () => {
+					if(description.style.display === 'block'){
+						disappearDescription();
+					}else{
+						appearDescription();
+					}
+				});
+				svg.addEventListener('touchstart', (e) => {
+					e.preventDefault();
+					if(description.style.display === 'block'){
+						disappearDescription();
+					}else{
+						appearDescription();
+					}
+				});
+				function appearDescription(){
+					settingsPage.addEventListener('click', disappearDescription, {once: true});
+					const rect = svg.getBoundingClientRect();
+					description.style.top = `${rect.top - description.offsetHeight - 50}px`;
+					description.style.left = `${rect.left + rect.width / 2 - description.offsetWidth / 2}px`;
+					description.style.display = 'block';
+				}
+				const disappearDescription = ()=>{
+					description.style.display = 'none';
+					settingsPage.removeEventListener('click', disappearDescription);
+				}
+				descriptionContainer.appendChild(svg);
+				descriptionContainer.appendChild(description);
+				e.appendChild(descriptionContainer);
+			});
 			page.style.display = "flex";
 			page.style.zIndex = "auto";
 			return page;
@@ -4334,6 +4468,7 @@
 
 		function generatePages(){
 			for(let key of Object.keys(settingTargets)){
+				//if(!(settingTargets[key].forPC ? isPC : true && settingTargets[key].forMobile ? isMobile : true))return;
 				const node = settingTargets[key].pageGenerateFunction();
 				settingContainerWrapper.appendChild(node);
 				settingTargets[key].settingsNode = node;
@@ -6852,6 +6987,291 @@
 		}
 	}
 
+	async function displayChangelog(currentScriptVersion, lastScriptVersion){
+		if(document.getElementById('changelogOverlay'))return;
+		const changelogs = {
+			"2.1.1.0": {
+				"newFeatures": ["addMenuButton", "imageZoom"],
+				"updateDate": "2025-01-27 01:00:00",
+			}
+		};
+		const textData = envText.makeTwitterLittleUseful.displayChangelog;
+		const colors = new Colors();
+		const changelogOverlay = document.createElement('div');
+		changelogOverlay.setAttribute('MTLU-Id', 'changelogOverlay');
+		changelogOverlay.id = 'changelogOverlay';
+		Object.assign(changelogOverlay.style, {
+			position: "fixed",
+			top: "0",
+			left: "0",
+			width: "100%",
+			height: "100%",
+			backgroundColor: "rgba(0, 0, 0, 0.5)",
+			zIndex: "1000",
+			display: "flex",
+			justifyContent: "center",
+			alignItems: "center",
+		});
+		changelogOverlay.addEventListener('click', async (e)=>{
+			if(neverDisplayCheckbox.checked){
+				scriptSettings.makeTwitterLittleUseful.displayChangelog = false;
+				await saveSettings();
+			}
+			changelogOverlay.remove();
+		});
+
+		const changelogContainer = document.createElement('div');
+		changelogContainer.setAttribute('MTLU-Id', 'changelogContainer');
+		Object.assign(changelogContainer.style, {
+			backgroundColor: colors.get("backgroundColor"),
+			color: colors.get("fontColor"),
+			fontColor: colors.get("fontColor"),
+			padding: "0px",
+			borderRadius: "10px",
+			maxHeight: "90%",
+			maxWidth: "90%",
+			overflowX: "hidden",
+			overflowY: "hidden",
+			flexShrink: "0",
+			flexGrow: "0",
+			border: `2px solid ${colors.get("borderColor")}`,
+		});
+		changelogContainer.addEventListener('click', (e)=>{
+			e.stopPropagation();
+			e.preventDefault();
+		});
+		changelogOverlay.appendChild(changelogContainer);
+
+		const changelogHeaderContainer = document.createElement('div');
+		changelogHeaderContainer.setAttribute('MTLU-Id', 'changelogHeaderContainer');
+		Object.assign(changelogHeaderContainer.style, {
+			display: "flex",
+			padding: "10px",
+			borderBottom: `1px solid ${colors.get("borderColor")}`,
+			borderTopLeftRadius: "10px",
+			borderTopRightRadius: "10px",
+			justifyContent: "space-between",
+			alignItems: "center",
+			flexDirection: "column",
+		});
+		changelogContainer.appendChild(changelogHeaderContainer);
+
+		const scriptName = document.createElement('h1');
+		scriptName.setAttribute('MTLU-Id', 'scriptName');
+		scriptName.textContent = envText.makeTwitterLittleUseful.scriptName;
+		Object.assign(scriptName.style, {
+			fontSize: "1.5em",
+			margin: "0px",
+		});
+		changelogHeaderContainer.appendChild(scriptName);
+
+		const changelogHeader = document.createElement('h1');
+		changelogHeader.setAttribute('MTLU-Id', 'changelogHeader');
+		changelogHeader.textContent = textData.headerTitle;
+		Object.assign(changelogHeader.style, {
+			fontSize: "1.5em",
+			margin: "0px",
+		});
+		changelogHeaderContainer.appendChild(changelogHeader);
+
+		const changelogMainContainer = document.createElement('div');
+		changelogMainContainer.setAttribute('MTLU-Id', 'changelogMainContainer');
+		Object.assign(changelogMainContainer.style, {
+			display: "flex",
+			padding: "10px",
+			overflowY: "auto",
+			overflowX: "wrap",
+			flexDirection: "column",
+			flexGrow: "0",
+			flexShrink: "0",
+		});
+		changelogContainer.appendChild(changelogMainContainer);
+
+		const selfProtectionText = document.createElement('p');
+		selfProtectionText.setAttribute('MTLU-Id', 'selfProtectionText');
+		selfProtectionText.textContent = textData.selfProtection;
+		Object.assign(selfProtectionText.style, {
+			margin: "0px",
+			padding: "0px",
+		});
+		changelogMainContainer.appendChild(selfProtectionText);
+
+		const scriptUrlContainer = document.createElement('div');
+		scriptUrlContainer.setAttribute('MTLU-Id', 'scriptUrlContainer');
+		Object.assign(scriptUrlContainer.style, {
+			display: "flex",
+			padding: "0 0 10px 0",
+			alignItems: "center",
+		});
+		scriptUrlContainer.addEventListener('click', (e) => {
+			e.stopPropagation();
+		});
+		changelogMainContainer.appendChild(scriptUrlContainer);
+
+		const scriptUrlLabel = document.createElement('p');
+		scriptUrlLabel.setAttribute('MTLU-Id', 'scriptUrlLabel');
+		scriptUrlLabel.textContent = textData.moreInfo;
+		Object.assign(scriptUrlLabel.style, {
+			margin: "0px",
+		});
+		scriptUrlContainer.appendChild(scriptUrlLabel);
+
+		const scriptUrl = document.createElement('a');
+		scriptUrl.setAttribute('MTLU-Id', 'scriptUrl');
+		scriptUrl.href = "https://greasyfork.org/scripts/478248";
+		scriptUrl.textContent = textData.here;
+		scriptUrl.target = "_blank";
+		scriptUrl.rel = "noopener nofollow";
+		Object.assign(scriptUrl.style, {
+			margin: "0px",
+			color: colors.get("twitterBlue"),
+		});
+		scriptUrlContainer.appendChild(scriptUrl);
+
+		Object.keys(changelogs).forEach((version)=>{
+			if(compareVersions(version, lastScriptVersion) === 1){
+				const changelogVersionContainer = document.createElement('div');
+				changelogVersionContainer.setAttribute('MTLU-Id', 'changelogVersionContainer');
+				Object.assign(changelogVersionContainer.style, {
+					marginBottom: "10px",
+				});
+				changelogMainContainer.appendChild(changelogVersionContainer);
+
+				const changelogVersionHeader = document.createElement('h2');
+				changelogVersionHeader.setAttribute('MTLU-Id', 'changelogVersionHeader');
+				changelogVersionHeader.textContent = `${textData.version} ${version}`;
+				Object.assign(changelogVersionHeader.style, {
+					fontSize: "1.2em",
+					margin: "0px",
+				});
+				changelogVersionContainer.appendChild(changelogVersionHeader);
+
+				const changelogVersionDate = document.createElement('p');
+				changelogVersionDate.setAttribute('MTLU-Id', 'changelogVersionDate');
+				const date = new Date(changelogs[version].updateDate);
+				changelogVersionDate.textContent = `${textData.updateDate} ${date.toLocaleString()}`;
+				Object.assign(changelogVersionDate.style, {
+					margin: "0px",
+				});
+				changelogVersionContainer.appendChild(changelogVersionDate);
+
+				const changelogVersionList = document.createElement('ul');
+				changelogVersionList.setAttribute('MTLU-Id', 'changelogVersionList');
+				Object.assign(changelogVersionList.style, {
+					listStyleType: "disc",
+					paddingLeft: "20px",
+				});
+				changelogVersionContainer.appendChild(changelogVersionList);
+
+				const newFeaturesListHeader = document.createElement('h3');
+				newFeaturesListHeader.setAttribute('MTLU-Id', 'newFeaturesListHeader');
+				newFeaturesListHeader.textContent = textData.newFeaturesListHeader;
+				Object.assign(newFeaturesListHeader.style, {
+					fontSize: "1.1em",
+					margin: "0px",
+				});
+				changelogVersionList.appendChild(newFeaturesListHeader);
+
+				const newFeaturesList = document.createElement('ul');
+				newFeaturesList.setAttribute('MTLU-Id', 'newFeaturesList');
+				Object.assign(newFeaturesList.style, {
+					listStyleType: "circle",
+					paddingLeft: "20px",
+				});
+				changelogVersionList.appendChild(newFeaturesList);
+
+				changelogs[version].newFeatures.forEach((feature)=>{
+					const changelogVersionListItem = document.createElement('li');
+					changelogVersionListItem.setAttribute('MTLU-Id', 'changelogVersionListItem');
+					changelogVersionListItem.textContent = envText[feature].settings.displayName;
+
+					const featureDescriptionList = document.createElement('ul');
+					featureDescriptionList.setAttribute('MTLU-Id', 'featureDescriptionList');
+
+					const featureDescriptionListItem = document.createElement('li');
+					featureDescriptionListItem.setAttribute('MTLU-Id', 'featureDescriptionListItem');
+					featureDescriptionListItem.textContent = envText[feature].settings.description;
+					featureDescriptionList.appendChild(featureDescriptionListItem);
+					changelogVersionListItem.appendChild(featureDescriptionList);
+
+					newFeaturesList.appendChild(changelogVersionListItem);
+				});
+				changelogMainContainer.appendChild(changelogVersionContainer);
+			}
+		});
+
+		const footerContainer = document.createElement('div');
+		footerContainer.setAttribute('MTLU-Id', 'footerContainer');
+		Object.assign(footerContainer.style, {
+			display: "flex",
+			padding: "10px",
+			borderTop: `1px solid ${colors.get("borderColor")}`,
+			borderBottomLeftRadius: "10px",
+			borderBottomRightRadius: "10px",
+			justifyContent: "flex-end",
+			alignItems: "center",
+		});
+		changelogContainer.appendChild(footerContainer);
+
+		const neverDisplayContainer = document.createElement('div');
+		neverDisplayContainer.setAttribute('MTLU-Id', 'neverDisplayContainer');
+		Object.assign(neverDisplayContainer.style, {
+			display: "flex",
+			alignItems: "center",
+			userSelect: "none",
+		});
+		neverDisplayContainer.addEventListener('click', (e) => {
+			e.stopPropagation();
+		});
+		footerContainer.appendChild(neverDisplayContainer);
+
+		const neverDisplayLabel = document.createElement('label');
+		neverDisplayLabel.setAttribute('MTLU-Id', 'neverDisplayLabel');
+		neverDisplayLabel.textContent = textData.neverDisplay;
+		neverDisplayLabel.setAttribute('for', 'neverDisplayCheckbox');
+		Object.assign(neverDisplayLabel.style, {
+			margin: "0px",
+		});
+		neverDisplayContainer.appendChild(neverDisplayLabel);
+
+		const neverDisplayCheckbox = document.createElement('input');
+		neverDisplayCheckbox.setAttribute('MTLU-Id', 'neverDisplayCheckbox');
+		neverDisplayCheckbox.type = "checkbox";
+		neverDisplayCheckbox.id = "neverDisplayCheckbox";
+		neverDisplayContainer.appendChild(neverDisplayCheckbox);
+
+		footerContainer.appendChild(neverDisplayContainer);
+
+		const closeButton = document.createElement('button');
+		closeButton.setAttribute('MTLU-Id', 'closeButton');
+		closeButton.textContent = textData.closeButtonText;
+		Object.assign(closeButton.style, {
+			marginLeft: "10px",
+		});
+		closeButton.addEventListener('click', async ()=>{
+			if(neverDisplayCheckbox.checked){
+				scriptSettings.makeTwitterLittleUseful.displayChangelog = false;
+				await saveSettings();
+			}
+			changelogOverlay.remove();
+		});
+		footerContainer.appendChild(closeButton);
+
+		const openSettingsButton = document.createElement('button');
+		openSettingsButton.setAttribute('MTLU-Id', 'openSettingsButton');
+		openSettingsButton.textContent = textData.openSettingsButtonText;
+		Object.assign(openSettingsButton.style, {
+			marginLeft: "10px",
+		});
+		openSettingsButton.addEventListener('click', ()=>{
+			createSettingsPage();
+			changelogOverlay.remove();
+		});
+		footerContainer.appendChild(openSettingsButton);
+
+		document.body.appendChild(changelogOverlay);
+	}
+
 	async function firstTime(){
 		if(!((await getFromIndexedDB('makeTwitterLittleUseful', 'settings')) || localStorage.getItem('Make_Twitter_little_useful'))){
 			createSettingsPage();
@@ -6861,6 +7281,7 @@
 		const currentScriptVersion = GM_info.script.version;
 		const lastScriptVersion = scriptDataStore.makeTwitterLittleUseful?.version || "0.0.0.0";
 		if(compareVersions(currentScriptVersion, lastScriptVersion) === 1){
+			displayChangelog(currentScriptVersion, lastScriptVersion);
 			scriptDataStore.makeTwitterLittleUseful.version = currentScriptVersion;
 			await saveToIndexedDB('makeTwitterLittleUseful', 'version', currentScriptVersion);
 		}
