@@ -6988,7 +6988,7 @@
 	}
 
 	async function displayChangelog(currentScriptVersion, lastScriptVersion){
-		if(document.getElementById('changelogOverlay'))return;
+		if(document.getElementById('changelogOverlay') || scriptSettings.makeTwitterLittleUseful.displayChangelog === false)return;
 		const changelogs = {
 			"2.1.1.0": {
 				"newFeatures": ["addMenuButton", "imageZoom"],
