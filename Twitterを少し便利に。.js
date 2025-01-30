@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.1.3
+// @version			2.1.1.4
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -978,8 +978,8 @@
 					if(fileSize < 24117249){
 						return resolve({"files": [{attachment: await request({url: url, respType: "blob", maxRetries: 1}), name: url.split('/').pop()}]});
 					}else{
-						const file = await request({url: url, respType: "blob", maxRetries: 1});
-						if(file.arrayBuffer() < 24117249)return resolve({"files": [{attachment: file, name: url.split('/').pop()}]});
+						const file = await request({url: url, respType: "blob", maxRetries: 1, headers: {"Range": "bytes=0-24117250"}});
+						if(file.size < 24117249)return resolve({"files": [{attachment: file, name: url.split('/').pop()}]});
 						return resolve({"content": url});
 					}
 				});
@@ -1738,7 +1738,7 @@
 		return match ? match[0].split('/')[3] : null;
 	}
 
-	
+
 	async function fetchUserData(){
 		if(sessionData.userData?.screenName !== undefined)return sessionData.userData;
 		/*
@@ -1763,7 +1763,7 @@
 		const language = settings.language;
 		sessionData.userData = {
 			screenName: screenName,
-			countryCode: countryCode, 
+			countryCode: countryCode,
 			language: language
 		};
 		return sessionData.userData;
@@ -3757,11 +3757,11 @@
 				svg.addEventListener('mouseenter', () => {
 					appearDescription();
 				});
-				
+
 				svg.addEventListener('mouseleave', () => {
 					disappearDescription();
 				});
-				
+
 				svg.addEventListener('click', () => {
 					if(description.style.display === 'block'){
 						disappearDescription();
