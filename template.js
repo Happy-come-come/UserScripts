@@ -353,7 +353,6 @@
 						console.warn(`Max retry count (${MAX_RETRY_COUNT}) reached for query: ${query}`);
 						return resolve(null);
 					}
-					
 				}
 				let targetElements = searchFn();
 				if(targetElements && (!(targetElements instanceof NodeList) || targetElements.length >= 1)){
