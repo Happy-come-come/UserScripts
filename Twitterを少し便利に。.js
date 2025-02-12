@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.1.4
+// @version			2.1.1.5
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -973,13 +973,14 @@
 			function downloadVideo(url){
 				return new Promise(async (resolve) => {
 					//上限は「24117249」だったけどユーザーのアップロード上限が10MBになっちゃったので「10485760」にするかもしれない
+					// 2025/02/13 上限が 「10485760」 になりました。
 					//console.log((await request(new requestObject_binary_head(url))).responseHeaders);
 					const fileSize = await getFileSize(url);
-					if(fileSize < 24117249){
+					if(fileSize < 10485760){
 						return resolve({"files": [{attachment: await request({url: url, respType: "blob", maxRetries: 1}), name: url.split('/').pop()}]});
 					}else{
 						const file = await request({url: url, respType: "blob", maxRetries: 1, headers: {"Range": "bytes=0-24117250"}});
-						if(file.size < 24117249)return resolve({"files": [{attachment: file, name: url.split('/').pop()}]});
+						if(file.size < 10485760)return resolve({"files": [{attachment: file, name: url.split('/').pop()}]});
 						return resolve({"content": url});
 					}
 				});
