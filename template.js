@@ -188,6 +188,49 @@
 		element.dispatchEvent(event);
 	}
 
+	function readFile(event, readAs = 'text'){
+		const file = event.target.files[0];
+		if(file){
+			return new Promise((resolve, reject) => {
+				const reader = new FileReader();
+				reader.onload = async function(e){
+					try{
+						if(e.target.result === null){
+							console.error({error: 'Failed to read file.', target: e.target});
+							return reject('Failed to read file.');
+						}
+						return resolve(e.target.result);
+					}catch(error){
+						console.error({error: error, target: e.target});
+						return reject(error);
+					}
+				};
+				reader.onerror = function(e) {
+					console.error({error: 'Error reading file.', target: e.target});
+					return reject(e.target.error);
+				};
+				switch(readAs){
+					case 'text':
+						reader.readAsText(file);
+						break;
+					case 'arrayBuffer':
+						reader.readAsArrayBuffer(file);
+						break;
+					case 'binaryString':
+						reader.readAsBinaryString(file);
+						break;
+					case 'dataURL':
+						reader.readAsDataURL(file);
+						break;
+					default:
+						return reject('Invalid readAs type.');
+				}
+			});
+		}else{
+			return 'No file selected.';
+		}
+	}
+
 	function openIndexedDB(dbName, storeName){
 		return new Promise((resolve, reject) => {
 			const request = indexedDB.open(dbName);
