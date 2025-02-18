@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.1.6
+// @version			2.1.1.7
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -131,6 +131,7 @@
 			"displaySettingsButtonText": "「Twitterを少し便利に。」の設定",
 			"invaildData": "無効なデータです",
 			"copied": "クリップボードにコピーしました",
+			"close": "閉じる",
 			"postApiAction": {
 				"favorite": "いいねしました",
 				"unfavorite": "いいねを取り消しました",
@@ -327,6 +328,7 @@
 			"displaySettingsButtonText": "Settings for 'Make Twitter Little Useful'",
 			"invaildData": "Invalid data",
 			"copied": "Copied to clipboard",
+			"close": "close",
 			"postApiAction": {
 				"favorite": "Liked",
 				"unfavorite": "Unliked",
@@ -2660,10 +2662,11 @@
 		alertBox.style.zIndex = '10000';
 
 		const alertMessage = document.createElement('p');
+		alertMessage.style.color = 'black';
 		alertMessage.innerHTML = message;
 
 		const closeButton = document.createElement('button');
-		closeButton.textContent = envText.close;
+		closeButton.textContent = envText.makeTwitterLittleUseful.close;
 		closeButton.addEventListener('click', () => {
 			document.body.removeChild(overlay);
 		});
