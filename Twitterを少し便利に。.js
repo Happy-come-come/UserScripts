@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.1.5
+// @version			2.1.1.6
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -311,10 +311,12 @@
 				"showFetchedTweetsUserData": "セッションで取得したユーザデータ(fetchedTweetsUserData)のユーザデータ一覧を表示",
 				"showFetchedTweetsUserDataByUserName": "セッションで取得したユーザデータ(fetchedTweetsUserDataByUserName)のユーザデータをスクリーンネームから表示",
 				"show": "表示",
+				"import": "インポート",
 				"invaildTweetId": "無効なツイートIDです",
 				"invalidScreenName": "無効なスクリーンネームです",
 				"invalidUserId": "無効なユーザIDです",
 				"coutionOpenDataStore": "「makeTwitterLittleUseful.pixivLinkCollection.dataBase」の中身をブラウザで見ようとすると多分ブラウザがフリーズします",
+				"importPixivLinkCorrection": "pixivとtwitter idの紐付けをインポート",
 			},
 		}
 	};
@@ -505,10 +507,12 @@
 				"showFetchedTweetsUserData": "Show List of Fetched User Data (fetchedTweetsUserData)",
 				"showFetchedTweetsUserDataByUserName": "Show User Data by Screen Name (fetchedTweetsUserDataByUserName)",
 				"show": "Show",
+				"import": "Import",
 				"invaildTweetId": "Invalid Tweet ID",
 				"invalidScreenName": "Invalid Screen Name",
 				"invalidUserId": "Invalid User ID",
 				"coutionOpenDataStore": "Opening 'makeTwitterLittleUseful.pixivLinkCollection.dataBase' in the browser may freeze the browser",
+				"importPixivLinkCorrection": "Import pixiv and twitter id ties",
 			},
 		}
 	};
@@ -2111,6 +2115,49 @@
 			}
 		}else{
 			return originalValue;
+		}
+	}
+
+	function readFile(event, readAs = 'text'){
+		const file = event.target.files[0];
+		if(file){
+			return new Promise((resolve, reject) => {
+				const reader = new FileReader();
+				reader.onload = async function(e){
+					try{
+						if(e.target.result === null){
+							console.error({error: 'Failed to read file.', target: e.target});
+							return reject('Failed to read file.');
+						}
+						return resolve(e.target.result);
+					}catch(error){
+						console.error({error: error, target: e.target});
+						return reject(error);
+					}
+				};
+				reader.onerror = function(e) {
+					console.error({error: 'Error reading file.', target: e.target});
+					return reject(e.target.error);
+				};
+				switch(readAs){
+					case 'text':
+						reader.readAsText(file);
+						break;
+					case 'arrayBuffer':
+						reader.readAsArrayBuffer(file);
+						break;
+					case 'binaryString':
+						reader.readAsBinaryString(file);
+						break;
+					case 'dataURL':
+						reader.readAsDataURL(file);
+						break;
+					default:
+						return reject('Invalid readAs type.');
+				}
+			});
+		}else{
+			return 'No file selected.';
 		}
 	}
 
@@ -4074,6 +4121,8 @@
 				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{console.log(fetchedTweetsUserData)}},
 				{type: 'text', text: settingText.showFetchedTweetsUserDataByUserName, size: "1em", weight: "400", position: "left", isHTML: false},
 				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{console.log(fetchedTweetsUserDataByUserName)}},
+				{type: 'text', text: settingText.importPixivLinkCorrection, size: "1em", weight: "400", position: "left", isHTML: false},
+				{type: 'file', text: settingText.import, width: "fit-content", event: impoertPixivLinkCorrection},
 			];
 
 			page.appendChild(createSettingsElement({type: 'text', text: settingText.allDataDisplayOnConsole, size: "2em", weight: "400", position: "left", isHTML: false},).container);
@@ -4123,6 +4172,26 @@
 				showTweetDataContainer.appendChild(showTweetDataTextBox);
 				showTweetDataContainer.appendChild(showTweetDataButton);
 				page.appendChild(showTweetDataContainer);
+			}
+			async function impoertPixivLinkCorrection(event){
+				const file = await readFile(event, 'text');
+				const data = JSON.parse(file);
+				if(data){
+					if(data["データチェック"] === "乱反射する眼差し"){
+						const now = new Date();
+						const YY = now.getFullYear().toString().slice(-4);
+						const MM = String(now.getMonth() + 1).padStart(2, '0');
+						const DD = String(now.getDate()).padStart(2, '0');
+						if(!scriptDataStore.makeTwitterLittleUseful)scriptDataStore.makeTwitterLittleUseful = {};
+						if(!scriptDataStore.makeTwitterLittleUseful.pixivLinkCollection)scriptDataStore.makeTwitterLittleUseful.pixivLinkCollection = {};
+						scriptDataStore.makeTwitterLittleUseful.pixivLinkCollection.dataBase = data;
+						scriptDataStore.makeTwitterLittleUseful.pixivLinkCollection.dataBaseVersion = `${YY}${MM}${DD}`;
+						await saveScriptDataStore();
+						customAlert("imported");
+					}else{
+						customAlert("invalid data");
+					}
+				}
 			}
 		}
 		function createSettingsPageTemplate(name){
