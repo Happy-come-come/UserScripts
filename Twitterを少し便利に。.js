@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.1.8
+// @version			2.1.1.9
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -756,8 +756,8 @@
 				const quoted_data = tweetApiData.quoted_status_result?.result || tweetApiData.quoted_status;
 				if(quoted_data){
 					tweetApiData = quoted_data;
-					sendData.push([{content: embedTextData.quotedTweet}]);
-					sendData.push(await makeEmbeds());
+					sendData.push({content: embedTextData.quotedTweet});
+					sendData.push(...(await makeEmbeds()));
 				}
 			}
 			return sendData;
