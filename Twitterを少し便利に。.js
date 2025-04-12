@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.1.10
+// @version			2.1.2.0
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -44,6 +44,7 @@
 // @grant			GM_xmlhttpRequest
 // @grant			GM_registerMenuCommand
 // @grant			GM_info
+// @grant			GM_addElement
 // @license			MIT
 // @run-at			document-idle
 // ==/UserScript==
@@ -520,7 +521,7 @@
 
 	let envText = {};
 	_i18n();
-
+	let twitterApi;
 	const functions = {
 		"webhookBringsTweetsToDiscord": {
 			"function": webhookBringsTweetsToDiscord,
@@ -749,7 +750,7 @@
 			const timeZoneObject = Intl.DateTimeFormat().resolvedOptions();
 			const tweetId = tweetLink.match(/https?:\/\/[\w]{1,}\.com\/\w+\/status\/(\d+)/)[1];
 			const embedTextData = Text[thisScriptSettings.sendLangage || scriptSettings?.makeTwitterLittleUseful?.language || getCookie('lang')].webhookBringsTweetsToDiscord.embedTextData;
-			let tweetApiData = await getTweetData(tweetId,"graphQL");
+			let tweetApiData = await twitterApi.getTweet(tweetId);
 			const sendData = await makeEmbeds();
 			if(sendQuoteTweet){
 				const quoted_data = tweetApiData.quoted_status_result?.result || tweetApiData.quoted_status;
@@ -1056,12 +1057,12 @@
 					tweetTextElement.style.webkitLineClamp = null;
 					return;
 				}
-				let tweetData = await getTweetData(target.id,"graphQL");
+				let tweetData = await twitterApi.getTweet(target.id);
 				let isNoteTweet;
 				if(index == 0){
 					isNoteTweet = !!tweetData.note_tweet?.note_tweet_results?.result;
 				}else{
-					tweetData = await getTweetData(tweetData.legacy.quoted_status_id_str,"graphQL");
+					tweetData = await twitterApi.getTweet(tweetData.legacy.quoted_status_id_str);
 					isNoteTweet = !!tweetData.note_tweet?.note_tweet_results?.result;
 				}
 				if(!isNoteTweet){
@@ -1103,7 +1104,7 @@
 			try{
 			const tweetLink = currentUrl.match(/https?\:\/\/[\w]{1,}\.com\/\w*\/status\/[0-9].*/)[0];
 			const tweetId = tweetLink.match(/\/status\/(\d+)/)[1];
-			const response = (await getTweetData(tweetId, "graphQL")).legacy;
+			const response = (await twitterApi.getTweet(tweetId)).legacy;
 			const engagemants = {"favorite_count": response.favorite_count, "quote_count": response.quote_count, "retweet_count": response.retweet_count};
 			const targetNode = Array.from((await waitElementAndGet({query: 'article[data-testid="tweet"]', searchFunction: "querySelectorAll"}))).find(node => {
 				const timeParents = Array.from(node.querySelectorAll('time')).map(time => time.parentNode);
@@ -1291,7 +1292,7 @@
 	async function helloTweetWhereAreYouFrom(){
 		if(document.querySelector('.display_twitter_client') || !currentUrl.match(/[\w]{1,}\.com\/[\w]*\/status\/[0-9]*/))return;
 		const targetNode = await waitElementAndGet({query: envSelector.infoField, interval: 300, retry: 4});
-		const tweetData = await getTweetData(extractTweetId(currentUrl), "graphQL");
+		const tweetData = await twitterApi.getTweet(extractTweetId(currentUrl));
 		const thisScriptSettings = scriptSettings.helloTweetWhereAreYouFrom;
 		if(!targetNode)return;
 		const colors = new Colors();
@@ -1348,7 +1349,7 @@
 			button.classList.add('sneakilyFavorite');
 			button.addEventListener('click',async function(event){
 				this.disabled = true;
-				const status = await postApiAction("favorite", extractTweetId(tweetLink));
+				const status = await twitterApi.favoriteTweet(extractTweetId(tweetLink));
 				if(status.data.favorite_tweet == "Done"){
 					likeElement.querySelector('div[dir="ltr"]').classList.add(envSelector.likedColor);
 					likeElement.querySelector('div[dir="ltr"]').style.color = colors.get("favorited");
@@ -1398,13 +1399,13 @@
 				numberSpan.className = 'indexNum';
 				svgElement.parentNode.appendChild(numberSpan);
 			});
-			if(!fetchedTweets[mediaNodes[0].querySelector('a').href.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/)[1]])await fetchAndProcessTwitterApi('userMedia',screenName);
+			if(!fetchedTweets[mediaNodes[0].querySelector('a').href.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/)[1]])await twitterApi.getUserMedia(screenName);
 			mediaNodes.forEach(async n=>{
 				n.classList.add('Show_all_Medias_checked');
 				const parent = n.parentNode;
 				const mediaLinkNode = n.querySelector('a');
 				const tweetID = mediaLinkNode.href.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/)[1];
-				const tweetData = await getTweetData(tweetID,"graphQL");
+				const tweetData = await twitterApi.getTweet(tweetID);
 				const mediaData = tweetData.legacy.entities.media;
 				if(mediaData.length == 1)return;
 				let beforeNode = n;
@@ -1458,15 +1459,15 @@
 				}
 			});
 			if(mediaNodes.length === 0)return;
-			if(!fetchedTweets[mediaNodes[0].querySelector('a').href.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/)[1]])await fetchAndProcessTwitterApi('userMedia', currentUrl.split('/')[3]);
+			if(!fetchedTweets[mediaNodes[0].querySelector('a').href.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/)[1]])await twitterApi.getUserMedia(extractUserName(currentUrl));
 			const processNode = async (n)=>{
 				const mediaLinkNode = n.querySelector('a');
 				const tweetID = extractTweetId(mediaLinkNode.href);
 				const screenName = extractUserName(mediaLinkNode.href);
 				n.style.width = "100%";
-				let tweetData = await getTweetData(tweetID, "graphQL");
+				let tweetData = await twitterApi.getTweet(tweetID);
 				if(n.querySelector('path[d="M2 8.5C2 7.12 3.12 6 4.5 6h11C16.88 6 18 7.12 18 8.5v11c0 1.38-1.12 2.5-2.5 2.5h-11C3.12 22 2 20.88 2 19.5v-11zM19.5 4c.28 0 .5.22.5.5v13.45c1.14-.23 2-1.24 2-2.45v-11C22 3.12 20.88 2 19.5 2h-11c-1.21 0-2.22.86-2.45 2H19.5z"]')){
-					if(!(tweetData.extended_entities?.media?.length >= 2))tweetData = await getTweetData(tweetID, "graphQL");
+					if(!(tweetData.extended_entities?.media?.length >= 2))tweetData = await twitterApi.getTweet(tweetID);
 				}
 				const article = createTweetNode(tweetData);
 				try{
@@ -2450,7 +2451,7 @@
 			if((customData ? customData[screenName] : null) && !force)return "Already exists";
 			//if((((scriptDataStore.Show_me_your_Pixiv[screen_name]?.Create_date || 0) + 604800000) <= new Date().getTime()) || force){
 			if(force){
-				const userData = await getTweetData(screenName,"user");
+				const userData = await twitterApi.getUser(screenName);
 				const bioUrls = [];
 				if(userData.bio){
 					Object.keys(userData.bio.entityMap).forEach(k=>{
@@ -2733,378 +2734,6 @@
 		}finally{
 			const node = document.querySelector('[cta-id="custom-alert"]');
 			if(node)node.remove();
-		}
-	}
-
-	async function postApiAction(action, tweetId){
-		const headers = {
-			'Content-Type': 'application/json',
-			'User-agent': userAgent,
-			'accept': '*/*',
-			'Referer': currentUrl,
-			'Accept-Encoding': 'br, gzip, deflate',
-			'Origin': `https://${window.location.hostname}`,
-			'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
-			'x-csrf-token': getCookie("ct0"),
-			'Sec-Fetch-Site': 'same-origin',
-			'Sec-Fetch-Mode': 'navigate',
-		};
-		const querys = {
-			"favorite": {
-				"queryId": "lI07N6Otwv1PhnEgXILM7A",
-				"endpoint": "FavoriteTweet"
-			},
-			"unfavorite": {
-				"queryId": "ZYKSe-w7KEslx3JhSIk5LA",
-				"endpoint": "UnfavoriteTweet"
-			},
-			"retweet": {
-				"queryId": "ojPdsZsimiJrUGLR1sjUtA",
-				"endpoint": "CreateRetweet"
-			},
-			"deleteRetweet": {
-				"queryId": "iQtK4dl5hBmXewYZuEOKVw",
-				"endpoint": "DeleteRetweet"
-			},
-			"bookmark": {
-				"queryId": "aoDbu3RHznuiSkQ9aNM67Q",
-				"endpoint": "CreateBookmark"
-			},
-			"deleteBookmark": {
-				"queryId": "Wlmlj2-xzyS1GN3a6cj-mQ",
-				"endpoint": "DeleteBookmark"
-			},
-		};
-		const actionQuery = querys[action];
-		const body = `{"variables": {"tweet_id": "${tweetId}"}, "queryId": "${actionQuery.queryId}"}`;
-		if(!actionQuery)throw("Invalid action");
-		const response = await request({url: `https://${window.location.hostname}/i/api/graphql/${actionQuery.queryId}/${actionQuery.endpoint}`, method: "POST", body: body, headers: headers, onlyResponse: false,dontUseGenericHeaders: true, maxRetries: 1});
-		const isSuccess = (response.status === 200);
-		if(isSuccess){
-			displayToast(envText.makeTwitterLittleUseful.postApiAction[action]);
-		}
-		return isSuccess;
-	}
-
-	function fetchAndProcessTwitterApi(method,id = undefined,forceFetch = false){
-		let response;
-		return new Promise(async (resolve, reject) => {
-			try{
-				switch(method){
-					case 'TL':
-					case 'forYou':
-						await getTL();
-						break;
-					case 'userMedia':
-						await getUserMedia();
-						break;
-					/*
-					case 'mediaSearch':
-						await getMediaSerch();
-						break;
-					*/
-					case 'graphQL':
-						if((fetchedTweets[id]?.API_type === "graphQL") && !(forceFetch === true))return resolve(fetchedTweets[id]);
-						await graphQL();
-						break;
-					case 'user':
-						await getUser();
-						break;
-					case 'user_1_1':
-						//await getUser1_1();
-						//break;
-					case '1_1':
-						//await get1_1();
-						console.log('twitter API v1.1でツイートのデータを収集することはできなくなりました。');
-						break;
-					default:
-						console.warn("なにか間違ってないか？")
-						return reject("something wrong.");
-				}
-				return resolve("OK!");
-			}catch(error){
-				console.error(error);
-				console.error(response);
-				throw new Error(`Failed to fetch API data.\nmethod: ${method}\nid: ${id}`);
-			}
-		});
-		/*
-		async function getMediaSerch(){
-			let url = 'https://x.com/i/api/graphql/Aj1nGkALq99Xg3XI0OZBtw/SearchTimeline'
-			let variables = {
-				"rawQuery": encodeURIComponent(id),
-				"count": 50,
-				"querySource": "recent_search_click",
-				"product": "Media"
-			}
-			if(scriptDataStore.Show_all_Medias[(await encodeBase64(id))]?.cursor){
-				variables.cursor = scriptDataStore.Show_all_Medias[(await encodeBase64(id))]?.cursor;
-			}
-			response = await request(new requestObject_twitter_get_search_media(url,variables));
-			if(!response.status === "200")throw new Error(`Failed to fetch`);
-			const instructions = response.response.data.search_by_raw_query.search_timeline.timeline.instructions;
-			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
-			if(!scriptDataStore.Show_all_Medias[(await encodeBase64(id))])scriptDataStore.Show_all_Medias[(await encodeBase64(id))] = {};
-			scriptDataStore.Show_all_Medias[(await encodeBase64(id))].cursor = TimelineAddEntries.entries.find(element => element.entryId.match(/^cursor-bottom/)).content.value;
-			const tweetData = instructions[0]?.moduleItems || TimelineAddEntries.entries;
-			processgraphQL(tweetData);
-			return "OK";
-		}
-		*/
-		async function getUserMedia(){
-			const userData = await getTweetData(id, "user");
-			const variables = {
-				"userId": userData.rest_id || userData.id_str,
-				"count": 200,
-				"includePromotedContent": false,
-				"withClientEventToken": false,
-				"withBirdwatchNotes": false,
-				"withVoice": true,
-				"withV2Timeline": true
-			};
-			const features = {
-				"profile_label_improvements_pcf_label_in_post_enabled": false,
-				"rweb_tipjar_consumption_enabled": true,
-				"responsive_web_graphql_exclude_directive_enabled": true,
-				"verified_phone_label_enabled": false,
-				"creator_subscriptions_tweet_preview_api_enabled": true,
-				"responsive_web_graphql_timeline_navigation_enabled": true,
-				"responsive_web_graphql_skip_user_profile_image_extensions_enabled": false,
-				"premium_content_api_read_enabled": false,
-				"communities_web_enable_tweet_community_results_fetch": true,
-				"c9s_tweet_anatomy_moderator_badge_enabled": true,
-				"responsive_web_grok_analyze_button_fetch_trends_enabled": false,
-				"responsive_web_grok_analyze_post_followups_enabled": true,
-				"responsive_web_grok_share_attachment_enabled": true,
-				"articles_preview_enabled": true,
-				"responsive_web_edit_tweet_api_enabled": true,
-				"graphql_is_translatable_rweb_tweet_is_translatable_enabled": true,
-				"view_counts_everywhere_api_enabled": true,
-				"longform_notetweets_consumption_enabled": true,
-				"responsive_web_twitter_article_tweet_consumption_enabled": true,
-				"tweet_awards_web_tipping_enabled": false,
-				"creator_subscriptions_quote_tweet_preview_enabled": false,
-				"freedom_of_speech_not_reach_fetch_enabled": true,
-				"standardized_nudges_misinfo": true,
-				"tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": true,
-				"rweb_video_timestamps_enabled": true,
-				"longform_notetweets_rich_text_read_enabled": true,
-				"longform_notetweets_inline_media_enabled": true,
-				"responsive_web_enhance_cards_enabled": false
-			};
-			const fieldToggles = {"withArticlePlainText":false};
-			const headers = {
-				"authorization": `Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA`,
-				"x-csrf-token": getCookie("ct0"),
-			};
-			if(!sessionData.showAllMedias)sessionData.showAllMedias = {};
-			if(sessionData.showAllMedias[id]?.cursor){
-				variables.cursor = scriptDataStore.showAllMedias[id]?.cursor;
-			}
-			response = await request({
-				url: `https://x.com/i/api/graphql/mKl_8lL-ZQO2z-tHVnsetQ/UserMedia?variables=${objectToUri(variables)}&features=${objectToUri(features)}&fieldToggles=${objectToUri(fieldToggles)}`,
-				headers: headers,
-				onlyResponse: false,
-				maxRetries: 1
-			});
-			if(!response.status === "200")throw new Error(`Failed to fetch`);
-			const instructions = response.response.data.user.result.timeline_v2.timeline.instructions;
-			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
-			if(!sessionData.showAllMedias[id])sessionData.showAllMedias[id] = {};
-			sessionData.showAllMedias[id].cursor = TimelineAddEntries.entries.find(element => element.entryId.match(/^cursor-bottom/)).content.value;
-			const tweetData = instructions[0]?.moduleItems || TimelineAddEntries.entries[0]?.content?.items;
-			processgraphQL(tweetData);
-			return "OK";
-		}
-		async function getTL(){
-			let requestObject;
-			if(method == 'TL'){
-				requestObject = new requestObject_twitter_time_line();
-			}else{
-				requestObject = new requestObject_twitter_time_line_forYou();
-			}
-			response = await request(requestObject);
-			if(!response.status === "200")throw new Error(`Failed to fetch`);
-			processgraphQL(response.response.data.home.home_timeline_urt.instructions[0].entries);
-		}
-		async function graphQL(){
-			const variables = {
-				"focalTweetId": id,
-				"referrer": "home",
-				"with_rux_injections": false,
-				"rankingMode": "Relevance",
-				"includePromotedContent": true,
-				"withCommunity": true,
-				"withQuickPromoteEligibilityTweetFields": true,
-				"withBirdwatchNotes": true,
-				"withVoice": true
-			};
-			const features = {
-				"profile_label_improvements_pcf_label_in_post_enabled": false,
-				"rweb_tipjar_consumption_enabled": true,
-				"responsive_web_graphql_exclude_directive_enabled": true,
-				"verified_phone_label_enabled": false,
-				"creator_subscriptions_tweet_preview_api_enabled": true,
-				"responsive_web_graphql_timeline_navigation_enabled": true,
-				"responsive_web_graphql_skip_user_profile_image_extensions_enabled": false,
-				"premium_content_api_read_enabled": false,
-				"communities_web_enable_tweet_community_results_fetch": true,
-				"c9s_tweet_anatomy_moderator_badge_enabled": true,
-				"responsive_web_grok_analyze_button_fetch_trends_enabled": false,
-				"responsive_web_grok_analyze_post_followups_enabled": true,
-				"responsive_web_grok_share_attachment_enabled": true,
-				"articles_preview_enabled": true,
-				"responsive_web_edit_tweet_api_enabled": true,
-				"graphql_is_translatable_rweb_tweet_is_translatable_enabled": true,
-				"view_counts_everywhere_api_enabled": true,
-				"longform_notetweets_consumption_enabled": true,
-				"responsive_web_twitter_article_tweet_consumption_enabled": true,
-				"tweet_awards_web_tipping_enabled": false,
-				"creator_subscriptions_quote_tweet_preview_enabled": false,
-				"freedom_of_speech_not_reach_fetch_enabled": true,
-				"standardized_nudges_misinfo": true,
-				"tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": true,
-				"rweb_video_timestamps_enabled": true,
-				"longform_notetweets_rich_text_read_enabled": true,
-				"longform_notetweets_inline_media_enabled": true,
-				"responsive_web_enhance_cards_enabled": false
-			};
-			const fieldToggles = {
-				"withArticleRichContentState": true,
-				"withArticlePlainText": false,
-				"withGrokAnalyze": false,
-				"withDisallowedReplyControls": false
-			};
-			const headers = {
-				"authorization": `Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA`,
-				"x-csrf-token": getCookie("ct0"),
-			};
-			response = await request({
-				url: `https://${window.location.hostname}/i/api/graphql/L3fZ4xtO2dIO1fseWq7vGQ/TweetDetail?variables=${objectToUri(variables)}&features=${objectToUri(features)}&fieldToggles=${objectToUri(fieldToggles)}`,
-				headers: headers,
-				onlyResponse: false,
-				maxRetries: 1
-			});
-			if(!response.status === "200")throw new Error(`Failed to fetch`);
-			processgraphQL(response.response.data.threaded_conversation_with_injections_v2.instructions[0].entries);
-		}
-		async function getUser(){
-			if(fetchedTweetsUserDataByUserName[id]?.API_type === "graphQL" && !forceFetch)return;
-			const variables = {"screen_name": id};
-			const features = {
-				"hidden_profile_subscriptions_enabled": true,
-				"profile_label_improvements_pcf_label_in_post_enabled": false,
-				"rweb_tipjar_consumption_enabled": true,
-				"responsive_web_graphql_exclude_directive_enabled": true,
-				"verified_phone_label_enabled": false,
-				"subscriptions_verification_info_is_identity_verified_enabled": true,
-				"subscriptions_verification_info_verified_since_enabled": true,
-				"highlights_tweets_tab_ui_enabled": true,
-				"responsive_web_twitter_article_notes_tab_enabled": true,
-				"subscriptions_feature_can_gift_premium": true,
-				"creator_subscriptions_tweet_preview_api_enabled": true,
-				"responsive_web_graphql_skip_user_profile_image_extensions_enabled": false,
-				"responsive_web_graphql_timeline_navigation_enabled": true
-			};
-			const fieldToggles = {"withAuxiliaryUserLabels": false};
-			const headers = {
-				"authorization": `Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA`,
-				"x-csrf-token": getCookie("ct0"),
-			};
-			response = await request({
-				url: `https://${window.location.hostname}/i/api/graphql/QGIw94L0abhuohrr76cSbw/UserByScreenName?variables=${objectToUri(variables)}&features=${objectToUri(features)}&fieldToggles=${objectToUri(fieldToggles)}`,
-				headers: headers,
-				onlyResponse: false,
-				maxRetries: 1
-			});
-			if(!response.status === "200")throw new Error(`Failed to fetch`);
-			const userData = response.response.data.user.result;
-			fetchedTweetsUserData[userData.rest_id] = {...userData, "API_type": "graphQL"};
-			fetchedTweetsUserDataByUserName[userData.legacy.screen_name] = fetchedTweetsUserData[userData.rest_id];
-			await getBio();
-			return "OK";
-			async function getBio(){
-				const variables = {"screenName": id};
-				response = await request({
-					url: `https://x.com/i/api/graphql/Z2BA99jFw6TxaJM5v7Irmg/useFetchProfileBlocks_profileExistsQuery?variables=${objectToUri(variables)}`,
-					headers: headers,
-					onlyResponse: false,
-					maxRetries: 1
-				});
-				if(!response.status === "200")throw new Error(`Failed to fetch`);
-				if(!response.response.data.user_result_by_screen_name.result.has_profile_blocks)return;
-				response = await request({
-					url: `https://x.com/i/api/graphql/2ocjpx85ORO5fM06u75eCA/useFetchProfileSections_profileQuery?variables=${objectToUri(variables)}`,
-					headers: headers,
-					onlyResponse: false,
-					maxRetries: 1
-				});
-				if(!response.status === "200")throw new Error(`Failed to fetch`);
-				const content = response.response.data.user_result_by_screen_name.result.expanded_profile_results.result.profile_sections.items_results[0].result.profile_blocks.items_results[0].result.content.value;
-				fetchedTweetsUserDataByUserName[userData.legacy.screen_name].bio = JSON.parse(content);
-			}
-		}
-		function processgraphQL(entries){
-			if(!entries)return null;
-			entries.forEach(entry=>{
-				const tmpData = entry.content?.itemContent?.tweet_results || entry.item?.itemContent?.tweet_results;
-				const tweetData = tmpData?.result?.tweet || tmpData?.result;
-				if(tweetData?.tombstone || !tweetData)return;
-				try{
-					if(tweetData.quoted_status_result){
-						if(Object.keys(tweetData.quoted_status_result).length !== 0){
-							const quoted = tweetData.quoted_status_result.result?.tweet || tweetData.quoted_status_result.tweet || tweetData.quoted_status_result?.result;
-							fetchedTweetsUserData[quoted.core.user_results.result.rest_id] = {...quoted.core.user_results.result,"API_type": "graphQL"};
-							fetchedTweetsUserDataByUserName[quoted.core.user_results.result.legacy.screen_name] = fetchedTweetsUserData[quoted.core.user_results.result.rest_id];
-							quoted.core.user_results.result = fetchedTweetsUserData[quoted.core.user_results.result.rest_id];
-							fetchedTweets[quoted.rest_id] = {...quoted,"API_type": "graphQL"};
-							tweetData.quoted_status_result.result = fetchedTweets[quoted.rest_id];
-						}
-					}
-					fetchedTweetsUserData[tweetData.core.user_results.result.rest_id] = {...tweetData.core.user_results.result,"API_type": "graphQL"};
-					fetchedTweetsUserDataByUserName[tweetData.core.user_results.result.legacy.screen_name] = fetchedTweetsUserData[tweetData.core.user_results.result.rest_id];
-					tweetData.core.user_results.result = fetchedTweetsUserData[tweetData.core.user_results.result.rest_id];
-					fetchedTweets[tweetData.rest_id] = {...tweetData,"API_type": "graphQL"};
-				}catch(error){
-					console.error
-					console.error({error: `processgraphQL error.\ndetails: ${error}`,apiResponse:tweetData});
-				}
-			});
-			return "OK";
-		}
-	}
-	async function getTweetData(id, method = 'graphQL', forceFetch = false){
-		const dataStore = method === 'user' || method === 'user_1_1' ? fetchedTweetsUserDataByUserName : fetchedTweets;
-		let ids;
-		if(typeof id === 'string'){
-			if(dataStore[id] && !forceFetch){
-				if((method === "user" || method === "graphQL") && dataStore[id].API_type !== '1_1'){
-					return dataStore[id];
-				}
-			}
-			ids = [id];
-		}else if(Array.isArray(id)){
-			if(!forceFetch && id.every(singleId => dataStore[singleId] && !(dataStore[singleId].API_type === '1_1' && method !== 'graphQL')))return id.map(singleId => (dataStore[singleId]));
-			ids = id;
-		}else{
-			throw new Error("Invalid ID type.");
-		}
-		if(method == "1_1") ids = [ids];
-		const promises = ids.map(singleId => fetchAndProcessTwitterApi(method, singleId, forceFetch));
-		await Promise.all(promises);
-
-		if(typeof id === 'string'){
-			if(dataStore[id]){
-				return dataStore[id];
-			}else{
-				throw new Error("Failed to fetch tweet data for ID: " + id);
-			}
-		}else if(Array.isArray(id)){
-			if(id.every(singleId => dataStore[singleId])){
-				return id.map(singleId => dataStore[singleId]);
-			}else{
-				throw new Error("Failed to fetch tweet data for some IDs.");
-			}
 		}
 	}
 
@@ -4134,7 +3763,7 @@
 					console.error(settingText.invalidTweetId);
 					return;
 				}
-				const tweetData = await getTweetData(tweetID ,"graphQL");
+				const tweetData = await twitterApi.getTweet(tweetID);
 				console.log(tweetData);
 			});
 
@@ -4144,7 +3773,7 @@
 					console.error(settingText.invalidScreenName);
 					return;
 				}
-				const userData = await getTweetData(screenName ,"user");
+				const userData = await twitterApi.getUserByScreenName(screenName);
 				console.log(userData);
 			});
 
@@ -6238,19 +5867,19 @@
 						let result;
 						switch(action){
 							case "retweet":
-									result = await postApiAction("deleteRetweet", this.data.tweetId);
+									result = await twitterApi.deleteRetweet(this.data.tweetId);
 									if(!result)return;
 									svg.style.color = this.#colors.get('fontColorDark');
 									path.setAttribute('d', this.#svgPaths.retweet);
 								break;
 							case "favorite":
-									result = await postApiAction("unfavorite", this.data.tweetId);
+									result = await twitterApi.unfavoriteTweet(this.data.tweetId);
 									if(!result)return;
 									svg.style.color = this.#colors.get('fontColorDark');
 									path.setAttribute('d', this.#svgPaths.favorite);
 								break;
 							case "bookmark":
-									result = await postApiAction("deleteBookmark", this.data.tweetId);
+									result = await twitterApi.deleteBookmark(this.data.tweetId);
 									if(!result)return;
 									svg.style.color = this.#colors.get('fontColorDark');
 									path.setAttribute('d', this.#svgPaths.bookmark);
@@ -6269,19 +5898,19 @@
 						let result;
 						switch(action){
 							case "retweet":
-								result = await postApiAction("retweet", this.data.tweetId);
+								result = await twitterApi.retweet(this.data.tweetId);
 								if(!result)return;
 								svg.style.color = this.#colors.get('retweeted');
 								path.setAttribute('d', this.#svgPaths.retweeted);
 								break;
 							case "favorite":
-								result = await postApiAction("favorite", this.data.tweetId);
+								result = await twitterApi.favoriteTweet(this.data.tweetId);
 								if(!result)return;
 								svg.style.color = this.#colors.get('favorited');
 								path.setAttribute('d', this.#svgPaths.favorited);
 								break;
 							case "bookmark":
-								result = await postApiAction("bookmark", this.data.tweetId);
+								result = await twitterApi.bookmark(this.data.tweetId);
 								if(!result)return;
 								svg.style.color = this.#colors.get('twitterBlue');
 								path.setAttribute('d', this.#svgPaths.bookmarked);
@@ -7064,6 +6693,1459 @@
 		}
 	}
 
+	class TwitterApi{
+		/*
+		不具合は https://greasyfork.org/ja/scripts/478248/feedback または https://github.com/Happy-come-come/UserScripts/issues まで
+	
+		GM_addElementが有効だとiflame内のscriptがcspに引っかからないのでできればGM_addElementを使うことを推奨
+	
+			Twitter Web API(GraphQL)
+			オブジェクト
+				- tweetsData: ツイートのデータ
+					{id_str: { ... }}
+				- tweetsUserData: ツイートのユーザーデータ(id_strがkeyになっている)
+					{userId: { ... }}
+				- tweetsUserDataByUserName: ツイートのユーザーデータ(screenNameがkeyになっている)
+					{screenName: { ... }}
+				- lists: ユーザーのリスト(screenNameがkeyになっている)
+				- timelines: タイムラインのデータ
+			メソッド
+			asyncなので、await必須
+				- getTweet(tweetId, refresh = false)
+					refresh: true の場合はキャッシュを無視して再取得
+				- getUser(screenName, refresh = false)
+					refresh: true の場合はキャッシュを無視して再取得
+				- getHomeTimeline(place = 'bottom')
+					place: bottom,top,refresh
+					フォロー欄
+				- getForYouTimeline(place = 'bottom')
+					place: bottom,top,refresh
+					おすすめ欄
+				- getUserTweets(screenName, place = 'bottom')
+					place: bottom,top,refresh
+					ユーザーのツイートを取得する
+				- getUserTweetsAndReplies(screenName, place = 'bottom')
+					place: bottom,top,refresh
+					ユーザーのツイートとリプライを取得する
+				- getUserHighlights(screenName, place = 'bottom')
+					place: bottom,top,refresh
+					ユーザーのハイライトを取得する
+				- getUserMedia(screenName, place = 'bottom')
+					place: bottom,top,refresh
+					ユーザーのメディア欄を取得する
+				- getUserLikes(screenName, place = 'bottom')
+					place: bottom,top,refresh
+					ユーザーのいいねを取得する
+					今は自分のいいね欄しか取得できないが、将来的に他のユーザーのいいね欄も取得できるようになったときのためユーザの指定ができるようにしている
+				- getOwnLists(place = 'bottom')
+					place: bottom,top,refresh
+					自分のリストを取得する
+					getUserListでは非公開のリストが取得できないため、自身のリストを取得する場合はこのメソッドを使用する
+				- getUserLists(screenName)
+					ユーザーのリストを取得する
+				- getListTimeline(listId, place = 'bottom')
+					place: bottom,top,refresh
+					リストのタイムラインを取得する
+				- favoriteTweet(tweetId)
+					引数の tweetId のツイートをいいねする
+				- unfavoriteTweet(tweetId)
+					引数の tweetId のツイートのいいねを解除する
+				- retweet(tweetId)
+					引数の tweetId のツイートをリツイートする
+				- deleteRetweet(tweetId)
+					引数の tweetId のツイートのリツイートを解除する
+				- bookmark(tweetId)
+					引数の tweetId のツイートをブックマークする
+				- deleteBookmark(tweetId)
+					引数の tweetId のツイートのブックマークを解除する
+		*/
+		#challengeData;
+		#solverIframe;
+		#xctid;
+		#graphqlApiUri;
+		#graphqlApiEndpoints;
+		#endpointsAliases;
+		#requestHeadersTemplate;
+		#graphqlFeatures;
+		#pendingTweetRequests = {};
+		#pendingUserRequests = {};
+		#pendingTLRequests = {};
+		#apiRateLimit = {};
+		#classSettings = {};
+		tweetsData = {};
+		tweetsUserData = {};
+		tweetsUserDataByUserName = {};
+		lists = {};
+		timelines = {
+			following: {
+				contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {},
+				newContents: {contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}}, 
+				cursor: {top: {entryId: null, sortIndex: null, value: null}, bottom: {entryId: null, sortIndex: null, value: null}}
+			},
+			forYou: {
+				contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {},
+				newContents: {contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}},
+				cursor: {top: {entryId: null, sortIndex: null, value: null}, bottom: {entryId: null, sortIndex: null, value: null}}
+			},
+			bookmarks: {
+				contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {},
+				newContents: {contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}},
+				cursor: {top: {entryId: null, sortIndex: null, value: null}, bottom: {entryId: null, sortIndex: null, value: null}}
+			},
+			userMedia: {},
+			userTweets: {},
+			userTweetsAndReplies: {},
+			userHighlights: {},
+			userLikes: {},
+			ownLists: {
+				contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}, pinningLists: {},
+				newContents: {contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}},
+				cursor: {top: {entryId: null, sortIndex: null, value: null}, bottom: {entryId: null, sortIndex: null, value: null}}
+			},
+			userLists: {},
+			lists: {},
+		};
+	
+		constructor(){
+			this.#graphqlApiUri = `https://${window.location.hostname}/i/api/graphql`;
+			this.#graphqlApiEndpoints = {
+				TweetDetail: {
+					method: ['GET'],
+					uri: '/b9Yw90FMr_zUb8DvA8r2ug/TweetDetail',
+				},
+				UserTweets: {
+					method: ['GET'],
+					uri: '/M3Hpkrb8pjWkEuGdLeXMOA/UserTweets',
+				},
+				UserByScreenName: {
+					method: ['GET'],
+					uri: '/32pL5BWe9WKeSK1MoPvFQQ/UserByScreenName',
+				},
+				useFetchProfileBlocks_profileExistsQuery: {
+					method: ['GET'],
+					uri: '/Z2BA99jFw6TxaJM5v7Irmg/useFetchProfileBlocks_profileExistsQuery',
+				},
+				useFetchProfileSections_profileQuery: {
+					method: ['GET'],
+					uri: '/2ocjpx85ORO5fM06u75eCA/useFetchProfileSections_profileQuery',
+				},
+				UserMedia: {
+					method: ['GET'],
+					uri: '/8B9DqlaGvYyOvTCzzZWtNA/UserMedia',
+				},
+				Likes: {
+					method: ['GET'],
+					uri: '/uxjTlmrTI61zreSIV1urbw/Likes',
+				},
+				HomeLatestTimeline: {
+					method: ['GET', 'POST'],
+					uri: '/nMyTQqsJiUGBKLGNSQamAA/HomeLatestTimeline',
+				},
+				HomeTimeline: {
+					method: ['GET', 'POST'],
+					uri: '/ci_OQZ2k0rG0Ax_lXRiWVA/HomeTimeline',
+				},
+				UserTweetsAndReplies: {
+					method: ['GET'],
+					uri: '/pz0IHaV_t7T4HJavqqqcIA/UserTweetsAndReplies',
+				},
+				UserHighlightsTweets: {
+					method: ['GET'],
+					uri: '/y0aDPjeWFCpvY3GOmGXKhQ/UserHighlightsTweets',
+				},
+				BookmarksTimeline: {
+					method: ['GET'],
+					uri: '/ztCdjqsvvdL0dE8R5ME0hQ/Bookmarks',
+				},
+				ListLatestTweetsTimeline: {
+					method: ['GET'],
+					uri: '/LSefrrxhpeX8HITbKfWz9g/ListLatestTweetsTimeline',
+				},
+				ListsManagementPageTimeline: {
+					method: ['GET'],
+					uri: '/v06PoBzewJgqo_MliVawtg/ListsManagementPageTimeline',
+				},
+				CombinedLists: {
+					method: ['GET'],
+					uri: '/rh2fe0BAORm919U9jhyoQw/CombinedLists',
+				},
+				// actions
+				FavoriteTweet: {
+					method: ['POST'],
+					uri: '/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet',
+				},
+				UnfavoriteTweet: {
+					method: ['POST'],
+					uri: '/ZYKSe-w7KEslx3JhSIk5LA/UnfavoriteTweet',
+				},
+				CreateRetweet: {
+					method: ['POST'],
+					uri: '/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
+				},
+				DeleteRetweet: {
+					method: ['POST'],
+					uri: '/iQtK4dl5hBmXewYZuEOKVw/DeleteRetweet',
+				},
+				CreateBookmark: {
+					method: ['POST'],
+					uri: '/aoDbu3RHznuiSkQ9aNM67Q/CreateBookmark',
+				},
+				DeleteBookmark: {
+					method: ['POST'],
+					uri: '/Wlmlj2-xzyS1GN3a6cj-mQ/DeleteBookmark',
+				},
+			};
+			this.#endpointsAliases = {
+				favorite: 'FavoriteTweet',
+				unfavorite: 'UnfavoriteTweet',
+				retweet: 'CreateRetweet',
+				deleteRetweet: 'DeleteRetweet',
+				bookmark: 'CreateBookmark',
+				deleteBookmark: 'DeleteBookmark',
+			};
+			this.#challengeData = {verificationCode: null, challengeCode: null, challengeJsCode: null, challengeAnimationSvgCodes: [], expires: null};
+			this.#solverIframe = null;
+			this.#xctid = Object.keys(this.#graphqlApiEndpoints).reduce((acc, key) => {
+				acc[key] = {id: null, expires: null};
+				return acc;
+			}, {});
+			this.#apiRateLimit = Object.keys(this.#graphqlApiEndpoints).reduce((acc, key) => {
+				acc[key] = {remaining: null, limit: null, reset: null};
+				return acc;
+			}, {});
+			this.#requestHeadersTemplate = {
+				'Content-Type': 'application/json',
+				'User-agent': userAgent || navigator.userAgent || navigator.vendor || window.opera,
+				'accept': '*/*',
+				'Accept-Encoding': 'zstd, br, gzip, deflate',
+				'Origin': `https://${window.location.hostname}`,
+				'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
+				'x-csrf-token': getCookie("ct0"),
+				'x-twitter-auth-type': 'OAuth2Session',
+				'x-twitter-client-language': sessionData?.userData?.language || 'ja',
+				'x-twitter-active-user': 'yes',
+				'Sec-Fetch-Site': 'same-origin',
+				'Sec-Fetch-Mode': 'navigate',
+			};
+			this.#graphqlFeatures = {
+				"rweb_video_screen_enabled": false,
+				"profile_label_improvements_pcf_label_in_post_enabled": true,
+				"rweb_tipjar_consumption_enabled": true,
+				"responsive_web_graphql_exclude_directive_enabled": true,
+				"verified_phone_label_enabled": false,
+				"creator_subscriptions_tweet_preview_api_enabled": true,
+				"responsive_web_graphql_timeline_navigation_enabled": true,
+				"responsive_web_graphql_skip_user_profile_image_extensions_enabled": false,
+				"premium_content_api_read_enabled": false,
+				"communities_web_enable_tweet_community_results_fetch": true,
+				"c9s_tweet_anatomy_moderator_badge_enabled": true,
+				"responsive_web_grok_analyze_button_fetch_trends_enabled": false,
+				"responsive_web_grok_analyze_post_followups_enabled": true,
+				"responsive_web_jetfuel_frame": false,
+				"responsive_web_grok_share_attachment_enabled": true,
+				"articles_preview_enabled": true,
+				"responsive_web_edit_tweet_api_enabled": true,
+				"graphql_is_translatable_rweb_tweet_is_translatable_enabled": true,
+				"view_counts_everywhere_api_enabled": true,
+				"longform_notetweets_consumption_enabled": true,
+				"responsive_web_twitter_article_tweet_consumption_enabled": true,
+				"tweet_awards_web_tipping_enabled": false,
+				"responsive_web_grok_show_grok_translated_post": false,
+				"responsive_web_grok_analysis_button_from_backend": false,
+				"creator_subscriptions_quote_tweet_preview_enabled": false,
+				"freedom_of_speech_not_reach_fetch_enabled": true,
+				"standardized_nudges_misinfo": true,
+				"tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": true,
+				"longform_notetweets_rich_text_read_enabled": true,
+				"longform_notetweets_inline_media_enabled": true,
+				"responsive_web_grok_image_annotation_enabled": true,
+				"responsive_web_enhance_cards_enabled": false
+			};
+			this.#twitterApiInit();
+		}
+	
+		async favoriteTweet(tweetId){
+			return await this.tweetAction('favorite', tweetId);
+		}
+		async unfavoriteTweet(tweetId){
+			return await this.tweetAction('unfavorite', tweetId);
+		}
+		async retweet(tweetId){
+			return await this.tweetAction('retweet', tweetId);
+		}
+		async deleteRetweet(tweetId){
+			return await this.tweetAction('deleteRetweet', tweetId);
+		}
+		async bookmark(tweetId){
+			return await this.tweetAction('bookmark', tweetId);
+		}
+		async deleteBookmark(tweetId){
+			return await this.tweetAction('deleteBookmark', tweetId);
+		}
+		// 同時に同じツイートを取得しないようにする
+		async getTweet(tweetId){
+			if(this.tweetsData[tweetId])return this.tweetsData[tweetId];
+	
+			if(this.#pendingTweetRequests[tweetId]){
+				return await this.#pendingTweetRequests[tweetId];
+			}
+	
+			this.#pendingTweetRequests[tweetId] = this.#_getTweet(tweetId);
+			try{
+				const result = await this.#pendingTweetRequests[tweetId];
+				return result;
+			}finally{
+				delete this.#pendingTweetRequests[tweetId];
+			}
+		}
+	
+		async #_getTweet(tweetId, refresh = false){
+			if(this.tweetsData[tweetId] && !refresh){
+				return this.tweetsData[tweetId];
+			}
+			const variables = {
+				"focalTweetId": tweetId,
+				"referrer": "home",
+				"with_rux_injections": false,
+				"rankingMode": "Relevance",
+				"includePromotedContent": true,
+				"withCommunity": true,
+				"withQuickPromoteEligibilityTweetFields": true,
+				"withBirdwatchNotes": true,
+				"withVoice": true
+			};
+			const features = this.#graphqlFeatures;
+			const fieldToggles = {
+				"withArticleRichContentState": true,
+				"withArticlePlainText": false,
+				"withGrokAnalyze": false,
+				"withDisallowedReplyControls": false
+			};
+			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.TweetDetail.uri, 'GET');
+			const response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.TweetDetail.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
+				method: 'GET',
+				headers,
+				onlyResponse: false,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				this.#processgraphQL(response.response.data.threaded_conversation_with_injections_v2.instructions[0].entries);
+				this.#updateApiRateLimit(response, 'TweetDetail');
+				return this.tweetsData[tweetId];
+			}else{
+				console.error("TweetDetail API error", response);
+				throw new Error(`Failed to fetch`);
+			}
+		}
+		async getUser(screenName, refresh = false){
+			if(this.tweetsUserDataByUserName[screenName] && !refresh){
+				return this.tweetsUserDataByUserName[screenName];
+			}
+			if(this.#pendingUserRequests[screenName]){
+				return await this.#pendingUserRequests[screenName];
+			}
+			this.#pendingUserRequests[screenName] = this.#_getUser(screenName);
+			try{
+				const result = await this.#pendingUserRequests[screenName];
+				return result;
+			}finally{
+				delete this.#pendingUserRequests[screenName];
+			}
+		}
+		async #_getUser(screenName, refresh = false){
+			if(this.tweetsUserDataByUserName[screenName] && !refresh){
+				return this.tweetsUserDataByUserName[screenName];
+			}
+			const variables = {"screen_name": screenName};
+			const features = {
+				"hidden_profile_subscriptions_enabled": true,
+				"profile_label_improvements_pcf_label_in_post_enabled": true,
+				"rweb_tipjar_consumption_enabled": true,
+				"responsive_web_graphql_exclude_directive_enabled": true,
+				"verified_phone_label_enabled": false,
+				"subscriptions_verification_info_is_identity_verified_enabled": true,
+				"subscriptions_verification_info_verified_since_enabled": true,
+				"highlights_tweets_tab_ui_enabled": true,
+				"responsive_web_twitter_article_notes_tab_enabled": true,
+				"subscriptions_feature_can_gift_premium": true,
+				"creator_subscriptions_tweet_preview_api_enabled": true,
+				"responsive_web_graphql_skip_user_profile_image_extensions_enabled": false,
+				"responsive_web_graphql_timeline_navigation_enabled": true
+			};
+			const fieldToggles = {"withAuxiliaryUserLabels": false};
+			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.UserByScreenName.uri, 'GET');
+			const response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.UserByScreenName.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
+				method: 'GET',
+				headers,
+				onlyResponse: false,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				this.#updateApiRateLimit(response, 'UserByScreenName');
+			}else{
+				console.error("UserByScreenName API error", response);
+				throw new Error(`Failed to fetch`);
+			}
+			const userData = response.response.data.user.result;
+			if(!userData)return null;
+			this.tweetsUserData[userData.rest_id] = { ...userData, API_type: "graphQL" };
+			this.tweetsUserDataByUserName[userData.legacy.screen_name] = this.tweetsUserData[userData.rest_id];
+			try{
+				await this.getBio(screenName);
+			}catch(error){}
+			return this.tweetsUserDataByUserName[screenName];
+		}
+	
+		async getHomeTimeline(place = 'bottom'){
+			if(this.#pendingTLRequests.following){
+				return await this.#pendingTLRequests.following;
+			}
+			this.#pendingTLRequests.following = this.#_getHomeTimeline(place);
+			try{
+				const result = await this.#pendingTLRequests.following;
+				return result;
+			}finally{
+				delete this.#pendingTLRequests.following;
+			}
+		}
+	
+		async #_getHomeTimeline(place){
+			const variables = {
+				"count": 40,
+				"includePromotedContent": false,
+				"latestControlAvailable": true,
+			};
+			const cursor = this.#_getCursor('following', place);
+			if(cursor)variables.cursor = cursor;
+			const features = this.#graphqlFeatures;
+			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.HomeLatestTimeline.uri, 'GET');
+			const response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.HomeLatestTimeline.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}`,
+				method: 'GET',
+				headers,
+				onlyResponse: false,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				this.#updateApiRateLimit(response, 'HomeLatestTimeline');
+			}else{
+				console.error("HomeLatestTimeline API error", response);
+				throw new Error(`Failed to fetch`);
+			}
+			const instructions = response.response.data.home.home_timeline_urt.instructions;
+			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
+			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
+			this.#processTimeline({entries: timelineData, type: 'following', place: place});
+			return this.timelines.following;
+		}
+	
+		async getForYouTimeline(place = 'bottom'){
+			if(this.#pendingTLRequests.forYou){
+				return await this.#pendingTLRequests.forYou;
+			}
+			this.#pendingTLRequests.forYou = this.#_getForYouTimeline(place);
+			try{
+				const result = await this.#pendingTLRequests.forYou;
+				return result;
+			}finally{
+				delete this.#pendingTLRequests.forYou;
+			}
+		}
+	
+		async #_getForYouTimeline(place){
+			const variables = {
+				"count": 40,
+				"includePromotedContent": false,
+				"latestControlAvailable": true,
+			};
+			const cursor = this.#_getCursor('forYou', place);
+			if(cursor)variables.cursor = cursor;
+			const features = this.#graphqlFeatures;
+			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.HomeTimeline.uri, 'GET');
+			const response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.HomeTimeline.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}`,
+				method: 'GET',
+				headers,
+				onlyResponse: false,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				this.#updateApiRateLimit(response, 'HomeTimeline');
+			}else{
+				console.error("HomeTimeline API error", response);
+				throw new Error(`Failed to fetch`);
+			}
+			const instructions = response.response.data.home.home_timeline_urt.instructions;
+			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
+			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
+			this.#processTimeline({entries: timelineData, type: 'forYou', place: place});
+			return this.timelines.forYou;
+		}
+	
+		async getUserTweets(screenName, place = 'bottom'){
+			if(this.#pendingTLRequests.userTweets?.[screenName]){
+				return await this.#pendingTLRequests.userTweets?.[screenName];
+			}
+			if(!this.#pendingTLRequests.userTweets)this.#pendingTLRequests.userTweets = {};
+			if(!this.timelines.userTweets[screenName])this.timelines.userTweets[screenName] = {};
+			this.#pendingTLRequests.userTweets[screenName] = this.#_getUserTweets(screenName, place);
+			try{
+				const result = await this.#pendingTLRequests.userTweets?.[screenName];
+				return result;
+			}finally{
+				delete this.#pendingTLRequests.userTweets?.[screenName];
+			}
+		}
+	
+		async #_getUserTweets(screenName, place = 'bottom'){
+			const userData = await this.getUser(screenName);
+			if(!userData)return null;
+			const variables = {
+				"userId": userData.rest_id || userData.id_str,
+				"count": 20,
+				"includePromotedContent": false,
+				"withQuickPromoteEligibilityTweetFields": true,
+				"withVoice": true
+			};
+			const cursor = this.#_getCursor('userTweets', place, screenName);
+			if(cursor)variables.cursor = cursor;
+			const features = this.#graphqlFeatures;
+			const fieldToggles = {
+				"withArticlePlainText": false
+			};
+			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.UserTweets.uri, 'GET');
+			const response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.UserTweets.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
+				method: 'GET',
+				headers,
+				onlyResponse: false,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				this.#updateApiRateLimit(response, 'UserTweets');
+			}else{
+				console.error("UserTweets API error", response);
+				throw new Error(`Failed to fetch`);
+			}
+			const instructions = response.response.data.user.result.timeline_v2.timeline.instructions;
+			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
+			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
+			this.#processTimeline({entries: timelineData, type: 'userTweets', place: place, screenName: screenName});
+			return this.timelines.userTweets[screenName];
+		}
+	
+		async getUserTweetsAndReplies(screenName, place = 'bottom'){
+			if(this.#pendingTLRequests.userTweetsAndReplies?.[screenName]){
+				return await this.#pendingTLRequests.userTweetsAndReplies?.[screenName];
+			}
+			if(!this.#pendingTLRequests.userTweetsAndReplies)this.#pendingTLRequests.userTweetsAndReplies = {};
+			if(!this.timelines.userTweetsAndReplies[screenName])this.timelines.userTweetsAndReplies[screenName] = {};
+			this.#pendingTLRequests.userTweetsAndReplies[screenName] = this.#_getUserTweetsAndReplies(screenName, place);
+			try{
+				const result = await this.#pendingTLRequests.userTweetsAndReplies?.[screenName];
+				return result;
+			}finally{
+				delete this.#pendingTLRequests.userTweetsAndReplies?.[screenName];
+			}
+		}
+	
+		async #_getUserTweetsAndReplies(screenName, place = 'bottom'){
+			const userData = await this.getUser(screenName);
+			if(!userData)return null;
+			const variables = {
+				"userId": userData.rest_id || userData.id_str,
+				"count": 20,
+				"includePromotedContent": false,
+				"withQuickPromoteEligibilityTweetFields": true,
+				"withVoice": true
+			};
+			const cursor = this.#_getCursor('userTweetsAndReplies', place, screenName);
+			if(cursor)variables.cursor = cursor;
+			const features = this.#graphqlFeatures;
+			const fieldToggles = {
+				"withArticlePlainText": false
+			};
+			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.UserTweetsAndReplies.uri, 'GET');
+			const response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.UserTweetsAndReplies.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
+				method: 'GET',
+				headers,
+				onlyResponse: false,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				this.#updateApiRateLimit(response, 'UserTweetsAndReplies');
+			}else{
+				console.error("UserTweetsAndReplies API error", response);
+				throw new Error(`Failed to fetch`);
+			}
+			const instructions = response.response.data.user.result.timeline_v2.timeline.instructions;
+			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
+			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
+			this.#processTimeline({entries: timelineData, type: 'userTweetsAndReplies', place: place, screenName: screenName});
+			return this.timelines.userTweetsAndReplies[screenName];
+		}
+	
+		async getUserHighlights(screenName, place = 'bottom'){
+			if(this.#pendingTLRequests.userHighlights?.[screenName]){
+				return await this.#pendingTLRequests.userHighlights?.[screenName];
+			}
+			if(!this.#pendingTLRequests.userHighlights)this.#pendingTLRequests.userHighlights = {};
+			if(!this.timelines.userHighlights[screenName])this.timelines.userHighlights[screenName] = {};
+			this.#pendingTLRequests.userHighlights[screenName] = this.#_getUserHighlights(screenName, place);
+			try{
+				const result = await this.#pendingTLRequests.userHighlights?.[screenName];
+				return result;
+			}finally{
+				delete this.#pendingTLRequests.userHighlights?.[screenName];
+			}
+		}
+	
+		async #_getUserHighlights(screenName, place = 'bottom'){
+			const userData = await this.getUser(screenName);
+			if(!userData)return null;
+			const variables = {
+				"userId": userData.rest_id || userData.id_str,
+				"count": 20,
+				"includePromotedContent": false,
+				"withQuickPromoteEligibilityTweetFields": true,
+				"withVoice": true
+			};
+			const cursor = this.#_getCursor('userHighlights', place, screenName);
+			if(cursor)variables.cursor = cursor;
+			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.UserHighlightsTweets.uri, 'GET');
+			const response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.UserHighlights.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
+				method: 'GET',
+				headers,
+				onlyResponse: false,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				this.#updateApiRateLimit(response, 'UserHighlights');
+			}else{
+				console.error("UserHighlights API error", response);
+				throw new Error(`Failed to fetch`);
+			}
+			const instructions = response.response.data.user.result.timeline_v2.timeline.instructions;
+			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
+			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
+			this.#processTimeline({entries: timelineData, type: 'userHighlights', place: place, screenName: screenName});
+			return this.timelines.userHighlights[screenName];
+		}
+	
+		async getUserMedia(screenName, place = 'bottom'){
+			if(this.#pendingTLRequests.userMedia?.[screenName]){
+				return await this.#pendingTLRequests.userMedia?.[screenName];
+			}
+			if(!this.#pendingTLRequests.userMedia)this.#pendingTLRequests.userMedia = {};
+			if(!this.timelines.userMedia[screenName])this.timelines.userMedia[screenName] = {};
+			this.#pendingTLRequests.userMedia[screenName] = this.#_getUserMedia(screenName, place);
+			try{
+				const result = await this.#pendingTLRequests.userMedia?.[screenName];
+				return result;
+			}finally{
+				delete this.#pendingTLRequests.userMedia?.[screenName];
+			}
+		}
+		// place: bottom,top,refresh
+		async #_getUserMedia(screenName, place = 'bottom'){
+			const userData = await this.getUser(screenName);
+			if(!userData)return null;
+			const variables = {
+				"userId": userData.rest_id || userData.id_str,
+				"count": 20,
+				"includePromotedContent": false,
+				"withClientEventToken": false,
+				"withBirdwatchNotes": false,
+				"withVoice": true
+			};
+			const cursor = this.#_getCursor('userMedia', place, screenName);
+			if(cursor)variables.cursor = cursor;
+			const features = this.#graphqlFeatures;
+			const fieldToggles = {
+				"withArticlePlainText": false
+			};
+			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.UserMedia.uri, 'GET');
+			const response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.UserMedia.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
+				method: 'GET',
+				headers,
+				onlyResponse: false,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				this.#updateApiRateLimit(response, 'UserMedia');
+			}else{
+				console.error("UserMedia API error", response);
+				throw new Error(`Failed to fetch`);
+			}
+			const instructions = response.response.data.user.result.timeline_v2.timeline.instructions;
+			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
+			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []);
+			return this.#processTimeline({entries: timelineData, type: 'userMedia', screenName: screenName});
+		}
+	
+		async getUserLikes(screenName, place = 'bottom'){
+			if(this.#pendingTLRequests.userLikes?.[screenName]){
+				return await this.#pendingTLRequests.userLikes?.[screenName];
+			}
+			if(!this.#pendingTLRequests.userLikes)this.#pendingTLRequests.userLikes = {};
+			if(!this.timelines.userLikes[screenName])this.timelines.userLikes[screenName] = {};
+			this.#pendingTLRequests.userLikes[screenName] = this.#_getUserLikes(screenName, place);
+			try{
+				const result = await this.#pendingTLRequests.userLikes?.[screenName];
+				return result;
+			}finally{
+				delete this.#pendingTLRequests.userLikes?.[screenName];
+			}
+		}
+	
+		async #_getUserLikes(screenName, place = 'bottom'){
+			const userData = await this.getUser(screenName);
+			if(!userData)return null;
+			const variables = {
+				"userId": userData.rest_id || userData.id_str,
+				"count": 20,
+				"includePromotedContent": false,
+				"withClientEventToken": false,
+				"withBirdwatchNotes": false,
+				"withVoice": true
+			};
+			const cursor = this.#_getCursor('userLikes', place, screenName);
+			if(cursor)variables.cursor = cursor;
+			const features = this.#graphqlFeatures;
+			const fieldToggles = {
+				"withArticlePlainText": false
+			};
+			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.Likes.uri, 'GET');
+			const response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.Likes.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
+				method: 'GET',
+				headers,
+				onlyResponse: false,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				this.#updateApiRateLimit(response, 'Likes');
+			}else{
+				console.error("Likes API error", response);
+				throw new Error(`Failed to fetch`);
+			}
+			const instructions = response.response.data.user.result.timeline.timeline.instructions;
+			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
+			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
+			this.#processTimeline({entries: timelineData, type: 'userLikes', place: place, screenName: screenName});
+			return this.timelines.userLikes[screenName];
+		}
+	
+		async getOwnLists(place = 'bottom'){
+			if(this.#pendingTLRequests.ownLists){
+				return await this.#pendingTLRequests.ownLists;
+			}
+			if(!this.#pendingTLRequests.ownLists)this.#pendingTLRequests.ownLists = {};
+			this.#pendingTLRequests.ownLists = this.#_getOwnLists(place);
+			try{
+				const result = await this.#pendingTLRequests.ownLists;
+				return result;
+			}finally{
+				delete this.#pendingTLRequests.ownLists;
+			}
+		}
+	
+		async #_getOwnLists(place){
+			const variables = {"count":100};
+			const cursor = this.#_getCursor('ownLists', place);
+			if(cursor)variables.cursor = cursor;
+			const features = this.#graphqlFeatures;
+			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.ListsManagementPageTimeline.uri, 'GET');
+			const response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.ListsManagementPageTimeline.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}`,
+				method: 'GET',
+				headers,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				this.#updateApiRateLimit(response, 'ListsManagementPageTimeline');
+			}else{
+				console.error("ListsManagementPageTimeline API error", response);
+				throw new Error(`Failed to fetch`);
+			}
+			const instructions = response.response.data.user.result.timeline_v2.timeline.instructions;
+			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
+			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
+			this.#processTimeline({entries: timelineData, type: 'ownLists', place: place});
+			const lists = {};
+			Object.keys(this.timelines.ownLists).forEach(key => {
+				const list = this.timelines.ownLists[key];
+				lists[list.id_str] = {
+					id: list.id,
+					id_str: list.id_str,
+					name: list.name,
+					description: list.description,
+					mode: list.mode,
+				};
+			});
+			this.lists.ownLists = {...this.lists.ownLists, ...lists};
+			return this.lists.ownLists;
+		}
+	
+		async getUserLists(screenName){
+			if(this.#pendingTLRequests.lists?.[screenName]){
+				return await this.#pendingTLRequests.lists?.[screenName];
+			}
+			if(!this.#pendingTLRequests.lists)this.#pendingTLRequests.lists = {};
+			if(!this.timelines.userLists[screenName])this.timelines.userLists[screenName] = {};
+			this.#pendingTLRequests.lists[screenName] = this.#_getUserLists(screenName);
+			try{
+				const result = await this.#pendingTLRequests.lists?.[screenName];
+				return result;
+			}finally{
+				delete this.#pendingTLRequests.lists?.[screenName];
+			}
+		}
+		async #_getUserLists(screenName){
+			const userData = await this.getUser(screenName);
+			if(!userData)return null;
+			const variables = {
+				"userId": userData.rest_id || userData.id_str,
+				"count": 100
+			};
+			const features = this.#graphqlFeatures;
+			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.CombinedLists.uri, 'GET');
+			const response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.CombinedLists.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
+				method: 'GET',
+				headers,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+	
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				this.#updateApiRateLimit(response, 'CombinedLists');
+			}else{
+				console.error("CombinedLists API error", response);
+				throw new Error(`Failed to fetch`);
+			}
+	
+			const entries = response.response.data.user.result.timeline.timeline.instructions?.find(element => element.type === 'TimelineAddEntries')?.entries;
+			await this.#processTimeline({entries: entries, type: 'lists', screenName: screenName});
+			const lists = {};
+			Object.keys(this.timelines.userLists[screenName]).forEach(key => {
+				const list = this.timelines.userLists[screenName][key];
+				lists[list.id_str] = {
+					id: list.id,
+					id_str: list.id_str,
+					name: list.name,
+					description: list.description,
+					mode: list.mode,
+				};
+			});
+			this.lists[screenName] = {...this.lists[screenName], ...this.lists[screenName]};
+			return this.lists[screenName];
+		}
+	
+		async getListTimeline(listId, place = 'bottom'){
+			if(this.#pendingTLRequests.lists?.[listId]){
+				return await this.#pendingTLRequests.lists?.[listId];
+			}
+			if(!this.#pendingTLRequests.lists)this.#pendingTLRequests.lists = {};
+			if(!this.timelines.lists[listId])this.timelines.lists[listId] = {};
+			this.#pendingTLRequests.lists[listId] = this.#_getListTimeline(listId, place);
+			try{
+				const result = await this.#pendingTLRequests.lists?.[listId];
+				return result;
+			}finally{
+				delete this.#pendingTLRequests.lists?.[listId];
+			}
+		}
+	
+		async #_getListTimeline(listId, place = 'bottom'){
+			const variables = {
+				"listId": listId,
+				"count": 20,
+			};
+			const cursor = this.#_getCursor('lists', place, listId);
+			if(cursor)variables.cursor = cursor;
+			const features = this.#graphqlFeatures;
+			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.ListTimeline.uri, 'GET');
+			const response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.ListTimeline.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}`,
+				method: 'GET',
+				headers,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				this.#updateApiRateLimit(response, 'ListTimeline');
+			}else{
+				console.error("ListTimeline API error", response);
+				throw new Error(`Failed to fetch`);
+			}
+			const instructions = response.response.data.list.result.timeline_v2.timeline.instructions;
+			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
+			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
+			this.#processTimeline({entries: timelineData, type: 'lists', place: place});
+			return this.timelines.lists[listId];
+		}
+	
+		// FavoriteTweet(favorite), UnfavoriteTweet(unfavorite), CreateRetweet(retweet), DeleteRetweet(deleteRetweet), CreateBookmark(bookmark), DeleteBookmark(deleteBookmark)
+		async tweetAction(endpoint, tweetId){
+			if(!this.#graphqlApiEndpoints[endpoint]){
+				if(this.#endpointsAliases[endpoint]){
+					endpoint = this.#endpointsAliases[endpoint];
+				}else if(this.#graphqlApiEndpoints[endpoint.split('/').pop()]){
+					endpoint = endpoint.split('/').pop();
+				}else{
+					throw new Error(`Invalid endpoint: ${endpoint}`);
+				}
+			}
+			const endpointData = this.#graphqlApiEndpoints[endpoint];
+			if(!endpointData || tweetId === undefined)throw new Error("Invalid endpoint or tweetId");
+			const headers = await this.#generateHeaders(endpointData.uri, 'POST');
+			const body = `{"variables": {"tweet_id": "${tweetId}"}, "queryId": "${endpointData.uri.split('/').pop()}"}`;
+			const response = await request({url: `${this.#graphqlApiUri}${endpointData.uri}`, method: 'POST', body: body, headers: headers, onlyResponse: false, dontUseGenericHeaders: true, maxRetries: 1});
+			const isSuccess = (response.status === 200);
+			if(isSuccess){
+				displayToast(envText.makeTwitterLittleUseful.postApiAction[endpoint].success);
+			}else{
+				displayToast(envText.makeTwitterLittleUseful.postApiAction[endpoint].error);
+			}
+			return isSuccess;
+		}
+	
+		async getBio(screenName){
+			const variables = {"screenName": screenName};
+			let response;
+			response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.useFetchProfileBlocks_profileExistsQuery.uri}?variables=${this.#objectToUri(variables)}`,
+				headers: await this.#generateHeaders(this.#graphqlApiEndpoints.useFetchProfileBlocks_profileExistsQuery.uri, 'GET'),
+				onlyResponse: false,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			if(!response.status === "200")throw new Error(`Failed to fetch`);
+			if(!response.response.data.user_result_by_screen_name.result.has_profile_blocks)return;
+			response = await request({
+				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.useFetchProfileSections_profileQuery.uri}?variables=${this.#objectToUri(variables)}`,
+				headers: await this.#generateHeaders(this.#graphqlApiEndpoints.useFetchProfileSections_profileQuery.uri, 'GET'),
+				onlyResponse: false,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			});
+			if(!response.status === "200")throw new Error(`Failed to fetch`);
+			const content = response.response.data.user_result_by_screen_name.result.expanded_profile_results.result.profile_sections.items_results[0].result.profile_blocks.items_results[0].result.content.value;
+			const bioData = JSON.parse(content);
+			if(!bioData)return;
+			if(this.tweetsUserDataByUserName[screenName])this.tweetsUserDataByUserName[userData.legacy.screen_name].bio = bioData;
+			return bioData;
+		}
+	
+		//graphQL API のレスポンスを処理
+		async #processgraphQL(entries){
+			if(!entries)return null;
+			const storeTweet = (tweetObj) => {
+				const user = tweetObj.core.user_results.result;
+				this.tweetsUserData[user.rest_id] = { ...user, API_type: "graphQL" };
+				this.tweetsUserDataByUserName[user.legacy.screen_name] = this.tweetsUserData[user.rest_id];
+				tweetObj.core.user_results.result = this.tweetsUserData[user.rest_id];
+				this.tweetsData[tweetObj.rest_id] = { ...tweetObj, API_type: "graphQL" };
+			};
+			for(const entry of entries){
+				const item = entry.content?.itemContent?.tweet_results || entry.item?.itemContent?.tweet_results;
+				if(!item){
+					const items = entry?.content?.items;
+					if(items)this.#processgraphQL(items);
+					continue;
+				}
+				const tweet = item?.result?.tweet || item?.result;
+				if(!tweet || tweet.tombstone)continue;
+				try{
+					// 引用ツイートの処理
+					const quoted = tweet.quoted_status_result?.result?.tweet
+						|| tweet.quoted_status_result?.tweet
+						|| tweet.quoted_status_result?.result;
+					if(quoted){
+						storeTweet(quoted);
+						tweet.quoted_status_result.result = this.tweetsData[quoted.rest_id];
+					}
+					// 本体ツイートの処理
+					storeTweet(tweet);
+				}catch(error){
+					console.error("processgraphQL error", error, {tweet});
+				}
+			}
+			return "OK";
+		}
+	
+		async #processTimeline({entries = [], type = null, screenName = null,}={}){
+			if(entries.length === 2){
+				if(entries[0].entryId.startsWith('cursor') && entries[1].entryId.startsWith('cursor'))return;
+			}else if(entries.length === 1){
+				if(entries[0].entryId.startsWith('cursor'))return;
+			}
+			await this.#processgraphQL(entries);
+			const newContents = {};
+			const newRawData = {};
+	
+			let timelineTarget = null;
+			if(['following', 'forYou', 'bookmarks', 'ownLists'].includes(type)){
+				timelineTarget = this.timelines[type];
+			}else if(['userMedia', 'userTweets', 'userTweetsAndReplies', 'userHighlights', 'userLikes' ,'lists'].includes(type)){
+				if(!this.timelines[type][screenName]){
+					this.timelines[type][screenName] = {
+						contents: {},
+						rawData: {},
+						cursor: {
+							top: {entryId: null, sortIndex: null, value: null},
+							bottom: {entryId: null, sortIndex: null, value: null},
+							value: null,
+						}
+					};
+				}
+				timelineTarget = this.timelines[type][screenName];
+			}
+	
+			entries.forEach(entry => {
+				if(entry.entryId.match('promoted'))return;
+				switch(true){
+					case /tweet-/.test(entry.entryId): {
+						const tweetId = entry.entryId.split('-').pop();
+						if(!entry.sortIndex){
+							entry.sortIndex = tweetId;
+						}
+						newRawData[entry.entryId] = entry;
+						if(newRawData[entry.entryId].content?.itemContent){
+							newRawData[entry.entryId].content.itemContent.tweet_results = this.tweetsData[tweetId];
+						}
+						if(newRawData[entry.entryId].item?.itemContent){
+							newRawData[entry.entryId].item.itemContent.tweet_results = this.tweetsData[tweetId];
+						}
+						const controllerData = (entry.item ?? entry.content)?.itemContent.clientEventInfo?.details?.timelinesDetails?.controllerData;
+	
+						newContents[entry.entryId] = {
+							sortIndex: newRawData[entry.entryId].sortIndex,
+							entryId: newRawData[entry.entryId].entryId,
+							tweetDisplayType: newRawData[entry.entryId].item?.itemContent.tweetDisplayType || newRawData[entry.entryId].content?.itemContent.tweetDisplayType,
+							controllerData: controllerData,
+							tweetData: this.tweetsData[tweetId],
+						}
+						break;
+					}
+					case entry.entryId.startsWith('profile-conversation'): {
+						const tweets = [];
+						newRawData[entry.entryId] = entry;
+						newRawData[entry.entryId].content.items.forEach(item => {
+							if(item.item?.itemContent?.tweet_results){
+								const tweetId = item.item.itemContent.tweet_results.result.rest_id;
+								newRawData[entry.entryId].content.items[item.entryId].content.itemContent.tweet_results = this.tweetsData[tweetId];
+								tweets.push(tweetId);
+							}
+						});
+						newContents[entry.entryId] = {
+							sortIndex: entry.sortIndex,
+							entryId: entry.entryId,
+							tweetDisplayType: entry.item?.itemContent.tweetDisplayType || entry.content?.itemContent.tweetDisplayType,
+							controllerData: entry.item?.itemContent.clientEventInfo?.details?.timelinesDetails?.controllerData,
+							tweetData: tweets.map(tweetId => this.tweetsData[tweetId]),
+						}
+						break;
+					}
+					case entry.entryId.startsWith('cursor-top'): {
+						newRawData[entry.entryId] = entry;
+						if(!timelineTarget.cursor)timelineTarget.cursor = {top:{},bottom:{}};
+						if(!timelineTarget.cursor.top.sortIndex || entry.sortIndex > timelineTarget.cursor.top.sortIndex){
+							timelineTarget.cursor.top = {
+								sortIndex: entry.sortIndex,
+								entryId: entry.entryId,
+								value: entry.content.value,
+							}
+						}
+						break;
+					}
+					case entry.entryId.startsWith('cursor-bottom'): {
+						newRawData[entry.entryId] = entry;
+						if(!timelineTarget.cursor)timelineTarget.cursor = {top:{},bottom:{}};
+						if(timelineTarget.cursor && (!timelineTarget.cursor.bottom.sortIndex || entry.sortIndex < timelineTarget.cursor.bottom.sortIndex)){
+							timelineTarget.cursor.bottom = {
+								sortIndex: entry.sortIndex,
+								entryId: entry.entryId,
+								value: entry.content.value,
+							};
+						}
+						break;
+					}
+					case entry.entryId.match(/subscribed-list-module/): {
+						newRawData[entry.entryId] = entry;
+						entry.content.items.forEach(item => {
+							newContents[item.entryId] = {
+								sortIndex: item.sortIndex,
+								entryId: item.entryId,
+								listData: item.itemContent?.list,
+								isPinning: item.itemContent?.list.pinning,
+							};
+							if(item.itemContent?.list.pinning){
+								this.timelines.ownLists.pinningLists[item.entryId] = newContents[item.entryId];
+							}
+						});
+						break;
+					}
+					case entry.entryId.match(/^list-/): {
+						newRawData[entry.entryId] = entry;
+						newContents[entry.entryId] = {
+							sortIndex: entry.sortIndex,
+							entryId: entry.entryId,
+							listData: entry.content?.itemContent?.list,
+						};
+						break;
+					}
+					default:
+						return;
+				}
+			});
+	
+			if(!timelineTarget.contents)timelineTarget.contents = {};
+			if(!timelineTarget.rawData)timelineTarget.rawData = {};
+			if(!timelineTarget.contentsList)timelineTarget.contentsList = [];
+			if(!timelineTarget.contentsBySortIndex)timelineTarget.contentsBySortIndex = {};
+			const combinedContents = {...timelineTarget.contents};
+			const combinedRawData = {...timelineTarget.rawData};
+	
+			const newContentsData = { contents: {}, rawData: {}, contentsList: [], contentsBySortIndex: {} };
+			const contentsList = timelineTarget.contentsList || [];
+			const contentsBySortIndex = timelineTarget.contentsBySortIndex || {};
+	
+			for(const [key, content] of Object.entries(newContents)){
+				const raw = newRawData[key];
+				combinedContents[key] = content;
+				combinedRawData[key] = raw;
+	
+				contentsList.push(content);
+				contentsBySortIndex[content.sortIndex] = content;
+	
+				if(!timelineTarget.contents[key]){
+					newContentsData.contents[key] = content;
+					newContentsData.rawData[key] = raw;
+					newContentsData.contentsList.push(content);
+					newContentsData.contentsBySortIndex[content.sortIndex] = content;
+				}
+			}
+	
+			for(const [key, content] of Object.entries(timelineTarget.contents)){
+				if(!combinedContents[key]){
+					contentsList.push(content);
+					contentsBySortIndex[content.sortIndex] = content;
+				}
+			}
+	
+			contentsList.sort((a, b) => (b.sortIndex || "").localeCompare(a.sortIndex || ""));
+			newContentsData.contentsList.sort((a, b) => (b.sortIndex || "").localeCompare(a.sortIndex || ""));
+	
+			timelineTarget.contents = combinedContents;
+			timelineTarget.rawData = combinedRawData;
+			timelineTarget.contentsList = contentsList;
+			timelineTarget.contentsBySortIndex = contentsBySortIndex;
+			timelineTarget.newContents = newContentsData;
+	
+	
+			return timelineTarget;
+		}
+	
+		async #generateHeaders(endpoint, method){
+			if(!this.#challengeData.verificationCode){
+				await this.#getChallengeData();
+			}
+			if(!this.#solverIframe){
+				await this.#initSolverIframe();
+			}
+			const id = await this.#solveTransactionId(endpoint, method);
+			const headers = id ? Object.assign({
+				'x-client-transaction-id': id,
+			}, this.#requestHeadersTemplate) : this.#requestHeadersTemplate;
+			return headers;
+		}
+	
+		#_getCursor(type, place, screenName = null){
+			let timelineTarget;
+	
+			if(['following', 'forYou', 'bookmarks', 'ownLists'].includes(type)){
+				timelineTarget = this.timelines[type];
+			}else if(['userMedia', 'userTweets', 'userTweetsAndReplies', 'userHighlights', 'userLikes', 'lists'].includes(type)){
+				if(!this.timelines[type][screenName]){
+					this.timelines[type][screenName] = {
+						cursor: {
+							top: { entryId: null, sortIndex: null, value: null },
+							bottom: { entryId: null, sortIndex: null, value: null }
+						}
+					};
+				}
+				timelineTarget = this.timelines[type][screenName];
+			}else{
+				throw new Error(`Invalid timeline type: ${type}`);
+			}
+	
+			if(place === 'refresh'){
+				timelineTarget.cursor = {
+					top: { entryId: null, sortIndex: null, value: null },
+					bottom: { entryId: null, sortIndex: null, value: null }
+				};
+				return null;
+			}
+	
+			const cursorObj = timelineTarget.cursor?.[place];
+			return cursorObj?.value ?? null;
+		}
+	
+		#updateApiRateLimit(response, endpoint){
+			const responseHeaders = response.responseHeaders;
+			if(!this.#apiRateLimit[endpoint]){
+				this.#apiRateLimit[endpoint] = {
+					remaining: responseHeaders.match(/x-rate-limit-remaining: ?([\d]+)/)?.[1],
+					limit: responseHeaders.match(/x-rate-limit-limit: ?([\d]+)/)?.[1],
+					reset: responseHeaders.match(/x-rate-limit-reset: ?([\d]+)/)?.[1],
+				};
+			}else{
+				this.#apiRateLimit[endpoint].remaining = responseHeaders.match(/x-rate-limit-remaining: ?([\d]+)/)?.[1];
+				this.#apiRateLimit[endpoint].limit = responseHeaders.match(/x-rate-limit-limit: ?([\d]+)/)?.[1];
+				this.#apiRateLimit[endpoint].reset = responseHeaders.match(/x-rate-limit-reset: ?([\d]+)/)?.[1];
+			}
+		}
+	
+		#objectToUri(obj){
+			return encodeURIComponent(JSON.stringify(obj));
+		}
+	
+		// 非公開メソッド: challenge 情報を取得
+		async #getChallengeData(){
+			if(this.#challengeData.expires && this.#challengeData.expires > Date.now()){
+				return;
+			}
+			const response = await request({ url: 'https://x.com/home', respType: 'text' });
+			const html = response;
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(html, "text/html");
+	
+			const metaTag = doc.querySelector('meta[name="twitter-site-verification"]');
+			const verificationCode = metaTag?.content;
+			if(!verificationCode) throw new Error("Verification code not found");
+	
+			const challengeCodeMatch = html.match(/"ondemand\.s":"(\w+)"/);
+			if(!challengeCodeMatch) throw new Error("Challenge code not found");
+	
+			const challengeCode = challengeCodeMatch[1];
+			const svgs = Array.from(doc.querySelectorAll('svg[id^="loading-x"]'));
+			const challengeAnimationSvgCodes = svgs.map(svg => svg.outerHTML);
+	
+			const jsUrl = `https://abs.twimg.com/responsive-web/client-web/ondemand.s.${challengeCode}a.js`;
+			const challengeJsCode = await request({ url: jsUrl, respType: 'text' });
+	
+			this.#challengeData = {
+				verificationCode,
+				challengeCode,
+				challengeJsCode,
+				challengeAnimationSvgCodes,
+				expires: Date.now() + 30 * 60 * 1000, // 30 min
+			};
+		}
+	
+		async getXctid(endpoint, method, force = false){
+			if(!this.#graphqlApiEndpoints[endpoint] || !force){
+				if(this.#endpointsAliases[endpoint]){
+					endpoint = this.#endpointsAliases[endpoint];
+				}else if(this.#graphqlApiEndpoints[endpoint.split('/').pop()]){
+					endpoint = endpoint.split('/').pop();
+				}else{
+					throw new Error(`Invalid endpoint: ${endpoint}`);
+				}
+			}
+			if(this.#xctid[endpoint] && this.#xctid[endpoint].expires > Date.now()){
+				return this.#xctid[endpoint].id;
+			}
+			if(method === undefined){
+				if(this.#graphqlApiEndpoints[endpoint]?.method?.length === 1){
+					method = this.#graphqlApiEndpoints[endpoint].method[0];
+				}else{
+					throw new Error(`Method is required for endpoint: ${endpoint}`);
+				}
+			}else if(!this.#graphqlApiEndpoints[endpoint]?.method?.includes(method)){
+				throw new Error(`Invalid method: ${method}`);
+			}
+			if(!this.#challengeData.verificationCode){
+				await this.#getChallengeData();
+			}
+	
+			if(!this.#solverIframe){
+				await this.#initSolverIframe();
+			}
+	
+			const id = await this.#solveTransactionId(endpoint, method);
+			if(!id){
+				return null;
+			}
+			this.#xctid[endpoint] = {
+				id,
+				expires: Date.now() + 30 * 60 * 1000,
+			};
+			return id;
+		}
+	
+		// iframe を生成して solver.html を読み込む
+		async #initSolverIframe(){
+			await this.#getChallengeData();
+	
+			return new Promise((resolve, reject) => {
+	
+				const messageListener = (event) => {
+					if(event.source !== this.#solverIframe.contentWindow)return;
+					if(!event.data || event.data.action !== 'error' && event.data.action !== 'initError')return;
+	
+					window.removeEventListener("message", messageListener);
+					this.#solverIframe.remove();
+					this.#solverIframe = null;
+					console.error("Solver iframe error", event.data);
+					resolve(null);
+					//reject(new Error(`Solver iframe error: ${event.data.error || "Unknown"}`));
+				};
+				window.addEventListener("message", messageListener);
+	
+				if(typeof GM_addElement === 'function'){
+					this.#solverIframe = GM_addElement('iframe', {src: 'https://tweetdeck.dimden.dev/solver.html'});
+				}else{
+					this.#solverIframe = document.createElement('iframe');
+					this.#solverIframe.src = 'https://tweetdeck.dimden.dev/solver.html';
+				}
+				this.#solverIframe.style.display = 'none';
+				document.body.appendChild(this.#solverIframe);
+				this.#solverIframe.onload = () => {
+					this.#solverIframe.contentWindow.postMessage({
+						action: 'init',
+						verificationCode: this.#challengeData.verificationCode,
+						anims: this.#challengeData.challengeAnimationSvgCodes,
+						challenge: this.#challengeData.challengeJsCode
+					}, '*');
+					resolve();
+				};
+	
+				this.#solverIframe.onerror = () => {
+					window.removeEventListener("message", messageListener);
+					this.#solverIframe.remove();
+					this.#solverIframe = null;
+					console.error("Failed to load solver iframe");
+					resolve(null);
+					//reject(new Error("Failed to load solver iframe"));
+				};
+			});
+		}
+	
+	
+		// solver に path/method を送って XCTID を取得する
+		#solveTransactionId(path, method){
+			if(!this.#solverIframe){
+				console.warn("Solver iframe not initialized");
+				return null;
+			}
+			return new Promise((resolve, reject) => {
+				const id = Date.now() + Math.random();
+	
+				const listener = (e) => {
+					if(e.source !== this.#solverIframe.contentWindow)return;
+					if(!e.data || e.data.id !== id)return;
+	
+					window.removeEventListener('message', listener);
+	
+					if(e.data.action === 'solved'){
+						resolve(e.data.result);
+					}else if(e.data.action === 'error'){
+						reject(new Error(e.data.error));
+					}
+				};
+	
+				window.addEventListener('message', listener);
+	
+				this.#solverIframe.contentWindow.postMessage({
+					action: 'solve',
+					id,
+					path,
+					method,
+				}, '*');
+			});
+		}
+	
+		// ここは https://github.com/dimdenGD/OldTweetDeck/blob/main/src/challenge.js から完全にパクった
+		#uuidV4(){
+			const uuid = new Array(36);
+			for(let i = 0; i < 36; i++){
+			  uuid[i] = Math.floor(Math.random() * 16);
+			}
+			uuid[14] = 4; // set bits 12-15 of time-high-and-version to 0100
+			uuid[19] = uuid[19] &= ~(1 << 2); // set bit 6 of clock-seq-and-reserved to zero
+			uuid[19] = uuid[19] |= (1 << 3); // set bit 7 of clock-seq-and-reserved to one
+			uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
+			return uuid.map((x) => x.toString(16)).join('');
+		}
+	
+		async #twitterApiInit(){
+			if(!this.#solverIframe){
+				this.#initSolverIframe();
+			}
+			this.#classSettings = await getFromIndexedDB('MTLU_twitterApi', 'settings') || {};
+			if(!this.#classSettings?.uuid){
+				this.#classSettings.uuid = this.#uuidV4();
+				await saveToIndexedDB('MTLU_twitterApi', 'settings', this.#classSettings);
+			}
+			this.#requestHeadersTemplate['x-twitter-client-uuid'] = this.#classSettings.uuid;
+		}
+	
+		debug(){
+			console.log("TwitterApi");
+			console.log({
+				tweetsData: this.tweetsData,
+				tweetsUserData: this.tweetsUserData,
+				tweetsUserDataByUserName: this.tweetsUserDataByUserName,
+				lists: this.lists,
+				timelines: this.timelines,
+				challengeData: this.#challengeData,
+				solverIframe: this.#solverIframe,
+				xctid: this.#xctid,
+				graphqlApiUri: this.#graphqlApiUri,
+				graphqlApiEndpoints: this.#graphqlApiEndpoints,
+				endpointsAliases: this.#endpointsAliases,
+				requestHeadersTemplate: this.#requestHeadersTemplate,
+				graphqlFeatures: this.#graphqlFeatures,
+				pendingTweetRequests: this.#pendingTweetRequests,
+				pendingUserRequests: this.#pendingUserRequests,
+				pendingTLRequests: this.#pendingTLRequests,
+				apiRateLimit: this.#apiRateLimit,
+				classSettings: this.#classSettings,
+			});
+		}
+	}
+	
+
 	async function displayChangelog(currentScriptVersion, lastScriptVersion){
 		if(document.getElementById('changelogOverlay') || scriptSettings.makeTwitterLittleUseful.displayChangelog === false)return;
 		const changelogs = {
@@ -7370,6 +8452,7 @@
 		window.addEventListener("scroll", update);
 		locationChange(document.getElementById('react-root'));
 		fetchUserData();
+		twitterApi = new TwitterApi();
 		main();
 		getPixivLinkCollection();
 		addEventToHomeButton();
