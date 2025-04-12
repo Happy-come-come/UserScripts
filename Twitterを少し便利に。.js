@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.0
+// @version			2.1.2.1
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -6696,9 +6696,9 @@
 	class TwitterApi{
 		/*
 		不具合は https://greasyfork.org/ja/scripts/478248/feedback または https://github.com/Happy-come-come/UserScripts/issues まで
-	
+
 		GM_addElementが有効だとiflame内のscriptがcspに引っかからないのでできればGM_addElementを使うことを推奨
-	
+
 			Twitter Web API(GraphQL)
 			オブジェクト
 				- tweetsData: ツイートのデータ
@@ -6767,6 +6767,8 @@
 		#endpointsAliases;
 		#requestHeadersTemplate;
 		#graphqlFeatures;
+		#initSolverIframePromise = null;
+		#challengeDataPromise = null;
 		#pendingTweetRequests = {};
 		#pendingUserRequests = {};
 		#pendingTLRequests = {};
@@ -6805,7 +6807,7 @@
 			userLists: {},
 			lists: {},
 		};
-	
+
 		constructor(){
 			this.#graphqlApiUri = `https://${window.location.hostname}/i/api/graphql`;
 			this.#graphqlApiEndpoints = {
@@ -6963,7 +6965,7 @@
 			};
 			this.#twitterApiInit();
 		}
-	
+
 		async favoriteTweet(tweetId){
 			return await this.tweetAction('favorite', tweetId);
 		}
@@ -6985,11 +6987,11 @@
 		// 同時に同じツイートを取得しないようにする
 		async getTweet(tweetId){
 			if(this.tweetsData[tweetId])return this.tweetsData[tweetId];
-	
+
 			if(this.#pendingTweetRequests[tweetId]){
 				return await this.#pendingTweetRequests[tweetId];
 			}
-	
+
 			this.#pendingTweetRequests[tweetId] = this.#_getTweet(tweetId);
 			try{
 				const result = await this.#pendingTweetRequests[tweetId];
@@ -6998,7 +7000,7 @@
 				delete this.#pendingTweetRequests[tweetId];
 			}
 		}
-	
+
 		async #_getTweet(tweetId, refresh = false){
 			if(this.tweetsData[tweetId] && !refresh){
 				return this.tweetsData[tweetId];
@@ -7101,7 +7103,7 @@
 			}catch(error){}
 			return this.tweetsUserDataByUserName[screenName];
 		}
-	
+
 		async getHomeTimeline(place = 'bottom'){
 			if(this.#pendingTLRequests.following){
 				return await this.#pendingTLRequests.following;
@@ -7114,7 +7116,7 @@
 				delete this.#pendingTLRequests.following;
 			}
 		}
-	
+
 		async #_getHomeTimeline(place){
 			const variables = {
 				"count": 40,
@@ -7146,7 +7148,7 @@
 			this.#processTimeline({entries: timelineData, type: 'following', place: place});
 			return this.timelines.following;
 		}
-	
+
 		async getForYouTimeline(place = 'bottom'){
 			if(this.#pendingTLRequests.forYou){
 				return await this.#pendingTLRequests.forYou;
@@ -7159,7 +7161,7 @@
 				delete this.#pendingTLRequests.forYou;
 			}
 		}
-	
+
 		async #_getForYouTimeline(place){
 			const variables = {
 				"count": 40,
@@ -7191,7 +7193,7 @@
 			this.#processTimeline({entries: timelineData, type: 'forYou', place: place});
 			return this.timelines.forYou;
 		}
-	
+
 		async getUserTweets(screenName, place = 'bottom'){
 			if(this.#pendingTLRequests.userTweets?.[screenName]){
 				return await this.#pendingTLRequests.userTweets?.[screenName];
@@ -7206,7 +7208,7 @@
 				delete this.#pendingTLRequests.userTweets?.[screenName];
 			}
 		}
-	
+
 		async #_getUserTweets(screenName, place = 'bottom'){
 			const userData = await this.getUser(screenName);
 			if(!userData)return null;
@@ -7245,7 +7247,7 @@
 			this.#processTimeline({entries: timelineData, type: 'userTweets', place: place, screenName: screenName});
 			return this.timelines.userTweets[screenName];
 		}
-	
+
 		async getUserTweetsAndReplies(screenName, place = 'bottom'){
 			if(this.#pendingTLRequests.userTweetsAndReplies?.[screenName]){
 				return await this.#pendingTLRequests.userTweetsAndReplies?.[screenName];
@@ -7260,7 +7262,7 @@
 				delete this.#pendingTLRequests.userTweetsAndReplies?.[screenName];
 			}
 		}
-	
+
 		async #_getUserTweetsAndReplies(screenName, place = 'bottom'){
 			const userData = await this.getUser(screenName);
 			if(!userData)return null;
@@ -7299,7 +7301,7 @@
 			this.#processTimeline({entries: timelineData, type: 'userTweetsAndReplies', place: place, screenName: screenName});
 			return this.timelines.userTweetsAndReplies[screenName];
 		}
-	
+
 		async getUserHighlights(screenName, place = 'bottom'){
 			if(this.#pendingTLRequests.userHighlights?.[screenName]){
 				return await this.#pendingTLRequests.userHighlights?.[screenName];
@@ -7314,7 +7316,7 @@
 				delete this.#pendingTLRequests.userHighlights?.[screenName];
 			}
 		}
-	
+
 		async #_getUserHighlights(screenName, place = 'bottom'){
 			const userData = await this.getUser(screenName);
 			if(!userData)return null;
@@ -7349,7 +7351,7 @@
 			this.#processTimeline({entries: timelineData, type: 'userHighlights', place: place, screenName: screenName});
 			return this.timelines.userHighlights[screenName];
 		}
-	
+
 		async getUserMedia(screenName, place = 'bottom'){
 			if(this.#pendingTLRequests.userMedia?.[screenName]){
 				return await this.#pendingTLRequests.userMedia?.[screenName];
@@ -7403,7 +7405,7 @@
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []);
 			return this.#processTimeline({entries: timelineData, type: 'userMedia', screenName: screenName});
 		}
-	
+
 		async getUserLikes(screenName, place = 'bottom'){
 			if(this.#pendingTLRequests.userLikes?.[screenName]){
 				return await this.#pendingTLRequests.userLikes?.[screenName];
@@ -7418,7 +7420,7 @@
 				delete this.#pendingTLRequests.userLikes?.[screenName];
 			}
 		}
-	
+
 		async #_getUserLikes(screenName, place = 'bottom'){
 			const userData = await this.getUser(screenName);
 			if(!userData)return null;
@@ -7458,7 +7460,7 @@
 			this.#processTimeline({entries: timelineData, type: 'userLikes', place: place, screenName: screenName});
 			return this.timelines.userLikes[screenName];
 		}
-	
+
 		async getOwnLists(place = 'bottom'){
 			if(this.#pendingTLRequests.ownLists){
 				return await this.#pendingTLRequests.ownLists;
@@ -7472,7 +7474,7 @@
 				delete this.#pendingTLRequests.ownLists;
 			}
 		}
-	
+
 		async #_getOwnLists(place){
 			const variables = {"count":100};
 			const cursor = this.#_getCursor('ownLists', place);
@@ -7511,7 +7513,7 @@
 			this.lists.ownLists = {...this.lists.ownLists, ...lists};
 			return this.lists.ownLists;
 		}
-	
+
 		async getUserLists(screenName){
 			if(this.#pendingTLRequests.lists?.[screenName]){
 				return await this.#pendingTLRequests.lists?.[screenName];
@@ -7542,7 +7544,7 @@
 				dontUseGenericHeaders: true,
 				maxRetries: 1
 			});
-	
+
 			const isSuccess = (response.status === 200);
 			if(isSuccess){
 				this.#updateApiRateLimit(response, 'CombinedLists');
@@ -7550,7 +7552,7 @@
 				console.error("CombinedLists API error", response);
 				throw new Error(`Failed to fetch`);
 			}
-	
+
 			const entries = response.response.data.user.result.timeline.timeline.instructions?.find(element => element.type === 'TimelineAddEntries')?.entries;
 			await this.#processTimeline({entries: entries, type: 'lists', screenName: screenName});
 			const lists = {};
@@ -7567,7 +7569,7 @@
 			this.lists[screenName] = {...this.lists[screenName], ...this.lists[screenName]};
 			return this.lists[screenName];
 		}
-	
+
 		async getListTimeline(listId, place = 'bottom'){
 			if(this.#pendingTLRequests.lists?.[listId]){
 				return await this.#pendingTLRequests.lists?.[listId];
@@ -7582,7 +7584,7 @@
 				delete this.#pendingTLRequests.lists?.[listId];
 			}
 		}
-	
+
 		async #_getListTimeline(listId, place = 'bottom'){
 			const variables = {
 				"listId": listId,
@@ -7612,7 +7614,7 @@
 			this.#processTimeline({entries: timelineData, type: 'lists', place: place});
 			return this.timelines.lists[listId];
 		}
-	
+
 		// FavoriteTweet(favorite), UnfavoriteTweet(unfavorite), CreateRetweet(retweet), DeleteRetweet(deleteRetweet), CreateBookmark(bookmark), DeleteBookmark(deleteBookmark)
 		async tweetAction(endpoint, tweetId){
 			if(!this.#graphqlApiEndpoints[endpoint]){
@@ -7637,7 +7639,7 @@
 			}
 			return isSuccess;
 		}
-	
+
 		async getBio(screenName){
 			const variables = {"screenName": screenName};
 			let response;
@@ -7664,7 +7666,7 @@
 			if(this.tweetsUserDataByUserName[screenName])this.tweetsUserDataByUserName[userData.legacy.screen_name].bio = bioData;
 			return bioData;
 		}
-	
+
 		//graphQL API のレスポンスを処理
 		async #processgraphQL(entries){
 			if(!entries)return null;
@@ -7701,7 +7703,7 @@
 			}
 			return "OK";
 		}
-	
+
 		async #processTimeline({entries = [], type = null, screenName = null,}={}){
 			if(entries.length === 2){
 				if(entries[0].entryId.startsWith('cursor') && entries[1].entryId.startsWith('cursor'))return;
@@ -7711,7 +7713,7 @@
 			await this.#processgraphQL(entries);
 			const newContents = {};
 			const newRawData = {};
-	
+
 			let timelineTarget = null;
 			if(['following', 'forYou', 'bookmarks', 'ownLists'].includes(type)){
 				timelineTarget = this.timelines[type];
@@ -7729,7 +7731,7 @@
 				}
 				timelineTarget = this.timelines[type][screenName];
 			}
-	
+
 			entries.forEach(entry => {
 				if(entry.entryId.match('promoted'))return;
 				switch(true){
@@ -7746,7 +7748,7 @@
 							newRawData[entry.entryId].item.itemContent.tweet_results = this.tweetsData[tweetId];
 						}
 						const controllerData = (entry.item ?? entry.content)?.itemContent.clientEventInfo?.details?.timelinesDetails?.controllerData;
-	
+
 						newContents[entry.entryId] = {
 							sortIndex: newRawData[entry.entryId].sortIndex,
 							entryId: newRawData[entry.entryId].entryId,
@@ -7827,26 +7829,26 @@
 						return;
 				}
 			});
-	
+
 			if(!timelineTarget.contents)timelineTarget.contents = {};
 			if(!timelineTarget.rawData)timelineTarget.rawData = {};
 			if(!timelineTarget.contentsList)timelineTarget.contentsList = [];
 			if(!timelineTarget.contentsBySortIndex)timelineTarget.contentsBySortIndex = {};
 			const combinedContents = {...timelineTarget.contents};
 			const combinedRawData = {...timelineTarget.rawData};
-	
+
 			const newContentsData = { contents: {}, rawData: {}, contentsList: [], contentsBySortIndex: {} };
 			const contentsList = timelineTarget.contentsList || [];
 			const contentsBySortIndex = timelineTarget.contentsBySortIndex || {};
-	
+
 			for(const [key, content] of Object.entries(newContents)){
 				const raw = newRawData[key];
 				combinedContents[key] = content;
 				combinedRawData[key] = raw;
-	
+
 				contentsList.push(content);
 				contentsBySortIndex[content.sortIndex] = content;
-	
+
 				if(!timelineTarget.contents[key]){
 					newContentsData.contents[key] = content;
 					newContentsData.rawData[key] = raw;
@@ -7854,27 +7856,27 @@
 					newContentsData.contentsBySortIndex[content.sortIndex] = content;
 				}
 			}
-	
+
 			for(const [key, content] of Object.entries(timelineTarget.contents)){
 				if(!combinedContents[key]){
 					contentsList.push(content);
 					contentsBySortIndex[content.sortIndex] = content;
 				}
 			}
-	
+
 			contentsList.sort((a, b) => (b.sortIndex || "").localeCompare(a.sortIndex || ""));
 			newContentsData.contentsList.sort((a, b) => (b.sortIndex || "").localeCompare(a.sortIndex || ""));
-	
+
 			timelineTarget.contents = combinedContents;
 			timelineTarget.rawData = combinedRawData;
 			timelineTarget.contentsList = contentsList;
 			timelineTarget.contentsBySortIndex = contentsBySortIndex;
 			timelineTarget.newContents = newContentsData;
-	
-	
+
+
 			return timelineTarget;
 		}
-	
+
 		async #generateHeaders(endpoint, method){
 			if(!this.#challengeData.verificationCode){
 				await this.#getChallengeData();
@@ -7888,10 +7890,10 @@
 			}, this.#requestHeadersTemplate) : this.#requestHeadersTemplate;
 			return headers;
 		}
-	
+
 		#_getCursor(type, place, screenName = null){
 			let timelineTarget;
-	
+
 			if(['following', 'forYou', 'bookmarks', 'ownLists'].includes(type)){
 				timelineTarget = this.timelines[type];
 			}else if(['userMedia', 'userTweets', 'userTweetsAndReplies', 'userHighlights', 'userLikes', 'lists'].includes(type)){
@@ -7907,7 +7909,7 @@
 			}else{
 				throw new Error(`Invalid timeline type: ${type}`);
 			}
-	
+
 			if(place === 'refresh'){
 				timelineTarget.cursor = {
 					top: { entryId: null, sortIndex: null, value: null },
@@ -7915,11 +7917,11 @@
 				};
 				return null;
 			}
-	
+
 			const cursorObj = timelineTarget.cursor?.[place];
 			return cursorObj?.value ?? null;
 		}
-	
+
 		#updateApiRateLimit(response, endpoint){
 			const responseHeaders = response.responseHeaders;
 			if(!this.#apiRateLimit[endpoint]){
@@ -7934,44 +7936,55 @@
 				this.#apiRateLimit[endpoint].reset = responseHeaders.match(/x-rate-limit-reset: ?([\d]+)/)?.[1];
 			}
 		}
-	
+
 		#objectToUri(obj){
 			return encodeURIComponent(JSON.stringify(obj));
 		}
-	
+
 		// 非公開メソッド: challenge 情報を取得
 		async #getChallengeData(){
 			if(this.#challengeData.expires && this.#challengeData.expires > Date.now()){
 				return;
 			}
-			const response = await request({ url: 'https://x.com/home', respType: 'text' });
-			const html = response;
-			const parser = new DOMParser();
-			const doc = parser.parseFromString(html, "text/html");
-	
-			const metaTag = doc.querySelector('meta[name="twitter-site-verification"]');
-			const verificationCode = metaTag?.content;
-			if(!verificationCode) throw new Error("Verification code not found");
-	
-			const challengeCodeMatch = html.match(/"ondemand\.s":"(\w+)"/);
-			if(!challengeCodeMatch) throw new Error("Challenge code not found");
-	
-			const challengeCode = challengeCodeMatch[1];
-			const svgs = Array.from(doc.querySelectorAll('svg[id^="loading-x"]'));
-			const challengeAnimationSvgCodes = svgs.map(svg => svg.outerHTML);
-	
-			const jsUrl = `https://abs.twimg.com/responsive-web/client-web/ondemand.s.${challengeCode}a.js`;
-			const challengeJsCode = await request({ url: jsUrl, respType: 'text' });
-	
-			this.#challengeData = {
-				verificationCode,
-				challengeCode,
-				challengeJsCode,
-				challengeAnimationSvgCodes,
-				expires: Date.now() + 30 * 60 * 1000, // 30 min
-			};
+			if(this.#challengeDataPromise){
+				return await this.#challengeDataPromise;
+			}
+			this.#challengeDataPromise = (async () => {
+				const response = await request({ url: 'https://x.com/home', respType: 'text' });
+				const html = response;
+				const parser = new DOMParser();
+				const doc = parser.parseFromString(html, "text/html");
+
+				const metaTag = doc.querySelector('meta[name="twitter-site-verification"]');
+				const verificationCode = metaTag?.content;
+				if(!verificationCode) throw new Error("Verification code not found");
+
+				const challengeCodeMatch = html.match(/"ondemand\.s":"(\w+)"/);
+				if(!challengeCodeMatch) throw new Error("Challenge code not found");
+
+				const challengeCode = challengeCodeMatch[1];
+				const svgs = Array.from(doc.querySelectorAll('svg[id^="loading-x"]'));
+				const challengeAnimationSvgCodes = svgs.map(svg => svg.outerHTML);
+
+				const jsUrl = `https://abs.twimg.com/responsive-web/client-web/ondemand.s.${challengeCode}a.js`;
+				const challengeJsCode = await request({ url: jsUrl, respType: 'text' });
+
+				this.#challengeData = {
+					verificationCode,
+					challengeCode,
+					challengeJsCode,
+					challengeAnimationSvgCodes,
+					expires: Date.now() + 30 * 60 * 1000, // 30 min
+				};
+			})();
+
+			try{
+				await this.#challengeDataPromise;
+			}finally{
+				this.#challengeDataPromise = null;
+			}
 		}
-	
+
 		async getXctid(endpoint, method, force = false){
 			if(!this.#graphqlApiEndpoints[endpoint] || !force){
 				if(this.#endpointsAliases[endpoint]){
@@ -7997,11 +8010,11 @@
 			if(!this.#challengeData.verificationCode){
 				await this.#getChallengeData();
 			}
-	
+
 			if(!this.#solverIframe){
 				await this.#initSolverIframe();
 			}
-	
+
 			const id = await this.#solveTransactionId(endpoint, method);
 			if(!id){
 				return null;
@@ -8012,26 +8025,31 @@
 			};
 			return id;
 		}
-	
-		// iframe を生成して solver.html を読み込む
+
 		async #initSolverIframe(){
-			await this.#getChallengeData();
-	
-			return new Promise((resolve, reject) => {
-	
+			if(this.#solverIframe){
+				return; // すでにiframeがある
+			}
+			if(this.#initSolverIframePromise){
+				return await this.#initSolverIframePromise;
+			}
+
+			this.#initSolverIframePromise = new Promise(async (resolve) => {
+				await this.#getChallengeData();
+
 				const messageListener = (event) => {
 					if(event.source !== this.#solverIframe.contentWindow)return;
-					if(!event.data || event.data.action !== 'error' && event.data.action !== 'initError')return;
-	
+					if(!event.data || (event.data.action !== 'error' && event.data.action !== 'initError'))return;
+
 					window.removeEventListener("message", messageListener);
 					this.#solverIframe.remove();
 					this.#solverIframe = null;
 					console.error("Solver iframe error", event.data);
+					this.#initSolverIframePromise = null;
 					resolve(null);
-					//reject(new Error(`Solver iframe error: ${event.data.error || "Unknown"}`));
 				};
 				window.addEventListener("message", messageListener);
-	
+
 				if(typeof GM_addElement === 'function'){
 					this.#solverIframe = GM_addElement('iframe', {src: 'https://tweetdeck.dimden.dev/solver.html'});
 				}else{
@@ -8040,6 +8058,7 @@
 				}
 				this.#solverIframe.style.display = 'none';
 				document.body.appendChild(this.#solverIframe);
+
 				this.#solverIframe.onload = () => {
 					this.#solverIframe.contentWindow.postMessage({
 						action: 'init',
@@ -8047,21 +8066,23 @@
 						anims: this.#challengeData.challengeAnimationSvgCodes,
 						challenge: this.#challengeData.challengeJsCode
 					}, '*');
+					this.#initSolverIframePromise = null;
 					resolve();
 				};
-	
+
 				this.#solverIframe.onerror = () => {
 					window.removeEventListener("message", messageListener);
 					this.#solverIframe.remove();
 					this.#solverIframe = null;
+					this.#initSolverIframePromise = null;
 					console.error("Failed to load solver iframe");
 					resolve(null);
-					//reject(new Error("Failed to load solver iframe"));
 				};
 			});
+
+			return await this.#initSolverIframePromise;
 		}
-	
-	
+
 		// solver に path/method を送って XCTID を取得する
 		#solveTransactionId(path, method){
 			if(!this.#solverIframe){
@@ -8070,22 +8091,22 @@
 			}
 			return new Promise((resolve, reject) => {
 				const id = Date.now() + Math.random();
-	
+
 				const listener = (e) => {
 					if(e.source !== this.#solverIframe.contentWindow)return;
 					if(!e.data || e.data.id !== id)return;
-	
+
 					window.removeEventListener('message', listener);
-	
+
 					if(e.data.action === 'solved'){
 						resolve(e.data.result);
 					}else if(e.data.action === 'error'){
 						reject(new Error(e.data.error));
 					}
 				};
-	
+
 				window.addEventListener('message', listener);
-	
+
 				this.#solverIframe.contentWindow.postMessage({
 					action: 'solve',
 					id,
@@ -8094,7 +8115,7 @@
 				}, '*');
 			});
 		}
-	
+
 		// ここは https://github.com/dimdenGD/OldTweetDeck/blob/main/src/challenge.js から完全にパクった
 		#uuidV4(){
 			const uuid = new Array(36);
@@ -8107,7 +8128,7 @@
 			uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
 			return uuid.map((x) => x.toString(16)).join('');
 		}
-	
+
 		async #twitterApiInit(){
 			if(!this.#solverIframe){
 				this.#initSolverIframe();
@@ -8119,7 +8140,7 @@
 			}
 			this.#requestHeadersTemplate['x-twitter-client-uuid'] = this.#classSettings.uuid;
 		}
-	
+
 		debug(){
 			console.log("TwitterApi");
 			console.log({
@@ -8144,7 +8165,7 @@
 			});
 		}
 	}
-	
+
 
 	async function displayChangelog(currentScriptVersion, lastScriptVersion){
 		if(document.getElementById('changelogOverlay') || scriptSettings.makeTwitterLittleUseful.displayChangelog === false)return;
