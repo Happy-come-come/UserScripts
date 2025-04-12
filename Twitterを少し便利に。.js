@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.1
+// @version			2.1.2.2
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -7034,7 +7034,7 @@
 			});
 			const isSuccess = (response.status === 200);
 			if(isSuccess){
-				this.#processgraphQL(response.response.data.threaded_conversation_with_injections_v2.instructions[0].entries);
+				this.#processgraphQL(response.response.data.threaded_conversation_with_injections.instructions[0].entries);
 				this.#updateApiRateLimit(response, 'TweetDetail');
 				return this.tweetsData[tweetId];
 			}else{
@@ -7241,7 +7241,7 @@
 				console.error("UserTweets API error", response);
 				throw new Error(`Failed to fetch`);
 			}
-			const instructions = response.response.data.user.result.timeline_v2.timeline.instructions;
+			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
 			this.#processTimeline({entries: timelineData, type: 'userTweets', place: place, screenName: screenName});
@@ -7295,7 +7295,7 @@
 				console.error("UserTweetsAndReplies API error", response);
 				throw new Error(`Failed to fetch`);
 			}
-			const instructions = response.response.data.user.result.timeline_v2.timeline.instructions;
+			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
 			this.#processTimeline({entries: timelineData, type: 'userTweetsAndReplies', place: place, screenName: screenName});
@@ -7345,7 +7345,7 @@
 				console.error("UserHighlights API error", response);
 				throw new Error(`Failed to fetch`);
 			}
-			const instructions = response.response.data.user.result.timeline_v2.timeline.instructions;
+			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
 			this.#processTimeline({entries: timelineData, type: 'userHighlights', place: place, screenName: screenName});
@@ -7400,7 +7400,7 @@
 				console.error("UserMedia API error", response);
 				throw new Error(`Failed to fetch`);
 			}
-			const instructions = response.response.data.user.result.timeline_v2.timeline.instructions;
+			const instructions = response.response.data.user.result.timeline_.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []);
 			return this.#processTimeline({entries: timelineData, type: 'userMedia', screenName: screenName});
@@ -7495,7 +7495,7 @@
 				console.error("ListsManagementPageTimeline API error", response);
 				throw new Error(`Failed to fetch`);
 			}
-			const instructions = response.response.data.user.result.timeline_v2.timeline.instructions;
+			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
 			this.#processTimeline({entries: timelineData, type: 'ownLists', place: place});
@@ -7608,7 +7608,7 @@
 				console.error("ListTimeline API error", response);
 				throw new Error(`Failed to fetch`);
 			}
-			const instructions = response.response.data.list.result.timeline_v2.timeline.instructions;
+			const instructions = response.response.data.list.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
 			this.#processTimeline({entries: timelineData, type: 'lists', place: place});
@@ -7747,7 +7747,7 @@
 						if(newRawData[entry.entryId].item?.itemContent){
 							newRawData[entry.entryId].item.itemContent.tweet_results = this.tweetsData[tweetId];
 						}
-						const controllerData = (entry.item ?? entry.content)?.itemContent.clientEventInfo?.details?.timelinesDetails?.controllerData;
+						const controllerData = (entry.item ?? entry.content)?.clientEventInfo?.details?.timelinesDetails?.controllerData;
 
 						newContents[entry.entryId] = {
 							sortIndex: newRawData[entry.entryId].sortIndex,
@@ -7761,18 +7761,18 @@
 					case entry.entryId.startsWith('profile-conversation'): {
 						const tweets = [];
 						newRawData[entry.entryId] = entry;
-						newRawData[entry.entryId].content.items.forEach(item => {
+						newRawData[entry.entryId].content.items.forEach((item,index) => {
 							if(item.item?.itemContent?.tweet_results){
 								const tweetId = item.item.itemContent.tweet_results.result.rest_id;
-								newRawData[entry.entryId].content.items[item.entryId].content.itemContent.tweet_results = this.tweetsData[tweetId];
+								newRawData[entry.entryId].content.items[index].item.itemContent.tweet_results = this.tweetsData[tweetId];
 								tweets.push(tweetId);
 							}
 						});
 						newContents[entry.entryId] = {
 							sortIndex: entry.sortIndex,
 							entryId: entry.entryId,
-							tweetDisplayType: entry.item?.itemContent.tweetDisplayType || entry.content?.itemContent.tweetDisplayType,
-							controllerData: entry.item?.itemContent.clientEventInfo?.details?.timelinesDetails?.controllerData,
+							tweetDisplayType: entry.content?.displayType || entry.item?.itemContent.tweetDisplayType || entry.content?.itemContent?.tweetDisplayType,
+							controllerData: entry.content?.clientEventInfo?.details?.timelinesDetails?.controllerData,
 							tweetData: tweets.map(tweetId => this.tweetsData[tweetId]),
 						}
 						break;
