@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.1.9
+// @version			2.1.1.10
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -56,7 +56,6 @@
 	const debug = debugging ? console.log : ()=>{};
 	const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 	function isMobileDevice(){
-		const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 	}
 	const isMobile = isMobileDevice();
