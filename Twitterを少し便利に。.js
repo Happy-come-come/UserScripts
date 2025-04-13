@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.2
+// @version			2.1.2.3
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -7774,6 +7774,7 @@
 							tweetDisplayType: entry.content?.displayType || entry.item?.itemContent.tweetDisplayType || entry.content?.itemContent?.tweetDisplayType,
 							controllerData: entry.content?.clientEventInfo?.details?.timelinesDetails?.controllerData,
 							tweetData: tweets.map(tweetId => this.tweetsData[tweetId]),
+							allTweetIds: entry.content?.metadata?.conversationMetadata?.allTweetIds || entry.item?.metadata?.conversationMetadata?.allTweetIds,
 						}
 						break;
 					}
