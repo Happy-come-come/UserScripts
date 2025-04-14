@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.3
+// @version			2.1.2.4
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -610,6 +610,7 @@
 	async function webhookBringsTweetsToDiscord(tweetNodes){
 		const textData = envText.webhookBringsTweetsToDiscord;
 		const thisScriptSettings = scriptSettings['webhookBringsTweetsToDiscord'];
+		const colors = new Colors();
 		tweetNodes.forEach(function(tweetNode){
 			const element = tweetNode.node;
 			if(element.querySelector(".quickDimg"))return;
@@ -617,11 +618,20 @@
 			const fotter = element.querySelector('div[id][role="group"]');
 			const flexContainer = document.createElement('div');
 			flexContainer.classList.add('quickDimg');
-			flexContainer.style.display = 'flex';
+			Object.assign(flexContainer.style, {
+				'display': 'flex',
+			});
 
 			// 1つ目のドロップダウン（サーバー選択）
 			const dropdownSelectServer = document.createElement('select');
 			dropdownSelectServer.className = "quickDimgPullDown quickDimgPullDown1";
+			Object.assign(dropdownSelectServer.style, {
+				'backgroundColor': colors.get("dropdownBackgroundColor"),
+				'color': colors.get("dropdownFontColor"),
+				'border': `1px solid ${colors.get("dropdownBorderColor")}`,
+				'borderRadius': '2px',
+				'padding': '0px 5px',
+			});
 			thisScriptSettings.data.forEach(d=>{
 				const option = document.createElement('option');
 				option.value = d.value;
@@ -638,6 +648,13 @@
 
 			const dropdownSendImage = document.createElement('select');
 			dropdownSendImage.className = "quickDimgPullDown quickDimgPullDown2";
+			Object.assign(dropdownSendImage.style, {
+				'backgroundColor': colors.get("dropdownBackgroundColor"),
+				'color': colors.get("dropdownFontColor"),
+				'border': `1px solid ${colors.get("dropdownBorderColor")}`,
+				'borderRadius': '2px',
+				'padding': '0px 5px',
+			});
 			for(let i=1; i<=5; i++){
 				const option = document.createElement('option');
 				option.value = i;
@@ -654,6 +671,13 @@
 			});
 			const dropdownPostQuote = document.createElement('select');
 			dropdownPostQuote.className = "quickDimgPullDown quickDimgPullDown3";
+			Object.assign(dropdownPostQuote.style, {
+				'backgroundColor': colors.get("dropdownBackgroundColor"),
+				'color': colors.get("dropdownFontColor"),
+				'border': `1px solid ${colors.get("dropdownBorderColor")}`,
+				'borderRadius': '2px',
+				'padding': '0px 5px',
+			});
 			const defaultOption = document.createElement('option');
 			defaultOption.value = "false";
 			defaultOption.textContent = textData.withQuotedTweet;
@@ -677,6 +701,13 @@
 			const button = document.createElement('button');
 			button.className = "quickDimgButton";
 			button.textContent = textData.submit;
+			Object.assign(button.style, {
+				'backgroundColor': colors.get("buttonBackgroundColor"),
+				'color': colors.get("buttonFontColor"),
+				'border': `2px solid ${colors.get("buttonBorderColor")}`,
+				'borderRadius': '2px',
+				'padding': '0px 5px',
+			});
 			flexContainer.appendChild(button);
 
 			function reEnableButton(){
@@ -1341,6 +1372,13 @@
 			if(node.querySelector(".sneakilyFavorite") || ! node.querySelector(envSelector.retweeted) || !node.querySelector('[data-testid="like"]'))return;
 			const tweetLink = element.link;
 			const button = document.createElement('button');
+			Object.assign(button.style, {
+				'backgroundColor': colors.get("buttonBackgroundColor"),
+				'color': colors.get("buttonFontColor"),
+				'border': `2px solid ${colors.get("buttonBorderColor")}`,
+				'borderRadius': '2px',
+				'padding': '0px 5px',
+			});
 			const fotter = node.querySelector('div[id][role="group"]');
 			const likeElement = fotter.querySelector('[data-testid="like"]');
 			button.textContent = envText.sneakilyFavorite.favorite;
@@ -4203,6 +4241,12 @@
 				"menuHoverEffectLight": ['rgb(247, 249, 249)', 'rgb(30, 39, 50)', 'rgb(22, 24, 28)'],//設定画面のホバーエフェクト
 				"retweeted": ['rgb(0, 186, 124)', 'rgb(0, 186, 124)', 'rgb(0, 186, 124)'],
 				"favorited": ['rgb(249, 24, 128)', 'rgb(249, 24, 128)', 'rgb(249, 24, 128)'],
+				"dropdownBackgroundColor": ['rgb(255, 255, 255)', 'rgb(59, 59, 59)', 'rgb(59, 59, 59)'],
+				"dropdownFontColor": ['rgb(0, 0, 0)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)'],
+				"dropdownBorderColor": ['rgb(118, 118, 118)', 'rgb(133, 133, 133)', 'rgb(133, 133, 133)'],
+				"buttonBackgroundColor": ['rgb(239, 239, 239)', 'rgb(107, 107, 107)', 'rgb(107, 107, 107)'],
+				"buttonFontColor": ['rgb(0, 0, 0)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)'],
+				"buttonBorderColor": ['rgb(239, 239, 239)', 'rgb(107, 107, 107)', 'rgb(107, 107, 107)'],
 			};
 		}
 		get(colorName){
