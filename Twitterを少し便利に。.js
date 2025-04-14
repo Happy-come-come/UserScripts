@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.5
+// @version			2.1.2.6
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -620,14 +620,7 @@
 
 			// 1つ目のドロップダウン（サーバー選択）
 			const dropdownSelectServer = document.createElement('select');
-			dropdownSelectServer.className = "quickDimgPullDown quickDimgPullDown1";
-			Object.assign(dropdownSelectServer.style, {
-				'backgroundColor': colors.get("dropdownBackgroundColor"),
-				'color': colors.get("dropdownFontColor"),
-				'border': `1px solid ${colors.get("dropdownBorderColor")}`,
-				'borderRadius': '2px',
-				'padding': '0px 5px',
-			});
+			dropdownSelectServer.className = "quickDimgPullDown quickDimgPullDown1 MTLU_dropdown";
 			thisScriptSettings.data.forEach(d=>{
 				const option = document.createElement('option');
 				option.value = d.value;
@@ -643,14 +636,7 @@
 			});
 
 			const dropdownSendImage = document.createElement('select');
-			dropdownSendImage.className = "quickDimgPullDown quickDimgPullDown2";
-			Object.assign(dropdownSendImage.style, {
-				'backgroundColor': colors.get("dropdownBackgroundColor"),
-				'color': colors.get("dropdownFontColor"),
-				'border': `1px solid ${colors.get("dropdownBorderColor")}`,
-				'borderRadius': '2px',
-				'padding': '0px 5px',
-			});
+			dropdownSendImage.className = "quickDimgPullDown quickDimgPullDown2 MTLU_dropdown";
 			for(let i=1; i<=5; i++){
 				const option = document.createElement('option');
 				option.value = i;
@@ -666,14 +652,7 @@
 				event.stopPropagation();
 			});
 			const dropdownPostQuote = document.createElement('select');
-			dropdownPostQuote.className = "quickDimgPullDown quickDimgPullDown3";
-			Object.assign(dropdownPostQuote.style, {
-				'backgroundColor': colors.get("dropdownBackgroundColor"),
-				'color': colors.get("dropdownFontColor"),
-				'border': `1px solid ${colors.get("dropdownBorderColor")}`,
-				'borderRadius': '2px',
-				'padding': '0px 5px',
-			});
+			dropdownPostQuote.className = "quickDimgPullDown quickDimgPullDown3 MTLU_dropdown";
 			const defaultOption = document.createElement('option');
 			defaultOption.value = "false";
 			defaultOption.textContent = textData.withQuotedTweet;
@@ -695,15 +674,8 @@
 
 			// ボタンを作成
 			const button = document.createElement('button');
-			button.className = "quickDimgButton";
+			button.className = "quickDimgButton MTLU_button";
 			button.textContent = textData.submit;
-			Object.assign(button.style, {
-				'backgroundColor': colors.get("buttonBackgroundColor"),
-				'color': colors.get("buttonFontColor"),
-				'border': `2px solid ${colors.get("buttonBorderColor")}`,
-				'borderRadius': '2px',
-				'padding': '0px 5px',
-			});
 			flexContainer.appendChild(button);
 
 			function reEnableButton(){
@@ -1368,19 +1340,12 @@
 			if(node.querySelector(".sneakilyFavorite") || ! node.querySelector(envSelector.retweeted) || !node.querySelector('[data-testid="like"]'))return;
 			const tweetLink = element.link;
 			const button = document.createElement('button');
-			Object.assign(button.style, {
-				'backgroundColor': colors.get("buttonBackgroundColor"),
-				'color': colors.get("buttonFontColor"),
-				'border': `2px solid ${colors.get("buttonBorderColor")}`,
-				'borderRadius': '2px',
-				'padding': '0px 5px',
-			});
 			const fotter = node.querySelector('div[id][role="group"]');
 			const likeElement = fotter.querySelector('[data-testid="like"]');
 			button.textContent = envText.sneakilyFavorite.favorite;
 			button.style.fontSize = '0.7em';
 			button.style.whiteSpace = 'nowrap';
-			button.classList.add('sneakilyFavorite');
+			button.className = 'sneakilyFavorite MTLU_button';
 			button.addEventListener('click',async function(event){
 				this.disabled = true;
 				const status = await twitterApi.favoriteTweet(extractTweetId(tweetLink));
@@ -1863,7 +1828,7 @@
 	}
 
 	function whenChangeThemeMode(){
-
+		addStyleSheet();
 	}
 
 	async function loadSettings(){
@@ -1925,6 +1890,70 @@
 
 	function _i18n(){
 		envText = Text[scriptSettings?.makeTwitterLittleUseful?.language || getCookie('lang')] || Text.en;
+	}
+
+	function addStyleSheet(){
+		let style = document.querySelector('style[scriptName="makeTwitterLittleUseful"]');
+		if(!style){
+			style = document.createElement('style');
+			style.setAttribute('scriptName', 'makeTwitterLittleUseful');
+			document.head.appendChild(style);
+		}
+
+		style.innerHTML = `
+			.MTLU_button {
+				background-color: ${colors.get("buttonBackgroundColor")};
+				color: ${colors.get("buttonFontColor")};
+				border: 2px solid ${colors.get("buttonBorderColor")};
+				border-radius: 2px;
+				padding: 0px 5px;
+				cursor: pointer;
+				transition: background-color 0.2s;
+			}
+			.MTLU_button:hover {
+				background-color: ${colors.getWithAlpha("buttonBackgroundColor", 0.8)};
+			}
+			.MTLU_button:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+
+			.MTLU_dropdown {
+				background-color: ${colors.get("dropdownBackgroundColor")};
+				color: ${colors.get("dropdownFontColor")};
+				border: 1px solid ${colors.get("dropdownBorderColor")};
+				border-radius: 2px;
+				padding: 0px 5px;
+			}
+			.MTLU_dropdown:hover {
+				background-color: ${colors.getWithAlpha("dropdownBackgroundColor", 0.9)};
+			}
+
+			.MTLU_input {
+				background-color: ${colors.get("dropdownBackgroundColor")};
+				color: ${colors.get("dropdownFontColor")};
+				border: 1px solid ${colors.get("dropdownBorderColor")};
+				border-radius: 2px;
+				transition: background-color 0.2s, border-color 0.2s;
+				box-sizing: border-box;
+			}
+
+			.MTLU_input:hover {
+				background-color: ${colors.getWithAlpha("dropdownBackgroundColor", 0.9)};
+			}
+
+			.MTLU_input:focus {
+				border-color: ${colors.get("twitterBlue")};
+				outline: none;
+				background-color: ${colors.getWithAlpha("dropdownBackgroundColor", 0.95)};
+			}
+
+			.MTLU_input:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+				background-color: ${colors.getWithAlpha("dropdownBackgroundColor", 0.5)};
+			}
+		`;
 	}
 
 	function getCookie(name){
@@ -2717,6 +2746,7 @@
 		alertMessage.innerHTML = message;
 
 		const closeButton = document.createElement('button');
+		closeButton.className = 'MTLU_button';
 		closeButton.textContent = envText.makeTwitterLittleUseful.close;
 		closeButton.addEventListener('click', () => {
 			document.body.removeChild(overlay);
@@ -3585,6 +3615,7 @@
 				nameLabel.style.fontSize = "1.2em";
 				nameLabel.textContent = "Name: ";
 				const nameInput = document.createElement('input');
+				nameInput.className = "MTLU_input";
 				nameInput.setAttribute("webhookinput", "name");
 				nameInput.style.maxWidth = "10em";
 				nameInput.value = name;
@@ -3597,6 +3628,7 @@
 				urlLabel.style.fontSize = "1.2em";
 				urlLabel.textContent = "Webhook: "
 				const urlInput = document.createElement('input');
+				urlInput.className = "MTLU_input";
 				urlInput.setAttribute("webhookinput", "webhook");
 				urlInput.style.maxWidth = "10em";
 				urlInput.value = webhook;
@@ -3846,7 +3878,9 @@
 				page.appendChild(createSettingsElement({type: 'text', text: title, size: "1.5em", weight: "400", position: "left", isHTML: false},).container);
 				const showTweetDataContainer = createSettingsElement({type: 'container'});
 				const showTweetDataTextBox = document.createElement('input');
+				showTweetDataTextBox.className = "MTLU_input";
 				const showTweetDataButton = document.createElement('button');
+				showTweetDataButton.className = "MTLU_button";
 				showTweetDataButton.addEventListener('click', ()=>{
 					eventFunc(showTweetDataTextBox.value);
 				});
@@ -3952,6 +3986,7 @@
 				input.type = "file";
 
 				const button = document.createElement('button');
+				button.className = "MTLU_button";
 				button.style.width = width;
 				button.style.height = height;
 				button.textContent = text;
@@ -3971,6 +4006,7 @@
 			function button(){
 				const {position = 'center', width = "1.5em", height = "1.5em", text = "", event = ()=>{}} = setting;
 				const button = document.createElement('button');
+				button.className = "MTLU_button";
 				button.style.width = width;
 				button.style.height = height;
 				//button.style.fontSize = height;
@@ -4064,6 +4100,7 @@
 
 			function textBox(){
 				const element = document.createElement('input');
+				element.className = "MTLU_input";
 				element.setAttribute('needSave', "true");
 				element.setAttribute('category', `${setting.category}`);
 				element.setAttribute('type', setting.type);
@@ -4157,6 +4194,7 @@
 				element.setAttribute('category', `${setting.category}`);
 				element.setAttribute('type', setting.type);
 				element.setAttribute('settingID', setting.id);
+				element.className = 'MTLU_dropdown';
 				setting.option.forEach((opt, index) => {
 					const option = document.createElement('option');
 					option.value = opt.value;
@@ -7099,7 +7137,7 @@
 			});
 			const isSuccess = (response.status === 200);
 			if(isSuccess){
-				this.#processgraphQL(response.response.data.threaded_conversation_with_injections.instructions[0].entries);
+				this.#processgraphQL(response.response.data.threaded_conversation_with_injections_v2.instructions[0].entries);
 				this.#updateApiRateLimit(response, 'TweetDetail');
 				return this.tweetsData[tweetId];
 			}else{
@@ -8490,6 +8528,7 @@
 		footerContainer.appendChild(neverDisplayContainer);
 
 		const closeButton = document.createElement('button');
+		closeButton.className = "MTLU_button";
 		closeButton.setAttribute('MTLU-Id', 'closeButton');
 		closeButton.textContent = textData.closeButtonText;
 		Object.assign(closeButton.style, {
@@ -8505,6 +8544,7 @@
 		footerContainer.appendChild(closeButton);
 
 		const openSettingsButton = document.createElement('button');
+		openSettingsButton.className = "MTLU_button";
 		openSettingsButton.setAttribute('MTLU-Id', 'openSettingsButton');
 		openSettingsButton.textContent = textData.openSettingsButtonText;
 		Object.assign(openSettingsButton.style, {
