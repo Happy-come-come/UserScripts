@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.4
+// @version			2.1.2.5
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -67,9 +67,6 @@
 	let scriptDataStore = {};
 	await loadScriptDataStore();
 	const sessionData = {};
-	const fetchedTweets = {};
-	const fetchedTweetsUserData = {};
-	const fetchedTweetsUserDataByUserName = {};
 	const commonSelectors = {
 		'tweetField': 'article[data-testid="tweet"]',
 		'retweeted': '[data-testid="socialContext"]',
@@ -308,9 +305,9 @@
 				"showScriptSettings": "スクリプトの設定(scriptSettings)を表示",
 				"showDataStore": "データストア(scriptDataStore)を表示",
 				"showSessionData": "セッションデータ(sessionData)を表示",
-				"showFetchedTweets": "セッションで取得したツイートデータ(fetchedTweets)一覧を表示",
-				"showFetchedTweetsUserData": "セッションで取得したユーザデータ(fetchedTweetsUserData)のユーザデータ一覧を表示",
-				"showFetchedTweetsUserDataByUserName": "セッションで取得したユーザデータ(fetchedTweetsUserDataByUserName)のユーザデータをスクリーンネームから表示",
+				"showTweetsData": "セッションで取得したツイートデータ(tweetsData)一覧を表示",
+				"showTweetsUserData": "セッションで取得したユーザデータ(tweetsUserData)のユーザデータ一覧を表示",
+				"showTweetsUserDataByUserName": "セッションで取得したユーザデータ(tweetsUserDataByUserName)のユーザデータをスクリーンネームから表示",
 				"show": "表示",
 				"import": "インポート",
 				"invaildTweetId": "無効なツイートIDです",
@@ -505,9 +502,9 @@
 				"showScriptSettings": "Show Script Settings (scriptSettings)",
 				"showDataStore": "Show Data Store (scriptDataStore)",
 				"showSessionData": "Show Session Data (sessionData)",
-				"showFetchedTweets": "Show List of Fetched Tweets (fetchedTweets)",
-				"showFetchedTweetsUserData": "Show List of Fetched User Data (fetchedTweetsUserData)",
-				"showFetchedTweetsUserDataByUserName": "Show User Data by Screen Name (fetchedTweetsUserDataByUserName)",
+				"showTweetsData": "Show List of Fetched Tweets (tweetsData)",
+				"showTweetsUserData": "Show List of Fetched User Data (tweetsUserData)",
+				"showTweetsUserDataByUserName": "Show User Data by Screen Name (tweetsUserDataByUserName)",
 				"show": "Show",
 				"import": "Import",
 				"invaildTweetId": "Invalid Tweet ID",
@@ -521,7 +518,6 @@
 
 	let envText = {};
 	_i18n();
-	let twitterApi;
 	const functions = {
 		"webhookBringsTweetsToDiscord": {
 			"function": webhookBringsTweetsToDiscord,
@@ -760,12 +756,12 @@
 					try{
 						const res = await request({url: `https://discord.com/api/webhooks/${atob(selectedServer)}`, dontUseGenericHeaders: true, method: 'POST', body: formData, anonymous: true, onlyResponse: false});
 						if(res.statusText == "Bad Request"){
-							console.log({user: fetchedTweetsUserDataByUserName, tweets: fetchedTweets});
+							console.log({user: twitterApi.tweetsUserDataByUserName, tweets: twitterApi.tweetsData});
 							customAlert(`${textData.postFailedMssage}`,payload.embeds[0].url);
 						}
 					}catch(error){
 						customAlert(`${textData.postFailedMssage}`,payload.embeds[0].url);
-						console.log({user: fetchedTweetsUserDataByUserName, tweets: fetchedTweets});
+						console.log({user: twitterApi.tweetsUserDataByUserName, tweets: twitterApi.tweetsData});
 						console.log(error);
 						throw(error);
 					}
@@ -1437,7 +1433,7 @@
 				numberSpan.className = 'indexNum';
 				svgElement.parentNode.appendChild(numberSpan);
 			});
-			if(!fetchedTweets[mediaNodes[0].querySelector('a').href.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/)[1]])await twitterApi.getUserMedia(screenName);
+			if(!twitterApi.tweetsData[mediaNodes[0].querySelector('a').href.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/)[1]])await twitterApi.getUserMedia(screenName);
 			mediaNodes.forEach(async n=>{
 				n.classList.add('Show_all_Medias_checked');
 				const parent = n.parentNode;
@@ -1497,7 +1493,7 @@
 				}
 			});
 			if(mediaNodes.length === 0)return;
-			if(!fetchedTweets[mediaNodes[0].querySelector('a').href.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/)[1]])await twitterApi.getUserMedia(extractUserName(currentUrl));
+			if(!twitterApi.tweetsData[mediaNodes[0].querySelector('a').href.match(/[\w]{1,}\.com\/[^/]+\/status\/(\d+)/)[1]])await twitterApi.getUserMedia(extractUserName(currentUrl));
 			const processNode = async (n)=>{
 				const mediaLinkNode = n.querySelector('a');
 				const tweetID = extractTweetId(mediaLinkNode.href);
@@ -1842,6 +1838,34 @@
 		observer.observe(targetPlace, config);
 	}
 
+	async function updateThemeMode(func = ()=>{}){
+		sessionData.themeMode = {
+			themeCode: null,
+			themeNum: Number(getCookie('night_mode')) || 0
+		}
+		func();
+		const color = ["#FFFFFF","#15202B","#000000"];
+		const themeMeta = await waitElementAndGet({query: 'head > meta[name="theme-color"]'});
+		if(!themeMeta)return "done";
+		const themeColor = themeMeta.content;
+		const darkModeNum = color.indexOf(themeColor);
+		sessionData.themeMode.themeCode = themeColor;
+		sessionData.themeMode.themeNum = darkModeNum !== -1 ? darkModeNum : null;
+		func();
+		const observer = new MutationObserver(mutations => {
+			const themeColor = themeMeta.content;
+			const darkModeNum = color.indexOf(themeColor);
+			sessionData.themeMode.themeCode = themeColor;
+			sessionData.themeMode.themeNum = darkModeNum !== -1 ? darkModeNum : null;
+			func();
+		});
+		observer.observe(themeMeta, {childList: false, subtree: false, attributes: true});
+	}
+
+	function whenChangeThemeMode(){
+
+	}
+
 	async function loadSettings(){
 		const storedSettings = await getFromIndexedDB('makeTwitterLittleUseful', 'settings');
 		if(!storedSettings){
@@ -2030,17 +2054,6 @@
 			bubbles: true
 		});
 		element.dispatchEvent(event);
-	}
-
-	function getDarkMode(){
-		try{
-			const color = ["#FFFFFF","#15202B","#000000"];
-			const themeColor = document.querySelector('head > meta[name="theme-color"]').content;
-			const darkModeNum = color.indexOf(themeColor);
-			return darkModeNum !== -1 ? darkModeNum : null;
-		}catch{
-			return null;
-		}
 	}
 
 	function createLinkElement(href, text, additionalClass = ""){
@@ -3784,12 +3797,12 @@
 				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{console.log(settingText.coutionOpenDataStore);console.log(scriptDataStore)}},
 				{type: 'text', text: settingText.showSessionData, size: "1em", weight: "400", position: "left", isHTML: false},
 				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{console.log(sessionData)}},
-				{type: 'text', text: settingText.showFetchedTweets, size: "1em", weight: "400", position: "left", isHTML: false},
-				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{console.log(fetchedTweets)}},
-				{type: 'text', text: settingText.showFetchedTweetsUserData, size: "1em", weight: "400", position: "left", isHTML: false},
-				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{console.log(fetchedTweetsUserData)}},
-				{type: 'text', text: settingText.showFetchedTweetsUserDataByUserName, size: "1em", weight: "400", position: "left", isHTML: false},
-				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{console.log(fetchedTweetsUserDataByUserName)}},
+				{type: 'text', text: settingText.showTweetsData, size: "1em", weight: "400", position: "left", isHTML: false},
+				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{console.log(twitterApi.tweetsData)}},
+				{type: 'text', text: settingText.showTweetsUserData, size: "1em", weight: "400", position: "left", isHTML: false},
+				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{console.log(twitterApi.tweetsUserData)}},
+				{type: 'text', text: settingText.showTweetsUserDataByUserName, size: "1em", weight: "400", position: "left", isHTML: false},
+				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{console.log(twitterApi.tweetsUserDataByUserName)}},
 				{type: 'text', text: settingText.importPixivLinkCorrection, size: "1em", weight: "400", position: "left", isHTML: false},
 				{type: 'file', text: settingText.import, width: "fit-content", event: impoertPixivLinkCorrection},
 			];
@@ -3820,7 +3833,7 @@
 					console.error(settingText.invalidUserId);
 					return;
 				}
-				const userData = await fetchedTweetsUserData[value];
+				const userData = await twitterApi.tweetsUserData[value];
 				console.log(userData);
 			});
 
@@ -4228,17 +4241,16 @@
 	// ###クラス###
 	// 今までクラスとかあんまり使ったことなかったから使い方間違ってたら教えてちょ
 	class Colors {
-		constructor(darkMode = getDarkMode()){
-			this.darkMode = darkMode;
+		constructor(){
 			this.colors = {
 				// [white, darkBlue, black]
-				"fontColor": ['rgb(15, 20, 25)', 'rgb(247, 249, 249)', 'rgb(231, 233, 234)'],//ツイートの文字色など
-				"fontColorDark": ['rgb(83, 100, 113)', 'rgb(139, 152, 165)', 'rgb(113, 118, 123)'],//いいねの数など
+				"fontColor": ['rgb(15, 20, 25)', 'rgb(247, 249, 249)', 'rgb(231, 233, 234)'], // ツイートの文字色など
+				"fontColorDark": ['rgb(83, 100, 113)', 'rgb(139, 152, 165)', 'rgb(113, 118, 123)'], // いいねの数など
 				"backgroundColor": ['rgba(255, 255, 255, 1.00)', 'rgb(21, 32, 43)', 'rgba(0, 0, 0, 1.00)'],
-				"borderColor": ['rgb(239, 243, 244)', 'rgb(56, 68, 77)', 'rgb(47, 51, 54)'],//ツイートのボーダー色など
+				"borderColor": ['rgb(239, 243, 244)', 'rgb(56, 68, 77)', 'rgb(47, 51, 54)'], // ツイートのボーダー色など
 				"twitterBlue": ['rgb(29, 155, 240)', 'rgb(29, 155, 240)', 'rgb(29, 155, 240)'],
-				"menuHoverEffect": ['rgba(15, 20, 25, 0.1)', 'rgba(247, 249, 249, 0.1)', 'rgba(231, 233, 234, 0.1)'],//一番左のメニュー等のホバーエフェクト
-				"menuHoverEffectLight": ['rgb(247, 249, 249)', 'rgb(30, 39, 50)', 'rgb(22, 24, 28)'],//設定画面のホバーエフェクト
+				"menuHoverEffect": ['rgba(15, 20, 25, 0.1)', 'rgba(247, 249, 249, 0.1)', 'rgba(231, 233, 234, 0.1)'], // 一番左のメニュー等のホバーエフェクト
+				"menuHoverEffectLight": ['rgb(247, 249, 249)', 'rgb(30, 39, 50)', 'rgb(22, 24, 28)'], // 設定画面のホバーエフェクト
 				"retweeted": ['rgb(0, 186, 124)', 'rgb(0, 186, 124)', 'rgb(0, 186, 124)'],
 				"favorited": ['rgb(249, 24, 128)', 'rgb(249, 24, 128)', 'rgb(249, 24, 128)'],
 				"dropdownBackgroundColor": ['rgb(255, 255, 255)', 'rgb(59, 59, 59)', 'rgb(59, 59, 59)'],
@@ -4249,20 +4261,29 @@
 				"buttonBorderColor": ['rgb(239, 239, 239)', 'rgb(107, 107, 107)', 'rgb(107, 107, 107)'],
 			};
 		}
-		get(colorName){
-			return this.colors[colorName][this.darkMode];
+
+		/**
+		* 指定されたカラーパレットから現在のテーマの色を返します
+		* @param {string} colorName - 色名（例: "fontColor"）
+		* @param {number} [darkMode] - テーマ番号（0=ライト, 1=ダーク, 2=ブラック）
+		* @returns {string} - 色のRGB文字列（例: "rgb(255,255,255)"）
+		*/
+		get(colorName, darkMode = sessionData.themeMode.themeNum){
+			return this.colors[colorName][darkMode];
 		}
-		getWithAlpha(colorName, alpha){
-			return `rgba(${this.colors[colorName][this.darkMode].match(/\d+/g).join(", ")}, ${alpha})`;
-		}
-		liveGet(colorName){
-			return this.colors[colorName][getDarkMode()];
-		}
-		liveGetWithAlpha(colorName, alpha){
-			return `rgba(${this.colors[colorName][getDarkMode()].match(/\d+/g).join(", ")}, ${alpha})`;
+
+		/**
+		* 指定した色にアルファ値（透過）を加えたRGBA形式を返します
+		* @param {string} colorName - 色名（例: "borderColor"）
+		* @param {number} alpha - 透過度（0.0〜1.0）
+		* @param {number} [darkMode] - テーマ番号（省略時は現在のテーマ）
+		* @returns {string} - RGBA文字列
+		*/
+		getWithAlpha(colorName, alpha, darkMode = sessionData.themeMode.themeNum){
+			return `rgba(${this.colors[colorName][darkMode].match(/\d+/g).join(", ")}, ${alpha})`;
 		}
 	}
-
+	const colors = new Colors();
 
 	class DiscordEmbedMaker {
 		// 参考: https://github.com/discordjs/discord.js/tree/main/packages/builders/src/messages/embed
@@ -8210,7 +8231,7 @@
 			});
 		}
 	}
-
+	const twitterApi = new TwitterApi();
 
 	async function displayChangelog(currentScriptVersion, lastScriptVersion){
 		if(document.getElementById('changelogOverlay') || scriptSettings.makeTwitterLittleUseful.displayChangelog === false)return;
@@ -8517,8 +8538,8 @@
 		whenChangeScriptVersion();
 		window.addEventListener("scroll", update);
 		locationChange(document.getElementById('react-root'));
+		updateThemeMode(whenChangeThemeMode);
 		fetchUserData();
-		twitterApi = new TwitterApi();
 		main();
 		getPixivLinkCollection();
 		addEventToHomeButton();
