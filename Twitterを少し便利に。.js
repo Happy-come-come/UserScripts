@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.7
+// @version			2.1.2.8
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -6876,6 +6876,7 @@
 		#graphqlFeatures;
 		#initSolverIframePromise = null;
 		#challengeDataPromise = null;
+		#isSolverIframeReady = false;
 		#pendingTweetRequests = {};
 		#pendingUserRequests = {};
 		#pendingTLRequests = {};
@@ -7990,8 +7991,9 @@
 				await this.#getChallengeData();
 			}
 			if(!this.#solverIframe){
-				await this.#initSolverIframe();
+				this.#initSolverIframe();
 			}
+			if(!this.#isSolverIframeReady)return this.#requestHeadersTemplate;
 			const id = await this.#solveTransactionId(endpoint, method);
 			const headers = id ? Object.assign({
 				'x-client-transaction-id': id,
@@ -8094,6 +8096,7 @@
 		}
 
 		async getXctid(endpoint, method, force = false){
+			if(!this.#isSolverIframeReady)return null;
 			if(!this.#graphqlApiEndpoints[endpoint] || !force){
 				if(this.#endpointsAliases[endpoint]){
 					endpoint = this.#endpointsAliases[endpoint];
@@ -8146,6 +8149,9 @@
 				await this.#getChallengeData();
 
 				const messageListener = (event) => {
+					if(event.data?.action === 'ready'){
+						this.#isSolverIframeReady = true;
+					}
 					if(event.source !== this.#solverIframe.contentWindow)return;
 					if(!event.data || (event.data.action !== 'error' && event.data.action !== 'initError'))return;
 
@@ -8165,7 +8171,6 @@
 					this.#solverIframe.src = 'https://tweetdeck.dimden.dev/solver.html';
 				}
 				this.#solverIframe.style.display = 'none';
-				document.body.appendChild(this.#solverIframe);
 
 				this.#solverIframe.onload = () => {
 					this.#solverIframe.contentWindow.postMessage({
@@ -8259,6 +8264,7 @@
 				timelines: this.timelines,
 				challengeData: this.#challengeData,
 				solverIframe: this.#solverIframe,
+				isSolverIframeReady: this.#isSolverIframeReady,
 				xctid: this.#xctid,
 				graphqlApiUri: this.#graphqlApiUri,
 				graphqlApiEndpoints: this.#graphqlApiEndpoints,
