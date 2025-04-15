@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.8
+// @version			2.1.2.9
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -308,6 +308,7 @@
 				"showTweetsData": "セッションで取得したツイートデータ(tweetsData)一覧を表示",
 				"showTweetsUserData": "セッションで取得したユーザデータ(tweetsUserData)のユーザデータ一覧を表示",
 				"showTweetsUserDataByUserName": "セッションで取得したユーザデータ(tweetsUserDataByUserName)のユーザデータをスクリーンネームから表示",
+				"showTwitterApiClassDebug": "TwitterApiClassのデバッグ情報を表示",
 				"show": "表示",
 				"import": "インポート",
 				"invaildTweetId": "無効なツイートIDです",
@@ -505,6 +506,7 @@
 				"showTweetsData": "Show List of Fetched Tweets (tweetsData)",
 				"showTweetsUserData": "Show List of Fetched User Data (tweetsUserData)",
 				"showTweetsUserDataByUserName": "Show User Data by Screen Name (tweetsUserDataByUserName)",
+				"showTwitterApiClassDebug": "Show TwitterApiClass Debug Information",
 				"show": "Show",
 				"import": "Import",
 				"invaildTweetId": "Invalid Tweet ID",
@@ -1046,12 +1048,10 @@
 		tweetNodes.forEach(function(target){
 			const tweetNode = target.node;
 			const tweetTextsElement = tweetNode.querySelectorAll('[data-testid="tweetText"]');
-			const showMoreLinks = tweetNode.querySelectorAll('[data-testid="tweet-text-show-more-link"]');
-			showMoreLinks.forEach((showMoreLink) => {
-				showMoreLink.style.display = "none";
-			});
 			tweetTextsElement.forEach(async (tweetTextElement, index) => {
-				if(!(tweetTextElement.innerText.match(/…$/) || (showMoreLinks[index]?.tagName.toLowerCase().match(/div|button/)))){
+				const showMoreLink = tweetTextElement.parentNode.querySelector('[data-testid="tweet-text-show-more-link"]');
+				if(showMoreLink)showMoreLink.style.display = "none";
+				if(!showMoreLink?.tagName.toLowerCase().match(/div|button/)){
 					tweetTextElement.classList.add('tweetExpanderChecked');
 					tweetTextElement.style.webkitLineClamp = null;
 					return;
@@ -3843,6 +3843,8 @@
 				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{console.log(twitterApi.tweetsUserData)}},
 				{type: 'text', text: settingText.showTweetsUserDataByUserName, size: "1em", weight: "400", position: "left", isHTML: false},
 				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{console.log(twitterApi.tweetsUserDataByUserName)}},
+				{type: 'text', text: settingText.showTwitterApiClassDebug, size: "1em", weight: "400", position: "left", isHTML: false},
+				{type: 'button', text: settingText.show, width: "fit-content", event: ()=>{twitterApi.debug()}},
 				{type: 'text', text: settingText.importPixivLinkCorrection, size: "1em", weight: "400", position: "left", isHTML: false},
 				{type: 'file', text: settingText.import, width: "fit-content", event: impoertPixivLinkCorrection},
 			];
@@ -8039,11 +8041,13 @@
 					remaining: responseHeaders.match(/x-rate-limit-remaining: ?([\d]+)/)?.[1],
 					limit: responseHeaders.match(/x-rate-limit-limit: ?([\d]+)/)?.[1],
 					reset: responseHeaders.match(/x-rate-limit-reset: ?([\d]+)/)?.[1],
+					resetDate : new Date((responseHeaders.match(/x-rate-limit-reset: ?([\d]+)/)?.[1] || 0) * 1000),
 				};
 			}else{
 				this.#apiRateLimit[endpoint].remaining = responseHeaders.match(/x-rate-limit-remaining: ?([\d]+)/)?.[1];
 				this.#apiRateLimit[endpoint].limit = responseHeaders.match(/x-rate-limit-limit: ?([\d]+)/)?.[1];
 				this.#apiRateLimit[endpoint].reset = responseHeaders.match(/x-rate-limit-reset: ?([\d]+)/)?.[1];
+				this.#apiRateLimit[endpoint].resetDate = new Date((responseHeaders.match(/x-rate-limit-reset: ?([\d]+)/)?.[1] || 0) * 1000);
 			}
 		}
 
