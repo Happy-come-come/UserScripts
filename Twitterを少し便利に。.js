@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.9
+// @version			2.1.2.10
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -7077,29 +7077,57 @@
 		}
 
 		async favoriteTweet(tweetId){
+			if(this.#apiRateLimit.FavoriteTweet.remaining === 0 && this.#apiRateLimit.FavoriteTweet.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] FavoriteTweet API rate limit exceeded", resetDate: this.#apiRateLimit.FavoriteTweet.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.FavoriteTweet.resetDate});
+			}
 			return await this.tweetAction('favorite', tweetId);
 		}
 		async unfavoriteTweet(tweetId){
+			if(this.#apiRateLimit.UnfavoriteTweet.remaining === 0 && this.#apiRateLimit.UnfavoriteTweet.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] UnfavoriteTweet API rate limit exceeded", resetDate: this.#apiRateLimit.UnfavoriteTweet.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UnfavoriteTweet.resetDate});
+			}
 			return await this.tweetAction('unfavorite', tweetId);
 		}
 		async retweet(tweetId){
+			if(this.#apiRateLimit.CreateRetweet.remaining === 0 && this.#apiRateLimit.CreateRetweet.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] CreateRetweet API rate limit exceeded", resetDate: this.#apiRateLimit.CreateRetweet.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.CreateRetweet.resetDate});
+			}
 			return await this.tweetAction('retweet', tweetId);
 		}
 		async deleteRetweet(tweetId){
+			if(this.#apiRateLimit.DeleteRetweet.remaining === 0 && this.#apiRateLimit.DeleteRetweet.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] DeleteRetweet API rate limit exceeded", resetDate: this.#apiRateLimit.DeleteRetweet.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.DeleteRetweet.resetDate});
+			}
 			return await this.tweetAction('deleteRetweet', tweetId);
 		}
 		async bookmark(tweetId){
+			if(this.#apiRateLimit.CreateBookmark.remaining === 0 && this.#apiRateLimit.CreateBookmark.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] CreateBookmark API rate limit exceeded", resetDate: this.#apiRateLimit.CreateBookmark.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.CreateBookmark.resetDate});
+			}
 			return await this.tweetAction('bookmark', tweetId);
 		}
 		async deleteBookmark(tweetId){
+			if(this.#apiRateLimit.DeleteBookmark.remaining === 0 && this.#apiRateLimit.DeleteBookmark.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] DeleteBookmark API rate limit exceeded", resetDate: this.#apiRateLimit.DeleteBookmark.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.DeleteBookmark.resetDate});
+			}
 			return await this.tweetAction('deleteBookmark', tweetId);
 		}
 		// 同時に同じツイートを取得しないようにする
 		async getTweet(tweetId){
-			if(this.tweetsData[tweetId])return this.tweetsData[tweetId];
+			if(this.tweetsData[tweetId])return {...this.tweetsData[tweetId], apiRateLimit: this.#apiRateLimit.TweetDetail};
 
 			if(this.#pendingTweetRequests[tweetId]){
 				return await this.#pendingTweetRequests[tweetId];
+			}
+			if(this.#apiRateLimit.TweetDetail.remaining === 0 && this.#apiRateLimit.TweetDetail.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] TweetDetail API rate limit exceeded", resetDate: this.#apiRateLimit.TweetDetail.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.TweetDetail.resetDate});
 			}
 
 			this.#pendingTweetRequests[tweetId] = this.#_getTweet(tweetId);
@@ -7146,7 +7174,7 @@
 			if(isSuccess){
 				this.#processgraphQL(response.response.data.threaded_conversation_with_injections_v2.instructions[0].entries);
 				this.#updateApiRateLimit(response, 'TweetDetail');
-				return this.tweetsData[tweetId];
+				return {...this.tweetsData[tweetId], apiRateLimit: this.#apiRateLimit.TweetDetail};
 			}else{
 				console.error("TweetDetail API error", response);
 				throw new Error(`Failed to fetch`);
@@ -7154,10 +7182,14 @@
 		}
 		async getUser(screenName, refresh = false){
 			if(this.tweetsUserDataByUserName[screenName] && !refresh){
-				return this.tweetsUserDataByUserName[screenName];
+				return {...this.tweetsUserDataByUserName[screenName], apiRateLimit: this.#apiRateLimit.UserByScreenName};
 			}
 			if(this.#pendingUserRequests[screenName]){
 				return await this.#pendingUserRequests[screenName];
+			}
+			if(this.#apiRateLimit.UserByScreenName.remaining === 0 && this.#apiRateLimit.UserByScreenName.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] UserByScreenName API rate limit exceeded", resetDate: this.#apiRateLimit.UserByScreenName.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserByScreenName.resetDate});
 			}
 			this.#pendingUserRequests[screenName] = this.#_getUser(screenName);
 			try{
@@ -7211,12 +7243,16 @@
 			try{
 				await this.getBio(screenName);
 			}catch(error){}
-			return this.tweetsUserDataByUserName[screenName];
+			return {...this.tweetsUserDataByUserName[screenName], apiRateLimit: this.#apiRateLimit.UserByScreenName};
 		}
 
 		async getHomeTimeline(place = 'bottom'){
 			if(this.#pendingTLRequests.following){
 				return await this.#pendingTLRequests.following;
+			}
+			if(this.#apiRateLimit.HomeLatestTimeline.remaining === 0 && this.#apiRateLimit.HomeLatestTimeline.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] HomeLatestTimeline API rate limit exceeded", resetDate: this.#apiRateLimit.HomeLatestTimeline.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.HomeLatestTimeline.resetDate});
 			}
 			this.#pendingTLRequests.following = this.#_getHomeTimeline(place);
 			try{
@@ -7256,12 +7292,16 @@
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
 			this.#processTimeline({entries: timelineData, type: 'following', place: place});
-			return this.timelines.following;
+			return {...this.timelines.following, apiRateLimit: this.#apiRateLimit.HomeLatestTimeline};
 		}
 
 		async getForYouTimeline(place = 'bottom'){
 			if(this.#pendingTLRequests.forYou){
 				return await this.#pendingTLRequests.forYou;
+			}
+			if(this.#apiRateLimit.HomeTimeline.remaining === 0 && this.#apiRateLimit.HomeTimeline.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] HomeTimeline API rate limit exceeded", resetDate: this.#apiRateLimit.HomeTimeline.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.HomeTimeline.resetDate});
 			}
 			this.#pendingTLRequests.forYou = this.#_getForYouTimeline(place);
 			try{
@@ -7301,12 +7341,16 @@
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
 			this.#processTimeline({entries: timelineData, type: 'forYou', place: place});
-			return this.timelines.forYou;
+			return {...this.timelines.forYou, apiRateLimit: this.#apiRateLimit.HomeTimeline};
 		}
 
 		async getUserTweets(screenName, place = 'bottom'){
 			if(this.#pendingTLRequests.userTweets?.[screenName]){
 				return await this.#pendingTLRequests.userTweets?.[screenName];
+			}
+			if(this.#apiRateLimit.UserTweets.remaining === 0 && this.#apiRateLimit.UserTweets.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] UserTweets API rate limit exceeded", resetDate: this.#apiRateLimit.UserTweets.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserTweets.resetDate});
 			}
 			if(!this.#pendingTLRequests.userTweets)this.#pendingTLRequests.userTweets = {};
 			if(!this.timelines.userTweets[screenName])this.timelines.userTweets[screenName] = {};
@@ -7355,12 +7399,16 @@
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
 			this.#processTimeline({entries: timelineData, type: 'userTweets', place: place, screenName: screenName});
-			return this.timelines.userTweets[screenName];
+			return {...this.timelines.userTweets[screenName], apiRateLimit: this.#apiRateLimit.UserTweets};
 		}
 
 		async getUserTweetsAndReplies(screenName, place = 'bottom'){
 			if(this.#pendingTLRequests.userTweetsAndReplies?.[screenName]){
 				return await this.#pendingTLRequests.userTweetsAndReplies?.[screenName];
+			}
+			if(this.#apiRateLimit.UserTweetsAndReplies.remaining === 0 && this.#apiRateLimit.UserTweetsAndReplies.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] UserTweetsAndReplies API rate limit exceeded", resetDate: this.#apiRateLimit.UserTweetsAndReplies.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserTweetsAndReplies.resetDate});
 			}
 			if(!this.#pendingTLRequests.userTweetsAndReplies)this.#pendingTLRequests.userTweetsAndReplies = {};
 			if(!this.timelines.userTweetsAndReplies[screenName])this.timelines.userTweetsAndReplies[screenName] = {};
@@ -7409,12 +7457,16 @@
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
 			this.#processTimeline({entries: timelineData, type: 'userTweetsAndReplies', place: place, screenName: screenName});
-			return this.timelines.userTweetsAndReplies[screenName];
+			return {...this.timelines.userTweetsAndReplies[screenName], apiRateLimit: this.#apiRateLimit.UserTweetsAndReplies};
 		}
 
 		async getUserHighlights(screenName, place = 'bottom'){
 			if(this.#pendingTLRequests.userHighlights?.[screenName]){
 				return await this.#pendingTLRequests.userHighlights?.[screenName];
+			}
+			if(this.#apiRateLimit.UserHighlightsTweets.remaining === 0 && this.#apiRateLimit.UserHighlightsTweets.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] UserHighlightsTweets API rate limit exceeded", resetDate: this.#apiRateLimit.UserHighlightsTweets.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserHighlightsTweets.resetDate});
 			}
 			if(!this.#pendingTLRequests.userHighlights)this.#pendingTLRequests.userHighlights = {};
 			if(!this.timelines.userHighlights[screenName])this.timelines.userHighlights[screenName] = {};
@@ -7439,6 +7491,10 @@
 			};
 			const cursor = this.#_getCursor('userHighlights', place, screenName);
 			if(cursor)variables.cursor = cursor;
+			const features = this.#graphqlFeatures;
+			const fieldToggles = {
+				"withArticlePlainText": false
+			};
 			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.UserHighlightsTweets.uri, 'GET');
 			const response = await request({
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.UserHighlights.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
@@ -7459,12 +7515,16 @@
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
 			this.#processTimeline({entries: timelineData, type: 'userHighlights', place: place, screenName: screenName});
-			return this.timelines.userHighlights[screenName];
+			return {...this.timelines.userHighlights[screenName], apiRateLimit: this.#apiRateLimit.UserHighlightsTweets};
 		}
 
 		async getUserMedia(screenName, place = 'bottom'){
 			if(this.#pendingTLRequests.userMedia?.[screenName]){
 				return await this.#pendingTLRequests.userMedia?.[screenName];
+			}
+			if(this.#apiRateLimit.UserMedia.remaining === 0 && this.#apiRateLimit.UserMedia.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] UserMedia API rate limit exceeded", resetDate: this.#apiRateLimit.UserMedia.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserMedia.resetDate});
 			}
 			if(!this.#pendingTLRequests.userMedia)this.#pendingTLRequests.userMedia = {};
 			if(!this.timelines.userMedia[screenName])this.timelines.userMedia[screenName] = {};
@@ -7513,12 +7573,16 @@
 			const instructions = response.response.data.user.result.timeline_.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []);
-			return this.#processTimeline({entries: timelineData, type: 'userMedia', screenName: screenName});
+			return {...this.#processTimeline({entries: timelineData, type: 'userMedia', screenName: screenName}), apiRateLimit: this.#apiRateLimit.UserMedia};
 		}
 
 		async getUserLikes(screenName, place = 'bottom'){
 			if(this.#pendingTLRequests.userLikes?.[screenName]){
 				return await this.#pendingTLRequests.userLikes?.[screenName];
+			}
+			if(this.#apiRateLimit.UserLikes.remaining === 0 && this.#apiRateLimit.UserLikes.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] UserLikes API rate limit exceeded", resetDate: this.#apiRateLimit.UserLikes.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserLikes.resetDate});
 			}
 			if(!this.#pendingTLRequests.userLikes)this.#pendingTLRequests.userLikes = {};
 			if(!this.timelines.userLikes[screenName])this.timelines.userLikes[screenName] = {};
@@ -7567,13 +7631,16 @@
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
-			this.#processTimeline({entries: timelineData, type: 'userLikes', place: place, screenName: screenName});
-			return this.timelines.userLikes[screenName];
+			return {...this.#processTimeline({entries: timelineData, type: 'userLikes', place: place, screenName: screenName}), apiRateLimit: this.#apiRateLimit.UserLikes};
 		}
 
 		async getOwnLists(place = 'bottom'){
 			if(this.#pendingTLRequests.ownLists){
 				return await this.#pendingTLRequests.ownLists;
+			}
+			if(this.#apiRateLimit.ListsManagementPageTimeline.remaining === 0 && this.#apiRateLimit.ListsManagementPageTimeline.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] ListsManagementPageTimeline API rate limit exceeded", resetDate: this.#apiRateLimit.ListsManagementPageTimeline.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.ListsManagementPageTimeline.resetDate});
 			}
 			if(!this.#pendingTLRequests.ownLists)this.#pendingTLRequests.ownLists = {};
 			this.#pendingTLRequests.ownLists = this.#_getOwnLists(place);
@@ -7621,12 +7688,16 @@
 				};
 			});
 			this.lists.ownLists = {...this.lists.ownLists, ...lists};
-			return this.lists.ownLists;
+			return {...this.lists.ownLists, apiRateLimit: this.#apiRateLimit.ListsManagementPageTimeline};
 		}
 
 		async getUserLists(screenName){
 			if(this.#pendingTLRequests.lists?.[screenName]){
 				return await this.#pendingTLRequests.lists?.[screenName];
+			}
+			if(this.#apiRateLimit.UserLists.remaining === 0 && this.#apiRateLimit.UserLists.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] UserLists API rate limit exceeded", resetDate: this.#apiRateLimit.UserLists.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserLists.resetDate});
 			}
 			if(!this.#pendingTLRequests.lists)this.#pendingTLRequests.lists = {};
 			if(!this.timelines.userLists[screenName])this.timelines.userLists[screenName] = {};
@@ -7676,13 +7747,17 @@
 					mode: list.mode,
 				};
 			});
-			this.lists[screenName] = {...this.lists[screenName], ...this.lists[screenName]};
-			return this.lists[screenName];
+			this.lists[screenName] = {...this.lists[screenName], ...lists[screenName]};
+			return {...this.lists[screenName], apiRateLimit: this.#apiRateLimit.UserLists};
 		}
 
 		async getListTimeline(listId, place = 'bottom'){
 			if(this.#pendingTLRequests.lists?.[listId]){
 				return await this.#pendingTLRequests.lists?.[listId];
+			}
+			if(this.#apiRateLimit.ListTimeline.remaining === 0 && this.#apiRateLimit.ListTimeline.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] ListTimeline API rate limit exceeded", resetDate: this.#apiRateLimit.ListTimeline.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.ListTimeline.resetDate});
 			}
 			if(!this.#pendingTLRequests.lists)this.#pendingTLRequests.lists = {};
 			if(!this.timelines.lists[listId])this.timelines.lists[listId] = {};
@@ -7722,7 +7797,7 @@
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
 			this.#processTimeline({entries: timelineData, type: 'lists', place: place});
-			return this.timelines.lists[listId];
+			return {...this.timelines.lists[listId], apiRateLimit: this.#apiRateLimit.ListTimeline};
 		}
 
 		// FavoriteTweet(favorite), UnfavoriteTweet(unfavorite), CreateRetweet(retweet), DeleteRetweet(deleteRetweet), CreateBookmark(bookmark), DeleteBookmark(deleteBookmark)
@@ -7742,11 +7817,7 @@
 			const body = `{"variables": {"tweet_id": "${tweetId}"}, "queryId": "${endpointData.uri.split('/').pop()}"}`;
 			const response = await request({url: `${this.#graphqlApiUri}${endpointData.uri}`, method: 'POST', body: body, headers: headers, onlyResponse: false, dontUseGenericHeaders: true, maxRetries: 1});
 			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				displayToast(envText.makeTwitterLittleUseful.postApiAction[endpoint].success);
-			}else{
-				displayToast(envText.makeTwitterLittleUseful.postApiAction[endpoint].error);
-			}
+			this.#updateApiRateLimit(response, endpoint);
 			return isSuccess;
 		}
 
@@ -7996,7 +8067,7 @@
 				this.#initSolverIframe();
 			}
 			if(!this.#isSolverIframeReady)return this.#requestHeadersTemplate;
-			const id = await this.#solveTransactionId(endpoint, method);
+			const id = await this.getXctid(endpoint, method);
 			const headers = id ? Object.assign({
 				'x-client-transaction-id': id,
 			}, this.#requestHeadersTemplate) : this.#requestHeadersTemplate;
@@ -8055,6 +8126,10 @@
 			return encodeURIComponent(JSON.stringify(obj));
 		}
 
+		getApiRateLimit(){
+			return this.#apiRateLimit;
+		}
+
 		// 非公開メソッド: challenge 情報を取得
 		async #getChallengeData(){
 			if(this.#challengeData.expires && this.#challengeData.expires > Date.now()){
@@ -8088,7 +8163,7 @@
 					challengeCode,
 					challengeJsCode,
 					challengeAnimationSvgCodes,
-					expires: Date.now() + 30 * 60 * 1000, // 30 min
+					expires: Date.now() + 60 * 60 * 1000, // 60 min
 				};
 			})();
 
@@ -8136,7 +8211,7 @@
 			}
 			this.#xctid[endpoint] = {
 				id,
-				expires: Date.now() + 30 * 60 * 1000,
+				expires: Date.now() + 60 * 60 * 1000,
 			};
 			return id;
 		}
