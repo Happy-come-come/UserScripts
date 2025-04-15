@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.10
+// @version			2.1.2.11
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -1623,6 +1623,7 @@
 		if(!sessionData.imageZoom?.magnifier){
 			if(!sessionData.imageZoom)sessionData.imageZoom = {};
 			const magnifierImg = document.createElement('img');
+			magnifierImg.style.maxWidth = 'none';
 			const magnifier = document.createElement('div');
 			magnifier.style.position = 'absolute';
 			magnifier.style.border = '3px solid #000';
@@ -6891,7 +6892,7 @@
 		timelines = {
 			following: {
 				contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {},
-				newContents: {contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}}, 
+				newContents: {contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}},
 				cursor: {top: {entryId: null, sortIndex: null, value: null}, bottom: {entryId: null, sortIndex: null, value: null}}
 			},
 			forYou: {
