@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.11
+// @version			2.1.2.12
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -7292,8 +7292,7 @@
 			const instructions = response.response.data.home.home_timeline_urt.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
-			this.#processTimeline({entries: timelineData, type: 'following', place: place});
-			return {...this.timelines.following, apiRateLimit: this.#apiRateLimit.HomeLatestTimeline};
+			return {...(await this.#processTimeline({entries: timelineData, type: 'following', place: place})), apiRateLimit: this.#apiRateLimit.HomeLatestTimeline};
 		}
 
 		async getForYouTimeline(place = 'bottom'){
@@ -7341,8 +7340,7 @@
 			const instructions = response.response.data.home.home_timeline_urt.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
-			this.#processTimeline({entries: timelineData, type: 'forYou', place: place});
-			return {...this.timelines.forYou, apiRateLimit: this.#apiRateLimit.HomeTimeline};
+			return {...(await this.#processTimeline({entries: timelineData, type: 'forYou', place: place})), apiRateLimit: this.#apiRateLimit.HomeTimeline};
 		}
 
 		async getUserTweets(screenName, place = 'bottom'){
@@ -7399,8 +7397,7 @@
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
-			this.#processTimeline({entries: timelineData, type: 'userTweets', place: place, screenName: screenName});
-			return {...this.timelines.userTweets[screenName], apiRateLimit: this.#apiRateLimit.UserTweets};
+			return {...(await this.#processTimeline({entries: timelineData, type: 'userTweets', place: place, screenName: screenName})), apiRateLimit: this.#apiRateLimit.UserTweets};
 		}
 
 		async getUserTweetsAndReplies(screenName, place = 'bottom'){
@@ -7457,8 +7454,7 @@
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
-			this.#processTimeline({entries: timelineData, type: 'userTweetsAndReplies', place: place, screenName: screenName});
-			return {...this.timelines.userTweetsAndReplies[screenName], apiRateLimit: this.#apiRateLimit.UserTweetsAndReplies};
+			return {...(await this.#processTimeline({entries: timelineData, type: 'userTweetsAndReplies', place: place, screenName: screenName})), apiRateLimit: this.#apiRateLimit.UserTweetsAndReplies};
 		}
 
 		async getUserHighlights(screenName, place = 'bottom'){
@@ -7515,8 +7511,7 @@
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
-			this.#processTimeline({entries: timelineData, type: 'userHighlights', place: place, screenName: screenName});
-			return {...this.timelines.userHighlights[screenName], apiRateLimit: this.#apiRateLimit.UserHighlightsTweets};
+			return {...(await this.#processTimeline({entries: timelineData, type: 'userHighlights', place: place, screenName: screenName})), apiRateLimit: this.#apiRateLimit.UserHighlightsTweets};
 		}
 
 		async getUserMedia(screenName, place = 'bottom'){
@@ -7571,19 +7566,19 @@
 				console.error("UserMedia API error", response);
 				throw new Error(`Failed to fetch`);
 			}
-			const instructions = response.response.data.user.result.timeline_.timeline.instructions;
+			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []);
-			return {...this.#processTimeline({entries: timelineData, type: 'userMedia', screenName: screenName}), apiRateLimit: this.#apiRateLimit.UserMedia};
+			return {...(await this.#processTimeline({entries: timelineData, type: 'userMedia', screenName: screenName})), apiRateLimit: this.#apiRateLimit.UserMedia};
 		}
 
 		async getUserLikes(screenName, place = 'bottom'){
 			if(this.#pendingTLRequests.userLikes?.[screenName]){
 				return await this.#pendingTLRequests.userLikes?.[screenName];
 			}
-			if(this.#apiRateLimit.UserLikes.remaining === 0 && this.#apiRateLimit.UserLikes.resetDate?.getTime() > Date.now()){
-				console.error({error: "[TwitterApi] UserLikes API rate limit exceeded", resetDate: this.#apiRateLimit.UserLikes.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserLikes.resetDate});
+			if(this.#apiRateLimit.Likes.remaining === 0 && this.#apiRateLimit.Likes.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] Likes API rate limit exceeded", resetDate: this.#apiRateLimit.Likes.resetDate});
+				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.Likes.resetDate});
 			}
 			if(!this.#pendingTLRequests.userLikes)this.#pendingTLRequests.userLikes = {};
 			if(!this.timelines.userLikes[screenName])this.timelines.userLikes[screenName] = {};
@@ -7632,7 +7627,7 @@
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
-			return {...this.#processTimeline({entries: timelineData, type: 'userLikes', place: place, screenName: screenName}), apiRateLimit: this.#apiRateLimit.UserLikes};
+			return {...(await this.#processTimeline({entries: timelineData, type: 'userLikes', place: place, screenName: screenName})), apiRateLimit: this.#apiRateLimit.Likes};
 		}
 
 		async getOwnLists(place = 'bottom'){
@@ -7676,7 +7671,7 @@
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
-			this.#processTimeline({entries: timelineData, type: 'ownLists', place: place});
+			await this.#processTimeline({entries: timelineData, type: 'ownLists', place: place});
 			const lists = {};
 			Object.keys(this.timelines.ownLists).forEach(key => {
 				const list = this.timelines.ownLists[key];
@@ -7797,8 +7792,7 @@
 			const instructions = response.response.data.list.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
-			this.#processTimeline({entries: timelineData, type: 'lists', place: place});
-			return {...this.timelines.lists[listId], apiRateLimit: this.#apiRateLimit.ListTimeline};
+			return {...(await this.#processTimeline({entries: timelineData, type: 'lists', place: place})), apiRateLimit: this.#apiRateLimit.ListTimeline};
 		}
 
 		// FavoriteTweet(favorite), UnfavoriteTweet(unfavorite), CreateRetweet(retweet), DeleteRetweet(deleteRetweet), CreateBookmark(bookmark), DeleteBookmark(deleteBookmark)
@@ -7845,7 +7839,7 @@
 			const content = response.response.data.user_result_by_screen_name.result.expanded_profile_results.result.profile_sections.items_results[0].result.profile_blocks.items_results[0].result.content.value;
 			const bioData = JSON.parse(content);
 			if(!bioData)return;
-			if(this.tweetsUserDataByUserName[screenName])this.tweetsUserDataByUserName[userData.legacy.screen_name].bio = bioData;
+			if(this.tweetsUserDataByUserName[screenName])this.tweetsUserDataByUserName[screenName].bio = bioData;
 			return bioData;
 		}
 
