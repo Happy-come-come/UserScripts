@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.13
+// @version			2.1.2.14
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -4289,29 +4289,30 @@
 		constructor(){
 			this.colors = {
 				// [white, darkBlue, black]
-				"fontColor": ['rgb(15, 20, 25)', 'rgb(247, 249, 249)', 'rgb(231, 233, 234)'], // ツイートの文字色など
-				"fontColorDark": ['rgb(83, 100, 113)', 'rgb(139, 152, 165)', 'rgb(113, 118, 123)'], // いいねの数など
-				"backgroundColor": ['rgba(255, 255, 255, 1.00)', 'rgb(21, 32, 43)', 'rgba(0, 0, 0, 1.00)'],
-				"borderColor": ['rgb(239, 243, 244)', 'rgb(56, 68, 77)', 'rgb(47, 51, 54)'], // ツイートのボーダー色など
-				"twitterBlue": ['rgb(29, 155, 240)', 'rgb(29, 155, 240)', 'rgb(29, 155, 240)'],
-				"menuHoverEffect": ['rgba(15, 20, 25, 0.1)', 'rgba(247, 249, 249, 0.1)', 'rgba(231, 233, 234, 0.1)'], // 一番左のメニュー等のホバーエフェクト
-				"menuHoverEffectLight": ['rgb(247, 249, 249)', 'rgb(30, 39, 50)', 'rgb(22, 24, 28)'], // 設定画面のホバーエフェクト
-				"retweeted": ['rgb(0, 186, 124)', 'rgb(0, 186, 124)', 'rgb(0, 186, 124)'],
-				"favorited": ['rgb(249, 24, 128)', 'rgb(249, 24, 128)', 'rgb(249, 24, 128)'],
-				"dropdownBackgroundColor": ['rgb(255, 255, 255)', 'rgb(59, 59, 59)', 'rgb(59, 59, 59)'],
-				"dropdownFontColor": ['rgb(0, 0, 0)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)'],
-				"dropdownBorderColor": ['rgb(118, 118, 118)', 'rgb(133, 133, 133)', 'rgb(133, 133, 133)'],
-				"buttonBackgroundColor": ['rgb(239, 239, 239)', 'rgb(107, 107, 107)', 'rgb(107, 107, 107)'],
-				"buttonFontColor": ['rgb(0, 0, 0)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)'],
-				"buttonBorderColor": ['rgb(239, 239, 239)', 'rgb(107, 107, 107)', 'rgb(107, 107, 107)'],
+				"fontColor":				['rgb(15, 20, 25)', 'rgb(247, 249, 249)', 'rgb(231, 233, 234)'], // ツイートの文字色など
+				"fontColorDark":			['rgb(83, 100, 113)', 'rgb(139, 152, 165)', 'rgb(113, 118, 123)'], // いいねの数など
+				"backgroundColor":			['rgba(255, 255, 255, 1.00)', 'rgb(21, 32, 43)', 'rgba(0, 0, 0, 1.00)'],
+				"borderColor":				['rgb(239, 243, 244)', 'rgb(56, 68, 77)', 'rgb(47, 51, 54)'], // ツイートのボーダー色など
+				"twitterBlue":				['rgb(29, 155, 240)', 'rgb(29, 155, 240)', 'rgb(29, 155, 240)'],
+				"menuHoverEffect":			['rgba(15, 20, 25, 0.1)', 'rgba(247, 249, 249, 0.1)', 'rgba(231, 233, 234, 0.1)'], // 一番左のメニュー等のホバーエフェクト
+				"menuHoverEffectLight":		['rgb(247, 249, 249)', 'rgb(30, 39, 50)', 'rgb(22, 24, 28)'], // 設定画面のホバーエフェクト
+				"retweeted":				['rgb(0, 186, 124)', 'rgb(0, 186, 124)', 'rgb(0, 186, 124)'],
+				"favorited":				['rgb(249, 24, 128)', 'rgb(249, 24, 128)', 'rgb(249, 24, 128)'],
+				"dropdownBackgroundColor": 	['rgb(255, 255, 255)', 'rgb(59, 59, 59)', 'rgb(59, 59, 59)'],
+				"dropdownFontColor":		['rgb(0, 0, 0)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)'],
+				"dropdownBorderColor":		['rgb(118, 118, 118)', 'rgb(133, 133, 133)', 'rgb(133, 133, 133)'],
+				"buttonBackgroundColor":	['rgb(239, 239, 239)', 'rgb(107, 107, 107)', 'rgb(107, 107, 107)'],
+				"buttonFontColor":			['rgb(0, 0, 0)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)'],
+				"buttonBorderColor":		['rgb(239, 239, 239)', 'rgb(107, 107, 107)', 'rgb(107, 107, 107)'],
+				"conversationLineColor":	['rgb(207, 217, 222)', 'rgb(66, 83, 100)', 'rgb(51, 54, 57)'],
 			};
 		}
 
 		/**
 		* 指定されたカラーパレットから現在のテーマの色を返します
-		* @param {string} colorName - 色名（例: "fontColor"）
-		* @param {number} [darkMode] - テーマ番号（0=ライト, 1=ダーク, 2=ブラック）
-		* @returns {string} - 色のRGB文字列（例: "rgb(255,255,255)"）
+		* @param {string} colorName - 色名 (例: "fontColor")
+		* @param {number} [darkMode] - テーマ番号 (0=デフォルト, 1=ダークブルー, 2=ブラック) (省略時は現在のテーマ)
+		* @returns {string} - 色のRGB文字列 (例: "rgb(255,255,255)")
 		*/
 		get(colorName, darkMode = sessionData.themeMode.themeNum){
 			return this.colors[colorName][darkMode];
@@ -4319,10 +4320,10 @@
 
 		/**
 		* 指定した色にアルファ値（透過）を加えたRGBA形式を返します
-		* @param {string} colorName - 色名（例: "borderColor"）
-		* @param {number} alpha - 透過度（0.0〜1.0）
-		* @param {number} [darkMode] - テーマ番号（省略時は現在のテーマ）
-		* @returns {string} - RGBA文字列
+		* @param {string} colorName - 色名 (例: "borderColor")
+		* @param {number} alpha - 透過度 (0.0〜1.0)
+		* @param {number} [darkMode] - テーマ番号（0=デフォルト, 1=ダークブルー, 2=ブラック) (省略時は現在のテーマ)
+		* @returns {string} - RGBA文字列 (例: "rgba(255,255,255,1.0)")
 		*/
 		getWithAlpha(colorName, alpha, darkMode = sessionData.themeMode.themeNum){
 			return `rgba(${this.colors[colorName][darkMode].match(/\d+/g).join(", ")}, ${alpha})`;
