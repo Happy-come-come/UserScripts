@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.14
+// @version			2.1.2.15
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -3867,7 +3867,7 @@
 					console.error(settingText.invalidScreenName);
 					return;
 				}
-				const userData = await twitterApi.getUserByScreenName(screenName);
+				const userData = await twitterApi.getUser(screenName);
 				console.log(userData);
 			});
 
@@ -7245,7 +7245,7 @@
 			try{
 				await this.getBio(screenName);
 			}catch(error){}
-			return {...this.tweetsUserDataByUserName[screenName], apiRateLimit: this.#apiRateLimit.UserByScreenName};
+			return {...this.tweetsUserData[userData.rest_id], apiRateLimit: this.#apiRateLimit.UserByScreenName};
 		}
 
 		async getHomeTimeline(place = 'bottom'){
@@ -7397,7 +7397,11 @@
 			}
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
-			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
+			const TimelinePinEntry = instructions.find(element => element.type === 'TimelinePinEntry')?.entrie;
+			if(TimelinePinEntry)this.#processgraphQL(TimelinePinEntry);
+			const timelineData = (instructions[0]?.moduleItems || [])
+				.concat(TimelineAddEntries.entries[0]?.content?.items || [])
+				.concat(TimelineAddEntries.entries);
 			return {...(await this.#processTimeline({entries: timelineData, type: 'userTweets', place: place, screenName: screenName})), apiRateLimit: this.#apiRateLimit.UserTweets};
 		}
 
@@ -7454,7 +7458,11 @@
 			}
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
-			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
+			const TimelinePinEntry = instructions.find(element => element.type === 'TimelinePinEntry')?.entrie;
+			if(TimelinePinEntry)this.#processgraphQL(TimelinePinEntry);
+			const timelineData = (instructions[0]?.moduleItems || [])
+				.concat(TimelineAddEntries.entries[0]?.content?.items || [])
+				.concat(TimelineAddEntries.entries);
 			return {...(await this.#processTimeline({entries: timelineData, type: 'userTweetsAndReplies', place: place, screenName: screenName})), apiRateLimit: this.#apiRateLimit.UserTweetsAndReplies};
 		}
 
