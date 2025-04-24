@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.15
+// @version			2.1.2.16
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -796,15 +796,17 @@
 									urlObj = new URL(v.value.image_value.url);
 									mediaUrls.images.push({mediaType: "photo", url: `${urlObj.origin}${urlObj.pathname}.${urlObj.searchParams.get('format') || 'jpg'}`});
 									break;
-								case 'unified_card':
-									tmp = makeMediaList({media: Object.values(JSON.parse(v.value.string_value).media_entities)}, [0,1,2,3]);
-									if(tmp.unified_card.images){
+								case 'unified_card': {
+									const json = JSON.parse(v.value.string_value).media_entities;
+									tmp = makeMediaList({media: Object.values(json)}, [0,1,2,3]);
+									if(tmp.images){
 										mediaUrls.images.push(...tmp.images);
 									}
-									if(tmp.unified_card.videos){
+									if(tmp.videos){
 										mediaUrls.videos.push(...tmp.videos);
 									}
 									break;
+								}
 								default:
 									break;
 							}
