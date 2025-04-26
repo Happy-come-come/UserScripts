@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.16
+// @version			2.1.2.17
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -3027,6 +3027,19 @@
 									reason: `Server error or too many requests (status: ${responseDetails.status})`,
 									response: responseDetails,
 									requestObject: requestObject
+								});
+							}else{
+								console.error({
+									function_name: 'request',
+									reason: `status: ${responseDetails.status}`,
+									requestObject,
+									response: responseDetails
+								});
+								return reject({
+									function_name: 'request',
+									reason: `status: ${responseDetails.status}`,
+									requestObject,
+									response: responseDetails
 								});
 							}
 						},
@@ -7149,7 +7162,7 @@
 			}
 			const variables = {
 				"focalTweetId": tweetId,
-				"referrer": "home",
+				"referrer": "tweet",
 				"with_rux_injections": false,
 				"rankingMode": "Relevance",
 				"includePromotedContent": true,
@@ -8078,10 +8091,9 @@
 				await this.#getChallengeData();
 			}
 			if(!this.#solverIframe){
-				this.#initSolverIframe();
+				await this.#initSolverIframe();
 			}
-			if(!this.#isSolverIframeReady)return this.#requestHeadersTemplate;
-			const id = await this.getXctid(endpoint, method);
+			const id = await this.getXctid("/i/api/graphql" + endpoint, method);
 			const headers = id ? Object.assign({
 				'x-client-transaction-id': id,
 			}, this.#requestHeadersTemplate) : this.#requestHeadersTemplate;
@@ -8150,7 +8162,7 @@
 				return;
 			}
 			if(this.#challengeDataPromise){
-				return await this.#challengeDataPromise;
+				return this.#challengeDataPromise;
 			}
 			this.#challengeDataPromise = (async () => {
 				const response = await request({ url: 'https://x.com/home', respType: 'text' });
@@ -8182,14 +8194,15 @@
 			})();
 
 			try{
-				await this.#challengeDataPromise;
+				return this.#challengeDataPromise;
 			}finally{
 				this.#challengeDataPromise = null;
 			}
 		}
 
-		async getXctid(endpoint, method, force = false){
-			if(!this.#isSolverIframeReady)return null;
+		async getXctid(endpoint, method = "get", force = false){
+			const endpointOrig = endpoint;
+			//if(!this.#isSolverIframeReady)return null;
 			if(!this.#graphqlApiEndpoints[endpoint] || !force){
 				if(this.#endpointsAliases[endpoint]){
 					endpoint = this.#endpointsAliases[endpoint];
@@ -8219,13 +8232,13 @@
 				await this.#initSolverIframe();
 			}
 
-			const id = await this.#solveTransactionId(endpoint, method);
+			const id = await this.#solveTransactionId(endpointOrig, method);
 			if(!id){
 				return null;
 			}
 			this.#xctid[endpoint] = {
 				id,
-				expires: Date.now() + 60 * 60 * 1000,
+				expires: Date.now() + 1000,
 			};
 			return id;
 		}
@@ -8235,7 +8248,7 @@
 				return; // すでにiframeがある
 			}
 			if(this.#initSolverIframePromise){
-				return await this.#initSolverIframePromise;
+				return this.#initSolverIframePromise;
 			}
 
 			this.#initSolverIframePromise = new Promise(async (resolve) => {
@@ -8258,10 +8271,10 @@
 				window.addEventListener("message", messageListener);
 
 				if(typeof GM_addElement === 'function'){
-					this.#solverIframe = GM_addElement('iframe', {src: 'https://tweetdeck.dimden.dev/solver.html'});
+					this.#solverIframe = GM_addElement('iframe', {src: 'https://tweetdeck.dimden.dev/solver.html?1'});
 				}else{
 					this.#solverIframe = document.createElement('iframe');
-					this.#solverIframe.src = 'https://tweetdeck.dimden.dev/solver.html';
+					this.#solverIframe.src = 'https://tweetdeck.dimden.dev/solver.html?1';
 				}
 				this.#solverIframe.style.display = 'none';
 
@@ -8286,7 +8299,7 @@
 				};
 			});
 
-			return await this.#initSolverIframePromise;
+			return this.#initSolverIframePromise;
 		}
 
 		// solver に path/method を送って XCTID を取得する
