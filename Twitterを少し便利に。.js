@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.18
+// @version			2.1.2.19
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -6822,8 +6822,11 @@
 	class TwitterApi{
 		/*
 		不具合は https://greasyfork.org/ja/scripts/478248/feedback または https://github.com/Happy-come-come/UserScripts/issues まで
+		とはいえ、他人が使うことは想定していないのでなんかおかしくても知りません(は？)
+
 
 		GM_addElementが有効だとiflame内のscriptがcspに引っかからないのでできればGM_addElementを使うことを推奨
+		あ、もうこれいらないです(GM_addElement)。
 
 			Twitter Web API(GraphQL)
 			オブジェクト
@@ -6896,7 +6899,6 @@
 		#RateLimitExceeded = "Rate limit exceeded";
 		#transactionIdSolver;
 		#resetTransactionIdSolverTimes = 0;
-		#resetTransactionIdSolverPromise;
 		#pendingTweetRequests = {};
 		#pendingUserRequests = {};
 		#pendingTLRequests = {};
@@ -8032,7 +8034,7 @@
 						this.#challengeData = null;
 						this.#transactionIdSolver = null;
 					}else{
-						this.#updateApiRateLimit(response, endpoint);
+						if(e.error?.response)this.#updateApiRateLimit(e.error.response, endpoint);
 						return null;
 					}
 				}
@@ -8115,7 +8117,6 @@
 
 				const jsUrl = `https://abs.twimg.com/responsive-web/client-web/ondemand.s.${challengeCode}a.js`;
 				const challengeJsCode = await request({ url: jsUrl, respType: 'text' });
-
 				this.#challengeData = {
 					verificationCode,
 					challengeCode,
@@ -8123,6 +8124,7 @@
 					challengeAnimationSvgCodes,
 					expires: Date.now() + 60 * 60 * 1000, // 60 min
 				};
+				await saveToIndexedDB('MTLU_twitterApi', 'challengeData', this.#challengeData);
 			})();
 
 			try{
@@ -8157,6 +8159,7 @@
 		}
 
 		async #twitterApiInit(){
+			this.#challengeData = await getFromIndexedDB('MTLU_twitterApi', 'challengeData');
 			await this.#getChallengeData();
 			this.#classSettings = await getFromIndexedDB('MTLU_twitterApi', 'settings') || {};
 			if(!this.#classSettings?.uuid){
