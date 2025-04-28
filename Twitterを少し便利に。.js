@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.17
+// @version			2.1.2.18
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -2989,7 +2989,7 @@
 			url,
 			headers: dontUseGenericHeaders ? headers : Object.assign({
 				'Content-Type': '*/*',
-				'Accept-Encoding': 'br, gzip, deflate, zstd',
+				'Accept-Encoding': 'zstd, br, gzip, deflate',
 				'User-agent': userAgent,
 				'Accept': '*/*',
 				'Referer': url,
@@ -6886,16 +6886,17 @@
 					引数の tweetId のツイートのブックマークを解除する
 		*/
 		#challengeData;
-		#solverIframe;
-		#xctid;
 		#graphqlApiUri;
 		#graphqlApiEndpoints;
 		#endpointsAliases;
 		#requestHeadersTemplate;
 		#graphqlFeatures;
-		#initSolverIframePromise = null;
 		#challengeDataPromise = null;
-		#isSolverIframeReady = false;
+		#initPromise;
+		#RateLimitExceeded = "Rate limit exceeded";
+		#transactionIdSolver;
+		#resetTransactionIdSolverTimes = 0;
+		#resetTransactionIdSolverPromise;
 		#pendingTweetRequests = {};
 		#pendingUserRequests = {};
 		#pendingTLRequests = {};
@@ -6907,19 +6908,13 @@
 		lists = {};
 		timelines = {
 			following: {
-				contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {},
-				newContents: {contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}},
-				cursor: {top: {entryId: null, sortIndex: null, value: null}, bottom: {entryId: null, sortIndex: null, value: null}}
+				...this.#defaultTimelineData()
 			},
 			forYou: {
-				contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {},
-				newContents: {contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}},
-				cursor: {top: {entryId: null, sortIndex: null, value: null}, bottom: {entryId: null, sortIndex: null, value: null}}
+				...this.#defaultTimelineData()
 			},
 			bookmarks: {
-				contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {},
-				newContents: {contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}},
-				cursor: {top: {entryId: null, sortIndex: null, value: null}, bottom: {entryId: null, sortIndex: null, value: null}}
+				...this.#defaultTimelineData()
 			},
 			userMedia: {},
 			userTweets: {},
@@ -6927,9 +6922,7 @@
 			userHighlights: {},
 			userLikes: {},
 			ownLists: {
-				contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}, pinningLists: {},
-				newContents: {contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}},
-				cursor: {top: {entryId: null, sortIndex: null, value: null}, bottom: {entryId: null, sortIndex: null, value: null}}
+				...this.#defaultTimelineData(), pinningLists: {},
 			},
 			userLists: {},
 			lists: {},
@@ -7033,11 +7026,6 @@
 				deleteBookmark: 'DeleteBookmark',
 			};
 			this.#challengeData = {verificationCode: null, challengeCode: null, challengeJsCode: null, challengeAnimationSvgCodes: [], expires: null};
-			this.#solverIframe = null;
-			this.#xctid = Object.keys(this.#graphqlApiEndpoints).reduce((acc, key) => {
-				acc[key] = {id: null, expires: null};
-				return acc;
-			}, {});
 			this.#apiRateLimit = Object.keys(this.#graphqlApiEndpoints).reduce((acc, key) => {
 				acc[key] = {remaining: null, limit: null, reset: null};
 				return acc;
@@ -7090,48 +7078,48 @@
 				"responsive_web_grok_image_annotation_enabled": true,
 				"responsive_web_enhance_cards_enabled": false
 			};
-			this.#twitterApiInit();
+			this.#initPromise = this.#twitterApiInit();
 		}
 
 		async favoriteTweet(tweetId){
 			if(this.#apiRateLimit.FavoriteTweet.remaining === 0 && this.#apiRateLimit.FavoriteTweet.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] FavoriteTweet API rate limit exceeded", resetDate: this.#apiRateLimit.FavoriteTweet.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.FavoriteTweet.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			return await this.tweetAction('favorite', tweetId);
 		}
 		async unfavoriteTweet(tweetId){
 			if(this.#apiRateLimit.UnfavoriteTweet.remaining === 0 && this.#apiRateLimit.UnfavoriteTweet.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] UnfavoriteTweet API rate limit exceeded", resetDate: this.#apiRateLimit.UnfavoriteTweet.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UnfavoriteTweet.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			return await this.tweetAction('unfavorite', tweetId);
 		}
 		async retweet(tweetId){
 			if(this.#apiRateLimit.CreateRetweet.remaining === 0 && this.#apiRateLimit.CreateRetweet.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] CreateRetweet API rate limit exceeded", resetDate: this.#apiRateLimit.CreateRetweet.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.CreateRetweet.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			return await this.tweetAction('retweet', tweetId);
 		}
 		async deleteRetweet(tweetId){
 			if(this.#apiRateLimit.DeleteRetweet.remaining === 0 && this.#apiRateLimit.DeleteRetweet.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] DeleteRetweet API rate limit exceeded", resetDate: this.#apiRateLimit.DeleteRetweet.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.DeleteRetweet.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			return await this.tweetAction('deleteRetweet', tweetId);
 		}
 		async bookmark(tweetId){
 			if(this.#apiRateLimit.CreateBookmark.remaining === 0 && this.#apiRateLimit.CreateBookmark.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] CreateBookmark API rate limit exceeded", resetDate: this.#apiRateLimit.CreateBookmark.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.CreateBookmark.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			return await this.tweetAction('bookmark', tweetId);
 		}
 		async deleteBookmark(tweetId){
 			if(this.#apiRateLimit.DeleteBookmark.remaining === 0 && this.#apiRateLimit.DeleteBookmark.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] DeleteBookmark API rate limit exceeded", resetDate: this.#apiRateLimit.DeleteBookmark.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.DeleteBookmark.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			return await this.tweetAction('deleteBookmark', tweetId);
 		}
@@ -7144,7 +7132,7 @@
 			}
 			if(this.#apiRateLimit.TweetDetail.remaining === 0 && this.#apiRateLimit.TweetDetail.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] TweetDetail API rate limit exceeded", resetDate: this.#apiRateLimit.TweetDetail.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.TweetDetail.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 
 			this.#pendingTweetRequests[tweetId] = this.#_getTweet(tweetId);
@@ -7178,24 +7166,16 @@
 				"withGrokAnalyze": false,
 				"withDisallowedReplyControls": false
 			};
-			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.TweetDetail.uri, 'GET');
-			const response = await request({
+			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.TweetDetail.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
 				method: 'GET',
-				headers,
 				onlyResponse: false,
 				dontUseGenericHeaders: true,
 				maxRetries: 1
-			});
-			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				this.#processgraphQL(response.response.data.threaded_conversation_with_injections_v2.instructions[0].entries);
-				this.#updateApiRateLimit(response, 'TweetDetail');
-				return {...this.tweetsData[tweetId], apiRateLimit: this.#apiRateLimit.TweetDetail};
-			}else{
-				console.error("TweetDetail API error", response);
-				throw new Error(`Failed to fetch`);
-			}
+			};
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.TweetDetail.uri, 'GET')
+			this.#processgraphQL(response.response.data.threaded_conversation_with_injections_v2.instructions[0].entries);
+			return {...this.tweetsData[tweetId], apiRateLimit: this.#apiRateLimit.TweetDetail};
 		}
 		async getUser(screenName, refresh = false){
 			if(this.tweetsUserDataByUserName[screenName] && !refresh){
@@ -7206,7 +7186,7 @@
 			}
 			if(this.#apiRateLimit.UserByScreenName.remaining === 0 && this.#apiRateLimit.UserByScreenName.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] UserByScreenName API rate limit exceeded", resetDate: this.#apiRateLimit.UserByScreenName.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserByScreenName.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			this.#pendingUserRequests[screenName] = this.#_getUser(screenName);
 			try{
@@ -7237,22 +7217,14 @@
 				"responsive_web_graphql_timeline_navigation_enabled": true
 			};
 			const fieldToggles = {"withAuxiliaryUserLabels": false};
-			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.UserByScreenName.uri, 'GET');
-			const response = await request({
+			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.UserByScreenName.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
 				method: 'GET',
-				headers,
 				onlyResponse: false,
 				dontUseGenericHeaders: true,
 				maxRetries: 1
-			});
-			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				this.#updateApiRateLimit(response, 'UserByScreenName');
-			}else{
-				console.error("UserByScreenName API error", response);
-				throw new Error(`Failed to fetch`);
-			}
+			};
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.UserByScreenName.uri, 'GET');
 			const userData = response.response.data.user.result;
 			if(!userData)return null;
 			this.tweetsUserData[userData.rest_id] = { ...userData, API_type: "graphQL" };
@@ -7269,7 +7241,7 @@
 			}
 			if(this.#apiRateLimit.HomeLatestTimeline.remaining === 0 && this.#apiRateLimit.HomeLatestTimeline.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] HomeLatestTimeline API rate limit exceeded", resetDate: this.#apiRateLimit.HomeLatestTimeline.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.HomeLatestTimeline.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			this.#pendingTLRequests.following = this.#_getHomeTimeline(place);
 			try{
@@ -7289,22 +7261,14 @@
 			const cursor = this.#_getCursor('following', place);
 			if(cursor)variables.cursor = cursor;
 			const features = this.#graphqlFeatures;
-			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.HomeLatestTimeline.uri, 'GET');
-			const response = await request({
+			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.HomeLatestTimeline.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}`,
 				method: 'GET',
-				headers,
 				onlyResponse: false,
 				dontUseGenericHeaders: true,
 				maxRetries: 1
-			});
-			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				this.#updateApiRateLimit(response, 'HomeLatestTimeline');
-			}else{
-				console.error("HomeLatestTimeline API error", response);
-				throw new Error(`Failed to fetch`);
-			}
+			};
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.HomeLatestTimeline.uri, 'GET')
 			const instructions = response.response.data.home.home_timeline_urt.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
@@ -7317,7 +7281,7 @@
 			}
 			if(this.#apiRateLimit.HomeTimeline.remaining === 0 && this.#apiRateLimit.HomeTimeline.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] HomeTimeline API rate limit exceeded", resetDate: this.#apiRateLimit.HomeTimeline.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.HomeTimeline.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			this.#pendingTLRequests.forYou = this.#_getForYouTimeline(place);
 			try{
@@ -7337,22 +7301,14 @@
 			const cursor = this.#_getCursor('forYou', place);
 			if(cursor)variables.cursor = cursor;
 			const features = this.#graphqlFeatures;
-			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.HomeTimeline.uri, 'GET');
-			const response = await request({
+			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.HomeTimeline.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}`,
 				method: 'GET',
-				headers,
 				onlyResponse: false,
 				dontUseGenericHeaders: true,
 				maxRetries: 1
-			});
-			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				this.#updateApiRateLimit(response, 'HomeTimeline');
-			}else{
-				console.error("HomeTimeline API error", response);
-				throw new Error(`Failed to fetch`);
-			}
+			};
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.HomeTimeline.uri, 'GET');
 			const instructions = response.response.data.home.home_timeline_urt.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
@@ -7365,7 +7321,7 @@
 			}
 			if(this.#apiRateLimit.UserTweets.remaining === 0 && this.#apiRateLimit.UserTweets.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] UserTweets API rate limit exceeded", resetDate: this.#apiRateLimit.UserTweets.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserTweets.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			if(!this.#pendingTLRequests.userTweets)this.#pendingTLRequests.userTweets = {};
 			if(!this.timelines.userTweets[screenName])this.timelines.userTweets[screenName] = {};
@@ -7394,22 +7350,14 @@
 			const fieldToggles = {
 				"withArticlePlainText": false
 			};
-			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.UserTweets.uri, 'GET');
-			const response = await request({
+			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.UserTweets.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
 				method: 'GET',
-				headers,
 				onlyResponse: false,
 				dontUseGenericHeaders: true,
 				maxRetries: 1
-			});
-			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				this.#updateApiRateLimit(response, 'UserTweets');
-			}else{
-				console.error("UserTweets API error", response);
-				throw new Error(`Failed to fetch`);
-			}
+			};
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.UserTweets.uri, 'GET');
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const TimelinePinEntry = instructions.find(element => element.type === 'TimelinePinEntry')?.entrie;
@@ -7426,7 +7374,7 @@
 			}
 			if(this.#apiRateLimit.UserTweetsAndReplies.remaining === 0 && this.#apiRateLimit.UserTweetsAndReplies.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] UserTweetsAndReplies API rate limit exceeded", resetDate: this.#apiRateLimit.UserTweetsAndReplies.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserTweetsAndReplies.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			if(!this.#pendingTLRequests.userTweetsAndReplies)this.#pendingTLRequests.userTweetsAndReplies = {};
 			if(!this.timelines.userTweetsAndReplies[screenName])this.timelines.userTweetsAndReplies[screenName] = {};
@@ -7455,22 +7403,14 @@
 			const fieldToggles = {
 				"withArticlePlainText": false
 			};
-			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.UserTweetsAndReplies.uri, 'GET');
-			const response = await request({
+			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.UserTweetsAndReplies.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
 				method: 'GET',
-				headers,
 				onlyResponse: false,
 				dontUseGenericHeaders: true,
 				maxRetries: 1
-			});
-			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				this.#updateApiRateLimit(response, 'UserTweetsAndReplies');
-			}else{
-				console.error("UserTweetsAndReplies API error", response);
-				throw new Error(`Failed to fetch`);
-			}
+			};
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.UserTweetsAndReplies.uri, 'GET');
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const TimelinePinEntry = instructions.find(element => element.type === 'TimelinePinEntry')?.entrie;
@@ -7487,7 +7427,7 @@
 			}
 			if(this.#apiRateLimit.UserHighlightsTweets.remaining === 0 && this.#apiRateLimit.UserHighlightsTweets.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] UserHighlightsTweets API rate limit exceeded", resetDate: this.#apiRateLimit.UserHighlightsTweets.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserHighlightsTweets.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			if(!this.#pendingTLRequests.userHighlights)this.#pendingTLRequests.userHighlights = {};
 			if(!this.timelines.userHighlights[screenName])this.timelines.userHighlights[screenName] = {};
@@ -7516,22 +7456,14 @@
 			const fieldToggles = {
 				"withArticlePlainText": false
 			};
-			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.UserHighlightsTweets.uri, 'GET');
-			const response = await request({
+			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.UserHighlights.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
 				method: 'GET',
-				headers,
 				onlyResponse: false,
 				dontUseGenericHeaders: true,
 				maxRetries: 1
-			});
-			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				this.#updateApiRateLimit(response, 'UserHighlights');
-			}else{
-				console.error("UserHighlights API error", response);
-				throw new Error(`Failed to fetch`);
-			}
+			};
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.UserHighlightsTweets.uri);
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
@@ -7544,7 +7476,7 @@
 			}
 			if(this.#apiRateLimit.UserMedia.remaining === 0 && this.#apiRateLimit.UserMedia.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] UserMedia API rate limit exceeded", resetDate: this.#apiRateLimit.UserMedia.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserMedia.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			if(!this.#pendingTLRequests.userMedia)this.#pendingTLRequests.userMedia = {};
 			if(!this.timelines.userMedia[screenName])this.timelines.userMedia[screenName] = {};
@@ -7574,22 +7506,14 @@
 			const fieldToggles = {
 				"withArticlePlainText": false
 			};
-			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.UserMedia.uri, 'GET');
-			const response = await request({
+			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.UserMedia.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
 				method: 'GET',
-				headers,
 				onlyResponse: false,
 				dontUseGenericHeaders: true,
 				maxRetries: 1
-			});
-			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				this.#updateApiRateLimit(response, 'UserMedia');
-			}else{
-				console.error("UserMedia API error", response);
-				throw new Error(`Failed to fetch`);
-			}
+			};
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.UserMedia.uri);
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []);
@@ -7602,7 +7526,7 @@
 			}
 			if(this.#apiRateLimit.Likes.remaining === 0 && this.#apiRateLimit.Likes.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] Likes API rate limit exceeded", resetDate: this.#apiRateLimit.Likes.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.Likes.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			if(!this.#pendingTLRequests.userLikes)this.#pendingTLRequests.userLikes = {};
 			if(!this.timelines.userLikes[screenName])this.timelines.userLikes[screenName] = {};
@@ -7632,22 +7556,14 @@
 			const fieldToggles = {
 				"withArticlePlainText": false
 			};
-			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.Likes.uri, 'GET');
-			const response = await request({
+			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.Likes.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
 				method: 'GET',
-				headers,
 				onlyResponse: false,
 				dontUseGenericHeaders: true,
 				maxRetries: 1
-			});
-			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				this.#updateApiRateLimit(response, 'Likes');
-			}else{
-				console.error("Likes API error", response);
-				throw new Error(`Failed to fetch`);
-			}
+			};
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.Likes.uri);
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
@@ -7660,7 +7576,7 @@
 			}
 			if(this.#apiRateLimit.ListsManagementPageTimeline.remaining === 0 && this.#apiRateLimit.ListsManagementPageTimeline.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] ListsManagementPageTimeline API rate limit exceeded", resetDate: this.#apiRateLimit.ListsManagementPageTimeline.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.ListsManagementPageTimeline.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			if(!this.#pendingTLRequests.ownLists)this.#pendingTLRequests.ownLists = {};
 			this.#pendingTLRequests.ownLists = this.#_getOwnLists(place);
@@ -7677,21 +7593,13 @@
 			const cursor = this.#_getCursor('ownLists', place);
 			if(cursor)variables.cursor = cursor;
 			const features = this.#graphqlFeatures;
-			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.ListsManagementPageTimeline.uri, 'GET');
-			const response = await request({
+			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.ListsManagementPageTimeline.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}`,
 				method: 'GET',
-				headers,
 				dontUseGenericHeaders: true,
 				maxRetries: 1
-			});
-			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				this.#updateApiRateLimit(response, 'ListsManagementPageTimeline');
-			}else{
-				console.error("ListsManagementPageTimeline API error", response);
-				throw new Error(`Failed to fetch`);
-			}
+			};
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.ListsManagementPageTimeline.uri);
 			const instructions = response.response.data.user.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
@@ -7717,7 +7625,7 @@
 			}
 			if(this.#apiRateLimit.UserLists.remaining === 0 && this.#apiRateLimit.UserLists.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] UserLists API rate limit exceeded", resetDate: this.#apiRateLimit.UserLists.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.UserLists.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			if(!this.#pendingTLRequests.lists)this.#pendingTLRequests.lists = {};
 			if(!this.timelines.userLists[screenName])this.timelines.userLists[screenName] = {};
@@ -7737,22 +7645,14 @@
 				"count": 100
 			};
 			const features = this.#graphqlFeatures;
-			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.CombinedLists.uri, 'GET');
-			const response = await request({
+			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.CombinedLists.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
 				method: 'GET',
 				headers,
 				dontUseGenericHeaders: true,
 				maxRetries: 1
-			});
-
-			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				this.#updateApiRateLimit(response, 'CombinedLists');
-			}else{
-				console.error("CombinedLists API error", response);
-				throw new Error(`Failed to fetch`);
-			}
+			};
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.CombinedLists.uri);
 
 			const entries = response.response.data.user.result.timeline.timeline.instructions?.find(element => element.type === 'TimelineAddEntries')?.entries;
 			await this.#processTimeline({entries: entries, type: 'lists', screenName: screenName});
@@ -7777,7 +7677,7 @@
 			}
 			if(this.#apiRateLimit.ListTimeline.remaining === 0 && this.#apiRateLimit.ListTimeline.resetDate?.getTime() > Date.now()){
 				console.error({error: "[TwitterApi] ListTimeline API rate limit exceeded", resetDate: this.#apiRateLimit.ListTimeline.resetDate});
-				throw new Error({error: "Rate limit exceeded", resetDate: this.#apiRateLimit.ListTimeline.resetDate});
+				throw new Error(this.#RateLimitExceeded);
 			}
 			if(!this.#pendingTLRequests.lists)this.#pendingTLRequests.lists = {};
 			if(!this.timelines.lists[listId])this.timelines.lists[listId] = {};
@@ -7798,21 +7698,14 @@
 			const cursor = this.#_getCursor('lists', place, listId);
 			if(cursor)variables.cursor = cursor;
 			const features = this.#graphqlFeatures;
-			const headers = await this.#generateHeaders(this.#graphqlApiEndpoints.ListTimeline.uri, 'GET');
-			const response = await request({
+			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.ListTimeline.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}`,
 				method: 'GET',
-				headers,
 				dontUseGenericHeaders: true,
 				maxRetries: 1
-			});
-			const isSuccess = (response.status === 200);
-			if(isSuccess){
-				this.#updateApiRateLimit(response, 'ListTimeline');
-			}else{
-				console.error("ListTimeline API error", response);
-				throw new Error(`Failed to fetch`);
-			}
+			};
+			const request = await this.#_request(requestObj, this.#graphqlApiEndpoints.ListTimeline.uri);
+			this.#updateApiRateLimit(response, 'ListTimeline');
 			const instructions = response.response.data.list.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
@@ -7834,10 +7727,9 @@
 			if(!endpointData || tweetId === undefined)throw new Error("Invalid endpoint or tweetId");
 			const headers = await this.#generateHeaders(endpointData.uri, 'POST');
 			const body = `{"variables": {"tweet_id": "${tweetId}"}, "queryId": "${endpointData.uri.split('/').pop()}"}`;
-			const response = await request({url: `${this.#graphqlApiUri}${endpointData.uri}`, method: 'POST', body: body, headers: headers, onlyResponse: false, dontUseGenericHeaders: true, maxRetries: 1});
-			const isSuccess = (response.status === 200);
-			this.#updateApiRateLimit(response, endpoint);
-			return isSuccess;
+			const requestObj = {url: `${this.#graphqlApiUri}${endpointData.uri}`, method: 'POST', body: body, headers: headers, onlyResponse: false, dontUseGenericHeaders: true, maxRetries: 1};
+			const response = await this.#_request(requestObj, endpoint);
+			return (response.status === 200);
 		}
 
 		async getBio(screenName){
@@ -8087,12 +7979,6 @@
 		}
 
 		async #generateHeaders(endpoint, method){
-			if(!this.#challengeData.verificationCode){
-				await this.#getChallengeData();
-			}
-			if(!this.#solverIframe){
-				await this.#initSolverIframe();
-			}
 			const id = await this.getXctid("/i/api/graphql" + endpoint, method);
 			const headers = id ? Object.assign({
 				'x-client-transaction-id': id,
@@ -8131,7 +8017,35 @@
 			return cursorObj?.value ?? null;
 		}
 
+		async #_request(optionObj, endpoint){
+			let retryCount = 0;
+			while(retryCount <= 5 && this.#resetTransactionIdSolverTimes < 5){
+				try{
+					const headers = await this.#generateHeaders(endpoint, optionObj.method);
+					const response = await request({...optionObj, headers});
+					this.#updateApiRateLimit(response, endpoint);
+					return response;
+				}catch(e){
+					console.error(e);
+					if(e.error?.response?.status === 404){
+						retryCount++;
+						this.#challengeData = null;
+						this.#transactionIdSolver = null;
+					}else{
+						this.#updateApiRateLimit(response, endpoint);
+						return null;
+					}
+				}
+			}
+		}
+
 		#updateApiRateLimit(response, endpoint){
+			if(!this.#graphqlApiEndpoints[endpoint]){
+				const tmpName = this.#graphqlApiEndpoints[endpoint?.split('/')?.pop()];
+				if(tmpName){
+					endpoint = tmpName;
+				}
+			}
 			const responseHeaders = response.responseHeaders;
 			if(!this.#apiRateLimit[endpoint]){
 				this.#apiRateLimit[endpoint] = {
@@ -8146,6 +8060,12 @@
 				this.#apiRateLimit[endpoint].reset = responseHeaders.match(/x-rate-limit-reset: ?([\d]+)/)?.[1];
 				this.#apiRateLimit[endpoint].resetDate = new Date((responseHeaders.match(/x-rate-limit-reset: ?([\d]+)/)?.[1] || 0) * 1000);
 			}
+			if(response.status === 200){
+				return true;
+			}else{
+				console.error(`${endpoint} API error`, response);
+				throw new Error(`Failed to fetch`);
+			}
 		}
 
 		#objectToUri(obj){
@@ -8156,14 +8076,26 @@
 			return this.#apiRateLimit;
 		}
 
-		// 非公開メソッド: challenge 情報を取得
-		async #getChallengeData(){
-			if(this.#challengeData.expires && this.#challengeData.expires > Date.now()){
+		#defaultTimelineData(){
+			return {
+				contents: {},
+				contentsList: [],
+				contentsBySortIndex: {},
+				rawData: {},
+				newContents: {contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}},
+				cursor: {top: {entryId: null, sortIndex: null, value: null}, bottom: {entryId: null, sortIndex: null, value: null}},
+			};
+		  }
+
+		// challenge 情報を取得
+		async #getChallengeData(force = false){
+			if((this.#challengeData?.expires && this.#challengeData?.expires > Date.now()) && !force){
 				return;
 			}
 			if(this.#challengeDataPromise){
 				return this.#challengeDataPromise;
 			}
+			if(force)this.#resetTransactionIdSolverTimes++;
 			this.#challengeDataPromise = (async () => {
 				const response = await request({ url: 'https://x.com/home', respType: 'text' });
 				const html = response;
@@ -8172,10 +8104,10 @@
 
 				const metaTag = doc.querySelector('meta[name="twitter-site-verification"]');
 				const verificationCode = metaTag?.content;
-				if(!verificationCode) throw new Error("Verification code not found");
+				if(!verificationCode)throw new Error("Verification code not found");
 
 				const challengeCodeMatch = html.match(/"ondemand\.s":"(\w+)"/);
-				if(!challengeCodeMatch) throw new Error("Challenge code not found");
+				if(!challengeCodeMatch)throw new Error("Challenge code not found");
 
 				const challengeCode = challengeCodeMatch[1];
 				const svgs = Array.from(doc.querySelectorAll('svg[id^="loading-x"]'));
@@ -8200,139 +8132,15 @@
 			}
 		}
 
-		async getXctid(endpoint, method = "get", force = false){
-			const endpointOrig = endpoint;
-			//if(!this.#isSolverIframeReady)return null;
-			if(!this.#graphqlApiEndpoints[endpoint] || !force){
-				if(this.#endpointsAliases[endpoint]){
-					endpoint = this.#endpointsAliases[endpoint];
-				}else if(this.#graphqlApiEndpoints[endpoint.split('/').pop()]){
-					endpoint = endpoint.split('/').pop();
-				}else{
-					throw new Error(`Invalid endpoint: ${endpoint}`);
-				}
-			}
-			if(this.#xctid[endpoint] && this.#xctid[endpoint].expires > Date.now()){
-				return this.#xctid[endpoint].id;
-			}
-			if(method === undefined){
-				if(this.#graphqlApiEndpoints[endpoint]?.method?.length === 1){
-					method = this.#graphqlApiEndpoints[endpoint].method[0];
-				}else{
-					throw new Error(`Method is required for endpoint: ${endpoint}`);
-				}
-			}else if(!this.#graphqlApiEndpoints[endpoint]?.method?.includes(method)){
-				throw new Error(`Invalid method: ${method}`);
-			}
-			if(!this.#challengeData.verificationCode){
+		async getXctid(endpoint, method = "GET"){
+			await this.#initPromise;
+			if(!this.#challengeData){
 				await this.#getChallengeData();
 			}
-
-			if(!this.#solverIframe){
-				await this.#initSolverIframe();
+			if(!this.#transactionIdSolver){
+				this.#transactionIdSolver = new TwitterApi.TransactionIdSolver(this.#challengeData);
 			}
-
-			const id = await this.#solveTransactionId(endpointOrig, method);
-			if(!id){
-				return null;
-			}
-			this.#xctid[endpoint] = {
-				id,
-				expires: Date.now() + 1000,
-			};
-			return id;
-		}
-
-		async #initSolverIframe(){
-			if(this.#solverIframe){
-				return; // すでにiframeがある
-			}
-			if(this.#initSolverIframePromise){
-				return this.#initSolverIframePromise;
-			}
-
-			this.#initSolverIframePromise = new Promise(async (resolve) => {
-				await this.#getChallengeData();
-
-				const messageListener = (event) => {
-					if(event.data?.action === 'ready'){
-						this.#isSolverIframeReady = true;
-					}
-					if(event.source !== this.#solverIframe.contentWindow)return;
-					if(!event.data || (event.data.action !== 'error' && event.data.action !== 'initError'))return;
-
-					window.removeEventListener("message", messageListener);
-					this.#solverIframe.remove();
-					this.#solverIframe = null;
-					console.error("Solver iframe error", event.data);
-					this.#initSolverIframePromise = null;
-					resolve(null);
-				};
-				window.addEventListener("message", messageListener);
-
-				if(typeof GM_addElement === 'function'){
-					this.#solverIframe = GM_addElement('iframe', {src: 'https://tweetdeck.dimden.dev/solver.html?1'});
-				}else{
-					this.#solverIframe = document.createElement('iframe');
-					this.#solverIframe.src = 'https://tweetdeck.dimden.dev/solver.html?1';
-				}
-				this.#solverIframe.style.display = 'none';
-
-				this.#solverIframe.onload = () => {
-					this.#solverIframe.contentWindow.postMessage({
-						action: 'init',
-						verificationCode: this.#challengeData.verificationCode,
-						anims: this.#challengeData.challengeAnimationSvgCodes,
-						challenge: this.#challengeData.challengeJsCode
-					}, '*');
-					this.#initSolverIframePromise = null;
-					resolve();
-				};
-
-				this.#solverIframe.onerror = () => {
-					window.removeEventListener("message", messageListener);
-					this.#solverIframe.remove();
-					this.#solverIframe = null;
-					this.#initSolverIframePromise = null;
-					console.error("Failed to load solver iframe");
-					resolve(null);
-				};
-			});
-
-			return this.#initSolverIframePromise;
-		}
-
-		// solver に path/method を送って XCTID を取得する
-		#solveTransactionId(path, method){
-			if(!this.#solverIframe){
-				console.warn("Solver iframe not initialized");
-				return null;
-			}
-			return new Promise((resolve, reject) => {
-				const id = Date.now() + Math.random();
-
-				const listener = (e) => {
-					if(e.source !== this.#solverIframe.contentWindow)return;
-					if(!e.data || e.data.id !== id)return;
-
-					window.removeEventListener('message', listener);
-
-					if(e.data.action === 'solved'){
-						resolve(e.data.result);
-					}else if(e.data.action === 'error'){
-						reject(new Error(e.data.error));
-					}
-				};
-
-				window.addEventListener('message', listener);
-
-				this.#solverIframe.contentWindow.postMessage({
-					action: 'solve',
-					id,
-					path,
-					method,
-				}, '*');
-			});
+			return await this.#transactionIdSolver.solve(endpoint, method);
 		}
 
 		// ここは https://github.com/dimdenGD/OldTweetDeck/blob/main/src/challenge.js から完全にパクった
@@ -8349,9 +8157,7 @@
 		}
 
 		async #twitterApiInit(){
-			if(!this.#solverIframe){
-				this.#initSolverIframe();
-			}
+			await this.#getChallengeData();
 			this.#classSettings = await getFromIndexedDB('MTLU_twitterApi', 'settings') || {};
 			if(!this.#classSettings?.uuid){
 				this.#classSettings.uuid = this.#uuidV4();
@@ -8359,6 +8165,274 @@
 			}
 			this.#requestHeadersTemplate['x-twitter-client-uuid'] = this.#classSettings.uuid;
 		}
+
+		// 参考: https://github.com/iSarabjitDhiman/XClientTransaction
+		static TransactionIdSolver = class {
+			constructor(challengeData){
+				this.challengeData = challengeData;
+				this.animationKey = null;
+			}
+
+			async solve(path, method){
+				if(!this.challengeData.verificationCode){
+					throw new Error("Challenge data missing");
+				}
+				if(!this.animationKey){
+					this.animationKey = await this.getAnimationKey();
+				}
+
+				const keyBytes = Array.from(atob(this.challengeData.verificationCode), c => c.charCodeAt(0));
+				return await this.generateTransactionId(method, path, {
+					key: this.challengeData.verificationCode,
+					keyBytes,
+					animationKey: this.animationKey,
+					defaultKeyword: "obfiowerehiring",
+					additionalRandomNumber: 3
+				});
+			}
+
+			async getAnimationKey(){
+				if(!(this.rowIndexKey && this.frameTimeKeys))this.getIndices();
+				const parser = new DOMParser();
+				const svgs = this.challengeData.challengeAnimationSvgCodes.map(html => parser.parseFromString(html, 'image/svg+xml').documentElement);
+
+				const keyBytes = Array.from(atob(this.challengeData.verificationCode), c => c.charCodeAt(0));
+				const totalTime = 4096;
+				const rowIndex = keyBytes[this.rowIndexKey] % 16;
+				const frameTime = this.frameTimeKeys.map(i => keyBytes[i] % 16).reduce((a, b) => a * b, 1);
+
+				const selectedSvg = svgs[keyBytes[5] % svgs.length];
+				const arr = this.parsePathToArray(selectedSvg);
+				const frameRow = arr[rowIndex].filter((x)=>{return x === x});
+
+				const targetTime = frameTime / totalTime;
+				return this.animate(frameRow, targetTime);
+			}
+
+			async getIndices(){
+				const matches = [...this.challengeData.challengeJsCode.matchAll(/\(\w\[(\d+)\],\s*16\)/g)];
+				const indices = matches.map(match => parseInt(match[1]));
+
+				if(indices.length < 4){
+					throw new Error("Couldn't extract keyByte indices from on_demand.js");
+				}
+
+				this.rowIndexKey = indices[0];
+				this.frameTimeKeys = indices.slice(1, 4);
+			}
+
+			parsePathToArray(svgElement){
+				const paths = svgElement.querySelectorAll('path');
+				const path = paths[1];
+				if(!path)return [];
+				const d = path.getAttribute('d');
+				if(!d)return [];
+				const commands = d.split('C').slice(1);
+				return commands.map(command => command.trim().split(/[\s,]+/).map(str => parseInt(str, 10)).filter((x)=>{return x === x}));
+			}
+
+			animate(frames, targetTime){
+				const fromColor = [...frames.slice(0, 3).map(v => parseFloat(v)), 1];
+				const toColor = [...frames.slice(3, 6).map(v => parseFloat(v)), 1];
+				const fromRotation = [0.0];
+				const toRotation = [this.solveVal(parseFloat(frames[6]), 60.0, 360.0, true)];
+				const curves = frames.slice(7).map((item, i) => this.solveVal(parseFloat(item), this.isOdd(i) ? -1 : 0, 1.0, false)).filter((x)=>{return x === x});
+
+				const val = this.getCubic(targetTime, curves);
+
+				let color = this.interpolate(fromColor, toColor, val).map(v => Math.max(0, v));
+				const rotation = this.interpolate(fromRotation, toRotation, val);
+				const matrix = this.convertRotationToMatrix(rotation[0]);
+
+				const strArr = [];
+				for(let i=0;i<color.length-1;i++){
+					strArr.push(Math.round(color[i]).toString(16));
+				}
+				for(const value of matrix){
+					let rounded = Math.round(value * 100) / 100;
+					if(rounded < 0)rounded = -rounded;
+					const hexValue = this.floatToHex(rounded);
+					strArr.push(hexValue.startsWith('.') ? `0${hexValue}` : hexValue || '0');
+				}
+				strArr.push("0", "0");
+
+				return strArr.join('').replace(/[.-]/g, '');
+			}
+
+			convertRotationToMatrix(rotation){
+				const rad = rotation * Math.PI / 180;
+				const cosVal = Math.cos(rad);
+				const sinVal = Math.sin(rad);
+				return [cosVal, -sinVal, sinVal, cosVal];
+			}
+
+			solveVal(value, minVal, maxVal, rounding){
+				const result = value * (maxVal - minVal) / 255 + minVal;
+				return rounding ? Math.floor(result) : Math.round(result * 100) / 100;
+			}
+
+			isOdd(num){
+				return (num % 2) ? -1.0 : 0.0;
+			}
+
+			interpolate(fromList, toList, f){
+				if(fromList.length !== toList.length){
+					throw new Error(`Mismatched interpolation arguments: ${fromList} vs ${toList}`);
+				}
+				return fromList.map((fromVal, i) => this.interpolateNum(fromVal, toList[i], f));
+			}
+
+			interpolateNum(fromVal, toVal, f){
+				if(typeof fromVal === 'number' && typeof toVal === 'number'){
+					return fromVal * (1 - f) + toVal * f;
+				}
+				if(typeof fromVal === 'boolean' && typeof toVal === 'boolean'){
+					return f < 0.5 ? fromVal : toVal;
+				}
+				throw new Error('Unsupported types in interpolateNum');
+			}
+
+			floatToHex(x, maxDigits = 16){
+				const result = [];
+				let quotient = Math.floor(x);
+				let fraction = x - quotient;
+
+				// 整数部
+				while(quotient > 0){
+					let newQuotient = Math.floor(x / 16);
+					let remainder = Math.floor(x - (newQuotient * 16));
+
+					if(remainder > 9){
+						result.unshift(String.fromCharCode(remainder + 55));
+					}else{
+						result.unshift(remainder.toString());
+					}
+
+					x = newQuotient;
+					quotient = Math.floor(x);
+				}
+
+				if(result.length === 0){
+					result.push('0');
+				}
+
+				// 小数部
+				if(fraction !== 0){
+					result.push('.');
+					let safeCounter = 0;
+					while(fraction > 0 && safeCounter < maxDigits){
+						fraction *= 16;
+						let integer = Math.floor(fraction);
+						fraction -= integer;
+
+						if(integer > 9){
+							result.push(String.fromCharCode(integer + 55));
+						}else{
+							result.push(integer.toString());
+						}
+
+						safeCounter++;
+						// fractionが十分小さくなったら無視
+						if(fraction < 1e-12)break;
+					}
+				}
+
+				return result.join('');
+			}
+
+			async generateTransactionId(method, path, options){
+				const {
+					key,
+					keyBytes,
+					animationKey,
+					defaultKeyword,
+					additionalRandomNumber
+				} = options;
+
+				const now = Date.now();
+				const timeNow = Math.floor((now - 1682924400000) / 1000);
+				const timeNowBytes = [
+					(timeNow >> 0) & 0xFF,
+					(timeNow >> 8) & 0xFF,
+					(timeNow >> 16) & 0xFF,
+					(timeNow >> 24) & 0xFF
+				];
+
+				const data = `${method}!${path}!${timeNow}${defaultKeyword}${animationKey.toLowerCase()}`;
+				const hashBuffer = await crypto.subtle.digest('SHA-256', this.manualEncode(data));
+				const hashArray = Array.from(structuredClone(new Uint8Array(hashBuffer))); // Firefoxでのエラー回避
+
+				const randomNum = Math.floor(Math.random() * 256);
+
+				const bytesArr = [
+					...keyBytes,
+					...timeNowBytes,
+					...hashArray.slice(0, 16),
+					additionalRandomNumber
+				];
+
+				const obfuscated = [randomNum, ...bytesArr.map(b => b ^ randomNum)];
+				const base64 = this.base64Encode(obfuscated).replace(/=/g, '');
+
+				return base64;
+			}
+
+			manualEncode(str){
+				const bytes = new Uint8Array(str.length);
+				for(let i=0;i<str.length;i++){
+					bytes[i] = str.charCodeAt(i) & 0xFF;
+				}
+				return bytes;
+			}
+
+			getCubic(time, curves){
+				if(time <= 0.0){
+					let startGradient = 0.0;
+					if(curves[0] > 0.0){
+						startGradient = curves[1] / curves[0];
+					}else if(curves[1] === 0.0 && curves[2] > 0.0){
+						startGradient = curves[3] / curves[2];
+					}
+					return startGradient * time;
+				}
+
+				if(time >= 1.0){
+					let endGradient = 0.0;
+					if(curves[2] < 1.0){
+						endGradient = (curves[3] - 1.0) / (curves[2] - 1.0);
+					}else if(curves[2] === 1.0 && curves[0] < 1.0){
+						endGradient = (curves[1] - 1.0) / (curves[0] - 1.0);
+					}
+					return 1.0 + endGradient * (time - 1.0);
+				}
+
+				let start = 0.0;
+				let end = 1.0;
+				let mid = 0.0;
+				while(start < end){
+					mid = (start + end) / 2;
+					const x_est = this.calculateCubic(curves[0], curves[2], mid);
+					if(Math.abs(time - x_est) < 0.00001){
+						return this.calculateCubic(curves[1], curves[3], mid);
+					}
+					if(x_est < time){
+						start = mid;
+					}else{
+						end = mid;
+					}
+				}
+				return this.calculateCubic(curves[1], curves[3], mid);
+			}
+
+			calculateCubic(a, b, m){
+				return 3.0 * a * (1.0 - m) * (1.0 - m) * m + 3.0 * b * (1.0 - m) * m * m + m * m * m;
+			}
+
+			base64Encode(bytes){
+				const binary = bytes.reduce((acc, byte) => acc + String.fromCharCode(byte), '');
+				return btoa(binary);
+			}
+		};
 
 		debug(){
 			console.log("TwitterApi");
@@ -8369,9 +8443,6 @@
 				lists: this.lists,
 				timelines: this.timelines,
 				challengeData: this.#challengeData,
-				solverIframe: this.#solverIframe,
-				isSolverIframeReady: this.#isSolverIframeReady,
-				xctid: this.#xctid,
 				graphqlApiUri: this.#graphqlApiUri,
 				graphqlApiEndpoints: this.#graphqlApiEndpoints,
 				endpointsAliases: this.#endpointsAliases,
