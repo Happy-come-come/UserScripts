@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.22
+// @version			2.1.2.23
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -236,6 +236,7 @@
 			"settings": {
 				"displayName": "あなたのツイートはどこから？",
 				"description": "ツイートを投稿したクライアント名を表示します",
+				"showVideoUrl": "動画のURLを表示する",
 			}
 		},
 		"showFollowers": {
@@ -434,6 +435,7 @@
 			"settings": {
 				"displayName": "Hello Tweet Where Are You From?",
 				"description": "Displays the client name from which the tweet was posted",
+				"showVideoUrl": "Show video URL",
 			}
 		},
 		"showFollowers": {
@@ -1298,27 +1300,60 @@
 		const tweetData = await twitterApi.getTweet(extractTweetId(currentUrl));
 		const thisScriptSettings = scriptSettings.helloTweetWhereAreYouFrom;
 		if(!targetNode)return;
-		const colors = new Colors();
-		const container = document.createElement('div');
-		container.style.display = "flex";
-		container.style.flexDirection = "column";
-		container.className = "display_twitter_client";
-		const clientText = document.createElement('span');
-		clientText.style.color = colors.get("fontColorDark");
-		clientText.textContent = decodeHtml(tweetData.source);
-		container.appendChild(clientText);
+		const separatDot = 
+		h("div", {
+				class: "MTLU_container",
+				style: {
+					display: "inline",
+					padding: "0 4px 0 4px",
+				}
+			},
+			h("span", {
+					class: "MTLU_fontColorDark",
+					textContent: "·"
+				}
+			)
+		);
+		const sourceDisplayContainer = 
+		h("div", {
+				class: "MTLU_container display_twitter_client",
+				style: {
+					display: "inline",
+				},
+			},
+			h("span", {
+					class: "MTLU_fontColorDark",
+					textContent: decodeHtml(tweetData.source)
+				}
+			)
+		);
+		targetNode.appendChild(separatDot);
+		targetNode.appendChild(sourceDisplayContainer);
+
+		if(thisScriptSettings.showVideoUrl == false)return;
 		const mediaData = tweetData.legacy?.extended_entities?.media || tweetData.extended_entities?.media;
-		if(mediaData?.length > 0){
-			const videoUrlContainer = document.createElement('div');
-			mediaData.forEach((m,index)=>{
-				if(!['video', 'animated_gif'].includes(m.type))return;
-				const highestBitrateVariant = m.video_info.variants.filter(obj => obj.content_type !== 'application/x-mpegURL').reduce((a, b) => a.bitrate > b.bitrate ? a : b);
-				const videoUrlElement = createLinkElement(highestBitrateVariant.url.split('?')[0],`${index+1}: ${m.type} URL`);
-				videoUrlContainer.appendChild(videoUrlElement)
+		const videoUrlElements = mediaData
+			.filter(m => ['video', 'animated_gif'].includes(m.type))
+			.map((m, index) => {
+				const variant = m.video_info.variants
+					.filter(v => v.content_type !== 'application/x-mpegURL')
+					.reduce((a, b) => a.bitrate > b.bitrate ? a : b);
+				const videoUrlElement = createLinkElement(variant.url.split('?')[0], `${index + 1}: ${m.type} URL`);
+				if(index != 0)videoUrlElement.style.marginLeft = "0.7em";
+				return videoUrlElement;
 			});
-			if(videoUrlContainer.children.length > 0)container.appendChild(videoUrlContainer);
+		if(videoUrlElements.length > 0){
+			const videoUrlContainer = h("div", {
+					class: "MTLU_container",
+					style: {
+						display: "flex",
+						flexDirection: "row",
+					}
+				}, 
+				videoUrlElements
+			);
+			targetNode.appendChild(videoUrlContainer);
 		}
-		targetNode.appendChild(container);
 		return "done";
 	}
 
@@ -1948,6 +1983,36 @@
 		}
 
 		style.innerHTML = `
+			.MTLU_fontColor {
+				color: ${colors.get("fontColor")};
+			}
+			.MTLU_fontColorDark {
+				color: ${colors.get("fontColorDark")};
+			}
+			.MTLU_backgroundColor {
+				background-color: ${colors.get("backgroundColor")};
+			}
+			.MTLU_borderColor {
+				border-color: ${colors.get("borderColor")};
+			}
+			.MTLU_menuHoverEffect {
+				background-color: ${colors.get("menuHoverEffect")};
+			}
+			.MTLU_menuHoverEffectLight {
+				background-color: ${colors.get("menuHoverEffectLight")};
+			}
+
+			.MTLU_link {
+				color: ${colors.get("twitterBlue")};
+				text-decoration: none;
+				width: fit-content;
+			}
+			.MTLU_link:hover {
+				text-decoration: underline;
+				text-decoration-thickness: 1px;
+				outline-style: none;
+			}
+
 			.MTLU_container button {
 				background-color: ${colors.get("buttonBackgroundColor")};
 				color: ${colors.get("buttonFontColor")};
@@ -2004,7 +2069,7 @@
 				cursor: not-allowed;
 				background-color: ${colors.getWithAlpha("dropdownBackgroundColor", 0.5)};
 			}
-		`;
+		`.replace(/^	{3}/g,''); // tabを3つ消している(やんなくてもいいけど！)
 	}
 
 	function getCookie(name){
@@ -2139,19 +2204,20 @@
 	function createLinkElement(href, text, additionalClass = ""){
 		const colors = new Colors();
 		const linkElement = document.createElement("a");
-		linkElement.style.color = colors.get('twitterBlue');
 		linkElement.style.width = "fit-content";
 		linkElement.href = href;
 		linkElement.textContent = text;
-		linkElement.className = `${additionalClass} css-1jxf684 r-bcqeeo r-1ttztb7 r-qvutc0 r-poiln3 r-1loqt21`;
+		linkElement.className = `${additionalClass} css-1jxf684 r-bcqeeo r-1ttztb7 r-qvutc0 r-poiln3 r-1loqt21 MTLU_link`;
 		linkElement.target = "_blank";
 		linkElement.rel = "noopener nofollow";
+		/*
 		linkElement.addEventListener('mouseenter', function(){
 			linkElement.classList.add('r-1ny4l3l', 'r-1ddef8g', 'r-tjvw6i');
 		});
 		linkElement.addEventListener('mouseleave', function(){
 			linkElement.classList.remove('r-1ny4l3l', 'r-1ddef8g', 'r-tjvw6i');
 		});
+		*/
 		return linkElement;
 	}
 
@@ -2772,6 +2838,51 @@
 		return new TextDecoder().decode(new Uint8Array(bytes));
 	}
 
+	function h(tag, props = {}, ...children){
+		const el = document.createElement(tag);
+		for(const key in props){
+			const val = props[key];
+			if(key === "style" && typeof val === "object"){
+				Object.assign(el.style, val);
+			}else if(key.startsWith("on") && typeof val === "function"){
+				el.addEventListener(key.slice(2).toLowerCase(), val);
+			}else if(key.startsWith("aria-") || key === "role"){
+				el.setAttribute(key, val); // 強制的に属性にする
+			}else if(key === "dataset" && typeof val === "object"){
+				for(const dataKey in val){
+					if(val[dataKey] != null){
+						el.dataset[dataKey] = val[dataKey];
+					}
+				}
+			}else if(key.startsWith("data-")){
+				const prop = key.slice(5).replace(/-([a-z])/g, (_, c) => c.toUpperCase()); // dataset
+				el.dataset[prop] = val;
+			}else if(key === "ref" && typeof val === "function"){
+				val(el); // 作成直後のDOMノードを渡す
+			}else if(key in el){
+				el[key] = val; // DOMプロパティ
+			}else{
+				el.setAttribute(key, val); // その他属性
+			}
+		}
+		for(let i = 0; i < children.length; i++){
+			const child = children[i];
+			if(Array.isArray(child)){
+				for(const nested of child){
+					if(nested == null || nested === false)continue; // nullやfalseは無視
+					el.appendChild(typeof nested === "string" || typeof nested === "number"
+						? document.createTextNode(nested)
+						: nested);
+				}
+			}else if(child != null && child !== false){
+				el.appendChild(typeof child === "string" || typeof child === "number"
+					? document.createTextNode(child)
+					: child);
+			}
+		}
+		return el;
+	}
+
 	function customAlert(message){
 		const overlay = document.createElement('div');
 		overlay.className = 'MTLU_alert MTLU_container';
@@ -3206,6 +3317,13 @@
 				targetName: "showAllMedias",
 				displayName: envText.showAllMedias.settings.displayName,
 				pageGenerateFunction: createShowAllMediasSettingsPage,
+				settingsNode: null,
+				isFunction: true,
+			},
+			{
+				targetName: "helloTweetWhereAreYouFrom",
+				displayName: envText.helloTweetWhereAreYouFrom.settings.displayName,
+				pageGenerateFunction: createHelloTweetWhereAreYouFromSettingsPage,
 				settingsNode: null,
 				isFunction: true,
 			},
@@ -3813,6 +3931,21 @@
 				{id: 'displayMethod', type: 'radioButton', option: [{value: "expand", displayName: settingText.expand}, {value: "likeTweet", displayName: settingText.likeTweet}]},
 				{id: 'removeBlur', name: settingText.removeBlur, type: 'toggleSwitch'},
 				{id: 'onlyRemoveBlur', name: settingText.onlyRemoveBlur, type: 'toggleSwitch'},
+			];
+			for(let i=0;i<settingEntries.length;i++){
+				page.appendChild(createSettingsElement(settingEntries[i], scriptSetting).container);
+			}
+			return page;
+		}
+
+		function createHelloTweetWhereAreYouFromSettingsPage(){
+			const settingsTarget = settingTargets.helloTweetWhereAreYouFrom;
+			const scriptSetting = scriptSettings.helloTweetWhereAreYouFrom;
+			const settingText = envText.helloTweetWhereAreYouFrom.settings;
+			const page = createSettingsPageTemplate(settingsTarget.targetName);
+			const settingEntries = [
+				//{type: 'text', text: settingText.displayMethod, size: "2em", weight: "400", position: "left", isHTML: false},
+				{id: 'showVideoUrl', type: 'toggleSwitch', name: settingText.showVideoUrl},
 			];
 			for(let i=0;i<settingEntries.length;i++){
 				page.appendChild(createSettingsElement(settingEntries[i], scriptSetting).container);
