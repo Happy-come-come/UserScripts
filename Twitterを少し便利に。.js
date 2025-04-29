@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.19
+// @version			2.1.2.20
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -1079,7 +1079,7 @@
 				const newTweetBody = createTweetTextElement(tweetData);
 				newTweetBody.querySelectorAll('a').forEach((link) => {
 					const originalLink = originalLinks[link.getAttribute('text') || ""];
-					if(originalLink){
+					if(originalLink && link.getAttribute("usenavigate") != "true"){
 						link.addEventListener('click', (event)=>{
 							event.preventDefault();
 							originalLink.click();
@@ -1102,7 +1102,7 @@
 
 	async function engagementRestorer(){
 		if(!currentUrl.match(/https?\:\/\/[\w]{1,}\.com\/\w*\/status\/[0-9]*($|\?.*)/) || document.getElementById('restoreEngagements'))return;
-			try{
+		try{
 			const tweetLink = currentUrl.match(/https?\:\/\/[\w]{1,}\.com\/\w*\/status\/[0-9].*/)[0];
 			const tweetId = tweetLink.match(/\/status\/(\d+)/)[1];
 			const response = (await twitterApi.getTweet(tweetId)).legacy;
@@ -1122,22 +1122,23 @@
 			flexContainer.style.justifyContent = 'space-between';
 			flexContainer.style.width = '70%';
 			flexContainer.id = 'restoreEngagements';
+			const pathTmp = tweetLink.match(/\/[\w]+\/status\/[\d]+/)[0];
 			const links = [
 				{
 					"name": "retweets",
-					"href": tweetLink + "/retweets",
+					"href": pathTmp + "/retweets",
 					"count": roundHalfUp(engagemants.retweet_count, textData.roundingScale, textData.decimalPlaces, textData.units),
 					"text": textData.retweet
 				},
 				{
 					"name": "quotes",
-					"href": tweetLink + "/quotes",
+					"href": pathTmp + "/quotes",
 					"count": roundHalfUp(engagemants.quote_count, textData.roundingScale, textData.decimalPlaces, textData.units),
 					"text": textData.quoted,
 				},
 				{
 					"name": "likes",
-					"href": tweetLink + "/likes",
+					"href": pathTmp + "/likes",
 					"count": roundHalfUp(engagemants.favorite_count, textData.roundingScale, textData.decimalPlaces, textData.units),
 					"text": textData.like,
 				},
@@ -1158,7 +1159,8 @@
 
 				newLink.addEventListener('click', (e) => {
 					e.preventDefault();
-					clickTab(a.name, targetNode);
+					if(a.name !== "likes")navigateTo(a.href);
+					//clickTab(a.name, targetNode);
 				});
 				flexContainer.appendChild(newLink);
 			});
@@ -1560,7 +1562,7 @@
 			bookmarksButton.setAttribute('addedButton', 'true');
 			bookmarksButton.href = `/i/bookmarks`;
 			bookmarksButton.querySelector('svg g').innerHTML = `<path d="${svgIconPaths.bookmark}"></path>`;
-			addClickButtonEvent(bookmarksButton, 'a[href="/i/bookmarks"]');
+			addClickButtonEvent(bookmarksButton);
 			moreMenuButton.parentNode.insertBefore(bookmarksButton, moreMenuButton);
 		}
 
@@ -1571,7 +1573,7 @@
 			listsButton.setAttribute('addedButton', 'true');
 			listsButton.href = `/${userData.screenName}/lists`;
 			listsButton.querySelector('svg g').innerHTML = `<path d="${svgIconPaths.list}"></path>`;
-			addClickButtonEvent(listsButton, `a[href="/${userData.screenName}/lists"]`);
+			addClickButtonEvent(listsButton);
 			moreMenuButton.parentNode.insertBefore(listsButton, moreMenuButton);
 		}
 
@@ -1582,7 +1584,7 @@
 			profileButton.setAttribute('addedButton', 'true');
 			profileButton.href = `/${userData.screenName}`;
 			profileButton.querySelector('svg g').innerHTML = `<path d="${svgIconPaths.profile}"></path>`;
-			addClickButtonEvent(profileButton, 'a[data-testid="AppTabBar_Profile_Link"]');
+			addClickButtonEvent(profileButton);
 			moreMenuButton.parentNode.insertBefore(profileButton, moreMenuButton);
 		}
 
@@ -1593,26 +1595,29 @@
 			settingsButton.setAttribute('addedButton', 'true');
 			settingsButton.href = `/settings`;
 			settingsButton.querySelector('svg g').innerHTML = `<path d="${svgIconPaths.settings}"></path>`;
-			addClickButtonEvent(settingsButton, 'a[href="/settings"]');
+			addClickButtonEvent(settingsButton);
 			moreMenuButton.parentNode.insertBefore(settingsButton, moreMenuButton);
 		}
 
 		return "done";
 		function addClickButtonEvent(button, target){
 			button.addEventListener('mouseenter',()=>{
-				button.childNodes[0].childNodes[0].style.backgroundColor = colors.getWithAlpha("fontColor", 0.1);
+				button.firstChild.style.backgroundColor = colors.getWithAlpha("fontColor", 0.1);
+				button.firstChild.style.borderRadius = "9999px";
+
 			});
 			button.addEventListener('mouseleave',resetStyles);
 			button.addEventListener('touchend', resetStyles);
 			button.addEventListener('touchcancel', resetStyles);
 			function resetStyles(){
-				button.childNodes[0].childNodes[0].style.backgroundColor = '';
+				button.firstChild.style.backgroundColor = '';
 			}
 			button.addEventListener('click',async (event)=>{
 					event.preventDefault();
 					event.stopPropagation();
-					moreMenuButton.click();
-					await waitElementAndGet({query: `${target}:not([addedButton="true"])`, interval: 50, retry: 10}).then(e=>e.click());
+					navigateTo(button.href);
+					//moreMenuButton.click();
+					//await waitElementAndGet({query: `${target}:not([addedButton="true"])`, interval: 50, retry: 10}).then(e=>e.click());
 			});
 		}
 	}
@@ -1738,6 +1743,42 @@
 		updating = true;
 		main();
 		setTimeout(() => {updating = false;}, 600);
+	}
+
+	async function navigateTo(uri, state = {}){
+		// 非常に怪しい処理だが
+		// dispatchEventするためにはページ本来のwindowにアクセスする必要がある
+		// unsafeWindowはなるべく使わない予定なのでこうなった
+		if(new URL(currentUrl, location.origin)?.pathname === new URL(uri, location.origin)?.pathname)return;
+		if(!sessionData.navigateToEventAdded){
+			if(!sessionData.addCustomEventPromise){
+				sessionData.addCustomEventPromise = addCustomEvent()
+					.finally(() => sessionData.addCustomEventPromise = null);
+			}
+			await sessionData.addCustomEventPromise;
+		}
+		history.pushState(state, "", uri);
+		document.dispatchEvent(new CustomEvent("MTLU_CustomNavigate"));
+
+		async function addCustomEvent(){
+			return new Promise(resolve=>{
+				const scriptText = `
+					(() => {
+						document.addEventListener("MTLU_CustomNavigate", (e) => {
+							dispatchEvent(new Event("popstate"));
+						});
+					})();
+				`;
+				const blob = new Blob([scriptText], { type: 'text/javascript' });
+				const blobUrl = URL.createObjectURL(blob);
+				const script = GM_addElement('script',{src:blobUrl, "mtlu-id": "add_custom_navigate_event"});
+				script.onload = () => {
+					sessionData.navigateToEventAdded = true;
+					URL.revokeObjectURL(blobUrl);
+					resolve(true);
+				};
+			});
+		};
 	}
 
 	function extractTweetId(url){
@@ -2828,7 +2869,7 @@
 		}
 	}
 
-	function createTweetTextElement(tweetData){
+	function createTweetTextElement(tweetData, appendNavigate = true){
 		if(!tweetData)return null;
 		const isNoteTweet = !!tweetData.note_tweet?.note_tweet_results?.result;
 		let tweetBodyText, hashtags, urls, mentions, symbols;
@@ -2881,13 +2922,13 @@
 			let replacement;
 			switch(item.type){
 				case 'hashtag':
-					replacement = `<a class="${envSelector.link.nomal}" text="${item.text}" style="color:rgb(29, 155, 240)" dir="ltr" role="link" href="https://twitter.com/hashtag/${item.text}" target="_blank" rel="noopener nofollow">#${item.text}</a>`;
+					replacement = `<a class="${envSelector.link.nomal}" text="${item.text}" style="color:rgb(29, 155, 240)" dir="ltr" role="link" href="https://twitter.com/hashtag/${item.text}" target="_blank" rel="noopener nofollow" usenavigate="${appendNavigate}">#${item.text}</a>`;
 					break;
 				case 'mention':
-					replacement = `<a class="${envSelector.link.nomal}" text="${item.text}" style="color:rgb(29, 155, 240)" dir="ltr" role="link" href="https://twitter.com/${item.text}" target="_blank" rel="noopener nofollow">@${item.text}</a>`;
+					replacement = `<a class="${envSelector.link.nomal}" text="${item.text}" style="color:rgb(29, 155, 240)" dir="ltr" role="link" href="https://twitter.com/${item.text}" target="_blank" rel="noopener nofollow" usenavigate="${appendNavigate}">@${item.text}</a>`;
 					break;
 				case 'symbol':
-					replacement = `<a class="${envSelector.link.nomal}" text="${item.text}" style="color:rgb(29, 155, 240)" dir="ltr" role="link" href="https://twitter.com/search?q=%24${item.text}&src=cashtag_click" target="_blank" rel="noopener nofollow">$${item.text}</a>`;
+					replacement = `<a class="${envSelector.link.nomal}" text="${item.text}" style="color:rgb(29, 155, 240)" dir="ltr" role="link" href="https://twitter.com/search?q=%24${item.text}&src=cashtag_click" target="_blank" rel="noopener nofollow" usenavigate="${appendNavigate}">$${item.text}</a>`;
 					break;
 			}
 			replacement = replacement.replace(/</gu, `${tagStart}`)
@@ -2917,6 +2958,12 @@
 		const newTweetBody = document.createElement('div');
 		newTweetBody.className = 'css-901oao css-16my406 r-1qd0xha r-bcqeeo r-qvutc0';
 		newTweetBody.innerHTML = tweetBodyText;
+		newTweetBody.querySelectorAll('a[usenavigate="true"]').forEach(a=>{
+			a.addEventListener('click',(e)=>{
+				e.preventDefault();
+				navigateTo(new URL(a.href, location.origin).pathname);
+			});
+		});
 		return newTweetBody;
 	}
 
