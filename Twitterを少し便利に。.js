@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.20
+// @version			2.1.2.21
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -7222,8 +7222,10 @@
 				dontUseGenericHeaders: true,
 				maxRetries: 1
 			};
-			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.TweetDetail.uri, 'GET')
-			this.#processgraphQL(response.response.data.threaded_conversation_with_injections_v2.instructions[0].entries);
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.TweetDetail.uri, 'GET');
+			const instructions = response.response.data.threaded_conversation_with_injections_v2.instructions;
+			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
+			this.#processgraphQL(TimelineAddEntries.entries);
 			return {...this.tweetsData[tweetId], apiRateLimit: this.#apiRateLimit.TweetDetail};
 		}
 		async getUser(screenName, refresh = false){
