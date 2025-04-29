@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.21
+// @version			2.1.2.22
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -1738,8 +1738,8 @@
 	//##################################################汎用関数##################################################
 	//############################################################################################################
 
-	function update(){
-		if(updating)return;
+	function update(force = false){
+		if(updating && !force)return;
 		updating = true;
 		main();
 		setTimeout(() => {updating = false;}, 600);
@@ -1839,10 +1839,10 @@
 			if(currentUrl !== document.location.href){
 				currentUrl = document.location.href;
 				try{
-					update();
+					update(true);
 					addEventToScrollSnapSwipeableList();
 					addSettingsButtonToTwitterSettingsMenu();
-					if(currentUrl.match(/status\/[\d]+\/photo/))setTimeout(update, 700);
+					if(currentUrl.match(/status\/[\d]+/))setTimeout(()=>{update(true)}, 700);
 				}catch(error){console.error(error)}
 			}
 		});
