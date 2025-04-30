@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.24
+// @version			2.1.2.25
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -8202,6 +8202,10 @@
 		}
 
 		async #_request(optionObj, endpoint){
+			if(this.#resetTransactionIdSolverTimes >= 5){
+				console.error("[TwitterApi] Too many transactionIdSolver reset attempts. Please check your network connection or try again later.");
+				throw new Error("TransactionIdSolver is not working");
+			}
 			let retryCount = 0;
 			while(retryCount <= 5 && this.#resetTransactionIdSolverTimes < 5){
 				try{
