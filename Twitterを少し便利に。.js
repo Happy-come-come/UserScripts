@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.23
+// @version			2.1.2.24
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -7306,8 +7306,8 @@
 			return await this.tweetAction('deleteBookmark', tweetId);
 		}
 		// 同時に同じツイートを取得しないようにする
-		async getTweet(tweetId){
-			if(this.tweetsData[tweetId])return {...this.tweetsData[tweetId], apiRateLimit: this.#apiRateLimit.TweetDetail};
+		async getTweet(tweetId, refresh = false){
+			if(this.tweetsData[tweetId] && !refresh)return {...this.tweetsData[tweetId], apiRateLimit: this.#apiRateLimit.TweetDetail};
 
 			if(this.#pendingTweetRequests[tweetId]){
 				return await this.#pendingTweetRequests[tweetId];
@@ -7317,7 +7317,7 @@
 				throw new Error(this.#RateLimitExceeded);
 			}
 
-			this.#pendingTweetRequests[tweetId] = this.#_getTweet(tweetId);
+			this.#pendingTweetRequests[tweetId] = this.#_getTweet(tweetId, refresh);
 			try{
 				const result = await this.#pendingTweetRequests[tweetId];
 				return result;
@@ -8227,7 +8227,7 @@
 			if(!this.#graphqlApiEndpoints[endpoint]){
 				const tmpName = this.#graphqlApiEndpoints[endpoint?.split('/')?.pop()];
 				if(tmpName){
-					endpoint = tmpName;
+					endpoint = endpoint?.split('/')?.pop();
 				}
 			}
 			const responseHeaders = response.responseHeaders;
