@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.1.2.25
+// @version			2.2.0.0
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -285,6 +285,12 @@
 				"description": "詳細表示した画像をクリックすると拡大表示します",
 			}
 		},
+		"imageSizeFixer": {
+			"settings": {
+				"displayName": "画像サイズを修正",
+				"description": "TLの画像のサイズを修正します",
+			}
+		},
 		"advance": {
 			"settings": {
 				"displayName": "高度な設定",
@@ -484,6 +490,12 @@
 				"description": "Enlarges the image when clicked in detail view",
 			}
 		},
+		"imageSizeFixer":{
+			"settings": {
+				"displayName": "Fix Image Size",
+				"description": "Fixes the size of images in the timeline",
+			}
+		},
 		"advance": {
 			"settings": {
 				"displayName": "Advanced Settings",
@@ -572,6 +584,12 @@
 		"imageZoom": {
 			"function": imageZoom,
 			"isRunning": false,
+			"forPC": true,
+		},
+		"imageSizeFixer":{
+			"function": imageSizeFixer,
+			"isRunning": false,
+			"ignoreIsRunning": true,
 			"forPC": true,
 		}
 	}
@@ -1769,6 +1787,36 @@
 		});
 	}
 
+	async function imageSizeFixer(tweetNodes){
+		if(!sessionData.imageSizeFixer?.appendedCss){
+			const css = `
+			article .css-175oi2r.r-9aw3ui.r-1s2bzr4>div.r-9aw3ui>div {
+				max-width: 100% !important;
+			}
+			`;
+			const style = document.createElement('style');
+			style.textContent = css;
+			document.head.appendChild(style);
+			sessionData.imageSizeFixer = {
+				appendedCss: true
+			};
+			sessionData.imageSizeFixer.style = style;
+		}
+		tweetNodes.forEach(async e=>{
+			const node = e.node;
+			const photoNode = await waitElementAndGet({query: `[data-testid="tweetPhoto"]`, searchFunction: 'querySelector', searchPlace: node, interval: 50, retry: 5});
+			const targetNode = photoNode?.parentElement.parentElement;
+			if(!targetNode)return;
+			if(targetNode.style.width && targetNode.style.height){
+				const newSize = calculateTwitterMediaSize(parseInt(targetNode.style.width)*100, parseInt(targetNode.style.height)*100);
+				targetNode.style.width = newSize[0] + 'px';
+				targetNode.style.height = newSize[1] + 'px';
+			}else{
+				debug("no size",node,targetNode);
+			}
+		});
+	}
+
 	//############################################################################################################
 	//##################################################汎用関数##################################################
 	//############################################################################################################
@@ -2189,6 +2237,52 @@
 		const fileSizeTmp = response.responseHeaders.match(/content-length:\s*(\d+)/i);
 		const fileSize = fileSizeTmp ? parseInt(fileSizeTmp[1], 10) : undefined;
 		return fileSize;
+	}
+
+	function calculateTwitterMediaSize(width, height){
+		const maxSquareSize = 516;
+		const maxVerticalSize = 510;
+		const maxHorizontalSize = 516;
+		const maxHorizontalAspectRatio = 5/1;
+		const maxVerticalAspectRatio = 3/4;
+		let newWidth, newHeight;
+		if(width === height){
+			if(width > maxSquareSize){
+				newWidth = maxSquareSize;
+				newHeight = maxSquareSize;
+			}
+		}else if(width > height){
+			// 横長の場合
+			const aspectRatio = width / height;
+			if(aspectRatio > maxHorizontalAspectRatio){
+				newWidth = maxHorizontalSize;
+				newHeight = maxHorizontalSize / maxHorizontalAspectRatio;
+			}else{
+				if(width > maxHorizontalSize){
+					newWidth = maxHorizontalSize;
+					newHeight = maxHorizontalSize / aspectRatio;
+				}else{
+					newWidth = width;
+					newHeight = height;
+				}
+			}
+		}else{
+			// 縦長の場合
+			const aspectRatio = width / height;
+			if(aspectRatio < maxVerticalAspectRatio){
+				newHeight = maxVerticalSize;
+				newWidth = maxVerticalSize * maxVerticalAspectRatio;
+			}else{
+				if(height > maxVerticalSize){
+					newHeight = maxVerticalSize;
+					newWidth = maxVerticalSize * aspectRatio;
+				}else{
+					newWidth = width;
+					newHeight = height;
+				}
+			}
+		}
+		return [newWidth, newHeight];
 	}
 
 	function simulateKey(keyCode, type, element) {
