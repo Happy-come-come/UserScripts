@@ -415,7 +415,7 @@
 			url,
 			headers: dontUseGenericHeaders ? headers : Object.assign({
 				'Content-Type': '*/*',
-				'Accept-Encoding': 'br, gzip, deflate, zstd',
+				'Accept-Encoding': 'zstd, br, gzip, deflate',
 				'User-agent': userAgent,
 				'Accept': '*/*',
 				'Referer': url,
@@ -453,6 +453,19 @@
 									reason: `Server error or too many requests (status: ${responseDetails.status})`,
 									response: responseDetails,
 									requestObject: requestObject
+								});
+							}else{
+								console.error({
+									function_name: 'request',
+									reason: `status: ${responseDetails.status}`,
+									requestObject,
+									response: responseDetails
+								});
+								return reject({
+									function_name: 'request',
+									reason: `status: ${responseDetails.status}`,
+									requestObject,
+									response: responseDetails
 								});
 							}
 						},
@@ -544,7 +557,7 @@
 			return response;
 		}
 	}
-	
+
 	locationChange();
 	main();
 })();
