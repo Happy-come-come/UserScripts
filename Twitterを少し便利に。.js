@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.2.0.1
+// @version			2.2.0.2
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -804,36 +804,36 @@
 				const mediaUrls = makeMediaList(tweetData.extended_entities, sendPages);
 				const files = {};
 				if(tweetCardData){
-					tweetCardData.binding_values?.forEach(v=>{
+					for(let i=0; i<tweetCardData.binding_values.length; i++){
+						const v = tweetCardData.binding_values[i];
 						try{
-							let urlObj,tmp;
-							switch(v.key){
-								case 'broadcast_pre_live_slate':
-								case 'thumbnail_image_original':
-									mediaUrls.images.push({mediaType: "photo", url: v.value.image_value.url});
-									break;
-								case 'photo_image_full_size_original':
-									urlObj = new URL(v.value.image_value.url);
-									mediaUrls.images.push({mediaType: "photo", url: `${urlObj.origin}${urlObj.pathname}.${urlObj.searchParams.get('format') || 'jpg'}`});
-									break;
-								case 'unified_card': {
-									const json = JSON.parse(v.value.string_value).media_entities;
-									tmp = makeMediaList({media: Object.values(json)}, [0,1,2,3]);
-									if(tmp.images){
-										mediaUrls.images.push(...tmp.images);
-									}
-									if(tmp.videos){
-										mediaUrls.videos.push(...tmp.videos);
-									}
-									break;
+							if(v.key === 'broadcast_pre_live_slate' || v.key === 'thumbnail_image_original'){
+								mediaUrls.images.push({mediaType: "photo", url: v.value.image_value.url});
+								break;
+							}
+
+							if(v.key === 'photo_image_full_size_original'){
+								const urlObj = new URL(v.value.image_value.url);
+								if(urlObj.searchParams.get('name')) urlObj.searchParams.set("name", "orig");
+								mediaUrls.images.push({mediaType: "photo", url: urlObj.href});
+								break;
+							}
+
+							if(v.key === 'unified_card'){
+								const json = JSON.parse(v.value.string_value).media_entities;
+								const tmp = makeMediaList({media: Object.values(json)}, [0,1,2,3]);
+								if(tmp.images){
+									mediaUrls.images.push(...tmp.images);
 								}
-								default:
-									break;
+								if(tmp.videos){
+									mediaUrls.videos.push(...tmp.videos);
+								}
+								break;
 							}
 						}catch(error){
 							console.error({error: error, value: v});
 						}
-					});
+					}
 				}
 				const currentTimeMillis = new Date().getTime();
 				const linkTextStart = `linkTextStart${currentTimeMillis}`;
@@ -929,15 +929,15 @@
 					});
 				if(sendText)mainEmbed.setDescription(sendText);
 				if(mediaUrls.images[0]?.url){
-					mainEmbed.setImage(`attachment://${mediaUrls.images[0].url.split('/').pop()}`);
+					mainEmbed.setImage(`attachment://${attachmentFileName(mediaUrls.images[0].url)}`);
 				}
 				embeds.push(mainEmbed);
 				if(mediaUrls.images[1]?.url){
 					for(let i=1;i<mediaUrls.images.length;i++){
 						const imageEmbed = new DiscordEmbedMaker()
 							.setURL(tweetUrl)
-							.setImage(`attachment://${mediaUrls.images[i].url.split('/').pop()}`);
-						embeds.push( imageEmbed);
+							.setImage(`attachment://${attachmentFileName(mediaUrls.images[i].url)}`);
+						embeds.push(imageEmbed);
 					}
 				}
 				bundle.push({"embeds": embeds, "files": await fetchImages(mediaUrls.images.concat([{...profileImage, isProfileImage: true}]))});
@@ -973,7 +973,7 @@
 							name = target.name;
 						}else if(target.url.match(/https?:\/\/pbs\.twimg\.com\/(media|card_img)\//)){
 							image = await request({url: imageUrlToOriginal(target.url), respType: "blob", maxRetries: 3});
-							name = target.url.split('/').pop();
+							name = attachmentFileName(target.url);
 						}else{
 							console.error({error: "知らない画像pathだ……", url: target.url});
 						}
@@ -992,11 +992,35 @@
 					return null;
 				}
 			}
+			function attachmentFileName(urlStr){
+				const url = new URL(urlStr);
+				const pathname = url.pathname;
+				const lastSegment = pathname.split('/').pop();
+				const baseName = lastSegment.split('?')?.[0];
+				const extMatch = baseName.match(/\.(jpg|jpeg|png|gif|webp|bmp)$/i);
+				let ext = extMatch ? extMatch?.[0] : '';
+
+				if(!ext){
+					const format = url.searchParams.get('format');
+					if(format){
+						ext = '.' + format;
+					}else{
+						ext = '.jpg';
+					}
+				}
+				const filename = baseName.replace(/\.(jpg|jpeg|png|gif|webp|bmp)$/i, '');
+				return `${filename}${ext}`;
+			}
 			function imageUrlToOriginal(imageUrl){
 				//apiから帰ってくるURLをそのまま開くと小さい画像になってしまうので最大サイズの画像をダウンロードできるようにする。
 				if(typeof imageUrl !== "undefined"){
-					var extension = imageUrl.split(".").pop();
-					return `${imageUrl.replace(`.${extension}`,"")}?format=${extension}&name=orig`
+					const extension = imageUrl.match(/\.([a-zA-Z0-9]+)(\?.*)?$/)?.[1];
+					if(extension == "jpg" || extension == "png" || extension == "webp"){
+						return `${imageUrl.replace(`.${extension}`,"")}?format=${extension}&name=orig`;
+					}else{
+						return imageUrl;
+					}
+					
 				}
 			}
 			function downloadVideo(url){
