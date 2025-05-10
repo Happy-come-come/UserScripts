@@ -10,7 +10,7 @@ const text = {
 		"value": function(a){return"Ana bin"+a.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Pinned"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s Retweeted"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweets"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Replies"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Highlights"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Media"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Likes"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Ana bin"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Fasa bi"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "An toshe"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Buɗe"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["Followed by ",", ",", and "," others you follow"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Gida"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Bincike"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Sanarwa"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Saƙonni"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Alamomi"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Jobs"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Al'umma"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Verified Orgs"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "My Profile"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Jeri"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Samun kuɗi"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Saitunan da sirrantawa"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Ƙara asusun da ke akwai"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Gudanar da asusu"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(a){return"Sauya zuwa @"+a.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweet"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Saituna"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Yanzu"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Rana"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Wata"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Shekara"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Janairu"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Faburairu"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Maris"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "Afrilu"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Mayu"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Yuni"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Yuli"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "Agusta"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "Satumba"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Oktuba"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "Nuwamba"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "Disamba"
 	}
 };

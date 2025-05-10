@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Ń tẹ̀lé"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Pinned"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s reposted"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Posts"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Replies"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Highlights"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Media"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Likes"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Ń tẹ̀lé"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Má tẹ̀lé mọ́"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Ti Dínà"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Yọ ìdínà kúro"
 	},
 	"cf249089": {
@@ -75,75 +75,75 @@ const text = {
 		"value": function(){return["Followed by ",", ",", and "," others you follow"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Ilé"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Ìwádìí"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Àwọn ìfitónilétí"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Àwọn ìfiránṣẹ́"
 	},
 	"h5860a68": {
-		"type": "text",
+		"type": "string",
 		"value": "Grok"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Àwọn Búkúmáàkì"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Jobs"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Àwùjọ"
 	},
 	"f75d1806": {
-		"type": "text",
+		"type": "string",
 		"value": "Premium"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Verified Orgs"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "My Profile"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Àtòkọ"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Fifipawó"
 	},
 	"e0cb0c72": {
-		"type": "text",
+		"type": "string",
 		"value": "Ads"
 	},
 	"b55d8a78": {
-		"type": "text",
+		"type": "string",
 		"value": "Create your Space"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Àwọn ààtò àti ìpamọ́"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Fi àkántì tó ti wà tẹ́lẹ̀ kún u"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Ṣàkóso àwọn àkántì"
 	},
 	"b7dc3885": {
@@ -152,75 +152,75 @@ const text = {
 		"value": function(e){return"Yí sí @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Post"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Àwọn ààtò"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Nísinyí "
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Ọjọ"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Ọdún"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù Ṣẹẹrẹ"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù Èrèlé"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù Ẹrẹ́nà"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù Igbe"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù Èbìbí"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù Okúdù"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù Agẹmọ"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù Ògún"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù Ọwẹ́wẹ̀"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù Ọ̀wàrà"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù Bélú"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "Oṣù Ọpẹ́"
 	}
 };

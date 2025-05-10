@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"متابَعون"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "‏مثبّت"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "‏%s مُعاد تغريدها"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "‏تغريدات"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "‏الردود"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "‏المميزة"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "‏الوسائط"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "‏الإعجابات"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "متابَع"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "إلغاء المتابعة"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "محظور"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "إلغاء الحظر"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["متابَع بواسطة "," و"," و"," آخرين تتابعهم"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "الرئيسيّة"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "استكشف"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "التنبيهات"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "الرسائل"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "العلامات المرجعية"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "الوظائف"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "المجتمع"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "مؤسسات موّثَقة"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "ملفي الشخصيّ"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "قائمة"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "تحقيق الأرباح"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "الإعدادات والخصوصية"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "إضافة حساب موجود"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "إدارة الحسابات"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"تبديل إلى "+e.screenName+"@"}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "‏تغريد"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "الإعدادات"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "الآن"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "يوم"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "شهر"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "سنة"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "يناير"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "فبراير"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "مارس"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "أبريل"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "مايو"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "يونيو"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "يوليو"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "أغسطس"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "سبتمبر"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "أكتوبر"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "نوفمبر"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "ديسمبر"
 	}
 };

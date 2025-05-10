@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Following"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Pinned"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s Retweeted"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweets"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Replies"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Highlights"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Media"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Likes"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Following"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Unfollow"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Blocked"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Unblock"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["Followed by ",", ",", and "," others you follow"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Home"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Explore"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Notifications"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Messages"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Bookmarks"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Jobs"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Community"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Verified Orgs"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "My Profile"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "List"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Monetisation"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Settings and privacy"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Add an existing account"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Manage accounts"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"Switch to @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweet"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Settings"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Now"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Day"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Month"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Year"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "January"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "February"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "March"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "April"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "May"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "June"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "July"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "August"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "September"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "October"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "November"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "December"
 	}
 };

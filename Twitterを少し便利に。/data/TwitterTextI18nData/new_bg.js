@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Следван(а)"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Закачени"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s препубликува"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Публикации"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Отговори"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Акценти"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Мултимедийно съдържание"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Харесвания"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Следвано"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Спиране на следването"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Блокиран/а"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Разблокиране"
 	},
 	"cf249089": {
@@ -75,75 +75,75 @@ const text = {
 		"value": function(){return["Следван/а от ",", "," и още ",", които следваш"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Начало"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Изследване"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Известия"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Съобщения"
 	},
 	"h5860a68": {
-		"type": "text",
+		"type": "string",
 		"value": "Grok"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Отметки"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Кариери"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Общност"
 	},
 	"f75d1806": {
-		"type": "text",
+		"type": "string",
 		"value": "Premium"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Потвърдени организации"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Моят профил"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Списък"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Монетизация"
 	},
 	"e0cb0c72": {
-		"type": "text",
+		"type": "string",
 		"value": "Реклами"
 	},
 	"b55d8a78": {
-		"type": "text",
+		"type": "string",
 		"value": "Създаване на твоя зала"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Настройки и поверителност"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Добавяне на съществуващ профил"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Управление на профилите"
 	},
 	"b7dc3885": {
@@ -152,75 +152,75 @@ const text = {
 		"value": function(e){return"Превключване към @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Публикуване"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Настройки"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Сега"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Ден"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Месец"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Година"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "януари"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "февруари"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "март"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "април"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "май"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "юни"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "юли"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "август"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "септември"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "октомври"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "ноември"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "декември"
 	}
 };

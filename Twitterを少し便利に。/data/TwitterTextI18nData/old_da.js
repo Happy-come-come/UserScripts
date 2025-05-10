@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Følger"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Fastgjort"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s retweetede"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweets"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Svar"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Højdepunkter"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Medier"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Likes"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Følger"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Følg ikke længere"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Blokeret"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Fjern blokering"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["Følges af ",", "," og "," andre, som du følger"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Forside"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Udforsk"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Meddelelser"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Beskeder"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Bogmærker"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Job"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Fællesskab"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Verificerede org."
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Min profil"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Liste"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Indtægtsgenerering"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Indstillinger og privatliv"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Tilføj en eksisterende konto"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Administrer konti"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"Skift til @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweet"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Indstillinger"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Nu"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Dag"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Måned"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "År"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Januar"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Februar"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Marts"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "April"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Maj"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Juni"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Juli"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "August"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "September"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Oktober"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "November"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "December"
 	}
 };

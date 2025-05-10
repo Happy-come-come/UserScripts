@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Seguiment"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Fixades"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "\"%s s'ha republicat\""
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Publicacions"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Respostes"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Destacats"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Continguts"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Agradaments"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Seguint"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Deixa de seguir"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Blocat"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Desbloca"
 	},
 	"cf249089": {
@@ -75,75 +75,75 @@ const text = {
 		"value": function(){return["Seguit pels usuaris "," i "," i per "," usuaris més que segueixes"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Inici"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Explora"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Notificacions"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Missatges"
 	},
 	"h5860a68": {
-		"type": "text",
+		"type": "string",
 		"value": "Grok"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Preferits"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Feina"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Comunitat"
 	},
 	"f75d1806": {
-		"type": "text",
+		"type": "string",
 		"value": "Premium"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Organitzacions verificades"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "El meu perfil"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Llista"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Monetització"
 	},
 	"e0cb0c72": {
-		"type": "text",
+		"type": "string",
 		"value": "Anuncis"
 	},
 	"b55d8a78": {
-		"type": "text",
+		"type": "string",
 		"value": "Crea el teu Espai"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Configuració i privacitat"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Afegeix un compte existent"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Gestiona els comptes"
 	},
 	"b7dc3885": {
@@ -152,75 +152,75 @@ const text = {
 		"value": function(e){return"Canvia a: @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Publica"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Configuració"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Ara"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Dia"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Mes"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Any"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "gener"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "febrer"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "març"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "abril"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "maig"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "juny"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "juliol"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "agost"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "setembre"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "octubre"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "novembre"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "desembre"
 	}
 };

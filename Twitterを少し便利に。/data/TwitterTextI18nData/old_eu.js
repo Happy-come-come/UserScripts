@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Following"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Pinned"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s Retweeted"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweets"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Replies"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Highlights"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Media"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Likes"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Jarraitzen"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Utzi jarraitzeari"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Blokeatua"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Desblokeatu"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return[""," erabiltzaileak, "," erabiltzaileak eta zuk jarraitutako beste "," erabiltzailek jarraitua"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Hasiera"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Arakatu"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Jakinarazpenak"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Mezuak"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Laster-markak"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Jobs"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Erkidegoa"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Verified Orgs"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Nire profila"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Zerrenda"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Dirua irabaztea "
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Ezarpenak eta pribatutasuna"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Gehitu lehendik duzun beste kontu bat"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Kudeatu kontuak"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"Aldatu @"+e.screenName+" erabiltzailera"}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweet"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Ezarpenak"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Orain"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Eguna"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Hilabetea"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Urtea"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Urtarrila"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Otsaila"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Martxoa"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "Apirila"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Maiatza"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Ekaina"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Uztaila"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "Abuztua"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "Iraila"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Urria"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "Azaroa"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "Abendua"
 	}
 };

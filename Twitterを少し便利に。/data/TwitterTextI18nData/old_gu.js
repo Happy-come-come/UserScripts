@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"અનુસરી રહ્યા છો"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "પિન કરેલ"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%sએ પુનટ્વીટ કરી"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "ટ્વીટસ્"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "પ્રત્યુત્તરો"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "હાઇલાઇટ્સ"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "મીડિયા"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "લાઈક્સ"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "અનુસરે છે"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "અનુસરવાનું બંધ કરો"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "અવરોધિત કરેલું"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "અનાવરોધિત"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["",", "," અને તમે અનુસરો છો તે "," અન્યો દ્વારા અનુસર્યા"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "હોમ"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "એક્સપ્લોર"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "સૂચનાઓ"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "સંદેશાઓ"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "બુકમાર્ક્સ"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "નોકરીઓ"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "કોમ્યુનિટી"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "ચકાસાયેલી સંસ્થા"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "મારી પ્રોફાઈલ"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "યાદી"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "મોનેટાઇઝેશન"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "સેટિંગ્સ અને ગોપનીયતા"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "કોઈ મોજૂદ એકાઉન્ટ ઉમેરો"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "એકાઉન્ટ્સનું વ્યવસ્થાપન કરો"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"@"+e.screenName+" પર ફેરબદલી કરો"}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "ટ્વીટ"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "સેટિંગ્સ"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "હવે"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "દિવસ"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "મહિનો"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "વર્ષ"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "જાન્યુઆરી"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "ફેબ્રુઆરી"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "માર્ચ"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "એપ્રિલ"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "મે"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "જૂન"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "જુલાઈ"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "ઓગસ્ટ"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "સપ્ટેમ્બર"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "ઓક્ટોબર"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "નવેમ્બર"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "ડિસેમ્બર"
 	}
 };

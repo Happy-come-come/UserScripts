@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"பின்தொடர்கிறீர்கள்"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "பின் செய்யப்பட்டவை"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s மறுட்வீட் செய்துள்ளார்"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "ட்விட்கள்"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "பதில்கள்"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "சிறப்புக் கூறுகள்"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "ஊடகம்"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "விருப்பங்கள்"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "பின்தொடர்கிறீர்கள்"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "பின்தொடராதே"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "தடைசெய்யப்பட்டது"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "தடைநீக்கு"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["நீங்கள் பின்தொடரும் ",", ",", மற்றும் "," பேர் இவரைப் பின்தொடர்கின்றனர்"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "முகப்பு"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "ஆராய்க"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "அறிவிப்புகள்"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "செய்திகள்"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "புத்தகக்குறிகள்"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "வேலைவாய்ப்புகள்"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "கம்யூனிட்டி"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "சரிபார்க்கப்பட்ட அமைப்புகள்"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "எனது சுயவிவரம்"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "பட்டியல்"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "பணமாக்குதல்"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "அமைப்புகள் மற்றும் தனியுரிமை"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "ஏற்கனவே உள்ள கணக்கைச் சேர்க்கவும்"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "கணக்குகளை நிர்வகி"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"@"+e.screenName+"க்கு மாறு"}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "ட்விட் செய்"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "அமைப்புகள்"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "இப்போது"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "நாள்"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "மாதம்"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "ஆண்டு"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "ஜனவரி"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "பிப்ரவரி"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "மார்ச்"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "ஏப்ரல்"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "மே"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "ஜுன்"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "ஜுலை"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "ஆகஸ்ட்"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "செப்டம்பர்"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "அக்டோபர்"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "நவம்பர்"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "டிசம்பர்"
 	}
 };

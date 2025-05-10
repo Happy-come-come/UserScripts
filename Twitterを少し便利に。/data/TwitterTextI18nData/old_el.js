@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Ακολουθείτε"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Καρφιτσωμένες"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "Ο χρήστης %s έκανε Retweet"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweet"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Απαντήσεις"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Κορυφαία"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Πολυμέσα"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "\\\"Μου αρέσει\\\""
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Ακολουθείτε"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Άρση ακολούθησης"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Αποκλεισμένος"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Άρση αποκλεισμού"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["Ακολουθείται από τους χρήστες ",", "," και από "," ακόμη που ακολουθείτε"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Αρχική σελίδα"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Εξερευνήστε"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Ειδοποιήσεις"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Μηνύματα"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Σελιδοδείκτες"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Αγγελίες εργασίας"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Κοινότητα"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Επαληθευμένοι Οργανισμοί"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Το προφίλ μου"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Λίστα"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Δημιουργία εσόδων"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Ρυθμίσεις και απόρρητο"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Προσθήκη υπάρχοντος λογαριασμού"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Διαχείριση λογαριασμών"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"Μετάβαση στον λογαριασμό @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweet"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Ρυθμίσεις"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Τώρα"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Ημέρα"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Μήνας"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Έτος"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Ιανουάριος"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Φεβρουάριος"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Μάρτιος"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "Απρίλιος"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Μάιος"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Ιούνιος"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Ιούλιος"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "Αύγουστος"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "Σεπτέμβριος"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Οκτώβριος"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "Νοέμβριος"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "Δεκέμβριος"
 	}
 };

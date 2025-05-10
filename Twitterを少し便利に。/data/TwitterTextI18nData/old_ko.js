@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"팔로우 중"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "메인에 올라감"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s 님이 리트윗했습니다"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "트윗"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "답글"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "하이라이트"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "미디어"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "마음에 들어요"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "팔로잉"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "언팔로우"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "차단됨"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "차단 해제"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return[""," 님, "," 님 외 "," 명이 팔로우했습니다"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "홈"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "탐색하기"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "알림"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "쪽지"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "북마크"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "채용"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "커뮤니티"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "인증된 조직"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "내 프로필"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "리스트"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "수익 창출"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "설정 및 개인정보"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "기존 계정 추가"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "계정 관리"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"@"+e.screenName+" 계정으로 전환"}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "트윗"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "설정"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "지금"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "일"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "월"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "년"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "1월"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "2월"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "3월"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "4월"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "5월"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "6월"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "7월"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "8월"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "9월"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "10월"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "11월"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "12월"
 	}
 };

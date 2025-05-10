@@ -10,7 +10,7 @@ const text = {
 		"value": function(n){return"Đang theo dõi"+n.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Đã ghim"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s đã Tweet lại"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweet"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Lượt trả lời"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Sự kiện nổi bật"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Phương tiện"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Lượt thích"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Đang theo dõi"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Ngừng theo dõi"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Bị chặn"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Bỏ chặn"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["Được theo dõi bởi ",", ",", và "," người khác mà bạn theo dõi"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Trang chủ"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Khám phá"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Thông báo"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Tin nhắn"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Dấu trang"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Công việc"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Cộng đồng"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Tổ chức đã xác nhận"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Hồ sơ của tôi"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Danh sách"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Kiếm tiền"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Cài đặt và riêng tư"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Thêm tài khoản hiện có"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Quản lý tài khoản"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(n){return"Chuyển sang @"+n.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Đăng Tweet"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Cài đặt"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Bây giờ"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Ngày"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Năm"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng một"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng hai"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng ba"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng tư"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng năm"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng sáu"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng bảy"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng tám"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng chín"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng mười"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng  mười một"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "Tháng mười hai"
 	}
 };

@@ -10,7 +10,7 @@ const text = {
 		"value": function(a){return"Praćenje"+a.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Prikvačeno"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s je proslijedio/la objavu"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Objave"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Odgovori"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Istaknuto"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Medijski sadržaj"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Lajkovi"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Pratim"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Prestani pratiti"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Blokirano"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Deblokiraj"
 	},
 	"cf249089": {
@@ -75,75 +75,75 @@ const text = {
 		"value": function(){return["Prate ",", "," i još njih "," koje i vi pratite"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Naslovnica"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Istraži"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Obavijesti"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Poruke"
 	},
 	"h5860a68": {
-		"type": "text",
+		"type": "string",
 		"value": "Grok"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Knjižne oznake"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Poslovi"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Zajednica"
 	},
 	"f75d1806": {
-		"type": "text",
+		"type": "string",
 		"value": "Premium"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Provjerene organizacije"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Moj profil"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Popis"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Monetizacija"
 	},
 	"e0cb0c72": {
-		"type": "text",
+		"type": "string",
 		"value": "Oglasi"
 	},
 	"b55d8a78": {
-		"type": "text",
+		"type": "string",
 		"value": "Stvorite svoj Prostor"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Postavke i zaštita privatnosti"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Dodavanje postojećeg računa"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Upravljanje računima"
 	},
 	"b7dc3885": {
@@ -152,75 +152,75 @@ const text = {
 		"value": function(a){return"Prijelaz na račun @"+a.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Objavi"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Postavke"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Odmah"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Dan"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Mjesec"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Godina"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Siječanj"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Veljača"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Ožujak"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "Travanj"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Svibanj"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Lipanj"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Srpanj"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "Kolovoz"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "Rujan"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Listopad"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "Studeni"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "Prosinac"
 	}
 };

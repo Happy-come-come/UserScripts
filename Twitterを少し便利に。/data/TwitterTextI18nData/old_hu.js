@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Követés"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Kitűzött"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s Retweetelte"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweetek"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Válaszok"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Kiemelések"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Média"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Kedvelések"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "követés"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Követés megszüntetése"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Letiltva"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Tiltás feloldása"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["",", "," és "," másik felhasználó követi, akiket te is követsz"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Kezdőlap"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Felfedezés"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Értesítések"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Üzenetek"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Könyvjelzők"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Munkalehetőségek"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Közösség"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Ellenőrzött szervezetek"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Saját profil"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Lista"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Pénzszerzés"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Beállítások és adatvédelem"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Létező felhasználói fiók hozzáadása"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Felhasználói fiókok kezelése"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"Váltás @"+e.screenName+" névre"}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweet küldése"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Beállítások"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Most"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Nap"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Hónap"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Év"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "január"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "február"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "március"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "április"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "május"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "június"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "július"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "augusztus"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "szeptember"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "október"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "november"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "december"
 	}
 };

@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"دنبال‌شده"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "‏سنجاق‌شده"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "‏%s بازپست کرد"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "‏پست‌ها"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "‏پاسخ‌ها"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "‏موارد برتر"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "‏رسانه تصویری"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "‏پسند"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "دنبال‌شده"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "دنبال نشود"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "مسدود شده‌"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "عدم انسداد"
 	},
 	"cf249089": {
@@ -75,75 +75,75 @@ const text = {
 		"value": function(){return["دنبال‌شده توسط ","، ","، و "," نفر دیگر که شما دنبال می‌کنید"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "خانه"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "کاوش"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "آگاه‌سازی‌ها"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "پیام‌ها"
 	},
 	"h5860a68": {
-		"type": "text",
+		"type": "string",
 		"value": "Grok"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "نشانک‌ها"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "شغل‌ها"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "انجمن"
 	},
 	"f75d1806": {
-		"type": "text",
+		"type": "string",
 		"value": "Premium"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "سازمان‌های تأییدشده"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "نمایه من"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "فهرست"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "درآمدزایی"
 	},
 	"e0cb0c72": {
-		"type": "text",
+		"type": "string",
 		"value": "آگهی‌ها"
 	},
 	"b55d8a78": {
-		"type": "text",
+		"type": "string",
 		"value": "ایجاد «اتاق گفت‌وگو»"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "تنظیمات و حریم خصوصی"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "افزودن حساب کاربری موجود"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "مدیریت حساب‌ها"
 	},
 	"b7dc3885": {
@@ -152,75 +152,75 @@ const text = {
 		"value": function(e){return"رفتن به @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "‏پست کردن"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "تنظیمات"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "اکنون"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "روز"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "ماه"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "سال"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "ژانویه"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "فوریه"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "مارس"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "آوریل"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "مه"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "ژوئن"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "ژوئيه"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "اوت"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "سپتامبر"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "اکتبر"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "نوامبر"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "دسامبر"
 	}
 };

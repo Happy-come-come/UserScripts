@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Obserwujesz"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Przypięte"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "Użytkownik %s podał dalej"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Wpisy"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Odpowiedzi"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Najciekawsze"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Multimedia"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Polubienia"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Obserwujesz"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Przestań obserwować"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Zablokowano"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Odblokuj"
 	},
 	"cf249089": {
@@ -75,75 +75,75 @@ const text = {
 		"value": function(){return["Obserwowany przez ",", "," i "," innych użytkowników. których obserwujesz"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Główna"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Przeglądaj"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Powiadomienia"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Wiadomości"
 	},
 	"h5860a68": {
-		"type": "text",
+		"type": "string",
 		"value": "Grok"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Zakładki"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Oferty pracy"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Grupa dyskusyjna"
 	},
 	"f75d1806": {
-		"type": "text",
+		"type": "string",
 		"value": "Premium"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Zweryfikowane Organizacje"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Mój profil"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Lista"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Monetyzacja"
 	},
 	"e0cb0c72": {
-		"type": "text",
+		"type": "string",
 		"value": "Reklamy"
 	},
 	"b55d8a78": {
-		"type": "text",
+		"type": "string",
 		"value": "Utwórz Pokój"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Ustawienia i prywatność"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Dodaj istniejące konto"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Zarządzaj kontami"
 	},
 	"b7dc3885": {
@@ -152,75 +152,75 @@ const text = {
 		"value": function(e){return"Przełącz na konto @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Opublikuj"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Ustawienia"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Teraz"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Dzień"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Miesiąc"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Rok"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "styczeń"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "luty"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "marzec"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "kwiecień"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "maj"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "czerwiec"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "lipiec"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "sierpień"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "wrzesień"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "październik"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "listopad"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "grudzień"
 	}
 };

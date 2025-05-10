@@ -10,7 +10,7 @@ const text = {
 		"value": function(a){return"Mengikuti"+a.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Pinned"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s Retweeted"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweets"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Replies"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Highlights"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Media"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Likes"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Mengikuti"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Setop Ikuti"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Diblokir"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Buka blokir"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["Diikuti oleh ",", ",", dan "," lainnya yang Anda ikuti"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Beranda"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Jelajahi"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Notifikasi"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Pesan"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Markah"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Karier"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Komunitas"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Organisasi Terverifikasi"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Profil Saya"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Daftar"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Monetisasi"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Pengaturan dan privasi"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Tambahkan akun yang sudah ada"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Kelola akun"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(a){return"Beralih ke @"+a.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweet"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Pengaturan"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Sekarang"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Hari"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Bulan"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Tahun"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Januari"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Februari"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Maret"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "April"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Mei"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Juni"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Juli"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "Agustus"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "September"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Oktober"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "November"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "Desember"
 	}
 };

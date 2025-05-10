@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Följer"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Fastnålat"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s retweetade"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweets"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Svar"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Höjdpunkter"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Medier"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Gillamarkeringar"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Följer"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Avfölj"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Blockerad"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Häv blockering"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["Följs av ",", "," och "," till som du följer"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Hem"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Utforska"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Notiser"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Meddelanden"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Bokmärken"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Jobb"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Grupp"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Verifierade organisationer"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Min profil"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Lista"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Intäktsgenerering"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Inställningar och integritet"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Lägg till ett befintligt konto"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Hantera konton"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"Växla till @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweeta"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Inställningar"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Nu"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Dag"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Månad"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "År"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Januari"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Februari"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Mars"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "April"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Maj"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Juni"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Juli"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "Augusti"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "September"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Oktober"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "November"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "December"
 	}
 };

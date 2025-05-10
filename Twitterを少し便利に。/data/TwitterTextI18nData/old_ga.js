@@ -10,7 +10,7 @@ const text = {
 		"value": function(a){return"Following"+a.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Pinned"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s Retweeted"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweets"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Replies"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Highlights"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Media"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Likes"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Á Leanúint"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Ná lean"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Coiscthe"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Díchoisc"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["Á leanúint ag ",", "," agus ag "," eile atá á leanúint agat"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Baile"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Féach thart"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Fógraí"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Teachtaireachtaí"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Leabharmharcanna"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Jobs"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Pobal"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Verified Orgs"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Mo Phróifíl"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Liosta"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Luach airgid a chur ar rud"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Socruithe agus príobháideachas"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Cuir cuntas atá ann leis"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Bainistigh cuntais"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(a){return"Athraigh go @"+a.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweet"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Socruithe"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Anois"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Lá"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Mí"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Bliain"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Eanáir"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Feabhra"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Márta"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "Aibreán"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Bealtaine"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Meitheamh"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Iúil"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "Lúnasa"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "Meán Fómhair"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Deireadh Fómhair"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "Samhain"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "Nollaig"
 	}
 };

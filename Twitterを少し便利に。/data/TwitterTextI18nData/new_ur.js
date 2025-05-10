@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"فالو کر رہا ہے"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Pinned"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s reposted"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Posts"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Replies"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Highlights"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Media"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Likes"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "فالو کر رہے ہیں"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "ان فالو کریں"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "بلاک شدہ"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "ان بلاک کریں"
 	},
 	"cf249089": {
@@ -75,75 +75,75 @@ const text = {
 		"value": function(){return["","، ","، اور "," دیگر جنہیں آپ فالو کرتے ہیں کی جانب سے فالو کردہ"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "ہوم"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "دریافت کریں"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "اطلاعات"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "پیغامات"
 	},
 	"h5860a68": {
-		"type": "text",
+		"type": "string",
 		"value": "Grok"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "بُک مارکس"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Jobs"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "کمیونٹی"
 	},
 	"f75d1806": {
-		"type": "text",
+		"type": "string",
 		"value": "Premium"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Verified Orgs"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "میری پروفائل"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "فہرست"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "پیسہ کمانا"
 	},
 	"e0cb0c72": {
-		"type": "text",
+		"type": "string",
 		"value": "اشتہارات"
 	},
 	"b55d8a78": {
-		"type": "text",
+		"type": "string",
 		"value": "Create your Space"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "ترتیبات اور رازداری"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "ایک موجودہ اکاؤنٹ شامل کریں"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "اکاؤنٹس کا نظم کریں"
 	},
 	"b7dc3885": {
@@ -152,75 +152,75 @@ const text = {
 		"value": function(e){return"@"+e.screenName+" پر سوئچ کریں"}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Post"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "سیٹنگز"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "اب"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "دن"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "مہینہ"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "سال"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "جنوری"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "فروری"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "مارچ"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "اپریل"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "مئی"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "جون"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "جولائی"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "اگست"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "ستمبر"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "اکتوبر"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "نومبر"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "دسمبر"
 	}
 };

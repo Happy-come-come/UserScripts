@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"עוקב"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Pinned"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s reposted"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Posts"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Replies"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Highlights"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Media"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Likes"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "עוקב"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "הפסק לעקוב"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "חסום"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "שחרר חסימה"
 	},
 	"cf249089": {
@@ -75,75 +75,75 @@ const text = {
 		"value": function(){return["ברשימת המעקב של ",",‏ "," ו-"," אחרים שאחריהם אתה עוקב"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "דף הבית"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "גילוי"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "הודעות"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "מסרים"
 	},
 	"h5860a68": {
-		"type": "text",
+		"type": "string",
 		"value": "Grok"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "סימניות"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "משרות"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "קהילה"
 	},
 	"f75d1806": {
-		"type": "text",
+		"type": "string",
 		"value": "Premium"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "ארגונים מאומתים"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "הפרופיל שלי"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "רשימה"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "הפקת רווח"
 	},
 	"e0cb0c72": {
-		"type": "text",
+		"type": "string",
 		"value": "מודעות"
 	},
 	"b55d8a78": {
-		"type": "text",
+		"type": "string",
 		"value": "צור מקום משלך"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "הגדרות ופרטיות"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "הוסף חשבון קיים"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "נהל חשבונות"
 	},
 	"b7dc3885": {
@@ -152,75 +152,75 @@ const text = {
 		"value": function(e){return"עבור אל ‎@"+e.screenName+"‎"}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Post"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "הגדרות"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "עכשיו"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "יום"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "חודש"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "שנה"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "ינואר"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "פברואר"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "מרץ"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "אפריל"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "מאי"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "יוני"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "יולי"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "אוגוסט"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "ספטמבר"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "אוקטובר"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "נובמבר"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "דצמבר"
 	}
 };

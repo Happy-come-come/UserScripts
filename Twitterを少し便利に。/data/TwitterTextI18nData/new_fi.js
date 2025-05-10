@@ -10,7 +10,7 @@ const text = {
 		"value": function(a){return"Seurataan"+a.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Kiinnitetyt"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s uudelleenjulkaisi"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Julkaisut"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Vastaukset"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Kohokohdat"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Media"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Tykkäykset"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Seurataan"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Älä seuraa"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Estetty"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Poista esto"
 	},
 	"cf249089": {
@@ -75,75 +75,75 @@ const text = {
 		"value": function(){return["Seuraajina ",", "," ja "," muuta, joita seuraat"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Etusivu"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Selaa"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Ilmoitukset"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Viestit"
 	},
 	"h5860a68": {
-		"type": "text",
+		"type": "string",
 		"value": "Grok"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Kirjanmerkit"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Työpaikat"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Yhteisö"
 	},
 	"f75d1806": {
-		"type": "text",
+		"type": "string",
 		"value": "Premium"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Varmennetut organisaatiot"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Oma profiili"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Lista"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Kaupallinen käyttö"
 	},
 	"e0cb0c72": {
-		"type": "text",
+		"type": "string",
 		"value": "Mainokset"
 	},
 	"b55d8a78": {
-		"type": "text",
+		"type": "string",
 		"value": "Perusta Huone"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Asetukset ja yksityisyys"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Lisää olemassa oleva tili"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Hallitse tilejä"
 	},
 	"b7dc3885": {
@@ -152,75 +152,75 @@ const text = {
 		"value": function(a){return"Vaihda tiliin @"+a.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Julkaise"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Asetukset"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Nyt"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Päivä"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Kuukausi"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Vuosi"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "tammikuu"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "helmikuu"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "maaliskuu"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "huhtikuu"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "toukokuu"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "kesäkuu"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "heinäkuu"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "elokuu"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "syyskuu"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "lokakuu"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "marraskuu"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "joulukuu"
 	}
 };

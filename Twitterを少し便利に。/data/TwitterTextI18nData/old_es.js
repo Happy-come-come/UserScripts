@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Siguiendo"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Fijadas"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s retwitteó"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweets"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Respuestas"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Destacados"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Multimedia"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Me gusta"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Siguiendo"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Dejar de seguir"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Bloqueado"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Desbloquear"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["",", "," y "," más de las cuentas que sigues siguen a este usuario"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Inicio"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Explorar"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Notificaciones"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Mensajes"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Guardados"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Trabajos"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Comunidad"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Organizaciones verificadas"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Mi perfil"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Lista"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Monetización"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Configuración y privacidad"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Agregar una cuenta existente"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Administrar cuentas"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"Cambiar a @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Twittear"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Configuración"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Ahora"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Día"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Mes"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Año"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "enero"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "febrero"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "marzo"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "abril"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "mayo"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "junio"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "julio"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "agosto"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "septiembre"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "octubre"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "noviembre"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "diciembre"
 	}
 };

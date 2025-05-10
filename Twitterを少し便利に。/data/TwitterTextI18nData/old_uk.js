@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Стрічка підписок"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Закріплені"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s ретвітнув(ла)"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Твіти"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Відповіді"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Вибране"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Медіафайли"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Вподобання"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Стрічка"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Не читати"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Заблоковано"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Розблокувати"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["Читають ",", "," і ще "," з-поміж тих, кого ви читаєте"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Головна"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Ознайомлення"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Сповіщення"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Повідомлення"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Закладки"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Вакансії"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Спільнота"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Підтверджені організації"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Мій профіль"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Список"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Монетизація"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Налаштування та конфіденційність"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Додати наявний профіль"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Керувати профілями"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"Переключитися на @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Твітнути"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Налаштування"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Зараз"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "День"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Місяць"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Рік"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Січень"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Лютий"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Березень"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "Квітень"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Травень"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Червень"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Липень"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "Серпень"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "Вересень"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Жовтень"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "Листопад"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "Грудень"
 	}
 };

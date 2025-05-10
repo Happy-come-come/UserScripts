@@ -10,7 +10,7 @@ const text = {
 		"value": function(a){return"Mengikuti"+a.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Dipinkan"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s Tweet semula"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweet"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Balasan"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Sorotan"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Media"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Suka"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Mengikuti"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Nyahikut"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Disekat"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Nyahsekat"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["Diikuti oleh ",", "," dan "," yang lain yang anda ikuti"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Laman Utama"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Teroka"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Pemberitahuan"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Mesej"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Bookmark"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Pekerjaan"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Komuniti"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Organisasi Disahkan"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Profil Saya"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Senarai"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Pengewangan"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Tetapan dan privasi"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Tambah akaun sedia ada"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Urus akaun"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(a){return"Tukar kepada @"+a.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweet"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Tetapan"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Sekarang"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Hari"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Bulan"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Tahun"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Januari"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Februari"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Mac"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "April"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Mei"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Jun"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Julai"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "Ogos"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "September"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Oktober"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "November"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "Disember"
 	}
 };

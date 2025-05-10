@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Праћење"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Закачено"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "Поново објавио корисник %s"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Објаве"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Одговори"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Истакнуто"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Медији"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Свиђања"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Пратиш"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Не прати"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Блокиран/а"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Одблокирај"
 	},
 	"cf249089": {
@@ -75,75 +75,75 @@ const text = {
 		"value": function(){return["Овог корисника прате ",", "," и "," других које ти пратиш"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Почетна"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Истражи"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Обавештења"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Поруке"
 	},
 	"h5860a68": {
-		"type": "text",
+		"type": "string",
 		"value": "Grok"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Обележивачи"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Послови"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Заједница"
 	},
 	"f75d1806": {
-		"type": "text",
+		"type": "string",
 		"value": "Premium"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Потврђене организације"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Мој профил"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Листа"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Монетизација"
 	},
 	"e0cb0c72": {
-		"type": "text",
+		"type": "string",
 		"value": "Огласи"
 	},
 	"b55d8a78": {
-		"type": "text",
+		"type": "string",
 		"value": "Направи простор"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Подешавања и приватност"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Додај постојећи налог"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Управљај налозима"
 	},
 	"b7dc3885": {
@@ -152,75 +152,75 @@ const text = {
 		"value": function(e){return"Пређи на налог @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Објави"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Подешавања"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Сада"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Дан"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Месец"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "Година"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Јануар"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Фебруар"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Март"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "Април"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Мај"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Јун"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Јул"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "Август"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "Септембар"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Октобар"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "Новембар"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "Децембар"
 	}
 };

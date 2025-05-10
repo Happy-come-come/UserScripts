@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"Urmărești"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "Fixate"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s a redistribuit"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "Tweeturi"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "Răspunsuri"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "Evidențieri"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "Conținut media"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "Aprecieri"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Urmărești"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "Oprește urmărirea"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "Blocat"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "Deblochează"
 	},
 	"cf249089": {
@@ -75,59 +75,59 @@ const text = {
 		"value": function(){return["Urmărit de ",", "," și de încă "," persoane pe care le urmărești"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "Pagina principală"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "Explorează"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "Notificări"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "Mesaje"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "Marcaje"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "Locuri de muncă"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "Comunitate"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "Organizații verificate"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "Profilul meu"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "Listă"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "Monetizare"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "Setări și confidențialitate"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "Adaugă un cont existent"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "Gestionează conturile"
 	},
 	"b7dc3885": {
@@ -136,75 +136,75 @@ const text = {
 		"value": function(e){return"Comută la @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "Dă Tweet"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "Setări"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "Acum"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "Zi"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "Lună"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "An"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "Ianuarie"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "Februarie"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "Martie"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "Aprilie"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "Mai"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "Iunie"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "Iulie"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "August"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "Septembrie"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "Octombrie"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "Noiembrie"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "Decembrie"
 	}
 };

@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return e.noun+" করছেন"}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "পিন করা হয়েছে"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s রিপোস্ট করেছেন"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "পোস্ট"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "উত্তর"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "হাইলাইট"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "মিডিয়া"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "পছন্দ"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "অনুসরণ করছেন"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "অনুসরণ বাতিল করুন"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "অবরুদ্ধ"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "অবরোধ মুক্ত করুন"
 	},
 	"cf249089": {
@@ -75,75 +75,75 @@ const text = {
 		"value": function(){return["আপনার অনুসরণ করা ",", ",", এবং অন্য "," জন অনুসরণ করেছেন"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "হোম"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "এক্সপ্লোর করুন"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "বিজ্ঞপ্তি"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "বার্তাগুলি"
 	},
 	"h5860a68": {
-		"type": "text",
+		"type": "string",
 		"value": "Grok"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "বুকমার্কগুলি"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "কাজ"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "কমিউনিটি"
 	},
 	"f75d1806": {
-		"type": "text",
+		"type": "string",
 		"value": "Premium"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "যাচাইকৃত প্রতিষ্ঠান"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "আমার প্রোফাইল"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "সূচী"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "নগদীকরণ"
 	},
 	"e0cb0c72": {
-		"type": "text",
+		"type": "string",
 		"value": "বিজ্ঞাপন"
 	},
 	"b55d8a78": {
-		"type": "text",
+		"type": "string",
 		"value": "আপনার Space তৈরি করুন"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "সেটিংস ও গোপনীয়তা"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "একটি বিদ্যমান অ্যাকাউন্ট যোগ করুন"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "অ্যাকাউন্ট পরিচালনা করুন"
 	},
 	"b7dc3885": {
@@ -152,75 +152,75 @@ const text = {
 		"value": function(e){return"@"+e.screenName+"-তে পাল্টান"}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "পোস্ট"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "সেটিংস"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "এখনই"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "দিন"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "মাস"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "বছর"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "জানুয়ারি"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "ফেব্রুয়ারী"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "মার্চ"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "এপ্রিল"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "মে"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "জুন"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "জুলাই"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "আগস্ট"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "সেপ্টেম্বর"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "অক্টোবর"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "নভেম্বর"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "ডিসেম্বর"
 	}
 };

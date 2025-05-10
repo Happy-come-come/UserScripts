@@ -10,7 +10,7 @@ const text = {
 		"value": function(e){return"กําลังติดตาม"+e.noun}
 	},
 	"pinned_lists_module_header": {
-		"type": "text",
+		"type": "string",
 		"value": "ปักหมุดแล้ว"
 	},
 	"tweets_retweeted": {
@@ -18,39 +18,39 @@ const text = {
 		"value": "%s รีโพสต์แล้ว"
 	},
 	"profile_tab_title_timeline": {
-		"type": "text",
+		"type": "string",
 		"value": "โพสต์"
 	},
 	"profile_tab_title_timeline_tweets_and_replies_sentence_case": {
-		"type": "text",
+		"type": "string",
 		"value": "การตอบกลับ"
 	},
 	"profile_tab_title_highlights": {
-		"type": "text",
+		"type": "string",
 		"value": "ไฮไลต์"
 	},
 	"profile_tab_title_media": {
-		"type": "text",
+		"type": "string",
 		"value": "สื่อ"
 	},
 	"profile_tab_title_likes": {
-		"type": "text",
+		"type": "string",
 		"value": "ความชอบ"
 	},
 	"c3befdbe": {
-		"type": "text",
+		"type": "string",
 		"value": "กําลังติดตาม"
 	},
 	"d3029dbc": {
-		"type": "text",
+		"type": "string",
 		"value": "เลิกติดตาม"
 	},
 	"i8cfb6e6": {
-		"type": "text",
+		"type": "string",
 		"value": "ถูกบล็อค"
 	},
 	"ea100d6a": {
-		"type": "text",
+		"type": "string",
 		"value": "ยกเลิกการบล็อค"
 	},
 	"cf249089": {
@@ -75,75 +75,75 @@ const text = {
 		"value": function(){return["ติดตามโดย ",", "," และอีก "," คนที่คุณติดตาม"]}
 	},
 	"ha8209bc": {
-		"type": "text",
+		"type": "string",
 		"value": "หน้าแรก"
 	},
 	"fcf3e54c": {
-		"type": "text",
+		"type": "string",
 		"value": "สำรวจ"
 	},
 	"eb75875e": {
-		"type": "text",
+		"type": "string",
 		"value": "การแจ้งเตือน"
 	},
 	"a2f81050": {
-		"type": "text",
+		"type": "string",
 		"value": "ข้อความ"
 	},
 	"h5860a68": {
-		"type": "text",
+		"type": "string",
 		"value": "Grok"
 	},
 	"i3145aa0": {
-		"type": "text",
+		"type": "string",
 		"value": "บุ๊คมาร์ก"
 	},
 	"b007440a": {
-		"type": "text",
+		"type": "string",
 		"value": "งาน"
 	},
 	"h5245afa": {
-		"type": "text",
+		"type": "string",
 		"value": "ชุมชน"
 	},
 	"f75d1806": {
-		"type": "text",
+		"type": "string",
 		"value": "Premium"
 	},
 	"e2eef3c2": {
-		"type": "text",
+		"type": "string",
 		"value": "องค์กรที่ได้รับการยืนยัน"
 	},
 	"e1066d88": {
-		"type": "text",
+		"type": "string",
 		"value": "ข้อมูลส่วนตัวของฉัน"
 	},
 	"fa884026": {
-		"type": "text",
+		"type": "string",
 		"value": "รายชื่อ"
 	},
 	"d299431c": {
-		"type": "text",
+		"type": "string",
 		"value": "การสร้างเงิน"
 	},
 	"e0cb0c72": {
-		"type": "text",
+		"type": "string",
 		"value": "โฆษณา"
 	},
 	"b55d8a78": {
-		"type": "text",
+		"type": "string",
 		"value": "สร้างพื้นที่สนทนาของคุณ"
 	},
 	"fd442790": {
-		"type": "text",
+		"type": "string",
 		"value": "การตั้งค่าและความเป็นส่วนตัว"
 	},
 	"j0a8da6e": {
-		"type": "text",
+		"type": "string",
 		"value": "เพิ่มบัญชีที่มีอยู่แล้ว"
 	},
 	"c6f2bf00": {
-		"type": "text",
+		"type": "string",
 		"value": "จัดการบัญชี"
 	},
 	"b7dc3885": {
@@ -152,75 +152,75 @@ const text = {
 		"value": function(e){return"สลับไปยัง @"+e.screenName}
 	},
 	"post_tweet": {
-		"type": "text",
+		"type": "string",
 		"value": "โพสต์"
 	},
 	"bb081ea2": {
-		"type": "text",
+		"type": "string",
 		"value": "การตั้งค่า"
 	},
 	"ccd32094": {
-		"type": "text",
+		"type": "string",
 		"value": "ขณะนี้"
 	},
 	"jf83d092": {
-		"type": "text",
+		"type": "string",
 		"value": "วัน"
 	},
 	"af4abf20": {
-		"type": "text",
+		"type": "string",
 		"value": "เดือน"
 	},
 	"b871f280": {
-		"type": "text",
+		"type": "string",
 		"value": "ปี"
 	},
 	"hac89ab0": {
-		"type": "text",
+		"type": "string",
 		"value": "มกราคม"
 	},
 	"ef30b30a": {
-		"type": "text",
+		"type": "string",
 		"value": "กุมภาพันธ์"
 	},
 	"b56920fa": {
-		"type": "text",
+		"type": "string",
 		"value": "มีนาคม"
 	},
 	"b1a0f1ec": {
-		"type": "text",
+		"type": "string",
 		"value": "เมษายน"
 	},
 	"daf779c8": {
-		"type": "text",
+		"type": "string",
 		"value": "พฤษภาคม"
 	},
 	"c6ad074e": {
-		"type": "text",
+		"type": "string",
 		"value": "มิถุนายน"
 	},
 	"f1db106c": {
-		"type": "text",
+		"type": "string",
 		"value": "กรกฎาคม"
 	},
 	"i4e80b7a": {
-		"type": "text",
+		"type": "string",
 		"value": "สิงหาคม"
 	},
 	"efa6cc1e": {
-		"type": "text",
+		"type": "string",
 		"value": "กันยายน"
 	},
 	"f40a0cbe": {
-		"type": "text",
+		"type": "string",
 		"value": "ตุลาคม"
 	},
 	"ac74a31c": {
-		"type": "text",
+		"type": "string",
 		"value": "พฤศจิกายน"
 	},
 	"i6c1e4b2": {
-		"type": "text",
+		"type": "string",
 		"value": "ธันวาคม"
 	}
 };
