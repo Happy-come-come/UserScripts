@@ -1,0 +1,99 @@
+const text = {
+	"forYouTab": {
+		"type": "function",
+		"arguments": ["noun"],
+		"value": function(e){return"Til dig"+e.noun}
+	},
+	"followingTab": {
+		"type": "function",
+		"arguments": ["noun"],
+		"value": function(e){return"Følger"+e.noun}
+	},
+	"pinnedListsModuleHeader": {"type":"string","value":"Fastgjort"},
+	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s retweetede"},
+	"retweet": undefined,
+	"unDoRetweet": {"type":"string","value":"Fortryd Retweet"},
+	"quoteTweet": {"type":"string","value":"Citér tweet"},
+	"profileTabTitleTimeline": {"type":"string","value":"Tweets"},
+	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {"type":"string","value":"Svar"},
+	"profileTabTitleHighlights": {"type":"string","value":"Højdepunkter"},
+	"profileTabTitleMedia": {"type":"string","value":"Medier"},
+	"profileTabTitleLikes": {"type":"string","value":"Likes"},
+	"following": {"type":"string","value":"Følger"},
+	"unfollow": {"type":"string","value":"Følg ikke længere"},
+	"blocked": {"type":"string","value":"Blokeret"},
+	"unblock": {"type":"string","value":"Fjern blokering"},
+	"joinDateFrom": {
+		"type": "function",
+		"arguments": ["joinDate"],
+		"value": function(e){return"Medlem siden "+e.joinDate}
+	},
+	"followedBy1": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return["Følges af "]}
+	},
+	"followedBy2": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return["Følges af "," og "]}
+	},
+	"followedBy3": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return["Følges af ",", "," og "]}
+	},
+	"followedByLots": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return["Følges af ",", "," og "," andre, som du følger"]}
+	},
+	"postedTweetsNum": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return[props.formattedCount+" Tweet"+i(props.count,"","s")]}
+	},
+	"likesNum": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return[props.formattedCount+" Like"+i(props.count,"","s")]}
+	},
+	"mediaNum": undefined,
+	"home": {"type":"string","value":"Forside"},
+	"search": {"type":"string","value":"Udforsk"},
+	"notifications": {"type":"string","value":"Meddelelser"},
+	"messages": {"type":"string","value":"Beskeder"},
+	"grok": undefined,
+	"bookmarks": {"type":"string","value":"Bogmærker"},
+	"jobs": {"type":"string","value":"Job"},
+	"communities": {"type":"string","value":"Fællesskab"},
+	"premium": undefined,
+	"verifiedOrg": {"type":"string","value":"Verificerede org."},
+	"profile": {"type":"string","value":"Min profil"},
+	"lists": {"type":"string","value":"Liste"},
+	"monetization": {"type":"string","value":"Indtægtsgenerering"},
+	"ads": undefined,
+	"createYourSpace": undefined,
+	"settingsAndPrivacy": {"type":"string","value":"Indstillinger og privatliv"},
+	"addAnExistingAccount": {"type":"string","value":"Tilføj en eksisterende konto"},
+	"manageAccounts": {"type":"string","value":"Administrer konti"},
+	"switchToAccount": {
+		"type": "function",
+		"arguments": ["screenName"],
+		"value": function(e){return"Skift til @"+e.screenName}
+	},
+	"postTweet": {"type":"string","value":"Tweet"},
+	"settings": {"type":"string","value":"Indstillinger"},
+	"now": {"type":"string","value":"Nu"},
+	"day": {"type":"string","value":"Dag"},
+	"month": {"type":"string","value":"Måned"},
+	"year": {"type":"string","value":"År"},
+	"january": {"type":"string","value":"Januar"},
+	"february": {"type":"string","value":"Februar"},
+	"march": {"type":"string","value":"Marts"},
+	"april": {"type":"string","value":"April"},
+	"may": {"type":"string","value":"Maj"},
+	"june": {"type":"string","value":"Juni"},
+	"july": {"type":"string","value":"Juli"},
+	"august": {"type":"string","value":"August"},
+	"september": {"type":"string","value":"September"},
+	"october": {"type":"string","value":"Oktober"},
+	"november": {"type":"string","value":"November"},
+	"december": {"type":"string","value":"December"}
+};
+
+export default text;
