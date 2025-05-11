@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"For you"+e.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"Following"+e.noun}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"Blocked"},
 	"unblock": {"type":"string","value":"Unblock"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(e){return"Joined "+e.joinDate}
 	},
@@ -72,7 +72,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"Add an existing account"},
 	"manageAccounts": {"type":"string","value":"Manage accounts"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(e){return"Switch to @"+e.screenName}
 	},

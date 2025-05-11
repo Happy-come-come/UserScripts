@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(a){return"For you"+a.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(a){return"Following"+a.noun}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"Coiscthe"},
 	"unblock": {"type":"string","value":"Díchoisc"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(a){return"Cláraithe "+a.joinDate}
 	},
@@ -72,7 +72,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"Cuir cuntas atá ann leis"},
 	"manageAccounts": {"type":"string","value":"Bainistigh cuntais"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(a){return"Athraigh go @"+a.screenName}
 	},

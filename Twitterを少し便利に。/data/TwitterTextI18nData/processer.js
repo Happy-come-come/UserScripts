@@ -240,7 +240,7 @@ const xmlParser = new XMLParser({
 						props.add(match[1]);
 					}
 					result[key] = {
-						"type": "function",
+						"type": "webI18nFunction",
 						"arguments": Array.from(props),
 						"value": val
 					};

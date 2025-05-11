@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(i){return"Per te"+i.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(i){return"Seguiti"+i.noun}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"Bloccato"},
 	"unblock": {"type":"string","value":"Sblocca"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(i){return"Iscrizione: "+i.joinDate}
 	},
@@ -75,7 +75,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"Aggiungi un account esistente"},
 	"manageAccounts": {"type":"string","value":"Gestisci account"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(i){return"Passa a @"+i.screenName}
 	},

@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"За тебе"+e.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"Праћење"+e.noun}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"Блокиран/а"},
 	"unblock": {"type":"string","value":"Одблокирај"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(e){return"Датум придруживања: "+e.joinDate}
 	},
@@ -75,7 +75,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"Додај постојећи налог"},
 	"manageAccounts": {"type":"string","value":"Управљај налозима"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(e){return"Пређи на налог @"+e.screenName}
 	},

@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"For deg"+e.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"Følger"+e.noun}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"Blokkert"},
 	"unblock": {"type":"string","value":"Opphev blokkering"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(e){return"Registrerte seg "+e.joinDate}
 	},
@@ -75,7 +75,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"Legg til en eksisterende konto"},
 	"manageAccounts": {"type":"string","value":"Administrer kontoer"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(e){return"Bytt til @"+e.screenName}
 	},

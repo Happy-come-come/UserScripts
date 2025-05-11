@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(a){return"Untuk anda"+a.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(a){return"Mengikuti"+a.noun}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"Disekat"},
 	"unblock": {"type":"string","value":"Nyahsekat"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(a){return"Sertai pada "+a.joinDate}
 	},
@@ -72,7 +72,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"Tambah akaun sedia ada"},
 	"manageAccounts": {"type":"string","value":"Urus akaun"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(a){return"Tukar kepada @"+a.screenName}
 	},

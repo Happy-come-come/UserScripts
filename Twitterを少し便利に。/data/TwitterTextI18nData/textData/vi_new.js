@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(n){return"Dành cho bạn"+n.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(n){return"Đang theo dõi"+n.noun}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"Bị chặn"},
 	"unblock": {"type":"string","value":"Bỏ chặn"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(n){return"Tham gia "+n.joinDate}
 	},
@@ -75,7 +75,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"Thêm tài khoản hiện có"},
 	"manageAccounts": {"type":"string","value":"Quản lý tài khoản"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(n){return"Chuyển sang @"+n.screenName}
 	},

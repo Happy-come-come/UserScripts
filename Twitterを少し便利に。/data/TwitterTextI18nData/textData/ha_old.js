@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(a){return"Don kai"+a.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(a){return"Ana bin"+a.noun}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"An toshe"},
 	"unblock": {"type":"string","value":"Buɗe"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(a){return"An shiga "+a.joinDate}
 	},
@@ -72,7 +72,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"Ƙara asusun da ke akwai"},
 	"manageAccounts": {"type":"string","value":"Gudanar da asusu"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(a){return"Sauya zuwa @"+a.screenName}
 	},

@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"おすすめ"+e.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"フォロー中"+e.noun}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"ブロック中"},
 	"unblock": {"type":"string","value":"ブロック解除"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(e){return e.joinDate+"からTwitterを利用しています"}
 	},
@@ -72,7 +72,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"既存のアカウントを追加"},
 	"manageAccounts": {"type":"string","value":"アカウントを管理"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(e){return"@"+e.screenName+"に切り替える"}
 	},

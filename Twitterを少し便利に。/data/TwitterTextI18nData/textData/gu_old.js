@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"તમારા માટે"+e.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"અનુસરી રહ્યા છો"+e.noun}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"અવરોધિત કરેલું"},
 	"unblock": {"type":"string","value":"અનાવરોધિત"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(e){return e.joinDate+"એ જોડાયા"}
 	},
@@ -72,7 +72,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"કોઈ મોજૂદ એકાઉન્ટ ઉમેરો"},
 	"manageAccounts": {"type":"string","value":"એકાઉન્ટ્સનું વ્યવસ્થાપન કરો"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(e){return"@"+e.screenName+" પર ફેરબદલી કરો"}
 	},

@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(n){return"Fún ọ"+n.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(n){return"Ń tẹ̀lé"+n.noun}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"Ti Dínà"},
 	"unblock": {"type":"string","value":"Yọ ìdínà kúro"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(n){return"Darapọ̀ "+n.joinDate}
 	},
@@ -72,7 +72,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"Fi àkántì tó ti wà tẹ́lẹ̀ kún u"},
 	"manageAccounts": {"type":"string","value":"Ṣàkóso àwọn àkántì"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(n){return"Yí sí @"+n.screenName}
 	},

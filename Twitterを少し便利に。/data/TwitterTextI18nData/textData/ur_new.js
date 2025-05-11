@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"آپ کے لیے"+e.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"فالو کر رہا ہے"+e.noun}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"بلاک شدہ"},
 	"unblock": {"type":"string","value":"ان بلاک کریں"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(e){return e.joinDate+" میں شامل ہوئے"}
 	},
@@ -75,7 +75,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"ایک موجودہ اکاؤنٹ شامل کریں"},
 	"manageAccounts": {"type":"string","value":"اکاؤنٹس کا نظم کریں"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(e){return"@"+e.screenName+" پر سوئچ کریں"}
 	},

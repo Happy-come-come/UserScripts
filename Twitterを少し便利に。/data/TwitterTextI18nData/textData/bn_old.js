@@ -1,11 +1,11 @@
 const text = {
 	"forYouTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return"আপনার জন্য "+e.noun}
 	},
 	"followingTab": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["noun"],
 		"value": function(e){return e.noun+" করছেন"}
 	},
@@ -24,7 +24,7 @@ const text = {
 	"blocked": {"type":"string","value":"অবরুদ্ধ"},
 	"unblock": {"type":"string","value":"অবরোধ মুক্ত করুন"},
 	"joinDateFrom": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
 		"value": function(e){return e.joinDate+"-এ যোগদান করেছেন"}
 	},
@@ -72,7 +72,7 @@ const text = {
 	"addAnExistingAccount": {"type":"string","value":"একটি বিদ্যমান অ্যাকাউন্ট যোগ করুন"},
 	"manageAccounts": {"type":"string","value":"অ্যাকাউন্ট পরিচালনা করুন"},
 	"switchToAccount": {
-		"type": "function",
+		"type": "webI18nFunction",
 		"arguments": ["screenName"],
 		"value": function(e){return"@"+e.screenName+"-তে পাল্টান"}
 	},
