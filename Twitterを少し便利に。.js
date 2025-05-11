@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter little useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.2.0.3
+// @version			2.2.0.4
 // @description			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
 // @description:en			A compilation of scripts I've made.
@@ -51,6 +51,11 @@
 
 (async function(){
 	'use strict';
+	if(!getCookie('ct0')){
+		console.log('TwitterのCookieが取得できませんでした。');
+		console.log('プライベートモードなど、Twitterにログインしていない状態では動作しません。');
+		return;
+	}
 	let currentUrl = document.location.href;
 	let updating = false;
 	const debugging = false;
