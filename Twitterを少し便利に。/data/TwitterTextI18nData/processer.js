@@ -89,7 +89,7 @@ const xmlParser = new XMLParser({
 			"pinnedListsModuleHeader": "pinned_lists_module_header", // "固定"
 			"tweetsRetweeted": "tweets_retweeted", // "%sさんがリツイートしました"
 			// ツイートノードアクション
-			"retweet": ["d6c8514at", "f2919fb8"], // "リツイート", "リポスト"
+			"retweet": ["d6c8514a", "f2919fb8"], // "リツイート", "リポスト"
 			"unDoRetweet": ["f3bbbb88", "fd1e5446"], // "リツイートを取り消す", "リポストを取り消す"
 			"quoteTweet": "quote_tweet", // "引用ツイート", "引用"
 			// プロフィール
@@ -152,33 +152,48 @@ const xmlParser = new XMLParser({
 		};
 		const enTextData = {new: {}, old: {}};
 		for(const lang in keyTranslation){
-			await process(lang, 'old');
 			await process(lang, 'new');
+			await process(lang, 'old');
 		}
 		async function process(lang, type){
 			const currentTextData = {...textData[lang][type].web, ...textData[lang][type].apk};
+			const anotherTextData = type === 'new' ? {...textData[lang].old.web, ...textData[lang].old.apk} : {...textData[lang].new.web, ...textData[lang].new.apk};
 			const result = {};
 			for(const key in useWords){
-				const useWord = useWords[key];
-				if(typeof useWord === 'string'){
-					if(currentTextData[useWord]){
-						result[key] = currentTextData[useWord];
+				const useKey = useWords[key];
+				if(typeof useKey === 'string'){
+					if(currentTextData[useKey]){
+						result[key] = currentTextData[useKey];
+					}else if(anotherTextData[useKey]){
+						result[key] = anotherTextData[useKey];
 					}else{
-						result[key] = enTextData[type][useWord];
+						result[key] = enTextData[type][useKey];
 					}
-				}else if(Array.isArray(useWord)){
-					for(let i = 0; i < useWord.length; i++){
-						const useWordKey = useWord[i];
-						if(currentTextData[useWordKey]){
-							result[key] = currentTextData[useWordKey];
+				}else if(Array.isArray(useKey)){
+					let isOk = false;
+					for(let i = 0; i < useKey.length; i++){
+						const useKeyKey = useKey[i];
+						if(currentTextData[useKeyKey]){
+							result[key] = currentTextData[useKeyKey];
+							isOk = true;
 							break;
-						}else{
-							result[key] = enTextData[type][useWordKey];
+						}
+					}
+					if(!isOk){
+						for(let i = 0; i < useKey.length; i++){
+							const useKeyKey = useKey[i];
+							if(anotherTextData[useKeyKey]){
+								result[key] = anotherTextData[useKeyKey];
+								break;
+							}else if(enTextData[type][useKeyKey]){
+								result[key] = enTextData[type][useKeyKey];
+								break;
+							}
 						}
 					}
 				}
-
 			}
+
 			if(lang === 'en'){
 				enTextData[type] = result;
 			}
