@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" foto & video"]}
 	},
 	"home": {"type":"string","value":"Laman Utama"},
-	"search": {"type":"string","value":"Teroka"},
+	"explore": {"type":"string","value":"Teroka"},
 	"notifications": {"type":"string","value":"Pemberitahuan"},
 	"messages": {"type":"string","value":"Mesej"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Iklan"},
 	"createYourSpace": {"type":"string","value":"Cipta Space anda"},
 	"settingsAndPrivacy": {"type":"string","value":"Tetapan dan privasi"},
+	"moreMenu": {"type":"string","value":"Lagi"},
 	"addAnExistingAccount": {"type":"string","value":"Tambah akaun sedia ada"},
 	"manageAccounts": {"type":"string","value":"Urus akaun"},
 	"switchToAccount": {

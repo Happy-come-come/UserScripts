@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" foto & video"]}
 	},
 	"home": {"type":"string","value":"Beranda"},
-	"search": {"type":"string","value":"Jelajahi"},
+	"explore": {"type":"string","value":"Jelajahi"},
 	"notifications": {"type":"string","value":"Notifikasi"},
 	"messages": {"type":"string","value":"Pesan"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Iklan"},
 	"createYourSpace": {"type":"string","value":"Buat Space Anda"},
 	"settingsAndPrivacy": {"type":"string","value":"Pengaturan dan privasi"},
+	"moreMenu": {"type":"string","value":"Lainnya"},
 	"addAnExistingAccount": {"type":"string","value":"Tambahkan akun yang sudah ada"},
 	"manageAccounts": {"type":"string","value":"Kelola akun"},
 	"switchToAccount": {

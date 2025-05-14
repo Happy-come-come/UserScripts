@@ -112,7 +112,7 @@ const xmlParser = new XMLParser({
 			"mediaNum": "cca42d0b", // function(){return[this.props.formattedCount+" 件のメディア"]}, function(){return[this.props.formattedCount+" 件のメディア"]},
 			// AppTabBar
 			"home": "ha8209bc", // "ホーム"
-			"search": "fcf3e54c", // "話題を検索"
+			"explore": "fcf3e54c", // "話題を検索"
 			"notifications": "eb75875e", // "通知"
 			"messages": "a2f81050", // "メッセージ"
 			"grok": "h5860a68", // "Grok"
@@ -127,6 +127,7 @@ const xmlParser = new XMLParser({
 			"ads": "e0cb0c72", // "広告"
 			"createYourSpace": "b55d8a78", // "スペースを作成"
 			"settingsAndPrivacy": "fd442790", // "設定とプライバシー"
+			"moreMenu": "h63a5c3c", // "もっと見る"
 			"addAnExistingAccount": "j0a8da6e", // "既存のアカウントを追加"
 			"manageAccounts": "c6f2bf00", // "アカウントを管理"
 			"switchToAccount": "b7dc3885", // function(e){return"@"+e.screenName+"に切り替える"}

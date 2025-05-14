@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" புகைப்படங்கள் & வீடியோக்கள்"]}
 	},
 	"home": {"type":"string","value":"முகப்பு"},
-	"search": {"type":"string","value":"ஆராய்க"},
+	"explore": {"type":"string","value":"ஆராய்க"},
 	"notifications": {"type":"string","value":"அறிவிப்புகள்"},
 	"messages": {"type":"string","value":"செய்திகள்"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"விளம்பரங்கள்"},
 	"createYourSpace": {"type":"string","value":"உங்கள் ஸ்பேஸை உருவாக்குக"},
 	"settingsAndPrivacy": {"type":"string","value":"அமைப்புகள் மற்றும் தனியுரிமை"},
+	"moreMenu": {"type":"string","value":"மேலும்"},
 	"addAnExistingAccount": {"type":"string","value":"ஏற்கனவே உள்ள கணக்கைச் சேர்க்கவும்"},
 	"manageAccounts": {"type":"string","value":"கணக்குகளை நிர்வகி"},
 	"switchToAccount": {

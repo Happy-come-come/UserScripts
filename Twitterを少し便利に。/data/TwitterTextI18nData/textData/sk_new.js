@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" fot"+t(props.count,"ky a videá","ky a videa","ka a video","iek a videí")]}
 	},
 	"home": {"type":"string","value":"Domov"},
-	"search": {"type":"string","value":"Preskúmať"},
+	"explore": {"type":"string","value":"Preskúmať"},
 	"notifications": {"type":"string","value":"Notifikácie"},
 	"messages": {"type":"string","value":"Správy"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Reklamy"},
 	"createYourSpace": {"type":"string","value":"Vytvoriť priestor"},
 	"settingsAndPrivacy": {"type":"string","value":"Nastavenia a súkromie"},
+	"moreMenu": {"type":"string","value":"Viac"},
 	"addAnExistingAccount": {"type":"string","value":"Pridať existujúci účet"},
 	"manageAccounts": {"type":"string","value":"Spravovať účty"},
 	"switchToAccount": {

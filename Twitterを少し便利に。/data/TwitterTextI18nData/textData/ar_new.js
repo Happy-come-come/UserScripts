@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" صور"+t(props.count," ومقاطع فيديو","ة وفيديو","ة واحدة وفيديو واحد","ة وفيديو","تان ومقطعا فيديو","ة وفيديو")]}
 	},
 	"home": {"type":"string","value":"الرئيسيّة"},
-	"search": {"type":"string","value":"استكشف"},
+	"explore": {"type":"string","value":"استكشف"},
 	"notifications": {"type":"string","value":"التنبيهات"},
 	"messages": {"type":"string","value":"الرسائل"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"الإعلانات"},
 	"createYourSpace": {"type":"string","value":"إنشاء مساحتك"},
 	"settingsAndPrivacy": {"type":"string","value":"الإعدادات والخصوصية"},
+	"moreMenu": {"type":"string","value":"المزيد"},
 	"addAnExistingAccount": {"type":"string","value":"إضافة حساب موجود"},
 	"manageAccounts": {"type":"string","value":"إدارة الحسابات"},
 	"switchToAccount": {

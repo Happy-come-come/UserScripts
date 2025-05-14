@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" foton och videor"]}
 	},
 	"home": {"type":"string","value":"Hem"},
-	"search": {"type":"string","value":"Utforska"},
+	"explore": {"type":"string","value":"Utforska"},
 	"notifications": {"type":"string","value":"Notiser"},
 	"messages": {"type":"string","value":"Meddelanden"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Annonser"},
 	"createYourSpace": {"type":"string","value":"Skapa ditt område"},
 	"settingsAndPrivacy": {"type":"string","value":"Inställningar och integritet"},
+	"moreMenu": {"type":"string","value":"Mer"},
 	"addAnExistingAccount": {"type":"string","value":"Lägg till ett befintligt konto"},
 	"manageAccounts": {"type":"string","value":"Hantera konton"},
 	"switchToAccount": {

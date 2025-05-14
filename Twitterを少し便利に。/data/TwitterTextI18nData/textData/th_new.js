@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" รูปภาพและวีดีโอ"]}
 	},
 	"home": {"type":"string","value":"หน้าแรก"},
-	"search": {"type":"string","value":"สำรวจ"},
+	"explore": {"type":"string","value":"สำรวจ"},
 	"notifications": {"type":"string","value":"การแจ้งเตือน"},
 	"messages": {"type":"string","value":"ข้อความ"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"โฆษณา"},
 	"createYourSpace": {"type":"string","value":"สร้างพื้นที่สนทนาของคุณ"},
 	"settingsAndPrivacy": {"type":"string","value":"การตั้งค่าและความเป็นส่วนตัว"},
+	"moreMenu": {"type":"string","value":"เพิ่มเติม"},
 	"addAnExistingAccount": {"type":"string","value":"เพิ่มบัญชีที่มีอยู่แล้ว"},
 	"manageAccounts": {"type":"string","value":"จัดการบัญชี"},
 	"switchToAccount": {

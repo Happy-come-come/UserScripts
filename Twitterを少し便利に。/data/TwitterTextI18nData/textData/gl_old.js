@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"Inicio"},
-	"search": {"type":"string","value":"Explorar"},
+	"explore": {"type":"string","value":"Explorar"},
 	"notifications": {"type":"string","value":"Notificacións"},
 	"messages": {"type":"string","value":"Mensaxes"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Anuncios"},
 	"createYourSpace": {"type":"string","value":"Create your Space"},
 	"settingsAndPrivacy": {"type":"string","value":"Axustes e privacidade"},
+	"moreMenu": {"type":"string","value":"Máis"},
 	"addAnExistingAccount": {"type":"string","value":"Engadir unha conta existente"},
 	"manageAccounts": {"type":"string","value":"Xestionar contas"},
 	"switchToAccount": {

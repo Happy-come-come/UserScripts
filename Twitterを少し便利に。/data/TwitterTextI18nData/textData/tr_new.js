@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" fotoğraf ve video"]}
 	},
 	"home": {"type":"string","value":"Anasayfa"},
-	"search": {"type":"string","value":"Keşfet"},
+	"explore": {"type":"string","value":"Keşfet"},
 	"notifications": {"type":"string","value":"Bildirimler"},
 	"messages": {"type":"string","value":"Mesajlar"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Reklamlar"},
 	"createYourSpace": {"type":"string","value":"Sohbet Odanı oluştur"},
 	"settingsAndPrivacy": {"type":"string","value":"Ayarlar ve gizlilik"},
+	"moreMenu": {"type":"string","value":"Daha fazla"},
 	"addAnExistingAccount": {"type":"string","value":"Var olan bir hesap ekle"},
 	"manageAccounts": {"type":"string","value":"Hesapları yönet"},
 	"switchToAccount": {

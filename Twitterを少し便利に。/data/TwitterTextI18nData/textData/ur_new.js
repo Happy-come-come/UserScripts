@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"ہوم"},
-	"search": {"type":"string","value":"دریافت کریں"},
+	"explore": {"type":"string","value":"دریافت کریں"},
 	"notifications": {"type":"string","value":"اطلاعات"},
 	"messages": {"type":"string","value":"پیغامات"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"اشتہارات"},
 	"createYourSpace": {"type":"string","value":"Create your Space"},
 	"settingsAndPrivacy": {"type":"string","value":"ترتیبات اور رازداری"},
+	"moreMenu": {"type":"string","value":"مزید"},
 	"addAnExistingAccount": {"type":"string","value":"ایک موجودہ اکاؤنٹ شامل کریں"},
 	"manageAccounts": {"type":"string","value":"اکاؤنٹس کا نظم کریں"},
 	"switchToAccount": {

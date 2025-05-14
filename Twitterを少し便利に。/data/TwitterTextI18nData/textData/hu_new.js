@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" fotó és videó"]}
 	},
 	"home": {"type":"string","value":"Kezdőlap"},
-	"search": {"type":"string","value":"Felfedezés"},
+	"explore": {"type":"string","value":"Felfedezés"},
 	"notifications": {"type":"string","value":"Értesítések"},
 	"messages": {"type":"string","value":"Üzenetek"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Hirdetések"},
 	"createYourSpace": {"type":"string","value":"Hozd létre a saját Tered!"},
 	"settingsAndPrivacy": {"type":"string","value":"Beállítások és adatvédelem"},
+	"moreMenu": {"type":"string","value":"Továbbiak"},
 	"addAnExistingAccount": {"type":"string","value":"Létező felhasználói fiók hozzáadása"},
 	"manageAccounts": {"type":"string","value":"Felhasználói fiókok kezelése"},
 	"switchToAccount": {

@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" fotos i vídeos"]}
 	},
 	"home": {"type":"string","value":"Inici"},
-	"search": {"type":"string","value":"Explora"},
+	"explore": {"type":"string","value":"Explora"},
 	"notifications": {"type":"string","value":"Notificacions"},
 	"messages": {"type":"string","value":"Missatges"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Anuncis"},
 	"createYourSpace": {"type":"string","value":"Crea el teu Espai"},
 	"settingsAndPrivacy": {"type":"string","value":"Configuració i privacitat"},
+	"moreMenu": {"type":"string","value":"Més"},
 	"addAnExistingAccount": {"type":"string","value":"Afegeix un compte existent"},
 	"manageAccounts": {"type":"string","value":"Gestiona els comptes"},
 	"switchToAccount": {

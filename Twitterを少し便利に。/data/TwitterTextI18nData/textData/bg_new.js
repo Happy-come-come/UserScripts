@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" снимки и видеоклипове"]}
 	},
 	"home": {"type":"string","value":"Начало"},
-	"search": {"type":"string","value":"Изследване"},
+	"explore": {"type":"string","value":"Изследване"},
 	"notifications": {"type":"string","value":"Известия"},
 	"messages": {"type":"string","value":"Съобщения"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Реклами"},
 	"createYourSpace": {"type":"string","value":"Създаване на твоя зала"},
 	"settingsAndPrivacy": {"type":"string","value":"Настройки и поверителност"},
+	"moreMenu": {"type":"string","value":"Още"},
 	"addAnExistingAccount": {"type":"string","value":"Добавяне на съществуващ профил"},
 	"manageAccounts": {"type":"string","value":"Управление на профилите"},
 	"switchToAccount": {

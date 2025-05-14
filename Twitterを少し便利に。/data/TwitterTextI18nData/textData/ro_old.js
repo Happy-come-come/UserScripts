@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" fotografi"+r(props.count,"i și clipuri","e și clip","i și clipuri")+" video"]}
 	},
 	"home": {"type":"string","value":"Pagina principală"},
-	"search": {"type":"string","value":"Explorează"},
+	"explore": {"type":"string","value":"Explorează"},
 	"notifications": {"type":"string","value":"Notificări"},
 	"messages": {"type":"string","value":"Mesaje"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Reclame"},
 	"createYourSpace": {"type":"string","value":"Creează-ți Spațiul"},
 	"settingsAndPrivacy": {"type":"string","value":"Setări și confidențialitate"},
+	"moreMenu": {"type":"string","value":"Mai multe"},
 	"addAnExistingAccount": {"type":"string","value":"Adaugă un cont existent"},
 	"manageAccounts": {"type":"string","value":"Gestionează conturile"},
 	"switchToAccount": {

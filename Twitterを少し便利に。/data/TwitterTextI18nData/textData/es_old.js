@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" fotos y videos"]}
 	},
 	"home": {"type":"string","value":"Inicio"},
-	"search": {"type":"string","value":"Explorar"},
+	"explore": {"type":"string","value":"Explorar"},
 	"notifications": {"type":"string","value":"Notificaciones"},
 	"messages": {"type":"string","value":"Mensajes"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Anuncios"},
 	"createYourSpace": {"type":"string","value":"Crear tu Espacio"},
 	"settingsAndPrivacy": {"type":"string","value":"Configuración y privacidad"},
+	"moreMenu": {"type":"string","value":"Más opciones"},
 	"addAnExistingAccount": {"type":"string","value":"Agregar una cuenta existente"},
 	"manageAccounts": {"type":"string","value":"Administrar cuentas"},
 	"switchToAccount": {

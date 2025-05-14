@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"Gida"},
-	"search": {"type":"string","value":"Bincike"},
+	"explore": {"type":"string","value":"Bincike"},
 	"notifications": {"type":"string","value":"Sanarwa"},
 	"messages": {"type":"string","value":"Saƙonni"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Ads"},
 	"createYourSpace": {"type":"string","value":"Create your Space"},
 	"settingsAndPrivacy": {"type":"string","value":"Saitunan da sirrantawa"},
+	"moreMenu": {"type":"string","value":"Ƙari"},
 	"addAnExistingAccount": {"type":"string","value":"Ƙara asusun da ke akwai"},
 	"manageAccounts": {"type":"string","value":"Gudanar da asusu"},
 	"switchToAccount": {

@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೋಗಳು"+f(props.count,';/"',"")]}
 	},
 	"home": {"type":"string","value":"ಹೋಮ್"},
-	"search": {"type":"string","value":"ಅನ್ವೇಷಿಸಿ"},
+	"explore": {"type":"string","value":"ಅನ್ವೇಷಿಸಿ"},
 	"notifications": {"type":"string","value":"ಸೂಚನೆಗಳು"},
 	"messages": {"type":"string","value":"ಸಂದೇಶಗಳು"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"ಜಾಹೀರಾತುಗಳು"},
 	"createYourSpace": {"type":"string","value":"ನಿಮ್ಮ ಸ್ಪೇಸ್ ರಚಿಸಿ"},
 	"settingsAndPrivacy": {"type":"string","value":"ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಮತ್ತು ಗೌಪ್ಯತೆ"},
+	"moreMenu": {"type":"string","value":"ಮತ್ತಷ್ಟು"},
 	"addAnExistingAccount": {"type":"string","value":"ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಖಾತೆಯನ್ನು ಸೇರಿಸಿ"},
 	"manageAccounts": {"type":"string","value":"ಖಾತೆಗಳನ್ನು ನಿರ್ವಹಿಸಿ"},
 	"switchToAccount": {

@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" фото й відео"]}
 	},
 	"home": {"type":"string","value":"Головна"},
-	"search": {"type":"string","value":"Ознайомлення"},
+	"explore": {"type":"string","value":"Ознайомлення"},
 	"notifications": {"type":"string","value":"Сповіщення"},
 	"messages": {"type":"string","value":"Повідомлення"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Реклама"},
 	"createYourSpace": {"type":"string","value":"Створіть власний простір"},
 	"settingsAndPrivacy": {"type":"string","value":"Налаштування та конфіденційність"},
+	"moreMenu": {"type":"string","value":"Інші дії"},
 	"addAnExistingAccount": {"type":"string","value":"Додати наявний профіль"},
 	"manageAccounts": {"type":"string","value":"Керувати профілями"},
 	"switchToAccount": {

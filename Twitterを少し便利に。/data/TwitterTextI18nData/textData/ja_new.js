@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" 件の画像と動画"]}
 	},
 	"home": {"type":"string","value":"ホーム"},
-	"search": {"type":"string","value":"話題を検索"},
+	"explore": {"type":"string","value":"話題を検索"},
 	"notifications": {"type":"string","value":"通知"},
 	"messages": {"type":"string","value":"メッセージ"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"広告"},
 	"createYourSpace": {"type":"string","value":"スペースを作成"},
 	"settingsAndPrivacy": {"type":"string","value":"設定とプライバシー"},
+	"moreMenu": {"type":"string","value":"もっと見る"},
 	"addAnExistingAccount": {"type":"string","value":"既存のアカウントを追加"},
 	"manageAccounts": {"type":"string","value":"アカウントを管理"},
 	"switchToAccount": {

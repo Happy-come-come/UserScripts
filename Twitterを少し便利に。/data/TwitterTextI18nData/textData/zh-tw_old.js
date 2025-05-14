@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" 個相片和影片"]}
 	},
 	"home": {"type":"string","value":"首頁"},
-	"search": {"type":"string","value":"探索"},
+	"explore": {"type":"string","value":"探索"},
 	"notifications": {"type":"string","value":"通知"},
 	"messages": {"type":"string","value":"訊息"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"廣告"},
 	"createYourSpace": {"type":"string","value":"建立你的音訊空間"},
 	"settingsAndPrivacy": {"type":"string","value":"設定和隱私"},
+	"moreMenu": {"type":"string","value":"更多"},
 	"addAnExistingAccount": {"type":"string","value":"加入現有的帳戶"},
 	"manageAccounts": {"type":"string","value":"管理帳戶"},
 	"switchToAccount": {

@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" 사진 및 동영상"]}
 	},
 	"home": {"type":"string","value":"홈"},
-	"search": {"type":"string","value":"탐색하기"},
+	"explore": {"type":"string","value":"탐색하기"},
 	"notifications": {"type":"string","value":"알림"},
 	"messages": {"type":"string","value":"쪽지"},
 	"grok": {"type":"string","value":"그록"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"광고"},
 	"createYourSpace": {"type":"string","value":"스페이스 만들기"},
 	"settingsAndPrivacy": {"type":"string","value":"설정 및 개인정보"},
+	"moreMenu": {"type":"string","value":"더 보기"},
 	"addAnExistingAccount": {"type":"string","value":"기존 계정 추가"},
 	"manageAccounts": {"type":"string","value":"계정 관리"},
 	"switchToAccount": {

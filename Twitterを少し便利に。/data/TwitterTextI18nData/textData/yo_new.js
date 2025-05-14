@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"Ilé"},
-	"search": {"type":"string","value":"Ìwádìí"},
+	"explore": {"type":"string","value":"Ìwádìí"},
 	"notifications": {"type":"string","value":"Àwọn ìfitónilétí"},
 	"messages": {"type":"string","value":"Àwọn ìfiránṣẹ́"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Ads"},
 	"createYourSpace": {"type":"string","value":"Create your Space"},
 	"settingsAndPrivacy": {"type":"string","value":"Àwọn ààtò àti ìpamọ́"},
+	"moreMenu": {"type":"string","value":"Síwájú síi"},
 	"addAnExistingAccount": {"type":"string","value":"Fi àkántì tó ti wà tẹ́lẹ̀ kún u"},
 	"manageAccounts": {"type":"string","value":"Ṣàkóso àwọn àkántì"},
 	"switchToAccount": {

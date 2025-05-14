@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" φωτογραφίες & βίντεο"]}
 	},
 	"home": {"type":"string","value":"Αρχική σελίδα"},
-	"search": {"type":"string","value":"Εξερευνήστε"},
+	"explore": {"type":"string","value":"Εξερευνήστε"},
 	"notifications": {"type":"string","value":"Ειδοποιήσεις"},
 	"messages": {"type":"string","value":"Μηνύματα"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Διαφημίσεις"},
 	"createYourSpace": {"type":"string","value":"Δημιουργήστε τον Χώρο σας"},
 	"settingsAndPrivacy": {"type":"string","value":"Ρυθμίσεις και απόρρητο"},
+	"moreMenu": {"type":"string","value":"Περισσότερα"},
 	"addAnExistingAccount": {"type":"string","value":"Προσθήκη υπάρχοντος λογαριασμού"},
 	"manageAccounts": {"type":"string","value":"Διαχείριση λογαριασμών"},
 	"switchToAccount": {

@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" "+e(props.count,"","(na) ")+"larawan at video"]}
 	},
 	"home": {"type":"string","value":"Home"},
-	"search": {"type":"string","value":"Mag-explore"},
+	"explore": {"type":"string","value":"Mag-explore"},
 	"notifications": {"type":"string","value":"Mga Abiso"},
 	"messages": {"type":"string","value":"Mga Mensahe"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Ads"},
 	"createYourSpace": {"type":"string","value":"Gumawa ng Space mo"},
 	"settingsAndPrivacy": {"type":"string","value":"Mga setting at pagkapribado"},
+	"moreMenu": {"type":"string","value":"Higit pa"},
 	"addAnExistingAccount": {"type":"string","value":"Magdagdag ng kasalukuyang account"},
 	"manageAccounts": {"type":"string","value":"Pamahalaan ang mga account"},
 	"switchToAccount": {

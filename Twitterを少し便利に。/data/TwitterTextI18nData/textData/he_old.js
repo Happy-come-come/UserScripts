@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" תמונות וסרטונים"]}
 	},
 	"home": {"type":"string","value":"דף הבית"},
-	"search": {"type":"string","value":"גילוי"},
+	"explore": {"type":"string","value":"גילוי"},
 	"notifications": {"type":"string","value":"הודעות"},
 	"messages": {"type":"string","value":"מסרים"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"מודעות"},
 	"createYourSpace": {"type":"string","value":"צור מקום משלך"},
 	"settingsAndPrivacy": {"type":"string","value":"הגדרות ופרטיות"},
+	"moreMenu": {"type":"string","value":"עוד"},
 	"addAnExistingAccount": {"type":"string","value":"הוסף חשבון קיים"},
 	"manageAccounts": {"type":"string","value":"נהל חשבונות"},
 	"switchToAccount": {

@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" billeder og videoer"]}
 	},
 	"home": {"type":"string","value":"Forside"},
-	"search": {"type":"string","value":"Udforsk"},
+	"explore": {"type":"string","value":"Udforsk"},
 	"notifications": {"type":"string","value":"Meddelelser"},
 	"messages": {"type":"string","value":"Beskeder"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Annoncer"},
 	"createYourSpace": {"type":"string","value":"Opret dit Rum"},
 	"settingsAndPrivacy": {"type":"string","value":"Indstillinger og privatliv"},
+	"moreMenu": {"type":"string","value":"Mere"},
 	"addAnExistingAccount": {"type":"string","value":"Tilføj en eksisterende konto"},
 	"manageAccounts": {"type":"string","value":"Administrer konti"},
 	"switchToAccount": {

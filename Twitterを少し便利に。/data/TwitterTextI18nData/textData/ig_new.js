@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"Ụlọ"},
-	"search": {"type":"string","value":"Nyochaa"},
+	"explore": {"type":"string","value":"Nyochaa"},
 	"notifications": {"type":"string","value":"Nziọkwa"},
 	"messages": {"type":"string","value":"Ozi"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Ads"},
 	"createYourSpace": {"type":"string","value":"Create your Space"},
 	"settingsAndPrivacy": {"type":"string","value":"Nchekwa na nzuzo"},
+	"moreMenu": {"type":"string","value":"Ọzọ"},
 	"addAnExistingAccount": {"type":"string","value":"Tinye akaụntụ dị adị"},
 	"manageAccounts": {"type":"string","value":"Jikwaa akaụntụ"},
 	"switchToAccount": {

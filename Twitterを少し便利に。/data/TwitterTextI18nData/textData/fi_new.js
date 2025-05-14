@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" kuvaa ja videota"]}
 	},
 	"home": {"type":"string","value":"Etusivu"},
-	"search": {"type":"string","value":"Selaa"},
+	"explore": {"type":"string","value":"Selaa"},
 	"notifications": {"type":"string","value":"Ilmoitukset"},
 	"messages": {"type":"string","value":"Viestit"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Mainokset"},
 	"createYourSpace": {"type":"string","value":"Perusta Huone"},
 	"settingsAndPrivacy": {"type":"string","value":"Asetukset ja yksityisyys"},
+	"moreMenu": {"type":"string","value":"Lisää"},
 	"addAnExistingAccount": {"type":"string","value":"Lisää olemassa oleva tili"},
 	"manageAccounts": {"type":"string","value":"Hallitse tilejä"},
 	"switchToAccount": {

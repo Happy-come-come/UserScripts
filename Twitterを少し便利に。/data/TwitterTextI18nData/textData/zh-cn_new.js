@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" 照片和视频"]}
 	},
 	"home": {"type":"string","value":"主页"},
-	"search": {"type":"string","value":"探索"},
+	"explore": {"type":"string","value":"探索"},
 	"notifications": {"type":"string","value":"通知"},
 	"messages": {"type":"string","value":"私信"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"广告"},
 	"createYourSpace": {"type":"string","value":"创建你的空间"},
 	"settingsAndPrivacy": {"type":"string","value":"设置和隐私"},
+	"moreMenu": {"type":"string","value":"更多"},
 	"addAnExistingAccount": {"type":"string","value":"添加已有账号"},
 	"manageAccounts": {"type":"string","value":"管理账号"},
 	"switchToAccount": {

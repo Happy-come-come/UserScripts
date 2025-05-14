@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"Hasiera"},
-	"search": {"type":"string","value":"Arakatu"},
+	"explore": {"type":"string","value":"Arakatu"},
 	"notifications": {"type":"string","value":"Jakinarazpenak"},
 	"messages": {"type":"string","value":"Mezuak"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Iragarkiak"},
 	"createYourSpace": {"type":"string","value":"Create your Space"},
 	"settingsAndPrivacy": {"type":"string","value":"Ezarpenak eta pribatutasuna"},
+	"moreMenu": {"type":"string","value":"Gehiago"},
 	"addAnExistingAccount": {"type":"string","value":"Gehitu lehendik duzun beste kontu bat"},
 	"manageAccounts": {"type":"string","value":"Kudeatu kontuak"},
 	"switchToAccount": {

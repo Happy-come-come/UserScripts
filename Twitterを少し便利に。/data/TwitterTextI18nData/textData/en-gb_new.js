@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"Home"},
-	"search": {"type":"string","value":"Explore"},
+	"explore": {"type":"string","value":"Explore"},
 	"notifications": {"type":"string","value":"Notifications"},
 	"messages": {"type":"string","value":"Messages"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Ads"},
 	"createYourSpace": {"type":"string","value":"Create your Space"},
 	"settingsAndPrivacy": {"type":"string","value":"Settings and privacy"},
+	"moreMenu": {"type":"string","value":"More"},
 	"addAnExistingAccount": {"type":"string","value":"Add an existing account"},
 	"manageAccounts": {"type":"string","value":"Manage accounts"},
 	"switchToAccount": {

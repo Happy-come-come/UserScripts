@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" foto''s en video''s"]}
 	},
 	"home": {"type":"string","value":"Startpagina"},
-	"search": {"type":"string","value":"Verkennen"},
+	"explore": {"type":"string","value":"Verkennen"},
 	"notifications": {"type":"string","value":"Meldingen"},
 	"messages": {"type":"string","value":"Berichten"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Advertenties"},
 	"createYourSpace": {"type":"string","value":"Je Space maken"},
 	"settingsAndPrivacy": {"type":"string","value":"Instellingen en privacy"},
+	"moreMenu": {"type":"string","value":"Meer"},
 	"addAnExistingAccount": {"type":"string","value":"Een bestaand account toevoegen"},
 	"manageAccounts": {"type":"string","value":"Accounts beheren"},
 	"switchToAccount": {

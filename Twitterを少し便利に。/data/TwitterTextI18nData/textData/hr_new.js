@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" fotografij"+n(props.count,"e i videozapisa","a i videozapis","a i videozapisa")]}
 	},
 	"home": {"type":"string","value":"Naslovnica"},
-	"search": {"type":"string","value":"Istraži"},
+	"explore": {"type":"string","value":"Istraži"},
 	"notifications": {"type":"string","value":"Obavijesti"},
 	"messages": {"type":"string","value":"Poruke"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Oglasi"},
 	"createYourSpace": {"type":"string","value":"Stvorite svoj Prostor"},
 	"settingsAndPrivacy": {"type":"string","value":"Postavke i zaštita privatnosti"},
+	"moreMenu": {"type":"string","value":"Više"},
 	"addAnExistingAccount": {"type":"string","value":"Dodavanje postojećeg računa"},
 	"manageAccounts": {"type":"string","value":"Upravljanje računima"},
 	"switchToAccount": {

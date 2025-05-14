@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" ảnh và video"]}
 	},
 	"home": {"type":"string","value":"Trang chủ"},
-	"search": {"type":"string","value":"Khám phá"},
+	"explore": {"type":"string","value":"Khám phá"},
 	"notifications": {"type":"string","value":"Thông báo"},
 	"messages": {"type":"string","value":"Tin nhắn"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Quảng cáo"},
 	"createYourSpace": {"type":"string","value":"Tạo Phòng của bạn"},
 	"settingsAndPrivacy": {"type":"string","value":"Cài đặt và riêng tư"},
+	"moreMenu": {"type":"string","value":"Thêm"},
 	"addAnExistingAccount": {"type":"string","value":"Thêm tài khoản hiện có"},
 	"manageAccounts": {"type":"string","value":"Quản lý tài khoản"},
 	"switchToAccount": {

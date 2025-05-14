@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" zdję"+n(props.count,"cia i filmy","ć i filmów","cie i film","cia i filmu")]}
 	},
 	"home": {"type":"string","value":"Główna"},
-	"search": {"type":"string","value":"Przeglądaj"},
+	"explore": {"type":"string","value":"Przeglądaj"},
 	"notifications": {"type":"string","value":"Powiadomienia"},
 	"messages": {"type":"string","value":"Wiadomości"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Reklamy"},
 	"createYourSpace": {"type":"string","value":"Utwórz Pokój"},
 	"settingsAndPrivacy": {"type":"string","value":"Ustawienia i prywatność"},
+	"moreMenu": {"type":"string","value":"Więcej"},
 	"addAnExistingAccount": {"type":"string","value":"Dodaj istniejące konto"},
 	"manageAccounts": {"type":"string","value":"Zarządzaj kontami"},
 	"switchToAccount": {

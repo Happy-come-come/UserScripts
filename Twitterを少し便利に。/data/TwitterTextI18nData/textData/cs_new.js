@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" fotografie a videa"]}
 	},
 	"home": {"type":"string","value":"Hlavní stránka"},
-	"search": {"type":"string","value":"Prozkoumat"},
+	"explore": {"type":"string","value":"Prozkoumat"},
 	"notifications": {"type":"string","value":"Oznámení"},
 	"messages": {"type":"string","value":"Zprávy"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Reklamy"},
 	"createYourSpace": {"type":"string","value":"Vytvořte svůj Prostor"},
 	"settingsAndPrivacy": {"type":"string","value":"Nastavení a soukromí"},
+	"moreMenu": {"type":"string","value":"Víc"},
 	"addAnExistingAccount": {"type":"string","value":"Přidat existující účet"},
 	"manageAccounts": {"type":"string","value":"Spravovat účty"},
 	"switchToAccount": {

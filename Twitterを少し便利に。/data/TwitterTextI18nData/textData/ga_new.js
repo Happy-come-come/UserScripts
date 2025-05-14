@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"Baile"},
-	"search": {"type":"string","value":"Féach thart"},
+	"explore": {"type":"string","value":"Féach thart"},
 	"notifications": {"type":"string","value":"Fógraí"},
 	"messages": {"type":"string","value":"Teachtaireachtaí"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"Ads"},
 	"createYourSpace": {"type":"string","value":"Create your Space"},
 	"settingsAndPrivacy": {"type":"string","value":"Socruithe agus príobháideachas"},
+	"moreMenu": {"type":"string","value":"Tuilleadh"},
 	"addAnExistingAccount": {"type":"string","value":"Cuir cuntas atá ann leis"},
 	"manageAccounts": {"type":"string","value":"Bainistigh cuntais"},
 	"switchToAccount": {

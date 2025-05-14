@@ -57,7 +57,7 @@ const text = {
 		"value": function(){return[props.formattedCount+" फ़ोटो और वीडियो"]}
 	},
 	"home": {"type":"string","value":"होम"},
-	"search": {"type":"string","value":"देखें"},
+	"explore": {"type":"string","value":"देखें"},
 	"notifications": {"type":"string","value":"सूचनाएं"},
 	"messages": {"type":"string","value":"संदेश"},
 	"grok": {"type":"string","value":"Grok"},
@@ -72,6 +72,7 @@ const text = {
 	"ads": {"type":"string","value":"विज्ञापन"},
 	"createYourSpace": {"type":"string","value":"अपना स्पेस बनाएं"},
 	"settingsAndPrivacy": {"type":"string","value":"सेटिंग्स और गोपनीयता"},
+	"moreMenu": {"type":"string","value":"और अधिक"},
 	"addAnExistingAccount": {"type":"string","value":"एक मौजूदा खाता जोड़ें"},
 	"manageAccounts": {"type":"string","value":"खातों को प्रबंधित करें"},
 	"switchToAccount": {
