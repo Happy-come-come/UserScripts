@@ -57,7 +57,7 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 				Twitterの動画は通常直リンを取得することができませんが、添付されている動画の最も画質の良いmp4ファイルへのリンクを表示します。<br>
 				それにより動画のダウンロードも可能になります。
 				<li>参考スクリーンショット</li>
-				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Hello_tweet_where_are_you_from_introduction_01.jpg" width="40%" height="auto">
+				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Hello_tweet_where_are_you_from_introduction_01.jpg" width="40%" height="auto">
 			</ul>
 			<hr>
 		</div>
@@ -73,14 +73,14 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 			<table width="100%">
 				<tr>
 					<td align="center" valign="bottom">
-						<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_01.jpg" alt="Before" width="80%" height="auto">
+						<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Note_Tweet_expander_introduction_01.jpg" alt="Before" width="80%" height="auto">
 						<br>Before
 					</td>
 					<td align="center">
 					→
 					</td>
 					<td align="center" valign="bottom">
-						<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_02.jpg" alt="After" width="80%" height="auto">
+						<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Note_Tweet_expander_introduction_02.jpg" alt="After" width="80%" height="auto">
 						<br>After
 					</td>
 				</tr>
@@ -90,14 +90,14 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 			<table width="100%">
 				<tr>
 					<td align="center" valign="bottom">
-						<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_03.jpg" alt="Before" width="80%" height="auto">
+						<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Note_Tweet_expander_introduction_03.jpg" alt="Before" width="80%" height="auto">
 						<br>Before
 					</td>
 					<td align="center">
 					→
 					</td>
 					<td align="center" valign="bottom">
-						<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_04.jpg" alt="After" width="80%" height="auto">
+						<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Note_Tweet_expander_introduction_04.jpg" alt="After" width="80%" height="auto">
 						<br>After
 					</td>
 				</tr>
@@ -114,11 +114,10 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 			<ul>
 				<li>画像などがあるツイートの下側に表示</li>
 				参考スクリーンショット
-				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Show_me_your_Pixiv_introduction_01.jpg" width="30%" height="auto">
-
+				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Show_me_your_Pixiv_introduction_01.jpg" width="30%" height="auto"/>
 				<li>プロフィール欄の下に表示</li>
 				参考スクリーンショット
-				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Show_me_your_Pixiv_introduction_02.jpg" width="30%" height="auto">
+				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Show_me_your_Pixiv_introduction_02.jpg" width="30%" height="auto">
 			</ul>
 			<hr>
 		</div>
@@ -131,7 +130,7 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 			<ul>
 				<li>詳細表示したツイートの下側に表示します</li>
 				参考スクリーンショット
-				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Engagement_Restorer_introduction_01_ja.jpg" width="30%" height="auto">
+				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Engagement_Restorer_introduction_01_ja.jpg" width="30%" height="auto">
 			</ul>
 			<hr>
 		</div>
@@ -145,7 +144,7 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 			<ul>
 				<li>リツイートされたツイートのいいね欄の右側にボタンを表示します</li>
 				参考スクリーンショット
-				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/sneakilyFavorite_introduction_01_ja.jpg" width="30%" height="auto">
+				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/sneakilyFavorite_introduction_01_ja.jpg" width="30%" height="auto">
 			</ul>
 			<hr>
 		</div>
@@ -160,14 +159,14 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 			<ul>
 				<li>ツイートの下部に送信するためのプルダウンやボタンを表示します</li>
 				参考スクリーンショット
-				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/webhook_brings_tweets_to_discord_introduction_01_ja.jpg" width="50%" height="auto">
+				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/webhook_brings_tweets_to_discord_introduction_01_ja.jpg" width="50%" height="auto">
 				<li>送信してみた例</li>
 				参考スクリーンショット
-				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/webhook_brings_tweets_to_discord_introduction_02_ja.jpg" width="50%" height="auto">
+				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/webhook_brings_tweets_to_discord_introduction_02_ja.jpg" width="50%" height="auto">
 				左の方のプルダウンリストを「true」にすると引用ツイートも送信できる。
 				右の方のプルダウンリストを「true」にすると長いツイート(Note Tweet)も送信できる。
 				参考スクリーンショット
-				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/webhook_brings_tweets_to_discord_introduction_03_ja.jpg" width="50%" height="auto">
+				<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/webhook_brings_tweets_to_discord_introduction_03_ja.jpg" width="50%" height="auto">
 			</ul>
 			<hr>
 		</div>
@@ -198,14 +197,14 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 			<table width="100%">
 				<tr>
 					<td align="center" valign="bottom">
-						<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/shareTweet_Restorer_for_mobile_introduction_01.jpg" alt="Before" width="80%" height="auto">
+						<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/shareTweet_Restorer_for_mobile_introduction_01.jpg" alt="Before" width="80%" height="auto">
 						<br>Before
 					</td>
 					<td align="center">
 					<span>→&nbsp;&nbsp;&nbsp;</span>
 					</td>
 					<td align="center" valign="bottom">
-						<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/shareTweet_Restorer_for_mobile_introduction_02.jpg" alt="After" width="80%" height="auto">
+						<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/shareTweet_Restorer_for_mobile_introduction_02.jpg" alt="After" width="80%" height="auto">
 						<br>After
 					</td>
 				</tr>
@@ -218,14 +217,14 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 		<div class="introduction">
 			「メディア欄に全ての画像を表示」についてです。
 			メディア欄に表示される画像をツイートについている画像分全て表示する機能です。
-			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/showAllMedias_01.jpg" width="50%" height="auto">
+			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/showAllMedias_01.jpg" width="50%" height="auto">
 			このようなツイートの場合、
-			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/showAllMedias_03.jpg" width="50%" height="auto">
+			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/showAllMedias_03.jpg" width="50%" height="auto">
 			または
-			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/showAllMedias_04.jpg" width="50%" height="auto">
+			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/showAllMedias_04.jpg" width="50%" height="auto">
 			のように表示することができます。
 			単に展開するか、ツイートのように表示するかは設定から変更できます。
-			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/showAllMedias_02_ja.jpg" width="50%" height="auto">
+			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/showAllMedias_02_ja.jpg" width="50%" height="auto">
 			<hr>
 		</div>
 	</details>
@@ -235,23 +234,28 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 			「画像をズーム」についてです。
 			ツイートに添付されている画像をクリックするとその画像を拡大表示します。
 			このように画像を詳細表示しているときに画像をクリックすることでルーペを表示し、画像を拡大表示できます。
-			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/ImageZoom_01.jpg" width="50%" height="auto">
-			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/ImageZoom_02.jpg" width="50%" height="auto">
+			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/ImageZoom_01.jpg" width="50%" height="auto">
+			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/ImageZoom_02.jpg" width="50%" height="auto">
 			クリックしながら「Ctrl + マウスホイール」でズーム倍率を変更することができます。
-			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/ImageZoom_03.jpg" width="50%" height="auto">
+			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/ImageZoom_03.jpg" width="50%" height="auto">
 			クリックしながら「Shift + マウスホイール」でルーペの大きさを変更することができます。
-			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/ImageZoom_04.jpg" width="50%" height="auto">
+			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/ImageZoom_04.jpg" width="50%" height="auto">
 			<hr>
 		</div>
 	</details>
 	<details>
-		<summary>メニューボタンを追加</summary>
+		<summary>メニューボタンをカスタマイズ</summary>
 		<div class="introduction">
-			「メニューボタンを追加」についてです。
-			twitterがUIを変更して自身のプロフィール欄やリスト、ブックマーク、設定などにアクセスするためのボタンを削除したのでそれを復活させる機能です。
-			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/addMenuButton_intraduction_01.jpg" width="50%" height="auto">
+			「メニューボタンをカスタマイズ」についてです。
+			左のバーのメニューボタンをカスタマイズすることができます。
+			カスタムショートカットボタンはTwitterのURIを指定することでそこへすぐに飛ぶことができます。
+			例えば「https://x.com/自分のスクリーンネーム/likes」または「/自分のスクリーンネーム/likes」と指定すると、いいね欄に直接飛ぶことができます。
+			「https://x.com/settings/mute_and_block」または「/settings/mute_and_block」と指定すると、ミュートとブロックの設定画面に直接飛ぶことができます。
+			これはただのリンクを作成するのではなく、Twitter(React)の機能で画面を切り替えるので、ページのリロードは発生しません。
+			また、それらのボタンを自由に並べ替えることができます。
+			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/customizeMenuButton_intraduction_01_ja.jpg" width="50%" height="auto">
 			これが
-			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/addMenuButton_intraduction_02.jpg" width="50%" height="auto">
+			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/addMenuButton_intraduction_02.jpg" width="50%" height="auto">
 			こう。
 			<hr>
 		</div>
@@ -261,7 +265,7 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 		<summary>機能名</summary>
 		<div class="introduction">
 			「」についてです。
-			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/General_Settings_ja.jpg" width="100%" height="auto">
+			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/General_Settings_ja.jpg" width="100%" height="auto">
 		</div>
 	</details>
 	-->
@@ -273,7 +277,7 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 		<li>ブラウザの拡張機能の拡張機能の一覧からTampermonkeyをクリックする</li>
 		<li>このスクリプトの名前の下にある「script settings」をクリックする</li>
 		参考スクリーンショット
-		<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/General_Settings_ja.jpg" width="100%" height="auto">
+		<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/General_Settings_ja.jpg" width="100%" height="auto">
 		もしくはTwitterの設定画面の一番下にある「「Twitterを少し便利に。」の設定」をクリックすることでも開けます。
 	</ol>
 </div>
@@ -353,7 +357,7 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
                 Normally, you cannot get a direct link to Twitter videos, but this feature displays a link to the highest quality mp4 file of the attached video.<br>
                 This allows you to download the video.
                 <li>Reference screenshot</li>
-                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Hello_tweet_where_are_you_from_introduction_01.jpg" width="40%" height="auto">
+                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Hello_tweet_where_are_you_from_introduction_01.jpg" width="40%" height="auto">
             </ul>
             <hr>
         </div>
@@ -369,14 +373,14 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
             <table width="100%">
                 <tr>
                     <td align="center" valign="bottom">
-                        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_01.jpg" alt="Before" width="80%" height="auto">
+                        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Note_Tweet_expander_introduction_01.jpg" alt="Before" width="80%" height="auto">
                         <br>Before
                     </td>
                     <td align="center">
                     →
                     </td>
                     <td align="center" valign="bottom">
-                        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_02.jpg" alt="After" width="80%" height="auto">
+                        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Note_Tweet_expander_introduction_02.jpg" alt="After" width="80%" height="auto">
                         <br>After
                     </td>
                 </tr>
@@ -386,14 +390,14 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
             <table width="100%">
                 <tr>
                     <td align="center" valign="bottom">
-                        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_03.jpg" alt="Before" width="80%" height="auto">
+                        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Note_Tweet_expander_introduction_03.jpg" alt="Before" width="80%" height="auto">
                         <br>Before
                     </td>
                     <td align="center">
                     →
                     </td>
                     <td align="center" valign="bottom">
-                        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Note_Tweet_expander_introduction_04.jpg" alt="After" width="80%" height="auto">
+                        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Note_Tweet_expander_introduction_04.jpg" alt="After" width="80%" height="auto">
                         <br>After
                     </td>
                 </tr>
@@ -410,11 +414,10 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
             <ul>
                 <li>Display under tweets with images, etc.</li>
                 Reference screenshot
-                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Show_me_your_Pixiv_introduction_01.jpg" width="30%" height="auto">
-
+                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Show_me_your_Pixiv_introduction_01.jpg" width="30%" height="auto">
                 <li>Display under the profile section</li>
                 Reference screenshot
-                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Show_me_your_Pixiv_introduction_02.jpg" width="30%" height="auto">
+                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Show_me_your_Pixiv_introduction_02.jpg" width="30%" height="auto">
             </ul>
             <hr>
         </div>
@@ -427,7 +430,7 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
             <ul>
                 <li>Display under the detailed tweet</li>
                 Reference screenshot
-                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/Engagement_Restorer_introduction_01_en.jpg" width="30%" height="auto">
+                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/Engagement_Restorer_introduction_01_en.jpg" width="30%" height="auto">
             </ul>
             <hr>
         </div>
@@ -441,7 +444,7 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
             <ul>
                 <li>Display a button to the right of the like section of retweeted tweets</li>
                 Reference screenshot
-                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/sneakilyFavorite_introduction_01_en.jpg" width="30%" height="auto">
+                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/sneakilyFavorite_introduction_01_en.jpg" width="30%" height="auto">
             </ul>
             <hr>
         </div>
@@ -456,14 +459,14 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
             <ul>
                 <li>Display a dropdown or button for sending at the bottom of the tweet</li>
                 Reference screenshot
-                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/webhook_brings_tweets_to_discord_introduction_01_en.jpg" width="50%" height="auto">
+                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/webhook_brings_tweets_to_discord_introduction_01_en.jpg" width="50%" height="auto">
                 <li>Example of sending</li>
                 Reference screenshot
-                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/webhook_brings_tweets_to_discord_introduction_02_en.jpg" width="50%" height="auto">
+                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/webhook_brings_tweets_to_discord_introduction_02_en.jpg" width="50%" height="auto">
                 If you set the left dropdown list to "true", you can also send quoted tweets.
                 If you set the right dropdown list to "true", you can also send long tweets (Note Tweet).
                 Reference screenshot
-                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/webhook_brings_tweets_to_discord_introduction_03_en.jpg" width="50%" height="auto">
+                <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/webhook_brings_tweets_to_discord_introduction_03_en.jpg" width="50%" height="auto">
             </ul>
             <hr>
         </div>
@@ -494,14 +497,14 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
             <table width="100%">
                 <tr>
                     <td align="center" valign="bottom">
-                        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/shareTweet_Restorer_for_mobile_introduction_01.jpg" alt="Before" width="80%" height="auto">
+                        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/shareTweet_Restorer_for_mobile_introduction_01.jpg" alt="Before" width="80%" height="auto">
                         <br>Before
                     </td>
                     <td align="center">
                     <span>→&nbsp;&nbsp;&nbsp;</span>
                     </td>
                     <td align="center" valign="bottom">
-                        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/shareTweet_Restorer_for_mobile_introduction_02.jpg" alt="After" width="80%" height="auto">
+                        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/shareTweet_Restorer_for_mobile_introduction_02.jpg" alt="After" width="80%" height="auto">
                         <br>After
                     </td>
                 </tr>
@@ -514,14 +517,14 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
         <div class="introduction">
             About "Show All Images in Media Section".
             This feature displays all the images attached to tweets in the media section.
-            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/showAllMedias_01.jpg" width="50%" height="auto">
+            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/showAllMedias_01.jpg" width="50%" height="auto">
             In the case of a tweet like this,
-            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/showAllMedias_03.jpg" width="50%" height="auto">
+            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/showAllMedias_03.jpg" width="50%" height="auto">
             or
-            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/showAllMedias_04.jpg" width="50%" height="auto">
+            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/showAllMedias_04.jpg" width="50%" height="auto">
             you can display it like this.
             You can change whether to simply expand or display it like a tweet from the settings.
-            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/showAllMedias_02_en.jpg" width="50%" height="auto">
+            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/showAllMedias_02_en.jpg" width="50%" height="auto">
             <hr>
         </div>
     </details>
@@ -531,12 +534,12 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
             About "Zoom images".
             Clicking on an image attached to a tweet will enlarge the image.
             When viewing an image in detail like this, clicking on the image will display a magnifier and enlarge the image.
-            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/ImageZoom_01.jpg" width="50%" height="auto">
-            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/ImageZoom_02.jpg" width="50%" height="auto">
+            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/ImageZoom_01.jpg" width="50%" height="auto">
+            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/ImageZoom_02.jpg" width="50%" height="auto">
             You can change the zoom level by clicking while holding "Ctrl + mouse wheel".
-            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/ImageZoom_03.jpg" width="50%" height="auto">
+            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/ImageZoom_03.jpg" width="50%" height="auto">
             You can change the size of the magnifier by clicking while holding "Shift + mouse wheel".
-            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/ImageZoom_04.jpg" width="50%" height="auto">
+            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/ImageZoom_04.jpg" width="50%" height="auto">
             <hr>
         </div>
     </details>
@@ -545,9 +548,9 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
         <div class="introduction">
             About "Add menu buttons".
             Twitter changed the UI and removed the buttons to access your profile, lists, bookmarks, settings, etc., so this feature restores them.
-            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/addMenuButton_intraduction_01.jpg" width="50%" height="auto">
+            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/addMenuButton_intraduction_01.jpg" width="50%" height="auto">
             This
-            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/addMenuButton_intraduction_02.jpg" width="50%" height="auto">
+            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/addMenuButton_intraduction_02.jpg" width="50%" height="auto">
             becomes this.
             <hr>
         </div>
@@ -557,7 +560,7 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
         <summary>Feature Name</summary>
         <div class="introduction">
             About "".
-            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/General_Settings_ja.jpg" width="100%" height="auto">
+            <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/General_Settings_ja.jpg" width="100%" height="auto">
         </div>
     </details>
     -->
@@ -569,7 +572,7 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
         <li>Click on Tampermonkey from the list of browser extensions</li>
         <li>Click on "script settings" under the name of this script</li>
         Reference screenshot
-        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/img/General_Settings_en.jpg" width="100%" height="auto">
+        <img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/General_Settings_en.jpg" width="100%" height="auto">
         Alternatively, you can also open it by clicking on "Settings for 'Make Twitter Little Useful'" at the bottom of the Twitter settings screen.
     </ol>
 </div>
