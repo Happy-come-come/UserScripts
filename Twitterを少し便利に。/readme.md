@@ -3,14 +3,12 @@
 ・TLの画像が小さくなったのを修正する機能の追加</br>
 ・画像をズームできる機能の追加</br>
 ・設定画面の大幅変更</br>
-・今日変更されたUIのメニューバーに、ブックマーク、リスト、プロフィール、設定 ボタンを追加する機能(PC限定)</br>
 </br>
 <h2>Latest big update</h2>
 Added the ability to customize the UI.</br>
 Added the ability to fix small TL images.</br>
 Added the ability to zoom in on images.</br>
 Significant changes to the setup screen.</br>
-The ability to add bookmark, list, profile, and settings buttons to the menu bar of today's modified UI (for PC).</br>
 </br>
 <details>
 	<summary>過去の大きめな更新内容</summary>
