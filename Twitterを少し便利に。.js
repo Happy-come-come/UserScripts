@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name			Twitterを少し便利に。
 // @name:ja			Twitterを少し便利に。
-// @name:en			Make Twitter little useful.
+// @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.2.0.4
-// @description			私の作ったスクリプトをまとめたもの。と追加要素。
-// @description:ja			私の作ったスクリプトをまとめたもの。と追加要素。
-// @description:en			A compilation of scripts I've made.
+// @version			2.3.0.0
+// @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
+// @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
+// @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
 // @author			ゆにてぃー
 // @match			https://twitter.com/*
 // @match			https://mobile.twitter.com/*
@@ -272,17 +272,17 @@
 				"onlyRemoveBlur": "モザイクの削除のみ",
 			}
 		},
-		"addMenuButton": {
+		"customizeMenuButton": {
+			"shortCutButtonText": "ショートカット",
 			"settings": {
-				"displayName": "メニューボタンを追加",
-				"description": "最近変更されたUIにないメニューボタンを追加します",
-				"toAdd": "追加するボタン",
-				"toAddOptions": {
-					"bookmarkButton": "ブックマーク",
-					"listButton": "リスト",
-					"profileButton": "プロフィール",
-					"settingsButton": "設定",
-				},
+				"displayName": "メニューボタンをカスタマイズ",
+				"description": "UIのメニューをカスタマイズします",
+				"toDisplay": "追加するボタン",
+				"shortCutButton": "ショートカットボタン",
+				"shortCutButtonDisplayName": "表示する名前",
+				"shortCutButtonUri": "URI",
+				"sortOrder": "表示順(ドラッグで変更できます)",
+				"sortOrderRestoreDefault": "デフォルトに戻す",
 			}
 		},
 		"imageZoom": {
@@ -478,17 +478,17 @@
 				"onlyRemoveBlur": "Only Remove Blur",
 			}
 		},
-		"addMenuButton": {
+		"customizeMenuButton": {
+			"shortCutButtonText": "Shortcut",
 			"settings": {
-				"displayName": "Add Menu Buttons",
-				"description": "Adds menu buttons that are not in the recently changed UI",
-				"toAdd": "Buttons to Add",
-				"toAddOptions": {
-					"bookmarkButton": "Bookmark",
-					"listButton": "List",
-					"profileButton": "Profile",
-					"settingsButton": "Settings",
-				},
+				"displayName": "Customize Menu Button",
+				"description": "Customizes the UI menu",
+				"toDisplay": "Buttons to display",
+				"shortCutButton": "Shortcut Button ",
+				"shortCutButtonDisplayName": "Display Name",
+				"shortCutButtonUri": "URI",
+				"sortOrder": "Display Order (can be changed by drag)",
+				"sortOrderRestoreDefault": "Restore Default",
 			}
 		},
 		"imageZoom": {
@@ -583,8 +583,8 @@
 			"function": showAllMedias,
 			"isRunning": false,
 		},
-		"addMenuButton": {
-			"function": addMenuButton,
+		"customizeMenuButton": {
+			"function": customizeMenuButton,
 			"isRunning": false,
 			"forPC": true,
 		},
@@ -1630,59 +1630,175 @@
 			return outerDiv;
 		}
 	}
-	async function addMenuButton(){
-		const thisScriptSettings = scriptSettings.addMenuButton;
-		if(document.querySelector('[addedButton="true"]') || Object.keys(thisScriptSettings.toAddOptions).every(key => !thisScriptSettings.toAddOptions[key]))return;
+	async function customizeMenuButton(){
+		if(!sessionData.customizeMenuButton)sessionData.customizeMenuButton = {};
+		if(sessionData.customizeMenuButton?.observer)return;
+		//const thisScriptSettings = scriptSettings.customizeMenuButton;
+		//const thisFunctionText = envText.customizeMenuButton;
 		const moreMenuButton = await waitElementAndGet({query: 'button[data-testid="AppTabBar_More_Menu"]', searchFunction: 'querySelector', interval: 100, retry: 10});
 		if(!moreMenuButton)return;
-		const elementForClone = await waitElementAndGet({query: 'a[data-testid="premium-signup-tab"]'});
-		if(!elementForClone)return;
+		const buttonElementTemplate = moreMenuButton.cloneNode(true);
+		const elementToClone = document.createElement('a');
+		elementToClone.style = buttonElementTemplate.style.cssText;
+		elementToClone.className = buttonElementTemplate.className;
+		while(buttonElementTemplate.firstChild){
+			elementToClone.appendChild(buttonElementTemplate.firstChild);
+		}
+		const appTabBar = moreMenuButton.parentNode;
+		let breaking = false;
+		if(!sessionData.customizeMenuButton.observer){
+			const observer = new MutationObserver(mutations=>{
+				if(breaking || sessionData.customizeMenuButton.isRunning)return;
+				breaking = true;
+				addAndSort().finally(()=>{
+					sessionData.customizeMenuButton.isRunning = false;
+				});
+				setTimeout(()=>{
+					breaking = false;
+				}, 500);
+			});
+			observer.observe(appTabBar, {childList: true, subtree: false});
+			if(!sessionData.customizeMenuButton)sessionData.customizeMenuButton = {};
+			sessionData.customizeMenuButton.observer = observer;
+		}
 		const userData = sessionStorage.userData?.screenName !== undefined ? sessionStorage.userData : await fetchUserData();
-		const colors = new Colors();
-		if(thisScriptSettings.toAddOptions.bookmarkButton){
-			const bookmarksButton = elementForClone.cloneNode(true);
-			//bookmarksButton.setAttribute('data-testid', 'AppTabBar_Bookmarks_Link');
-			bookmarksButton.setAttribute('aria-label', 'Bookmarks');
-			bookmarksButton.setAttribute('addedButton', 'true');
-			bookmarksButton.href = `/i/bookmarks`;
-			bookmarksButton.querySelector('svg g').innerHTML = `<path d="${svgIconPaths.bookmark}"></path>`;
-			addClickButtonEvent(bookmarksButton);
-			moreMenuButton.parentNode.insertBefore(bookmarksButton, moreMenuButton);
-		}
+		sessionData.customizeMenuButton.addAndSort = addAndSort;
 
-		if(thisScriptSettings.toAddOptions.listButton){
-			const listsButton = elementForClone.cloneNode(true);
-			//listsButton.setAttribute('data-testid', 'AppTabBar_Lists_Link');
-			listsButton.setAttribute('aria-label', 'Lists');
-			listsButton.setAttribute('addedButton', 'true');
-			listsButton.href = `/${userData.screenName}/lists`;
-			listsButton.querySelector('svg g').innerHTML = `<path d="${svgIconPaths.list}"></path>`;
-			addClickButtonEvent(listsButton);
-			moreMenuButton.parentNode.insertBefore(listsButton, moreMenuButton);
-		}
+		addAndSort();
+		async function addAndSort(){
+			sessionData.customizeMenuButton.isRunning = true;
+			const thisScriptSettings = scriptSettings.customizeMenuButton;
+			const options = {
+				"homeButton": {
+					"href": "/home",
+				},
+				"exploreButton": {
+					"href": "/explore",
+				},
+				"notificationsButton": {
+					"href": "/notifications",
+				},
+				"messagesButton": {
+					"href": "/messages",
+				},
+				"grokButton": {
+					"href": "/i/grok",
+					"text": twitterTextI18n.getText("grok"),
+				},
+				"bookmarksButton": {
+					"href": "/i/bookmarks",
+					"icon": svgIconPaths.bookmark,
+					"text": twitterTextI18n.getText("bookmarks")
+				},
+				"jobsButton": {
+					"href": "/jobs",
+					"text": twitterTextI18n.getText("jobs"),
+				},
+				"communitiesButton": {
+					"href": `/${userData.screenName}/communities`,
+					"text": twitterTextI18n.getText("communities")
+				},
+				"premiumButton": {
+					"href": "/i/premium_sign_up",
+					"text": twitterTextI18n.getText("premium")
+				},
+				"verifiedOrgButton": {
+					"href": "/i/verified-orgs-signup",
+					"text": twitterTextI18n.getText("verifiedOrg")
+				},
+				"profileButton": {
+					"href": `/${userData.screenName}`,
+				},
+				"listsButton": {
+					"href": `/${userData.screenName}/lists`,
+					"icon": svgIconPaths.list,
+					"text": twitterTextI18n.getText("lists")
+				},
+				"monetizationButton": {
+					"href": "/i/monetization",
+					"icon": "M23 3v14h-2V5H5V3h18zM10 17c1.1 0 2-1.34 2-3s-.9-3-2-3-2 1.34-2 3 .9 3 2 3zM1 7h18v14H1V7zm16 10c-1.1 0-2 .9-2 2h2v-2zm-2-8c0 1.1.9 2 2 2V9h-2zM3 11c1.1 0 2-.9 2-2H3v2zm0 4c2.21 0 4 1.79 4 4h6c0-2.21 1.79-4 4-4v-2c-2.21 0-4-1.79-4-4H7c0 2.21-1.79 4-4 4v2zm0 4h2c0-1.1-.9-2-2-2v2z",
+					"text": twitterTextI18n.getText("monetization")
+				},
+				"adsButton": {
+					"href": "https://ads.x.com/?ref=gl-tw-tw-twitter-ads-rweb",
+					"icon": "M1.996 5.5c0-1.38 1.119-2.5 2.5-2.5h15c1.38 0 2.5 1.12 2.5 2.5v13c0 1.38-1.12 2.5-2.5 2.5h-15c-1.381 0-2.5-1.12-2.5-2.5v-13zm2.5-.5c-.277 0-.5.22-.5.5v13c0 .28.223.5.5.5h15c.276 0 .5-.22.5-.5v-13c0-.28-.224-.5-.5-.5h-15zm8.085 5H8.996V8h7v7h-2v-3.59l-5.293 5.3-1.415-1.42L12.581 10z",
+					"text": twitterTextI18n.getText("ads")
+				},
+				"createYourSpaceButton": {
+					"href": "/i/spaces/start",
+					"icon": "M12 22.25c-4.99 0-9.18-3.393-10.39-7.994l1.93-.512c.99 3.746 4.4 6.506 8.46 6.506s7.47-2.76 8.46-6.506l1.93.512c-1.21 4.601-5.4 7.994-10.39 7.994zM5 11.5c0 3.866 3.13 7 7 7s7-3.134 7-7V8.75c0-3.866-3.13-7-7-7s-7 3.134-7 7v2.75zm12-2.75v2.75c0 2.761-2.24 5-5 5s-5-2.239-5-5V8.75c0-2.761 2.24-5 5-5s5 2.239 5 5zM11.25 8v4.25c0 .414.34.75.75.75s.75-.336.75-.75V8c0-.414-.34-.75-.75-.75s-.75.336-.75.75zm-3 1v2.25c0 .414.34.75.75.75s.75-.336.75-.75V9c0-.414-.34-.75-.75-.75s-.75.336-.75.75zm7.5 0c0-.414-.34-.75-.75-.75s-.75.336-.75.75v2.25c0 .414.34.75.75.75s.75-.336.75-.75V9z",
+					"text": twitterTextI18n.getText("createYourSpace")
+				},
+				"settingsAndPrivacy": {
+					"href": "/settings",
+					"icon": svgIconPaths.settings,
+					"text": twitterTextI18n.getText("settingsAndPrivacy")
+				},
+				"shortCutButton1": {
+					"href": thisScriptSettings.shortCutButton1Uri.replace('$MYNAME', userData.screenName),
+					"icon": "M8 6h10v10h-2V9.41L5.957 19.46l-1.414-1.42L14.586 8H8V6z",
+					"text": thisScriptSettings.shortCutButton1DisplayName,
+				},
+				"shortCutButton2": {
+					"href": thisScriptSettings.shortCutButton2Uri.replace('$MYNAME', userData.screenName),
+					"icon": "M8 6h10v10h-2V9.41L5.957 19.46l-1.414-1.42L14.586 8H8V6z",
+					"text": thisScriptSettings.shortCutButton2DisplayName,
+				},
+				"shortCutButton3": {
+					"href": thisScriptSettings.shortCutButton3Uri.replace('$MYNAME', userData.screenName),
+					"icon": "M8 6h10v10h-2V9.41L5.957 19.46l-1.414-1.42L14.586 8H8V6z",
+					"text": thisScriptSettings.shortCutButton3DisplayName,
+				},
+				"shortCutButton4": {
+					"href": thisScriptSettings.shortCutButton4Uri.replace('$MYNAME', userData.screenName),
+					"icon": "M8 6h10v10h-2V9.41L5.957 19.46l-1.414-1.42L14.586 8H8V6z",
+					"text": thisScriptSettings.shortCutButton4DisplayName,
+				},
+			};
+			for(let i=0; i < thisScriptSettings.buttonSorting?.length || 0; i++){
+				const key = thisScriptSettings.buttonSorting[i];
+				const option = options[key];
+				if(thisScriptSettings.toAddOptions[key] === false){
+					const button = appTabBar.querySelector(`a[href="${option.href}"]`);
+					if(button){
+						button.style.display = "none";
+					}
+					continue;
+				}
+				const existButton = appTabBar.querySelectorAll(`a[href="${option.href}"]`);
+				if(existButton.length > 0){
+					if(existButton.length > 1){
+						existButton.forEach(b=>{
+							if(b.getAttribute('customizeMenuButtonChecked') === "true"){
+								b.remove();
+							}else{
+								appTabBar.insertBefore(b, moreMenuButton);
+							}
+						});
+						continue;
+					}
+					appTabBar.insertBefore(existButton[0], moreMenuButton);
+					continue;
+				};
+				const button = elementToClone.cloneNode(true);
 
-		if(thisScriptSettings.toAddOptions.profileButton){
-			const profileButton = elementForClone.cloneNode(true);
-			profileButton.setAttribute('data-testid', 'AppTabBar_Profile_Link');
-			profileButton.setAttribute('aria-label', 'Profile');
-			profileButton.setAttribute('addedButton', 'true');
-			profileButton.href = `/${userData.screenName}`;
-			profileButton.querySelector('svg g').innerHTML = `<path d="${svgIconPaths.profile}"></path>`;
-			addClickButtonEvent(profileButton);
-			moreMenuButton.parentNode.insertBefore(profileButton, moreMenuButton);
+				const buttonText = button.querySelector('span');
+				if(buttonText.innerText)buttonText.innerText = option.text;
+				button.setAttribute('aria-label', key);
+				button.setAttribute('customizeMenuButtonChecked', 'true');
+				button.target = "_blank";
+				button.rel = "noopener nofollow";
+				button.style.display = "flex";
+				button.href = option.href;
+				if(option.icon){
+					button.querySelector('svg g').innerHTML = `<path d="${option.icon}"></path>`;
+				}
+				addClickButtonEvent(button);
+				appTabBar.insertBefore(button, moreMenuButton);
+				sessionData.customizeMenuButton.isRunning = false;
+			}
+			return "done";
 		}
-
-		if(thisScriptSettings.toAddOptions.settingsButton){
-			const settingsButton = elementForClone.cloneNode(true);
-			settingsButton.setAttribute('data-testid', 'settings');
-			settingsButton.setAttribute('aria-label', 'Settings');
-			settingsButton.setAttribute('addedButton', 'true');
-			settingsButton.href = `/settings`;
-			settingsButton.querySelector('svg g').innerHTML = `<path d="${svgIconPaths.settings}"></path>`;
-			addClickButtonEvent(settingsButton);
-			moreMenuButton.parentNode.insertBefore(settingsButton, moreMenuButton);
-		}
-
 		return "done";
 		function addClickButtonEvent(button, target){
 			button.addEventListener('mouseenter',()=>{
@@ -1698,10 +1814,10 @@
 			}
 			button.addEventListener('click',async (event)=>{
 					event.preventDefault();
-					event.stopPropagation();
-					navigateTo(button.href);
-					//moreMenuButton.click();
-					//await waitElementAndGet({query: `${target}:not([addedButton="true"])`, interval: 50, retry: 10}).then(e=>e.click());
+					if(button.href.match(/^(\/.+|https:\/\/x\.com\/)/)){
+						event.stopPropagation();
+						navigateTo(button.href);
+					}
 			});
 		}
 	}
@@ -3413,7 +3529,6 @@
 		document.body.style.overflow = 'hidden';
 		const isPC = !(isMobileDevice());
 		const isMobile = (isMobileDevice());
-		const colors = new Colors();
 		const pages = {nodes:[], selecing:{name: "", node: null}};
 		const settingTargetsArray = [
 			{
@@ -3453,12 +3568,13 @@
 				isFunction: true,
 			},
 			{
-				targetName: "addMenuButton",
-				displayName: envText.addMenuButton.settings.displayName,
-				pageGenerateFunction: createAddMenuButtonSettingsPage,
+				targetName: "customizeMenuButton",
+				displayName: envText.customizeMenuButton.settings.displayName,
+				pageGenerateFunction: createcustomizeMenuButtonSettingsPage,
 				settingsNode: null,
 				isFunction: true,
 				forPC: true,
+				specificSave: ()=>{}
 			},
 			{
 				targetName: "advance",
@@ -4080,17 +4196,163 @@
 			return page;
 		}
 
-		function createAddMenuButtonSettingsPage(){
-			const settingsTarget = settingTargets.addMenuButton;
-			const scriptSetting = scriptSettings.addMenuButton;
-			const settingText = envText.addMenuButton.settings;
+		function createcustomizeMenuButtonSettingsPage(){
+			const settingsTarget = settingTargets.customizeMenuButton;
+			const scriptSetting = scriptSettings.customizeMenuButton;
+			const settingText = envText.customizeMenuButton.settings;
+			settingsTarget.specificSave = save;
 			const page = createSettingsPageTemplate(settingsTarget.targetName);
 			const settingEntries = [
 				{type: 'text', text: settingText.toAdd, size: "2em", weight: "400", position: "left", isHTML: false},
-				...Object.keys(settingText.toAddOptions).map(key => ({id: key, name: settingText.toAddOptions[key], type: 'toggleSwitch', category: "toAddOptions"})),
+				{id: "grokButton", name: twitterTextI18n.getText("grok"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
+				{id: "bookmarksButton", name: twitterTextI18n.getText("bookmarks"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
+				{id: "jobsButton", name: twitterTextI18n.getText("jobs"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
+				{id: "communitiesButton", name: twitterTextI18n.getText("communities"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
+				{id: "premiumButton", name: twitterTextI18n.getText("premium"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
+				{id: "verifiedOrgButton", name: twitterTextI18n.getText("verifiedOrg"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
+				{id: "listsButton", name: twitterTextI18n.getText("lists"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
+				{id: "monetizationButton", name: twitterTextI18n.getText("monetization"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
+				{id: "adsButton", name: twitterTextI18n.getText("ads"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
+				{id: "createYourSpaceButton", name: twitterTextI18n.getText("createYourSpace"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
+				{id: "settingsAndPrivacy", name: twitterTextI18n.getText("settingsAndPrivacy"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
 			];
 			for(let i=0;i<settingEntries.length;i++){
 				page.appendChild(createSettingsElement(settingEntries[i], scriptSetting).container);
+			}
+			for(let i=1; i<=4; i++){
+				const customButtonSettingsContainer = h('div', {
+						style: {
+							display: "flex",
+							flexDirection: "column",
+							width: "100%",
+							height: "fit-content",
+						},
+					},
+					createSettingsElement({type: 'border', length: 98, margin: "7px 0 7px 0"},).container,
+					createSettingsElement({id: `shortCutButton${i}`, name: `${settingText.shortCutButton}${i}`, type: 'toggleSwitch', category: "toAddOptions", defaultValue: false}, scriptSetting).container,
+					h('div', {
+							style: {
+								display: "flex",
+								flexDirection: "row",
+								fontSize: "1.2em",
+								marginLeft: "1em",
+							},
+						},
+						h('label', {
+								style: {
+									color: colors.get('fontColor'),
+									marginRight: "1em",
+								},
+								textContent: settingText.shortCutButtonDisplayName,
+							},
+						),
+						createSettingsElement({id: `shortCutButton${i}DisplayName`, type: 'textBox'}, scriptSetting).settingsElement,
+					),
+					h('div', {
+							style: {
+								display: "flex",
+								flexDirection: "row",
+								fontSize: "1.2em",
+								marginLeft: "1em",
+							},
+						},
+						h('label', {
+								style: {
+									color: colors.get('fontColor'),
+									marginRight: "1em",
+								},
+								textContent: settingText.shortCutButtonUri,
+							},
+						),
+						createSettingsElement({id: `shortCutButton${i}Uri`, type: 'textBox'}, scriptSetting).settingsElement,
+					),
+				);
+				page.appendChild(customButtonSettingsContainer);
+			}
+			page.appendChild(createSettingsElement({type: 'border', length: 98, margin: "7px 0 15px 0"}).container);
+			page.appendChild(createSettingsElement({type: 'text', text: settingText.sortOrder, size: "2.5em", weight: "400", position: "left", isHTML: false}).container);
+			page.appendChild(createSettingsElement({type: 'button', text: settingText.sortOrderRestoreDefault, width: "fit-content", event: restoreDefaultSorting}).container);
+
+			const buttonNames = ["homeButton", "exploreButton", "notificationsButton", "messagesButton",
+				"grokButton", "listsButton", "bookmarksButton", "jobsButton", "communitiesButton", "premiumButton",
+				"verifiedOrgButton", "profileButton" ,"monetizationButton", "adsButton", "createYourSpaceButton", "settingsAndPrivacy",
+				"shortCutButton1", "shortCutButton2", "shortCutButton3", "shortCutButton4"];
+			const buttonList = scriptSetting?.buttonSorting?.length === buttonNames.length ? scriptSetting.buttonSorting : buttonNames;
+
+			const buttonSortingMenuContainer = h('div', {
+					style: {
+						display: "flex",
+						flexDirection: "column",
+						fontSize: "1.1em",
+						borderTop: "5px solid",
+						borderBottom: "5px solid",
+						borderRight: "10px solid",
+						borderLeft: "10px solid",
+						borderColor: colors.get('borderColor'),
+					},
+				},
+			);
+			createButtonSortingMenuContainer();
+			new Sortable(buttonSortingMenuContainer, {
+				animation: 150,
+				ghostClass: 'sortable-ghost',
+				handle: '.handle',
+			});
+			page.appendChild(buttonSortingMenuContainer);
+			page.addEventListener('click', (e)=>{
+				switchDisplaying();
+			});
+			switchDisplaying();
+
+			function createButtonSortingMenuContainer(reset = false){
+				(reset ? buttonNames : buttonList).forEach(name => {
+					const row = h('div', {
+							className: "handle",
+							style: {
+								borderTop: "1px solid",
+								borderBottom: "1px solid",
+								borderColor: colors.get('borderColor'),
+								display: "flex",
+							},
+							textContent: name.startsWith('shortCutButton') ? `${settingText.shortCutButton}${name.replace(/^shortCutButton/,'')}` : twitterTextI18n.getText(name.replace(/Button$/, '')),
+							sortId: name,
+							buttonSortingRow: true,
+						}
+					);
+					buttonSortingMenuContainer.appendChild(row);
+				});
+				return buttonSortingMenuContainer;
+			}
+
+			function switchDisplaying(){
+				buttonList.forEach(name => {
+					const node = page.querySelector(`[settingID="${name}"]`);
+					if(node){
+						const isChecked = node.getAttribute('isselect') === "true";
+						if(isChecked){
+							buttonSortingMenuContainer.querySelector(`[sortId="${name}"]`).style.display = "flex";
+						}else{
+							buttonSortingMenuContainer.querySelector(`[sortId="${name}"]`).style.display = "none";
+						}
+					}else{
+						buttonSortingMenuContainer.querySelector(`[sortId="${name}"]`).style.display = "flex";
+					}
+				});
+			}
+			function restoreDefaultSorting(){
+				buttonSortingMenuContainer.innerHTML = "";
+				createButtonSortingMenuContainer(true);
+				switchDisplaying();
+			}
+			function save(){
+				const save = [];
+				buttonSortingMenuContainer.querySelectorAll('[buttonSortingRow="true"]').forEach(s=>{
+					const name = s.getAttribute('sortId');
+					save.push(name);
+				});
+				if(!scriptSettings[settingsTarget.targetName])scriptSettings[settingsTarget.targetName] = {};
+				scriptSettings[settingsTarget.targetName].buttonSorting = save;
+				if(sessionData.customizeMenuButton?.addAndSort)sessionData.customizeMenuButton.addAndSort();
 			}
 			return page;
 		}
@@ -4252,6 +4514,7 @@
 			settingsPageContainer.style.zIndex = "-1";
 			settingsPageContainer.style.display = "none";
 			settingsPageContainer.style.flexDirection = "column"
+			settingsPageContainer.style.paddingBottom = "10em";
 			return settingsPageContainer;
 		}
 		function createSettingsElement(setting, storedValue) {
@@ -4267,7 +4530,7 @@
 			settingsElementWrapper.style.flexShrink = "0";
 
 			const categoryPath = setting.category ? setting.category.split('.') : [];
-			let currentValue = storedValue ? storedValue[setting.id] : undefined;
+			let currentValue = storedValue ? storedValue[setting.id] ?? setting.defaultValue : setting.defaultValue ?? undefined;
 			// 深いネストがある場合に対応
 			if(categoryPath.length && storedValue){
 				currentValue = getValueFromObjectByPath(storedValue,`${setting.category}.${setting.id}`);
@@ -4596,6 +4859,8 @@
 				const node = settingTargets[key].pageGenerateFunction();
 				settingContainerWrapper.appendChild(node);
 				settingTargets[key].settingsNode = node;
+				const padding = h('div', {style: {height: "100px", flexShrink: "0"}});
+				node.appendChild(padding);
 				pages.nodes.push(node);
 			}
 			pages.selecing.name = "makeTwitterLittleUseful";
@@ -4636,7 +4901,7 @@
 		* @param {number} [darkMode] - テーマ番号 (0=デフォルト, 1=ダークブルー, 2=ブラック) (省略時は現在のテーマ)
 		* @returns {string} - 色のRGB文字列 (例: "rgb(255,255,255)")
 		*/
-		get(colorName, darkMode = sessionData.themeMode.themeNum){
+		get(colorName, darkMode = sessionData.themeMode?.themeNum || getCookie('night_mode')){
 			return this.colors[colorName][darkMode];
 		}
 
@@ -4647,7 +4912,7 @@
 		* @param {number} [darkMode] - テーマ番号（0=デフォルト, 1=ダークブルー, 2=ブラック) (省略時は現在のテーマ)
 		* @returns {string} - RGBA文字列 (例: "rgba(255,255,255,1.0)")
 		*/
-		getWithAlpha(colorName, alpha, darkMode = sessionData.themeMode.themeNum){
+		getWithAlpha(colorName, alpha, darkMode = sessionData.themeMode?.themeNum || getCookie('night_mode')){
 			return `rgba(${this.colors[colorName][darkMode].match(/\d+/g).join(", ")}, ${alpha})`;
 		}
 	}
@@ -8775,7 +9040,7 @@
 	const twitterApi = new TwitterApi();
 
 	class TwitterTextI18n {
-		#version = 202505050000;
+		#version = 202505150000;
 		#langList = ["ja", "en", "ar", "ar-x-fm", "bg", "bn", "ca", "cs", "da", "de", "el", "en-gb", "es", "eu", "fa", "fi", "fil",
 			"fr", "ga", "gl", "gu", "ha", "he", "hi", "hr", "hu", "id", "ig", "it", "kn", "ko", "mr", "msa", "nb",
 			"nl", "pl", "pt", "ro", "ru", "sk", "sr", "sv", "ta", "th", "tr", "uk", "ur", "vi", "yo", "zh-cn", "zh-tw"];
@@ -8894,8 +9159,12 @@
 		if(document.getElementById('changelogOverlay') || scriptSettings.makeTwitterLittleUseful.displayChangelog === false)return;
 		const changelogs = {
 			"2.1.1.0": {
-				"newFeatures": ["addMenuButton", "imageZoom"],
+				"newFeatures": ["imageZoom"],
 				"updateDate": "2025-01-27 01:00:00",
+			},
+			"2.2.3.0": {
+				"newFeatures": ["customizeMenuButton"],
+				"updateDate": "2025-05-16 07:00:00",
 			}
 		};
 		if(Object.keys(changelogs).every(version => compareVersions(version, lastScriptVersion) === -1))return;
@@ -9184,7 +9453,7 @@
 	}
 	async function whenChangeScriptVersion(){
 		const currentScriptVersion = GM_info.script.version;
-		const lastScriptVersion = scriptDataStore.makeTwitterLittleUseful?.version || "0.0.0.0";
+		const lastScriptVersion = scriptDataStore.makeTwitterLittleUseful?.version || "99.0.0.0";
 		if(compareVersions(currentScriptVersion, lastScriptVersion) === 1){
 			displayChangelog(currentScriptVersion, lastScriptVersion);
 			scriptDataStore.makeTwitterLittleUseful.version = currentScriptVersion;
@@ -9194,11 +9463,11 @@
 	async function init(){
 		firstTime();
 		whenChangeScriptVersion();
-		window.addEventListener("scroll", update);
-		locationChange(document.getElementById('react-root'));
 		updateThemeMode(whenChangeThemeMode);
 		await fetchUserData();
 		await twitterTextI18n.loadTextData(sessionData.userData.language, scriptSettings.makeTwitterLittleUseful.uiTextType || 'old');
+		window.addEventListener("scroll", update);
+		locationChange(document.getElementById('react-root'));
 		main();
 		getPixivLinkCollection();
 		addEventToHomeButton();
