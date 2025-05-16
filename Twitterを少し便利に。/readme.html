@@ -257,6 +257,9 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 			左のバーのメニューボタンをカスタマイズすることができます。</br>
 			カスタムショートカットボタンはTwitterのURIを指定することでそこへすぐに飛ぶことができます。</br>
 			例えば「https://x.com/自分のスクリーンネーム/likes」または「/自分のスクリーンネーム/likes」と指定すると、いいね欄に直接飛ぶことができます。</br>
+            「$MYNAME」と指定すると、自分のスクリーンネームに置き換わります。</br>
+            例: 「https://x.com/$MYNAME/likes」や「/$MYNAME/likes」など</br>
+            同じブラウザで複数のアカウントを使用している場合有効に働くでしょう。</br>
 			「https://x.com/settings/mute_and_block」または「/settings/mute_and_block」と指定すると、ミュートとブロックの設定画面に直接飛ぶことができます。</br>
 			これはただのリンクを作成するのではなく、Twitter(React)の機能で画面を切り替えるので、ページのリロードは発生しません。</br>
 			また、それらのボタンを自由に並べ替えることができます。</br>
@@ -567,7 +570,10 @@ The ability to add bookmark, list, profile, and settings buttons to the menu bar
 			You can customize the menu buttons on the left bar.</br>
 			Custom shortcut buttons allow you to specify a Twitter URI to jump right to it.</br>
 			For example, "https://x.com/myScreenname/likes" or "/myScreenname/likes" will jump directly to the Like section.</br>
-			https://x.com/settings/mute_and_block" or "/settings/mute_and_block" will take you directly to the mute and block settings.</br>
+            "https://x.com/$MYNAME/likes" or "/$MYNAME/likes" will replace it with your screen name.</br>
+            Example: "https://x.com/$MYNAME/likes" or "/$MYNAME/likes"</br>
+            This will work if you are using multiple accounts on the same browser.</br>
+			"https://x.com/settings/mute_and_block" or "/settings/mute_and_block" will take you directly to the mute and block settings.</br>
 			This does not just create a link, but uses Twitter (React) functionality to switch screens, so no page reloading occurs.</br>
 			You can also rearrange those buttons freely.</br>
 			<img src="https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/img/customizeMenuButton_intraduction_01_en.jpg" width="50%" height="auto"></br>
