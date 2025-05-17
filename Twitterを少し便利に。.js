@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.0.0
+// @version			2.3.0.1
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1027,7 +1027,6 @@
 					}else{
 						return imageUrl;
 					}
-					
 				}
 			}
 			function downloadVideo(url){
@@ -9040,7 +9039,7 @@
 	const twitterApi = new TwitterApi();
 
 	class TwitterTextI18n {
-		#version = 202505150000;
+		#version = 202505170000;
 		#langList = ["ja", "en", "ar", "ar-x-fm", "bg", "bn", "ca", "cs", "da", "de", "el", "en-gb", "es", "eu", "fa", "fi", "fil",
 			"fr", "ga", "gl", "gu", "ha", "he", "hi", "hr", "hu", "id", "ig", "it", "kn", "ko", "mr", "msa", "nb",
 			"nl", "pl", "pt", "ro", "ru", "sk", "sr", "sv", "ta", "th", "tr", "uk", "ur", "vi", "yo", "zh-cn", "zh-tw"];
@@ -9065,34 +9064,30 @@
 			}
 
 			const storedData = await getFromIndexedDB('MTLU_TwitterTextI18n', 'textData') || {};
-			let jsTextData = null;
-			if(storedData[lang]?.[type]?.jsText && storedData?.[lang]?.[type]?.dataVersion === this.#version){
-				jsTextData = storedData[lang][type].jsText;
-			}else if(this.#testData){
+			let jsonTextData = null;
+			if(this.#testData){
 				this.#textData = this.#testData;
 				this.#isReady = true;
 				return;
+			}else if(storedData[lang]?.[type]?.jsText && storedData?.[lang]?.[type]?.dataVersion === this.#version){
+				jsonTextData = storedData[lang][type].jsText;
 			}else{
-				const jsTextDataBaseUrl = `https://raw.githubusercontent.com/Happy-come-come/UserScripts/refs/heads/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/data/TwitterTextI18nData/textData/`
-				jsTextData = await request({url: `${jsTextDataBaseUrl}${lang}_${type}.js`, method: 'GET', respType: 'text'});
-				if(!jsTextData){
+				const jsonTextDataBaseUrl = `https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/data/TwitterTextI18nData/textData/json/`
+				jsonTextData = await request({url: `${jsonTextDataBaseUrl}${lang}_${type}.json`, method: 'GET', respType: 'text'});
+				if(!jsonTextData){
 					throw new Error('Failed to load text data');
 				}
 				if(!storedData[lang])storedData[lang] = {};
 				if(!storedData[lang][type])storedData[lang][type] = {};
-				storedData[lang][type].jsText = jsTextData;
+				storedData[lang][type].jsonText = jsonTextData;
 				storedData[lang][type].dataVersion = this.#version;
 				await saveToIndexedDB('MTLU_TwitterTextI18n', 'textData', storedData);
 			}
-
-			const jsTextDataBlob = new Blob([jsTextData], {type: 'application/javascript'});
-			const jsTextDataBlobUrl = URL.createObjectURL(jsTextDataBlob);
-			const textData = await import(jsTextDataBlobUrl);
-			URL.revokeObjectURL(jsTextDataBlobUrl);
+			const textData = JSON.parse(jsonTextData);
 			if(!textData){
 				throw new Error('Failed to load text data');
 			}
-			this.#textData = textData.default;
+			this.#textData = textData;
 			this.#isReady = true;
 			return "Ready";
 		}
@@ -9113,12 +9108,12 @@
 				let argsObj = {};
 				if(typeof args === 'object' && !Array.isArray(args)){
 					argsObj = args;
-				}else if(typeof args === 'object' && Array.isArray(args)){
-					for(let i = 0; i < args.length; i++){
-						argsObj[selectedText.arguments[i]] = args[i] || '';
+				}else if(Array.isArray(args)){
+					for(let i = 0; i < selectedText.arguments.length; i++){
+						argsObj[selectedText.arguments[i]] = args[i] ?? '';
 					}
 				}
-				return selectedText.value(argsObj);
+				return this.#applyPlaceholders(selectedText.value, argsObj);
 			}
 			if(selectedText.type === 'webI18nTemplateFunction'){
 				return this.#applyTemplate(selectedText.value, args, props);
@@ -9129,10 +9124,12 @@
 		}
 
 		#applyTemplate(templateParts, args, props){
-			let template = templateParts();
+			// templateParts は配列であることを前提
 			let result = '';
-			for(let i=0; i < template.length; i++){
-				result += template[i];
+			for(let i = 0; i < templateParts.length; i++){
+				// まずテンプレートのプレースホルダーを props で展開
+				result += this.#applyPlaceholders(templateParts[i], props);
+				// そのあと、無名 args があるなら interleave
 				if(i < args.length){
 					result += args[i];
 				}
@@ -9150,6 +9147,12 @@
 					i = argIndex++;
 				}
 				return args[i] !== undefined ? args[i] : `%${indexPart || ''}s`;
+			});
+		}
+
+		#applyPlaceholders(templateStr, context = {}){
+			return templateStr.replace(/{{\s*(\w+)\s*}}/g, (_, key) => {
+				return context[key] !== undefined ? context[key] : '';
 			});
 		}
 	}
