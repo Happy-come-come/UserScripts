@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const vm = require('vm');
+const parser = require('@babel/parser');
 const { XMLParser } = require('fast-xml-parser');
 const xmlParser = new XMLParser({
 	ignoreAttributes: false,
@@ -208,10 +209,118 @@ const xmlParser = new XMLParser({
 					return `\t"${k}": ${JSON.stringify(v)}`;
 				}
 			});
-			const outputData = `const text = {\n${entries.join(',\n')}\n};\n\nexport default text;`;
-			const outputPath = path.join('textData', `${lang}_${type}.js`);
-			if(!fs.existsSync('./textData'))fs.mkdirSync('./textData', {recursive: true});
-			fs.writeFileSync(outputPath, outputData, 'utf8');
+
+			const entriesJson = Object.keys(result).reduce((acc, v) => {
+				const currentData = result[v];
+
+				if(typeof currentData === 'object' && typeof currentData.value === 'function'){
+					let value;
+
+					const fnStr = currentData.value.toString();
+					const ast = parser.parse('(' + fnStr + ')');
+					const fnNode = ast.program.body[0].expression;
+					const body = fnNode.body.body;
+
+					if(currentData.type === 'webI18nFunction'){
+						const argName = fnNode.params[0]?.name ?? 'e';
+						const returnNode = body.find(n => n.type === 'ReturnStatement');
+						if(returnNode){
+							const expr = returnNode.argument;
+
+							function extractParts(node){
+								if(node.type === 'BinaryExpression'){
+									return extractParts(node.left) + extractParts(node.right);
+								}
+								if(node.type === 'StringLiteral'){
+									return node.value;
+								}
+								if(node.type === 'MemberExpression'){
+									if(
+										node.object.type === 'Identifier' &&
+										node.object.name === argName &&
+										node.property.type === 'Identifier'
+									){
+										return `{{${node.property.name}}}`;
+									}
+								}
+								return '';
+							}
+
+							value = extractParts(expr);
+						}
+
+					}else if(currentData.type === 'webI18nTemplateFunction'){
+						const returnNode = body.find(n => n.type === 'ReturnStatement');
+
+						if(returnNode && returnNode.argument.type === 'ArrayExpression'){
+							value = returnNode.argument.elements.map(elem => {
+								if(elem.type === 'StringLiteral'){
+									return elem.value;
+								}
+
+								if(elem.type === 'BinaryExpression'){
+									const parts = [];
+
+									function extractParts(node){
+										if(node.type === 'BinaryExpression'){
+											extractParts(node.left);
+											extractParts(node.right);
+										}else if(node.type === 'StringLiteral'){
+											parts.push(node.value);
+										}else if(node.type === 'MemberExpression'){
+											if(
+												node.object.type === 'ThisExpression' &&
+												node.property.type === 'Identifier'
+											){
+												parts.push(`{{${node.property.name}}}`);
+											}else if(
+												node.object.type === 'MemberExpression' &&
+												node.object.property.name === 'props' &&
+												node.property.type === 'Identifier'
+											){
+												parts.push(`{{${node.property.name}}}`);
+											}
+										}
+									}
+
+									extractParts(elem);
+									return parts.join('');
+								}
+							});
+						}
+					}
+
+					acc[v] = {
+						type: currentData.type,
+						...(currentData.arguments ? {arguments: currentData.arguments} : {}),
+						value: value
+					};
+				}else{
+					acc[v] = currentData;
+				}
+				return acc;
+			}, {});
+			const entriesJsonString = JSON.stringify(entriesJson, (key, value) => {
+				if((key === 'value' || key === 'arguments') && Array.isArray(value) && value.length <= 5){
+					// 特殊マーカーを付けて後で置換
+					return {
+						__INLINE_ARRAY__: true,
+						items: value
+					};
+				}
+				return value;
+			}, '\t').replace(
+				/\{\s*"__INLINE_ARRAY__"\s*:\s*true,\s*"items"\s*:\s*(\[[\s\S]*?\])\s*\}/g,
+				(_, arrayText) => arrayText.replace(/\s+/g, '')
+			);
+			if(!fs.existsSync('./textData/json'))fs.mkdirSync('./textData/json', {recursive: true});
+			const jsonOutputPath = path.join('textData', 'json', `${lang}_${type}.json`);
+			fs.writeFileSync(jsonOutputPath, entriesJsonString, 'utf8');
+
+			const jsOutputData = `const text = {\n${entries.join(',\n')}\n};\n\nexport default text;`;
+			const jsOutputPath = path.join('textData', 'js', `${lang}_${type}.js`);
+			if(!fs.existsSync('./textData/js'))fs.mkdirSync('./textData/js', {recursive: true});
+			fs.writeFileSync(jsOutputPath, jsOutputData, 'utf8');
 			return "OK";
 		}
 	}
