@@ -1,0 +1,218 @@
+{
+	"forYouTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "Para sa iyo{{noun}}"
+	},
+	"followingTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "Fina-follow{{noun}}"
+	},
+	"retweet": {
+		"type": "string",
+		"value": "I-repost"
+	},
+	"unDoRetweet": {
+		"type": "string",
+		"value": "I-undo ang repost"
+	},
+	"following": {
+		"type": "string",
+		"value": "Sinusundan"
+	},
+	"unfollow": {
+		"type": "string",
+		"value": "I-unfollow"
+	},
+	"blocked": {
+		"type": "string",
+		"value": "Na-block"
+	},
+	"unblock": {
+		"type": "string",
+		"value": "I-unblock"
+	},
+	"joinDateFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["joinDate"],
+		"value": "Sumali noong {{joinDate}}"
+	},
+	"followedBy1": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Sinusundanni"]
+	},
+	"followedBy2": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Sinusundannina","at"]
+	},
+	"followedBy3": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Sinusundannina",",",",at"]
+	},
+	"followedByLots": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Sinusundannina",",",",atng","pangsinusundanmo"]
+	},
+	"postedTweetsNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}post"]
+	},
+	"likesNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}Like"]
+	},
+	"mediaNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}larawanatvideo"]
+	},
+	"home": {
+		"type": "string",
+		"value": "Home"
+	},
+	"explore": {
+		"type": "string",
+		"value": "Mag-explore"
+	},
+	"notifications": {
+		"type": "string",
+		"value": "Mga Abiso"
+	},
+	"messages": {
+		"type": "string",
+		"value": "Mga Mensahe"
+	},
+	"grok": {
+		"type": "string",
+		"value": "Grok"
+	},
+	"bookmarks": {
+		"type": "string",
+		"value": "Mga Bookmark"
+	},
+	"jobs": {
+		"type": "string",
+		"value": "Mga trabaho"
+	},
+	"communities": {
+		"type": "string",
+		"value": "Komunidad"
+	},
+	"premium": {
+		"type": "string",
+		"value": "Premium"
+	},
+	"verifiedOrg": {
+		"type": "string",
+		"value": "Mga Beripikadong Org"
+	},
+	"profile": {
+		"type": "string",
+		"value": "Ang Aking Profile"
+	},
+	"lists": {
+		"type": "string",
+		"value": "Listahan"
+	},
+	"monetization": {
+		"type": "string",
+		"value": "Monetization"
+	},
+	"ads": {
+		"type": "string",
+		"value": "Ads"
+	},
+	"createYourSpace": {
+		"type": "string",
+		"value": "Gumawa ng Space mo"
+	},
+	"settingsAndPrivacy": {
+		"type": "string",
+		"value": "Mga setting at pagkapribado"
+	},
+	"moreMenu": {
+		"type": "string",
+		"value": "Higit pa"
+	},
+	"addAnExistingAccount": {
+		"type": "string",
+		"value": "Magdagdag ng kasalukuyang account"
+	},
+	"manageAccounts": {
+		"type": "string",
+		"value": "Pamahalaan ang mga account"
+	},
+	"switchToAccount": {
+		"type": "webI18nFunction",
+		"arguments": ["screenName"],
+		"value": "Lumipat kay @{{screenName}}"
+	},
+	"settings": {
+		"type": "string",
+		"value": "Mga Setting"
+	},
+	"now": {
+		"type": "string",
+		"value": "Ngayon"
+	},
+	"day": {
+		"type": "string",
+		"value": "Araw"
+	},
+	"month": {
+		"type": "string",
+		"value": "Buwan"
+	},
+	"year": {
+		"type": "string",
+		"value": "Taon"
+	},
+	"january": {
+		"type": "string",
+		"value": "Enero"
+	},
+	"february": {
+		"type": "string",
+		"value": "Pebrero"
+	},
+	"march": {
+		"type": "string",
+		"value": "Marso"
+	},
+	"april": {
+		"type": "string",
+		"value": "Abril"
+	},
+	"may": {
+		"type": "string",
+		"value": "Mayo"
+	},
+	"june": {
+		"type": "string",
+		"value": "Hunyo"
+	},
+	"july": {
+		"type": "string",
+		"value": "Hulyo"
+	},
+	"august": {
+		"type": "string",
+		"value": "Agosto"
+	},
+	"september": {
+		"type": "string",
+		"value": "Setyembre"
+	},
+	"october": {
+		"type": "string",
+		"value": "Oktubre"
+	},
+	"november": {
+		"type": "string",
+		"value": "Nobyembre"
+	},
+	"december": {
+		"type": "string",
+		"value": "Disyembre"
+	}
+}

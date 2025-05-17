@@ -1,0 +1,254 @@
+{
+	"forYouTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "Pour vous{{noun}}"
+	},
+	"followingTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "Abonnements{{noun}}"
+	},
+	"pinnedListsModuleHeader": {
+		"type": "string",
+		"value": "Épinglées"
+	},
+	"tweetsRetweeted": {
+		"type": "apkI18nTemplateFunction",
+		"value": "%s a retweeté"
+	},
+	"retweet": {
+		"type": "string",
+		"value": "Retweeter"
+	},
+	"unDoRetweet": {
+		"type": "string",
+		"value": "Annuler le Retweet"
+	},
+	"quoteTweet": {
+		"type": "string",
+		"value": "Citer le Tweet"
+	},
+	"profileTabTitleTimeline": {
+		"type": "string",
+		"value": "Tweets"
+	},
+	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {
+		"type": "string",
+		"value": "Réponses"
+	},
+	"profileTabTitleHighlights": {
+		"type": "string",
+		"value": "Tweets marquants"
+	},
+	"profileTabTitleMedia": {
+		"type": "string",
+		"value": "Médias"
+	},
+	"profileTabTitleLikes": {
+		"type": "string",
+		"value": "\"J'aime\""
+	},
+	"following": {
+		"type": "string",
+		"value": "Abonné"
+	},
+	"unfollow": {
+		"type": "string",
+		"value": "Se désabonner"
+	},
+	"blocked": {
+		"type": "string",
+		"value": "Bloqué"
+	},
+	"unblock": {
+		"type": "string",
+		"value": "Débloquer"
+	},
+	"joinDateFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["joinDate"],
+		"value": "A rejoint Twitter en {{joinDate}}"
+	},
+	"followedBy1": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Suivipar"]
+	},
+	"followedBy2": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Suivipar","et"]
+	},
+	"followedBy3": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Suivipar",",","et"]
+	},
+	"followedByLots": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Suivipar",",","et","autrespersonnesquevoussuivez"]
+	},
+	"postedTweetsNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}Tweet"]
+	},
+	"likesNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}J'aime"]
+	},
+	"mediaNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}photosetvidéos"]
+	},
+	"home": {
+		"type": "string",
+		"value": "Accueil"
+	},
+	"explore": {
+		"type": "string",
+		"value": "Explorer"
+	},
+	"notifications": {
+		"type": "string",
+		"value": "Notifications"
+	},
+	"messages": {
+		"type": "string",
+		"value": "Messages"
+	},
+	"grok": {
+		"type": "string",
+		"value": "Grok"
+	},
+	"bookmarks": {
+		"type": "string",
+		"value": "Signets"
+	},
+	"jobs": {
+		"type": "string",
+		"value": "Tâches"
+	},
+	"communities": {
+		"type": "string",
+		"value": "Communauté"
+	},
+	"premium": {
+		"type": "string",
+		"value": "Premium"
+	},
+	"verifiedOrg": {
+		"type": "string",
+		"value": "Organisations certifiées"
+	},
+	"profile": {
+		"type": "string",
+		"value": "Mon profil"
+	},
+	"lists": {
+		"type": "string",
+		"value": "Liste"
+	},
+	"monetization": {
+		"type": "string",
+		"value": "Monétisation"
+	},
+	"ads": {
+		"type": "string",
+		"value": "Publicités"
+	},
+	"createYourSpace": {
+		"type": "string",
+		"value": "Créer votre Espace"
+	},
+	"settingsAndPrivacy": {
+		"type": "string",
+		"value": "Paramètres et confidentialité"
+	},
+	"moreMenu": {
+		"type": "string",
+		"value": "Plus"
+	},
+	"addAnExistingAccount": {
+		"type": "string",
+		"value": "Ajouter un compte existant"
+	},
+	"manageAccounts": {
+		"type": "string",
+		"value": "Gérer les comptes"
+	},
+	"switchToAccount": {
+		"type": "webI18nFunction",
+		"arguments": ["screenName"],
+		"value": "Basculer vers @{{screenName}}"
+	},
+	"postTweet": {
+		"type": "string",
+		"value": "Tweeter"
+	},
+	"settings": {
+		"type": "string",
+		"value": "Paramètres"
+	},
+	"now": {
+		"type": "string",
+		"value": "Maintenant"
+	},
+	"day": {
+		"type": "string",
+		"value": "Jour"
+	},
+	"month": {
+		"type": "string",
+		"value": "Mois"
+	},
+	"year": {
+		"type": "string",
+		"value": "Année"
+	},
+	"january": {
+		"type": "string",
+		"value": "Janvier"
+	},
+	"february": {
+		"type": "string",
+		"value": "Février"
+	},
+	"march": {
+		"type": "string",
+		"value": "Mars"
+	},
+	"april": {
+		"type": "string",
+		"value": "Avril"
+	},
+	"may": {
+		"type": "string",
+		"value": "Mai"
+	},
+	"june": {
+		"type": "string",
+		"value": "Juin"
+	},
+	"july": {
+		"type": "string",
+		"value": "Juillet"
+	},
+	"august": {
+		"type": "string",
+		"value": "Août"
+	},
+	"september": {
+		"type": "string",
+		"value": "Septembre"
+	},
+	"october": {
+		"type": "string",
+		"value": "Octobre"
+	},
+	"november": {
+		"type": "string",
+		"value": "Novembre"
+	},
+	"december": {
+		"type": "string",
+		"value": "Décembre"
+	}
+}

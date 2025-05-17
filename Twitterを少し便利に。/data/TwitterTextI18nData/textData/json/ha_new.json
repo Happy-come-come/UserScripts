@@ -1,0 +1,218 @@
+{
+	"forYouTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "Don kai{{noun}}"
+	},
+	"followingTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "Ana bin{{noun}}"
+	},
+	"retweet": {
+		"type": "string",
+		"value": "Repost"
+	},
+	"unDoRetweet": {
+		"type": "string",
+		"value": "Undo repost"
+	},
+	"following": {
+		"type": "string",
+		"value": "Ana bin"
+	},
+	"unfollow": {
+		"type": "string",
+		"value": "Fasa bi"
+	},
+	"blocked": {
+		"type": "string",
+		"value": "An toshe"
+	},
+	"unblock": {
+		"type": "string",
+		"value": "Buɗe"
+	},
+	"joinDateFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["joinDate"],
+		"value": "An shiga {{joinDate}}"
+	},
+	"followedBy1": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Followedby"]
+	},
+	"followedBy2": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Followedby","and"]
+	},
+	"followedBy3": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Followedby",",",",and"]
+	},
+	"followedByLots": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Followedby",",",",and","othersyoufollow"]
+	},
+	"postedTweetsNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}post"]
+	},
+	"likesNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}Like"]
+	},
+	"mediaNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}photos&videos"]
+	},
+	"home": {
+		"type": "string",
+		"value": "Gida"
+	},
+	"explore": {
+		"type": "string",
+		"value": "Bincike"
+	},
+	"notifications": {
+		"type": "string",
+		"value": "Sanarwa"
+	},
+	"messages": {
+		"type": "string",
+		"value": "Saƙonni"
+	},
+	"grok": {
+		"type": "string",
+		"value": "Grok"
+	},
+	"bookmarks": {
+		"type": "string",
+		"value": "Alamomi"
+	},
+	"jobs": {
+		"type": "string",
+		"value": "Jobs"
+	},
+	"communities": {
+		"type": "string",
+		"value": "Al'umma"
+	},
+	"premium": {
+		"type": "string",
+		"value": "Premium"
+	},
+	"verifiedOrg": {
+		"type": "string",
+		"value": "Verified Orgs"
+	},
+	"profile": {
+		"type": "string",
+		"value": "My Profile"
+	},
+	"lists": {
+		"type": "string",
+		"value": "Jeri"
+	},
+	"monetization": {
+		"type": "string",
+		"value": "Samun kuɗi"
+	},
+	"ads": {
+		"type": "string",
+		"value": "Ads"
+	},
+	"createYourSpace": {
+		"type": "string",
+		"value": "Create your Space"
+	},
+	"settingsAndPrivacy": {
+		"type": "string",
+		"value": "Saitunan da sirrantawa"
+	},
+	"moreMenu": {
+		"type": "string",
+		"value": "Ƙari"
+	},
+	"addAnExistingAccount": {
+		"type": "string",
+		"value": "Ƙara asusun da ke akwai"
+	},
+	"manageAccounts": {
+		"type": "string",
+		"value": "Gudanar da asusu"
+	},
+	"switchToAccount": {
+		"type": "webI18nFunction",
+		"arguments": ["screenName"],
+		"value": "Sauya zuwa @{{screenName}}"
+	},
+	"settings": {
+		"type": "string",
+		"value": "Saituna"
+	},
+	"now": {
+		"type": "string",
+		"value": "Yanzu"
+	},
+	"day": {
+		"type": "string",
+		"value": "Rana"
+	},
+	"month": {
+		"type": "string",
+		"value": "Wata"
+	},
+	"year": {
+		"type": "string",
+		"value": "Shekara"
+	},
+	"january": {
+		"type": "string",
+		"value": "Janairu"
+	},
+	"february": {
+		"type": "string",
+		"value": "Faburairu"
+	},
+	"march": {
+		"type": "string",
+		"value": "Maris"
+	},
+	"april": {
+		"type": "string",
+		"value": "Afrilu"
+	},
+	"may": {
+		"type": "string",
+		"value": "Mayu"
+	},
+	"june": {
+		"type": "string",
+		"value": "Yuni"
+	},
+	"july": {
+		"type": "string",
+		"value": "Yuli"
+	},
+	"august": {
+		"type": "string",
+		"value": "Agusta"
+	},
+	"september": {
+		"type": "string",
+		"value": "Satumba"
+	},
+	"october": {
+		"type": "string",
+		"value": "Oktuba"
+	},
+	"november": {
+		"type": "string",
+		"value": "Nuwamba"
+	},
+	"december": {
+		"type": "string",
+		"value": "Disamba"
+	}
+}

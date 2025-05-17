@@ -1,0 +1,254 @@
+{
+	"forYouTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "برای شما{{noun}}"
+	},
+	"followingTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "دنبال‌شده{{noun}}"
+	},
+	"pinnedListsModuleHeader": {
+		"type": "string",
+		"value": "‏سنجاق‌شده"
+	},
+	"tweetsRetweeted": {
+		"type": "apkI18nTemplateFunction",
+		"value": "‏%s بازتوییت کرد"
+	},
+	"retweet": {
+		"type": "string",
+		"value": "بازتوییت"
+	},
+	"unDoRetweet": {
+		"type": "string",
+		"value": "لغو بازتوییت"
+	},
+	"quoteTweet": {
+		"type": "string",
+		"value": "‏نقل‌توییت"
+	},
+	"profileTabTitleTimeline": {
+		"type": "string",
+		"value": "‏توییت‌ها"
+	},
+	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {
+		"type": "string",
+		"value": "‏پاسخ‌ها"
+	},
+	"profileTabTitleHighlights": {
+		"type": "string",
+		"value": "‏موارد برتر"
+	},
+	"profileTabTitleMedia": {
+		"type": "string",
+		"value": "‏رسانه تصویری"
+	},
+	"profileTabTitleLikes": {
+		"type": "string",
+		"value": "‏پسند"
+	},
+	"following": {
+		"type": "string",
+		"value": "دنبال‌شده"
+	},
+	"unfollow": {
+		"type": "string",
+		"value": "دنبال نشود"
+	},
+	"blocked": {
+		"type": "string",
+		"value": "مسدود شده‌"
+	},
+	"unblock": {
+		"type": "string",
+		"value": "عدم انسداد"
+	},
+	"joinDateFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["joinDate"],
+		"value": "تاریخ پیوستن {{joinDate}}"
+	},
+	"followedBy1": {
+		"type": "webI18nTemplateFunction",
+		"value": ["دنبال‌شدهتوسط"]
+	},
+	"followedBy2": {
+		"type": "webI18nTemplateFunction",
+		"value": ["دنبال‌شدهتوسط","و"]
+	},
+	"followedBy3": {
+		"type": "webI18nTemplateFunction",
+		"value": ["دنبال‌شدهتوسط","،","،و"]
+	},
+	"followedByLots": {
+		"type": "webI18nTemplateFunction",
+		"value": ["دنبال‌شدهتوسط","،","،و","نفردیگرکهشمادنبالمی‌کنید"]
+	},
+	"postedTweetsNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}توت"]
+	},
+	"likesNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}پسند"]
+	},
+	"mediaNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}عکسوویدئو"]
+	},
+	"home": {
+		"type": "string",
+		"value": "خانه"
+	},
+	"explore": {
+		"type": "string",
+		"value": "کاوش"
+	},
+	"notifications": {
+		"type": "string",
+		"value": "آگاه‌سازی‌ها"
+	},
+	"messages": {
+		"type": "string",
+		"value": "پیام‌ها"
+	},
+	"grok": {
+		"type": "string",
+		"value": "Grok"
+	},
+	"bookmarks": {
+		"type": "string",
+		"value": "نشانک‌ها"
+	},
+	"jobs": {
+		"type": "string",
+		"value": "شغل‌ها"
+	},
+	"communities": {
+		"type": "string",
+		"value": "انجمن"
+	},
+	"premium": {
+		"type": "string",
+		"value": "Premium"
+	},
+	"verifiedOrg": {
+		"type": "string",
+		"value": "سازمان‌های تأییدشده"
+	},
+	"profile": {
+		"type": "string",
+		"value": "نمایه من"
+	},
+	"lists": {
+		"type": "string",
+		"value": "فهرست"
+	},
+	"monetization": {
+		"type": "string",
+		"value": "درآمدزایی"
+	},
+	"ads": {
+		"type": "string",
+		"value": "آگهی‌ها"
+	},
+	"createYourSpace": {
+		"type": "string",
+		"value": "ایجاد «اتاق گفت‌وگو»"
+	},
+	"settingsAndPrivacy": {
+		"type": "string",
+		"value": "تنظیمات و حریم خصوصی"
+	},
+	"moreMenu": {
+		"type": "string",
+		"value": "بیشتر"
+	},
+	"addAnExistingAccount": {
+		"type": "string",
+		"value": "افزودن حساب کاربری موجود"
+	},
+	"manageAccounts": {
+		"type": "string",
+		"value": "مدیریت حساب‌ها"
+	},
+	"switchToAccount": {
+		"type": "webI18nFunction",
+		"arguments": ["screenName"],
+		"value": "رفتن به @{{screenName}}"
+	},
+	"postTweet": {
+		"type": "string",
+		"value": "‏توییت"
+	},
+	"settings": {
+		"type": "string",
+		"value": "تنظیمات"
+	},
+	"now": {
+		"type": "string",
+		"value": "اکنون"
+	},
+	"day": {
+		"type": "string",
+		"value": "روز"
+	},
+	"month": {
+		"type": "string",
+		"value": "ماه"
+	},
+	"year": {
+		"type": "string",
+		"value": "سال"
+	},
+	"january": {
+		"type": "string",
+		"value": "ژانویه"
+	},
+	"february": {
+		"type": "string",
+		"value": "فوریه"
+	},
+	"march": {
+		"type": "string",
+		"value": "مارس"
+	},
+	"april": {
+		"type": "string",
+		"value": "آوریل"
+	},
+	"may": {
+		"type": "string",
+		"value": "مه"
+	},
+	"june": {
+		"type": "string",
+		"value": "ژوئن"
+	},
+	"july": {
+		"type": "string",
+		"value": "ژوئيه"
+	},
+	"august": {
+		"type": "string",
+		"value": "اوت"
+	},
+	"september": {
+		"type": "string",
+		"value": "سپتامبر"
+	},
+	"october": {
+		"type": "string",
+		"value": "اکتبر"
+	},
+	"november": {
+		"type": "string",
+		"value": "نوامبر"
+	},
+	"december": {
+		"type": "string",
+		"value": "دسامبر"
+	}
+}

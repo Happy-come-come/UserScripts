@@ -1,0 +1,254 @@
+{
+	"forYouTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "За теб{{noun}}"
+	},
+	"followingTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "Следван(а){{noun}}"
+	},
+	"pinnedListsModuleHeader": {
+		"type": "string",
+		"value": "Закачени"
+	},
+	"tweetsRetweeted": {
+		"type": "apkI18nTemplateFunction",
+		"value": "%s препубликува"
+	},
+	"retweet": {
+		"type": "string",
+		"value": "Препубликуване"
+	},
+	"unDoRetweet": {
+		"type": "string",
+		"value": "Отмяна на препубликуване"
+	},
+	"quoteTweet": {
+		"type": "string",
+		"value": "Цитат"
+	},
+	"profileTabTitleTimeline": {
+		"type": "string",
+		"value": "Публикации"
+	},
+	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {
+		"type": "string",
+		"value": "Отговори"
+	},
+	"profileTabTitleHighlights": {
+		"type": "string",
+		"value": "Акценти"
+	},
+	"profileTabTitleMedia": {
+		"type": "string",
+		"value": "Мултимедийно съдържание"
+	},
+	"profileTabTitleLikes": {
+		"type": "string",
+		"value": "Харесвания"
+	},
+	"following": {
+		"type": "string",
+		"value": "Следвано"
+	},
+	"unfollow": {
+		"type": "string",
+		"value": "Спиране на следването"
+	},
+	"blocked": {
+		"type": "string",
+		"value": "Блокиран/а"
+	},
+	"unblock": {
+		"type": "string",
+		"value": "Разблокиране"
+	},
+	"joinDateFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["joinDate"],
+		"value": "Присъединяване: {{joinDate}}"
+	},
+	"followedBy1": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Следван/аот"]
+	},
+	"followedBy2": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Следван/аот","и"]
+	},
+	"followedBy3": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Следван/аот",",","и"]
+	},
+	"followedByLots": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Следван/аот",",","иоще",",коитоследваш"]
+	},
+	"postedTweetsNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}публикаци"]
+	},
+	"likesNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}харесван"]
+	},
+	"mediaNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}снимкиивидеоклипове"]
+	},
+	"home": {
+		"type": "string",
+		"value": "Начало"
+	},
+	"explore": {
+		"type": "string",
+		"value": "Изследване"
+	},
+	"notifications": {
+		"type": "string",
+		"value": "Известия"
+	},
+	"messages": {
+		"type": "string",
+		"value": "Съобщения"
+	},
+	"grok": {
+		"type": "string",
+		"value": "Grok"
+	},
+	"bookmarks": {
+		"type": "string",
+		"value": "Отметки"
+	},
+	"jobs": {
+		"type": "string",
+		"value": "Кариери"
+	},
+	"communities": {
+		"type": "string",
+		"value": "Общност"
+	},
+	"premium": {
+		"type": "string",
+		"value": "Premium"
+	},
+	"verifiedOrg": {
+		"type": "string",
+		"value": "Потвърдени организации"
+	},
+	"profile": {
+		"type": "string",
+		"value": "Моят профил"
+	},
+	"lists": {
+		"type": "string",
+		"value": "Списък"
+	},
+	"monetization": {
+		"type": "string",
+		"value": "Монетизация"
+	},
+	"ads": {
+		"type": "string",
+		"value": "Реклами"
+	},
+	"createYourSpace": {
+		"type": "string",
+		"value": "Създаване на твоя зала"
+	},
+	"settingsAndPrivacy": {
+		"type": "string",
+		"value": "Настройки и поверителност"
+	},
+	"moreMenu": {
+		"type": "string",
+		"value": "Още"
+	},
+	"addAnExistingAccount": {
+		"type": "string",
+		"value": "Добавяне на съществуващ профил"
+	},
+	"manageAccounts": {
+		"type": "string",
+		"value": "Управление на профилите"
+	},
+	"switchToAccount": {
+		"type": "webI18nFunction",
+		"arguments": ["screenName"],
+		"value": "Превключване към @{{screenName}}"
+	},
+	"postTweet": {
+		"type": "string",
+		"value": "Публикуване"
+	},
+	"settings": {
+		"type": "string",
+		"value": "Настройки"
+	},
+	"now": {
+		"type": "string",
+		"value": "Сега"
+	},
+	"day": {
+		"type": "string",
+		"value": "Ден"
+	},
+	"month": {
+		"type": "string",
+		"value": "Месец"
+	},
+	"year": {
+		"type": "string",
+		"value": "Година"
+	},
+	"january": {
+		"type": "string",
+		"value": "януари"
+	},
+	"february": {
+		"type": "string",
+		"value": "февруари"
+	},
+	"march": {
+		"type": "string",
+		"value": "март"
+	},
+	"april": {
+		"type": "string",
+		"value": "април"
+	},
+	"may": {
+		"type": "string",
+		"value": "май"
+	},
+	"june": {
+		"type": "string",
+		"value": "юни"
+	},
+	"july": {
+		"type": "string",
+		"value": "юли"
+	},
+	"august": {
+		"type": "string",
+		"value": "август"
+	},
+	"september": {
+		"type": "string",
+		"value": "септември"
+	},
+	"october": {
+		"type": "string",
+		"value": "октомври"
+	},
+	"november": {
+		"type": "string",
+		"value": "ноември"
+	},
+	"december": {
+		"type": "string",
+		"value": "декември"
+	}
+}

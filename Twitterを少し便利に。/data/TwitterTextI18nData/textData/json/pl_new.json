@@ -1,0 +1,254 @@
+{
+	"forYouTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "Dla Ciebie{{noun}}"
+	},
+	"followingTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "Obserwujesz{{noun}}"
+	},
+	"pinnedListsModuleHeader": {
+		"type": "string",
+		"value": "Przypięte"
+	},
+	"tweetsRetweeted": {
+		"type": "apkI18nTemplateFunction",
+		"value": "Użytkownik %s podał dalej"
+	},
+	"retweet": {
+		"type": "string",
+		"value": "Podaj dalej wpis"
+	},
+	"unDoRetweet": {
+		"type": "string",
+		"value": "Cofnij podanie dalej wpisu"
+	},
+	"quoteTweet": {
+		"type": "string",
+		"value": "Cytuj"
+	},
+	"profileTabTitleTimeline": {
+		"type": "string",
+		"value": "Wpisy"
+	},
+	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {
+		"type": "string",
+		"value": "Odpowiedzi"
+	},
+	"profileTabTitleHighlights": {
+		"type": "string",
+		"value": "Najciekawsze"
+	},
+	"profileTabTitleMedia": {
+		"type": "string",
+		"value": "Multimedia"
+	},
+	"profileTabTitleLikes": {
+		"type": "string",
+		"value": "Polubienia"
+	},
+	"following": {
+		"type": "string",
+		"value": "Obserwujesz"
+	},
+	"unfollow": {
+		"type": "string",
+		"value": "Przestań obserwować"
+	},
+	"blocked": {
+		"type": "string",
+		"value": "Zablokowano"
+	},
+	"unblock": {
+		"type": "string",
+		"value": "Odblokuj"
+	},
+	"joinDateFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["joinDate"],
+		"value": "Dołączył/a {{joinDate}}"
+	},
+	"followedBy1": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Obserwowanyprzez:"]
+	},
+	"followedBy2": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Obserwowanyprzez:","i"]
+	},
+	"followedBy3": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Obserwowanyprzez:",",","i"]
+	},
+	"followedByLots": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Obserwowanyprzez",",","i","innychużytkowników.którychobserwujesz"]
+	},
+	"postedTweetsNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}wpis"]
+	},
+	"likesNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}"]
+	},
+	"mediaNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}zdję"]
+	},
+	"home": {
+		"type": "string",
+		"value": "Główna"
+	},
+	"explore": {
+		"type": "string",
+		"value": "Przeglądaj"
+	},
+	"notifications": {
+		"type": "string",
+		"value": "Powiadomienia"
+	},
+	"messages": {
+		"type": "string",
+		"value": "Wiadomości"
+	},
+	"grok": {
+		"type": "string",
+		"value": "Grok"
+	},
+	"bookmarks": {
+		"type": "string",
+		"value": "Zakładki"
+	},
+	"jobs": {
+		"type": "string",
+		"value": "Oferty pracy"
+	},
+	"communities": {
+		"type": "string",
+		"value": "Grupa dyskusyjna"
+	},
+	"premium": {
+		"type": "string",
+		"value": "Premium"
+	},
+	"verifiedOrg": {
+		"type": "string",
+		"value": "Zweryfikowane Organizacje"
+	},
+	"profile": {
+		"type": "string",
+		"value": "Mój profil"
+	},
+	"lists": {
+		"type": "string",
+		"value": "Lista"
+	},
+	"monetization": {
+		"type": "string",
+		"value": "Monetyzacja"
+	},
+	"ads": {
+		"type": "string",
+		"value": "Reklamy"
+	},
+	"createYourSpace": {
+		"type": "string",
+		"value": "Utwórz Pokój"
+	},
+	"settingsAndPrivacy": {
+		"type": "string",
+		"value": "Ustawienia i prywatność"
+	},
+	"moreMenu": {
+		"type": "string",
+		"value": "Więcej"
+	},
+	"addAnExistingAccount": {
+		"type": "string",
+		"value": "Dodaj istniejące konto"
+	},
+	"manageAccounts": {
+		"type": "string",
+		"value": "Zarządzaj kontami"
+	},
+	"switchToAccount": {
+		"type": "webI18nFunction",
+		"arguments": ["screenName"],
+		"value": "Przełącz na konto @{{screenName}}"
+	},
+	"postTweet": {
+		"type": "string",
+		"value": "Opublikuj"
+	},
+	"settings": {
+		"type": "string",
+		"value": "Ustawienia"
+	},
+	"now": {
+		"type": "string",
+		"value": "Teraz"
+	},
+	"day": {
+		"type": "string",
+		"value": "Dzień"
+	},
+	"month": {
+		"type": "string",
+		"value": "Miesiąc"
+	},
+	"year": {
+		"type": "string",
+		"value": "Rok"
+	},
+	"january": {
+		"type": "string",
+		"value": "styczeń"
+	},
+	"february": {
+		"type": "string",
+		"value": "luty"
+	},
+	"march": {
+		"type": "string",
+		"value": "marzec"
+	},
+	"april": {
+		"type": "string",
+		"value": "kwiecień"
+	},
+	"may": {
+		"type": "string",
+		"value": "maj"
+	},
+	"june": {
+		"type": "string",
+		"value": "czerwiec"
+	},
+	"july": {
+		"type": "string",
+		"value": "lipiec"
+	},
+	"august": {
+		"type": "string",
+		"value": "sierpień"
+	},
+	"september": {
+		"type": "string",
+		"value": "wrzesień"
+	},
+	"october": {
+		"type": "string",
+		"value": "październik"
+	},
+	"november": {
+		"type": "string",
+		"value": "listopad"
+	},
+	"december": {
+		"type": "string",
+		"value": "grudzień"
+	}
+}

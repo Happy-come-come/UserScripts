@@ -1,0 +1,254 @@
+{
+	"forYouTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "Для вас{{noun}}"
+	},
+	"followingTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "Стрічка підписок{{noun}}"
+	},
+	"pinnedListsModuleHeader": {
+		"type": "string",
+		"value": "Закріплені"
+	},
+	"tweetsRetweeted": {
+		"type": "apkI18nTemplateFunction",
+		"value": "%s ретвітнув(ла)"
+	},
+	"retweet": {
+		"type": "string",
+		"value": "Ретвітнути"
+	},
+	"unDoRetweet": {
+		"type": "string",
+		"value": "Скасувати ретвіт"
+	},
+	"quoteTweet": {
+		"type": "string",
+		"value": "Цитувати твіт"
+	},
+	"profileTabTitleTimeline": {
+		"type": "string",
+		"value": "Твіти"
+	},
+	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {
+		"type": "string",
+		"value": "Відповіді"
+	},
+	"profileTabTitleHighlights": {
+		"type": "string",
+		"value": "Вибране"
+	},
+	"profileTabTitleMedia": {
+		"type": "string",
+		"value": "Медіафайли"
+	},
+	"profileTabTitleLikes": {
+		"type": "string",
+		"value": "Вподобання"
+	},
+	"following": {
+		"type": "string",
+		"value": "Стрічка"
+	},
+	"unfollow": {
+		"type": "string",
+		"value": "Не читати"
+	},
+	"blocked": {
+		"type": "string",
+		"value": "Заблоковано"
+	},
+	"unblock": {
+		"type": "string",
+		"value": "Розблокувати"
+	},
+	"joinDateFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["joinDate"],
+		"value": "Дата приєднання: {{joinDate}}"
+	},
+	"followedBy1": {
+		"type": "webI18nTemplateFunction",
+		"value": ["","читає"]
+	},
+	"followedBy2": {
+		"type": "webI18nTemplateFunction",
+		"value": ["","і","читають"]
+	},
+	"followedBy3": {
+		"type": "webI18nTemplateFunction",
+		"value": ["",",","і","читають"]
+	},
+	"followedByLots": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Читають",",","іще","з-поміжтих,коговичитаєте"]
+	},
+	"postedTweetsNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}Твіт"]
+	},
+	"likesNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}Уподобан"]
+	},
+	"mediaNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}фотойвідео"]
+	},
+	"home": {
+		"type": "string",
+		"value": "Головна"
+	},
+	"explore": {
+		"type": "string",
+		"value": "Ознайомлення"
+	},
+	"notifications": {
+		"type": "string",
+		"value": "Сповіщення"
+	},
+	"messages": {
+		"type": "string",
+		"value": "Повідомлення"
+	},
+	"grok": {
+		"type": "string",
+		"value": "Grok"
+	},
+	"bookmarks": {
+		"type": "string",
+		"value": "Закладки"
+	},
+	"jobs": {
+		"type": "string",
+		"value": "Вакансії"
+	},
+	"communities": {
+		"type": "string",
+		"value": "Спільнота"
+	},
+	"premium": {
+		"type": "string",
+		"value": "Premium"
+	},
+	"verifiedOrg": {
+		"type": "string",
+		"value": "Підтверджені організації"
+	},
+	"profile": {
+		"type": "string",
+		"value": "Мій профіль"
+	},
+	"lists": {
+		"type": "string",
+		"value": "Список"
+	},
+	"monetization": {
+		"type": "string",
+		"value": "Монетизація"
+	},
+	"ads": {
+		"type": "string",
+		"value": "Реклама"
+	},
+	"createYourSpace": {
+		"type": "string",
+		"value": "Створіть власний простір"
+	},
+	"settingsAndPrivacy": {
+		"type": "string",
+		"value": "Налаштування та конфіденційність"
+	},
+	"moreMenu": {
+		"type": "string",
+		"value": "Інші дії"
+	},
+	"addAnExistingAccount": {
+		"type": "string",
+		"value": "Додати наявний профіль"
+	},
+	"manageAccounts": {
+		"type": "string",
+		"value": "Керувати профілями"
+	},
+	"switchToAccount": {
+		"type": "webI18nFunction",
+		"arguments": ["screenName"],
+		"value": "Переключитися на @{{screenName}}"
+	},
+	"postTweet": {
+		"type": "string",
+		"value": "Твітнути"
+	},
+	"settings": {
+		"type": "string",
+		"value": "Налаштування"
+	},
+	"now": {
+		"type": "string",
+		"value": "Зараз"
+	},
+	"day": {
+		"type": "string",
+		"value": "День"
+	},
+	"month": {
+		"type": "string",
+		"value": "Місяць"
+	},
+	"year": {
+		"type": "string",
+		"value": "Рік"
+	},
+	"january": {
+		"type": "string",
+		"value": "Січень"
+	},
+	"february": {
+		"type": "string",
+		"value": "Лютий"
+	},
+	"march": {
+		"type": "string",
+		"value": "Березень"
+	},
+	"april": {
+		"type": "string",
+		"value": "Квітень"
+	},
+	"may": {
+		"type": "string",
+		"value": "Травень"
+	},
+	"june": {
+		"type": "string",
+		"value": "Червень"
+	},
+	"july": {
+		"type": "string",
+		"value": "Липень"
+	},
+	"august": {
+		"type": "string",
+		"value": "Серпень"
+	},
+	"september": {
+		"type": "string",
+		"value": "Вересень"
+	},
+	"october": {
+		"type": "string",
+		"value": "Жовтень"
+	},
+	"november": {
+		"type": "string",
+		"value": "Листопад"
+	},
+	"december": {
+		"type": "string",
+		"value": "Грудень"
+	}
+}

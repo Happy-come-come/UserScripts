@@ -1,0 +1,218 @@
+{
+	"forYouTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "آپ کے لیے{{noun}}"
+	},
+	"followingTab": {
+		"type": "webI18nFunction",
+		"arguments": ["noun"],
+		"value": "فالو کر رہا ہے{{noun}}"
+	},
+	"retweet": {
+		"type": "string",
+		"value": "Repost"
+	},
+	"unDoRetweet": {
+		"type": "string",
+		"value": "Undo repost"
+	},
+	"following": {
+		"type": "string",
+		"value": "فالو کر رہے ہیں"
+	},
+	"unfollow": {
+		"type": "string",
+		"value": "ان فالو کریں"
+	},
+	"blocked": {
+		"type": "string",
+		"value": "بلاک شدہ"
+	},
+	"unblock": {
+		"type": "string",
+		"value": "ان بلاک کریں"
+	},
+	"joinDateFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["joinDate"],
+		"value": "{{joinDate}} میں شامل ہوئے"
+	},
+	"followedBy1": {
+		"type": "webI18nTemplateFunction",
+		"value": ["","کےذریعہفالوکردہ"]
+	},
+	"followedBy2": {
+		"type": "webI18nTemplateFunction",
+		"value": ["","اور","کیجانبسےفالوکردہ"]
+	},
+	"followedBy3": {
+		"type": "webI18nTemplateFunction",
+		"value": ["","،","،اور","کیجانبسےفالوکردہ"]
+	},
+	"followedByLots": {
+		"type": "webI18nTemplateFunction",
+		"value": ["","،","،اور","دیگرجنہیںآپفالوکرتےہیںکیجانبسےفالوکردہ"]
+	},
+	"postedTweetsNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}post"]
+	},
+	"likesNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}لائک"]
+	},
+	"mediaNum": {
+		"type": "webI18nTemplateFunction",
+		"value": ["{{formattedCount}}photos&videos"]
+	},
+	"home": {
+		"type": "string",
+		"value": "ہوم"
+	},
+	"explore": {
+		"type": "string",
+		"value": "دریافت کریں"
+	},
+	"notifications": {
+		"type": "string",
+		"value": "اطلاعات"
+	},
+	"messages": {
+		"type": "string",
+		"value": "پیغامات"
+	},
+	"grok": {
+		"type": "string",
+		"value": "Grok"
+	},
+	"bookmarks": {
+		"type": "string",
+		"value": "بُک مارکس"
+	},
+	"jobs": {
+		"type": "string",
+		"value": "Jobs"
+	},
+	"communities": {
+		"type": "string",
+		"value": "کمیونٹی"
+	},
+	"premium": {
+		"type": "string",
+		"value": "Premium"
+	},
+	"verifiedOrg": {
+		"type": "string",
+		"value": "Verified Orgs"
+	},
+	"profile": {
+		"type": "string",
+		"value": "میری پروفائل"
+	},
+	"lists": {
+		"type": "string",
+		"value": "فہرست"
+	},
+	"monetization": {
+		"type": "string",
+		"value": "پیسہ کمانا"
+	},
+	"ads": {
+		"type": "string",
+		"value": "اشتہارات"
+	},
+	"createYourSpace": {
+		"type": "string",
+		"value": "Create your Space"
+	},
+	"settingsAndPrivacy": {
+		"type": "string",
+		"value": "ترتیبات اور رازداری"
+	},
+	"moreMenu": {
+		"type": "string",
+		"value": "مزید"
+	},
+	"addAnExistingAccount": {
+		"type": "string",
+		"value": "ایک موجودہ اکاؤنٹ شامل کریں"
+	},
+	"manageAccounts": {
+		"type": "string",
+		"value": "اکاؤنٹس کا نظم کریں"
+	},
+	"switchToAccount": {
+		"type": "webI18nFunction",
+		"arguments": ["screenName"],
+		"value": "@{{screenName}} پر سوئچ کریں"
+	},
+	"settings": {
+		"type": "string",
+		"value": "سیٹنگز"
+	},
+	"now": {
+		"type": "string",
+		"value": "اب"
+	},
+	"day": {
+		"type": "string",
+		"value": "دن"
+	},
+	"month": {
+		"type": "string",
+		"value": "مہینہ"
+	},
+	"year": {
+		"type": "string",
+		"value": "سال"
+	},
+	"january": {
+		"type": "string",
+		"value": "جنوری"
+	},
+	"february": {
+		"type": "string",
+		"value": "فروری"
+	},
+	"march": {
+		"type": "string",
+		"value": "مارچ"
+	},
+	"april": {
+		"type": "string",
+		"value": "اپریل"
+	},
+	"may": {
+		"type": "string",
+		"value": "مئی"
+	},
+	"june": {
+		"type": "string",
+		"value": "جون"
+	},
+	"july": {
+		"type": "string",
+		"value": "جولائی"
+	},
+	"august": {
+		"type": "string",
+		"value": "اگست"
+	},
+	"september": {
+		"type": "string",
+		"value": "ستمبر"
+	},
+	"october": {
+		"type": "string",
+		"value": "اکتوبر"
+	},
+	"november": {
+		"type": "string",
+		"value": "نومبر"
+	},
+	"december": {
+		"type": "string",
+		"value": "دسمبر"
+	}
+}
