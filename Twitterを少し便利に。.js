@@ -9071,8 +9071,8 @@
 				this.#textData = this.#testData;
 				this.#isReady = true;
 				return;
-			}else if(storedData[lang]?.[type]?.jsText && storedData?.[lang]?.[type]?.dataVersion === this.#version){
-				jsonTextData = storedData[lang][type].jsText;
+			}else if(storedData[lang]?.[type]?.jsonText && storedData?.[lang]?.[type]?.dataVersion === this.#version){
+				jsonTextData = storedData[lang][type].jsonText;
 			}else{
 				const jsonTextDataBaseUrl = `https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/data/TwitterTextI18nData/textData/json/`
 				jsonTextData = await request({url: `${jsonTextDataBaseUrl}${lang}_${type}.json`, method: 'GET', respType: 'text'});
