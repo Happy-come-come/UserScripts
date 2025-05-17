@@ -1636,13 +1636,6 @@
 		//const thisFunctionText = envText.customizeMenuButton;
 		const moreMenuButton = await waitElementAndGet({query: 'button[data-testid="AppTabBar_More_Menu"]', searchFunction: 'querySelector', interval: 100, retry: 10});
 		if(!moreMenuButton)return;
-		const buttonElementTemplate = moreMenuButton.cloneNode(true);
-		const elementToClone = document.createElement('a');
-		elementToClone.style = buttonElementTemplate.style.cssText;
-		elementToClone.className = buttonElementTemplate.className;
-		while(buttonElementTemplate.firstChild){
-			elementToClone.appendChild(buttonElementTemplate.firstChild);
-		}
 		const appTabBar = moreMenuButton.parentNode;
 		let breaking = false;
 		if(!sessionData.customizeMenuButton.observer){
@@ -1754,6 +1747,15 @@
 					"text": thisScriptSettings.shortCutButton4DisplayName,
 				},
 			};
+
+			const buttonElementTemplate = moreMenuButton.cloneNode(true);
+			const elementToClone = document.createElement('a');
+			elementToClone.style = buttonElementTemplate.style.cssText;
+			elementToClone.className = buttonElementTemplate.className;
+			while(buttonElementTemplate.firstChild){
+				elementToClone.appendChild(buttonElementTemplate.firstChild);
+			}
+
 			for(let i=0; i < thisScriptSettings.buttonSorting?.length || 0; i++){
 				const key = thisScriptSettings.buttonSorting[i];
 				const option = options[key];
@@ -1782,7 +1784,7 @@
 				const button = elementToClone.cloneNode(true);
 
 				const buttonText = button.querySelector('span');
-				if(buttonText.innerText)buttonText.innerText = option.text;
+				if(buttonText?.innerText)buttonText.innerText = option.text;
 				button.setAttribute('aria-label', key);
 				button.setAttribute('customizeMenuButtonChecked', 'true');
 				button.target = "_blank";
