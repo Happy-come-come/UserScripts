@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.0.1
+// @version			2.3.0.2
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -4902,7 +4902,7 @@
 		* @param {number} [darkMode] - テーマ番号 (0=デフォルト, 1=ダークブルー, 2=ブラック) (省略時は現在のテーマ)
 		* @returns {string} - 色のRGB文字列 (例: "rgb(255,255,255)")
 		*/
-		get(colorName, darkMode = sessionData.themeMode?.themeNum || getCookie('night_mode')){
+		get(colorName, darkMode = sessionData.themeMode?.themeNum ?? getCookie('night_mode') ?? 0){
 			return this.colors[colorName][darkMode];
 		}
 
@@ -4913,7 +4913,7 @@
 		* @param {number} [darkMode] - テーマ番号（0=デフォルト, 1=ダークブルー, 2=ブラック) (省略時は現在のテーマ)
 		* @returns {string} - RGBA文字列 (例: "rgba(255,255,255,1.0)")
 		*/
-		getWithAlpha(colorName, alpha, darkMode = sessionData.themeMode?.themeNum || getCookie('night_mode')){
+		getWithAlpha(colorName, alpha, darkMode = sessionData.themeMode?.themeNum ?? getCookie('night_mode') ?? 0){
 			return `rgba(${this.colors[colorName][darkMode].match(/\d+/g).join(", ")}, ${alpha})`;
 		}
 	}
@@ -8303,7 +8303,7 @@
 			const endpointData = this.#graphqlApiEndpoints[endpoint];
 			if(!endpointData || tweetId === undefined)throw new Error("Invalid endpoint or tweetId");
 			const headers = await this.#generateHeaders(endpointData.uri, 'POST');
-			const body = `{"variables": {"tweet_id": "${tweetId}"}, "queryId": "${endpointData.uri.split('/').pop()}"}`;
+			const body = `{"variables": {"tweet_id": "${tweetId}"}, "queryId": "${endpointData.uri.split('/')[1]}"}`;
 			const requestObj = {url: `${this.#graphqlApiUri}${endpointData.uri}`, method: 'POST', body: body, headers: headers, onlyResponse: false, dontUseGenericHeaders: true, maxRetries: 1};
 			const response = await this.#_request(requestObj, endpoint);
 			return (response.status === 200);
@@ -8666,7 +8666,7 @@
 				newContents: {contents: {}, contentsList: [], contentsBySortIndex: {}, rawData: {}},
 				cursor: {top: {entryId: null, sortIndex: null, value: null}, bottom: {entryId: null, sortIndex: null, value: null}},
 			};
-		  }
+		}
 
 		// challenge 情報を取得
 		async #getChallengeData(force = false){
@@ -8728,7 +8728,7 @@
 		#uuidV4(){
 			const uuid = new Array(36);
 			for(let i = 0; i < 36; i++){
-			  uuid[i] = Math.floor(Math.random() * 16);
+			uuid[i] = Math.floor(Math.random() * 16);
 			}
 			uuid[14] = 4; // set bits 12-15 of time-high-and-version to 0100
 			uuid[19] = uuid[19] &= ~(1 << 2); // set bit 6 of clock-seq-and-reserved to zero
