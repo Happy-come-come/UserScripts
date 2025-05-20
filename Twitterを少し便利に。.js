@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.0.3
+// @version			2.3.0.4
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -2022,33 +2022,21 @@
 		return match ? match[0].split('/')[3] : null;
 	}
 
-
 	async function fetchUserData(){
 		if(sessionData.userData?.screenName !== undefined)return sessionData.userData;
-		/*
-		// 「x-client-transaction-id」を取得するのは難しいので、一旦保留
-		const headers = {
-			"authorization": "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA",
-			"x-csrf-token": getCookie('ct0'),
-			'x-client-transaction-id': '',
-		};
-		const response = await request({url: `https://api.x.com/1.1/account/settings.json?include_ext_sharing_audiospaces_listening_data_with_followers=true&include_mention_filter=true&include_nsfw_user_flag=true&include_nsfw_admin_flag=true&include_ranked_timeline=true&include_alt_text_compose=true&ext=ssoConnections&include_country_code=true&include_ext_dm_nsfw_media_filter=true`, method: 'GET', headers: headers});
-		const screenName = response.screen_name;
-		const countryCode = response.country_code;
-		const language = response.language;
-		*/
-		const script = Array.from(await waitElementAndGet({query: `script`, searchFunction: 'querySelectorAll', searchPlace: document.body})).find(s => {
-			return s.innerText.match(/\"remote\"\:{\"settings\":.*\"settings_metadata\"\:\{\}\}/);
-		});
-		const settingsJson = `${script.innerText.match(/\{\"settings\":.*\"settings_metadata\"\:\{\}\}/)[0]}}`;
-		const settings = JSON.parse(settingsJson).settings;
-		const screenName = settings.screen_name;
-		const countryCode = settings.country_code;
-		const language = settings.language;
+		let settings = await twitterApi.getAccountSettings({include_country_code: true});
+		if(!settings){
+			const script = Array.from(await waitElementAndGet({query: `script`, searchFunction: 'querySelectorAll', searchPlace: document.body})).find(s => {
+				return s.innerText.match(/\"remote\"\:{\"settings\":.*\"settings_metadata\"\:\{\}\}/);
+			});
+			const settingsJson = `${script.innerText.match(/\{\"settings\":.*\"settings_metadata\"\:\{\}\}/)[0]}}`;
+			settings = JSON.parse(settingsJson).settings;
+		}
 		sessionData.userData = {
-			screenName: screenName,
-			countryCode: countryCode,
-			language: language
+			screenName: settings.screen_name,
+			countryCode: settings.country_code,
+			language: settings.language,
+			protected: settings.protected,
 		};
 		return sessionData.userData;
 	}
