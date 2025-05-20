@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.0.2
+// @version			2.3.0.3
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -7463,7 +7463,9 @@
 		*/
 		#challengeData;
 		#graphqlApiUri;
+		#oldApiUri;
 		#graphqlApiEndpoints;
+		#oldApiEndpoints;
 		#endpointsAliases;
 		#requestHeadersTemplate;
 		#graphqlFeatures;
@@ -7475,6 +7477,7 @@
 		#pendingTweetRequests = {};
 		#pendingUserRequests = {};
 		#pendingTLRequests = {};
+		#pendingOldApiRequests = {};
 		#apiRateLimit = {};
 		#classSettings = {};
 		tweetsData = {};
@@ -7599,6 +7602,15 @@
 				deleteRetweet: 'DeleteRetweet',
 				bookmark: 'CreateBookmark',
 				deleteBookmark: 'DeleteBookmark',
+			};
+			this.#oldApiUri = `https://${window.location.hostname}/i/api/1.1`;
+			this.#oldApiEndpoints = {
+				account: {
+					"settings.json": {
+						method: ['GET'],
+						uri: '/account/settings.json',
+					}
+				}
 			};
 			this.#challengeData = {verificationCode: null, challengeCode: null, challengeJsCode: null, challengeAnimationSvgCodes: [], expires: null};
 			this.#apiRateLimit = Object.keys(this.#graphqlApiEndpoints).reduce((acc, key) => {
@@ -8281,12 +8293,45 @@
 				dontUseGenericHeaders: true,
 				maxRetries: 1
 			};
-			const request = await this.#_request(requestObj, this.#graphqlApiEndpoints.ListTimeline.uri);
+			const response = await this.#_request(requestObj, this.#graphqlApiEndpoints.ListTimeline.uri);
 			this.#updateApiRateLimit(response, 'ListTimeline');
 			const instructions = response.response.data.list.result.timeline.timeline.instructions;
 			const TimelineAddEntries = instructions.find(element => element.type === 'TimelineAddEntries');
 			const timelineData = (instructions[0]?.moduleItems || []).concat(TimelineAddEntries.entries[0]?.content?.items || []).concat(TimelineAddEntries.entries);
 			return {...(await this.#processTimeline({entries: timelineData, type: 'lists', place: place})), apiRateLimit: this.#apiRateLimit.ListTimeline};
+		}
+
+		async getAccountSettings(parameter = {}){
+			if(this.#pendingOldApiRequests.account?.settings){
+				return await this.#pendingOldApiRequests.account.settings;
+			}
+			/*
+			if(this.#apiRateLimit.account?.setting?.remaining === 0 && this.#apiRateLimit.account?.setting?.resetDate?.getTime() > Date.now()){
+				console.error({error: "[TwitterApi] AccountSetting API rate limit exceeded", resetDate: this.#apiRateLimit.account.setting.resetDate});
+				throw new Error(this.#RateLimitExceeded);
+			}
+			*/
+			if(!this.#pendingOldApiRequests.account)this.#pendingOldApiRequests.account = {};
+			this.#pendingOldApiRequests.account.settings = this.#_getAccountSettings(parameter);
+			try{
+				const result = await this.#pendingOldApiRequests.account.settings;
+				return result;
+			}finally{
+				delete this.#pendingOldApiRequests.account.settings;
+			}
+		}
+		async #_getAccountSettings(parameter){
+			const params = new URLSearchParams(parameter).toString();
+			const requestObj = {
+				url: `${this.#oldApiUri}${this.#oldApiEndpoints.account["settings.json"].uri}${params ? `?${params}` : ""}`,
+				method: 'GET',
+				onlyResponse: false,
+				dontUseGenericHeaders: true,
+				maxRetries: 1
+			};
+			const response = await this.#_request(requestObj, this.#oldApiEndpoints.account["settings.json"].uri, "1.1", true);
+			if(!response.response)return null;
+			return response.response;
 		}
 
 		// FavoriteTweet(favorite), UnfavoriteTweet(unfavorite), CreateRetweet(retweet), DeleteRetweet(deleteRetweet), CreateBookmark(bookmark), DeleteBookmark(deleteBookmark)
@@ -8555,8 +8600,8 @@
 			return timelineTarget;
 		}
 
-		async #generateHeaders(endpoint, method){
-			const id = await this.getXctid("/i/api/graphql" + endpoint, method);
+		async #generateHeaders(endpoint, method, apiType = 'graphql'){
+			const id = await this.getXctid(apiType === 'graphql' ? "/i/api/graphql" : `/i/api/${apiType}` + endpoint, method);
 			const headers = id ? Object.assign({
 				'x-client-transaction-id': id,
 			}, this.#requestHeadersTemplate) : this.#requestHeadersTemplate;
@@ -8594,7 +8639,7 @@
 			return cursorObj?.value ?? null;
 		}
 
-		async #_request(optionObj, endpoint){
+		async #_request(optionObj, endpoint, type = 'graphql', noApiRateLimit = false){
 			if(this.#resetTransactionIdSolverTimes >= 5){
 				console.error("[TwitterApi] Too many transactionIdSolver reset attempts. Please check your network connection or try again later.");
 				throw new Error("TransactionIdSolver is not working");
@@ -8602,9 +8647,9 @@
 			let retryCount = 0;
 			while(retryCount <= 5 && this.#resetTransactionIdSolverTimes < 5){
 				try{
-					const headers = await this.#generateHeaders(endpoint, optionObj.method);
+					const headers = await this.#generateHeaders(endpoint, optionObj.method, type);
 					const response = await request({...optionObj, headers});
-					this.#updateApiRateLimit(response, endpoint);
+					if(!noApiRateLimit)this.#updateApiRateLimit(response, endpoint);
 					return response;
 				}catch(e){
 					console.error(e);
@@ -8613,7 +8658,7 @@
 						this.#challengeData = null;
 						this.#transactionIdSolver = null;
 					}else{
-						if(e.error?.response)this.#updateApiRateLimit(e.error.response, endpoint);
+						if(e.error?.response && !noApiRateLimit)this.#updateApiRateLimit(e.error.response, endpoint);
 						return null;
 					}
 				}
