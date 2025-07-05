@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.0.4
+// @version			2.3.0.5
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -4142,7 +4142,7 @@
 			const page = createSettingsPageTemplate(settingsTarget.targetName);
 			const settingEntries = [
 				{type: 'text', text: settingText.copyDomain, size: "2.5em", weight: "400", position: "left", isHTML: false},
-				{id: 'domain', type: 'dropdown', option: ['twitter.com', 'x.com', 'vxtwitter.com', 'ohter'].map(key => ({value: key, displayName: key}))},
+				{id: 'domain', type: 'dropdown', option: ['twitter.com', 'x.com', 'vxtwitter.com', 'other'].map(key => ({value: key, displayName: key}))},
 				{type: 'text', text: settingText.customDomain, size: "2.0em", weight: "400", position: "left", isHTML: false},
 				{id: 'otherDomain', type: 'textBox'}
 
