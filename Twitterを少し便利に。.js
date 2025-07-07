@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.0.5
+// @version			2.3.1.0
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -45,6 +45,7 @@
 // @grant			GM_registerMenuCommand
 // @grant			GM_info
 // @grant			GM_addElement
+// @grant			unsafeWindow
 // @license			MIT
 // @run-at			document-idle
 // ==/UserScript==
@@ -1976,40 +1977,13 @@
 		setTimeout(() => {updating = false;}, 600);
 	}
 
-	async function navigateTo(uri, state = {}){
-		// 非常に怪しい処理だが
-		// dispatchEventするためにはページ本来のwindowにアクセスする必要がある
-		// unsafeWindowはなるべく使わない予定なのでこうなった
+	function navigateTo(uri, state = {}){
+		// manifest v3ではdispatchEventではpopstateイベントが発火しないため、unsafeWindowを使用するように変更
+		// セキュリティリスクがあるため、注意が必要
+		// unsafeWindowはなるべく使いたくはなかったが、現状の仕様ではこれが最善の方法だと信じている
 		if(new URL(currentUrl, location.origin)?.pathname === new URL(uri, location.origin)?.pathname)return;
-		if(!sessionData.navigateToEventAdded){
-			if(!sessionData.addCustomEventPromise){
-				sessionData.addCustomEventPromise = addCustomEvent()
-					.finally(() => sessionData.addCustomEventPromise = null);
-			}
-			await sessionData.addCustomEventPromise;
-		}
 		history.pushState(state, "", uri);
-		document.dispatchEvent(new CustomEvent("MTLU_CustomNavigate"));
-
-		async function addCustomEvent(){
-			return new Promise(resolve=>{
-				const scriptText = `
-					(() => {
-						document.addEventListener("MTLU_CustomNavigate", (e) => {
-							dispatchEvent(new Event("popstate"));
-						});
-					})();
-				`;
-				const blob = new Blob([scriptText], { type: 'text/javascript' });
-				const blobUrl = URL.createObjectURL(blob);
-				const script = GM_addElement('script',{src:blobUrl, "mtlu-id": "add_custom_navigate_event"});
-				script.onload = () => {
-					sessionData.navigateToEventAdded = true;
-					URL.revokeObjectURL(blobUrl);
-					resolve(true);
-				};
-			});
-		};
+		unsafeWindow.dispatchEvent(new Event("popstate"));
 	}
 
 	function extractTweetId(url){
