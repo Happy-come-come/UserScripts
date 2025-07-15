@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.0
+// @version			2.3.1.1
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -971,7 +971,7 @@
 				if(mediaUrlArray?.length == 0) return;
 				const downloadPromises = mediaUrlArray.map(fetchImage);
 				return removeNullFromArray(await Promise.all(downloadPromises));
-				async function fetchImage(target) {
+				async function fetchImage(target){
 					let retryCount = 5; // リトライ回数を設定
 					while(retryCount > 0){
 						if(!target.url)return;
@@ -1643,14 +1643,15 @@
 			const observer = new MutationObserver(mutations=>{
 				if(breaking || sessionData.customizeMenuButton.isRunning)return;
 				breaking = true;
+				appTabBar.querySelectorAll('[customizemenubuttonchecked="true"]').forEach(e=>e.remove());
 				addAndSort().finally(()=>{
 					sessionData.customizeMenuButton.isRunning = false;
 				});
 				setTimeout(()=>{
 					breaking = false;
-				}, 500);
+				}, 200);
 			});
-			observer.observe(appTabBar, {childList: true, subtree: false});
+			observer.observe(appTabBar, {childList: true, subtree: false, attributes: true});
 			if(!sessionData.customizeMenuButton)sessionData.customizeMenuButton = {};
 			sessionData.customizeMenuButton.observer = observer;
 		}
@@ -3363,8 +3364,8 @@
 			body,
 			anonymous,
 		};
-		let retryCount = 0;
-		while(retryCount <= maxRetries){
+
+		for(let retryCount = 0; retryCount <= maxRetries; retryCount++){
 			try{
 				const response = await new Promise((resolve, reject) => {
 					GM_xmlhttpRequest({
@@ -3427,18 +3428,17 @@
 				});
 				return response;
 			}catch(error){
-				retryCount++;
 				console.warn({
 					error: error,
 					url: requestObject.url,
-					Retry: retryCount,
+					Retry: retryCount + 1,
 					object: requestObject,
 				});
 				if(retryCount === maxRetries){
 					throw({
 						error: error,
 						url: requestObject.url,
-						Retry: retryCount,
+						Retry: retryCount + 1,
 						object: requestObject,
 					});
 				}
