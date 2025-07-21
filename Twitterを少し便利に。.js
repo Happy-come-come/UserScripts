@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.1
+// @version			2.3.1.2
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -838,6 +838,15 @@
 								}
 								break;
 							}
+							if(v.key === 'player_url'){
+								const vmapUrl = v.value.string_value;
+								const vmap = await request({url: vmapUrl, respType: "text", onlyResponse: true});
+								const videoUrl = getHighestBitrateMp4UrlFromVmap(vmap);
+								if(videoUrl){
+									mediaUrls.videos.push({mediaType: "video", url: videoUrl});
+								}
+								break;
+							}
 						}catch(error){
 							console.error({error: error, value: v});
 						}
@@ -1034,13 +1043,14 @@
 				return new Promise(async (resolve) => {
 					//上限は「24117249」だったけどユーザーのアップロード上限が10MBになっちゃったので「10485760」にするかもしれない
 					// 2025/02/13 上限が 「10485760」 になりました。
-					//console.log((await request(new requestObject_binary_head(url))).responseHeaders);
 					const fileSize = await getFileSize(url);
 					if(fileSize < 10485760){
 						return resolve({"files": [{attachment: await request({url: url, respType: "blob", maxRetries: 1}), name: url.split('/').pop()}]});
 					}else{
-						const file = await request({url: url, respType: "blob", maxRetries: 1, headers: {"Range": "bytes=0-24117250"}});
-						if(file.size < 10485760)return resolve({"files": [{attachment: file, name: url.split('/').pop()}]});
+						if(!fileSize){
+							const file = await request({url: url, respType: "blob", maxRetries: 1, headers: {"Range": "bytes=0-10485760"}});
+							if(file.size < 10485760)return resolve({"files": [{attachment: file, name: url.split('/').pop()}]});
+						}
 						return resolve({"content": url});
 					}
 				});
@@ -1380,13 +1390,31 @@
 		targetNode.appendChild(sourceDisplayContainer);
 
 		if(thisScriptSettings.showVideoUrl == false)return;
-		const mediaData = tweetData.legacy?.extended_entities?.media || tweetData.extended_entities?.media;
+		const mediaData = tweetData.legacy?.extended_entities?.media || tweetData.extended_entities?.media || [];
+		if(mediaData.length === 0){
+			const tweetCardData = tweetData.card?.legacy || tweetData.card;
+			if(tweetCardData){
+				for(let i=0; i<tweetCardData.binding_values.length; i++){
+					const v = tweetCardData.binding_values[i];
+					try{
+						if(v.key === 'player_url'){
+							const vmapUrl = v.value.string_value;
+							const vmap = await request({url: vmapUrl, respType: "text", onlyResponse: true});
+							const videoUrl = getHighestBitrateMp4UrlFromVmap(vmap);
+							if(videoUrl){
+								mediaData.push({type: "video", video_info: {variants: [{content_type: "video/mp4", url: videoUrl, bitrate: 0}]}});
+							}
+							break;
+						}
+					}catch(error){}
+				}
+			}
+		}
+		if(mediaData.length === 0)return;
 		const videoUrlElements = mediaData
 			.filter(m => ['video', 'animated_gif'].includes(m.type))
 			.map((m, index) => {
-				const variant = m.video_info.variants
-					.filter(v => v.content_type !== 'application/x-mpegURL')
-					.reduce((a, b) => a.bitrate > b.bitrate ? a : b);
+				let variant = m?.video_info?.variants?.filter(v => v.content_type !== 'application/x-mpegURL')?.reduce((a, b) => a.bitrate > b.bitrate ? a : b);
 				const videoUrlElement = createLinkElement(variant.url.split('?')[0], `${index + 1}: ${m.type} URL`);
 				if(index != 0)videoUrlElement.style.marginLeft = "0.7em";
 				return videoUrlElement;
@@ -2649,6 +2677,32 @@
 				reject(error);
 			}
 		});
+	}
+
+	function getHighestBitrateMp4UrlFromVmap(xmlString){
+		const parser = new DOMParser();
+		const doc = parser.parseFromString(xmlString, "text/xml");
+
+		// ルート要素（VMAPなど）を取得
+		const root = doc.documentElement;
+		// "tw"プレフィックスのURIを取得（nullの場合も考慮）
+		const TW_NS = root.lookupNamespaceURI("tw");
+		if(!TW_NS)return null; // 名前空間が見つからなければ終了
+
+		let variants = doc.getElementsByTagNameNS(TW_NS, "videoVariant");
+		let maxBitrate = -1, maxUrl = null;
+
+		for(let i=0;i<variants.length;i++){
+			const variant = variants[i];
+			const contentType = variant.getAttribute("content_type");
+			const url = variant.getAttribute("url");
+			const bitRate = parseInt(variant.getAttribute("bit_rate") || "0", 10);
+			if(contentType === "video/mp4" && bitRate > maxBitrate){
+				maxBitrate = bitRate;
+				maxUrl = url;
+			}
+		}
+		return maxUrl ? decodeURIComponent(maxUrl) : null;
 	}
 
 	async function addEventToScrollSnapSwipeableList(){
