@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.2
+// @version			2.3.1.3
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -806,50 +806,58 @@
 				const noteTweet = tweetApiData.note_tweet?.note_tweet_results.result;
 				const tweetDataEntities = noteTweet ? noteTweet.entity_set : tweetData.entities;
 				let tweetBodyText = noteTweet ? noteTweet.text : tweetData.full_text;
-				const tweetCardData = tweetApiData.card?.legacy || tweetApiData.card;
+				const tweetCardData = processTweetCardBindingValues(tweetApiData.card?.legacy || tweetApiData.card);
 				let profileImage = (tweetUserData.legacy?.profile_image_url_https || tweetUserData.profile_image_url_https).replace(/(_normal|_x96)\./,'.');
 				profileImage = {url: profileImage, name: `profile_image.${((new URL(profileImage)).searchParams.get('format') || 'jpg')}`};
 				const mediaUrls = makeMediaList(tweetData.extended_entities, sendPages);
 				const files = {};
 				if(tweetCardData){
-					for(let i=0; i<tweetCardData.binding_values.length; i++){
-						const v = tweetCardData.binding_values[i];
-						try{
-							if(v.key === 'broadcast_pre_live_slate' || v.key === 'thumbnail_image_original'){
-								mediaUrls.images.push({mediaType: "photo", url: v.value.image_value.url});
-								break;
-							}
-
-							if(v.key === 'photo_image_full_size_original'){
-								const urlObj = new URL(v.value.image_value.url);
-								if(urlObj.searchParams.get('name')) urlObj.searchParams.set("name", "orig");
-								mediaUrls.images.push({mediaType: "photo", url: urlObj.href});
-								break;
-							}
-
-							if(v.key === 'unified_card'){
-								const json = JSON.parse(v.value.string_value).media_entities;
-								const tmp = makeMediaList({media: Object.values(json)}, [0,1,2,3]);
-								if(tmp.images){
-									mediaUrls.images.push(...tmp.images);
-								}
-								if(tmp.videos){
-									mediaUrls.videos.push(...tmp.videos);
-								}
-								break;
-							}
-							if(v.key === 'player_url'){
-								const vmapUrl = v.value.string_value;
-								const vmap = await request({url: vmapUrl, respType: "text", onlyResponse: true});
-								const videoUrl = getHighestBitrateMp4UrlFromVmap(vmap);
-								if(videoUrl){
-									mediaUrls.videos.push({mediaType: "video", url: videoUrl});
-								}
-								break;
-							}
-						}catch(error){
-							console.error({error: error, value: v});
+					try{
+						const broadcastThumbnail = tweetCardData.broadcast_pre_live_slate || tweetCardData.thumbnail_image_original;
+						if(broadcastThumbnail){
+							mediaUrls.images.push({mediaType: "photo", url: broadcastThumbnail.image_value.url});
 						}
+
+						const photoImage = tweetCardData.photo_image_full_size_original;
+						if(photoImage){
+							const urlObj = new URL(photoImage.image_value.url);
+							if(urlObj.searchParams.get('name'))urlObj.searchParams.set("name", "orig");
+							mediaUrls.images.push({mediaType: "photo", url: urlObj.href});
+						}
+
+						const unifiedCardMedia = tweetCardData.unified_card;
+						if(unifiedCardMedia){
+							const json = JSON.parse(unifiedCardMedia.string_value).media_entities;
+							const tmp = makeMediaList({media: Object.values(json)}, [0,1,2,3]);
+							if(tmp.images){
+								mediaUrls.images.push(...tmp.images);
+							}
+							if(tmp.videos){
+								mediaUrls.videos.push(...tmp.videos);
+							}
+						}
+
+						const coverPlayerStream = tweetCardData.cover_player_stream_url;
+						if(coverPlayerStream){
+							const vmapUrl = coverPlayerStream.string_value;
+							const vmap = await request({url: vmapUrl, respType: "text", onlyResponse: true});
+							const videoUrl = getHighestBitrateMp4UrlFromVmap(vmap);
+							if(videoUrl){
+								mediaUrls.videos.push({mediaType: "video", url: videoUrl});
+							}
+						}
+
+						const playerUrl = tweetCardData.player_url;
+						if(playerUrl){
+							const vmapUrl = playerUrl.string_value;
+							const vmap = await request({url: vmapUrl, respType: "text", onlyResponse: true});
+							const videoUrl = getHighestBitrateMp4UrlFromVmap(vmap);
+							if(videoUrl){
+								mediaUrls.videos.push({mediaType: "video", url: videoUrl});
+							}
+						}
+					}catch(error){
+						console.error({error: error, tweetCardData: tweetCardData});
 					}
 				}
 				const currentTimeMillis = new Date().getTime();
@@ -1392,22 +1400,29 @@
 		if(thisScriptSettings.showVideoUrl == false)return;
 		const mediaData = tweetData.legacy?.extended_entities?.media || tweetData.extended_entities?.media || [];
 		if(mediaData.length === 0){
-			const tweetCardData = tweetData.card?.legacy || tweetData.card;
+			const tweetCardData = processTweetCardBindingValues(tweetData.card?.legacy || tweetData.card);
 			if(tweetCardData){
-				for(let i=0; i<tweetCardData.binding_values.length; i++){
-					const v = tweetCardData.binding_values[i];
-					try{
-						if(v.key === 'player_url'){
-							const vmapUrl = v.value.string_value;
-							const vmap = await request({url: vmapUrl, respType: "text", onlyResponse: true});
-							const videoUrl = getHighestBitrateMp4UrlFromVmap(vmap);
-							if(videoUrl){
-								mediaData.push({type: "video", video_info: {variants: [{content_type: "video/mp4", url: videoUrl, bitrate: 0}]}});
-							}
-							break;
+				try{
+					const coverPlayerStream = tweetCardData.cover_player_stream_url;
+					if(coverPlayerStream){
+						const vmapUrl = coverPlayerStream.string_value;
+						const vmap = await request({url: vmapUrl, respType: "text", onlyResponse: true});
+						const videoUrl = getHighestBitrateMp4UrlFromVmap(vmap);
+						if(videoUrl){
+							mediaData.push({type: "video", video_info: {variants: [{content_type: "video/mp4", url: videoUrl, bitrate: 0}]}});
 						}
-					}catch(error){}
-				}
+					}
+
+					const playerUrl = tweetCardData.player_url;
+					if(playerUrl){
+						const vmapUrl = playerUrl.string_value;
+						const vmap = await request({url: vmapUrl, respType: "text", onlyResponse: true});
+						const videoUrl = getHighestBitrateMp4UrlFromVmap(vmap);
+						if(videoUrl){
+							mediaData.push({type: "video", video_info: {variants: [{content_type: "video/mp4", url: videoUrl, bitrate: 0}]}});
+						}
+					}
+				}catch(error){}
 			}
 		}
 		if(mediaData.length === 0)return;
@@ -2677,6 +2692,15 @@
 				reject(error);
 			}
 		});
+	}
+
+	function processTweetCardBindingValues(card){
+		if(!card || !card.binding_values || !Array.isArray(card.binding_values))return;
+		const values = {};
+		card.binding_values.forEach(v => {
+			values[v.key] = v.value;
+		});
+		return values;
 	}
 
 	function getHighestBitrateMp4UrlFromVmap(xmlString){
