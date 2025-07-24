@@ -427,8 +427,8 @@
 			body,
 			anonymous,
 		};
-		let retryCount = 0;
-		while(retryCount <= maxRetries){
+
+		for(let retryCount = 0; retryCount <= maxRetries; retryCount++){
 			try{
 				const response = await new Promise((resolve, reject) => {
 					GM_xmlhttpRequest({
@@ -491,18 +491,17 @@
 				});
 				return response;
 			}catch(error){
-				retryCount++;
 				console.warn({
 					error: error,
 					url: requestObject.url,
-					Retry: retryCount,
+					Retry: retryCount + 1,
 					object: requestObject,
 				});
 				if(retryCount === maxRetries){
 					throw({
 						error: error,
 						url: requestObject.url,
-						Retry: retryCount,
+						Retry: retryCount + 1,
 						object: requestObject,
 					});
 				}
