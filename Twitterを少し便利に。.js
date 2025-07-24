@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.3
+// @version			2.3.1.4
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -813,20 +813,23 @@
 				const files = {};
 				if(tweetCardData){
 					try{
-						const broadcastThumbnail = tweetCardData.broadcast_pre_live_slate || tweetCardData.thumbnail_image_original;
-						if(broadcastThumbnail){
-							mediaUrls.images.push({mediaType: "photo", url: broadcastThumbnail.image_value.url});
-						}
-
+						let findFlag = 0;
 						const photoImage = tweetCardData.photo_image_full_size_original;
 						if(photoImage){
 							const urlObj = new URL(photoImage.image_value.url);
 							if(urlObj.searchParams.get('name'))urlObj.searchParams.set("name", "orig");
 							mediaUrls.images.push({mediaType: "photo", url: urlObj.href});
+							findFlag++;
+						}
+
+						const broadcastThumbnail = tweetCardData.broadcast_pre_live_slate || tweetCardData.thumbnail_image_original;
+						if(broadcastThumbnail && findFlag === 0){
+							mediaUrls.images.push({mediaType: "photo", url: broadcastThumbnail.image_value.url});
+							findFlag++;
 						}
 
 						const unifiedCardMedia = tweetCardData.unified_card;
-						if(unifiedCardMedia){
+						if(unifiedCardMedia && findFlag === 0){
 							const json = JSON.parse(unifiedCardMedia.string_value).media_entities;
 							const tmp = makeMediaList({media: Object.values(json)}, [0,1,2,3]);
 							if(tmp.images){
