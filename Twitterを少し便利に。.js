@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.4
+// @version			2.3.1.5
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -5590,6 +5590,10 @@
 			article.addEventListener('mouseout', resetBackgroundColor);
 			article.addEventListener('touchend', resetBackgroundColor);
 			article.addEventListener('touchcancel', resetBackgroundColor);
+			article.addEventListener('click', (event)=>{
+				event.stopPropagation();
+				navigateTo(`/${this.data.screenName}/status/${this.data.tweetId}`);
+			});
 			this.nodes.articleBottom = container3;
 			this.nodes.article = article;
 			return article;
@@ -5766,6 +5770,10 @@
 			avatarLink.setAttribute('rel', "noopener nofollow");
 			avatarLink.setAttribute('target', "_blank");
 			avatarLink.className = this.#classNameProcessor("css-175oi2r r-1pi2tsx r-13qz1uu r-o7ynqc r-6416eg r-1ny4l3l r-1loqt21");
+			avatarLink.addEventListener('click', (event)=>{
+				event.preventDefault();
+				navigateTo(`/${screenName}`);
+			});
 			Object.assign(avatarLink.style, {
 				backgroundColor: "rgba(0, 0, 0, 0)",
 			});
@@ -5988,6 +5996,10 @@
 			nameLink.setAttribute('role', "link");
 			nameLink.className = this.#classNameProcessor("css-175oi2r r-1wbh5a2 r-dnmrzs r-1ny4l3l r-1loqt21");
 			nameLink.href = `/${screenName}`;
+			nameLink.addEventListener('click', (event)=>{
+				event.preventDefault();
+				navigateTo(`/${screenName}`);
+			});
 			const nameContainer3 = document.createElement('div');
 			nameContainer3.className = this.#classNameProcessor("css-175oi2r r-1awozwy r-18u37iz r-1wbh5a2 r-dnmrzs");
 			const nameDisplayContainer = document.createElement('div');
