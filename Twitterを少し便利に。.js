@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.6
+// @version			2.3.1.7
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1370,7 +1370,7 @@
 		const tweetData = await twitterApi.getTweet(extractTweetId(currentUrl));
 		const thisScriptSettings = scriptSettings.helloTweetWhereAreYouFrom;
 		if(!targetNode)return;
-		const separatDot = 
+		const separatDot =
 		h("div", {
 				class: "MTLU_container",
 				style: {
@@ -1384,7 +1384,7 @@
 				}
 			)
 		);
-		const sourceDisplayContainer = 
+		const sourceDisplayContainer =
 		h("div", {
 				class: "MTLU_container display_twitter_client",
 				style: {
@@ -1444,7 +1444,7 @@
 						display: "flex",
 						flexDirection: "row",
 					}
-				}, 
+				},
 				videoUrlElements
 			);
 			targetNode.appendChild(videoUrlContainer);
@@ -3071,12 +3071,13 @@
 			async function whenGeneral(targetUrl){
 				const response = await request({url: targetUrl.replace(/^https?/,"https"), respType: 'text'});
 				//debug({url: targetUrl, response:response});
-				const tmpUrl = response.split(/\"|\<|\>/).filter(function(dataStr){return dataStr.match(/^https?:(\/\/(((www|touch)\.)?pixiv\.(net\/([a-z]{2}\/)?((member(_illust)?\.php\?id\=|(users|u|fanbox\/creator)\/)[0-9].*)|me\/.*))|.*\.fanbox\.cc\/?)$/)});
+				const urlRegex = /https?:\/\/(?:www\.|touch\.)?pixiv\.net\/[^\s"'<>\\]+|https?:\/\/[^\s"'<>\\]*\.fanbox\.cc\/?[^\s"'<>\\]*/g;
+				const tmpUrl = (response.match(urlRegex) || []);
 				const pixivUrl = tmpUrl.find(function(element){return element.match(pixivUrlRegex)});
 				if(pixivUrl)return pixivUrl;
 				const fanboxUrl = tmpUrl.find(function(element){return element.match(fanboxUrlRegex)});
 				if(fanboxUrl)return await whenFanbox(fanboxUrl);
-				return null;
+				throw new Error("not found");
 			}
 			async function whenFanbox(targetUrl){
 				if(targetUrl.match(/^https?:\/\/www\.pixiv\.net\/fanbox\/creator\/[0-9]*/))return targetUrl.replace('fanbox/creator', 'users');
@@ -3087,14 +3088,15 @@
 					"Origin": `https://${fanboxName}.fanbox.cc`
 				};
 				const response = await request({url: `https://api.fanbox.cc/creator.get?creatorId=${fanboxName}`, headers: headers, onlyResponse: false});
-				if(response.status == "404")return null;
+				if(response.status == "404")throw new Error("not found");
 				const pixivUrl = findMatchFromArray(response.response.body.profileLinks, pixivUrlRegex, true);
-				return pixivUrl ? pixivUrl : `https://www.pixiv.net/users/${response.response.body.user.userId}`;
+				return (pixivUrl ? pixivUrl : `https://www.pixiv.net/users/${response.response.body.user.userId}`);
 			}
 			async function whenPixivSketch(targetUrl){
 				const response = await request({url: targetUrl});
-				const pixivId = response.split(',').filter(function(dataStr){return dataStr.match(/\\"pixiv_user_id\\":\\"[\d]+\\"/)});
-				return pixivId ? `https://www.pixiv.net/users/${pixivId[0].match(/[\d]+/)[0]}` : null;
+				const pixivId = response.match(/\\"pixiv_user_id\\":\\"([\d]+)\\"/);
+				if(!pixivId)throw new Error("not found");
+				return `https://www.pixiv.net/users/${pixivId[1]}`;
 			}
 			async function whenSkeb(target){
 				const headers = {
@@ -3104,7 +3106,8 @@
 				};
 				const response = await request({url: `https://skeb.jp/api/users/${target}`, headers: headers});
 				const pixivId = response.pixiv_id;
-				return pixivId ? `https://www.pixiv.net/users/${pixivId}` : null;
+				if(!pixivId)throw new Error("not found");
+				return `https://www.pixiv.net/users/${pixivId}`;
 			}
 		}
 	}
