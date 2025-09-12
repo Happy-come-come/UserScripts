@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.7
+// @version			2.3.1.8
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -2944,6 +2944,7 @@
 				}
 				const userEntitiesData = userData.legacy?.entities || userData.entities;
 				const endStat = await findPixivLinkFromUrls(extractUrls(userEntitiesData).concat(bioUrls));
+				await loadScriptDataStore();
 				if(!scriptDataStore.makeTwitterLittleUseful)scriptDataStore.makeTwitterLittleUseful = {};
 				if(!scriptDataStore.makeTwitterLittleUseful.pixivLinkCollection)scriptDataStore.makeTwitterLittleUseful.pixivLinkCollection = {};
 				if(!scriptDataStore.makeTwitterLittleUseful.pixivLinkCollection.customData)scriptDataStore.makeTwitterLittleUseful.pixivLinkCollection.customData = {};
@@ -8443,7 +8444,8 @@
 		async #processgraphQL(entries){
 			if(!entries)return null;
 			const storeTweet = (tweetObj) => {
-				const user = tweetObj.core.user_results.result;
+				const user = tweetObj.core?.user_results?.result;
+				if(!user)return;
 				this.tweetsUserData[user.rest_id] = { ...user, API_type: "graphQL" };
 				this.tweetsUserDataByUserName[user.legacy.screen_name] = this.tweetsUserData[user.rest_id];
 				tweetObj.core.user_results.result = this.tweetsUserData[user.rest_id];
