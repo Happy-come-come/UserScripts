@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.8
+// @version			2.3.1.9
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1200,7 +1200,7 @@
 					"name": "retweets",
 					"href": pathTmp + "/retweets",
 					"count": roundHalfUp(engagemants.retweet_count, textData.roundingScale, textData.decimalPlaces, textData.units),
-					"text": textData.retweet
+					"text": textData.retweet,
 				},
 				{
 					"name": "quotes",
@@ -1855,9 +1855,10 @@
 				button.firstChild.style.borderRadius = "9999px";
 
 			});
-			button.addEventListener('mouseleave',resetStyles);
-			button.addEventListener('touchend', resetStyles);
+			button.addEventListener('mouseleave', resetStyles);
+			button.addEventListener('touchend',  resetStyles);
 			button.addEventListener('touchcancel', resetStyles);
+			button.addEventListener('pointerleave', resetStyles);
 			function resetStyles(){
 				button.firstChild.style.backgroundColor = '';
 			}
