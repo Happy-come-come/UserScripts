@@ -57,7 +57,7 @@
 			例: copyToClipboard('hogehoge')
 
 		getFileSize:
-			uri先のファイルサイズをHEAD通信で取得する
+			url先のファイルサイズをHEAD通信で取得する
 			対象サーバがサポートしていない場合はnullを返す
 			例: const fileSize = await getFileSize('https://example.com/file.zip')
 
@@ -110,7 +110,7 @@
 
 		multiPartDownload:
 			ファイルを複数のチャンクに分割してダウンロードする
-			引数はuriとチャンク数
+			引数はurlとチャンク数
 			チャンク数を指定すると複数のチャンクでダウンロードする
 			ファイルサイズが取得できない場合は単一のリクエストでダウンロードする
 			ファイルサイズが取得できる場合はチャンク数に応じてダウンロードする
@@ -419,7 +419,6 @@
 				'User-agent': userAgent,
 				'Accept': '*/*',
 				'Referer': url,
-				//'Sec-Fetch-Dest': 'empty',
 				'Sec-Fetch-Mode': 'cors',
 				'Sec-Fetch-Site': 'same-origin',
 				...(cookie ? {'Cookie': cookie} : {}),
@@ -509,7 +508,66 @@
 		}
 	}
 
-	async function multiPartDownload(url, numChunks = 6){
+	/** @type {Set<string>} */
+	const svgTags = new Set([
+		"svg","g","path","circle","rect","ellipse","line","polyline","polygon","text","defs","use","symbol","clipPath","mask"
+	]);
+	/**
+	 * @template {keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap} K
+	 * @param {K} tag
+	 * @param {(K extends keyof SVGElementTagNameMap
+	 *   ? Partial<SVGElementTagNameMap[K]>
+	 *   : Partial<HTMLElementTagNameMap[K]>) & Record<string, any>} [props]
+	 * @param {...(Node|string|number|boolean|null|undefined|(Node|string|number|boolean|null|undefined)[])} children
+	 * @returns {K extends keyof SVGElementTagNameMap ? SVGElementTagNameMap[K] : HTMLElementTagNameMap[K]}   
+	*/
+	function h(tag, props = {}, ...children){
+		const ns = svgTags.has(tag) ? "http://www.w3.org/2000/svg" : undefined;
+		const el = ns ? document.createElementNS(ns, tag) : document.createElement(tag);
+		for(const key in props){
+			const val = props[key];
+			if(key === "style" && typeof val === "object"){
+				Object.assign(el.style, val);
+			}else if(key.startsWith("on") && typeof val === "function"){
+				el.addEventListener(key.slice(2).toLowerCase(), val);
+			}else if(key.startsWith("aria-") || key === "role"){
+				el.setAttribute(key, val); // 強制的に属性にする
+			}else if(key === "dataset" && typeof val === "object"){
+				for(const dataKey in val){
+					if(val[dataKey] != null){
+						el.dataset[dataKey] = val[dataKey];
+					}
+				}
+			}else if(key.startsWith("data-")){
+				const prop = key.slice(5).replace(/-([a-z])/g, (_, c) => c.toUpperCase()); // dataset
+				el.dataset[prop] = val;
+			}else if(key === "ref" && typeof val === "function"){
+				val(el); // 作成直後のDOMノードを渡す
+			}else if(key in el && !svgTags.has(tag)){
+				el[key] = val; // DOMプロパティ
+			}else{
+				el.setAttribute(key, val); // その他属性
+			}
+		}
+		for(let i = 0; i < children.length; i++){
+			const child = children[i];
+			if(Array.isArray(child)){
+				for(const nested of child){
+					if(nested == null || nested === false)continue; // nullやfalseは無視
+					el.appendChild(typeof nested === "string" || typeof nested === "number"
+						? document.createTextNode(nested)
+						: nested);
+				}
+			}else if(child != null && child !== false){
+				el.appendChild(typeof child === "string" || typeof child === "number"
+					? document.createTextNode(child)
+					: child);
+			}
+		}
+		return el;
+	}
+
+	async function multiPartDownload(url, numChunks = 6, minChunkSize = 500 * 1024){
 		try{
 			// ファイルサイズを取得
 			const fileSize = await getFileSize(url);
@@ -517,10 +575,9 @@
 			if(fileSize === undefined){
 				console.log('File size could not be determined, downloading entire file.');
 				const response = await request({ url, respType: 'blob' });
-				return response.response;
+				return response;
 			}
 			// チャンクの数を調整（最低チャンクサイズを500KBに設定）
-			const minChunkSize = 500 * 1024; // 500KB
 			if(fileSize / numChunks < minChunkSize){
 				numChunks = Math.ceil(fileSize / minChunkSize);
 			}
