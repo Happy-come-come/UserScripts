@@ -510,10 +510,28 @@
 
 	/** @type {Set<string>} */
 	const svgTags = new Set([
-		"svg","g","path","circle","rect","ellipse","line","polyline","polygon","text","defs","use","symbol","clipPath","mask"
+		// 基本構造
+		"svg","g","defs","use","symbol","title","desc",
+		// 図形
+		"path","rect","circle","ellipse","line","polyline","polygon",
+		// テキスト
+		"text","tspan","textPath",
+		// クリッピング・マスキング
+		"clipPath","mask","pattern","marker",
+		// グラデーション
+		"linearGradient","radialGradient","stop",
+		// フィルター
+		"filter","feBlend","feColorMatrix","feComponentTransfer","feComposite","feConvolveMatrix",
+		"feDiffuseLighting","feDisplacementMap","feDropShadow","feFlood","feGaussianBlur",
+		"feImage","feMerge","feMergeNode","feMorphology","feOffset","feSpecularLighting",
+		"feTile","feTurbulence",
+		// アニメーション
+		"animate","animateTransform","animateMotion","mpath","set",
+		// その他
+		"image","foreignObject","style","metadata"
 	]);
 	/**
-	 * @template {keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap} K
+	 * @template {keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap | "fragment"} K
 	 * @param {K} tag
 	 * @param {(K extends keyof SVGElementTagNameMap
 	 *   ? Partial<SVGElementTagNameMap[K]>
@@ -522,8 +540,16 @@
 	 * @returns {K extends keyof SVGElementTagNameMap ? SVGElementTagNameMap[K] : HTMLElementTagNameMap[K]}   
 	*/
 	function h(tag, props = {}, ...children){
+		let isSvg = svgTags.has(tag);
 		const ns = svgTags.has(tag) ? "http://www.w3.org/2000/svg" : undefined;
-		const el = ns ? document.createElementNS(ns, tag) : document.createElement(tag);
+		if(!isSvg && typeof tag === "string"){
+			tag = tag.toLowerCase();
+		}
+		const el = tag === "fragment"
+		? document.createDocumentFragment()
+		: ns
+			? document.createElementNS(ns, tag)
+			: document.createElement(tag);
 		for(const key in props){
 			const val = props[key];
 			if(key === "style" && typeof val === "object"){
