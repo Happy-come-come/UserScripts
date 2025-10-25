@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.11
+// @version			2.3.1.12
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -864,76 +864,106 @@
 						console.error({error: error, tweetCardData: tweetCardData});
 					}
 				}
-				const currentTimeMillis = new Date().getTime();
-				const linkTextStart = `linkTextStart${currentTimeMillis}`;
-				const linkTextEnd = `linkTextEnd${currentTimeMillis}`;
-				const linkUrlStart = `linkUrlStart${currentTimeMillis}`;
-				const linkUrlEnd = `linkUrlEnd${currentTimeMillis}`;
-				const hashtag = `hashtag${currentTimeMillis}`;
-				const underbarEscape = `underbarEscape${currentTimeMillis}`;
 
-				// 文字列をArray.fromで配列化
+				// 文字列を一旦そのまま配列化(Unicodeコードポイント単位で)
 				let tweetBodyArray = Array.from(tweetBodyText);
+
+				// 長さ制限のチェック
 				if(tweetBodyArray.length > maxDescriptionLength){
-					tweetBodyArray = `${tweetBodyArray.slice(0, maxDescriptionLength)}${embedTextData.characterLimitExceeded}`;
+					tweetBodyArray = tweetBodyArray.slice(0, maxDescriptionLength);
+					tweetBodyText = tweetBodyArray.join('') + embedTextData.characterLimitExceeded;
+					tweetBodyArray = Array.from(tweetBodyText);
 				}
-				tweetBodyText = tweetBodyArray.join('');
+
+				// ハッシュタグ、メンション、シンボルを統合
 				let combined = [].concat(
-					tweetData.entities.hashtags.map(tag => ({
+					(tweetDataEntities.hashtags || []).map(tag => ({
 						type: 'hashtag',
 						indices: tag.indices,
 						text: tag.text
 					})),
-					tweetData.entities.user_mentions.map(mention => ({
+					(tweetDataEntities.user_mentions || []).map(mention => ({
 						type: 'mention',
 						indices: mention.indices,
 						text: mention.screen_name
 					})),
-					tweetData.entities.symbols.map(symbol => ({
+					(tweetDataEntities.symbols || []).map(symbol => ({
 						type: 'symbol',
 						indices: symbol.indices,
 						text: symbol.text
 					}))
 				);
+
+				// maxDescriptionLength以内のものだけフィルタ
 				combined = combined.filter(item => item.indices[0] < maxDescriptionLength);
-				// combinedを用いて置き換え処理を行う
-				// combinedをindices順にソート（後ろから処理するために降順ソート）
+
+				// indicesの降順でソート(後ろから置換するため)
 				combined.sort((a, b) => b.indices[0] - a.indices[0]);
+
+				// 各エンティティを置換
 				combined.forEach(item => {
-					let replacement;
+					const [start, end] = item.indices;
+					let linkText, linkUrl;
+
 					switch(item.type){
 						case 'hashtag':
-							replacement = `${linkTextStart}${hashtag}${item.text}${linkTextEnd}${linkUrlStart}https://twitter.com/hashtag/${item.text}${linkUrlEnd}`;
+							linkText = `#${item.text}`;
+							linkUrl = `https://twitter.com/hashtag/${item.text}`;
 							break;
 						case 'mention':
-							replacement = `${linkTextStart}@${item.text}${linkTextEnd}${linkUrlStart}https://twitter.com/${item.text}${linkUrlEnd}`;
+							linkText = `@${item.text}`;
+							linkUrl = `https://twitter.com/${item.text}`;
 							break;
 						case 'symbol':
-							replacement = `${linkTextStart}$${item.text}${linkTextEnd}${linkUrlStart}https://twitter.com/search?q=%24${item.text}&src=cashtag_click${linkUrlEnd}`;
+							linkText = `$${item.text}`;
+							linkUrl = `https://twitter.com/search?q=%24${item.text}&src=cashtag_click`;
 							break;
 					}
-					// indicesを使って文字列を置き換え
-					const [start, end] = item.indices;
-					if(start < maxDescriptionLength){ // トリム後の範囲内か確認
-						tweetBodyArray.splice(start, end - start, ...Array.from(replacement));
-					}
+
+					// Markdownリンク形式を作成
+					const replacement = `[${linkText}](${linkUrl})`;
+
+					// 配列の該当範囲を置換
+					tweetBodyArray.splice(start, end - start, replacement);
 				});
 
-				// 配列を再び文字列に結合
+				// 配列を文字列に結合
 				tweetBodyText = tweetBodyArray.join('');
-				//マークダウンにならないでほしいやつのエスケープ
-				const escapeCharacters = ['\\', '|', '*', '_', '`', '~', '[', ']', '(', ')', '>', '#', '-'];
+
+				// マークダウンで使用される特殊文字をエスケープ
+				// ただし、[]()内(リンクのマークダウン記法内)はエスケープしない
+				const escapeCharacters = ['\\', '|', '*', '~', '>', '#', '-'];
 				escapeCharacters.forEach(char => {
-					const regExp = new RegExp('\\' + char, 'g');
-					tweetBodyText = tweetBodyText.replace(regExp, '\\' + char);
+					// リンク外の文字だけエスケープ
+					// []()の外側のみマッチする正規表現を使用
+					const regex = new RegExp(`(?<!\\[.*?)\\${char}(?!.*?\\]\\(.*?\\))(?!\\(.*?\\))`, 'g');
+					tweetBodyText = tweetBodyText.replace(regex, '\\' + char);
 				});
-				//マークダウンになって欲しいやつは戻す
-				tweetBodyText = tweetBodyText.replace(new RegExp(linkTextStart, 'g'), '[')
-					.replace(new RegExp(linkTextEnd, 'g'), ']')
-					.replace(new RegExp(linkUrlStart, 'g'), '(')
-					.replace(new RegExp(linkUrlEnd, 'g'), ')')
-					.replace(new RegExp(hashtag, 'g'), '#')
-					.replace(new RegExp(underbarEscape, 'g'), '_');
+
+				// アンダーバーとバッククォートは特別処理
+				// リンクテキスト内([と]の間)とURL内((と)の間)以外をエスケープ
+				tweetBodyText = tweetBodyText.replace(/_/g, (match, offset) => {
+					// この位置がリンク内かチェック
+					const beforeText = tweetBodyText.substring(0, offset);
+					const afterText = tweetBodyText.substring(offset);
+
+					// [...](...) のパターンをチェック
+					const inLinkText = /\[[^\]]*$/.test(beforeText) && /^[^\[]*\]/.test(afterText);
+					const inLinkUrl = /\([^\)]*$/.test(beforeText) && /^[^\(]*\)/.test(afterText);
+
+					return (inLinkText || inLinkUrl) ? match : '\\' + match;
+				});
+
+				tweetBodyText = tweetBodyText.replace(/`/g, (match, offset) => {
+					const beforeText = tweetBodyText.substring(0, offset);
+					const afterText = tweetBodyText.substring(offset);
+
+					const inLinkText = /\[[^\]]*$/.test(beforeText) && /^[^\[]*\]/.test(afterText);
+					const inLinkUrl = /\([^\)]*$/.test(beforeText) && /^[^\(]*\)/.test(afterText);
+
+					return (inLinkText || inLinkUrl) ? match : '\\' + match;
+				});
+
 				const sendText = replaceTcoToOriginalUrl(tweetBodyText, tweetDataEntities.urls, mediaUrls);
 				mainEmbed.setTitle('Tweet')
 					.setURL(tweetUrl)
