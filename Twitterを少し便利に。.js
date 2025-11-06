@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.12
+// @version			2.3.1.13
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -13,6 +13,7 @@
 // @match			https://x.com/*
 // @match			https://X.com/*
 // @connect			twitter.com
+// @connect			x.com
 // @connect			api.twitter.com
 // @connect			api.x.com
 // @connect			api.fanbox.cc
@@ -149,6 +150,7 @@
 				"version": "バージョン",
 				"updateDate": "更新日時",
 				"newFeaturesListHeader": "新機能",
+				"importantNoticeHeader": "重要なお知らせ",
 				"neverDisplay": "二度と表示しない",
 				"closeButtonText": "閉じる",
 				"openSettingsButtonText": "設定を開く",
@@ -355,6 +357,7 @@
 				"version": "Version",
 				"updateDate": "Update Date",
 				"newFeaturesListHeader": "New Features",
+				"importantNoticeHeader": "Important Notice",
 				"neverDisplay": "Never display again",
 				"closeButtonText": "Close",
 				"openSettingsButtonText": "Open Settings",
@@ -1306,7 +1309,8 @@
 				if(!sessionData.showMeYourPixiv)sessionData.showMeYourPixiv = {};
 				if(!sessionData.showMeYourPixiv.fetchedUser)sessionData.showMeYourPixiv.fetchedUser = new Set();
 				sessionData.showMeYourPixiv.fetchedUser.add(currentPageScreenName);
-				await addPixivLinksToScriptDataStore([currentPageScreenName], true);
+				//await addPixivLinksToScriptDataStore([currentPageScreenName], true);
+				//しばらくTwitter APIに触りたくないので無効化
 			}
 			const pixivUrl = getPixivUrlWithScreenName(currentPageScreenName);
 			if(profileField && pixivUrl && !(pixivUrl?.match(/(?:users\/|member.php\?id=)(11|9949830|15241365)(\/|$)/))){
@@ -2078,18 +2082,20 @@
 
 	async function fetchUserData(){
 		if(sessionData.userData?.screenName !== undefined)return sessionData.userData;
-		let settings = await twitterApi.getAccountSettings({include_country_code: true});
+		//let settings = await twitterApi.getAccountSettings({include_country_code: true});
+		//しばらくTwitter APIに触りたくないので、ページ内のスクリプトから直接情報を取得するように変更
+		let settings = null;
 		if(!settings){
 			const script = Array.from(await waitElementAndGet({query: `script`, searchFunction: 'querySelectorAll', searchPlace: document.body})).find(s => {
 				return s.innerText.match(/\"remote\"\:{\"settings\":.*\"settings_metadata\"\:\{\}\}/);
 			});
-			const settingsJson = `${script.innerText.match(/\{\"settings\":.*\"settings_metadata\"\:\{\}\}/)[0]}}`;
-			settings = JSON.parse(settingsJson).settings;
+			const settingsJson = `${script?.innerText.match(/\{\"settings\":.*\"settings_metadata\"\:\{\}\}/)?.[0]}}`;
+			if(settingsJson)settings = JSON.parse(settingsJson).settings;
 		}
 		sessionData.userData = {
 			screenName: settings.screen_name,
 			countryCode: settings.country_code,
-			language: settings.language,
+			language: settings.language || getCookie('lang') || 'en',
 			protected: settings.protected,
 		};
 		return sessionData.userData;
@@ -3161,8 +3167,48 @@
 		return new TextDecoder().decode(new Uint8Array(bytes));
 	}
 
+	/** @type {Set<string>} */
+	const svgTags = new Set([
+		// 基本構造
+		"svg","g","defs","use","symbol","title","desc",
+		// 図形
+		"path","rect","circle","ellipse","line","polyline","polygon",
+		// テキスト
+		"text","tspan","textPath",
+		// クリッピング・マスキング
+		"clipPath","mask","pattern","marker",
+		// グラデーション
+		"linearGradient","radialGradient","stop",
+		// フィルター
+		"filter","feBlend","feColorMatrix","feComponentTransfer","feComposite","feConvolveMatrix",
+		"feDiffuseLighting","feDisplacementMap","feDropShadow","feFlood","feGaussianBlur",
+		"feImage","feMerge","feMergeNode","feMorphology","feOffset","feSpecularLighting",
+		"feTile","feTurbulence",
+		// アニメーション
+		"animate","animateTransform","animateMotion","mpath","set",
+		// その他
+		"image","foreignObject","style","metadata"
+	]);
+	/**
+	 * @template {keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap | "fragment"} K
+	 * @param {K} tag
+	 * @param {(K extends keyof SVGElementTagNameMap
+	 *   ? Partial<SVGElementTagNameMap[K]>
+	 *   : Partial<HTMLElementTagNameMap[K]>) & Record<string, any>} [props]
+	 * @param {...(Node|string|number|boolean|null|undefined|(Node|string|number|boolean|null|undefined)[])} children
+	 * @returns {K extends keyof SVGElementTagNameMap ? SVGElementTagNameMap[K] : HTMLElementTagNameMap[K]}   
+	*/
 	function h(tag, props = {}, ...children){
-		const el = document.createElement(tag);
+		let isSvg = svgTags.has(tag);
+		const ns = svgTags.has(tag) ? "http://www.w3.org/2000/svg" : undefined;
+		if(!isSvg && typeof tag === "string"){
+			tag = tag.toLowerCase();
+		}
+		const el = tag === "fragment"
+		? document.createDocumentFragment()
+		: ns
+			? document.createElementNS(ns, tag)
+			: document.createElement(tag);
 		for(const key in props){
 			const val = props[key];
 			if(key === "style" && typeof val === "object"){
@@ -3182,7 +3228,7 @@
 				el.dataset[prop] = val;
 			}else if(key === "ref" && typeof val === "function"){
 				val(el); // 作成直後のDOMノードを渡す
-			}else if(key in el){
+			}else if(key in el && !svgTags.has(tag)){
 				el[key] = val; // DOMプロパティ
 			}else{
 				el.setAttribute(key, val); // その他属性
@@ -9299,293 +9345,363 @@
 	const twitterTextI18n = new TwitterTextI18n();
 
 	async function displayChangelog(currentScriptVersion, lastScriptVersion){
-		if(document.getElementById('changelogOverlay') || scriptSettings.makeTwitterLittleUseful.displayChangelog === false)return;
+		if(document.getElementById('changelogOverlay') || scriptSettings.makeTwitterLittleUseful.displayChangelog === false || compareVersions(currentScriptVersion, lastScriptVersion) === 0)return;
 		const changelogs = {
 			"2.1.1.0": {
 				"newFeatures": ["imageZoom"],
-				"updateDate": "2025-01-27 01:00:00",
+				"updateDate": "2025-01-27T01:00:00+09:00",
 			},
 			"2.2.3.0": {
 				"newFeatures": ["customizeMenuButton"],
-				"updateDate": "2025-05-16 07:00:00",
-			}
+				"updateDate": "2025-05-16T07:00:00+09:00",
+			},
+			"2.3.1.13": {
+				"notification":
+	`
+English text is below the Japanese text.
+
+OldTweetDeck(このスクリプトとは無関係なプロジェクト)ユーザーが2025/11/07にアカウント凍結されたようです。
+これはTwitter側から正規ではない方法のAPI利用を検出されたためかもしれません。
+このスクリプトも同様に
+・${envText.webhookBringsTweetsToDiscord.settings.displayName}
+・${envText.noteTweetExpander.settings.displayName}
+・${envText.engagementRestorer.settings.displayName}
+・${envText.helloTweetWhereAreYouFrom.settings.displayName}
+・${envText.sneakilyFavorite.settings.displayName}
+・${envText.showAllMedias.settings.displayName}
+でTwitterのAPIを利用しています。
+これらのスクリプトを利用している場合、アカウントが凍結される可能性があります。
+2025/11/07 04:00現在、私のアカウントでは問題が発生していませんが、今後どうなるのかは不明です。
+また、2025/11/10にTwitterはtwitter.comドメインを手放すとしており、その変更に際して規制が強化される可能性もあります。
+もし心配な場合は上記の機能を無効化するか、スクリプトの利用を中止してください。
+このスクリプトの今後については、状況を見ながら判断したいと思います。
+ご理解のほど、よろしくお願いいたします。
+
+It seems that a user of OldTweetDeck (an unrelated project to this script) had their account suspended on 2025/11/07.
+This may be because Twitter detected the use of non-official methods to access their API.
+This script also uses Twitter's API in the following features:
+・${envText.webhookBringsTweetsToDiscord.settings.displayName}
+・${envText.noteTweetExpander.settings.displayName}
+・${envText.engagementRestorer.settings.displayName}
+・${envText.helloTweetWhereAreYouFrom.settings.displayName}
+・${envText.sneakilyFavorite.settings.displayName}
+・${envText.showAllMedias.settings.displayName}
+If you are using these features, your account may be suspended.
+As of 04:00 on 2025/11/07, my account has not experienced any issues, but it is unclear what will happen in the future.
+Additionally, Twitter is set to relinquish the twitter.com domain on 2025/11/10, and there is a possibility that regulations may be strengthened during that change.
+If you are concerned, please disable the above features or stop using the script.
+I will decide on the future of this script while monitoring the situation.
+Thank you for your understanding.`,
+				"updateDate": "2025-11-07T01:00:00+09:00",
+			},
 		};
 		if(Object.keys(changelogs).every(version => compareVersions(version, lastScriptVersion) === -1))return;
 		const textData = envText.makeTwitterLittleUseful.displayChangelog;
-		const colors = new Colors();
-		const changelogOverlay = document.createElement('div');
-		changelogOverlay.className = 'changelogOverlay MTLU_container';
-		changelogOverlay.setAttribute('MTLU-Id', 'changelogOverlay');
-		changelogOverlay.id = 'changelogOverlay';
-		Object.assign(changelogOverlay.style, {
-			position: "fixed",
-			top: "0",
-			left: "0",
-			width: "100%",
-			height: "100%",
-			backgroundColor: "rgba(0, 0, 0, 0.5)",
-			zIndex: "1000",
-			display: "flex",
-			justifyContent: "center",
-			alignItems: "center",
-		});
-		changelogOverlay.addEventListener('click', async (e)=>{
-			if(neverDisplayCheckbox.checked){
-				scriptSettings.makeTwitterLittleUseful.displayChangelog = false;
-				await saveSettings();
-			}
-			changelogOverlay.remove();
-		});
-
-		const changelogContainer = document.createElement('div');
-		changelogContainer.setAttribute('MTLU-Id', 'changelogContainer');
-		Object.assign(changelogContainer.style, {
-			backgroundColor: colors.get("backgroundColor"),
-			color: colors.get("fontColor"),
-			fontColor: colors.get("fontColor"),
-			padding: "0px",
-			borderRadius: "10px",
-			maxHeight: "90%",
-			maxWidth: "90%",
-			overflowX: "hidden",
-			overflowY: "hidden",
-			flexShrink: "0",
-			flexGrow: "0",
-			border: `2px solid ${colors.get("borderColor")}`,
-		});
-		changelogContainer.addEventListener('click', (e)=>{
-			e.stopPropagation();
-			e.preventDefault();
-		});
-		changelogOverlay.appendChild(changelogContainer);
-
-		const changelogHeaderContainer = document.createElement('div');
-		changelogHeaderContainer.setAttribute('MTLU-Id', 'changelogHeaderContainer');
-		Object.assign(changelogHeaderContainer.style, {
-			display: "flex",
-			padding: "10px",
-			borderBottom: `1px solid ${colors.get("borderColor")}`,
-			borderTopLeftRadius: "10px",
-			borderTopRightRadius: "10px",
-			justifyContent: "space-between",
-			alignItems: "center",
-			flexDirection: "column",
-		});
-		changelogContainer.appendChild(changelogHeaderContainer);
-
-		const scriptName = document.createElement('h1');
-		scriptName.setAttribute('MTLU-Id', 'scriptName');
-		scriptName.textContent = envText.makeTwitterLittleUseful.scriptName;
-		Object.assign(scriptName.style, {
-			fontSize: "1.5em",
-			margin: "0px",
-		});
-		changelogHeaderContainer.appendChild(scriptName);
-
-		const changelogHeader = document.createElement('h1');
-		changelogHeader.setAttribute('MTLU-Id', 'changelogHeader');
-		changelogHeader.textContent = textData.headerTitle;
-		Object.assign(changelogHeader.style, {
-			fontSize: "1.5em",
-			margin: "0px",
-		});
-		changelogHeaderContainer.appendChild(changelogHeader);
-
-		const changelogMainContainer = document.createElement('div');
-		changelogMainContainer.setAttribute('MTLU-Id', 'changelogMainContainer');
-		Object.assign(changelogMainContainer.style, {
-			display: "flex",
-			padding: "10px",
-			overflowY: "auto",
-			overflowX: "wrap",
-			flexDirection: "column",
-			flexGrow: "0",
-			flexShrink: "0",
-		});
-		changelogContainer.appendChild(changelogMainContainer);
-
-		const selfProtectionText = document.createElement('p');
-		selfProtectionText.setAttribute('MTLU-Id', 'selfProtectionText');
-		selfProtectionText.textContent = textData.selfProtection;
-		Object.assign(selfProtectionText.style, {
-			margin: "0px",
-			padding: "0px",
-		});
-		changelogMainContainer.appendChild(selfProtectionText);
-
-		const scriptUrlContainer = document.createElement('div');
-		scriptUrlContainer.setAttribute('MTLU-Id', 'scriptUrlContainer');
-		Object.assign(scriptUrlContainer.style, {
-			display: "flex",
-			padding: "0 0 10px 0",
-			alignItems: "center",
-		});
-		scriptUrlContainer.addEventListener('click', (e) => {
-			e.stopPropagation();
-		});
-		changelogMainContainer.appendChild(scriptUrlContainer);
-
-		const scriptUrlLabel = document.createElement('p');
-		scriptUrlLabel.setAttribute('MTLU-Id', 'scriptUrlLabel');
-		scriptUrlLabel.textContent = textData.moreInfo;
-		Object.assign(scriptUrlLabel.style, {
-			margin: "0px",
-		});
-		scriptUrlContainer.appendChild(scriptUrlLabel);
-
-		const scriptUrl = document.createElement('a');
-		scriptUrl.setAttribute('MTLU-Id', 'scriptUrl');
-		scriptUrl.href = "https://greasyfork.org/scripts/478248";
-		scriptUrl.textContent = textData.here;
-		scriptUrl.target = "_blank";
-		scriptUrl.rel = "noopener nofollow";
-		Object.assign(scriptUrl.style, {
-			margin: "0px",
-			color: colors.get("twitterBlue"),
-		});
-		scriptUrlContainer.appendChild(scriptUrl);
-
-		Object.keys(changelogs).forEach((version)=>{
-			if(compareVersions(version, lastScriptVersion) === 1){
-				const changelogVersionContainer = document.createElement('div');
-				changelogVersionContainer.setAttribute('MTLU-Id', 'changelogVersionContainer');
-				Object.assign(changelogVersionContainer.style, {
-					marginBottom: "10px",
-				});
-				changelogMainContainer.appendChild(changelogVersionContainer);
-
-				const changelogVersionHeader = document.createElement('h2');
-				changelogVersionHeader.setAttribute('MTLU-Id', 'changelogVersionHeader');
-				changelogVersionHeader.textContent = `${textData.version} ${version}`;
-				Object.assign(changelogVersionHeader.style, {
-					fontSize: "1.2em",
-					margin: "0px",
-				});
-				changelogVersionContainer.appendChild(changelogVersionHeader);
-
-				const changelogVersionDate = document.createElement('p');
-				changelogVersionDate.setAttribute('MTLU-Id', 'changelogVersionDate');
-				const date = new Date(changelogs[version].updateDate);
-				changelogVersionDate.textContent = `${textData.updateDate} ${date.toLocaleString()}`;
-				Object.assign(changelogVersionDate.style, {
-					margin: "0px",
-				});
-				changelogVersionContainer.appendChild(changelogVersionDate);
-
-				const changelogVersionList = document.createElement('ul');
-				changelogVersionList.setAttribute('MTLU-Id', 'changelogVersionList');
-				Object.assign(changelogVersionList.style, {
-					listStyleType: "disc",
-					paddingLeft: "20px",
-				});
-				changelogVersionContainer.appendChild(changelogVersionList);
-
-				const newFeaturesListHeader = document.createElement('h3');
-				newFeaturesListHeader.setAttribute('MTLU-Id', 'newFeaturesListHeader');
-				newFeaturesListHeader.textContent = textData.newFeaturesListHeader;
-				Object.assign(newFeaturesListHeader.style, {
-					fontSize: "1.1em",
-					margin: "0px",
-				});
-				changelogVersionList.appendChild(newFeaturesListHeader);
-
-				const newFeaturesList = document.createElement('ul');
-				newFeaturesList.setAttribute('MTLU-Id', 'newFeaturesList');
-				Object.assign(newFeaturesList.style, {
-					listStyleType: "circle",
-					paddingLeft: "20px",
-				});
-				changelogVersionList.appendChild(newFeaturesList);
-
-				changelogs[version].newFeatures.forEach((feature)=>{
-					const changelogVersionListItem = document.createElement('li');
-					changelogVersionListItem.setAttribute('MTLU-Id', 'changelogVersionListItem');
-					changelogVersionListItem.textContent = envText[feature].settings.displayName;
-
-					const featureDescriptionList = document.createElement('ul');
-					featureDescriptionList.setAttribute('MTLU-Id', 'featureDescriptionList');
-
-					const featureDescriptionListItem = document.createElement('li');
-					featureDescriptionListItem.setAttribute('MTLU-Id', 'featureDescriptionListItem');
-					featureDescriptionListItem.textContent = envText[feature].settings.description;
-					featureDescriptionList.appendChild(featureDescriptionListItem);
-					changelogVersionListItem.appendChild(featureDescriptionList);
-
-					newFeaturesList.appendChild(changelogVersionListItem);
-				});
-				changelogMainContainer.appendChild(changelogVersionContainer);
-			}
-		});
-
-		const footerContainer = document.createElement('div');
-		footerContainer.setAttribute('MTLU-Id', 'footerContainer');
-		Object.assign(footerContainer.style, {
-			display: "flex",
-			padding: "10px",
-			borderTop: `1px solid ${colors.get("borderColor")}`,
-			borderBottomLeftRadius: "10px",
-			borderBottomRightRadius: "10px",
-			justifyContent: "flex-end",
-			alignItems: "center",
-		});
-		changelogContainer.appendChild(footerContainer);
-
-		const neverDisplayContainer = document.createElement('div');
-		neverDisplayContainer.setAttribute('MTLU-Id', 'neverDisplayContainer');
-		Object.assign(neverDisplayContainer.style, {
-			display: "flex",
-			alignItems: "center",
-			userSelect: "none",
-		});
-		neverDisplayContainer.addEventListener('click', (e) => {
-			e.stopPropagation();
-		});
-		footerContainer.appendChild(neverDisplayContainer);
-
-		const neverDisplayLabel = document.createElement('label');
-		neverDisplayLabel.setAttribute('MTLU-Id', 'neverDisplayLabel');
-		neverDisplayLabel.textContent = textData.neverDisplay;
-		neverDisplayLabel.setAttribute('for', 'neverDisplayCheckbox');
-		Object.assign(neverDisplayLabel.style, {
-			margin: "0px",
-		});
-		neverDisplayContainer.appendChild(neverDisplayLabel);
-
-		const neverDisplayCheckbox = document.createElement('input');
-		neverDisplayCheckbox.setAttribute('MTLU-Id', 'neverDisplayCheckbox');
-		neverDisplayCheckbox.type = "checkbox";
-		neverDisplayCheckbox.id = "neverDisplayCheckbox";
-		neverDisplayContainer.appendChild(neverDisplayCheckbox);
-
-		footerContainer.appendChild(neverDisplayContainer);
-
-		const closeButton = document.createElement('button');
-		closeButton.setAttribute('MTLU-Id', 'closeButton');
-		closeButton.textContent = textData.closeButtonText;
-		Object.assign(closeButton.style, {
-			marginLeft: "10px",
-		});
-		closeButton.addEventListener('click', async ()=>{
-			if(neverDisplayCheckbox.checked){
-				scriptSettings.makeTwitterLittleUseful.displayChangelog = false;
-				await saveSettings();
-			}
-			changelogOverlay.remove();
-		});
-		footerContainer.appendChild(closeButton);
-
-		const openSettingsButton = document.createElement('button');
-		openSettingsButton.setAttribute('MTLU-Id', 'openSettingsButton');
-		openSettingsButton.textContent = textData.openSettingsButtonText;
-		Object.assign(openSettingsButton.style, {
-			marginLeft: "10px",
-		});
-		openSettingsButton.addEventListener('click', ()=>{
-			createSettingsPage();
-			changelogOverlay.remove();
-		});
-		footerContainer.appendChild(openSettingsButton);
-
+		const changelogHeader = h('div', {
+				style: {
+					display: "flex",
+					padding: "10px",
+					borderBottom: `1px solid ${colors.get("borderColor")}`,
+					borderTopLeftRadius: "10px",
+					borderTopRightRadius: "10px",
+					justifyContent: "space-between",
+					alignItems: "center",
+					flexDirection: "column",
+				},
+			},
+			h('span', {
+					style: {
+						fontSize: "1.5em",
+						margin: "0px",
+					}
+				},
+				envText.makeTwitterLittleUseful.scriptName,
+			),
+			h('span', {
+					style: {
+						fontSize: "1.5em",
+						margin: "0px",
+					}
+				},
+				textData.changelogTitle,
+			),
+		);
+	
+		const changelogMain = h('div', {
+				style: {
+					display: "flex",
+					padding: "10px",
+					overflowY: "auto",
+					overflowX: "hidden",
+					flexDirection: "column",
+					flex: "1 1 auto",
+					minHeight: 0,
+				},
+			},
+			h('span', {
+					'MTLU-Id': 'selfProtectionText',
+					style: {
+						margin: "0px",
+						padding: "0px",
+					}
+				},
+				textData.selfProtection,
+			),
+			h('div', {
+					'MTLU-Id': 'scriptUrlContainer',
+					style: {
+						display: "flex",
+						padding: "0 0 10px 0",
+						alignItems: "center",
+					},
+					onClick: (e) => {
+						e.stopPropagation();
+					}
+				},
+				h('label', {
+						'MTLU-Id': 'scriptUrlLabel',
+						style: {
+							margin: "0px",
+						}
+					},
+					textData.moreInfo,
+				),
+				h('a', {
+						'MTLU-Id': 'scriptUrl',
+						style: {
+							margin: "0px",
+							color: colors.get("twitterBlue"),
+						},
+						href: 'https://greasyfork.org/scripts/478248',
+						textContent: textData.here,
+						target: '_blank',
+						rel: 'noopener noreferrer',
+					}
+				)
+			),
+			...Object.keys(changelogs).map((version)=>{
+				if(compareVersions(version, lastScriptVersion) === 1){
+					const changelogVersionContainer = h('div', {
+							'MTLU-Id': 'changelogVersionContainer',
+							style: {
+								marginBottom: "10px",
+							},
+						},
+						h('span', {
+								'MTLU-Id': 'changelogVersionHeader',
+								style: {
+									fontSize: "1.2em",
+									margin: "0px",
+								},
+							},
+							`${textData.version} ${version}`,
+						),
+						h('span', {
+								'MTLU-Id': 'changelogVersionDate',
+								style: {
+									margin: "0px 0px 0px 10px",
+								},
+							},
+							`${textData.updateDate} ${new Date(changelogs[version].updateDate).toLocaleString()}`,
+						),
+						(()=>{
+							if(changelogs[version].notification){
+								return h('div', {
+										'MTLU-Id': 'changelogNotificationContainer',
+										style: {
+											padding: "10px",
+											border: `1px solid ${colors.get("borderColor")}`,
+											borderRadius: "5px",
+										},
+									},
+									h('span', {
+											'MTLU-Id': 'changelogNotificationHeader',
+											style: {
+												fontSize: "1.1em",
+												fontWeight: "bold",
+												margin: "0px 0 5px 0",
+											},
+										},
+										textData.importantNoticeHeader,
+									),
+									h('br', {}),
+									h('span', {
+											'MTLU-Id': 'changelogNotificationText',
+											innerHTML: escapeHTML(changelogs[version].notification).replace(/\n/g, '<br>'),
+										},
+									),
+								);
+							}
+						})(),
+						changelogs[version].newFeatures?.length && h('div', {
+								'MTLU-Id': 'changelogVersionList',
+								style: {
+									listStyleType: "disc",
+									padding: "10px",
+									border: `1px solid ${colors.get("borderColor")}`,
+									borderRadius: "5px",
+								},
+							},
+							h('span', {
+									'MTLU-Id': 'newFeaturesListHeader',
+									style: {
+										fontSize: "1.1em",
+										margin: "0px",
+									},
+								},
+								textData.newFeaturesListHeader,
+							),
+							h('ul', {
+									'MTLU-Id': 'newFeaturesList',
+									style: {
+										paddingInlineStart: "20px",
+									}
+								},
+								changelogs[version].newFeatures?.map((feature)=>{
+									return h('li', {
+											'MTLU-Id': 'changelogVersionListItem',
+										},
+										envText[feature].settings.displayName,
+										h('ul', {
+												'MTLU-Id': 'featureDescriptionList',
+											},
+											h('li', {
+													'MTLU-Id': 'featureDescriptionListItem',
+												},
+												envText[feature].settings.description,
+											),
+										),
+									);
+								}),
+							),
+						),
+					);
+					return changelogVersionContainer;
+				}
+				return null;
+			}),
+		);
+	
+		const changelogFooter = h('div', {
+				'MTLU-Id': 'changelogFooter',
+				style: {
+					display: "flex",
+					padding: "10px",
+					borderTop: `1px solid ${colors.get("borderColor")}`,
+					borderBottomLeftRadius: "10px",
+					borderBottomRightRadius: "10px",
+					justifyContent: "flex-end",
+					alignItems: "center",
+				},
+			},
+			h('div', {
+					'MTLU-Id': 'neverDisplayContainer',
+					style: {
+						display: "flex",
+						alignItems: "center",
+						userSelect: "none",
+					},
+					onClick: (e) => {
+						e.stopPropagation();
+					}
+				},
+				h('label', {
+						'MTLU-Id': 'neverDisplayLabel',
+						style: {
+							margin: "0px",
+						},
+						for: 'neverDisplayCheckbox',
+					},
+					textData.neverDisplay,
+				),
+				h('input', {
+						'MTLU-Id': 'neverDisplayCheckbox',
+						type: 'checkbox',
+						id: 'neverDisplayCheckbox',
+					}
+				)
+			),
+			h('button', {
+					'MTLU-Id': 'closeButton',
+					style: {
+						marginLeft: "10px",
+					},
+					onClick: async () => {
+						if(neverDisplayCheckbox.checked){
+							scriptSettings.makeTwitterLittleUseful.displayChangelog = false;
+							await saveSettings();
+						}
+						changelogOverlay.remove();
+					}
+				},
+				textData.closeButtonText,
+			),
+			h('button', {
+					'MTLU-Id': 'openSettingsButton',
+					style: {
+						marginLeft: "10px",
+					},
+					onClick: () => {
+						createSettingsPage();
+						changelogOverlay.remove();
+					}
+				},
+				textData.openSettingsButtonText,
+			),
+		);
+		const neverDisplayCheckbox = changelogFooter.querySelector('#neverDisplayCheckbox');
+		const changelogContainer = h("div", {
+				className: "MTLU_changelogContainer",
+				style: {
+					display: "flex",
+					flexDirection: "column",
+					backgroundColor: colors.get("backgroundColor"),
+					color: colors.get("fontColor"),
+					fontColor: colors.get("fontColor"),
+					padding: "0px",
+					borderRadius: "10px",
+					maxHeight: "90%",
+					maxWidth: "90%",
+					overflowX: "hidden",
+					overflowY: "hidden",
+					flexShrink: "0",
+					flexGrow: "0",
+					border: `2px solid ${colors.get("borderColor")}`,
+				},
+				onClick: (e) => {
+					e.stopPropagation();
+				},
+			},
+			changelogHeader,
+			changelogMain,
+			changelogFooter,
+		);
+		const changelogOverlay = h("div", {
+				id: "changelogOverlay",
+				className: "MTLU_container MTLU_changelogOverlay",
+				'MTLU-Id': 'changelogOverlay',
+				style: {
+					position: "fixed",
+					top: "0",
+					left: "0",
+					width: "100%",
+					height: "100%",
+					backgroundColor: "rgba(0, 0, 0, 0.5)",
+					zIndex: "1000",
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+				},
+				onClick: async (e) => {
+					if(neverDisplayCheckbox.checked){
+						scriptSettings.makeTwitterLittleUseful.displayChangelog = false;
+						await saveSettings();
+					}
+					changelogOverlay.remove();
+				},
+			},
+			changelogContainer,
+		);
 		document.body.appendChild(changelogOverlay);
 	}
 
