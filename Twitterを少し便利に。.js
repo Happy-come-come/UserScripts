@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.13
+// @version			2.3.1.14
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1164,44 +1164,7 @@
 					tweetTextElement.style.webkitLineClamp = null;
 					return;
 				}
-				let tweetData = await twitterApi.getTweet(target.id);
-				let isNoteTweet;
-				if(index == 0){
-					isNoteTweet = !!tweetData.note_tweet?.note_tweet_results?.result;
-				}else{
-					tweetData = await twitterApi.getTweet(tweetData.legacy.quoted_status_id_str);
-					isNoteTweet = !!tweetData.note_tweet?.note_tweet_results?.result;
-				}
-				if(!isNoteTweet){
-					tweetTextElement.classList.add('tweetExpanderChecked');
-					tweetTextElement.style.webkitLineClamp = null;
-					return;
-				}
-				const customColor = showMoreLink?.style.color;
-				const originalLinks = {};
-				tweetTextElement.querySelectorAll('a').forEach(e=>{
-					originalLinks[e.textContent.replace(/^(#|\$|\@)/, "")] = e;
-				});
-				const newTweetBody = createTweetTextElement(tweetData);
-				newTweetBody.querySelectorAll('a').forEach((link) => {
-					if(customColor)link.style.color = customColor;
-					const originalLink = originalLinks[link.getAttribute('text') || ""];
-					if(originalLink && link.getAttribute("usenavigate") != "true"){
-						link.addEventListener('click', (event)=>{
-							event.preventDefault();
-							originalLink.click();
-						});
-					}
-					link.addEventListener('mouseenter', function(){
-						link.className = envSelector.link.hovered;
-					});
-					link.addEventListener('mouseleave', function(){
-						link.className = envSelector.link.nomal;
-					});
-				});
-				Array.from(tweetTextElement.children).forEach(e=>e.style.display = "none");
-				tweetTextElement.appendChild(newTweetBody);
-				tweetTextElement.style.webkitLineClamp = null;
+				showMoreLink.click();
 			});
 		});
 		return "done";
@@ -9345,7 +9308,7 @@
 	const twitterTextI18n = new TwitterTextI18n();
 
 	async function displayChangelog(currentScriptVersion, lastScriptVersion){
-		if(document.getElementById('changelogOverlay') || scriptSettings.makeTwitterLittleUseful.displayChangelog === false || compareVersions(currentScriptVersion, lastScriptVersion) === 0)return;
+		if(document.getElementById('changelogOverlay') || scriptSettings.makeTwitterLittleUseful.displayChangelog === false || compareVersions(currentScriptVersion, lastScriptVersion) !== 1)return;
 		const changelogs = {
 			"2.1.1.0": {
 				"newFeatures": ["imageZoom"],
@@ -9364,7 +9327,6 @@ OldTweetDeck(このスクリプトとは無関係なプロジェクト)ユーザ
 これはTwitter側から正規ではない方法のAPI利用を検出されたためかもしれません。
 このスクリプトも同様に
 ・${envText.webhookBringsTweetsToDiscord.settings.displayName}
-・${envText.noteTweetExpander.settings.displayName}
 ・${envText.engagementRestorer.settings.displayName}
 ・${envText.helloTweetWhereAreYouFrom.settings.displayName}
 ・${envText.sneakilyFavorite.settings.displayName}
@@ -9381,7 +9343,6 @@ It seems that a user of OldTweetDeck (an unrelated project to this script) had t
 This may be because Twitter detected the use of non-official methods to access their API.
 This script also uses Twitter's API in the following features:
 ・${envText.webhookBringsTweetsToDiscord.settings.displayName}
-・${envText.noteTweetExpander.settings.displayName}
 ・${envText.engagementRestorer.settings.displayName}
 ・${envText.helloTweetWhereAreYouFrom.settings.displayName}
 ・${envText.sneakilyFavorite.settings.displayName}
@@ -9395,7 +9356,11 @@ Thank you for your understanding.`,
 				"updateDate": "2025-11-07T01:00:00+09:00",
 			},
 		};
-		if(Object.keys(changelogs).every(version => compareVersions(version, lastScriptVersion) === -1))return;
+		const allVersions = Object.keys(changelogs).sort((a, b) => compareVersions(b, a));
+		const showVersions = allVersions.filter(v =>
+			(compareVersions(v, lastScriptVersion) === 1) && (compareVersions(v, currentScriptVersion) !== 1)
+		);
+		if(showVersions.length === 0)return;
 		const textData = envText.makeTwitterLittleUseful.displayChangelog;
 		const changelogHeader = h('div', {
 				style: {
@@ -9479,106 +9444,103 @@ Thank you for your understanding.`,
 					}
 				)
 			),
-			...Object.keys(changelogs).map((version)=>{
-				if(compareVersions(version, lastScriptVersion) === 1){
-					const changelogVersionContainer = h('div', {
-							'MTLU-Id': 'changelogVersionContainer',
+			...showVersions.map((version)=>{
+				const changelogVersionContainer = h('div', {
+						'MTLU-Id': 'changelogVersionContainer',
+						style: {
+							marginBottom: "10px",
+						},
+					},
+					h('span', {
+							'MTLU-Id': 'changelogVersionHeader',
 							style: {
-								marginBottom: "10px",
+								fontSize: "1.2em",
+								margin: "0px",
+							},
+						},
+						`${textData.version} ${version}`,
+					),
+					h('span', {
+							'MTLU-Id': 'changelogVersionDate',
+							style: {
+								margin: "0px 0px 0px 10px",
+							},
+						},
+						`${textData.updateDate} ${new Date(changelogs[version].updateDate).toLocaleString()}`,
+					),
+					(()=>{
+						if(changelogs[version].notification){
+							return h('div', {
+									'MTLU-Id': 'changelogNotificationContainer',
+									style: {
+										padding: "10px",
+										border: `1px solid ${colors.get("borderColor")}`,
+										borderRadius: "5px",
+									},
+								},
+								h('span', {
+										'MTLU-Id': 'changelogNotificationHeader',
+										style: {
+											fontSize: "1.1em",
+											fontWeight: "bold",
+											margin: "0px 0 5px 0",
+										},
+									},
+									textData.importantNoticeHeader,
+								),
+								h('br', {}),
+								h('span', {
+										'MTLU-Id': 'changelogNotificationText',
+										innerHTML: escapeHTML(changelogs[version].notification).replace(/\n/g, '<br>'),
+									},
+								),
+							);
+						}
+					})(),
+					changelogs[version].newFeatures?.length && h('div', {
+							'MTLU-Id': 'changelogVersionList',
+							style: {
+								listStyleType: "disc",
+								padding: "10px",
+								border: `1px solid ${colors.get("borderColor")}`,
+								borderRadius: "5px",
 							},
 						},
 						h('span', {
-								'MTLU-Id': 'changelogVersionHeader',
+								'MTLU-Id': 'newFeaturesListHeader',
 								style: {
-									fontSize: "1.2em",
+									fontSize: "1.1em",
 									margin: "0px",
 								},
 							},
-							`${textData.version} ${version}`,
+							textData.newFeaturesListHeader,
 						),
-						h('span', {
-								'MTLU-Id': 'changelogVersionDate',
+						h('ul', {
+								'MTLU-Id': 'newFeaturesList',
 								style: {
-									margin: "0px 0px 0px 10px",
-								},
+									paddingInlineStart: "20px",
+								}
 							},
-							`${textData.updateDate} ${new Date(changelogs[version].updateDate).toLocaleString()}`,
-						),
-						(()=>{
-							if(changelogs[version].notification){
-								return h('div', {
-										'MTLU-Id': 'changelogNotificationContainer',
-										style: {
-											padding: "10px",
-											border: `1px solid ${colors.get("borderColor")}`,
-											borderRadius: "5px",
-										},
+							changelogs[version].newFeatures?.map((feature)=>{
+								return h('li', {
+										'MTLU-Id': 'changelogVersionListItem',
 									},
-									h('span', {
-											'MTLU-Id': 'changelogNotificationHeader',
-											style: {
-												fontSize: "1.1em",
-												fontWeight: "bold",
-												margin: "0px 0 5px 0",
+									envText[feature].settings.displayName,
+									h('ul', {
+											'MTLU-Id': 'featureDescriptionList',
+										},
+										h('li', {
+												'MTLU-Id': 'featureDescriptionListItem',
 											},
-										},
-										textData.importantNoticeHeader,
-									),
-									h('br', {}),
-									h('span', {
-											'MTLU-Id': 'changelogNotificationText',
-											innerHTML: escapeHTML(changelogs[version].notification).replace(/\n/g, '<br>'),
-										},
+											envText[feature].settings.description,
+										),
 									),
 								);
-							}
-						})(),
-						changelogs[version].newFeatures?.length && h('div', {
-								'MTLU-Id': 'changelogVersionList',
-								style: {
-									listStyleType: "disc",
-									padding: "10px",
-									border: `1px solid ${colors.get("borderColor")}`,
-									borderRadius: "5px",
-								},
-							},
-							h('span', {
-									'MTLU-Id': 'newFeaturesListHeader',
-									style: {
-										fontSize: "1.1em",
-										margin: "0px",
-									},
-								},
-								textData.newFeaturesListHeader,
-							),
-							h('ul', {
-									'MTLU-Id': 'newFeaturesList',
-									style: {
-										paddingInlineStart: "20px",
-									}
-								},
-								changelogs[version].newFeatures?.map((feature)=>{
-									return h('li', {
-											'MTLU-Id': 'changelogVersionListItem',
-										},
-										envText[feature].settings.displayName,
-										h('ul', {
-												'MTLU-Id': 'featureDescriptionList',
-											},
-											h('li', {
-													'MTLU-Id': 'featureDescriptionListItem',
-												},
-												envText[feature].settings.description,
-											),
-										),
-									);
-								}),
-							),
+							}),
 						),
-					);
-					return changelogVersionContainer;
-				}
-				return null;
+					),
+				);
+				return changelogVersionContainer;
 			}),
 		);
 	
