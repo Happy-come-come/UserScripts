@@ -1,0 +1,22 @@
+{
+	"ja": [
+		"https://s.pximg.net/soy/pixiv-web-next/_next/static/chunks/locale.ja.304d0ed090462cac.js",
+		"https://s.pximg.net/soy/pixiv-web-next/_next/static/chunks/locale.ja.smarty.44bc1ff42154a371.js"
+	],
+	"en": [
+		"https://s.pximg.net/soy/pixiv-web-next/_next/static/chunks/locale.en.b185d3349face190.js",
+		"https://s.pximg.net/soy/pixiv-web-next/_next/static/chunks/locale.en.smarty.330fdff595ef81d3.js"
+	],
+	"ko": [
+		"https://s.pximg.net/soy/pixiv-web-next/_next/static/chunks/locale.ko.188b8ca2c0ef9489.js",
+		"https://s.pximg.net/soy/pixiv-web-next/_next/static/chunks/locale.ko.smarty.712120b6fc8bac48.js"
+	],
+	"zh-cn": [
+		"https://s.pximg.net/soy/pixiv-web-next/_next/static/chunks/locale.zh-cn.4ad79d5bcb915c08.js",
+		"https://s.pximg.net/soy/pixiv-web-next/_next/static/chunks/locale.zh-cn.smarty.98c6ea39757fc4a4.js"
+	],
+	"zh-tw": [
+		"https://s.pximg.net/soy/pixiv-web-next/_next/static/chunks/locale.zh-tw.20aea5a405c448c7.js",
+		"https://s.pximg.net/soy/pixiv-web-next/_next/static/chunks/locale.zh-tw.smarty.04ec6e0212fd8fec.js"
+	]
+}
