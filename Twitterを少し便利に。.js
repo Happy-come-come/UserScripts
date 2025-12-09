@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.14
+// @version			2.3.1.15
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -38,6 +38,7 @@
 // @connect			geek-website.com
 // @connect			ci-en.dlsite.com
 // @connect			profu.link
+// @connect			xfolio.jp
 // @connect			dl.dropboxusercontent.com
 // @connect			raw.githubusercontent.com
 // @connect			video-ft.twimg.com
@@ -69,6 +70,7 @@
 	}
 	const isMobile = isMobileDevice();
 	const isPC = !isMobile;
+	const _cloneInto = typeof cloneInto === "function" ? (obj, _window = window, options = {}) => cloneInto(obj, _window, options) : (obj)=>obj;
 
 	let scriptSettings = {};
 	await loadSettings();
@@ -2684,7 +2686,7 @@
 						// Error: Not allowed to define cross-origin object as property on [Object] or [Array] XrayWrapper
 						// というエラーが出ることがあるので、構造化クローンを使ってコピーする
 						// でかいオブジェクトだと効率が悪いのでなにかいい方法があれば教えてください
-						resolve(structuredClone(event.target.result.data));
+						resolve(_cloneInto(event.target.result.data));
 					}else{
 						resolve(null);
 					}
@@ -3027,7 +3029,7 @@
 								}
 							));
 							break;
-						case /^https?:\/\/((fantia\.jp\/(fanclubs\/[0-9])?.*)|(.*\.booth\.pm)|(.*linktr\.ee)|(.*profcard\.info)|(.*lit\.link)|(potofu\.me)|(.*\.carrd\.co)|(.*\.tumblr\.com$)|(twpf\.jp)|(ci\-en\.dlsite\.com\/creator\/[0-9]*)|(profu\.link))\/?/.test(url):
+						case /^https?:\/\/((fantia\.jp\/(fanclubs\/[0-9])?.*)|(.*\.booth\.pm)|(.*linktr\.ee)|(.*profcard\.info)|(.*lit\.link)|(potofu\.me)|(.*\.carrd\.co)|(.*\.tumblr\.com$)|(twpf\.jp)|(ci\-en\.dlsite\.com\/creator\/[0-9]*)|(profu\.link)|(xfolio\.jp))\/?/.test(url):
 							promiseList.push(new Promise(
 								async function(resolve, reject){
 									try{
@@ -3162,8 +3164,8 @@
 	 * @returns {K extends keyof SVGElementTagNameMap ? SVGElementTagNameMap[K] : HTMLElementTagNameMap[K]}   
 	*/
 	function h(tag, props = {}, ...children){
-		let isSvg = svgTags.has(tag);
-		const ns = svgTags.has(tag) ? "http://www.w3.org/2000/svg" : undefined;
+		const isSvg = svgTags.has(tag);
+		const ns = isSvg ? "http://www.w3.org/2000/svg" : undefined;
 		if(!isSvg && typeof tag === "string"){
 			tag = tag.toLowerCase();
 		}
@@ -3191,7 +3193,7 @@
 				el.dataset[prop] = val;
 			}else if(key === "ref" && typeof val === "function"){
 				val(el); // 作成直後のDOMノードを渡す
-			}else if(key in el && !svgTags.has(tag)){
+			}else if(key in el && !isSvg){
 				el[key] = val; // DOMプロパティ
 			}else{
 				el.setAttribute(key, val); // その他属性
@@ -9089,7 +9091,7 @@
 
 				const data = `${method}!${path}!${timeNow}${defaultKeyword}${animationKey.toLowerCase()}`;
 				const hashBuffer = await crypto.subtle.digest('SHA-256', this.manualEncode(data));
-				const hashArray = Array.from(structuredClone(new Uint8Array(hashBuffer))); // Firefoxでのエラー回避
+				const hashArray = Array.from(_cloneInto(new Uint8Array(hashBuffer))); // Firefoxでのエラー回避
 
 				const randomNum = Math.floor(Math.random() * 256);
 
