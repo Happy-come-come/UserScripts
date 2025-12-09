@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.15
+// @version			2.3.1.16
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1719,8 +1719,9 @@
 				"notificationsButton": {
 					"href": "/notifications",
 				},
-				"messagesButton": {
-					"href": "/messages",
+				"chatButton": {
+					"href": "/i/chat",
+					//"text": twitterTextI18n.getText("chat"),
 				},
 				"grokButton": {
 					"href": "/i/grok",
@@ -1796,7 +1797,11 @@
 					"text": thisScriptSettings.shortCutButton4DisplayName,
 				},
 			};
-
+			const buttonOptionsByHref = Object.keys(options).reduce((acc, key) => {
+				const option = options[key];
+				acc[option.href] = { key, option };
+				return acc;
+			}, {});
 			const buttonElementTemplate = moreMenuButton.cloneNode(true);
 			const elementToClone = document.createElement('a');
 			elementToClone.style = buttonElementTemplate.style.cssText;
@@ -1806,8 +1811,15 @@
 			}
 
 			for(let i=0; i < thisScriptSettings.buttonSorting?.length || 0; i++){
-				const key = thisScriptSettings.buttonSorting[i];
+				let key = thisScriptSettings.buttonSorting[i];
+				if(key === "messagesButton")key = "chatButton";
 				const option = options[key];
+				if(!option){
+					const unknownButton = appTabBar.querySelector(`a`);
+					unknownButton.setAttribute('customizeMenuButtonChecked', 'true');
+					appTabBar.insertBefore(unknownButton, moreMenuButton);
+					continue;
+				}
 				if(thisScriptSettings.toAddOptions[key] === false){
 					const button = appTabBar.querySelector(`a[href="${option.href}"]`);
 					if(button){
@@ -1845,8 +1857,8 @@
 				}
 				addClickButtonEvent(button);
 				appTabBar.insertBefore(button, moreMenuButton);
-				sessionData.customizeMenuButton.isRunning = false;
 			}
+			sessionData.customizeMenuButton.isRunning = false;
 			return "done";
 		}
 		return "done";
@@ -4365,7 +4377,7 @@
 			page.appendChild(createSettingsElement({type: 'text', text: settingText.sortOrder, size: "2.5em", weight: "400", position: "left", isHTML: false}).container);
 			page.appendChild(createSettingsElement({type: 'button', text: settingText.sortOrderRestoreDefault, width: "fit-content", event: restoreDefaultSorting}).container);
 
-			const buttonNames = ["homeButton", "exploreButton", "notificationsButton", "messagesButton",
+			const buttonNames = ["homeButton", "exploreButton", "notificationsButton", "chatButton",
 				"grokButton", "listsButton", "bookmarksButton", "jobsButton", "communitiesButton", "premiumButton",
 				"verifiedOrgButton", "profileButton" ,"monetizationButton", "adsButton", "createYourSpaceButton", "settingsAndPrivacy",
 				"shortCutButton1", "shortCutButton2", "shortCutButton3", "shortCutButton4"];
@@ -9190,7 +9202,7 @@
 	const twitterApi = new TwitterApi();
 
 	class TwitterTextI18n {
-		#version = 202505170000;
+		#version = 202512090000;
 		#langList = ["ja", "en", "ar", "ar-x-fm", "bg", "bn", "ca", "cs", "da", "de", "el", "en-gb", "es", "eu", "fa", "fi", "fil",
 			"fr", "ga", "gl", "gu", "ha", "he", "hi", "hr", "hu", "id", "ig", "it", "kn", "ko", "mr", "msa", "nb",
 			"nl", "pl", "pt", "ro", "ru", "sk", "sr", "sv", "ta", "th", "tr", "uk", "ur", "vi", "yo", "zh-cn", "zh-tw"];
@@ -9393,7 +9405,7 @@ Thank you for your understanding.`,
 				textData.changelogTitle,
 			),
 		);
-	
+
 		const changelogMain = h('div', {
 				style: {
 					display: "flex",
@@ -9545,7 +9557,7 @@ Thank you for your understanding.`,
 				return changelogVersionContainer;
 			}),
 		);
-	
+
 		const changelogFooter = h('div', {
 				'MTLU-Id': 'changelogFooter',
 				style: {
