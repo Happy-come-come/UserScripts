@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Laman Utama"},
 	"explore": {"type":"string","value":"Teroka"},
 	"notifications": {"type":"string","value":"Pemberitahuan"},
+	"chat": {"type":"string","value":"Perbualan"},
 	"messages": {"type":"string","value":"Mesej"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Bookmark"},

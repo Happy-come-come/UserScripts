@@ -46,7 +46,7 @@ const text = {
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" post"+r(props.count,"","s")]}
+		"value": function(){return[props.formattedCount+" post"+n(props.count,"","s")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Hasiera"},
 	"explore": {"type":"string","value":"Arakatu"},
 	"notifications": {"type":"string","value":"Jakinarazpenak"},
+	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Mezuak"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Laster-markak"},

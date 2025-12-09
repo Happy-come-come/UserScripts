@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "通知"
 	},
+	"chat": {
+		"type": "string",
+		"value": "チャット"
+	},
 	"messages": {
 		"type": "string",
 		"value": "メッセージ"
@@ -213,7 +217,7 @@
 	},
 	"march": {
 		"type": "string",
-		"value": "3"
+		"value": "3月"
 	},
 	"april": {
 		"type": "string",

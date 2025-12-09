@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Startpagina"},
 	"explore": {"type":"string","value":"Verkennen"},
 	"notifications": {"type":"string","value":"Meldingen"},
+	"chat": {"type":"string","value":"Chatten"},
 	"messages": {"type":"string","value":"Berichten"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Bladwijzers"},

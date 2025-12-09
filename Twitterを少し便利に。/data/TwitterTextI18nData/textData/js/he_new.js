@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"דף הבית"},
 	"explore": {"type":"string","value":"גילוי"},
 	"notifications": {"type":"string","value":"הודעות"},
+	"chat": {"type":"string","value":"צ'אט"},
 	"messages": {"type":"string","value":"מסרים"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"סימניות"},

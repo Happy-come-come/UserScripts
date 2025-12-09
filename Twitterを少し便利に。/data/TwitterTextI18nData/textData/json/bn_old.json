@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "বিজ্ঞপ্তি"
 	},
+	"chat": {
+		"type": "string",
+		"value": "চ্যাট করুন"
+	},
 	"messages": {
 		"type": "string",
 		"value": "বার্তাগুলি"

@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "ಸೂಚನೆಗಳು"
 	},
+	"chat": {
+		"type": "string",
+		"value": "ಚಾಟ್ ಮಾಡಿ"
+	},
 	"messages": {
 		"type": "string",
 		"value": "ಸಂದೇಶಗಳು"

@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Bildirimler"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Sohbet"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Mesajlar"

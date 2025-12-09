@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Beranda"},
 	"explore": {"type":"string","value":"Jelajahi"},
 	"notifications": {"type":"string","value":"Notifikasi"},
+	"chat": {"type":"string","value":"Obrolan"},
 	"messages": {"type":"string","value":"Pesan"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Markah"},

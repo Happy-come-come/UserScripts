@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Ilmoitukset"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Keskustelu"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Viestit"

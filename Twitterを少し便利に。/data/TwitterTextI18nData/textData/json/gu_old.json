@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "સૂચનાઓ"
 	},
+	"chat": {
+		"type": "string",
+		"value": "ચૅટ"
+	},
 	"messages": {
 		"type": "string",
 		"value": "સંદેશાઓ"

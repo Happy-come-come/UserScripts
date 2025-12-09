@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "通知"
 	},
+	"chat": {
+		"type": "string",
+		"value": "聊天"
+	},
 	"messages": {
 		"type": "string",
 		"value": "訊息"

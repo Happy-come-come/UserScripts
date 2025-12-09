@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Kezdőlap"},
 	"explore": {"type":"string","value":"Felfedezés"},
 	"notifications": {"type":"string","value":"Értesítések"},
+	"chat": {"type":"string","value":"Csevegés"},
 	"messages": {"type":"string","value":"Üzenetek"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Könyvjelzők"},

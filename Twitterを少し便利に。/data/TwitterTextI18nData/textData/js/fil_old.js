@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Home"},
 	"explore": {"type":"string","value":"Mag-explore"},
 	"notifications": {"type":"string","value":"Mga Abiso"},
+	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Mga Mensahe"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Mga Bookmark"},

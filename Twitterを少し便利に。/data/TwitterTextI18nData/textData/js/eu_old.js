@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Hasiera"},
 	"explore": {"type":"string","value":"Arakatu"},
 	"notifications": {"type":"string","value":"Jakinarazpenak"},
+	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Mezuak"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Laster-markak"},

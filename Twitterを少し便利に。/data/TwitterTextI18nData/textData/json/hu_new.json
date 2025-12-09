@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Értesítések"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Csevegés"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Üzenetek"

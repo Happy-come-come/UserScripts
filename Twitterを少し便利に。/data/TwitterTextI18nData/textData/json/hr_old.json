@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Obavijesti"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Čavrljanje"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Poruke"

@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Anasayfa"},
 	"explore": {"type":"string","value":"Keşfet"},
 	"notifications": {"type":"string","value":"Bildirimler"},
+	"chat": {"type":"string","value":"Sohbet"},
 	"messages": {"type":"string","value":"Mesajlar"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Yer İşaretleri"},

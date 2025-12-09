@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Etusivu"},
 	"explore": {"type":"string","value":"Selaa"},
 	"notifications": {"type":"string","value":"Ilmoitukset"},
+	"chat": {"type":"string","value":"Keskustelu"},
 	"messages": {"type":"string","value":"Viestit"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Kirjanmerkit"},

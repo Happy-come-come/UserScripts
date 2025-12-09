@@ -2,12 +2,12 @@ const text = {
 	"forYouTab": {
 		"type": "webI18nFunction",
 		"arguments": ["noun"],
-		"value": function(i){return"Per te"+i.noun}
+		"value": function(e){return"Per te"+e.noun}
 	},
 	"followingTab": {
 		"type": "webI18nFunction",
 		"arguments": ["noun"],
-		"value": function(i){return"Seguiti"+i.noun}
+		"value": function(e){return"Seguiti"+e.noun}
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Fissate"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"Repost di %s"},
@@ -26,7 +26,7 @@ const text = {
 	"joinDateFrom": {
 		"type": "webI18nFunction",
 		"arguments": ["joinDate"],
-		"value": function(i){return"Iscrizione: "+i.joinDate}
+		"value": function(e){return"Iscrizione: "+e.joinDate}
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Home"},
 	"explore": {"type":"string","value":"Esplora"},
 	"notifications": {"type":"string","value":"Notifiche"},
+	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Messaggi"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Segnalibri"},
@@ -78,7 +79,7 @@ const text = {
 	"switchToAccount": {
 		"type": "webI18nFunction",
 		"arguments": ["screenName"],
-		"value": function(i){return"Passa a @"+i.screenName}
+		"value": function(e){return"Passa a @"+e.screenName}
 	},
 	"postTweet": {"type":"string","value":"Posta"},
 	"settings": {"type":"string","value":"Impostazioni"},

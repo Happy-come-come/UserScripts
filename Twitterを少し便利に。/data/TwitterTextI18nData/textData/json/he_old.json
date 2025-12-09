@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "הודעות"
 	},
+	"chat": {
+		"type": "string",
+		"value": "צ'אט"
+	},
 	"messages": {
 		"type": "string",
 		"value": "מסרים"

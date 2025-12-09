@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Почетна"},
 	"explore": {"type":"string","value":"Истражи"},
 	"notifications": {"type":"string","value":"Обавештења"},
+	"chat": {"type":"string","value":"Ћаскање"},
 	"messages": {"type":"string","value":"Поруке"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Обележивачи"},

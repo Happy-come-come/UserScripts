@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Сповіщення"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Чат"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Повідомлення"
@@ -156,7 +160,7 @@
 	},
 	"createYourSpace": {
 		"type": "string",
-		"value": "Створіть власний простір"
+		"value": "Створіть власну аудіокімнату"
 	},
 	"settingsAndPrivacy": {
 		"type": "string",

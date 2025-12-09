@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Ειδοποιήσεις"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Συνομιλία"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Μηνύματα"

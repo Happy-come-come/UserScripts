@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Varsler"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Nettprat"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Meldinger"

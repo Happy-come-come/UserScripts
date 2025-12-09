@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "सूचनापत्रे"
 	},
+	"chat": {
+		"type": "string",
+		"value": "चॅट"
+	},
 	"messages": {
 		"type": "string",
 		"value": "संदेश"

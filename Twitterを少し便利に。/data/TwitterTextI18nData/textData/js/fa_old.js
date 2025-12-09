@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"خانه"},
 	"explore": {"type":"string","value":"کاوش"},
 	"notifications": {"type":"string","value":"آگاه‌سازی‌ها"},
+	"chat": {"type":"string","value":"گپ"},
 	"messages": {"type":"string","value":"پیام‌ها"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"نشانک‌ها"},

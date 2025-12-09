@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "การแจ้งเตือน"
 	},
+	"chat": {
+		"type": "string",
+		"value": "สนทนา"
+	},
 	"messages": {
 		"type": "string",
 		"value": "ข้อความ"

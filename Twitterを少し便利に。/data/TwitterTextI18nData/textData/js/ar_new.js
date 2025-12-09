@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"الرئيسيّة"},
 	"explore": {"type":"string","value":"استكشف"},
 	"notifications": {"type":"string","value":"التنبيهات"},
+	"chat": {"type":"string","value":"الدردشة"},
 	"messages": {"type":"string","value":"الرسائل"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"العلامات المرجعية"},

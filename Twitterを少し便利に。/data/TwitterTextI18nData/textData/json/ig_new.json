@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "Nziọkwa"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Chat"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Ozi"

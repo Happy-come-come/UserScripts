@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Notificaciones"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Chatear"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Mensajes"

@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Αρχική σελίδα"},
 	"explore": {"type":"string","value":"Εξερευνήστε"},
 	"notifications": {"type":"string","value":"Ειδοποιήσεις"},
+	"chat": {"type":"string","value":"Συνομιλία"},
 	"messages": {"type":"string","value":"Μηνύματα"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Σελιδοδείκτες"},

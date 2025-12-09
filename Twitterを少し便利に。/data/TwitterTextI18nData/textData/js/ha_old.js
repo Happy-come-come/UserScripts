@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Gida"},
 	"explore": {"type":"string","value":"Bincike"},
 	"notifications": {"type":"string","value":"Sanarwa"},
+	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Saƙonni"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Alamomi"},

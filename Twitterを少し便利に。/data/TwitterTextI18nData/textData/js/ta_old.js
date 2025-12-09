@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"முகப்பு"},
 	"explore": {"type":"string","value":"ஆராய்க"},
 	"notifications": {"type":"string","value":"அறிவிப்புகள்"},
+	"chat": {"type":"string","value":"அரட்டை"},
 	"messages": {"type":"string","value":"செய்திகள்"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"புத்தகக்குறிகள்"},

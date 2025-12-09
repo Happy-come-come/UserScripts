@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "التنبيهات"
 	},
+	"chat": {
+		"type": "string",
+		"value": "الدردشة"
+	},
 	"messages": {
 		"type": "string",
 		"value": "الرسائل"

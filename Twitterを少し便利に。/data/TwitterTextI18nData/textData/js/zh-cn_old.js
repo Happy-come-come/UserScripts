@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"主页"},
 	"explore": {"type":"string","value":"探索"},
 	"notifications": {"type":"string","value":"通知"},
+	"chat": {"type":"string","value":"聊天"},
 	"messages": {"type":"string","value":"私信"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"书签"},

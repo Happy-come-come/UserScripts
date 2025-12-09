@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Ụlọ"},
 	"explore": {"type":"string","value":"Nyochaa"},
 	"notifications": {"type":"string","value":"Nziọkwa"},
+	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Ozi"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Ebenrụtụakā gasị"},

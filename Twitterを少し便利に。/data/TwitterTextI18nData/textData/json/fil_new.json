@@ -78,9 +78,13 @@
 		"type": "string",
 		"value": "Mga Abiso"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Chat"
+	},
 	"messages": {
 		"type": "string",
-		"value": "Mga Mensahe"
+		"value": "Mga Message"
 	},
 	"grok": {
 		"type": "string",
@@ -92,7 +96,7 @@
 	},
 	"jobs": {
 		"type": "string",
-		"value": "Mga trabaho"
+		"value": "Mga Trabaho"
 	},
 	"communities": {
 		"type": "string",

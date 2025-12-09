@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "Notificacións"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Chat"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Mensaxes"

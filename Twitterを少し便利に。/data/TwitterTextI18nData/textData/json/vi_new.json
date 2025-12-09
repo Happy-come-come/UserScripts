@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Thông báo"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Chat"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Tin nhắn"

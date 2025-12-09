@@ -115,6 +115,7 @@ const xmlParser = new XMLParser({
 			"home": "ha8209bc", // "ホーム"
 			"explore": "fcf3e54c", // "話題を検索"
 			"notifications": "eb75875e", // "通知"
+			"chat": "h5e38204", // "チャット"
 			"messages": "a2f81050", // "メッセージ"
 			"grok": "h5860a68", // "Grok"
 			"bookmarks": "i3145aa0", // "ブックマーク"
@@ -348,7 +349,7 @@ const xmlParser = new XMLParser({
 				fs.writeFileSync(cachePath, raw, 'utf8');
 			}
 
-			const functionName = raw.match(/^"use strict";.{240,900}\}([a-z])\(/)[1];
+			const functionName = raw.match(/\}([a-z])\(\"/)[1];
 			const overRideFunction = `function ${functionName}(key, val){
 				if(typeof val === 'string'){
 					result[key] = {
@@ -372,14 +373,14 @@ const xmlParser = new XMLParser({
 				}
 			};`;
 
-			const replaced = raw.replace(/"use strict";.*\)\)}}\);function/, `${overRideFunction};function `)
+			const replaced = raw.replace(/^("use strict";|try).*\)\)}}\);function/, `${overRideFunction};function `)
 				.replace(/\);var.*$/m, ');');
 
 			const context = {result: {}, console};
 			vm.createContext(context);
 			vm.runInContext(replaced, context);
 
-			const templateFunctionsArray = `${raw.match(/\([a-z]=(\[\{.*\]\}\}),\{key:\"templateReducer\"/)[1]}]`;
+			const templateFunctionsArray = `${raw.match(/\([a-z][=|,](\[\{.*\]\}\}),\{key:\"templateReducer\"/)[1]}]`;
 			const templateFunctions = vm.runInNewContext(`(${templateFunctionsArray})`);
 			for(const templateFunction of templateFunctions){
 				context.result[templateFunction.key] = {

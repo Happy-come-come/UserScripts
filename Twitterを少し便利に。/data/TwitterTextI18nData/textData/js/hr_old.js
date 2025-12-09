@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Naslovnica"},
 	"explore": {"type":"string","value":"Istraži"},
 	"notifications": {"type":"string","value":"Obavijesti"},
+	"chat": {"type":"string","value":"Čavrljanje"},
 	"messages": {"type":"string","value":"Poruke"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Knjižne oznake"},

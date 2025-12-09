@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "Àwọn ìfitónilétí"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Chat"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Àwọn ìfiránṣẹ́"

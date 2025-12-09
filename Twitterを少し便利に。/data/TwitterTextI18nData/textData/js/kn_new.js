@@ -46,19 +46,20 @@ const text = {
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ಪೋಸ್ಟ್"+f(props.count,"","‌ಗಳು")]}
+		"value": function(){return[props.formattedCount+" ಪೋಸ್ಟ್"+t(props.count,"","‌ಗಳು")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ಇಷ್ಟ"+f(props.count,"","ಗಳು")]}
+		"value": function(){return[props.formattedCount+" ಇಷ್ಟ"+t(props.count,"","ಗಳು")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೋಗಳು"+f(props.count,';/"',"")]}
+		"value": function(){return[props.formattedCount+" ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೋಗಳು"+t(props.count,';/"',"")]}
 	},
 	"home": {"type":"string","value":"ಹೋಮ್"},
 	"explore": {"type":"string","value":"ಅನ್ವೇಷಿಸಿ"},
 	"notifications": {"type":"string","value":"ಸೂಚನೆಗಳು"},
+	"chat": {"type":"string","value":"ಚಾಟ್ ಮಾಡಿ"},
 	"messages": {"type":"string","value":"ಸಂದೇಶಗಳು"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"ಬುಕ್‌ಮಾರ್ಕ್‌ಗಳು"},

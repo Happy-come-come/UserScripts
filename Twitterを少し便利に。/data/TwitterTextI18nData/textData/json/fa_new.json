@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "آگاه‌سازی‌ها"
 	},
+	"chat": {
+		"type": "string",
+		"value": "گپ"
+	},
 	"messages": {
 		"type": "string",
 		"value": "پیام‌ها"

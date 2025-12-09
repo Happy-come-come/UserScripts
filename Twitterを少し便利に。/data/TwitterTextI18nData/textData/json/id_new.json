@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "Notifikasi"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Obrolan"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Pesan"

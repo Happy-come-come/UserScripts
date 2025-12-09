@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Baile"},
 	"explore": {"type":"string","value":"Féach thart"},
 	"notifications": {"type":"string","value":"Fógraí"},
+	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Teachtaireachtaí"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Leabharmharcanna"},

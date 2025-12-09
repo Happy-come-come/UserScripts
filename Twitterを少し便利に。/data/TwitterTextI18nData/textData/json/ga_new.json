@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "Fógraí"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Chat"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Teachtaireachtaí"

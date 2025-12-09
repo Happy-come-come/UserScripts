@@ -110,13 +110,17 @@
 		"type": "string",
 		"value": "알림"
 	},
+	"chat": {
+		"type": "string",
+		"value": "채팅"
+	},
 	"messages": {
 		"type": "string",
 		"value": "쪽지"
 	},
 	"grok": {
 		"type": "string",
-		"value": "그록"
+		"value": "Grok"
 	},
 	"bookmarks": {
 		"type": "string",

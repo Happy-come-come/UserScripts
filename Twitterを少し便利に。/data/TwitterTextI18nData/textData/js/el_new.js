@@ -46,11 +46,11 @@ const text = {
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" αν"+f(props.count,"άρτηση","αρτήσεις")]}
+		"value": function(){return[props.formattedCount+" αν"+t(props.count,"άρτηση","αρτήσεις")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Επισ"+f(props.count,"ήμανση","ημάνσεις")+' "Μου αρέσει"']}
+		"value": function(){return[props.formattedCount+" Επισ"+t(props.count,"ήμανση","ημάνσεις")+' "Μου αρέσει"']}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Αρχική σελίδα"},
 	"explore": {"type":"string","value":"Εξερευνήστε"},
 	"notifications": {"type":"string","value":"Ειδοποιήσεις"},
+	"chat": {"type":"string","value":"Συνομιλία"},
 	"messages": {"type":"string","value":"Μηνύματα"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Σελιδοδείκτες"},

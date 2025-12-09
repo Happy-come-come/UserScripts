@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Trang chủ"},
 	"explore": {"type":"string","value":"Khám phá"},
 	"notifications": {"type":"string","value":"Thông báo"},
+	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Tin nhắn"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Dấu trang"},

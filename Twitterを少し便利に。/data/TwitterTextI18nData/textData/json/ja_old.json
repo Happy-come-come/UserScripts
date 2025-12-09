@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "通知"
 	},
+	"chat": {
+		"type": "string",
+		"value": "チャット"
+	},
 	"messages": {
 		"type": "string",
 		"value": "メッセージ"

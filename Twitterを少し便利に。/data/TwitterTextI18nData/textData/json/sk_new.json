@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Notifikácie"
 	},
+	"chat": {
+		"type": "string",
+		"value": "Četovať"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Správy"
