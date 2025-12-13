@@ -346,9 +346,9 @@ const xmlParser = new XMLParser({
 			);
 			if(!fs.existsSync('./textData/json'))fs.mkdirSync('./textData/json', {recursive: true});
 			const jsonOutputPath = path.join('textData', 'json', `${lang}_${type}.json`);
-			fs.writeFileSync(jsonOutputPath, entriesJsonString, 'utf8');
+			fs.writeFileSync(jsonOutputPath, entriesJsonString + '\n', 'utf8');
 
-			const jsOutputData = `const text = {\n${entries.join(',\n')}\n};\n\nexport default text;`;
+			const jsOutputData = `const text = {\n${entries.join(',\n')}\n};\n\nexport default text;\n`;
 			const jsOutputPath = path.join('textData', 'js', `${lang}_${type}.js`);
 			if(!fs.existsSync('./textData/js'))fs.mkdirSync('./textData/js', {recursive: true});
 			fs.writeFileSync(jsOutputPath, jsOutputData, 'utf8');
