@@ -277,7 +277,7 @@
 			}
 			outputData['データチェック'] = 'ごめん。わたし、もう、絶対に、幸せになんてなれないんだ';
 			const outputPath = path.join(__dirname, 'i18n', `${lang}.json`);
-			fs.writeFileSync(outputPath, JSON.stringify(outputData, null, 2), 'utf-8');
+			fs.writeFileSync(outputPath, JSON.stringify(outputData, null, 2) + '\n', 'utf-8');
 			console.log(`i18n file generated for ${lang} at ${outputPath}`);
 		}
 	}
@@ -306,7 +306,7 @@
 					throw new Error(`Failed to extract JSON data from ${url}`);
 				}
 				const outputPath = path.join(__dirname, 'allData', `${lang}.json`);
-				fs.writeFileSync(outputPath, JSON.stringify(targetLangData, null, 2), 'utf-8');
+				fs.writeFileSync(outputPath, JSON.stringify(targetLangData, null, 2) + '\n', 'utf-8');
 				console.log(`Combined locale data saved for ${lang} at ${outputPath}`);
 			}
 			langData[lang] = targetLangData;
