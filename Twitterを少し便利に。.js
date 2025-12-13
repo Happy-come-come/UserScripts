@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.16
+// @version			2.3.1.17
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1690,7 +1690,7 @@
 			const observer = new MutationObserver(mutations=>{
 				if(breaking || sessionData.customizeMenuButton.isRunning)return;
 				breaking = true;
-				appTabBar.querySelectorAll('[customizemenubuttonchecked="true"]').forEach(e=>e.remove());
+				appTabBar.querySelectorAll('[clonedButton="true"]').forEach(e=>e.remove());
 				addAndSort().finally(()=>{
 					sessionData.customizeMenuButton.isRunning = false;
 				});
@@ -1718,6 +1718,9 @@
 				},
 				"notificationsButton": {
 					"href": "/notifications",
+				},
+				"connect_peopleButton":{
+					"href": "/i/connect_people",
 				},
 				"chatButton": {
 					"href": "/i/chat",
@@ -1809,20 +1812,14 @@
 			while(buttonElementTemplate.firstChild){
 				elementToClone.appendChild(buttonElementTemplate.firstChild);
 			}
-
 			for(let i=0; i < thisScriptSettings.buttonSorting?.length || 0; i++){
 				let key = thisScriptSettings.buttonSorting[i];
 				if(key === "messagesButton")key = "chatButton";
 				const option = options[key];
-				if(!option){
-					const unknownButton = appTabBar.querySelector(`a`);
-					unknownButton.setAttribute('customizeMenuButtonChecked', 'true');
-					appTabBar.insertBefore(unknownButton, moreMenuButton);
-					continue;
-				}
 				if(thisScriptSettings.toAddOptions[key] === false){
 					const button = appTabBar.querySelector(`a[href="${option.href}"]`);
 					if(button){
+						button.setAttribute('customizeMenuButtonChecked', 'true');
 						button.style.display = "none";
 					}
 					continue;
@@ -1830,15 +1827,18 @@
 				const existButton = appTabBar.querySelectorAll(`a[href="${option.href}"]`);
 				if(existButton.length > 0){
 					if(existButton.length > 1){
-						existButton.forEach(b=>{
-							if(b.getAttribute('customizeMenuButtonChecked') === "true"){
-								b.remove();
+						for(let j=1;j<existButton.length;j++){
+							const target = existButton[j];
+							if(target.getAttribute('clonedButton') === "true"){
+								target.remove();
 							}else{
-								appTabBar.insertBefore(b, moreMenuButton);
+								target.setAttribute('customizeMenuButtonChecked', 'true');
+								appTabBar.insertBefore(target, moreMenuButton);
 							}
-						});
+						}
 						continue;
 					}
+					existButton[0].setAttribute('customizeMenuButtonChecked', 'true');
 					appTabBar.insertBefore(existButton[0], moreMenuButton);
 					continue;
 				};
@@ -1848,6 +1848,7 @@
 				if(buttonText?.innerText)buttonText.innerText = option.text;
 				button.setAttribute('aria-label', key);
 				button.setAttribute('customizeMenuButtonChecked', 'true');
+				button.setAttribute('clonedButton', 'true');
 				button.target = "_blank";
 				button.rel = "noopener nofollow";
 				button.style.display = "flex";
@@ -1857,6 +1858,14 @@
 				}
 				addClickButtonEvent(button);
 				appTabBar.insertBefore(button, moreMenuButton);
+			}
+			const unknownButtons = appTabBar.querySelectorAll(`a:not([customizeMenuButtonChecked="true"])`);
+			if(unknownButtons.length){
+				for(let i=0;i<unknownButtons.length;i++){
+					const b = unknownButtons[i];
+					b.setAttribute('unknownButton', 'true');
+					appTabBar.insertBefore(b, moreMenuButton);
+				}
 			}
 			sessionData.customizeMenuButton.isRunning = false;
 			return "done";
@@ -4308,6 +4317,7 @@
 			const page = createSettingsPageTemplate(settingsTarget.targetName);
 			const settingEntries = [
 				{type: 'text', text: settingText.toAdd, size: "2em", weight: "400", position: "left", isHTML: false},
+				{id: "connect_peopleButton", name: twitterTextI18n.getText("connect_people"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
 				{id: "grokButton", name: twitterTextI18n.getText("grok"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
 				{id: "bookmarksButton", name: twitterTextI18n.getText("bookmarks"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
 				{id: "jobsButton", name: twitterTextI18n.getText("jobs"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
@@ -4377,7 +4387,7 @@
 			page.appendChild(createSettingsElement({type: 'text', text: settingText.sortOrder, size: "2.5em", weight: "400", position: "left", isHTML: false}).container);
 			page.appendChild(createSettingsElement({type: 'button', text: settingText.sortOrderRestoreDefault, width: "fit-content", event: restoreDefaultSorting}).container);
 
-			const buttonNames = ["homeButton", "exploreButton", "notificationsButton", "chatButton",
+			const buttonNames = ["homeButton", "exploreButton", "notificationsButton", "connect_peopleButton", "chatButton",
 				"grokButton", "listsButton", "bookmarksButton", "jobsButton", "communitiesButton", "premiumButton",
 				"verifiedOrgButton", "profileButton" ,"monetizationButton", "adsButton", "createYourSpaceButton", "settingsAndPrivacy",
 				"shortCutButton1", "shortCutButton2", "shortCutButton3", "shortCutButton4"];
@@ -9202,7 +9212,7 @@
 	const twitterApi = new TwitterApi();
 
 	class TwitterTextI18n {
-		#version = 202512090000;
+		#version = 202512130000;
 		#langList = ["ja", "en", "ar", "ar-x-fm", "bg", "bn", "ca", "cs", "da", "de", "el", "en-gb", "es", "eu", "fa", "fi", "fil",
 			"fr", "ga", "gl", "gu", "ha", "he", "hi", "hr", "hu", "id", "ig", "it", "kn", "ko", "mr", "msa", "nb",
 			"nl", "pl", "pt", "ro", "ru", "sk", "sr", "sv", "ta", "th", "tr", "uk", "ur", "vi", "yo", "zh-cn", "zh-tw"];
@@ -9236,7 +9246,7 @@
 				jsonTextData = storedData[lang][type].jsonText;
 			}else{
 				const jsonTextDataBaseUrl = `https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/data/TwitterTextI18nData/textData/json/`
-				jsonTextData = await request({url: `${jsonTextDataBaseUrl}${lang}_${type}.json`, method: 'GET', respType: 'text'});
+				jsonTextData = await request({url: `${jsonTextDataBaseUrl}${lang}_${type}.json?v=${this.#version}`, method: 'GET', respType: 'text'});
 				if(!jsonTextData){
 					throw new Error('Failed to load text data');
 				}
