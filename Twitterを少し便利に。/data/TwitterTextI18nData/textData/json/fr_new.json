@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Notifications"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Se connecter"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Chat"

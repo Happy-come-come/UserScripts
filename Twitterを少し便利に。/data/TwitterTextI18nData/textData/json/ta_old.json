@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "அறிவிப்புகள்"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "இணை"
+	},
 	"chat": {
 		"type": "string",
 		"value": "அரட்டை"

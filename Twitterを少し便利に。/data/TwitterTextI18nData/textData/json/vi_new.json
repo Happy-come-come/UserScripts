@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Thông báo"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Kết nối"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Chat"

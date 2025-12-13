@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "સૂચનાઓ"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "જોડાણ કરો"
+	},
 	"chat": {
 		"type": "string",
 		"value": "ચૅટ"

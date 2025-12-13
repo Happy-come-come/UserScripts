@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Értesítések"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Kapcsolatfelvétel"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Csevegés"

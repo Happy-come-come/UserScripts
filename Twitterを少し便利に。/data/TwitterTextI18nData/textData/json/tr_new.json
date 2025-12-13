@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Bildirimler"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Bağlan"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Sohbet"

@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "알림"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "연결하기"
+	},
 	"chat": {
 		"type": "string",
 		"value": "채팅"

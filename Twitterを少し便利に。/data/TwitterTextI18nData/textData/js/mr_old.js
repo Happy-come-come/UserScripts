@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"होम"},
 	"explore": {"type":"string","value":"एक्सप्लोर करा"},
 	"notifications": {"type":"string","value":"सूचनापत्रे"},
+	"connect_people": {"type":"string","value":"कनेक्ट करा"},
 	"chat": {"type":"string","value":"चॅट"},
 	"messages": {"type":"string","value":"संदेश"},
 	"grok": {"type":"string","value":"Grok"},

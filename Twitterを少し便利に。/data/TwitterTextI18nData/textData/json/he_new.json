@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "הודעות"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "התחבר"
+	},
 	"chat": {
 		"type": "string",
 		"value": "צ'אט"

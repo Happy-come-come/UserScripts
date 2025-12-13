@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"ಹೋಮ್"},
 	"explore": {"type":"string","value":"ಅನ್ವೇಷಿಸಿ"},
 	"notifications": {"type":"string","value":"ಸೂಚನೆಗಳು"},
+	"connect_people": {"type":"string","value":"ಸಂಪರ್ಕಿಸು"},
 	"chat": {"type":"string","value":"ಚಾಟ್ ಮಾಡಿ"},
 	"messages": {"type":"string","value":"ಸಂದೇಶಗಳು"},
 	"grok": {"type":"string","value":"Grok"},

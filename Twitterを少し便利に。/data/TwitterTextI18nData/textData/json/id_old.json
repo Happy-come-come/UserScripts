@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "Notifikasi"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Hubungkan"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Obrolan"

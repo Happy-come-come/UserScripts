@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Обавештења"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Повезивање"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Ћаскање"

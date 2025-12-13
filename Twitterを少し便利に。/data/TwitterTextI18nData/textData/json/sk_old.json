@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Notifikácie"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Pripojiť"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Četovať"

@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"ホーム"},
 	"explore": {"type":"string","value":"話題を検索"},
 	"notifications": {"type":"string","value":"通知"},
+	"connect_people": {"type":"string","value":"つながる"},
 	"chat": {"type":"string","value":"チャット"},
 	"messages": {"type":"string","value":"メッセージ"},
 	"grok": {"type":"string","value":"Grok"},

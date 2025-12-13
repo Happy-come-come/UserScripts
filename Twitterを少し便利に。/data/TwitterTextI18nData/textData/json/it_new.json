@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Notifiche"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Connetti"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Chat"

@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "ಸೂಚನೆಗಳು"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "ಸಂಪರ್ಕಿಸು"
+	},
 	"chat": {
 		"type": "string",
 		"value": "ಚಾಟ್ ಮಾಡಿ"

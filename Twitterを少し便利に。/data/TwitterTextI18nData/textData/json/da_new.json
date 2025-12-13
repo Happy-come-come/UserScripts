@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Meddelelser"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Forbind"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Chat"

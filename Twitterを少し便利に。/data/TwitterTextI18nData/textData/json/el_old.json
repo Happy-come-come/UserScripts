@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Ειδοποιήσεις"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Σύνδεση"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Συνομιλία"

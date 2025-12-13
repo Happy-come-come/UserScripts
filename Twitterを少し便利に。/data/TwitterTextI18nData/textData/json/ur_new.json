@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "اطلاعات"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "رابطہ قائم کریں"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Chat"

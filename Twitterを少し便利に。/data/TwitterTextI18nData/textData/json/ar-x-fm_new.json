@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "التنبيهات"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "التواصل"
+	},
 	"chat": {
 		"type": "string",
 		"value": "الدردشة"

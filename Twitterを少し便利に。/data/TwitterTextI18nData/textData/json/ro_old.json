@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Notificări"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Conectează-te"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Chat"

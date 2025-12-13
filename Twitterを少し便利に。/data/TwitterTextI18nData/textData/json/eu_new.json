@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "Jakinarazpenak"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Konektatu"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Chat"

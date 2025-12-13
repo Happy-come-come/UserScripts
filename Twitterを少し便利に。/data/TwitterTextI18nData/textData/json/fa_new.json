@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "آگاه‌سازی‌ها"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "ارتباط"
+	},
 	"chat": {
 		"type": "string",
 		"value": "گپ"

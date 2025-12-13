@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "Fógraí"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Nasc"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Chat"

@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Hlavní stránka"},
 	"explore": {"type":"string","value":"Prozkoumat"},
 	"notifications": {"type":"string","value":"Oznámení"},
+	"connect_people": {"type":"string","value":"Spojit se"},
 	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Zprávy"},
 	"grok": {"type":"string","value":"Grok"},

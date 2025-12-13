@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Ilé"},
 	"explore": {"type":"string","value":"Ìwádìí"},
 	"notifications": {"type":"string","value":"Àwọn ìfitónilétí"},
+	"connect_people": {"type":"string","value":"Sopọ̀"},
 	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Àwọn ìfiránṣẹ́"},
 	"grok": {"type":"string","value":"Grok"},

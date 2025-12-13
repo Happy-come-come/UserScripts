@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "বিজ্ঞপ্তি"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "সংযোগ করুন"
+	},
 	"chat": {
 		"type": "string",
 		"value": "চ্যাট করুন"

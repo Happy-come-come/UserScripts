@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"홈"},
 	"explore": {"type":"string","value":"탐색하기"},
 	"notifications": {"type":"string","value":"알림"},
+	"connect_people": {"type":"string","value":"연결하기"},
 	"chat": {"type":"string","value":"채팅"},
 	"messages": {"type":"string","value":"쪽지"},
 	"grok": {"type":"string","value":"Grok"},

@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "Mga Abiso"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Kumonekta"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Chat"

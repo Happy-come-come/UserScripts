@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "सूचनाएं"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "कनेक्ट करें"
+	},
 	"chat": {
 		"type": "string",
 		"value": "चैट"

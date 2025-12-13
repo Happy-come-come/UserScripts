@@ -115,6 +115,7 @@ const xmlParser = new XMLParser({
 			"home": "ha8209bc", // "ホーム"
 			"explore": "fcf3e54c", // "話題を検索"
 			"notifications": "eb75875e", // "通知"
+			"connect_people": {key:"b5298d92", force: 'new'}, // "つながる"
 			"chat": "h5e38204", // "チャット"
 			"messages": "a2f81050", // "メッセージ"
 			"grok": "h5860a68", // "Grok"
@@ -164,7 +165,36 @@ const xmlParser = new XMLParser({
 			const result = {};
 			for(const key in useWords){
 				const useKey = useWords[key];
-				if(typeof useKey === 'string'){
+				if(typeof useKey === 'object' && !Array.isArray(useKey)){
+					const actualKey = useKey.key;
+					const forceType = useKey.force;
+					// force指定がある場合、指定されたtypeのデータを優先
+					if(forceType && forceType === type){
+						if(currentTextData[actualKey]){
+							result[key] = currentTextData[actualKey];
+						}else if(enTextData[type][actualKey]){
+							result[key] = enTextData[type][actualKey];
+						}
+					}else if(forceType && forceType !== type){
+						// 異なるtypeが指定されている場合はスキップ
+						if(anotherTextData[actualKey]){
+							result[key] = anotherTextData[actualKey];
+						}else if(enTextData.new[actualKey]){
+							result[key] = enTextData.new[actualKey];
+						}else if(enTextData.old[actualKey]){
+							result[key] = enTextData.old[actualKey];
+						}
+					}else{
+						// force指定がない場合は通常処理
+						if(currentTextData[actualKey]){
+							result[key] = currentTextData[actualKey];
+						}else if(anotherTextData[actualKey]){
+							result[key] = anotherTextData[actualKey];
+						}else{
+							result[key] = enTextData[type][actualKey];
+						}
+					}
+				}else if(typeof useKey === 'string'){
 					if(currentTextData[useKey]){
 						result[key] = currentTextData[useKey];
 					}else if(anotherTextData[useKey]){

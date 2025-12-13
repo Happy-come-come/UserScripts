@@ -78,6 +78,10 @@
 		"type": "string",
 		"value": "Nziọkwa"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Jikọọ"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Chat"

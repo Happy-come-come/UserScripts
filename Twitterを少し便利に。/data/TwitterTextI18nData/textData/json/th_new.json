@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "การแจ้งเตือน"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "เชื่อมต่อ"
+	},
 	"chat": {
 		"type": "string",
 		"value": "สนทนา"

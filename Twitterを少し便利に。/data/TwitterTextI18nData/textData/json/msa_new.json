@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Pemberitahuan"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Hubung"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Perbualan"

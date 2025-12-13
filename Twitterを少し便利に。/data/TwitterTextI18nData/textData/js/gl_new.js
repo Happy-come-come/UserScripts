@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Inicio"},
 	"explore": {"type":"string","value":"Explorar"},
 	"notifications": {"type":"string","value":"Notificacións"},
+	"connect_people": {"type":"string","value":"Conectar"},
 	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Mensaxes"},
 	"grok": {"type":"string","value":"Grok"},

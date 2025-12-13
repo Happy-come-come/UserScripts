@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "通知"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "つながる"
+	},
 	"chat": {
 		"type": "string",
 		"value": "チャット"

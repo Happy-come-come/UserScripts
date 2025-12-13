@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Ilmoitukset"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Yhdistä"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Keskustelu"

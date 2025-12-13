@@ -110,6 +110,10 @@
 		"type": "string",
 		"value": "Varsler"
 	},
+	"connect_people": {
+		"type": "string",
+		"value": "Koble til"
+	},
 	"chat": {
 		"type": "string",
 		"value": "Nettprat"

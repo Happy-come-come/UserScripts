@@ -59,6 +59,7 @@ const text = {
 	"home": {"type":"string","value":"Pagina principală"},
 	"explore": {"type":"string","value":"Explorează"},
 	"notifications": {"type":"string","value":"Notificări"},
+	"connect_people": {"type":"string","value":"Conectează-te"},
 	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Mesaje"},
 	"grok": {"type":"string","value":"Grok"},
