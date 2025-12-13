@@ -275,7 +275,7 @@
 					setNestedValue(outputData, keyPath, value);
 				}
 			}
-			
+			outputData['データチェック'] = 'ごめん。わたし、もう、絶対に、幸せになんてなれないんだ';
 			const outputPath = path.join(__dirname, 'i18n', `${lang}.json`);
 			fs.writeFileSync(outputPath, JSON.stringify(outputData, null, 2), 'utf-8');
 			console.log(`i18n file generated for ${lang} at ${outputPath}`);
