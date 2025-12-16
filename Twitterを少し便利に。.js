@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.17
+// @version			2.3.1.18
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1742,6 +1742,10 @@
 				"communitiesButton": {
 					"href": `/${userData.screenName}/communities`,
 					"text": twitterTextI18n.getText("communities")
+				},
+				"businessButton": {
+					"href": "/i/premium-business",
+					"text": twitterTextI18n.getText("business")
 				},
 				"premiumButton": {
 					"href": "/i/premium_sign_up",
@@ -4322,6 +4326,7 @@
 				{id: "bookmarksButton", name: twitterTextI18n.getText("bookmarks"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
 				{id: "jobsButton", name: twitterTextI18n.getText("jobs"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
 				{id: "communitiesButton", name: twitterTextI18n.getText("communities"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
+				{id: "businessButton", name: twitterTextI18n.getText("business"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
 				{id: "premiumButton", name: twitterTextI18n.getText("premium"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
 				{id: "verifiedOrgButton", name: twitterTextI18n.getText("verifiedOrg"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
 				{id: "listsButton", name: twitterTextI18n.getText("lists"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
@@ -4388,7 +4393,7 @@
 			page.appendChild(createSettingsElement({type: 'button', text: settingText.sortOrderRestoreDefault, width: "fit-content", event: restoreDefaultSorting}).container);
 
 			const buttonNames = ["homeButton", "exploreButton", "notificationsButton", "connect_peopleButton", "chatButton",
-				"grokButton", "listsButton", "bookmarksButton", "jobsButton", "communitiesButton", "premiumButton",
+				"grokButton", "listsButton", "bookmarksButton", "jobsButton", "communitiesButton", "businessButton", "premiumButton",
 				"verifiedOrgButton", "profileButton" ,"monetizationButton", "adsButton", "createYourSpaceButton", "settingsAndPrivacy",
 				"shortCutButton1", "shortCutButton2", "shortCutButton3", "shortCutButton4"];
 			const buttonList = scriptSetting?.buttonSorting?.length === buttonNames.length ? scriptSetting.buttonSorting : buttonNames;
@@ -9212,7 +9217,7 @@
 	const twitterApi = new TwitterApi();
 
 	class TwitterTextI18n {
-		#version = 202512130000;
+		#version = 202512160000;
 		#langList = ["ja", "en", "ar", "ar-x-fm", "bg", "bn", "ca", "cs", "da", "de", "el", "en-gb", "es", "eu", "fa", "fi", "fil",
 			"fr", "ga", "gl", "gu", "ha", "he", "hi", "hr", "hu", "id", "ig", "it", "kn", "ko", "mr", "msa", "nb",
 			"nl", "pl", "pt", "ro", "ru", "sk", "sr", "sv", "ta", "th", "tr", "uk", "ur", "vi", "yo", "zh-cn", "zh-tw"];
