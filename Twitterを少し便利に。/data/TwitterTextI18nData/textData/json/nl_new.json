@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Banen"
 	},
+	"business": {
+		"type": "string",
+		"value": "Zakelijk"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Community"

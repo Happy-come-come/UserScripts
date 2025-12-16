@@ -65,6 +65,7 @@ const text = {
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"書籤"},
 	"jobs": {"type":"string","value":"工作機會"},
+	"business": {"type":"string","value":"商業"},
 	"communities": {"type":"string","value":"社群"},
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"已認證組織"},

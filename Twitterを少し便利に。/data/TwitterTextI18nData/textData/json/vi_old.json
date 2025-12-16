@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Công việc"
 	},
+	"business": {
+		"type": "string",
+		"value": "Doanh nghiệp"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Cộng đồng"

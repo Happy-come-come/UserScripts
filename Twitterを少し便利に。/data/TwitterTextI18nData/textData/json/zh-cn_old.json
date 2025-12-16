@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "工作"
 	},
+	"business": {
+		"type": "string",
+		"value": "商业"
+	},
 	"communities": {
 		"type": "string",
 		"value": "社群"

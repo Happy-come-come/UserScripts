@@ -102,6 +102,10 @@
 		"type": "string",
 		"value": "Jobs"
 	},
+	"business": {
+		"type": "string",
+		"value": "Gnó"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Pobal"

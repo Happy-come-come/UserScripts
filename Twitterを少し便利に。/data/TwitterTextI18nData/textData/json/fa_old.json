@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "شغل‌ها"
 	},
+	"business": {
+		"type": "string",
+		"value": "کسب‌وکار"
+	},
 	"communities": {
 		"type": "string",
 		"value": "انجمن"

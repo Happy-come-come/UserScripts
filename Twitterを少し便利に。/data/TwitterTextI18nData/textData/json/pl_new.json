@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Oferty pracy"
 	},
+	"business": {
+		"type": "string",
+		"value": "Biznes"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Grupa dyskusyjna"

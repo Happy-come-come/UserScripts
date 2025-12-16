@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "채용"
 	},
+	"business": {
+		"type": "string",
+		"value": "비즈니스"
+	},
 	"communities": {
 		"type": "string",
 		"value": "커뮤니티"

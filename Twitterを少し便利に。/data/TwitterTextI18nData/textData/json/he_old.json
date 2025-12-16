@@ -102,6 +102,10 @@
 		"type": "string",
 		"value": "משרות"
 	},
+	"business": {
+		"type": "string",
+		"value": "עסק"
+	},
 	"communities": {
 		"type": "string",
 		"value": "קהילה"

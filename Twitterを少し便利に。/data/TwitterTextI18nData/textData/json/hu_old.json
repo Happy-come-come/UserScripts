@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Munkalehetőségek"
 	},
+	"business": {
+		"type": "string",
+		"value": "Üzleti"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Közösség"

@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "नोकऱ्या"
 	},
+	"business": {
+		"type": "string",
+		"value": "व्यवसाय"
+	},
 	"communities": {
 		"type": "string",
 		"value": "कम्युनिटी"

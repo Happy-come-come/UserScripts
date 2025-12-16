@@ -65,6 +65,7 @@ const text = {
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Dấu trang"},
 	"jobs": {"type":"string","value":"Công việc"},
+	"business": {"type":"string","value":"Doanh nghiệp"},
 	"communities": {"type":"string","value":"Cộng đồng"},
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Tổ chức đã xác nhận"},

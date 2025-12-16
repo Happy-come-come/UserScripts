@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Jobb"
 	},
+	"business": {
+		"type": "string",
+		"value": "Företag"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Grupp"

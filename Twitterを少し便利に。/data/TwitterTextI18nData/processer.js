@@ -121,6 +121,7 @@ const xmlParser = new XMLParser({
 			"grok": "h5860a68", // "Grok"
 			"bookmarks": "i3145aa0", // "ブックマーク"
 			"jobs": "b007440a", // "求人"
+			"business": "j0e2cfa8", // "ビジネス"
 			"communities": "h5245afa", // "コミュニティ"
 			"premium": "f75d1806", // "プレミアム"
 			"verifiedOrg": "e2eef3c2", // "認証済み組織"

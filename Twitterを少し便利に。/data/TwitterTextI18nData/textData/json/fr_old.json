@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Tâches"
 	},
+	"business": {
+		"type": "string",
+		"value": "Entreprise"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Communauté"

@@ -102,6 +102,10 @@
 		"type": "string",
 		"value": "Karier"
 	},
+	"business": {
+		"type": "string",
+		"value": "Bisnis"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Komunitas"

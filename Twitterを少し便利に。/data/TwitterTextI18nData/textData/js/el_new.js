@@ -65,6 +65,7 @@ const text = {
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Σελιδοδείκτες"},
 	"jobs": {"type":"string","value":"Αγγελίες εργασίας"},
+	"business": {"type":"string","value":"Επιχείρηση"},
 	"communities": {"type":"string","value":"Κοινότητα"},
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Επαληθευμένοι Οργανισμοί"},

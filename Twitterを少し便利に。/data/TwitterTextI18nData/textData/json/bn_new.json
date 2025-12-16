@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "কাজ"
 	},
+	"business": {
+		"type": "string",
+		"value": "ব্যবসা"
+	},
 	"communities": {
 		"type": "string",
 		"value": "কমিউনিটি"

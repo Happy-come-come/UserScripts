@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Työpaikat"
 	},
+	"business": {
+		"type": "string",
+		"value": "Yritys"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Yhteisö"

@@ -102,6 +102,10 @@
 		"type": "string",
 		"value": "Jobs"
 	},
+	"business": {
+		"type": "string",
+		"value": "Kasuwanci"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Al'umma"

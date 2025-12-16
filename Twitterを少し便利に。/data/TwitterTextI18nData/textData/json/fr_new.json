@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Emplois"
 	},
+	"business": {
+		"type": "string",
+		"value": "Entreprise"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Communauté"

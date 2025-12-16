@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Вакансії"
 	},
+	"business": {
+		"type": "string",
+		"value": "Компанія"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Спільнота"

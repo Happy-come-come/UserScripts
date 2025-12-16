@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "ಉದ್ಯೋಗಗಳು"
 	},
+	"business": {
+		"type": "string",
+		"value": "ವ್ಯವಹಾರ"
+	},
 	"communities": {
 		"type": "string",
 		"value": "ಸಮುದಾಯ"

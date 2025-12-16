@@ -102,6 +102,10 @@
 		"type": "string",
 		"value": "Mga Trabaho"
 	},
+	"business": {
+		"type": "string",
+		"value": "Negosyo"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Komunidad"

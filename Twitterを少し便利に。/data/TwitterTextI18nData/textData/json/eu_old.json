@@ -102,6 +102,10 @@
 		"type": "string",
 		"value": "Jobs"
 	},
+	"business": {
+		"type": "string",
+		"value": "Enpresa"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Erkidegoa"

@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Кариери"
 	},
+	"business": {
+		"type": "string",
+		"value": "Бизнес"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Общност"

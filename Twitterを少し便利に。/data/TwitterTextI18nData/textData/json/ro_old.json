@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Locuri de muncă"
 	},
+	"business": {
+		"type": "string",
+		"value": "Afaceri"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Comunitate"

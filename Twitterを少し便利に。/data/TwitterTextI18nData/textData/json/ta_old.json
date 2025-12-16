@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "வேலைவாய்ப்புகள்"
 	},
+	"business": {
+		"type": "string",
+		"value": "வணிகம்"
+	},
 	"communities": {
 		"type": "string",
 		"value": "கம்யூனிட்டி"

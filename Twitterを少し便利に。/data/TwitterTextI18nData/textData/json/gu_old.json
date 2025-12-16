@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "નોકરીઓ"
 	},
+	"business": {
+		"type": "string",
+		"value": "વેપાર"
+	},
 	"communities": {
 		"type": "string",
 		"value": "કોમ્યુનિટી"

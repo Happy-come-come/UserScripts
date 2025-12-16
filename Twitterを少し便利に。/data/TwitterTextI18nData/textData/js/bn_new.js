@@ -65,6 +65,7 @@ const text = {
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"বুকমার্কগুলি"},
 	"jobs": {"type":"string","value":"কাজ"},
+	"business": {"type":"string","value":"ব্যবসা"},
 	"communities": {"type":"string","value":"কমিউনিটি"},
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"যাচাইকৃত প্রতিষ্ঠান"},

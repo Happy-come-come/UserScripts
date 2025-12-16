@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Feina"
 	},
+	"business": {
+		"type": "string",
+		"value": "Negoci"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Comunitat"

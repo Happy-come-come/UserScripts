@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "求人"
 	},
+	"business": {
+		"type": "string",
+		"value": "ビジネス"
+	},
 	"communities": {
 		"type": "string",
 		"value": "コミュニティ"

@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "工作機會"
 	},
+	"business": {
+		"type": "string",
+		"value": "商業"
+	},
 	"communities": {
 		"type": "string",
 		"value": "社群"

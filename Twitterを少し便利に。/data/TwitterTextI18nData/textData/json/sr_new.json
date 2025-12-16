@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Послови"
 	},
+	"business": {
+		"type": "string",
+		"value": "Пословање"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Заједница"

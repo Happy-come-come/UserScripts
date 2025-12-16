@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "งาน"
 	},
+	"business": {
+		"type": "string",
+		"value": "ธุรกิจ"
+	},
 	"communities": {
 		"type": "string",
 		"value": "ชุมชน"

@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "İşler"
 	},
+	"business": {
+		"type": "string",
+		"value": "Kurumsal"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Topluluk"

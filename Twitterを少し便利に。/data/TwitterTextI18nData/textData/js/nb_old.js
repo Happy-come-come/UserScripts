@@ -65,6 +65,7 @@ const text = {
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Bokmerker"},
 	"jobs": {"type":"string","value":"Jobber"},
+	"business": {"type":"string","value":"Bedrift"},
 	"communities": {"type":"string","value":"Fellesskap"},
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Verifiserte organisasjoner"},

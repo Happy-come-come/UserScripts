@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "الوظائف"
 	},
+	"business": {
+		"type": "string",
+		"value": "النشاط التجاري"
+	},
 	"communities": {
 		"type": "string",
 		"value": "المجتمع"

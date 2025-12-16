@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Pracovné miesta"
 	},
+	"business": {
+		"type": "string",
+		"value": "Firma"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Komunita"

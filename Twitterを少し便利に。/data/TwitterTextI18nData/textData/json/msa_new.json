@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Pekerjaan"
 	},
+	"business": {
+		"type": "string",
+		"value": "Perniagaan"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Komuniti"

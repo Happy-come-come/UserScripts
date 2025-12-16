@@ -134,6 +134,10 @@
 		"type": "string",
 		"value": "Αγγελίες εργασίας"
 	},
+	"business": {
+		"type": "string",
+		"value": "Επιχείρηση"
+	},
 	"communities": {
 		"type": "string",
 		"value": "Κοινότητα"

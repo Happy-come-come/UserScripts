@@ -65,6 +65,7 @@ const text = {
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"ブックマーク"},
 	"jobs": {"type":"string","value":"求人"},
+	"business": {"type":"string","value":"ビジネス"},
 	"communities": {"type":"string","value":"コミュニティ"},
 	"premium": {"type":"string","value":"プレミアム"},
 	"verifiedOrg": {"type":"string","value":"認証済み組織"},
