@@ -1,14 +1,26 @@
 <h2>直近のでかい更新内容</h2>
-・UIをカスタマイズする機能の追加</br>
-・TLの画像が小さくなったのを修正する機能の追加</br>
-・画像をズームできる機能の追加</br>
-・設定画面の大幅変更</br>
+<ul>
+<li>チャット(DM)のリンクの遷移を修正する機能の追加</li>
+  <ul>
+    <li>DMのTwitter内リンクが別タブで開いてしまうのを修正</li>
+  </ul>
+<li>UIをカスタマイズする機能の追加</li>
+<li>TLの画像が小さくなったのを修正する機能の追加</li>
+<li>画像をズームできる機能の追加</li>
+<li>設定画面の大幅変更</li>
+</ul>
 </br>
 <h2>Latest big update</h2>
-Added the ability to customize the UI.</br>
-Added the ability to fix small TL images.</br>
-Added the ability to zoom in on images.</br>
-Significant changes to the setup screen.</br>
+<ul>
+<li>Added the ability to fix chat(DM) link navigation</li>
+  <ul>
+    <li>Fixed DM Twitter internal links opening in a new tab</li>
+  </ul>
+<li>Added the ability to customize the UI.</li>
+<li>Added the ability to fix small TL images.</li>
+<li>Added the ability to zoom in on images.</li>
+<li>Significant changes to the setup screen.</li>
+</ul>
 </br>
 <details>
 	<summary>過去の大きめな更新内容</summary>

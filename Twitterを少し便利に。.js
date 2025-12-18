@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.3.1.18
+// @version			2.4.0.0
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -303,6 +303,12 @@
 				"description": "TLの画像のサイズを修正します",
 			}
 		},
+		"fixChatLinkNavigation": {
+			"settings": {
+				"displayName": "チャット(DM)のリンクの遷移を修正",
+				"description": "チャット(DM)で送られてきたリンクの遷移を修正します",
+			}
+		},
 		"advance": {
 			"settings": {
 				"displayName": "高度な設定",
@@ -510,6 +516,12 @@
 				"description": "Fixes the size of images in the timeline",
 			}
 		},
+		"fixChatLinkNavigation": {
+			"settings": {
+				"displayName": "Fix Chat(DM) Link Navigation",
+				"description": "Fixes the navigation of links sent in chat(DM)",
+			}
+		},
 		"advance": {
 			"settings": {
 				"displayName": "Advanced Settings",
@@ -605,6 +617,11 @@
 			"isRunning": false,
 			"ignoreIsRunning": true,
 			"forPC": true,
+		},
+		"fixChatLinkNavigation": {
+			"function": fixChatLinkNavigation,
+			"isRunning": false,
+			"ignoreIsRunning": true,
 		}
 	}
 
@@ -2038,6 +2055,49 @@
 				debug("no size",node,targetNode);
 			}
 		});
+	}
+
+	async function fixChatLinkNavigation(){
+		if(!currentUrl.match(/\/i\/chat/)){
+			if(sessionData.fixChatLinkNavigation?.observer){
+				sessionData.fixChatLinkNavigation.observer.disconnect();
+				delete sessionData.fixChatLinkNavigation.observer;
+			}
+			return;
+		}else{
+			if(sessionData.fixChatLinkNavigation?.observer)return;
+		}
+		const dmMessageListElement = await waitElementAndGet({
+			query: '[data-testid="dm-message-list"]:not([chatLinkNavigationFixed="true"])',
+			searchFunction: 'querySelector',
+			interval: 200,
+			retry: 10
+		});
+		if(!dmMessageListElement)return;
+		dmMessageListElement.setAttribute('chatLinkNavigationFixed', 'true');
+		const observer = new MutationObserver(mutations => {
+			addChatLinkEvent();
+		});
+		observer.observe(dmMessageListElement, {childList: true, subtree: true});
+		sessionData.fixChatLinkNavigation = {
+			observer
+		};
+		async function addChatLinkEvent(){
+			const chatLinks = await waitElementAndGet({
+				query: 'a[href^="https://x.com/"]:not([chatLinkFixed="true"])',
+				searchPlace: dmMessageListElement,
+				searchFunction: 'querySelectorAll',
+				interval: 100,
+				retry: 2
+			});
+			chatLinks?.forEach(link=>{
+				link.setAttribute('chatLinkFixed', 'true');
+				link.addEventListener('click', e=>{
+					e.preventDefault();
+					navigateTo(link.href);
+				});
+			});
+		}
 	}
 
 	//############################################################################################################
@@ -9384,6 +9444,10 @@ I will decide on the future of this script while monitoring the situation.
 Thank you for your understanding.`,
 				"updateDate": "2025-11-07T01:00:00+09:00",
 			},
+			"2.4.0.0": {
+				"newFeatures": ["fixChatLinkNavigation"],
+				"updateDate": "2025-12-19T01:01:30+09:00",
+			}
 		};
 		const allVersions = Object.keys(changelogs).sort((a, b) => compareVersions(b, a));
 		const showVersions = allVersions.filter(v =>
