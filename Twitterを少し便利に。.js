@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.4.0.0
+// @version			2.4.0.1
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -2065,7 +2065,7 @@
 			}
 			return;
 		}else{
-			if(sessionData.fixChatLinkNavigation?.observer)return;
+			if(sessionData.fixChatLinkNavigation?.observer && sessionData.fixChatLinkNavigation.dmMessageListElement)return;
 		}
 		const dmMessageListElement = await waitElementAndGet({
 			query: '[data-testid="dm-message-list"]:not([chatLinkNavigationFixed="true"])',
@@ -2080,7 +2080,8 @@
 		});
 		observer.observe(dmMessageListElement, {childList: true, subtree: true});
 		sessionData.fixChatLinkNavigation = {
-			observer
+			observer,
+			dmMessageListElement,
 		};
 		async function addChatLinkEvent(){
 			const chatLinks = await waitElementAndGet({
