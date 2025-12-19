@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "Můj profil"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Tvůrčí studio"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Seznam"

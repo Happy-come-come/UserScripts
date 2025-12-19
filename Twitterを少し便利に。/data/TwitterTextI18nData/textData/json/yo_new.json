@@ -123,6 +123,10 @@
 		"type": "string",
 		"value": "My Profile"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Sítúdíò Olùṣẹ̀dà"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Àtòkọ"

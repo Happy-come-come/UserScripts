@@ -123,6 +123,10 @@
 		"type": "string",
 		"value": "My Profile"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Studio Onye okike"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Ndepụta"

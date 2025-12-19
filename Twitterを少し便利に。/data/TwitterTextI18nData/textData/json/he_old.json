@@ -123,6 +123,10 @@
 		"type": "string",
 		"value": "הפרופיל שלי"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "הסטודיו ליוצרים"
+	},
 	"lists": {
 		"type": "string",
 		"value": "רשימה"

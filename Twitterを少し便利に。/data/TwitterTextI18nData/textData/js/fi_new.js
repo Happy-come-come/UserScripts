@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Varmennetut organisaatiot"},
 	"profile": {"type":"string","value":"Oma profiili"},
+	"creatorStudio": {"type":"string","value":"Creator Studio"},
 	"lists": {"type":"string","value":"Lista"},
 	"monetization": {"type":"string","value":"Kaupallinen käyttö"},
 	"ads": {"type":"string","value":"Mainokset"},

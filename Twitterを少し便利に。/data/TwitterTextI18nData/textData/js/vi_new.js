@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Tổ chức đã xác nhận"},
 	"profile": {"type":"string","value":"Hồ sơ của tôi"},
+	"creatorStudio": {"type":"string","value":"Studio người sáng tạo nội dung"},
 	"lists": {"type":"string","value":"Danh sách"},
 	"monetization": {"type":"string","value":"Kiếm tiền"},
 	"ads": {"type":"string","value":"Quảng cáo"},

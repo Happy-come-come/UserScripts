@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "Profilul meu"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Studio pentru creatori"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Listă"

@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"सत्यापित संगठन"},
 	"profile": {"type":"string","value":"मेरी प्रोफ़ाइल"},
+	"creatorStudio": {"type":"string","value":"क्रिएटर स्टूडियो"},
 	"lists": {"type":"string","value":"सूची"},
 	"monetization": {"type":"string","value":"मुद्रीकरण"},
 	"ads": {"type":"string","value":"विज्ञापन"},

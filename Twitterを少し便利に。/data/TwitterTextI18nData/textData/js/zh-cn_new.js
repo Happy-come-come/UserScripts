@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"认证组织"},
 	"profile": {"type":"string","value":"我的个人资料"},
+	"creatorStudio": {"type":"string","value":"创作者工作室"},
 	"lists": {"type":"string","value":"列表"},
 	"monetization": {"type":"string","value":"盈利"},
 	"ads": {"type":"string","value":"广告"},

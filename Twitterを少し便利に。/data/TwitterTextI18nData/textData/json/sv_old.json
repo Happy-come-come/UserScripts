@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "Min profil"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Kreatörsstudion"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Lista"

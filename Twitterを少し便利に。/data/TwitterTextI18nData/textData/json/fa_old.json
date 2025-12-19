@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "نمایه من"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "استودیوی آفرینندگان آثار"
+	},
 	"lists": {
 		"type": "string",
 		"value": "فهرست"

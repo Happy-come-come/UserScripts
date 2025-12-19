@@ -126,6 +126,7 @@ const xmlParser = new XMLParser({
 			"premium": "f75d1806", // "プレミアム"
 			"verifiedOrg": "e2eef3c2", // "認証済み組織"
 			"profile": "e1066d88", // "プロフィール"
+			"creatorStudio": "bb07870e", // "Creator Studio"
 			"lists": "fa884026", // "リスト"
 			"monetization": "d299431c", // "収益化"
 			"ads": "e0cb0c72", // "広告"

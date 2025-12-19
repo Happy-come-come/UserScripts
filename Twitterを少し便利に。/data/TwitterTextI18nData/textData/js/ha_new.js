@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Verified Orgs"},
 	"profile": {"type":"string","value":"My Profile"},
+	"creatorStudio": {"type":"string","value":"Sutudiyo na Mai ƙira"},
 	"lists": {"type":"string","value":"Jeri"},
 	"monetization": {"type":"string","value":"Samun kuɗi"},
 	"ads": {"type":"string","value":"Ads"},

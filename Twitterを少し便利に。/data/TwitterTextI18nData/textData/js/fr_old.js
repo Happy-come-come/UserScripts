@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Organisations certifiées"},
 	"profile": {"type":"string","value":"Mon profil"},
+	"creatorStudio": {"type":"string","value":"Creator Studio"},
 	"lists": {"type":"string","value":"Liste"},
 	"monetization": {"type":"string","value":"Monétisation"},
 	"ads": {"type":"string","value":"Publicités"},

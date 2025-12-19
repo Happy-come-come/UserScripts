@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Verified Orgs"},
 	"profile": {"type":"string","value":"My Profile"},
+	"creatorStudio": {"type":"string","value":"Studio Onye okike"},
 	"lists": {"type":"string","value":"Ndepụta"},
 	"monetization": {"type":"string","value":"Ịkpata ego"},
 	"ads": {"type":"string","value":"Ads"},

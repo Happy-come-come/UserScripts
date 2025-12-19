@@ -123,6 +123,10 @@
 		"type": "string",
 		"value": "میری پروفائل"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "اسٹوڈیو تخلیق کار"
+	},
 	"lists": {
 		"type": "string",
 		"value": "فہرست"

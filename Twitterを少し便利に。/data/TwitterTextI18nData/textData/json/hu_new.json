@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "Saját profil"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Alkotói stúdió"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Lista"

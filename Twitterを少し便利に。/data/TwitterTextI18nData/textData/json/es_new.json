@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "Mi perfil"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Estudio para creadores"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Lista"

@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "আমার প্রোফাইল"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "নির্মাতা স্টুডিও"
+	},
 	"lists": {
 		"type": "string",
 		"value": "সূচী"

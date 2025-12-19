@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Verified Orgs"},
 	"profile": {"type":"string","value":"My Profile"},
+	"creatorStudio": {"type":"string","value":"Sítúdíò Olùṣẹ̀dà"},
 	"lists": {"type":"string","value":"Àtòkọ"},
 	"monetization": {"type":"string","value":"Fifipawó"},
 	"ads": {"type":"string","value":"Ads"},

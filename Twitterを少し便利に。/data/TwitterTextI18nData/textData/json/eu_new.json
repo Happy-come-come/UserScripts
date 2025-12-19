@@ -123,6 +123,10 @@
 		"type": "string",
 		"value": "Nire profila"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Creator Studio"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Zerrenda"

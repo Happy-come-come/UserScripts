@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"ಪರಿಶೀಲಿಸಿದ ಸಂಸ್ಥೆಗಳು"},
 	"profile": {"type":"string","value":"ನನ್ನ ಪ್ರೊಫೈಲ್"},
+	"creatorStudio": {"type":"string","value":"ಕ್ರಿಯೇಟರ್ ಸ್ಟುಡಿಯೋ"},
 	"lists": {"type":"string","value":"ಪಟ್ಟಿ"},
 	"monetization": {"type":"string","value":"ಮಾನಿಟೈಸೇಶನ್"},
 	"ads": {"type":"string","value":"ಜಾಹೀರಾತುಗಳು"},

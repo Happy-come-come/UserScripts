@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "எனது சுயவிவரம்"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "படைப்பாளர் ஸ்டுடியோ"
+	},
 	"lists": {
 		"type": "string",
 		"value": "பட்டியல்"

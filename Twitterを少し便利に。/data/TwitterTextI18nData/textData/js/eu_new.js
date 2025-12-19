@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Verified Orgs"},
 	"profile": {"type":"string","value":"Nire profila"},
+	"creatorStudio": {"type":"string","value":"Creator Studio"},
 	"lists": {"type":"string","value":"Zerrenda"},
 	"monetization": {"type":"string","value":"Dirua irabaztea "},
 	"ads": {"type":"string","value":"Iragarkiak"},

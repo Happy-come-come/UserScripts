@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"سازمان‌های تأییدشده"},
 	"profile": {"type":"string","value":"نمایه من"},
+	"creatorStudio": {"type":"string","value":"استودیوی آفرینندگان آثار"},
 	"lists": {"type":"string","value":"فهرست"},
 	"monetization": {"type":"string","value":"درآمدزایی"},
 	"ads": {"type":"string","value":"آگهی‌ها"},

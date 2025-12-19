@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "मेरी प्रोफ़ाइल"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "क्रिएटर स्टूडियो"
+	},
 	"lists": {
 		"type": "string",
 		"value": "सूची"

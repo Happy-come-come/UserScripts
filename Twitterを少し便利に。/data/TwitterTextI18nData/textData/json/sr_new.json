@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "Мој профил"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Студио за ауторе"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Листа"

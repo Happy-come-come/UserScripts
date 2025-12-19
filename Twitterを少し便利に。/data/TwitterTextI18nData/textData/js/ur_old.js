@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Verified Orgs"},
 	"profile": {"type":"string","value":"میری پروفائل"},
+	"creatorStudio": {"type":"string","value":"اسٹوڈیو تخلیق کار"},
 	"lists": {"type":"string","value":"فہرست"},
 	"monetization": {"type":"string","value":"پیسہ کمانا"},
 	"ads": {"type":"string","value":"اشتہارات"},

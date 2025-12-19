@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Mga Beripikadong Org"},
 	"profile": {"type":"string","value":"Ang Aking Profile"},
+	"creatorStudio": {"type":"string","value":"Creator Studio"},
 	"lists": {"type":"string","value":"Listahan"},
 	"monetization": {"type":"string","value":"Monetization"},
 	"ads": {"type":"string","value":"Ads"},

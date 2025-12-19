@@ -123,6 +123,10 @@
 		"type": "string",
 		"value": "Profil Saya"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Studio Kreator"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Daftar"

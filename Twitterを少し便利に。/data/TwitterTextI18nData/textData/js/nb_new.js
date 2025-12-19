@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Verifiserte organisasjoner"},
 	"profile": {"type":"string","value":"Min profil"},
+	"creatorStudio": {"type":"string","value":"Innholdsskaperstudio"},
 	"lists": {"type":"string","value":"Liste"},
 	"monetization": {"type":"string","value":"Inntektsgenerering"},
 	"ads": {"type":"string","value":"Annonser"},

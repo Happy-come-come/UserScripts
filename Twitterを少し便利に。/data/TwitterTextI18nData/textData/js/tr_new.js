@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Onaylı Kuruluşlar"},
 	"profile": {"type":"string","value":"Profilim"},
+	"creatorStudio": {"type":"string","value":"İçerik Üreticisi Stüdyosu"},
 	"lists": {"type":"string","value":"Liste"},
 	"monetization": {"type":"string","value":"Para kazanma"},
 	"ads": {"type":"string","value":"Reklamlar"},

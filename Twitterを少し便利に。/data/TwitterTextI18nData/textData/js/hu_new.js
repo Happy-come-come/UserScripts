@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Ellenőrzött szervezetek"},
 	"profile": {"type":"string","value":"Saját profil"},
+	"creatorStudio": {"type":"string","value":"Alkotói stúdió"},
 	"lists": {"type":"string","value":"Lista"},
 	"monetization": {"type":"string","value":"Pénzszerzés"},
 	"ads": {"type":"string","value":"Hirdetések"},

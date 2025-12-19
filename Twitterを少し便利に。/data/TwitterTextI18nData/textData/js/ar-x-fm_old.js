@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"مؤسسات موّثَقة"},
 	"profile": {"type":"string","value":"My Profile"},
+	"creatorStudio": {"type":"string","value":"إستوديو منشئة المحتوى"},
 	"lists": {"type":"string","value":"قائمة"},
 	"monetization": {"type":"string","value":"تحقيق الأرباح"},
 	"ads": {"type":"string","value":"الإعلانات"},

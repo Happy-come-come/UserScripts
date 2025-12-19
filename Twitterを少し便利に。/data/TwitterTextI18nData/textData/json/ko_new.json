@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "내 프로필"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "크리에이터 스튜디오"
+	},
 	"lists": {
 		"type": "string",
 		"value": "리스트"

@@ -123,6 +123,10 @@
 		"type": "string",
 		"value": "My Profile"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Sutudiyo na Mai ƙira"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Jeri"

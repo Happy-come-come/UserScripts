@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Organizații verificate"},
 	"profile": {"type":"string","value":"Profilul meu"},
+	"creatorStudio": {"type":"string","value":"Studio pentru creatori"},
 	"lists": {"type":"string","value":"Listă"},
 	"monetization": {"type":"string","value":"Monetizare"},
 	"ads": {"type":"string","value":"Reclame"},

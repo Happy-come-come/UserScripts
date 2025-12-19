@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"인증된 조직"},
 	"profile": {"type":"string","value":"내 프로필"},
+	"creatorStudio": {"type":"string","value":"크리에이터 스튜디오"},
 	"lists": {"type":"string","value":"리스트"},
 	"monetization": {"type":"string","value":"수익 창출"},
 	"ads": {"type":"string","value":"광고"},

@@ -123,6 +123,10 @@
 		"type": "string",
 		"value": "Mo Phróifíl"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Stiúideo Cruthaitheoir"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Liosta"

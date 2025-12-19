@@ -123,6 +123,10 @@
 		"type": "string",
 		"value": "O meu perfil"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Centro de creación de contido"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Listaxe"

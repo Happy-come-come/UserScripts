@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"ચકાસાયેલી સંસ્થા"},
 	"profile": {"type":"string","value":"મારી પ્રોફાઈલ"},
+	"creatorStudio": {"type":"string","value":"નિર્માતા સ્ટૂડિયો"},
 	"lists": {"type":"string","value":"યાદી"},
 	"monetization": {"type":"string","value":"મોનેટાઇઝેશન"},
 	"ads": {"type":"string","value":"જાહેરાતો"},

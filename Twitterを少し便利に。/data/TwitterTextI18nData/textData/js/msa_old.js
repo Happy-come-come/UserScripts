@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Organisasi Disahkan"},
 	"profile": {"type":"string","value":"Profil Saya"},
+	"creatorStudio": {"type":"string","value":"Studio Pencipta"},
 	"lists": {"type":"string","value":"Senarai"},
 	"monetization": {"type":"string","value":"Pengewangan"},
 	"ads": {"type":"string","value":"Iklan"},

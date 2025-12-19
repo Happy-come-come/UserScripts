@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Επαληθευμένοι Οργανισμοί"},
 	"profile": {"type":"string","value":"Το προφίλ μου"},
+	"creatorStudio": {"type":"string","value":"Creator Studio"},
 	"lists": {"type":"string","value":"Λίστα"},
 	"monetization": {"type":"string","value":"Δημιουργία εσόδων"},
 	"ads": {"type":"string","value":"Διαφημίσεις"},

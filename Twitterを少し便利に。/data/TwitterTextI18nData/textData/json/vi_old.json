@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "Hồ sơ của tôi"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "Studio người sáng tạo nội dung"
+	},
 	"lists": {
 		"type": "string",
 		"value": "Danh sách"

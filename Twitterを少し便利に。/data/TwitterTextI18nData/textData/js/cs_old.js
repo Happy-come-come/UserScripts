@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Ověřené organizace"},
 	"profile": {"type":"string","value":"Můj profil"},
+	"creatorStudio": {"type":"string","value":"Tvůrčí studio"},
 	"lists": {"type":"string","value":"Seznam"},
 	"monetization": {"type":"string","value":"Monetizace"},
 	"ads": {"type":"string","value":"Reklamy"},

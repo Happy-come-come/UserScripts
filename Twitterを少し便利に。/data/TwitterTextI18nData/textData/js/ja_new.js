@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"プレミアム"},
 	"verifiedOrg": {"type":"string","value":"認証済み組織"},
 	"profile": {"type":"string","value":"プロフィール"},
+	"creatorStudio": {"type":"string","value":"Creator Studio"},
 	"lists": {"type":"string","value":"リスト"},
 	"monetization": {"type":"string","value":"収益化"},
 	"ads": {"type":"string","value":"広告"},

@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"சரிபார்க்கப்பட்ட அமைப்புகள்"},
 	"profile": {"type":"string","value":"எனது சுயவிவரம்"},
+	"creatorStudio": {"type":"string","value":"படைப்பாளர் ஸ்டுடியோ"},
 	"lists": {"type":"string","value":"பட்டியல்"},
 	"monetization": {"type":"string","value":"பணமாக்குதல்"},
 	"ads": {"type":"string","value":"விளம்பரங்கள்"},

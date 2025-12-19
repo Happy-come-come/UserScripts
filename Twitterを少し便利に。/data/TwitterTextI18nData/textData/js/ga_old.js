@@ -74,6 +74,7 @@ const text = {
 	"premium": {"type":"string","value":"Premium"},
 	"verifiedOrg": {"type":"string","value":"Verified Orgs"},
 	"profile": {"type":"string","value":"Mo Phróifíl"},
+	"creatorStudio": {"type":"string","value":"Stiúideo Cruthaitheoir"},
 	"lists": {"type":"string","value":"Liosta"},
 	"monetization": {"type":"string","value":"Luach airgid a chur ar rud"},
 	"ads": {"type":"string","value":"Ads"},

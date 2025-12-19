@@ -155,6 +155,10 @@
 		"type": "string",
 		"value": "我的個人資料"
 	},
+	"creatorStudio": {
+		"type": "string",
+		"value": "創作者工作室"
+	},
 	"lists": {
 		"type": "string",
 		"value": "列表"
