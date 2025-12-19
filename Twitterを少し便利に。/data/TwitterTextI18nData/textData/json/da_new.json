@@ -111,8 +111,9 @@
 		"value": "Meddelelser"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Forbind"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Følg{{verb}}"
 	},
 	"chat": {
 		"type": "string",

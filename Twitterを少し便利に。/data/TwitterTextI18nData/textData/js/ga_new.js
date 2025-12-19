@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Baile"},
 	"explore": {"type":"string","value":"Féach thart"},
 	"notifications": {"type":"string","value":"Fógraí"},
-	"connect_people": {"type":"string","value":"Nasc"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"Follow"+e.verb}
+	},
 	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Teachtaireachtaí"},
 	"grok": {"type":"string","value":"Grok"},

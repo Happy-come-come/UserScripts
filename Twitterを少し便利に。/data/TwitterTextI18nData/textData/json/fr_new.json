@@ -111,8 +111,9 @@
 		"value": "Notifications"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Se connecter"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Suivre{{verb}}"
 	},
 	"chat": {
 		"type": "string",

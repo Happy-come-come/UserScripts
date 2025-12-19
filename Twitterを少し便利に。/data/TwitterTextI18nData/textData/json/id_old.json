@@ -79,8 +79,9 @@
 		"value": "Notifikasi"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Hubungkan"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Ikuti{{verb}}"
 	},
 	"chat": {
 		"type": "string",

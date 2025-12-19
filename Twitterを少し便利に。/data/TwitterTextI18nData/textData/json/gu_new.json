@@ -111,8 +111,9 @@
 		"value": "સૂચનાઓ"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "જોડાણ કરો"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "અનુસરો{{verb}}"
 	},
 	"chat": {
 		"type": "string",

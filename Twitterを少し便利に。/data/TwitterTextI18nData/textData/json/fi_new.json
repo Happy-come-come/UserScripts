@@ -111,8 +111,9 @@
 		"value": "Ilmoitukset"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Yhdistä"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Seuraa{{verb}}"
 	},
 	"chat": {
 		"type": "string",

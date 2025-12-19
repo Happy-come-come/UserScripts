@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Home"},
 	"explore": {"type":"string","value":"Esplora"},
 	"notifications": {"type":"string","value":"Notifiche"},
-	"connect_people": {"type":"string","value":"Connetti"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"Segui"+e.verb}
+	},
 	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Messaggi"},
 	"grok": {"type":"string","value":"Grok"},

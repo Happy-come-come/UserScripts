@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Gida"},
 	"explore": {"type":"string","value":"Bincike"},
 	"notifications": {"type":"string","value":"Sanarwa"},
-	"connect_people": {"type":"string","value":"Haɗa"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(a){return"Follow"+a.verb}
+	},
 	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Saƙonni"},
 	"grok": {"type":"string","value":"Grok"},

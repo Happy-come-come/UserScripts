@@ -111,8 +111,9 @@
 		"value": "বিজ্ঞপ্তি"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "সংযোগ করুন"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "{{verb}}অনুসরণ করুন"
 	},
 	"chat": {
 		"type": "string",

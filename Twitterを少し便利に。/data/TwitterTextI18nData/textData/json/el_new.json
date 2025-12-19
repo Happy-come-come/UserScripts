@@ -111,8 +111,9 @@
 		"value": "Ειδοποιήσεις"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Σύνδεση"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Ακολουθήστε{{verb}}"
 	},
 	"chat": {
 		"type": "string",

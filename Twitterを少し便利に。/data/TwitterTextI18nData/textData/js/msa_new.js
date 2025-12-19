@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Laman Utama"},
 	"explore": {"type":"string","value":"Teroka"},
 	"notifications": {"type":"string","value":"Pemberitahuan"},
-	"connect_people": {"type":"string","value":"Hubung"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(a){return"Ikut"+a.verb}
+	},
 	"chat": {"type":"string","value":"Perbualan"},
 	"messages": {"type":"string","value":"Mesej"},
 	"grok": {"type":"string","value":"Grok"},

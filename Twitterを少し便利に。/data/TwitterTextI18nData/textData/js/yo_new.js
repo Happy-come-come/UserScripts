@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Ilé"},
 	"explore": {"type":"string","value":"Ìwádìí"},
 	"notifications": {"type":"string","value":"Àwọn ìfitónilétí"},
-	"connect_people": {"type":"string","value":"Sopọ̀"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"Follow"+e.verb}
+	},
 	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Àwọn ìfiránṣẹ́"},
 	"grok": {"type":"string","value":"Grok"},

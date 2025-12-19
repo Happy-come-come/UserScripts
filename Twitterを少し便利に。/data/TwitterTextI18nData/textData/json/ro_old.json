@@ -111,8 +111,9 @@
 		"value": "Notificări"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Conectează-te"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Urmărește{{verb}}"
 	},
 	"chat": {
 		"type": "string",

@@ -111,8 +111,9 @@
 		"value": "التنبيهات"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "التواصل"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "متابَعة{{verb}}"
 	},
 	"chat": {
 		"type": "string",

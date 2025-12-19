@@ -79,8 +79,9 @@
 		"value": "Fógraí"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Nasc"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Follow{{verb}}"
 	},
 	"chat": {
 		"type": "string",

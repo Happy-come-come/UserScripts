@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"ಹೋಮ್"},
 	"explore": {"type":"string","value":"ಅನ್ವೇಷಿಸಿ"},
 	"notifications": {"type":"string","value":"ಸೂಚನೆಗಳು"},
-	"connect_people": {"type":"string","value":"ಸಂಪರ್ಕಿಸು"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"ಹಿಂಬಾಲಿಸಿ"+e.verb}
+	},
 	"chat": {"type":"string","value":"ಚಾಟ್ ಮಾಡಿ"},
 	"messages": {"type":"string","value":"ಸಂದೇಶಗಳು"},
 	"grok": {"type":"string","value":"Grok"},

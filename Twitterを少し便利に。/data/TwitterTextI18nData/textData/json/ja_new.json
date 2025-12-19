@@ -111,8 +111,9 @@
 		"value": "通知"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "つながる"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "フォローする{{verb}}"
 	},
 	"chat": {
 		"type": "string",

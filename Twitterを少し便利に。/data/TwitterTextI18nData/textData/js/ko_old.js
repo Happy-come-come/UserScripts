@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"홈"},
 	"explore": {"type":"string","value":"탐색하기"},
 	"notifications": {"type":"string","value":"알림"},
-	"connect_people": {"type":"string","value":"연결하기"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"팔로우하기"+e.verb}
+	},
 	"chat": {"type":"string","value":"채팅"},
 	"messages": {"type":"string","value":"쪽지"},
 	"grok": {"type":"string","value":"Grok"},

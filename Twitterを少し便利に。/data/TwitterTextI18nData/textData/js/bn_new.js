@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"হোম"},
 	"explore": {"type":"string","value":"এক্সপ্লোর করুন"},
 	"notifications": {"type":"string","value":"বিজ্ঞপ্তি"},
-	"connect_people": {"type":"string","value":"সংযোগ করুন"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return e.verb+"অনুসরণ করুন"}
+	},
 	"chat": {"type":"string","value":"চ্যাট করুন"},
 	"messages": {"type":"string","value":"বার্তাগুলি"},
 	"grok": {"type":"string","value":"Grok"},

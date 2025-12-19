@@ -111,8 +111,9 @@
 		"value": "அறிவிப்புகள்"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "இணை"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "பின்தொடர்{{verb}}"
 	},
 	"chat": {
 		"type": "string",

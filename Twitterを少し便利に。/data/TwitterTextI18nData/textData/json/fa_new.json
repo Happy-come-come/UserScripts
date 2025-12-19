@@ -111,8 +111,9 @@
 		"value": "آگاه‌سازی‌ها"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "ارتباط"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "دنبال کردن{{verb}}"
 	},
 	"chat": {
 		"type": "string",

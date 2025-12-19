@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Anasayfa"},
 	"explore": {"type":"string","value":"Keşfet"},
 	"notifications": {"type":"string","value":"Bildirimler"},
-	"connect_people": {"type":"string","value":"Bağlan"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"Takip et"+e.verb}
+	},
 	"chat": {"type":"string","value":"Sohbet"},
 	"messages": {"type":"string","value":"Mesajlar"},
 	"grok": {"type":"string","value":"Grok"},

@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"ホーム"},
 	"explore": {"type":"string","value":"話題を検索"},
 	"notifications": {"type":"string","value":"通知"},
-	"connect_people": {"type":"string","value":"つながる"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"フォローする"+e.verb}
+	},
 	"chat": {"type":"string","value":"チャット"},
 	"messages": {"type":"string","value":"メッセージ"},
 	"grok": {"type":"string","value":"Grok"},
@@ -91,7 +95,7 @@ const text = {
 	"year": {"type":"string","value":"年"},
 	"january": {"type":"string","value":"1月"},
 	"february": {"type":"string","value":"2月"},
-	"march": {"type":"string","value":"3"},
+	"march": {"type":"string","value":"3月"},
 	"april": {"type":"string","value":"4月"},
 	"may": {"type":"string","value":"5月"},
 	"june": {"type":"string","value":"6月"},

@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Home"},
 	"explore": {"type":"string","value":"Mag-explore"},
 	"notifications": {"type":"string","value":"Mga Abiso"},
-	"connect_people": {"type":"string","value":"Kumonekta"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(a){return"I-follow"+a.verb}
+	},
 	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Mga Message"},
 	"grok": {"type":"string","value":"Grok"},

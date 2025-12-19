@@ -79,8 +79,9 @@
 		"value": "Jakinarazpenak"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Konektatu"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Follow{{verb}}"
 	},
 	"chat": {
 		"type": "string",

@@ -111,8 +111,9 @@
 		"value": "通知"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "連接"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "跟隨{{verb}}"
 	},
 	"chat": {
 		"type": "string",

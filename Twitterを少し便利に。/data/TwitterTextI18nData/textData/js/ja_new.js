@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"ホーム"},
 	"explore": {"type":"string","value":"話題を検索"},
 	"notifications": {"type":"string","value":"通知"},
-	"connect_people": {"type":"string","value":"つながる"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"フォローする"+e.verb}
+	},
 	"chat": {"type":"string","value":"チャット"},
 	"messages": {"type":"string","value":"メッセージ"},
 	"grok": {"type":"string","value":"Grok"},

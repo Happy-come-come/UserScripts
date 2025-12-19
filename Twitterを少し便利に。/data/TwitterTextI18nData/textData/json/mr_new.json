@@ -111,8 +111,9 @@
 		"value": "सूचनापत्रे"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "कनेक्ट करा"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "फॉलो करा{{verb}}"
 	},
 	"chat": {
 		"type": "string",

@@ -111,8 +111,9 @@
 		"value": "Oznámení"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Spojit se"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Sledovat{{verb}}"
 	},
 	"chat": {
 		"type": "string",

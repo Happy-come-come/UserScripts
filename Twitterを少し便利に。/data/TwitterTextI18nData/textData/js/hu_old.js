@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Kezdőlap"},
 	"explore": {"type":"string","value":"Felfedezés"},
 	"notifications": {"type":"string","value":"Értesítések"},
-	"connect_people": {"type":"string","value":"Kapcsolatfelvétel"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"Követés"+e.verb}
+	},
 	"chat": {"type":"string","value":"Csevegés"},
 	"messages": {"type":"string","value":"Üzenetek"},
 	"grok": {"type":"string","value":"Grok"},

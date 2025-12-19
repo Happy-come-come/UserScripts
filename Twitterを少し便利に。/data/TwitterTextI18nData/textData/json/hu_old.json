@@ -111,8 +111,9 @@
 		"value": "Értesítések"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Kapcsolatfelvétel"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Követés{{verb}}"
 	},
 	"chat": {
 		"type": "string",

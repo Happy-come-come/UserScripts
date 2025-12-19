@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Ụlọ"},
 	"explore": {"type":"string","value":"Nyochaa"},
 	"notifications": {"type":"string","value":"Nziọkwa"},
-	"connect_people": {"type":"string","value":"Jikọọ"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"Follow"+e.verb}
+	},
 	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Ozi"},
 	"grok": {"type":"string","value":"Grok"},

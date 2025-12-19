@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"முகப்பு"},
 	"explore": {"type":"string","value":"ஆராய்க"},
 	"notifications": {"type":"string","value":"அறிவிப்புகள்"},
-	"connect_people": {"type":"string","value":"இணை"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"பின்தொடர்"+e.verb}
+	},
 	"chat": {"type":"string","value":"அரட்டை"},
 	"messages": {"type":"string","value":"செய்திகள்"},
 	"grok": {"type":"string","value":"Grok"},

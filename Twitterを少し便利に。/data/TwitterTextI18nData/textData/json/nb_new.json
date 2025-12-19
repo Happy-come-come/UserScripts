@@ -111,8 +111,9 @@
 		"value": "Varsler"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Koble til"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Følg{{verb}}"
 	},
 	"chat": {
 		"type": "string",

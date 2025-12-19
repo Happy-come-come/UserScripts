@@ -79,8 +79,9 @@
 		"value": "Mga Abiso"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Kumonekta"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "I-follow{{verb}}"
 	},
 	"chat": {
 		"type": "string",

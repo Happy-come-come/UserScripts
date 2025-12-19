@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"होम"},
 	"explore": {"type":"string","value":"देखें"},
 	"notifications": {"type":"string","value":"सूचनाएं"},
-	"connect_people": {"type":"string","value":"कनेक्ट करें"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"फ़ॉलो करें"+e.verb}
+	},
 	"chat": {"type":"string","value":"चैट"},
 	"messages": {"type":"string","value":"संदेश"},
 	"grok": {"type":"string","value":"Grok"},

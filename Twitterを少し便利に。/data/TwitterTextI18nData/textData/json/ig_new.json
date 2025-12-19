@@ -79,8 +79,9 @@
 		"value": "Nziọkwa"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Jikọọ"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Follow{{verb}}"
 	},
 	"chat": {
 		"type": "string",

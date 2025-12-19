@@ -111,8 +111,9 @@
 		"value": "Notiser"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Ta kontakt"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Följ{{verb}}"
 	},
 	"chat": {
 		"type": "string",

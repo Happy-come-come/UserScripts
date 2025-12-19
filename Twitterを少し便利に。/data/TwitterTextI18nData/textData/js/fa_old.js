@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"خانه"},
 	"explore": {"type":"string","value":"کاوش"},
 	"notifications": {"type":"string","value":"آگاه‌سازی‌ها"},
-	"connect_people": {"type":"string","value":"ارتباط"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"دنبال کردن"+e.verb}
+	},
 	"chat": {"type":"string","value":"گپ"},
 	"messages": {"type":"string","value":"پیام‌ها"},
 	"grok": {"type":"string","value":"Grok"},

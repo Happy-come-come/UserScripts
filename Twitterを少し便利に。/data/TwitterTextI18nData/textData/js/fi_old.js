@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Etusivu"},
 	"explore": {"type":"string","value":"Selaa"},
 	"notifications": {"type":"string","value":"Ilmoitukset"},
-	"connect_people": {"type":"string","value":"Yhdistä"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(a){return"Seuraa"+a.verb}
+	},
 	"chat": {"type":"string","value":"Keskustelu"},
 	"messages": {"type":"string","value":"Viestit"},
 	"grok": {"type":"string","value":"Grok"},

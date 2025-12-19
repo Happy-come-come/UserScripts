@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Начало"},
 	"explore": {"type":"string","value":"Изследване"},
 	"notifications": {"type":"string","value":"Известия"},
-	"connect_people": {"type":"string","value":"Свързване"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"Следване"+e.verb}
+	},
 	"chat": {"type":"string","value":"Чат"},
 	"messages": {"type":"string","value":"Съобщения"},
 	"grok": {"type":"string","value":"Grok"},

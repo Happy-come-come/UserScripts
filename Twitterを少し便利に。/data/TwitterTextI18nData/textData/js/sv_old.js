@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Hem"},
 	"explore": {"type":"string","value":"Utforska"},
 	"notifications": {"type":"string","value":"Notiser"},
-	"connect_people": {"type":"string","value":"Ta kontakt"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"Följ"+e.verb}
+	},
 	"chat": {"type":"string","value":"Chatta"},
 	"messages": {"type":"string","value":"Meddelanden"},
 	"grok": {"type":"string","value":"Grok"},

@@ -111,8 +111,9 @@
 		"value": "알림"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "연결하기"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "팔로우하기{{verb}}"
 	},
 	"chat": {
 		"type": "string",

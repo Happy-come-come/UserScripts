@@ -79,8 +79,9 @@
 		"value": "اطلاعات"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "رابطہ قائم کریں"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Follow{{verb}}"
 	},
 	"chat": {
 		"type": "string",

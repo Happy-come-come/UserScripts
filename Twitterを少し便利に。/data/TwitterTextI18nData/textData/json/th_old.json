@@ -111,8 +111,9 @@
 		"value": "การแจ้งเตือน"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "เชื่อมต่อ"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "ติดตาม{{verb}}"
 	},
 	"chat": {
 		"type": "string",

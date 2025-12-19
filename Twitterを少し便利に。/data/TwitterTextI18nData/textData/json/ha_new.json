@@ -79,8 +79,9 @@
 		"value": "Sanarwa"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Haɗa"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Follow{{verb}}"
 	},
 	"chat": {
 		"type": "string",

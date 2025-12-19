@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Beranda"},
 	"explore": {"type":"string","value":"Jelajahi"},
 	"notifications": {"type":"string","value":"Notifikasi"},
-	"connect_people": {"type":"string","value":"Hubungkan"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(a){return"Ikuti"+a.verb}
+	},
 	"chat": {"type":"string","value":"Obrolan"},
 	"messages": {"type":"string","value":"Pesan"},
 	"grok": {"type":"string","value":"Grok"},

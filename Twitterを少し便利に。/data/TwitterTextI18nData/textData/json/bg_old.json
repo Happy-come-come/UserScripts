@@ -111,8 +111,9 @@
 		"value": "Известия"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Свързване"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Следване{{verb}}"
 	},
 	"chat": {
 		"type": "string",

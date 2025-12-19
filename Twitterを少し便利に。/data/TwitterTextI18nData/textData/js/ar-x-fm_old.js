@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"الرئيسيّة"},
 	"explore": {"type":"string","value":"استكشفي"},
 	"notifications": {"type":"string","value":"التنبيهات"},
-	"connect_people": {"type":"string","value":"التواصل"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"متابَعة"+e.verb}
+	},
 	"chat": {"type":"string","value":"الدردشة"},
 	"messages": {"type":"string","value":"الرسائل"},
 	"grok": {"type":"string","value":"Grok"},

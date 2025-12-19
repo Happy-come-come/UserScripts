@@ -111,8 +111,9 @@
 		"value": "सूचनाएं"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "कनेक्ट करें"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "फ़ॉलो करें{{verb}}"
 	},
 	"chat": {
 		"type": "string",

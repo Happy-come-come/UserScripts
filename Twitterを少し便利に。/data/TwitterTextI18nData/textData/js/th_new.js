@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"หน้าแรก"},
 	"explore": {"type":"string","value":"สำรวจ"},
 	"notifications": {"type":"string","value":"การแจ้งเตือน"},
-	"connect_people": {"type":"string","value":"เชื่อมต่อ"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"ติดตาม"+e.verb}
+	},
 	"chat": {"type":"string","value":"สนทนา"},
 	"messages": {"type":"string","value":"ข้อความ"},
 	"grok": {"type":"string","value":"Grok"},

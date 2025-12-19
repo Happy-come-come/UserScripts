@@ -111,8 +111,9 @@
 		"value": "Bildirimler"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Bağlan"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Takip et{{verb}}"
 	},
 	"chat": {
 		"type": "string",

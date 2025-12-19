@@ -111,8 +111,9 @@
 		"value": "Pemberitahuan"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Hubung"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Ikut{{verb}}"
 	},
 	"chat": {
 		"type": "string",

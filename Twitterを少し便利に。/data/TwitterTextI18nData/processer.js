@@ -115,7 +115,7 @@ const xmlParser = new XMLParser({
 			"home": "ha8209bc", // "ホーム"
 			"explore": "fcf3e54c", // "話題を検索"
 			"notifications": "eb75875e", // "通知"
-			"connect_people": {key:"b5298d92", force: 'new'}, // "つながる"
+			"connect_people": {key: "eb2cad43", force: 'new'}, // "フォローする"  "つながる"だったが、変更された
 			"chat": "h5e38204", // "チャット"
 			"messages": "a2f81050", // "メッセージ"
 			"grok": "h5860a68", // "Grok"
@@ -142,18 +142,18 @@ const xmlParser = new XMLParser({
 			"day": "jf83d092", // "日"
 			"month": "af4abf20", // "月"
 			"year": "b871f280", // "年"
-			"january": "hac89ab0", // "1月"
-			"february": "ef30b30a", // "2月"
-			"march": "b56920fa", // "3" なんで？英語だとmarchになるのに
-			"april": "b1a0f1ec", // "4月"
-			"may": "daf779c8", // "5月"
-			"june": "c6ad074e", // "6月"
-			"july": "f1db106c", // "7月"
-			"august": "i4e80b7a", // "8月"
-			"september": "efa6cc1e", // "9月"
-			"october": "f40a0cbe", // "10月"
-			"november": "ac74a31c", // "11月"
-			"december": "i6c1e4b2", // "12月"
+			"january": {key: "hac89ab0", force: 'new'}, // "1月"
+			"february": {key: "ef30b30a", force: 'new'}, // "2月"
+			"march": {key: "b56920fa", force: 'new'}, // "3月" 最近のだと正しくなっていた
+			"april": {key: "b1a0f1ec", force: 'new'}, // "4月"
+			"may": {key: "daf779c8", force: 'new'}, // "5月"
+			"june": {key: "c6ad074e", force: 'new'}, // "6月"
+			"july": {key: "f1db106c", force: 'new'}, // "7月"
+			"august": {key: "i4e80b7a", force: 'new'}, // "8月"
+			"september": {key: "efa6cc1e", force: 'new'}, // "9月"
+			"october": {key: "f40a0cbe", force: 'new'}, // "10月"
+			"november": {key: "ac74a31c", force: 'new'}, // "11月"
+			"december": {key: "i6c1e4b2", force: 'new'}, // "12月"
 		};
 		const enTextData = {new: {}, old: {}};
 		for(const lang in keyTranslation){

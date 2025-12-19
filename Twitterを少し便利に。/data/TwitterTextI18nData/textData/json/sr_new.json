@@ -111,8 +111,9 @@
 		"value": "Обавештења"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Повезивање"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Прати{{verb}}"
 	},
 	"chat": {
 		"type": "string",

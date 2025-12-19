@@ -79,8 +79,9 @@
 		"value": "הודעות"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "התחבר"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "עקוב{{verb}}"
 	},
 	"chat": {
 		"type": "string",

@@ -111,8 +111,9 @@
 		"value": "ಸೂಚನೆಗಳು"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "ಸಂಪರ್ಕಿಸು"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "ಹಿಂಬಾಲಿಸಿ{{verb}}"
 	},
 	"chat": {
 		"type": "string",

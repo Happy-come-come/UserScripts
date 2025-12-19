@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Página Inicial"},
 	"explore": {"type":"string","value":"Explorar"},
 	"notifications": {"type":"string","value":"Notificações"},
-	"connect_people": {"type":"string","value":"Conectar"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"Seguir"+e.verb}
+	},
 	"chat": {"type":"string","value":"Bate-papo"},
 	"messages": {"type":"string","value":"Mensagens"},
 	"grok": {"type":"string","value":"Grok"},

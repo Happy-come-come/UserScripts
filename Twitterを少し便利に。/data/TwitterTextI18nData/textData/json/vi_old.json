@@ -111,8 +111,9 @@
 		"value": "Thông báo"
 	},
 	"connect_people": {
-		"type": "string",
-		"value": "Kết nối"
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": "Theo dõi{{verb}}"
 	},
 	"chat": {
 		"type": "string",

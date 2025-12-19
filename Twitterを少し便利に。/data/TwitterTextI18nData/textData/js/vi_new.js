@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Trang chủ"},
 	"explore": {"type":"string","value":"Khám phá"},
 	"notifications": {"type":"string","value":"Thông báo"},
-	"connect_people": {"type":"string","value":"Kết nối"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(n){return"Theo dõi"+n.verb}
+	},
 	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Tin nhắn"},
 	"grok": {"type":"string","value":"Grok"},

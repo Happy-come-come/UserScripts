@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"דף הבית"},
 	"explore": {"type":"string","value":"גילוי"},
 	"notifications": {"type":"string","value":"הודעות"},
-	"connect_people": {"type":"string","value":"התחבר"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"עקוב"+e.verb}
+	},
 	"chat": {"type":"string","value":"צ'אט"},
 	"messages": {"type":"string","value":"מסרים"},
 	"grok": {"type":"string","value":"Grok"},

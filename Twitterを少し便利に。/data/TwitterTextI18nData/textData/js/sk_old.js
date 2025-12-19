@@ -59,7 +59,11 @@ const text = {
 	"home": {"type":"string","value":"Domov"},
 	"explore": {"type":"string","value":"Preskúmať"},
 	"notifications": {"type":"string","value":"Notifikácie"},
-	"connect_people": {"type":"string","value":"Pripojiť"},
+	"connect_people": {
+		"type": "webI18nFunction",
+		"arguments": ["verb"],
+		"value": function(e){return"Sledovať"+e.verb}
+	},
 	"chat": {"type":"string","value":"Četovať"},
 	"messages": {"type":"string","value":"Správy"},
 	"grok": {"type":"string","value":"Grok"},
