@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.4.0.3
+// @version			2.4.0.4
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1769,6 +1769,11 @@
 					"href": `/${userData.screenName}/communities`,
 					"defaultSettings": true,
 					"text": twitterTextI18n.getText("communities")
+				},
+				"premiumButton": {
+					"href": "/i/premium_sign_up",
+					"defaultSettings": false,
+					"text": twitterTextI18n.getText("premium")
 				},
 				"businessButton": {
 					"href": "/i/premium-business",
@@ -4482,7 +4487,7 @@
 			page.appendChild(createSettingsElement({type: 'button', text: settingText.sortOrderRestoreDefault, width: "fit-content", event: restoreDefaultSorting}).container);
 
 			const buttonNames = ["homeButton", "exploreButton", "notificationsButton", "connect_peopleButton", "chatButton",
-				"grokButton", "listsButton", "bookmarksButton", "communitiesButton", "businessButton",
+				"grokButton", "listsButton", "bookmarksButton", "communitiesButton", "premiumButton", "businessButton",
 				"profileButton" , "creatorStudioButton", "adsButton", "createYourSpaceButton", "settingsAndPrivacy",
 				"shortCutButton1", "shortCutButton2", "shortCutButton3", "shortCutButton4"];
 			const buttonList = scriptSetting?.buttonSorting?.length === buttonNames.length ? scriptSetting.buttonSorting : buttonNames;
