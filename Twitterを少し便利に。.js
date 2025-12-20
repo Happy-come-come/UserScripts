@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.4.0.2
+// @version			2.4.0.3
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1729,74 +1729,77 @@
 			const options = {
 				"homeButton": {
 					"href": "/home",
+					"defaultSettings": true,
 				},
 				"exploreButton": {
 					"href": "/explore",
+					"defaultSettings": true,
 				},
 				"notificationsButton": {
 					"href": "/notifications",
+					"defaultSettings": true,
 				},
 				"connect_peopleButton":{
 					"href": "/i/connect_people",
+					"defaultSettings": true,
 				},
 				"chatButton": {
 					"href": "/i/chat",
+					"defaultSettings": true,
 					//"text": twitterTextI18n.getText("chat"),
 				},
 				"grokButton": {
 					"href": "/i/grok",
+					"defaultSettings": true,
 					"text": twitterTextI18n.getText("grok"),
+				},
+				"listsButton": {
+					"href": `/${userData.screenName}/lists`,
+					"defaultSettings": true,
+					"icon": svgIconPaths.list,
+					"text": twitterTextI18n.getText("lists")
 				},
 				"bookmarksButton": {
 					"href": "/i/bookmarks",
+					"defaultSettings": true,
 					"icon": svgIconPaths.bookmark,
 					"text": twitterTextI18n.getText("bookmarks")
 				},
-				"jobsButton": {
-					"href": "/jobs",
-					"text": twitterTextI18n.getText("jobs"),
-				},
 				"communitiesButton": {
 					"href": `/${userData.screenName}/communities`,
+					"defaultSettings": true,
 					"text": twitterTextI18n.getText("communities")
 				},
 				"businessButton": {
 					"href": "/i/premium-business",
+					"defaultSettings": false,
 					"text": twitterTextI18n.getText("business")
-				},
-				"premiumButton": {
-					"href": "/i/premium_sign_up",
-					"text": twitterTextI18n.getText("premium")
-				},
-				"verifiedOrgButton": {
-					"href": "/i/verified-orgs-signup",
-					"text": twitterTextI18n.getText("verifiedOrg")
 				},
 				"profileButton": {
 					"href": `/${userData.screenName}`,
+					"defaultSettings": true,
 				},
-				"listsButton": {
-					"href": `/${userData.screenName}/lists`,
-					"icon": svgIconPaths.list,
-					"text": twitterTextI18n.getText("lists")
-				},
-				"monetizationButton": {
-					"href": "/i/monetization",
-					"icon": "M23 3v14h-2V5H5V3h18zM10 17c1.1 0 2-1.34 2-3s-.9-3-2-3-2 1.34-2 3 .9 3 2 3zM1 7h18v14H1V7zm16 10c-1.1 0-2 .9-2 2h2v-2zm-2-8c0 1.1.9 2 2 2V9h-2zM3 11c1.1 0 2-.9 2-2H3v2zm0 4c2.21 0 4 1.79 4 4h6c0-2.21 1.79-4 4-4v-2c-2.21 0-4-1.79-4-4H7c0 2.21-1.79 4-4 4v2zm0 4h2c0-1.1-.9-2-2-2v2z",
-					"text": twitterTextI18n.getText("monetization")
+				"creatorStudioButton": {
+					"href": "/i/jf/creators/studio",
+					"defaultSettings": false,
+					"icon": "M7 6h10v2h-1v2.7l3.316 4.97c.446.67.684 1.46.684 2.26 0 2.25-1.822 4.07-4.07 4.07H8.07C5.822 22 4 20.18 4 17.93c0-.8.238-1.59.684-2.26L8 10.7V8H7V6zm9.742 9.42c-.227-.04-.531-.08-.873-.12-.757-.08-1.62-.13-2.25-.06-.572.07-.983.15-1.424.24h-.005c-.445.09-.92.19-1.571.26-.869.11-1.922.03-2.707-.05-.288-.04-.55-.07-.769-.1l-.795 1.19c-.227.34-.348.74-.348 1.15C6 19.07 6.927 20 8.07 20h7.86c1.143 0 2.07-.93 2.07-2.07 0-.41-.121-.81-.348-1.15l-.91-1.36zM10 3c-.552 0-1 .45-1 1s.448 1 1 1 1-.45 1-1-.448-1-1-1zm3.5-2c-.828 0-1.5.67-1.5 1.5S12.672 4 13.5 4 15 3.33 15 2.5 14.328 1 13.5 1z",
+					"text": twitterTextI18n.getText("creatorStudio")
 				},
 				"adsButton": {
 					"href": "https://ads.x.com/?ref=gl-tw-tw-twitter-ads-rweb",
+					"defaultSettings": false,
 					"icon": "M1.996 5.5c0-1.38 1.119-2.5 2.5-2.5h15c1.38 0 2.5 1.12 2.5 2.5v13c0 1.38-1.12 2.5-2.5 2.5h-15c-1.381 0-2.5-1.12-2.5-2.5v-13zm2.5-.5c-.277 0-.5.22-.5.5v13c0 .28.223.5.5.5h15c.276 0 .5-.22.5-.5v-13c0-.28-.224-.5-.5-.5h-15zm8.085 5H8.996V8h7v7h-2v-3.59l-5.293 5.3-1.415-1.42L12.581 10z",
 					"text": twitterTextI18n.getText("ads")
 				},
 				"createYourSpaceButton": {
 					"href": "/i/spaces/start",
+					"defaultSettings": false,
 					"icon": "M12 22.25c-4.99 0-9.18-3.393-10.39-7.994l1.93-.512c.99 3.746 4.4 6.506 8.46 6.506s7.47-2.76 8.46-6.506l1.93.512c-1.21 4.601-5.4 7.994-10.39 7.994zM5 11.5c0 3.866 3.13 7 7 7s7-3.134 7-7V8.75c0-3.866-3.13-7-7-7s-7 3.134-7 7v2.75zm12-2.75v2.75c0 2.761-2.24 5-5 5s-5-2.239-5-5V8.75c0-2.761 2.24-5 5-5s5 2.239 5 5zM11.25 8v4.25c0 .414.34.75.75.75s.75-.336.75-.75V8c0-.414-.34-.75-.75-.75s-.75.336-.75.75zm-3 1v2.25c0 .414.34.75.75.75s.75-.336.75-.75V9c0-.414-.34-.75-.75-.75s-.75.336-.75.75zm7.5 0c0-.414-.34-.75-.75-.75s-.75.336-.75.75v2.25c0 .414.34.75.75.75s.75-.336.75-.75V9z",
 					"text": twitterTextI18n.getText("createYourSpace")
 				},
 				"settingsAndPrivacy": {
 					"href": "/settings",
+					"defaultSettings": false,
 					"icon": svgIconPaths.settings,
 					"text": twitterTextI18n.getText("settingsAndPrivacy")
 				},
@@ -1835,17 +1838,42 @@
 			}
 			for(let i=0; i < thisScriptSettings.buttonSorting?.length || 0; i++){
 				let key = thisScriptSettings.buttonSorting[i];
-				if(key === "messagesButton")key = "chatButton";
-				const option = options[key];
-				if(thisScriptSettings.toAddOptions[key] === false){
-					const button = appTabBar.querySelector(`a[href="${option.href}"]`);
-					if(button){
-						button.setAttribute('customizeMenuButtonChecked', 'true');
-						button.style.display = "none";
-					}
-					continue;
+				const nameChangedKeys = {
+					"messagesButton": "chatButton",
+					"jobsButton": "businessButton",
+					"verifiedOrgButton": "businessButton",
+					"monetizationButton": "creatorStudioButton",
 				}
+				if(nameChangedKeys[key]){
+					const originalKey = key;
+					key = nameChangedKeys[originalKey];
+					thisScriptSettings.buttonSorting[i] = key;
+					if(thisScriptSettings.toAddOptions[originalKey]){
+						thisScriptSettings.toAddOptions[key] = true;
+					}
+					delete thisScriptSettings.toAddOptions[originalKey];
+					await saveSettings();
+				}
+				const option = options[key];
+				if(!option)continue;
 				const existButton = appTabBar.querySelectorAll(`a[href="${option.href}"]`);
+				if(!thisScriptSettings.toAddOptions[key]){
+					if(thisScriptSettings.toAddOptions[key] === undefined){
+						if(option.defaultSettings === false){
+							if(existButton.length > 0){
+								existButton[0].setAttribute('customizeMenuButtonChecked', 'true');
+								existButton[0].style.display = "none";
+							}
+							continue;
+						}
+					}else{
+						if(existButton.length > 0){
+							existButton[0].setAttribute('customizeMenuButtonChecked', 'true');
+							existButton[0].style.display = "none";
+						}
+						continue;
+					}
+				}
 				if(existButton.length > 0){
 					if(existButton.length > 1){
 						for(let j=1;j<existButton.length;j++){
@@ -2592,11 +2620,12 @@
 
 	function getValueFromObjectByPath(object, path, defaultValue = undefined){
 		const isArray = Array.isArray;
-		if(object == null || typeof object != 'object') return defaultValue;
-		return (isArray(object)) ? object.map(createProcessFunction(path)) : createProcessFunction(path)(object);
+		if(object == null || typeof object != 'object')return defaultValue;
+		const result = (isArray(object)) ? object.map(createProcessFunction(path)) : createProcessFunction(path)(object);
+		return result ?? defaultValue;
 		function createProcessFunction(path){
-			if(typeof path == 'string') path = path.split('.');
-			if(!isArray(path)) path = [path];
+			if(typeof path == 'string')path = path.split('.');
+			if(!isArray(path))path = [path];
 			return function(object){
 				let index = 0,
 				length = path.length;
@@ -2612,13 +2641,13 @@
 						object = object[key];
 					}
 				}
-				return (index && index == length) ? object : void 0;
+				return (index && index === length) ? object : void 0;
 			};
 		}
 		function toString_(value){
-			if(value == null) return '';
-			if(typeof value == 'string') return value;
-			if(isArray(value)) return value.map(toString) + '';
+			if(value == null)return '';
+			if(typeof value == 'string')return value;
+			if(isArray(value))return value.map(toString) + '';
 			const result = value + '';
 			return '0' == result && 1 / value == -(1 / 0) ? '-0' : result;
 		}
@@ -4382,16 +4411,15 @@
 			const page = createSettingsPageTemplate(settingsTarget.targetName);
 			const settingEntries = [
 				{type: 'text', text: settingText.toAdd, size: "2em", weight: "400", position: "left", isHTML: false},
-				{id: "connect_peopleButton", name: twitterTextI18n.getText("connect_people"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
+				{id: "connect_peopleButton", name: twitterTextI18n.getText("connect_people"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
+				{id: "chatButton", name: twitterTextI18n.getText("chat"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
 				{id: "grokButton", name: twitterTextI18n.getText("grok"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
-				{id: "bookmarksButton", name: twitterTextI18n.getText("bookmarks"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
-				{id: "jobsButton", name: twitterTextI18n.getText("jobs"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
-				{id: "communitiesButton", name: twitterTextI18n.getText("communities"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
-				{id: "businessButton", name: twitterTextI18n.getText("business"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
-				{id: "premiumButton", name: twitterTextI18n.getText("premium"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
-				{id: "verifiedOrgButton", name: twitterTextI18n.getText("verifiedOrg"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
 				{id: "listsButton", name: twitterTextI18n.getText("lists"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
-				{id: "monetizationButton", name: twitterTextI18n.getText("monetization"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
+				{id: "bookmarksButton", name: twitterTextI18n.getText("bookmarks"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
+				{id: "communitiesButton", name: twitterTextI18n.getText("communities"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
+				{id: "businessButton", name: twitterTextI18n.getText("business"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
+				{id: "premiumButton", name: twitterTextI18n.getText("premium"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
+				{id: "creatorStudioButton", name: twitterTextI18n.getText("creatorStudio"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
 				{id: "adsButton", name: twitterTextI18n.getText("ads"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
 				{id: "createYourSpaceButton", name: twitterTextI18n.getText("createYourSpace"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
 				{id: "settingsAndPrivacy", name: twitterTextI18n.getText("settingsAndPrivacy"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
@@ -4454,8 +4482,8 @@
 			page.appendChild(createSettingsElement({type: 'button', text: settingText.sortOrderRestoreDefault, width: "fit-content", event: restoreDefaultSorting}).container);
 
 			const buttonNames = ["homeButton", "exploreButton", "notificationsButton", "connect_peopleButton", "chatButton",
-				"grokButton", "listsButton", "bookmarksButton", "jobsButton", "communitiesButton", "businessButton", "premiumButton",
-				"verifiedOrgButton", "profileButton" ,"monetizationButton", "adsButton", "createYourSpaceButton", "settingsAndPrivacy",
+				"grokButton", "listsButton", "bookmarksButton", "communitiesButton", "businessButton",
+				"profileButton" , "creatorStudioButton", "adsButton", "createYourSpaceButton", "settingsAndPrivacy",
 				"shortCutButton1", "shortCutButton2", "shortCutButton3", "shortCutButton4"];
 			const buttonList = scriptSetting?.buttonSorting?.length === buttonNames.length ? scriptSetting.buttonSorting : buttonNames;
 
@@ -4709,11 +4737,14 @@
 			settingsElementWrapper.style.margin = "0 0 0 2%";
 			settingsElementWrapper.style.flexShrink = "0";
 
-			const categoryPath = setting.category ? setting.category.split('.') : [];
-			let currentValue = storedValue ? storedValue[setting.id] ?? setting.defaultValue : setting.defaultValue ?? undefined;
-			// 深いネストがある場合に対応
-			if(categoryPath.length && storedValue){
-				currentValue = getValueFromObjectByPath(storedValue,`${setting.category}.${setting.id}`);
+			let currentValue;
+			if(!storedValue){
+				currentValue = setting.defaultValue;
+			}else if(setting.category){
+				// 深いネストがある場合に対応
+				currentValue = getValueFromObjectByPath(storedValue,`${setting.category}.${setting.id}`, setting.defaultValue);
+			}else{
+				currentValue = storedValue ? storedValue[setting.id] ?? setting.defaultValue : setting.defaultValue ?? undefined;
 			}
 
 			// タイプに応じた要素の生成
@@ -9278,7 +9309,7 @@
 	const twitterApi = new TwitterApi();
 
 	class TwitterTextI18n {
-		#version = 202512200000;
+		#version = 202512208000;
 		#langList = ["ja", "en", "ar", "ar-x-fm", "bg", "bn", "ca", "cs", "da", "de", "el", "en-gb", "es", "eu", "fa", "fi", "fil",
 			"fr", "ga", "gl", "gu", "ha", "he", "hi", "hr", "hu", "id", "ig", "it", "kn", "ko", "mr", "msa", "nb",
 			"nl", "pl", "pt", "ro", "ru", "sk", "sr", "sv", "ta", "th", "tr", "uk", "ur", "vi", "yo", "zh-cn", "zh-tw"];
