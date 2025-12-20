@@ -12,6 +12,7 @@
 // @icon			<$ICON$>
 // @license			MIT
 // @grant			GM_xmlhttpRequest
+// @grant			window.onurlchange
 // ==/UserScript==
 
 (async function(){
@@ -19,7 +20,25 @@
 	let currentUrl = document.location.href;
 	let updating = false;
 	const debugging = true;
-	const debug = debugging ? console.log : ()=>{};
+	let debuggingCount = 0;
+	const debug = debugging
+    ? (...args) => {
+        const count = debuggingCount++;
+        const stack = new Error().stack.split('\n')[2]?.trim() || '';
+        const location = stack.match(/\((.*)\)/)?.[1] || stack;
+        if(args.length === 0){
+            console.log(`%c[debug: ${count}] %c${location}`, 
+                'color: #0096fa; font-weight: bold',
+                'color: #666; font-size: 0.9em');
+        }else{
+            console.log(`%c[debug: ${count}]%c ${location}`, 
+                'color: #0096fa; font-weight: bold',
+                'color: #666; font-size: 0.9em',
+                ...args);
+        }
+    }
+    : () => {};
+	const _cloneInto = typeof cloneInto === "function" ? (obj, _window = window, options = {}) => cloneInto(obj, _window, options) : (obj)=>obj;
 	const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 	async function main(force = false){
 		//code
@@ -129,6 +148,19 @@
 	}
 
 	function locationChange(targetPlace = document){
+		if(window.onurlchange === null){
+			window.addEventListener('urlchange', (info) => {
+				currentUrl = document.location.href;
+				try{
+					update({urlChange: true});
+				}catch(error){console.error(error)}
+			});
+		}
+	}
+	/*
+	// @grant			window.onurlchange
+	をつけない場合の古い方法
+	function locationChange(targetPlace = document){
 		const observer = new MutationObserver(mutations => {
 			if(currentUrl !== document.location.href){
 				currentUrl = document.location.href;
@@ -141,6 +173,7 @@
 		const config = {childList: true,subtree: true};
 		observer.observe(target, config);
 	}
+	*/
 
 	function getCookie(name){
 		let arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
@@ -302,7 +335,7 @@
 						// Error: Not allowed to define cross-origin object as property on [Object] or [Array] XrayWrapper
 						// というエラーが出ることがあるので、構造化クローンを使ってコピーする
 						// でかいオブジェクトだと効率が悪いのでなにかいい方法があれば教えてください
-						resolve(structuredClone(event.target.result.data));
+						resolve(_cloneInto(event.target.result.data));
 					}else{
 						resolve(null);
 					}
@@ -320,7 +353,8 @@
 	function getValueFromObjectByPath(object, path, defaultValue = undefined){
 		const isArray = Array.isArray;
 		if(object == null || typeof object != 'object')return defaultValue;
-		return (isArray(object)) ? object.map(createProcessFunction(path)) : createProcessFunction(path)(object);
+		const result = (isArray(object)) ? object.map(createProcessFunction(path)) : createProcessFunction(path)(object);
+		return result ?? defaultValue;
 		function createProcessFunction(path){
 			if(typeof path == 'string')path = path.split('.');
 			if(!isArray(path))path = [path];
@@ -339,7 +373,7 @@
 						object = object[key];
 					}
 				}
-				return (index && index == length) ? object : void 0;
+				return (index && index === length) ? object : void 0;
 			};
 		}
 		function toString_(value){
@@ -540,11 +574,8 @@
 	 * @returns {K extends keyof SVGElementTagNameMap ? SVGElementTagNameMap[K] : HTMLElementTagNameMap[K]}   
 	*/
 	function h(tag, props = {}, ...children){
-		let isSvg = svgTags.has(tag);
-		const ns = svgTags.has(tag) ? "http://www.w3.org/2000/svg" : undefined;
-		if(!isSvg && typeof tag === "string"){
-			tag = tag.toLowerCase();
-		}
+		const isSvg = svgTags.has(tag);
+		const ns = isSvg ? "http://www.w3.org/2000/svg" : undefined;
 		const el = tag === "fragment"
 		? document.createDocumentFragment()
 		: ns
@@ -554,10 +585,16 @@
 			const val = props[key];
 			if(key === "style" && typeof val === "object"){
 				Object.assign(el.style, val);
+			}else if(key === "className"){
+				if(ns){
+					el.setAttribute("class", val);
+				}else{
+					el.className = val;
+				}
+			}else if(key === "textContent" || key === "innerText"){
+				el[key] = val;
 			}else if(key.startsWith("on") && typeof val === "function"){
 				el.addEventListener(key.slice(2).toLowerCase(), val);
-			}else if(key.startsWith("aria-") || key === "role"){
-				el.setAttribute(key, val); // 強制的に属性にする
 			}else if(key === "dataset" && typeof val === "object"){
 				for(const dataKey in val){
 					if(val[dataKey] != null){
@@ -567,9 +604,11 @@
 			}else if(key.startsWith("data-")){
 				const prop = key.slice(5).replace(/-([a-z])/g, (_, c) => c.toUpperCase()); // dataset
 				el.dataset[prop] = val;
+			}else if(key.startsWith("aria-") || key === "role"){
+				el.setAttribute(key, val); // 強制的に属性にする
 			}else if(key === "ref" && typeof val === "function"){
 				val(el); // 作成直後のDOMノードを渡す
-			}else if(key in el && !svgTags.has(tag)){
+			}else if(key in el && !isSvg){
 				el[key] = val; // DOMプロパティ
 			}else{
 				el.setAttribute(key, val); // その他属性
