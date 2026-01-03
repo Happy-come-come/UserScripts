@@ -26,6 +26,7 @@
 			"works": "t0.t0", //作品,  Works
 			"newest": "tee.tho.tia", //新しい順,  Newest
 			"oldest": "tee.tho.tib", //古い順,  Oldest
+			"popular": "tee.tho.thq", //人気の作品,  Popular works
 			"_count_Works": "t3jp.t3ki", //{{ count }} 作品,  {{ count }} works
 			"viewOnpixivEncyclopedia": "tby.tcz.td1", //ピクシブ百科事典で見る,  View on pixiv Encyclopedia
 			"searchOption": {

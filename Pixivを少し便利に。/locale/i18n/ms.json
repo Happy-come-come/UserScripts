@@ -16,6 +16,7 @@
   "works": "Karya",
   "newest": "Urutan dari terbaharu",
   "oldest": "Urutan dari lama",
+  "popular": "Karya popular",
   "_count_Works": "Karya {{ total }}",
   "viewOnpixivEncyclopedia": "Lihat dengan pixiv Encyclopedia",
   "searchOption": {

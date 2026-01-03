@@ -16,6 +16,7 @@
   "works": "작품",
   "newest": "최신순",
   "oldest": "과거순",
+  "popular": "인기 작품",
   "_count_Works": "{{ total }} 작품",
   "viewOnpixivEncyclopedia": "픽시브 백과사전 보기",
   "searchOption": {

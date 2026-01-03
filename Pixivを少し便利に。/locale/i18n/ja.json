@@ -16,6 +16,7 @@
   "works": "作品",
   "newest": "新しい順",
   "oldest": "古い順",
+  "popular": "人気の作品",
   "_count_Works": "{{ total }} 作品",
   "viewOnpixivEncyclopedia": "ピクシブ百科事典で見る",
   "searchOption": {
