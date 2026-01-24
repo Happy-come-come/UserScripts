@@ -199,7 +199,7 @@
   "profilePopUp": {
     "viewProfile": "ดูโปรไฟล์",
     "follow": "ติดตาม",
-    "flowing": "กำลังติดตาม",
+    "following": "กำลังติดตาม",
     "mute": "ปิดกั้น",
     "muted": "ถูกปิดกั้น",
     "twitter": "Twitter",

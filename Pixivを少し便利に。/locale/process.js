@@ -209,7 +209,7 @@
 			"profilePopUp": {
 				"viewProfile": "t3jp.t3qw", //プロフィールを見る,  View profile
 				"follow": "t3jp.t3qa", //フォローする,  Follow
-				"flowing": "t3jp.t3qg", //フォロー中,  Following
+				"following": "t3jp.t3qg", //フォロー中,  Following
 				"mute": "t3jp.t3re", //ミュート,  Mute
 				"muted": "t3jp.t3rh", //ミュート中,  Muted
 				"twitter": "t3jp.t3z9", //Twitter,  Twitter
