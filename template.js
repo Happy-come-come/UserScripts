@@ -1,10 +1,6 @@
 // ==UserScript==
 // @name			script name
-// @name:ja			スクリプト名
-// @name:en			script name
 // @description			description here
-// @description:ja			ここに説明
-// @description:en			description here
 // @namespace		https://greasyfork.org/ja/users/あなたのid
 // @version			<$DATE$>
 // @author			You
@@ -27,11 +23,11 @@
         const stack = new Error().stack.split('\n')[2]?.trim() || '';
         const location = stack.match(/\((.*)\)/)?.[1] || stack;
         if(args.length === 0){
-            console.log(`%c[debug: ${count}] %c${location}`, 
+            console.log(`%c[debug: ${count}] %c${location}`,
                 'color: #0096fa; font-weight: bold',
                 'color: #666; font-size: 0.9em');
         }else{
-            console.log(`%c[debug: ${count}]%c ${location}`, 
+            console.log(`%c[debug: ${count}]%c ${location}`,
                 'color: #0096fa; font-weight: bold',
                 'color: #666; font-size: 0.9em',
                 ...args);
@@ -348,6 +344,30 @@
 				reject(error);
 			}
 		});
+	}
+
+	/**
+	 * 指定された並列数でタスクを実行
+	 * @param {Array<Function>} tasks - 実行するタスク配列（async関数）
+	 * @param {number} concurrency - 並列実行数
+	 * @returns {Promise<Array>} - 結果の配列（元の順序を保持）
+	 */
+	async function parallelTask(tasks, concurrency = 6){
+		const results = new Array(tasks.length);
+		let cursor = 0;
+		async function worker(){
+			while(cursor < tasks.length){
+				const index = cursor++;
+				try{
+					results[index] = await tasks[index]();
+				}catch(error){
+					results[index] = { error, index };
+				}
+			}
+		}
+		const workers = Array.from({ length: concurrency }, () => worker());
+		await Promise.all(workers);
+		return results;
 	}
 
 	function getValueFromObjectByPath(object, path, defaultValue = undefined){
