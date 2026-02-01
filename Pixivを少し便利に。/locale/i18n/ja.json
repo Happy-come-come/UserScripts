@@ -17,6 +17,10 @@
   "newest": "新しい順",
   "oldest": "古い順",
   "popular": "人気の作品",
+  "like": "いいね！",
+  "bookmarks": "ブックマーク",
+  "views": "閲覧数",
+  "no": "なし",
   "_count_Works": "{{ total }} 作品",
   "viewOnpixivEncyclopedia": "ピクシブ百科事典で見る",
   "searchOption": {

@@ -27,6 +27,10 @@
 			"newest": "tee.tho.tia", //新しい順,  Newest
 			"oldest": "tee.tho.tib", //古い順,  Oldest
 			"popular": "tee.tho.thq", //人気の作品,  Popular works
+			"like": "t0.t2r.t2s", //いいね！,  Like
+			"bookmarks": "t0.t2r.t2t", //ブックマーク,  Bookmarks
+			"views": "t0.t2r.t2u", //閲覧数,  Views
+			"no": "t3jp.t3n4", //なし,  No
 			"_count_Works": "t3jp.t3ki", //{{ count }} 作品,  {{ count }} works
 			"viewOnpixivEncyclopedia": "tby.tcz.td1", //ピクシブ百科事典で見る,  View on pixiv Encyclopedia
 			"searchOption": {

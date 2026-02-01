@@ -17,6 +17,10 @@
   "newest": "Urutan dari terbaharu",
   "oldest": "Urutan dari lama",
   "popular": "Karya popular",
+  "like": "Suka!",
+  "bookmarks": "Penanda buku",
+  "views": "Jumlah tontonan",
+  "no": "Tiada",
   "_count_Works": "Karya {{ total }}",
   "viewOnpixivEncyclopedia": "Lihat dengan pixiv Encyclopedia",
   "searchOption": {

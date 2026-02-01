@@ -17,6 +17,10 @@
   "newest": "按最新排序",
   "oldest": "按旧排序",
   "popular": "热门作品",
+  "like": "赞！",
+  "bookmarks": "收藏",
+  "views": "浏览量",
+  "no": "无",
   "_count_Works": "{{ total }} 作品",
   "viewOnpixivEncyclopedia": "去pixiv百科全书查看",
   "searchOption": {

@@ -17,6 +17,10 @@
   "newest": "Newest",
   "oldest": "Oldest",
   "popular": "Popular works",
+  "like": "Like",
+  "bookmarks": "Bookmarks",
+  "views": "Views",
+  "no": "No",
   "_count_Works": "{{ total }} works",
   "viewOnpixivEncyclopedia": "View on pixiv Encyclopedia",
   "searchOption": {

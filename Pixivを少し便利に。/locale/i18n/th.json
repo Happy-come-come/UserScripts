@@ -17,6 +17,10 @@
   "newest": "เรียงตามเนื้อหาใหม่สุด",
   "oldest": "เรียงตามเก่าสุด",
   "popular": "ผลงานยอดนิยม",
+  "like": "ถูกใจ",
+  "bookmarks": "บุ๊กมาร์ก",
+  "views": "การเข้าชม",
+  "no": "ไม่มี",
   "_count_Works": "{{ total }} ผลงาน",
   "viewOnpixivEncyclopedia": "ดูบน pixiv Encyclopedia",
   "searchOption": {
