@@ -21,6 +21,7 @@
   "bookmarks": "บุ๊กมาร์ก",
   "views": "การเข้าชม",
   "no": "ไม่มี",
+  "sortByPopularity": "เรียงตามความนิยม",
   "_count_Works": "{{ total }} ผลงาน",
   "viewOnpixivEncyclopedia": "ดูบน pixiv Encyclopedia",
   "searchOption": {

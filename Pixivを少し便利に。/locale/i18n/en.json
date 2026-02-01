@@ -21,6 +21,7 @@
   "bookmarks": "Bookmarks",
   "views": "Views",
   "no": "No",
+  "sortByPopularity": "Sort by popularity",
   "_count_Works": "{{ total }} works",
   "viewOnpixivEncyclopedia": "View on pixiv Encyclopedia",
   "searchOption": {

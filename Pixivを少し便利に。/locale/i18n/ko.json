@@ -21,6 +21,7 @@
   "bookmarks": "북마크",
   "views": "열람 횟수",
   "no": "없음",
+  "sortByPopularity": "인기순",
   "_count_Works": "{{ total }} 작품",
   "viewOnpixivEncyclopedia": "픽시브 백과사전 보기",
   "searchOption": {

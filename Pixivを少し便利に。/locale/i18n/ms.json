@@ -21,6 +21,7 @@
   "bookmarks": "Penanda buku",
   "views": "Jumlah tontonan",
   "no": "Tiada",
+  "sortByPopularity": "Urutan dari popular",
   "_count_Works": "Karya {{ total }}",
   "viewOnpixivEncyclopedia": "Lihat dengan pixiv Encyclopedia",
   "searchOption": {

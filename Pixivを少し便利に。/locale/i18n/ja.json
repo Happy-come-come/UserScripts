@@ -21,6 +21,7 @@
   "bookmarks": "ブックマーク",
   "views": "閲覧数",
   "no": "なし",
+  "sortByPopularity": "人気順",
   "_count_Works": "{{ total }} 作品",
   "viewOnpixivEncyclopedia": "ピクシブ百科事典で見る",
   "searchOption": {
