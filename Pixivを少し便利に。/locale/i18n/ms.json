@@ -22,6 +22,7 @@
   "views": "Jumlah tontonan",
   "no": "Tiada",
   "sortByPopularity": "Urutan dari popular",
+  "nowLoading": "Sedang dimuatkan",
   "_count_Works": "Karya {{ total }}",
   "viewOnpixivEncyclopedia": "Lihat dengan pixiv Encyclopedia",
   "searchOption": {

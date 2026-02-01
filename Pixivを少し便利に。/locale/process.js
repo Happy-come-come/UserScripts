@@ -32,6 +32,7 @@
 			"views": "t0.t2r.t2u", //閲覧数,  Views
 			"no": "t3jp.t3n4", //なし,  No
 			"sortByPopularity": "tee.tho.tid", //人気順,  Sort by popularity
+			"nowLoading": "tqm.tqq", //ローディング中,  Now loading
 			"_count_Works": "t3jp.t3ki", //{{ count }} 作品,  {{ count }} works
 			"viewOnpixivEncyclopedia": "tby.tcz.td1", //ピクシブ百科事典で見る,  View on pixiv Encyclopedia
 			"searchOption": {

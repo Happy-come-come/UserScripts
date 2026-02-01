@@ -22,6 +22,7 @@
   "views": "浏览量",
   "no": "无",
   "sortByPopularity": "按热门度排序",
+  "nowLoading": "加载中",
   "_count_Works": "{{ total }} 作品",
   "viewOnpixivEncyclopedia": "去pixiv百科全书查看",
   "searchOption": {

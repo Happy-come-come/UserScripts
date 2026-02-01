@@ -22,6 +22,7 @@
   "views": "열람 횟수",
   "no": "없음",
   "sortByPopularity": "인기순",
+  "nowLoading": "불러오는 중",
   "_count_Works": "{{ total }} 작품",
   "viewOnpixivEncyclopedia": "픽시브 백과사전 보기",
   "searchOption": {
