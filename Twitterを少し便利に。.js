@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.4.0.8
+// @version			2.4.0.9
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1176,7 +1176,9 @@
 	async function noteTweetExpander(tweetNodes){
 		tweetNodes.forEach(function(target){
 			const tweetNode = target.node;
-			const tweetTextsElement = tweetNode.querySelectorAll('[data-testid="tweetText"]');
+			const tweetTextsElement = Array.from(tweetNode.querySelectorAll('[data-testid="tweetText"]')).filter(function(tweetTextElement){
+				return !tweetTextElement.closest('div[aria-labelledby]');
+			});
 			tweetTextsElement.forEach(async (tweetTextElement, index) => {
 				const showMoreLink = tweetTextElement.parentNode.querySelector('[data-testid="tweet-text-show-more-link"]');
 				if(showMoreLink)showMoreLink.style.display = "none";
