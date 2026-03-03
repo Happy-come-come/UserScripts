@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.4.0.9
+// @version			2.4.0.10
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1295,8 +1295,7 @@
 				if(!sessionData.showMeYourPixiv)sessionData.showMeYourPixiv = {};
 				if(!sessionData.showMeYourPixiv.fetchedUser)sessionData.showMeYourPixiv.fetchedUser = new Set();
 				sessionData.showMeYourPixiv.fetchedUser.add(currentPageScreenName);
-				//await addPixivLinksToScriptDataStore([currentPageScreenName], true);
-				//しばらくTwitter APIに触りたくないので無効化
+				await addPixivLinksToScriptDataStore([currentPageScreenName], true);
 			}
 			const pixivUrl = getPixivUrlWithScreenName(currentPageScreenName);
 			if(profileField && pixivUrl && !(pixivUrl?.match(/(?:users\/|member.php\?id=)(11|9949830|15241365)(\/|$)/))){
@@ -2170,9 +2169,7 @@
 
 	async function fetchUserData(){
 		if(sessionData.userData?.screenName !== undefined)return sessionData.userData;
-		//let settings = await twitterApi.getAccountSettings({include_country_code: true});
-		//しばらくTwitter APIに触りたくないので、ページ内のスクリプトから直接情報を取得するように変更
-		let settings = null;
+		let settings = await twitterApi.getAccountSettings({include_country_code: true});
 		if(!settings){
 			const script = Array.from(await waitElementAndGet({query: `script`, searchFunction: 'querySelectorAll', searchPlace: document.body})).find(s => {
 				return s.innerText.match(/\"remote\"\:{\"settings\":.*\"settings_metadata\"\:\{\}\}/);
