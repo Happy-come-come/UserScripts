@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.4.0.10
+// @version			2.4.0.11
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1176,9 +1176,7 @@
 	async function noteTweetExpander(tweetNodes){
 		tweetNodes.forEach(function(target){
 			const tweetNode = target.node;
-			const tweetTextsElement = Array.from(tweetNode.querySelectorAll('[data-testid="tweetText"]')).filter(function(tweetTextElement){
-				return !tweetTextElement.closest('div[aria-labelledby]');
-			});
+			const tweetTextsElement = Array.from(tweetNode.querySelectorAll('[data-testid="tweetText"]'));
 			tweetTextsElement.forEach(async (tweetTextElement, index) => {
 				const showMoreLink = tweetTextElement.parentNode.querySelector('[data-testid="tweet-text-show-more-link"]');
 				if(showMoreLink)showMoreLink.style.display = "none";
@@ -1187,7 +1185,7 @@
 					tweetTextElement.style.webkitLineClamp = null;
 					return;
 				}
-				showMoreLink.click();
+				if(!tweetTextElement.closest('div[aria-labelledby]'))showMoreLink.click();
 			});
 		});
 		return "done";
@@ -8961,10 +8959,20 @@
 				const verificationCode = metaTag?.content;
 				if(!verificationCode)throw new Error("Verification code not found");
 
-				const challengeCodeMatch = html.match(/"ondemand\.s":"(\w+)"/);
-				if(!challengeCodeMatch)throw new Error("Challenge code not found");
+				const challengeKeyMatch = html.match(/(\d+):\s*["']ondemand\.s["']/);
+				if(!challengeKeyMatch){
+					throw new Error("Challenge key for ondemand.s not found");
+				}
+
+				const challengeKey = challengeKeyMatch[1];
+				const challengeCodeRegex = new RegExp(`\\b${challengeKey}:\\s*["']([a-zA-Z0-9_-]+)["']`);
+				const challengeCodeMatch = html.match(challengeCodeRegex);
+				if(!challengeCodeMatch){
+					throw new Error("Challenge code not found");
+				}
 
 				const challengeCode = challengeCodeMatch[1];
+
 				const svgs = Array.from(doc.querySelectorAll('svg[id^="loading-x"]'));
 				const challengeAnimationSvgCodes = svgs.map(svg => svg.outerHTML);
 
