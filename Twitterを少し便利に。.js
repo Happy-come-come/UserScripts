@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.4.0.12
+// @version			2.5.0.0
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -311,6 +311,12 @@
 				"description": "チャット(DM)で送られてきたリンクの遷移を修正します",
 			}
 		},
+		"blackToDarkblue": {
+			"settings": {
+				"displayName": "背景テーマのブラックをダークブルーに",
+				"description": "背景テーマのブラックを選択している場合にダークブルーに変更します",
+			}
+		},
 		"advance": {
 			"settings": {
 				"displayName": "高度な設定",
@@ -524,6 +530,12 @@
 				"description": "Fixes the navigation of links sent in chat(DM)",
 			}
 		},
+		"blackToDarkblue": {
+			"settings": {
+				"displayName": "背景テーマのブラックをダークブルーに",
+				"description": "背景テーマのブラックを選択している場合にダークブルーに変更します",
+			}
+		},
 		"advance": {
 			"settings": {
 				"displayName": "Advanced Settings",
@@ -622,6 +634,11 @@
 		},
 		"fixChatLinkNavigation": {
 			"function": fixChatLinkNavigation,
+			"isRunning": false,
+			"ignoreIsRunning": true,
+		},
+		"blackToDarkblue": {
+			"function": blackToDarkblue,
 			"isRunning": false,
 			"ignoreIsRunning": true,
 		}
@@ -2132,6 +2149,47 @@
 					navigateTo(link.href);
 				});
 			});
+		}
+	}
+
+	async function blackToDarkblue(){
+		if(sessionData.blackToDarkblue?.appendedCss)return;
+		const overRideCss = `
+.r-1nao33i {
+	color: ${colors.get('fontColor', 1)} !important;
+}
+[style*="color: rgb(113, 118, 123)"] {
+	color: ${colors.get('fontColorDark', 1)} !important;
+}
+[style*="background-color: rgb(0, 0, 0)"],
+.r-kemksi
+{
+	background-color: ${colors.get('backgroundColor', 1)} !important;
+}
+.r-1roi411 {
+	border-color: ${colors.get('borderColor', 1)} !important;
+}
+.r-1hdo0pc {
+	background-color: ${colors.get('menuHoverEffect', 1)} !important;
+}
+.r-g2wdr4 {
+	background-color: ${colors.get('menuHoverEffectLight', 1)} !important;
+}
+.r-1bnu78o {
+	background-color: ${colors.get('conversationLineColor', 1)} !important;
+}
+.r-5zmot {
+	background-color: ${colors.get('backgroundColor', 1)} !important;
+}
+`;
+		const style = document.createElement('style');
+		style.textContent = overRideCss;
+		document.head.appendChild(style);
+		if(!sessionData.blackToDarkblue?.appendedCss){
+			sessionData.blackToDarkblue = {
+				appendedCss: style,
+				isEnabled: true,
+			}
 		}
 	}
 
@@ -9493,6 +9551,10 @@ Thank you for your understanding.`,
 			"2.4.0.0": {
 				"newFeatures": ["fixChatLinkNavigation"],
 				"updateDate": "2025-12-19T01:01:30+09:00",
+			},
+			"2.5.0.0": {
+				"newFeatures": ["blackToDarkblue"],
+				"updateDate": "2026-03-29T06:00:00+09:00",
 			}
 		};
 		const allVersions = Object.keys(changelogs).sort((a, b) => compareVersions(b, a));
