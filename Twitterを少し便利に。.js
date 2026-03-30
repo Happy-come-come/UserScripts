@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.5.0.2
+// @version			2.6.0.0
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -317,6 +317,12 @@
 				"description": "背景テーマのブラックを選択している場合にダークブルーに変更します",
 			}
 		},
+		"hideAuthenticity": {
+			"settings": {
+				"displayName": "信頼性タグを非表示",
+				"description": "ツイート内のユーザーの信頼性タグを(PCF_LABEL_NONEの場合)非表示にします",
+			}
+		},
 		"advance": {
 			"settings": {
 				"displayName": "高度な設定",
@@ -536,6 +542,12 @@
 				"description": "背景テーマのブラックを選択している場合にダークブルーに変更します",
 			}
 		},
+		"hideAuthenticity": {
+			"settings": {
+				"displayName": "Hide Authenticity Tag",
+				"description": "Hides the authenticity tag of users in tweets (when PCF_LABEL_NONE is set)",
+			}
+		},
 		"advance": {
 			"settings": {
 				"displayName": "Advanced Settings",
@@ -639,6 +651,12 @@
 		},
 		"blackToDarkblue": {
 			"function": blackToDarkblue,
+			"isRunning": false,
+			"ignoreIsRunning": true,
+			"immediateRun": true,
+		},
+		"hideAuthenticity": {
+			"function": hideAuthenticity,
 			"isRunning": false,
 			"ignoreIsRunning": true,
 			"immediateRun": true,
@@ -2210,6 +2228,63 @@
 				appendedCss: style,
 				isEnabled: true,
 			}
+		}
+	}
+
+	async function hideAuthenticity(tweetNodes){
+		if(!sessionData.hideAuthenticity?.appendedCss){
+			const css = `
+[data-testid="tweet"] div:has(> div > [href="https://help.x.com/rules-and-policies/authenticity"]):not(:has([data-testid="Tweet-User-Avatar"])):not([data-mtlu-authenticity-show="1"]),
+[data-testid="tweet"] div${envSelector.mediaField} div:has(> [href="https://help.x.com/rules-and-policies/authenticity"]):not([data-mtlu-authenticity-show="1"]),
+li[data-testid="UserCell"] div:has(> div > [href="https://help.x.com/rules-and-policies/authenticity"]):not([data-mtlu-authenticity-show="1"]),
+button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-policies/authenticity"]):not([data-mtlu-authenticity-show="1"]) {
+	display: none !important;
+}
+	`;
+			const style = document.createElement('style');
+			style.classList.add('MTLU_hideAuthenticityCss');
+			style.textContent = css;
+			document.head.appendChild(style);
+	
+			sessionData.hideAuthenticity = {
+				appendedCss: style,
+				isEnabled: true,
+			};
+		}
+	
+		tweetNodes.forEach((e) => {
+			const node = e.node;
+			const authenticityLink = node.querySelector('a[href="https://help.x.com/rules-and-policies/authenticity"]');
+			if(!authenticityLink)return;
+	
+			const hideTarget = getAuthenticityHideTarget(authenticityLink);
+			if(!hideTarget)return;
+	
+			if(authenticityLink.textContent.trim() !== 'PCF_LABEL_NONE'){
+				hideTarget.dataset.mtluAuthenticityShow = '1';
+			}else{
+				delete hideTarget.dataset.mtluAuthenticityShow;
+			}
+		});
+		function getAuthenticityHideTarget(link){
+			const parent = link.parentElement;
+			if(!parent)return null;
+		
+			const grandParent = parent.parentElement;
+		
+			if(link.closest('li[data-testid="UserCell"]')){
+				return grandParent;
+			}
+		
+			if(link.closest('button[data-testid="UserCell"]')){
+				return parent;
+			}
+		
+			if(link.closest(envSelector.mediaField)){
+				return parent;
+			}
+		
+			return grandParent;
 		}
 	}
 
@@ -9583,6 +9658,10 @@ Thank you for your understanding.`,
 			"2.5.0.0": {
 				"newFeatures": ["blackToDarkblue"],
 				"updateDate": "2026-03-29T06:00:00+09:00",
+			},
+			"2.6.0.0": {
+				"newFeatures": ["hideAuthenticityTag"],
+				"updateDate": "2026-03-30T21:00:00+09:00",
 			}
 		};
 		const allVersions = Object.keys(changelogs).sort((a, b) => compareVersions(b, a));
