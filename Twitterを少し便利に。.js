@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.6.0.2
+// @version			2.6.0.3
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -2234,14 +2234,20 @@
 	async function hideAuthenticity(tweetNodes){
 		if(!sessionData.hideAuthenticity?.appendedCss){
 			const css = `
+/* ツイート内 */
 [data-testid="tweet"] div:has(> div > [href="https://help.x.com/rules-and-policies/authenticity"]):not(:has([data-testid="Tweet-User-Avatar"])):not([data-mtlu-authenticity-show="1"]),
+/* 引用ツイート内 */
 [data-testid="tweet"] div${envSelector.mediaField} div:has(> [href="https://help.x.com/rules-and-policies/authenticity"]):not([data-mtlu-authenticity-show="1"]),
+/* asideのユーザープロフィール */
 li[data-testid="UserCell"] div:has(> div > [href="https://help.x.com/rules-and-policies/authenticity"]):not([data-mtlu-authenticity-show="1"],:has(button)),
+/* ツイート詳細のasideのユーザープロフィール */
 li[data-testid="UserCell"] div:has(button) > div:has(> [href="https://help.x.com/rules-and-policies/authenticity"]):not([data-mtlu-authenticity-show="1"]),
-button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-policies/authenticity"]):not([data-mtlu-authenticity-show="1"]) {
+/* おすすめユーザーのユーザープロフィール */
+button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-policies/authenticity"]):not([data-mtlu-authenticity-show="1"])
+{
 	display: none !important;
 }
-	`;
+`;
 			const style = document.createElement('style');
 			style.classList.add('MTLU_hideAuthenticityCss');
 			style.textContent = css;
@@ -2253,22 +2259,21 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			};
 		}
 	
-		tweetNodes.forEach((e) => {
-			const node = e.node;
+		const processAuthenticityLinks = (node) => {
 			const authenticityLinks = node.querySelectorAll('a[href="https://help.x.com/rules-and-policies/authenticity"]');
 			if(!authenticityLinks.length)return;
-		
 			authenticityLinks.forEach((authenticityLink) => {
 				const hideTarget = getAuthenticityHideTarget(authenticityLink);
 				if(!hideTarget)return;
-		
-				if(authenticityLink.textContent.trim() !== 'PCF_LABEL_NONE'){
+				if(!authenticityLink.textContent.trim().match(/^(PCF_LABEL_)?NONE$/)){
 					hideTarget.dataset.mtluAuthenticityShow = '1';
 				}else{
 					delete hideTarget.dataset.mtluAuthenticityShow;
 				}
 			});
-		});
+		};
+		tweetNodes.forEach((e) => processAuthenticityLinks(e.node));
+		document.querySelectorAll('li[data-testid="UserCell"], button[data-testid="UserCell"]').forEach(processAuthenticityLinks);
 		function getAuthenticityHideTarget(link){
 			const parent = link.parentElement;
 			if(!parent)return null;
@@ -2281,10 +2286,8 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			}
 		
 			if(link.closest('li[data-testid="UserCell"]')){
-				for(const child of grandParent.children){
-					if(child.tagName === 'BUTTON'){
-						return parent;
-					}
+				if(grandParent.querySelector('button')){
+					return parent;
 				}
 				return grandParent;
 			}
