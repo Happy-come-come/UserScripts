@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.5.0.1
+// @version			2.5.0.2
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -3193,13 +3193,18 @@
 		return new Promise(async function(resolve){
 			let pixivUrl;
 			if(urls.length > 0){
-				pixivUrl = await finder(urls);
-				if(!pixivUrl){
-					urls = (await expandShorteningLink(urls))?.expanded || [];
-					pixivUrl = (urls?.length > 0) ? await finder(urls) : null;
-					return resolve(pixivUrl);
-				}else{
-					return resolve(pixivUrl);
+				try{
+					pixivUrl = await finder(urls);
+					if(!pixivUrl){
+						urls = (await expandShorteningLink(urls))?.expanded || [];
+						pixivUrl = (urls?.length > 0) ? await finder(urls) : null;
+						return resolve(pixivUrl);
+					}else{
+						return resolve(pixivUrl);
+					}
+				}catch(error){
+					console.error(error);
+					return resolve(null);
 				}
 			}
 			return resolve(null);
