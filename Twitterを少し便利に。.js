@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.5.0.0
+// @version			2.5.0.1
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -641,6 +641,7 @@
 			"function": blackToDarkblue,
 			"isRunning": false,
 			"ignoreIsRunning": true,
+			"immediateRun": true,
 		}
 	}
 
@@ -666,6 +667,23 @@
 				try{
 					func.isRunning = true;
 					await func.function(tweets);
+				}catch(error){
+					console.error(error);
+				}finally{
+					func.isRunning = false;
+				}
+			}
+		});
+	}
+
+	async function immediateRunFunctions(){
+		const featurestoggle = scriptSettings.makeTwitterLittleUseful.featuresToggle;
+		Object.keys(functions).forEach(async (key) => {
+			const func = functions[key];
+			if(featurestoggle[key] && func.immediateRun && (func.forPC ? isPC : true && func.forMobile ? isMobile : true)){
+				try{
+					func.isRunning = true;
+					await func.function([]);
 				}catch(error){
 					console.error(error);
 				}finally{
@@ -2158,7 +2176,7 @@
 .r-1nao33i {
 	color: ${colors.get('fontColor', 1)} !important;
 }
-[style*="color: rgb(113, 118, 123)"] {
+[style*="color: rgb(113, 118, 123)"], .MTLU_fontColorDark {
 	color: ${colors.get('fontColorDark', 1)} !important;
 }
 [style*="background-color: rgb(0, 0, 0)"],
@@ -2178,7 +2196,9 @@
 .r-1bnu78o {
 	background-color: ${colors.get('conversationLineColor', 1)} !important;
 }
-.r-5zmot {
+.r-5zmot,
+.bg-background
+{
 	background-color: ${colors.get('backgroundColor', 1)} !important;
 }
 `;
@@ -5190,6 +5210,129 @@
 		}
 	}
 	const colors = new Colors();
+
+	class TwitterTextI18n {
+		#version = 202512208000;
+		#langList = ["ja", "en", "ar", "ar-x-fm", "bg", "bn", "ca", "cs", "da", "de", "el", "en-gb", "es", "eu", "fa", "fi", "fil",
+			"fr", "ga", "gl", "gu", "ha", "he", "hi", "hr", "hu", "id", "ig", "it", "kn", "ko", "mr", "msa", "nb",
+			"nl", "pl", "pt", "ro", "ru", "sk", "sr", "sv", "ta", "th", "tr", "uk", "ur", "vi", "yo", "zh-cn", "zh-tw"];
+		#textData = {};
+		#testData = null;
+		#isReady = false;
+		#loadingPromise = null;
+		constructor(){
+
+		}
+
+		async loadTextData(lang = 'en', type = 'new', force = false){
+			if(this.#isReady && !force){
+				return;
+			}
+			if(!this.#langList.includes(lang)){
+				console.error(`Unsupported language: ${lang}`);
+				lang = 'en';
+			}
+			if(this.#loadingPromise){
+				return this.#loadingPromise;
+			}
+
+			const storedData = await getFromIndexedDB('MTLU_TwitterTextI18n', 'textData') || {};
+			let jsonTextData = null;
+			if(this.#testData){
+				this.#textData = this.#testData;
+				this.#isReady = true;
+				return;
+			}else if(storedData[lang]?.[type]?.jsonText && storedData?.[lang]?.[type]?.dataVersion === this.#version){
+				jsonTextData = storedData[lang][type].jsonText;
+			}else{
+				const jsonTextDataBaseUrl = `https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/data/TwitterTextI18nData/textData/json/`
+				jsonTextData = await request({url: `${jsonTextDataBaseUrl}${lang}_${type}.json?v=${this.#version}`, method: 'GET', respType: 'text'});
+				if(!jsonTextData){
+					throw new Error('Failed to load text data');
+				}
+				if(!storedData[lang])storedData[lang] = {};
+				if(!storedData[lang][type])storedData[lang][type] = {};
+				storedData[lang][type].jsonText = jsonTextData;
+				storedData[lang][type].dataVersion = this.#version;
+				await saveToIndexedDB('MTLU_TwitterTextI18n', 'textData', storedData);
+			}
+			const textData = JSON.parse(jsonTextData);
+			if(!textData){
+				throw new Error('Failed to load text data');
+			}
+			this.#textData = textData;
+			this.#isReady = true;
+			return "Ready";
+		}
+
+		getText(key, args = [], props = {}){
+			if(key === undefined || key === null){
+				return '';
+			}
+			const selectedText = this.#textData[key];
+			if(!selectedText){
+				console.error(`Missing text for key: ${key}`);
+				return '';
+			}
+			if(selectedText.type === 'string'){
+				return selectedText.value;
+			}
+			if(selectedText.type === 'webI18nFunction'){
+				let argsObj = {};
+				if(typeof args === 'object' && !Array.isArray(args)){
+					argsObj = args;
+				}else if(Array.isArray(args)){
+					for(let i = 0; i < selectedText.arguments.length; i++){
+						argsObj[selectedText.arguments[i]] = args[i] ?? '';
+					}
+				}
+				return this.#applyPlaceholders(selectedText.value, argsObj);
+			}
+			if(selectedText.type === 'webI18nTemplateFunction'){
+				return this.#applyTemplate(selectedText.value, args, props);
+			}
+			if(selectedText.type === 'apkI18nTemplateFunction'){
+				return this.#formatString(selectedText.value, args);
+			}
+		}
+
+		#applyTemplate(templateParts, args, props){
+			// templateParts は配列であることを前提
+			let result = '';
+			for(let i = 0; i < templateParts.length; i++){
+				// まずテンプレートのプレースホルダーを props で展開
+				result += this.#applyPlaceholders(templateParts[i], props);
+				// そのあと、無名 args があるなら interleave
+				if(i < args.length){
+					result += args[i];
+				}
+			}
+			return result;
+		}
+
+		#formatString(template, args){
+			let argIndex = 0;
+			return template.replace(/%(\d+\$)?s/g, (_, indexPart) => {
+				let i;
+				if(indexPart){
+					i = parseInt(indexPart, 10) - 1;
+				}else{
+					i = argIndex++;
+				}
+				return args[i] !== undefined ? args[i] : `%${indexPart || ''}s`;
+			});
+		}
+
+		#applyPlaceholders(templateStr, context = {}){
+			return templateStr.replace(/{{\s*(\w+)\s*}}/g, (_, key) => {
+				return context[key] !== undefined ? context[key] : '';
+			});
+		}
+	}
+	const twitterTextI18n = new TwitterTextI18n();
+
+	immediateRunFunctions();
+
 
 	class DiscordEmbedMaker {
 		// 参考: https://github.com/discordjs/discord.js/tree/main/packages/builders/src/messages/embed
@@ -9379,126 +9522,6 @@
 		}
 	}
 	const twitterApi = new TwitterApi();
-
-	class TwitterTextI18n {
-		#version = 202512208000;
-		#langList = ["ja", "en", "ar", "ar-x-fm", "bg", "bn", "ca", "cs", "da", "de", "el", "en-gb", "es", "eu", "fa", "fi", "fil",
-			"fr", "ga", "gl", "gu", "ha", "he", "hi", "hr", "hu", "id", "ig", "it", "kn", "ko", "mr", "msa", "nb",
-			"nl", "pl", "pt", "ro", "ru", "sk", "sr", "sv", "ta", "th", "tr", "uk", "ur", "vi", "yo", "zh-cn", "zh-tw"];
-		#textData = {};
-		#testData = null;
-		#isReady = false;
-		#loadingPromise = null;
-		constructor(){
-
-		}
-
-		async loadTextData(lang = 'en', type = 'new', force = false){
-			if(this.#isReady && !force){
-				return;
-			}
-			if(!this.#langList.includes(lang)){
-				console.error(`Unsupported language: ${lang}`);
-				lang = 'en';
-			}
-			if(this.#loadingPromise){
-				return this.#loadingPromise;
-			}
-
-			const storedData = await getFromIndexedDB('MTLU_TwitterTextI18n', 'textData') || {};
-			let jsonTextData = null;
-			if(this.#testData){
-				this.#textData = this.#testData;
-				this.#isReady = true;
-				return;
-			}else if(storedData[lang]?.[type]?.jsonText && storedData?.[lang]?.[type]?.dataVersion === this.#version){
-				jsonTextData = storedData[lang][type].jsonText;
-			}else{
-				const jsonTextDataBaseUrl = `https://raw.githubusercontent.com/Happy-come-come/UserScripts/main/Twitter%E3%82%92%E5%B0%91%E3%81%97%E4%BE%BF%E5%88%A9%E3%81%AB%E3%80%82/data/TwitterTextI18nData/textData/json/`
-				jsonTextData = await request({url: `${jsonTextDataBaseUrl}${lang}_${type}.json?v=${this.#version}`, method: 'GET', respType: 'text'});
-				if(!jsonTextData){
-					throw new Error('Failed to load text data');
-				}
-				if(!storedData[lang])storedData[lang] = {};
-				if(!storedData[lang][type])storedData[lang][type] = {};
-				storedData[lang][type].jsonText = jsonTextData;
-				storedData[lang][type].dataVersion = this.#version;
-				await saveToIndexedDB('MTLU_TwitterTextI18n', 'textData', storedData);
-			}
-			const textData = JSON.parse(jsonTextData);
-			if(!textData){
-				throw new Error('Failed to load text data');
-			}
-			this.#textData = textData;
-			this.#isReady = true;
-			return "Ready";
-		}
-
-		getText(key, args = [], props = {}){
-			if(key === undefined || key === null){
-				return '';
-			}
-			const selectedText = this.#textData[key];
-			if(!selectedText){
-				console.error(`Missing text for key: ${key}`);
-				return '';
-			}
-			if(selectedText.type === 'string'){
-				return selectedText.value;
-			}
-			if(selectedText.type === 'webI18nFunction'){
-				let argsObj = {};
-				if(typeof args === 'object' && !Array.isArray(args)){
-					argsObj = args;
-				}else if(Array.isArray(args)){
-					for(let i = 0; i < selectedText.arguments.length; i++){
-						argsObj[selectedText.arguments[i]] = args[i] ?? '';
-					}
-				}
-				return this.#applyPlaceholders(selectedText.value, argsObj);
-			}
-			if(selectedText.type === 'webI18nTemplateFunction'){
-				return this.#applyTemplate(selectedText.value, args, props);
-			}
-			if(selectedText.type === 'apkI18nTemplateFunction'){
-				return this.#formatString(selectedText.value, args);
-			}
-		}
-
-		#applyTemplate(templateParts, args, props){
-			// templateParts は配列であることを前提
-			let result = '';
-			for(let i = 0; i < templateParts.length; i++){
-				// まずテンプレートのプレースホルダーを props で展開
-				result += this.#applyPlaceholders(templateParts[i], props);
-				// そのあと、無名 args があるなら interleave
-				if(i < args.length){
-					result += args[i];
-				}
-			}
-			return result;
-		}
-
-		#formatString(template, args){
-			let argIndex = 0;
-			return template.replace(/%(\d+\$)?s/g, (_, indexPart) => {
-				let i;
-				if(indexPart){
-					i = parseInt(indexPart, 10) - 1;
-				}else{
-					i = argIndex++;
-				}
-				return args[i] !== undefined ? args[i] : `%${indexPart || ''}s`;
-			});
-		}
-
-		#applyPlaceholders(templateStr, context = {}){
-			return templateStr.replace(/{{\s*(\w+)\s*}}/g, (_, key) => {
-				return context[key] !== undefined ? context[key] : '';
-			});
-		}
-	}
-	const twitterTextI18n = new TwitterTextI18n();
 
 	async function displayChangelog(currentScriptVersion, lastScriptVersion){
 		if(document.getElementById('changelogOverlay') || scriptSettings.makeTwitterLittleUseful.displayChangelog === false || compareVersions(currentScriptVersion, lastScriptVersion) !== 1)return;
