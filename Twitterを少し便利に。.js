@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.6.0.3
+// @version			2.6.0.4
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -177,7 +177,12 @@
 			"postSuccess": "完了",
 			"postFailedMssage": "送信に失敗しました",
 			"postFailed": "失敗",
-			"withQuotedTweet": "引用も？",
+			"sendOptionsSettings": "送信オプション",
+			"targetImagesSettings": "送信する画像の指定",
+			"sendQuoteTweet": "引用も？",
+			"sendTranslatedText": "翻訳されたテキストで？",
+			"sendArticleText": "記事のテキストも？",
+			"close": "閉じる",
 			"embedTextData": {
 				"characterLimitExceeded" : "……以下discordの字数オーバー",
 				"variousLinks": "各種リンク",
@@ -190,6 +195,7 @@
 				"decimalPlaces": 2,
 				"postedDate": "投稿日時",
 				"quotedTweet": "↓♻️引用元♻️↓",
+				"translatedByGrok": "Grokによる翻訳",
 			},
 			"settings": {
 				"displayName": "WebhookがTweetを連れてくるわ今日も",
@@ -206,6 +212,10 @@
 					"no": "しない",
 					"yes": "する"
 				},
+				"sendDefaultOptions": "送信のデフォルトオプション",
+				"sendQuoteTweetDefault": "引用も？",
+				"sendTranslatedTextDefault": "翻訳されたテキストで？",
+				"sendArticleTextDefault": "記事のテキストも？",
 			},
 		},
 		"noteTweetExpander": {
@@ -402,7 +412,12 @@
 			"postSuccess": "Success",
 			"postFailedMssage": "Failed to post",
 			"postFailed": "Failed",
-			"withQuotedTweet": "With quoted tweet?",
+			"sendOptionsSettings": "Send Options",
+			"targetImagesSettings": "Target Images Settings",
+			"sendQuoteTweet": "With quoted tweet?",
+			"sendTranslatedText": "With translated text?",
+			"sendArticleText": "With article text?",
+			"close": "Close",
 			"embedTextData": {
 				"characterLimitExceeded" : "…exceeds Discord character limit",
 				"variousLinks": "Various Links",
@@ -415,6 +430,7 @@
 				"decimalPlaces": 1,
 				"postedDate": "Posted Date",
 				"quotedTweet": "↓♻️Quoted Tweet♻️↓",
+				"translatedByGrok": "Translated by Grok",
 			},
 			"settings": {
 				"displayName": "Webhook Brings Tweets to Discord",
@@ -431,6 +447,10 @@
 					"no": "No",
 					"yes": "Yes"
 				},
+				"sendDefaultOptions": "Send Default Options",
+				"sendQuoteTweetDefault": "With quoted tweet?",
+				"sendTranslatedTextDefault": "With translated text?",
+				"sendArticleTextDefault": "With article text?",
 			},
 		},
 		"noteTweetExpander": {
@@ -713,7 +733,7 @@
 
 	async function webhookBringsTweetsToDiscord(tweetNodes){
 		const textData = envText.webhookBringsTweetsToDiscord;
-		const thisScriptSettings = scriptSettings['webhookBringsTweetsToDiscord'];
+		const thisScriptSettings = scriptSettings['webhookBringsTweetsToDiscord'] || {};
 		const colors = new Colors();
 		tweetNodes.forEach(function(tweetNode){
 			const element = tweetNode.node;
@@ -743,42 +763,204 @@
 				event.stopPropagation();
 			});
 
-			const dropdownSendImage = document.createElement('select');
-			dropdownSendImage.className = "quickDimgPullDown quickDimgPullDown2";
-			for(let i=1; i<=5; i++){
-				const option = document.createElement('option');
-				option.value = i;
-				option.textContent = i;
-				if(i === 5){
-					option.selected = true;
-				}
-				dropdownSendImage.appendChild(option);
-			}
-			flexContainer.appendChild(dropdownSendImage);
+			const settingsButton = h("button", {
+					className: "quickDimgSettingsButton",
+					style: {
+						width: "3em",
+						justifyContent: 'center',
+						alignItems: 'center',
+					},
+					onclick: (event) => {
+						event.stopPropagation();
+						displaySettingsOverlay();
+					},
+				}, 
+				h("span", {
+					textContent: "⚙️",
+				})
+			);
+			flexContainer.appendChild(settingsButton);
+			const sendoptions = {
+				"targetImages": {
+					"1": true,
+					"2": true,
+					"3": true,
+					"4": true,
+				},
+				"sendQuoteTweet": thisScriptSettings.sendQuoteTweetDefault || false,
+				"sendTranslatedText": thisScriptSettings.sendTranslatedTextDefault || true,
+				"sendArticleText": thisScriptSettings.sendArticleTextDefault || false,
+			};
+			const displaySettingsOverlay = () => {
+				const overlay = h("div", {
+						className: "quickDimgSettingsOverlay MTLU_container",
+						style: {
+							position: 'fixed',
+							top: 0,
+							left: 0,
+							width: '100%',
+							height: '100%',
+							backgroundColor: 'rgba(0, 0, 0, 0.3)',
+							zIndex: 10000,
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+							backdropFilter: 'blur(5px)',
+							'-webkit-backdrop-filter': 'blur(5px)',
+							color: colors.get('fontColor'),
+						},
+						onclick: (e) => {
+							if(e.target === overlay){
+								e.stopPropagation();
+								e.preventDefault();
+								document.body.removeChild(overlay);
+							}
+						}
+					},
+					h("div", {
+							style: {
+								backgroundColor: colors.get('backgroundColor'),
+								border: `1px solid ${colors.get('borderColor')}`,
+								borderRadius: '8px',
+								padding: '20px',
+								maxWidth: isMobile ? '90%' : '600px',
+								minWidth: '300px',
+								maxHeight: '80%',
+								overflowY: 'auto',
+								display: 'flex',
+								flexDirection: 'column',
+								height: 'fit-content',
+							},
+						},
+						h("span", {
+								className: "quickDimgSettingsTitle",
+								style: {
+									fontSize: '1.5em',
+									marginBottom: '1em',
+								},
+								textContent: textData.sendOptionsSettings,
+							}
+						),
+						h("div", {
+								className: "quickDimgSettingsContent",
 
-			dropdownSendImage.addEventListener('click', (event) => {
-				event.stopPropagation();
-			});
-			const dropdownPostQuote = document.createElement('select');
-			dropdownPostQuote.className = "quickDimgPullDown quickDimgPullDown3";
-			const defaultOption = document.createElement('option');
-			defaultOption.value = "false";
-			defaultOption.textContent = textData.withQuotedTweet;
-			defaultOption.selected = true;
-			defaultOption.disabled = true;
-			dropdownPostQuote.appendChild(defaultOption);
+							},
+							h("div", {
+									textContent: textData.targetImagesSettings,
+							}),
+							h("div", {
+									className: "quickDimgtargetImagesSettings",
+									style: {
+										display: 'grid',
+										gridTemplateColumns: 'repeat(2, 1fr)',
+										gap: '10px',
+									},
+								},
+								[1,2,3,4].map(num => {
+										const label = h("label", {
+												textContent: `${num}: `,
+											}
+										);
+										const checkbox = h("input", {
+												type: "checkbox",
+												checked: sendoptions.targetImages[num],
+												onchange: (event) => {
+													sendoptions.targetImages[num] = event.target.checked;
+													reEnableButton();
+												}
+											}
+										);
+										const wrapper = h("div", {},
+											label,
+											checkbox
+										);
+										return wrapper;
+									}
+								)
+							),
+							h("div", {
+									className: "quickDimgSettingsSendQuoteTweet",
+									style: {
+										marginTop: '1.5em',
+									},
+								},
+								h("label", {
+										textContent: `${textData.sendQuoteTweet}: `,
+									}
+								),
+								h("input", {
+										type: "checkbox",
+										checked: sendoptions.sendQuoteTweet,
+										onchange: (event) => {
+											sendoptions.sendQuoteTweet = event.target.checked;
+											reEnableButton();
+										}
+								})
+							),
+							h("div", {
+									className: "quickDimgSettingsSendTranslatedText",
+									style: {
+										marginTop: '1.5em',
+									},
+								},
+								h("label", {
+										textContent: `${textData.sendTranslatedText}: `,
+									}
+								),
+								h("input", {
+										type: "checkbox",
+										checked: sendoptions.sendTranslatedText,
+										onchange: (event) => {
+											sendoptions.sendTranslatedText = event.target.checked;
+											reEnableButton();
+										}
+								})
+							),
+							/*
+							h("div", {
+									className: "quickDimgSettingsSendArticleText",
+									style: {
+										marginTop: '1.5em',
+									},
+								},
+								h("label", {
+										textContent: `${textData.sendArticleText}: `,
+									}
+								),
+								h("input", {
+										type: "checkbox",
+										checked: sendoptions.sendArticleText,
+										onchange: (event) => {
+											sendoptions.sendArticleText = event.target.checked;
+											reEnableButton();
+										}
+								})
+							),
+							*/
+						),
+						h("div", {
+								className: "quickDimgSettingsfooter",
+								style: {
+									display: 'flex',
+									justifyContent: 'flex-end',
+									marginTop: '1em',
+									gap: '10px',
+									flexWrap: 'wrap',
+								}
+							},
+							h("button", {
+									className: "quickDimgSettingsCloseButton",
+									style: {
 
-			['false','true'].forEach(value => {
-				const option = document.createElement('option');
-				option.value = value;
-				option.textContent = value;
-				dropdownPostQuote.appendChild(option);
-			});
-			flexContainer.appendChild(dropdownPostQuote);
-
-			dropdownPostQuote.addEventListener('click', (event) => {
-				event.stopPropagation();
-			});
+									},
+									textContent: textData.close,
+								}
+							)
+						),
+					)
+				);
+				document.body.appendChild(overlay);
+			};
 
 			// ボタンを作成
 			const button = document.createElement('button');
@@ -791,8 +973,6 @@
 				button.textContent = textData.submit;
 			}
 			dropdownSelectServer.addEventListener('change', reEnableButton);
-			dropdownSendImage.addEventListener('change', reEnableButton);
-			dropdownPostQuote.addEventListener('change', reEnableButton);
 			//dropdown_use_graphql.addEventListener('change', reEnableButton);
 
 			// ボタンのクリックイベントを監視
@@ -800,20 +980,12 @@
 				// ここでドロップダウンの選択値に基づいて処理を行う
 				this.disabled = true;
 				const selectedServer = dropdownSelectServer.value;
-				const selectedNumber = dropdownSendImage.value;
-				const sendQuoteTweet = dropdownPostQuote.value === 'true';
-				//const useGraphql = dropdown_use_graphql.value === 'true';
 				if(!selectedServer){
 					customAlert(textData.webhookNotSet);
 					return;
 				}
-				let sendPage;
-				if(selectedNumber != 5){
-					sendPage = [selectedNumber-1];
-				}else{
-					sendPage = [0,1,2,3];
-				}
-				const bodys = await makeSendData(tweetLink, sendPage, sendQuoteTweet);
+				const sendPage = Object.keys(sendoptions.targetImages).filter(key => sendoptions.targetImages[key]).map(num => parseInt(num)-1);
+				const bodys = await makeSendData(tweetLink, sendPage, sendoptions.sendQuoteTweet, sendoptions.sendTranslatedText, sendoptions.sendArticleText);
 				await sleep(300);
 				const bodysLength = bodys.length;
 				for(let i=0; i < bodysLength; i++){
@@ -853,7 +1025,7 @@
 			fotter.parentNode.appendChild(flexContainer);
 		});
 		return "done";
-		async function makeSendData(tweetLink, sendPages, sendQuoteTweet){
+		async function makeSendData(tweetLink, sendPages, sendQuoteTweet, sendTranslatedText, sendArticleText){
 			const timeZoneObject = Intl.DateTimeFormat().resolvedOptions();
 			const tweetId = tweetLink.match(/https?:\/\/[\w]{1,}\.com\/\w+\/status\/(\d+)/)[1];
 			const embedTextData = Text[thisScriptSettings.sendLangage || scriptSettings?.makeTwitterLittleUseful?.language || getCookie('lang')].webhookBringsTweetsToDiscord.embedTextData;
@@ -876,16 +1048,19 @@
 				const mainEmbed = new DiscordEmbedMaker();
 				const tweetUserData = tweetApiData.core?.user_results?.result || tweetApiData.user?.result || tweetApiData.user;
 				const tweetUserId = tweetUserData.rest_id || tweetUserData.id_str;
-				const screenName = tweetUserData.legacy?.screen_name || tweetUserData.screen_name;
+				const screenName = tweetUserData.core?.screen_name || tweetUserData.legacy?.screen_name || tweetUserData.screen_name;
 				await addPixivLinksToScriptDataStore([screenName], true);
 				const pixivUrl = getPixivUrlWithScreenName(screenName);
 				const tweetData = tweetApiData.legacy || tweetApiData;
 				const tweetUrl = `https://twitter.com/${screenName}/status/${tweetData.id_str}`;
 				const noteTweet = tweetApiData.note_tweet?.note_tweet_results.result;
-				const tweetDataEntities = noteTweet ? noteTweet.entity_set : tweetData.entities;
-				let tweetBodyText = noteTweet ? noteTweet.text : tweetData.full_text;
+				const translatedData = tweetApiData.grok_translated_post_with_availability?.data;
+				const useTranslatedData = sendTranslatedText && tweetApiData.grok_translated_post_with_availability?.is_available;
+				console.log({tweetApiData: tweetApiData, noteTweet: noteTweet, translatedData: translatedData});
+				const tweetDataEntities = useTranslatedData ? translatedData.entities : (noteTweet ? noteTweet.entity_set : tweetData.entities);
+				let tweetBodyText = useTranslatedData ? translatedData.translation : (noteTweet ? noteTweet.text : tweetData.full_text);
 				const tweetCardData = processTweetCardBindingValues(tweetApiData.card?.legacy || tweetApiData.card);
-				let profileImage = (tweetUserData.legacy?.profile_image_url_https || tweetUserData.profile_image_url_https).replace(/(_normal|_x96)\./,'.');
+				let profileImage = (tweetUserData.avatar.image_url || tweetUserData.legacy?.profile_image_url_https || tweetUserData.profile_image_url_https).replace(/(_normal|_x96)\./,'.');
 				profileImage = {url: profileImage, name: `profile_image.${((new URL(profileImage)).searchParams.get('format') || 'jpg')}`};
 				const mediaUrls = makeMediaList(tweetData.extended_entities, sendPages);
 				const files = {};
@@ -1046,7 +1221,7 @@
 					.setURL(tweetUrl)
 					.setColor(1940464)
 					.setAuthor({
-						name: `${tweetUserData.legacy?.name || tweetUserData.name} (@${screenName})`,
+						name: `${tweetUserData.core?.name || tweetUserData.legacy?.name || tweetUserData.name} (@${screenName})`,
 						url: `https://twitter.com/${screenName}`,
 						icon_url: `attachment://${profileImage.name}`
 					})
@@ -1066,6 +1241,12 @@
 				if(sendText)mainEmbed.setDescription(sendText);
 				if(mediaUrls.images[0]?.url){
 					mainEmbed.setImage(`attachment://${attachmentFileName(mediaUrls.images[0].url)}`);
+				}
+				if(useTranslatedData){
+					mainEmbed.setFooter({
+						text: embedTextData.translatedByGrok,
+						icon_url: "https://grok.com/images/apple-touch-icon.png",
+					});
 				}
 				embeds.push(mainEmbed);
 				if(mediaUrls.images[1]?.url){
@@ -3034,8 +3215,8 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 
 	async function addEventToHomeButton(){
 		const element = await waitElementAndGet({query: '[data-testid="AppTabBar_Home_Link"]:not(.MTLU_Do_Update)', searchFunction: 'querySelector'});
-		element.classList.add("MTLU_Do_Update");
-		element.addEventListener("click", async ()=>{
+		element?.classList.add("MTLU_Do_Update");
+		element?.addEventListener("click", async ()=>{
 			update();
 		});
 	}
@@ -3455,9 +3636,6 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 	function h(tag, props = {}, ...children){
 		const isSvg = svgTags.has(tag);
 		const ns = isSvg ? "http://www.w3.org/2000/svg" : undefined;
-		if(!isSvg && typeof tag === "string"){
-			tag = tag.toLowerCase();
-		}
 		const el = tag === "fragment"
 		? document.createDocumentFragment()
 		: ns
@@ -3467,21 +3645,29 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			const val = props[key];
 			if(key === "style" && typeof val === "object"){
 				Object.assign(el.style, val);
+			}else if(key === "className"){
+				if(ns){
+					el.setAttribute("class", val);
+				}else{
+					el.className = val;
+				}
+			}else if(key === "textContent" || key === "innerText"){
+				el[key] = val;
 			}else if(key.startsWith("on") && typeof val === "function"){
 				el.addEventListener(key.slice(2).toLowerCase(), val);
-			}else if(key.startsWith("aria-") || key === "role"){
-				el.setAttribute(key, val); // 強制的に属性にする
 			}else if(key === "dataset" && typeof val === "object"){
 				for(const dataKey in val){
 					if(val[dataKey] != null){
 						el.dataset[dataKey] = val[dataKey];
 					}
 				}
+			}else if(key === "ref" && typeof val === "function"){
+				val(el); // 作成直後のDOMノードを渡す
 			}else if(key.startsWith("data-")){
 				const prop = key.slice(5).replace(/-([a-z])/g, (_, c) => c.toUpperCase()); // dataset
 				el.dataset[prop] = val;
-			}else if(key === "ref" && typeof val === "function"){
-				val(el); // 作成直後のDOMノードを渡す
+			}else if(key.startsWith("aria-") || key === "role"){
+				el.setAttribute(key, val); // 強制的に属性にする
 			}else if(key in el && !isSvg){
 				el[key] = val; // DOMプロパティ
 			}else{
@@ -4382,6 +4568,10 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 				{id: 'sendLangage', type: 'dropdown', option: Object.keys(Text).map(key => ({value: key, displayName: key}))},
 				{type: 'text', text: settingText.downloadVideo, size: "2em", weight: "400", position: "left", isHTML: false},
 				{id: 'downloadVideo', type: 'radioButton', option: Object.keys(settingText.downloadVideoOptions).map(key => ({value: key, displayName: settingText.downloadVideoOptions[key]}))},
+				{type: 'text', text: settingText.sendDefaultOptions, size: "2em", weight: "400", position: "left", isHTML: false},
+				{id: 'sendQuoteTweetDefault', type: 'toggleSwitch', name: settingText.sendQuoteTweetDefault, defaultValue: false},
+				{id: 'sendTranslatedTextDefault', type: 'toggleSwitch', name: settingText.sendTranslatedTextDefault, defaultValue: true},
+				/*{id: 'sendArticleTextDefault', type: 'toggleSwitch', name: settingText.sendArticleTextDefault, defaultValue: false},*/
 			];
 
 			page.appendChild(createSettingsElement({id: 'webhooks', type: 'text', text: "Webhookの設定", size: "2em", weight: "400", position: "left", isHTML: false}, scriptSetting).container);
@@ -8028,65 +8218,67 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 		constructor(){
 			this.#graphqlApiUri = `https://${window.location.hostname}/i/api/graphql`;
 			this.#graphqlApiEndpoints = {
-				TweetDetail: {
+				TweetDetail: { // ツイートの詳細を取得するエンドポイント
 					method: ['GET'],
-					uri: '/b9Yw90FMr_zUb8DvA8r2ug/TweetDetail',
+					uri: '/rU08O-YiXdr0IZfE7qaUMg/TweetDetail',
 				},
 				UserTweets: {
-					method: ['GET'],
-					uri: '/M3Hpkrb8pjWkEuGdLeXMOA/UserTweets',
+					method: ['GET'], // プロフィールのツイートタブのタイムラインを取得するエンドポイント
+					uri: '/x3B_xLqC0yZawOB7WQhaVQ/UserTweets',
 				},
-				UserByScreenName: {
+				UserByScreenName: { // ユーザーデータをスクリーンネームから取得するエンドポイント
 					method: ['GET'],
-					uri: '/32pL5BWe9WKeSK1MoPvFQQ/UserByScreenName',
+					uri: '/IGgvgiOx4QZndDHuD3x9TQ/UserByScreenName',
 				},
-				useFetchProfileBlocks_profileExistsQuery: {
+				/* 
+				useFetchProfileBlocks_profileExistsQuery: { // プロフィールの詳細？を表示するボタンがあるかを取得するエンドポイント？
 					method: ['GET'],
 					uri: '/Z2BA99jFw6TxaJM5v7Irmg/useFetchProfileBlocks_profileExistsQuery',
 				},
-				useFetchProfileSections_profileQuery: {
+				useFetchProfileSections_profileQuery: { // 上記のエンドポイントとセットで使われている。プロフィールの詳細？を取得するエンドポイント
 					method: ['GET'],
 					uri: '/2ocjpx85ORO5fM06u75eCA/useFetchProfileSections_profileQuery',
 				},
+				*/
 				UserMedia: {
 					method: ['GET'],
-					uri: '/8B9DqlaGvYyOvTCzzZWtNA/UserMedia',
+					uri: '/y4E0HTZKPhAOXewRMqMqgw/UserMedia',
 				},
 				Likes: {
 					method: ['GET'],
-					uri: '/uxjTlmrTI61zreSIV1urbw/Likes',
+					uri: '/KPuet6dGbC8LB2sOLx7tZQ/Likes',
 				},
-				HomeLatestTimeline: {
+				HomeLatestTimeline: { // フォロー欄のタイムラインを取得するエンドポイント
 					method: ['GET', 'POST'],
-					uri: '/nMyTQqsJiUGBKLGNSQamAA/HomeLatestTimeline',
+					uri: '/2ee46L1AFXmnTa0EvUog-Q/HomeLatestTimeline',
 				},
-				HomeTimeline: {
+				HomeTimeline: { // おすすめ欄のタイムラインを取得するエンドポイント
 					method: ['GET', 'POST'],
-					uri: '/ci_OQZ2k0rG0Ax_lXRiWVA/HomeTimeline',
+					uri: '/J62e-zdBz8cxFVOjBcq1WA/HomeTimeline',
 				},
-				UserTweetsAndReplies: {
+				UserTweetsAndReplies: { // ユーザーの返信欄を取得するエンドポイント
 					method: ['GET'],
-					uri: '/pz0IHaV_t7T4HJavqqqcIA/UserTweetsAndReplies',
+					uri: '/Yt1JzwcBsBWYEEi3jMTe2Q/UserTweetsAndReplies',
 				},
-				UserHighlightsTweets: {
+				UserHighlightsTweets: { // ユーザーのハイライトツイートを取得するエンドポイント
 					method: ['GET'],
-					uri: '/y0aDPjeWFCpvY3GOmGXKhQ/UserHighlightsTweets',
+					uri: '/OBhUA7tmJE7AfH3tMz57eA/UserHighlightsTweets',
 				},
-				BookmarksTimeline: {
+				BookmarksTimeline: { // ブックマークのタイムラインを取得するエンドポイント
 					method: ['GET'],
-					uri: '/ztCdjqsvvdL0dE8R5ME0hQ/Bookmarks',
+					uri: '/YCrjINs3IPbkSl5FQf_tpA/Bookmarks',
 				},
-				ListLatestTweetsTimeline: {
+				ListLatestTweetsTimeline: { // リストの最新ツイートを取得するエンドポイント
 					method: ['GET'],
-					uri: '/LSefrrxhpeX8HITbKfWz9g/ListLatestTweetsTimeline',
+					uri: '/qcQY-EkEWjJ-wwJhsKdxYQ/ListLatestTweetsTimeline',
 				},
-				ListsManagementPageTimeline: {
+				ListsManagementPageTimeline: { // リスト管理ページのリスト一覧を取得するエンドポイント
 					method: ['GET'],
-					uri: '/v06PoBzewJgqo_MliVawtg/ListsManagementPageTimeline',
+					uri: '/oJzDnoFH4Jd00gNaossiQQ/ListsManagementPageTimeline',
 				},
-				CombinedLists: {
+				CombinedLists: { //ユーザーのリスト一覧を取得するエンドポイント
 					method: ['GET'],
-					uri: '/rh2fe0BAORm919U9jhyoQw/CombinedLists',
+					uri: '/rGMu90eAOCEVRbybd_qzFw/CombinedLists',
 				},
 				// actions
 				FavoriteTweet: {
@@ -8099,11 +8291,11 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 				},
 				CreateRetweet: {
 					method: ['POST'],
-					uri: '/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet',
+					uri: '/mbRO74GrOvSfRcJnlMapnQ/CreateRetweet',
 				},
 				DeleteRetweet: {
 					method: ['POST'],
-					uri: '/iQtK4dl5hBmXewYZuEOKVw/DeleteRetweet',
+					uri: '/ZyZigVsNiFO6v1dEks1eWg/DeleteRetweet',
 				},
 				CreateBookmark: {
 					method: ['POST'],
@@ -8153,8 +8345,8 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			this.#graphqlFeatures = {
 				"rweb_video_screen_enabled": false,
 				"profile_label_improvements_pcf_label_in_post_enabled": true,
-				"rweb_tipjar_consumption_enabled": true,
-				"responsive_web_graphql_exclude_directive_enabled": true,
+				"responsive_web_profile_redirect_enabled": false,
+				"rweb_tipjar_consumption_enabled": false,
 				"verified_phone_label_enabled": false,
 				"creator_subscriptions_tweet_preview_api_enabled": true,
 				"responsive_web_graphql_timeline_navigation_enabled": true,
@@ -8164,24 +8356,28 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 				"c9s_tweet_anatomy_moderator_badge_enabled": true,
 				"responsive_web_grok_analyze_button_fetch_trends_enabled": false,
 				"responsive_web_grok_analyze_post_followups_enabled": true,
-				"responsive_web_jetfuel_frame": false,
+				"responsive_web_jetfuel_frame": true,
 				"responsive_web_grok_share_attachment_enabled": true,
+				"responsive_web_grok_annotations_enabled": true,
 				"articles_preview_enabled": true,
 				"responsive_web_edit_tweet_api_enabled": true,
 				"graphql_is_translatable_rweb_tweet_is_translatable_enabled": true,
 				"view_counts_everywhere_api_enabled": true,
 				"longform_notetweets_consumption_enabled": true,
 				"responsive_web_twitter_article_tweet_consumption_enabled": true,
-				"tweet_awards_web_tipping_enabled": false,
-				"responsive_web_grok_show_grok_translated_post": false,
-				"responsive_web_grok_analysis_button_from_backend": false,
-				"creator_subscriptions_quote_tweet_preview_enabled": false,
+				"content_disclosure_indicator_enabled": true,
+				"content_disclosure_ai_generated_indicator_enabled": true,
+				"responsive_web_grok_show_grok_translated_post": true,
+				"responsive_web_grok_analysis_button_from_backend": true,
+				"post_ctas_fetch_enabled": false,
 				"freedom_of_speech_not_reach_fetch_enabled": true,
 				"standardized_nudges_misinfo": true,
 				"tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": true,
 				"longform_notetweets_rich_text_read_enabled": true,
-				"longform_notetweets_inline_media_enabled": true,
+				"longform_notetweets_inline_media_enabled": false,
 				"responsive_web_grok_image_annotation_enabled": true,
+				"responsive_web_grok_imagine_annotation_enabled": true,
+				"responsive_web_grok_community_note_auto_translation_is_enabled": false,
 				"responsive_web_enhance_cards_enabled": false
 			};
 			this.#initPromise = this.#twitterApiInit();
@@ -8269,6 +8465,8 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			const fieldToggles = {
 				"withArticleRichContentState": true,
 				"withArticlePlainText": false,
+				"withArticleSummaryText": true,
+				"withArticleVoiceOver": true,
 				"withGrokAnalyze": false,
 				"withDisallowedReplyControls": false
 			};
@@ -8308,12 +8506,15 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			if(this.tweetsUserDataByUserName[screenName] && !refresh){
 				return this.tweetsUserDataByUserName[screenName];
 			}
-			const variables = {"screen_name": screenName};
+			const variables = {
+				"screen_name": screenName,
+				"withGrokTranslatedBio": true,
+			};
 			const features = {
 				"hidden_profile_subscriptions_enabled": true,
 				"profile_label_improvements_pcf_label_in_post_enabled": true,
-				"rweb_tipjar_consumption_enabled": true,
-				"responsive_web_graphql_exclude_directive_enabled": true,
+				"responsive_web_profile_redirect_enabled": false,
+				"rweb_tipjar_consumption_enabled": false,
 				"verified_phone_label_enabled": false,
 				"subscriptions_verification_info_is_identity_verified_enabled": true,
 				"subscriptions_verification_info_verified_since_enabled": true,
@@ -8324,7 +8525,10 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 				"responsive_web_graphql_skip_user_profile_image_extensions_enabled": false,
 				"responsive_web_graphql_timeline_navigation_enabled": true
 			};
-			const fieldToggles = {"withAuxiliaryUserLabels": false};
+			const fieldToggles = {
+				"withPayments": false,
+				"withAuxiliaryUserLabels": false,
+			};
 			const requestObj = {
 				url: `${this.#graphqlApiUri}${this.#graphqlApiEndpoints.UserByScreenName.uri}?variables=${this.#objectToUri(variables)}&features=${this.#objectToUri(features)}&fieldToggles=${this.#objectToUri(fieldToggles)}`,
 				method: 'GET',
@@ -8363,8 +8567,9 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 		async #_getHomeTimeline(place){
 			const variables = {
 				"count": 40,
-				"includePromotedContent": false,
-				"latestControlAvailable": true,
+				"enableRanking": false, // trueにすると人気順とかいう意味不明な順番になる。ゴミ。
+				"includePromotedContent": true,
+				"requestContext": "launch"
 			};
 			const cursor = this.#_getCursor('following', place);
 			if(cursor)variables.cursor = cursor;
@@ -8403,8 +8608,9 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 		async #_getForYouTimeline(place){
 			const variables = {
 				"count": 40,
-				"includePromotedContent": false,
-				"latestControlAvailable": true,
+				"includePromotedContent": true,
+				"requestContext": "launch",
+				"withCommunity": true
 			};
 			const cursor = this.#_getCursor('forYou', place);
 			if(cursor)variables.cursor = cursor;
@@ -8448,7 +8654,7 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			const variables = {
 				"userId": userData.rest_id || userData.id_str,
 				"count": 20,
-				"includePromotedContent": false,
+				"includePromotedContent": true,
 				"withQuickPromoteEligibilityTweetFields": true,
 				"withVoice": true
 			};
