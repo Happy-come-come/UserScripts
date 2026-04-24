@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.6.0.5
+// @version			2.6.0.6
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -3897,15 +3897,15 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 		const tweetMainData = tweetData.legacy || tweetData;
 		const verifiedBadge = tweetUserData.legacy?.is_blue_verified ? (tweetUserData.legacy?.verified_type ? tweetUserData.legacy?.verified_type: "Blue") : null;
 		const tweetNode = new TweetNodeBuilder({
-			screenName: tweetUserData.legacy?.screen_name || tweetUserData.screen_name,
+			screenName: tweetUserData.core?.screen_name || tweetUserData.legacy?.screen_name || tweetUserData.screen_name,
 			tweetId: tweetMainData.id_str,
 		})
 		.setAvatar({
-			iconURL: tweetUserData.legacy?.profile_image_url_https || tweetUserData.profile_image_url_https,
+			iconURL:  tweetUserData.avatar?.image_url || tweetUserData.legacy?.profile_image_url_https || tweetUserData.profile_image_url_https,
 			shape: tweetUserData.profile_image_shape
 		})
 		.setAuthor({
-			name: tweetUserData.legacy?.name || tweetUserData.name,
+			name: tweetUserData.core?.name || tweetUserData.legacy?.name || tweetUserData.name,
 			isProtected: tweetUserData.legacy?.protected || tweetUserData.protected,
 			verifiedBadge: verifiedBadge,
 			affiliatesBadge: tweetUserData.affiliates_highlighted_label?.label ? tweetUserData.affiliates_highlighted_label.label.badge?.url : null,
