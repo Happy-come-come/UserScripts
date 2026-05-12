@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.6.0.7
+// @version			2.6.0.8
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -2384,7 +2384,8 @@
 	color: ${colors.get('fontColorDark', 1)} !important;
 }
 [style*="background-color: rgb(0, 0, 0)"],
-.r-kemksi
+.r-kemksi,
+.r-cl2sl0
 {
 	background-color: ${colors.get('backgroundColor', 1)} !important;
 }
@@ -2401,7 +2402,8 @@
 	background-color: ${colors.get('conversationLineColor', 1)} !important;
 }
 .r-5zmot,
-.bg-background
+.bg-background,
+.j-vdda9x11
 {
 	background-color: ${colors.get('backgroundColor', 1)} !important;
 }
