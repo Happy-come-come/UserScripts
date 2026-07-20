@@ -5,7 +5,7 @@ class AnimatedWebPEncoder {
 	#readyPromise = null;
 	#workerUrl = null;
 
-	constructor({glueSource, workerRuntimeSource, wasmBinary}){
+	constructor({glueSource, workerRuntimeSource, wasmBinary = 'single-file'} = {}){
 		if(typeof glueSource !== "string"){
 			throw new TypeError("glueSource must be a string");
 		}
@@ -14,8 +14,8 @@ class AnimatedWebPEncoder {
 			throw new TypeError("workerRuntimeSource must be a string");
 		}
 
-		if(!(wasmBinary instanceof ArrayBuffer)){
-			throw new TypeError("wasmBinary must be an ArrayBuffer");
+		if(wasmBinary !== 'single-file' && !(wasmBinary instanceof ArrayBuffer)){
+			throw new TypeError("wasmBinary must be an ArrayBuffer or 'single-file'");
 		}
 
 		const source = `${glueSource}\n;${workerRuntimeSource}`;
