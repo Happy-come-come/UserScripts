@@ -22,7 +22,9 @@ class AnimatedWebPEncoder {
 		this.#workerUrl = URL.createObjectURL(new Blob([source], {
 			type: "text/javascript"
 		}));
-		this.#worker = new Worker(this.#workerUrl);
+		this.#worker = new Worker(this.#workerUrl, {
+			type: "module"
+		});
 
 		this.#worker.onmessage = (event) => {
 			this.#handleMessage(event.data);
@@ -92,13 +94,30 @@ class AnimatedWebPEncoder {
 		}
 
 		const normalizedFrames = frames.map((frame, index) => {
-			if(!(frame.buffer instanceof ArrayBuffer)){
-				throw new TypeError(`frames[${index}].buffer must be an ArrayBuffer`);
+			let buffer = null;
+			if(frame.buffer instanceof ArrayBuffer){
+				buffer = frame.buffer;
+			}else if(frame.blob instanceof Uint8Array){
+				buffer = frame.blob.buffer.slice(
+					frame.blob.byteOffset,
+					frame.blob.byteOffset + frame.blob.byteLength
+				);
+			}else if(frame.blob instanceof ArrayBuffer){
+				buffer = frame.blob;
+			}else{
+				throw new TypeError(
+					`frames[${index}] must have buffer:ArrayBuffer or blob:Uint8Array`
+				);
 			}
-
+			const delayMs = frame.delayMs ?? frame.delay;
+			if(typeof delayMs !== "number"){
+				throw new TypeError(
+					`frames[${index}].delayMs (or delay) must be a number`
+				);
+			}
 			return {
-				buffer: frame.buffer,
-				delayMs: frame.delayMs,
+				buffer,
+				delayMs,
 				mimeType: frame.mimeType || "image/png"
 			};
 		});
