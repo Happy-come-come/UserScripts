@@ -178,6 +178,7 @@ self.onmessage = async (event) => {
 				wasmBinary: message.wasmBinary,
 				noInitialRun: true
 			});
+
 			initialized = true;
 
 			self.postMessage({
@@ -194,31 +195,48 @@ self.onmessage = async (event) => {
 
 			encodeQueue = encodeQueue.then(async () => {
 				try{
-					const result = await encodeAnimation(message.frames, message.options);
+					const result = await encodeAnimation(
+						message.frames,
+						message.options
+					);
+
 					self.postMessage({
 						type: "result",
 						requestId: message.requestId,
 						...result
-					}, [result.buffer]);
+					}, [
+						result.buffer
+					]);
 				}catch(error){
 					self.postMessage({
 						type: "error",
 						requestId: message.requestId,
-						message: error instanceof Error ? error.message : String(error),
-						stack: error instanceof Error ? error.stack : null
+						message: error instanceof Error
+							? error.message
+							: String(error),
+						stack: error instanceof Error
+							? error.stack
+							: null
 					});
 				}
 			});
+
 			return;
 		}
 
 		throw new Error(`Unknown message type: ${message.type}`);
 	}catch(error){
 		self.postMessage({
-			type: "error",
+			type: message.type === "init"
+				? "init-error"
+				: "error",
 			requestId: message.requestId,
-			message: error instanceof Error ? error.message : String(error),
-			stack: error instanceof Error ? error.stack : null
+			message: error instanceof Error
+				? error.message
+				: String(error),
+			stack: error instanceof Error
+				? error.stack
+				: null
 		});
 	}
 };

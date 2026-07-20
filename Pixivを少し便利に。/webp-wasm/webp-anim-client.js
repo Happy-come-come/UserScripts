@@ -31,8 +31,24 @@ class AnimatedWebPEncoder {
 		};
 
 		this.#worker.onerror = (event) => {
-			const error = new Error(event.message || "WebP worker failed");
+			console.error("WebP Worker error:", {
+				message: event.message,
+				filename: event.filename,
+				lineno: event.lineno,
+				colno: event.colno,
+				error: event.error
+			});
+			const error = event.error instanceof Error
+				? event.error
+				: new Error(event.message || "WebP worker failed");
 			this.#rejectAll(error);
+		};
+
+		this.#worker.onmessageerror = (event) => {
+			console.error("WebP Worker message error:", event);
+			this.#rejectAll(
+				new Error("Could not deserialize a WebP worker message")
+			);
 		};
 
 		this.#readyPromise = new Promise((resolve, reject) => {
@@ -49,20 +65,34 @@ class AnimatedWebPEncoder {
 	}
 
 	#handleMessage(message){
+		console.log("WebP worker message:", message);
 		if(message.type === "ready"){
 			const pending = this.#pending.get("ready");
 			this.#pending.delete("ready");
 			pending?.resolve(message);
 			return;
 		}
-
-		const pending = this.#pending.get(message.requestId);
-		if(!pending){
+		if(message.type === "init-error"){
+			const pending = this.#pending.get("ready");
+			this.#pending.delete("ready");
+			const error = new Error(
+				message.message || "WebP worker initialization failed"
+			);
+			if(message.stack){
+				error.stack = message.stack;
+			}
+			pending?.reject(error);
 			return;
 		}
-
+		const pending = this.#pending.get(message.requestId);
+		if(!pending){
+			console.warn(
+				"Received an unmatched WebP worker message:",
+				message
+			);
+			return;
+		}
 		this.#pending.delete(message.requestId);
-
 		if(message.type === "error"){
 			const error = new Error(message.message);
 			if(message.stack){
@@ -71,7 +101,6 @@ class AnimatedWebPEncoder {
 			pending.reject(error);
 			return;
 		}
-
 		pending.resolve(message);
 	}
 
