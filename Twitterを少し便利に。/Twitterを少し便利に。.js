@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.7.0.0
+// @version			2.7.0.1
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -2515,9 +2515,11 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 		if(!mediaElement || mediaElement.getAttribute('mediaOpenByPhotoFilter') === 'true')return;
 		mediaElement.setAttribute('mediaOpenByPhotoFilter', 'true');
 		mediaElement.addEventListener('click', (e)=>{
-			e.preventDefault();
-			e.stopPropagation();
-			if(!currentUrl.match(new RegExp(`/\/${userName}\/media`)))navigateTo(`/${userName}/media?filter=photo`);
+			if(!currentUrl.match(new RegExp(`/${userName}/media`))){
+				e.preventDefault();
+				e.stopPropagation();
+				navigateTo(`/${userName}/media?filter=photo`);
+			}
 		});
 	}
 
