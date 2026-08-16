@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.6.0.8
+// @version			2.7.0.0
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -333,6 +333,12 @@
 				"description": "ツイート内のユーザーの信頼性タグを(PCF_LABEL_NONEの場合)非表示にします",
 			}
 		},
+		"mediaOpenByPhotoFilter": {
+			"settings": {
+				"displayName": "デフォルトでメディアを画像表示",
+				"description": "メディア欄のリンクをクリックしたときにデフォルトで画像欄を表示するようにします",
+			}
+		},
 		"advance": {
 			"settings": {
 				"displayName": "高度な設定",
@@ -568,6 +574,12 @@
 				"description": "Hides the authenticity tag of users in tweets (when PCF_LABEL_NONE is set)",
 			}
 		},
+		"mediaOpenByPhotoFilter": {
+			"settings": {
+				"displayName": "Open Media by Default in Photo Filter",
+				"description": "When clicking on a link in the media section, it will default to displaying the image section",
+			}
+		},
 		"advance": {
 			"settings": {
 				"displayName": "Advanced Settings",
@@ -680,6 +692,11 @@
 			"isRunning": false,
 			"ignoreIsRunning": true,
 			"immediateRun": true,
+		},
+		"mediaOpenByPhotoFilter": {
+			"function": mediaOpenByPhotoFilter,
+			"isRunning": false,
+			"ignoreIsRunning": true,
 		}
 	}
 
@@ -2486,6 +2503,22 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 		
 			return grandParent;
 		}
+	}
+
+	async function mediaOpenByPhotoFilter(){
+		const userName = extractUserName(currentUrl);
+		if(!userName)return;
+		const mediaElement = await waitElementAndGet({
+			query: `[data-testid="primaryColumn"] [data-testid="ScrollSnap-SwipeableList"] [data-testid="ScrollSnap-List"] a[href$="${userName}/media"]`,
+			searchFunction: 'querySelector',
+		});
+		if(!mediaElement || mediaElement.getAttribute('mediaOpenByPhotoFilter') === 'true')return;
+		mediaElement.setAttribute('mediaOpenByPhotoFilter', 'true');
+		mediaElement.addEventListener('click', (e)=>{
+			e.preventDefault();
+			e.stopPropagation();
+			if(!currentUrl.match(new RegExp(`/\/${userName}\/media`)))navigateTo(`/${userName}/media?filter=photo`);
+		});
 	}
 
 	//############################################################################################################
@@ -9887,6 +9920,10 @@ Thank you for your understanding.`,
 			"2.6.0.0": {
 				"newFeatures": ["hideAuthenticityTag"],
 				"updateDate": "2026-03-30T21:00:00+09:00",
+			},
+			"2.7.0.0": {
+				"newFeatures": ["mediaOpenByPhotoFilter"],
+				"updateDate": "2026-08-16T00:00:00+09:00",
 			}
 		};
 		const allVersions = Object.keys(changelogs).sort((a, b) => compareVersions(b, a));
