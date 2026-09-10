@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.7.0.1
+// @version			2.7.0.2
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -9097,7 +9097,7 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 				maxRetries: 1
 			};
 			const response = await this.#_request(requestObj, this.#oldApiEndpoints.account["settings.json"].uri, "1.1", true);
-			if(!response.response)return null;
+			if(!response?.response)return null;
 			return response.response;
 		}
 
