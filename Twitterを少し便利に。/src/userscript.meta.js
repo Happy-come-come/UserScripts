@@ -1,0 +1,55 @@
+// ==UserScript==
+// @name			Twitterを少し便利に。3
+// @name:ja			Twitterを少し便利に。3
+// @name:en			Make Twitter a Little more Useful.3
+// @namespace		https://greasyfork.org/ja/users/1023652
+// @version			3.0.0beta
+// @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
+// @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
+// @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
+// @author			ゆにてぃー
+// @match			https://twitter.com/*
+// @match			https://mobile.twitter.com/*
+// @match			https://x.com/*
+// @match			https://X.com/*
+// @connect			twitter.com
+// @connect			x.com
+// @connect			api.twitter.com
+// @connect			api.x.com
+// @connect			api.fanbox.cc
+// @connect			pbs.twimg.com
+// @connect			abs.twimg.com
+// @connect			video.twimg.com
+// @connect			discord.com
+// @connect			booth.pm
+// @connect			carrd.co
+// @connect			creatorlink.net
+// @connect			fantia.jp
+// @connect			html.co.jp
+// @connect			linktr.ee
+// @connect			lit.link
+// @connect			potofu.me
+// @connect			profcard.info
+// @connect			skeb.jp
+// @connect			sketch.pixiv.net
+// @connect			tumblr.com
+// @connect			twpf.jp
+// @connect			lab.syncer.jp
+// @connect			geek-website.com
+// @connect			ci-en.dlsite.com
+// @connect			profu.link
+// @connect			xfolio.jp
+// @connect			dl.dropboxusercontent.com
+// @connect			raw.githubusercontent.com
+// @connect			video-ft.twimg.com
+// @require			https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.7/Sortable.min.js
+// @icon			data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJkSURBVHgB7VZBbtpQEH3zIW0WVYuXVaH4Bs0NSk4AOUFhEarskhMknIDsqkKlcIT0BNAT1D1B3ZJK3dmVuirwp/MhVmzAxiagKBJv9+ePZ97M/JkxsMMODwzChlD84FWQp3MxeCDHAhiumB+MJrr1+8Ryw3p/9+H4DctfIPCq49Xlw8Kv99YlMuB19885gy/i7llziwGfFFWJyR02XzSCuwiBUse7BlFVaz5LS8KQVkRXaXRJsqImfDjKSZBNyzEyFWFKVJ4KFbWLElUao6KbSk8i9TXgTPaorxTskPwOxa7/9baGt4zg8oQbNyfWYJlRU0/KUx9ZwNwYNq1ecFRzl18QpW0bB0Ks//KjV1uwlbuLJA3GxEdh5wb5yGEPl3qMd2xecYQHKnlFlVLX95kxYCFKGg5IlU2a0uLpCM68LEJA+sJ/Dm6Jy3aMjQIRakRUm+UuvfOp/X34iQSejeFo0Hdx4optG5uFH/R+GHNvANcm3VtwLs+Lvy2TRwhIOnrYHhysIuDKcCDwGbYAjglOzQt+HssElF6dvoNNOZeuCSbfSgIGMjILMo4/ExZf7TqghNLmlwm1gpSC2tmaLAZMvWGz0Iu7XpqBm2NrQNN5cD+Y5ZOTdZyok3RZMusZOJUN+QZrQFb0oQkG6xIIYHe8A03Unx/Ryd6jS2ctAsbxmFRVynGKlM5na5ePVkUe0p+h9MmraS2zXqYgmSWjOPtElHbLTVB3Q79gqQlMScxqXpeav0UWiGMmXKSNOpZAAPvKs/U/1MRoxRxl+5WD+psUy2D5IdmRVoWjnqDnLlkyO+zwaPAf1zXwZL751PUAAAAASUVORK5CYII=
+// @grant			GM_xmlhttpRequest
+// @grant			GM_registerMenuCommand
+// @grant			GM_info
+// @grant			GM_addElement
+// @grant			unsafeWindow
+// @grant			window.onurlchange
+// @license			MIT
+// @run-at			document-idle
+// ==/UserScript==

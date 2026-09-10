@@ -1,0 +1,12 @@
+{
+  "name": "make-twitter-a-little-more-useful",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun run build.js",
+    "check": "tsc --noEmit && bun run build.js --check"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
