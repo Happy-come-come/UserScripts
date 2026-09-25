@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.7.0.2
+// @version			2.7.0.3
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -9491,41 +9491,51 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			}
 			if(force)this.#resetTransactionIdSolverTimes++;
 			this.#challengeDataPromise = (async () => {
-				const response = await request({ url: 'https://x.com/home', respType: 'text', anonymous: true });
-				const html = response;
-				const parser = new DOMParser();
-				const doc = parser.parseFromString(html, "text/html");
-
-				const metaTag = doc.querySelector('meta[name="twitter-site-verification"]');
-				const verificationCode = metaTag?.content;
-				if(!verificationCode)throw new Error("Verification code not found");
-
-				const challengeKeyMatch = html.match(/(\d+):\s*["']ondemand\.s["']/);
-				if(!challengeKeyMatch){
-					throw new Error("Challenge key for ondemand.s not found");
+				let html = await request({ url: 'https://x.com/home', respType: 'text', anonymous: true });
+				const storedChallengeData = await getFromIndexedDB('MTLU_twitterApi', 'challengeData');
+				let challengeKeyMatch = html.match(/(\d+):"ondemand.s"/);
+				if(!challengeKeyMatch && !storedChallengeData){
+					console.error("Challenge key not found in HTML and no stored challenge data available");
+					for(let i=0; i<20; i++){
+						await sleep(1000); // 1秒待機
+						html = await request({ url: 'https://x.com/home', respType: 'text', anonymous: true });
+						challengeKeyMatch = html.match(/(\d+):"ondemand.s"/);
+						if(challengeKeyMatch)break;
+					}
 				}
+				if(challengeKeyMatch){
+					const parser = new DOMParser();
+					const doc = parser.parseFromString(html, "text/html");
 
-				const challengeKey = challengeKeyMatch[1];
-				const challengeCodeRegex = new RegExp(`\\b${challengeKey}:\\s*["']([a-zA-Z0-9_-]+)["']`);
-				const challengeCodeMatch = html.match(challengeCodeRegex);
-				if(!challengeCodeMatch){
-					throw new Error("Challenge code not found");
+					const metaTag = doc.querySelector('meta[name="twitter-site-verification"]');
+					const verificationCode = metaTag?.content;
+					if(!verificationCode)throw new Error("Verification code not found");
+
+					const challengeKey = challengeKeyMatch[1];
+					const challengeCodeRegex = new RegExp(`\\b${challengeKey}:\\s*["']([a-zA-Z0-9_-]+)["']`);
+					const challengeCodeMatch = html.match(challengeCodeRegex);
+					if(!challengeCodeMatch){
+						throw new Error("Challenge code not found");
+					}
+
+					const challengeCode = challengeCodeMatch[1];
+
+					const svgs = Array.from(doc.querySelectorAll('svg[id^="loading-x"]'));
+					const challengeAnimationSvgCodes = svgs.map(svg => svg.outerHTML);
+
+					const jsUrl = `https://abs.twimg.com/responsive-web/client-web/ondemand.s.${challengeCode}a.js`;
+					const challengeJsCode = await request({ url: jsUrl, respType: 'text' });
+					this.#challengeData = {
+						verificationCode,
+						challengeCode,
+						challengeJsCode,
+						challengeAnimationSvgCodes,
+						expires: Date.now() + 60 * 60 * 1000, // 60 min
+					};
+				}else{
+					console.error("Using stored challenge data");
+					this.#challengeData = storedChallengeData;
 				}
-
-				const challengeCode = challengeCodeMatch[1];
-
-				const svgs = Array.from(doc.querySelectorAll('svg[id^="loading-x"]'));
-				const challengeAnimationSvgCodes = svgs.map(svg => svg.outerHTML);
-
-				const jsUrl = `https://abs.twimg.com/responsive-web/client-web/ondemand.s.${challengeCode}a.js`;
-				const challengeJsCode = await request({ url: jsUrl, respType: 'text' });
-				this.#challengeData = {
-					verificationCode,
-					challengeCode,
-					challengeJsCode,
-					challengeAnimationSvgCodes,
-					expires: Date.now() + 60 * 60 * 1000, // 60 min
-				};
 				await saveToIndexedDB('MTLU_twitterApi', 'challengeData', this.#challengeData);
 			})();
 
