@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"पिन केलेल्या"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s यांनी पुन्हा ट्विट केले"},
+	"replyAction": {"type":"string","value":"प्रत्युत्तर"},
+	"repostAction": {"type":"string","value":"पुन्हा पोस्ट करा"},
+	"likeAction": {"type":"string","value":"पसंत केले"},
+	"bookmarkAction": {"type":"string","value":"बुकमार्क"},
+	"showMore": {"type":"string","value":"अधिक प्रमाणामध्ये दाखवा"},
+	"viewThread": {"type":"string","value":"हा थ्रेड दाखवा"},
+	"previousImage": {"type":"string","value":"मागील प्रतिमा"},
+	"nextImage": {"type":"string","value":"पुढील प्रतिमा"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return [""," यांच्याकडून"]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 स्टार्स – "+e.appNumRatings+" रेटिंग्ज"}
+	},
+	"verifiedAccount": {"type":"string","value":"सत्यापित खाते"},
+	"communityAdminBadge": {"type":"string","value":"प्रशा"},
+	"communityModeratorBadge": {"type":"string","value":"निया."},
+	"communityMemberBadge": {"type":"string","value":"सदस्य"},
+	"viewsLabel": {"type":"string","value":"अवलोकने"},
+	"viewQuotes": {"type":"string","value":"भाष्य पहा"},
+	"viewActivity": {"type":"string","value":"कृती पहा"},
+	"communityNotes": {"type":"string","value":"कम्युनिटी नोट्स"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"ही टिप सहाय्यक आहे का?"},
+	"communityNoteHelpful": {"type":"string","value":"उपयुक्त"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"काही प्रमाणामध्ये उपयुक्त"},
+	"communityNoteNotHelpful": {"type":"string","value":"उपयुक्त नाही"},
+	"cashtagComingSoon": {"type":"string","value":"लवकरच येत आहे"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["आता "," वर"]}
+	},
+	"grokAnswerFun": {"type":"string","value":"फन मोडमध्ये Grok द्वारे उत्तर"},
+	"grokAnswer": {"type":"string","value":"Grok द्वारे उत्तर"},
+	"grokImageBy": {"type":"string","value":"Grok द्वारे प्रतिमा"},
+	"grokShowMore": {"type":"string","value":"अधिक प्रमाणामध्ये दाखवा"},
+	"grokCreateVersion": {"type":"string","value":"Grok सह आपली आवृती तयार करा"},
+	"grokAskYourself": {"type":"string","value":"आपण स्वतः Grok ला विचारा"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" वेब पृष्ठ"+t(e.count,"","े")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" पोस्ट"+t(e.count,"","्स")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" वेब पृष्ठे आणि पोस्ट्स"}
+	},
+	"mostRelevant": {"type":"string","value":"संबंधित आहे"},
+	"mostLiked": {"type":"string","value":"पसंती"},
+	"mostRecent": {"type":"string","value":"अलीकडील"},
+	"sortReplies": {"type":"string","value":"प्रत्युत्तरांची क्रमवारी करा"},
+	"lastEdited": {"type":"string","value":"अंतिम संपादन"},
+	"newPostVersion": {"type":"string","value":"या पोस्टची नवीन आवृती आहे."},
+	"opensEditHistory": {"type":"string","value":"संपादित इतिहास उघडला जातो"},
+	"viewLatestPost": {"type":"string","value":"अगदी अलीकडील पोस्ट पहा"},
+	"opensLatestPost": {"type":"string","value":"या पोस्टची नवीन आवृत्ती उघडली जाते"},
+	"mediaTaggedSelf": {"type":"string","value":"आपण"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return [""," यांच्याकडून"]}
+	},
+	"poll": {"type":"string","value":"सर्वेक्षण"},
+	"viewPoll": {"type":"string","value":"हे सर्वेक्षण दाखवा"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" मत"+n(e.count,"","े")}
+	},
+	"pollEnded": {"type":"string","value":"अंतिम निकाल"},
 	"retweet": {"type":"string","value":"पुन्हा ट्विट"},
 	"unDoRetweet": {"type":"string","value":"पुनर्ट्विट पूर्ववत करा"},
 	"quoteTweet": {"type":"string","value":"ट्विट वर भाष्य करा"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"मीडिया"},
 	"profileTabTitleLikes": {"type":"string","value":"पसंती"},
 	"following": {"type":"string","value":"फॉलोइंग"},
+	"follow": {"type":"string","value":"फॉलो करा"},
+	"followBack": {"type":"string","value":"पुन्हा फॉलो करा"},
+	"followers": {"type":"string","value":"फॉलोअर्स"},
+	"followsYou": {"type":"string","value":"आपणास फॉलो करतात"},
+	"subscriptions": {"type":"string","value":"सबस्क्रीप्शन्स"},
 	"unfollow": {"type":"string","value":"अनफॉलो करा"},
 	"blocked": {"type":"string","value":"अवरोधित केले"},
 	"unblock": {"type":"string","value":"अनब्लॉक करा"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," यांनी फॉलो केले"]}
+		"value": function(){return [""," यांनी फॉलो केले"]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," आणि "," यांनी फॉलो केले"]}
+		"value": function(){return [""," आणि "," यांनी फॉलो केले"]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", ",", आणि "," यांनी फॉलो केले"]}
+		"value": function(){return ["",", ",", आणि "," यांनी फॉलो केले"]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["आपण फॉलो करत असलेल्या ",", ",", आणि  अन्य "," जणांनी फॉलो केले"]}
+		"value": function(){return ["आपण फॉलो करत असलेल्या ",", ",", आणि  अन्य "," जणांनी फॉलो केले"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ट्विट"+n(props.count,"","्स")]}
+		"value": function(){return [props.formattedCount+" ट्विट"+n(props.count,"","्स")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" पसंती"]}
+		"value": function(){return [props.formattedCount+" पसंती"]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" छायाचित्रे आणि व्हिडिओज"]}
+		"value": function(){return [props.formattedCount+" छायाचित्रे आणि व्हिडिओज"]}
 	},
 	"home": {"type":"string","value":"होम"},
 	"explore": {"type":"string","value":"एक्सप्लोर करा"},

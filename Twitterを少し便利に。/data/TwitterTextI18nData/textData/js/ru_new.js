@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Закрепленные"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s сделал(а) репост"},
+	"replyAction": {"type":"string","value":"Ответить"},
+	"repostAction": {"type":"string","value":"Сделать репост"},
+	"likeAction": {"type":"string","value":"Нравится"},
+	"bookmarkAction": {"type":"string","value":"Закладка"},
+	"showMore": {"type":"string","value":"Показать ещё"},
+	"viewThread": {"type":"string","value":"Показать эту ветку"},
+	"previousImage": {"type":"string","value":"Предыдущее изображение"},
+	"nextImage": {"type":"string","value":"Следующее изображение"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["С "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+" из 5 звезд. Оценок: "+e.appNumRatings}
+	},
+	"verifiedAccount": {"type":"string","value":"Подлинные учетные записи"},
+	"communityAdminBadge": {"type":"string","value":"Адм."},
+	"communityModeratorBadge": {"type":"string","value":"Мод."},
+	"communityMemberBadge": {"type":"string","value":"Участник"},
+	"viewsLabel": {"type":"string","value":"просм."},
+	"viewQuotes": {"type":"string","value":"Просмотр цитат"},
+	"viewActivity": {"type":"string","value":"Просмотр действий"},
+	"communityNotes": {"type":"string","value":"Примечания сообщества"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Полезно ли это примечание?"},
+	"communityNoteHelpful": {"type":"string","value":"полезное"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"отчасти полезное"},
+	"communityNoteNotHelpful": {"type":"string","value":"бесполезное"},
+	"cashtagComingSoon": {"type":"string","value":"Скоро"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Теперь по "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Ответ от Grok в забавном режиме"},
+	"grokAnswer": {"type":"string","value":"Ответ от Grok"},
+	"grokImageBy": {"type":"string","value":"Изображение от Grok"},
+	"grokShowMore": {"type":"string","value":"Показать ещё"},
+	"grokCreateVersion": {"type":"string","value":"Создать собственную версию с Grok"},
+	"grokAskYourself": {"type":"string","value":"Задать Grok тот же вопрос"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" веб-страниц"+n(e.count,"ы","","а","ы")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" пост"+n(e.count,"а","ов","","ов")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return"Веб-страниц и постов: "+e.count}
+	},
+	"mostRelevant": {"type":"string","value":"Актуально"},
+	"mostLiked": {"type":"string","value":"Нравится"},
+	"mostRecent": {"type":"string","value":"Последние"},
+	"sortReplies": {"type":"string","value":"Упорядочить ответы"},
+	"lastEdited": {"type":"string","value":"Последняя редакция"},
+	"newPostVersion": {"type":"string","value":"У этого поста есть новая версия."},
+	"opensEditHistory": {"type":"string","value":"Открыть историю редактирования"},
+	"viewLatestPost": {"type":"string","value":"Смотреть последний пост"},
+	"opensLatestPost": {"type":"string","value":"Открыть новую версию этого поста"},
+	"mediaTaggedSelf": {"type":"string","value":"Вы"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Автор: "]}
+	},
+	"poll": {"type":"string","value":"Опрос"},
+	"viewPoll": {"type":"string","value":"Показать опрос"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" голос"+n(e.count,"а","ов","","а")}
+	},
+	"pollEnded": {"type":"string","value":"Конечные результаты"},
 	"retweet": {"type":"string","value":"Сделать репост"},
 	"unDoRetweet": {"type":"string","value":"Отменить репост"},
 	"quoteTweet": {"type":"string","value":"Цитата"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"Медиа"},
 	"profileTabTitleLikes": {"type":"string","value":"Нравится"},
 	"following": {"type":"string","value":"Читаю"},
+	"follow": {"type":"string","value":"Читать"},
+	"followBack": {"type":"string","value":"Тоже начать читать"},
+	"followers": {"type":"string","value":"Читатели"},
+	"followsYou": {"type":"string","value":"Читает вас"},
+	"subscriptions": {"type":"string","value":"Подписки"},
 	"unfollow": {"type":"string","value":"Перестать читать"},
 	"blocked": {"type":"string","value":"В черном списке"},
 	"unblock": {"type":"string","value":"Убрать из черного списка"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["В читаемых у "]}
+		"value": function(){return ["В читаемых у "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["В читаемых у "," и "]}
+		"value": function(){return ["В читаемых у "," и "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["В читаемых у ",", "," и "]}
+		"value": function(){return ["В читаемых у ",", "," и "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["В читаемых у ",", "," и еще "," пользователей, которых вы читаете"]}
+		"value": function(){return ["В читаемых у ",", "," и еще "," пользователей, которых вы читаете"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" пост"+f(props.count,"а","ов","","а")]}
+		"value": function(){return [props.formattedCount+" пост"+n(props.count,"а","ов","","а")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" отмет"+f(props.count,"ки","ок","ка","ки")+" «Нравится»"]}
+		"value": function(){return [props.formattedCount+" отмет"+n(props.count,"ки","ок","ка","ки")+" «Нравится»"]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" фото и видео"]}
+		"value": function(){return [props.formattedCount+" фото и видео"]}
 	},
 	"home": {"type":"string","value":"Главная"},
 	"explore": {"type":"string","value":"Обзор"},

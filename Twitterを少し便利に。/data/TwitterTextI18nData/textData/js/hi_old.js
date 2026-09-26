@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"पिन की गई"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s ने रीट्वीट किया"},
+	"replyAction": {"type":"string","value":"जवाब दें"},
+	"repostAction": {"type":"string","value":"रीपोस्ट"},
+	"likeAction": {"type":"string","value":"पसंद करें"},
+	"bookmarkAction": {"type":"string","value":"बुकमार्क"},
+	"showMore": {"type":"string","value":"और अधिक दिखाएं"},
+	"viewThread": {"type":"string","value":"यह थ्रेड दिखाएं"},
+	"previousImage": {"type":"string","value":"पिछली छवि"},
+	"nextImage": {"type":"string","value":"अगली छवि"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return [""," से"]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 स्टार्स – "+e.appNumRatings+" रेटिंग्स"}
+	},
+	"verifiedAccount": {"type":"string","value":"सत्यापित खाते"},
+	"communityAdminBadge": {"type":"string","value":"एडमिन"},
+	"communityModeratorBadge": {"type":"string","value":"मॉड"},
+	"communityMemberBadge": {"type":"string","value":"सदस्य"},
+	"viewsLabel": {"type":"string","value":"व्यूज़"},
+	"viewQuotes": {"type":"string","value":"क्वोट देखें"},
+	"viewActivity": {"type":"string","value":"गतिविधि देखें"},
+	"communityNotes": {"type":"string","value":"कम्यूनिटी नोट्स"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"क्या यह नोट उपयोगी है?"},
+	"communityNoteHelpful": {"type":"string","value":"उपयोगी"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"कुछ हद तक उपयोगी"},
+	"communityNoteNotHelpful": {"type":"string","value":"उपयोगी नहीं"},
+	"cashtagComingSoon": {"type":"string","value":"जल्द आ रहा है"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["अब "," पर"]}
+	},
+	"grokAnswerFun": {"type":"string","value":"फ़न मोड में Grok के उत्तर"},
+	"grokAnswer": {"type":"string","value":"Grok के उत्तर"},
+	"grokImageBy": {"type":"string","value":"Grok से छवि"},
+	"grokShowMore": {"type":"string","value":"और अधिक दिखाएं"},
+	"grokCreateVersion": {"type":"string","value":"Grok के साथ अपना संस्करण बनाएं"},
+	"grokAskYourself": {"type":"string","value":"स्वयं Grok से पूछें"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" वेब पेज"}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" पोस्ट"+t(e.count,"","्स")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" वेब पेज और पोस्ट"}
+	},
+	"mostRelevant": {"type":"string","value":"प्रासंगिक"},
+	"mostLiked": {"type":"string","value":"पसंद"},
+	"mostRecent": {"type":"string","value":"हाल ही के"},
+	"sortReplies": {"type":"string","value":"जवाब सॉर्ट करें"},
+	"lastEdited": {"type":"string","value":"पिछला संपादन"},
+	"newPostVersion": {"type":"string","value":"इस पोस्ट का एक नया संस्करण मौजूद है."},
+	"opensEditHistory": {"type":"string","value":"संपादन इतिहास को खोलता है"},
+	"viewLatestPost": {"type":"string","value":"नवीनतम पोस्ट देखें"},
+	"opensLatestPost": {"type":"string","value":"इस पोस्ट के नए संस्करण को खोलता है"},
+	"mediaTaggedSelf": {"type":"string","value":"आप"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return [""," से"]}
+	},
+	"poll": {"type":"string","value":"जनमत"},
+	"viewPoll": {"type":"string","value":"यह जनमत दिखाएं"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" वोट"}
+	},
+	"pollEnded": {"type":"string","value":"अंतिम परिणाम"},
 	"retweet": {"type":"string","value":"रीट्वीट करें"},
 	"unDoRetweet": {"type":"string","value":"रीट्वीट को पूर्ववत करें"},
 	"quoteTweet": {"type":"string","value":"कोट ट्वीट"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"मीडिया"},
 	"profileTabTitleLikes": {"type":"string","value":"पसंद"},
 	"following": {"type":"string","value":"फ़ॉलो कर रहे हैं"},
+	"follow": {"type":"string","value":"फ़ॉलो करें"},
+	"followBack": {"type":"string","value":"वापस फ़ॉलो करें"},
+	"followers": {"type":"string","value":"फ़ॉलोअर्स"},
+	"followsYou": {"type":"string","value":"आपको फ़ॉलो करते हैं"},
+	"subscriptions": {"type":"string","value":"सब्सक्रिप्शन"},
 	"unfollow": {"type":"string","value":"अनफ़ॉलो करें"},
 	"blocked": {"type":"string","value":"अवरोधित"},
 	"unblock": {"type":"string","value":"अवरोध हटाएँ"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," फ़ॉलो करते हैं"]}
+		"value": function(){return [""," फ़ॉलो करते हैं"]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," और "," फ़ॉलो करते हैं"]}
+		"value": function(){return [""," और "," फ़ॉलो करते हैं"]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", "," और "," फ़ॉलो करते हैं"]}
+		"value": function(){return ["",", "," और "," फ़ॉलो करते हैं"]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", "," और "," अन्य जिन्हें आप फ़ॉलो करते हैं, फ़ॉलो कर रहे हैं"]}
+		"value": function(){return ["",", "," और "," अन्य जिन्हें आप फ़ॉलो करते हैं, फ़ॉलो कर रहे हैं"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ट्वीट"+n(props.count,"","्स")]}
+		"value": function(){return [props.formattedCount+" ट्वीट"+n(props.count,"","्स")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" पसंद"+n(props.count,"‍","")]}
+		"value": function(){return [props.formattedCount+" पसंद"+n(props.count,"‍","")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" फ़ोटो और वीडियो"]}
+		"value": function(){return [props.formattedCount+" फ़ोटो और वीडियो"]}
 	},
 	"home": {"type":"string","value":"होम"},
 	"explore": {"type":"string","value":"देखें"},

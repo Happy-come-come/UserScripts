@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Angeheftet"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s hat retweetet"},
+	"replyAction": {"type":"string","value":"Antworten"},
+	"repostAction": {"type":"string","value":"Reposten"},
+	"likeAction": {"type":"string","value":"Gefällt mir"},
+	"bookmarkAction": {"type":"string","value":"Lesezeichen"},
+	"showMore": {"type":"string","value":"Mehr anzeigen"},
+	"viewThread": {"type":"string","value":"Diesen Thread anzeigen"},
+	"previousImage": {"type":"string","value":"Vorheriges Bild"},
+	"nextImage": {"type":"string","value":"Nächstes Bild"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Von "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5,0 Sterne – "+e.appNumRatings+" Bewertungen"}
+	},
+	"verifiedAccount": {"type":"string","value":"Verifizierte Accounts"},
+	"communityAdminBadge": {"type":"string","value":"Admin"},
+	"communityModeratorBadge": {"type":"string","value":"Mod"},
+	"communityMemberBadge": {"type":"string","value":"Mitglied"},
+	"viewsLabel": {"type":"string","value":"Mal angezeigt"},
+	"viewQuotes": {"type":"string","value":"Zitate anzeigen"},
+	"viewActivity": {"type":"string","value":"Aktivität anzeigen"},
+	"communityNotes": {"type":"string","value":"Kollektive Anmerkungen"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Ist diese Notiz hilfreich?"},
+	"communityNoteHelpful": {"type":"string","value":"hilfreich"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"etwas hilfreich"},
+	"communityNoteNotHelpful": {"type":"string","value":"nicht hilfreich"},
+	"cashtagComingSoon": {"type":"string","value":"Demnächst verfügbar"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Jetzt bei "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Antwort von Grok im Spaßmodus"},
+	"grokAnswer": {"type":"string","value":"Antwort von Grok"},
+	"grokImageBy": {"type":"string","value":"Bild von Grok"},
+	"grokShowMore": {"type":"string","value":"Mehr anzeigen"},
+	"grokCreateVersion": {"type":"string","value":"Deine Version mit Grok erstellen"},
+	"grokAskYourself": {"type":"string","value":"Grok selbst fragen"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" Webseite"+a(e.count,"","n")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" "+a(e.count,"Post","neue Posts")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" Webseiten und Posts"}
+	},
+	"mostRelevant": {"type":"string","value":"Relevant"},
+	"mostLiked": {"type":"string","value":"Gefällt mir"},
+	"mostRecent": {"type":"string","value":"Neueste"},
+	"sortReplies": {"type":"string","value":"Antworten sortieren"},
+	"lastEdited": {"type":"string","value":"Zuletzt bearbeitet"},
+	"newPostVersion": {"type":"string","value":"Es gibt eine neue Version dieses Posts."},
+	"opensEditHistory": {"type":"string","value":"Öffnet den Änderungsverlauf"},
+	"viewLatestPost": {"type":"string","value":"Neuesten Post anzeigen"},
+	"opensLatestPost": {"type":"string","value":"Öffnet die neue Version dieses Posts"},
+	"mediaTaggedSelf": {"type":"string","value":"Du"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Von "]}
+	},
+	"poll": {"type":"string","value":"Umfrage"},
+	"viewPoll": {"type":"string","value":"Diese Umfrage anzeigen"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" Stimme"+r(e.count,"","n")}
+	},
+	"pollEnded": {"type":"string","value":"Endergebnisse"},
 	"retweet": {"type":"string","value":"Retweeten"},
 	"unDoRetweet": {"type":"string","value":"Retweet rückgängig machen"},
 	"quoteTweet": {"type":"string","value":"Tweet zitieren"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"Medien"},
 	"profileTabTitleLikes": {"type":"string","value":"Gefällt mir"},
 	"following": {"type":"string","value":"Folge ich"},
+	"follow": {"type":"string","value":"Folgen"},
+	"followBack": {"type":"string","value":"Ebenfalls folgen"},
+	"followers": {"type":"string","value":"Follower"},
+	"followsYou": {"type":"string","value":"Folgt Dir"},
+	"subscriptions": {"type":"string","value":"Abonnements"},
 	"unfollow": {"type":"string","value":"Entfolgen"},
 	"blocked": {"type":"string","value":"Blockiert"},
 	"unblock": {"type":"string","value":"Entblocken"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Gefolgt von "]}
+		"value": function(){return ["Gefolgt von "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Gefolgt von "," und "]}
+		"value": function(){return ["Gefolgt von "," und "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Gefolgt von ",", "," und "]}
+		"value": function(){return ["Gefolgt von ",", "," und "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Gefolgt von ",", "," und "," weiteren Personen, denen du folgst"]}
+		"value": function(){return ["Gefolgt von ",", "," und "," weiteren Personen, denen du folgst"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Tweet"+r(props.count,"","s")]}
+		"value": function(){return [props.formattedCount+" Tweet"+r(props.count,"","s")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" „Gefällt mir“-Angabe"+r(props.count,"","n")]}
+		"value": function(){return [props.formattedCount+" „Gefällt mir“-Angabe"+r(props.count,"","n")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Fotos und Videos"]}
+		"value": function(){return [props.formattedCount+" Fotos und Videos"]}
 	},
 	"home": {"type":"string","value":"Startseite"},
 	"explore": {"type":"string","value":"Entdecken"},

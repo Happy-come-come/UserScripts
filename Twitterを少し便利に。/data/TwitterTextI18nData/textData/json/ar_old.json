@@ -17,6 +17,200 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "‏%s مُعاد تغريدها"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "ردّ"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "إعادة النشر"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "أعجبني"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "إضافة إلى العلامات المرجعية"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "عرض المزيد"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "عرض هذه السلسلة"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "الصورة السابقة"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "الصورة التالية"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["من"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 من النجوم – {{appNumRatings}} تقييم"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "الحسابات الموَثّقة"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "مسؤول"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "مشرف"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "عضو فيها"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "مشاهدات"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "عرض الاقتباسات"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "عرض النشاط"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "‏ملاحظات المجتمع"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "هل هذه الملاحظة مفيدة؟"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "مفيدة"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "مفيدة قليلاً"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "غير مفيدة"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "متوفّر قريبًا"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["الآنفي"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "الإجابة بواسطة Grok في وضع المتعة"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "الإجابة بواسطة Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "صورة بواسطة Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "عرض المزيد"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "أنشئ نسختك باستخدام Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "اسأل Grok بنفسك"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} من صفحات الويب والمنشورات"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "ذو صلة"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "الإعجابات"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "الحديثة"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "فرز الردود"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "تاريخ آخر تعديل"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "تتوفر نسخة جديدة من هذا المنشور."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "يفتح سِجل التعديلات"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "شاهد أحدث المنشورات"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "لفتح النسخة الجديدة من هذا المنشور"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "أنت"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["من"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "استطلاع"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "عرض هذا الاستطلاع"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "النتائج النهائية"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "إعادة التغريد"
@@ -53,6 +247,26 @@
 		"type": "string",
 		"value": "متابَع"
 	},
+	"follow": {
+		"type": "string",
+		"value": "متابعة"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "المتابعة أيضًا"
+	},
+	"followers": {
+		"type": "string",
+		"value": "المتابِعون"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "يُتابعك"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "الاشتراكات"
+	},
 	"unfollow": {
 		"type": "string",
 		"value": "إلغاء المتابعة"
@@ -87,16 +301,13 @@
 		"value": ["متابَعبواسطة","و","و","آخرينتتابعهم"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}تغريد"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}إعجاب"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}صور"]
+		"type": "webI18nTemplateFunction"
 	},
 	"home": {
 		"type": "string",

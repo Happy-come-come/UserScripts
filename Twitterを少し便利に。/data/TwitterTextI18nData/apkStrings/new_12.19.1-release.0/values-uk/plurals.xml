@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="a11y_composer_poll_choice_characters_remaining">
+        <item quantity="one">Залишився {count} символ</item>
+        <item quantity="few">Залишилося {count} символи</item>
+        <item quantity="many">Залишилося {count} символів</item>
+        <item quantity="other">Залишилося {count} символу</item>
+    </plurals>
+    <plurals name="admin_tools_subtitle_members">
+        <item quantity="one">%d учасник</item>
+        <item quantity="other">Учасників: %d</item>
+    </plurals>
+    <plurals name="av_group_call_member_count">
+        <item quantity="one">%1$d учасник</item>
+        <item quantity="other">Учасників: %1$d</item>
+    </plurals>
+    <plurals name="badge_item_count">
+        <item quantity="one">Нових елементів: %d</item>
+        <item quantity="other">Нових елементів: %d</item>
+    </plurals>
+    <plurals name="cohost_current_count">
+        <item quantity="one">%1$d співорганізатор</item>
+        <item quantity="other">Співорганізаторів: %1$d</item>
+    </plurals>
+    <plurals name="cohost_open_spots_count">
+        <item quantity="one">%1$d вільне місце</item>
+        <item quantity="few">%1$d вільні місця</item>
+        <item quantity="many">%1$d вільних місць</item>
+        <item quantity="other">%1$d вільного місця</item>
+    </plurals>
+    <plurals name="community_member_count">
+        <item quantity="one">Учасник спільноти %d</item>
+        <item quantity="other">Учасників спільноти: %d</item>
+    </plurals>
+    <plurals name="community_moderator_count">
+        <item quantity="one">%d модератор</item>
+        <item quantity="other">Модераторів: %d</item>
+    </plurals>
+    <plurals name="community_navigation_join_requests_label">
+        <item quantity="one">%s запит</item>
+        <item quantity="other">Запитів: %s</item>
+    </plurals>
+    <plurals name="community_navigation_new_unread_tweets_label">
+        <item quantity="one">%s новий пост</item>
+        <item quantity="other">%s нових постів</item>
+    </plurals>
+    <plurals name="community_navigation_pending_reports_label">
+        <item quantity="one">%s скарга</item>
+        <item quantity="other">Скарг: %s</item>
+    </plurals>
+    <plurals name="composer_count_progress_overflow_warning">
+        <item quantity="one">Символів поза лімітом: %d</item>
+        <item quantity="other">Символів поза лімітом: %d</item>
+    </plurals>
+    <plurals name="composer_count_progress_warning">
+        <item quantity="one">Залишилося символів: %d</item>
+        <item quantity="other">Залишилося символів: %d</item>
+    </plurals>
+    <plurals name="content_description_fleet_item_space_with_others">
+        <item quantity="one">Аудіокімната %1$s з іще %2$d учасником</item>
+        <item quantity="other">Аудіокімната %1$s з іще %2$d учасниками</item>
+    </plurals>
+    <plurals name="data_sync_notif_title">
+        <item quantity="one">Нових взаємодій: %d</item>
+        <item quantity="other">Нових взаємодій: %d</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d дн.</item>
+        <item quantity="other">%d днів</item>
+    </plurals>
+    <plurals name="dm_add_people_failure">
+        <item quantity="one">Не вдалося додати користувача до цієї групи.</item>
+        <item quantity="other">До цієї групи не вдалося додати користувачів: %d.</item>
+    </plurals>
+    <plurals name="dm_add_people_success">
+        <item quantity="one">До групи додано користувача.</item>
+        <item quantity="other">До групи додано користувачів: %d.</item>
+    </plurals>
+    <plurals name="dm_follower_count_no_joined_date">
+        <item quantity="one">{num_followers} читач</item>
+        <item quantity="other">Читачів: {num_followers}</item>
+    </plurals>
+    <plurals name="dm_group_account_name">
+        <item quantity="one">1 людина</item>
+        <item quantity="other">Людей: %d</item>
+    </plurals>
+    <plurals name="dm_group_chat_count">
+        <item quantity="one">Чат групи з %d людиною</item>
+        <item quantity="other">Чат групи з %d людьми</item>
+    </plurals>
+    <plurals name="dm_group_conversation_participant_count">
+        <item quantity="one">%1$d людина</item>
+        <item quantity="other">Людей: %1$d</item>
+    </plurals>
+    <plurals name="dm_group_participant_count">
+        <item quantity="one">У цій групі ще %1$s особа</item>
+        <item quantity="other">У цій групі ще %1$s осіб</item>
+    </plurals>
+    <plurals name="dm_group_participant_count_person_details">
+        <item quantity="one">Ще %1$s особа</item>
+        <item quantity="other">Ще %1$s осіб</item>
+    </plurals>
+    <plurals name="dm_image_profile">
+        <item quantity="one">Зображення профілю %s</item>
+        <item quantity="other">Зображення профілю %s</item>
+    </plurals>
+    <plurals name="dm_new_people_you_may_know">
+        <item quantity="one">%d нова особа, яку ви можете знати</item>
+        <item quantity="other">Нових людей, яких ви можете знати: %d</item>
+    </plurals>
+    <plurals name="dm_new_requests">
+        <item quantity="one">%d новий запит</item>
+        <item quantity="other">Нових запитів: %d</item>
+    </plurals>
+    <plurals name="dm_participant_added_by_deleted_user">
+        <item quantity="one">{participants} додано</item>
+        <item quantity="other">{participants} додано</item>
+    </plurals>
+    <plurals name="dm_pending_requests">
+        <item quantity="one">%d запит очікує розгляду</item>
+        <item quantity="other">Запитів очікують розгляду: %s</item>
+    </plurals>
+    <plurals name="dm_people_you_may_know">
+        <item quantity="one">%d особа, яку ви можете знати</item>
+        <item quantity="other">Людей, яких ви можете знати: %d</item>
+    </plurals>
+    <plurals name="dm_pinned_conversations_max_count_exceeded_title">
+        <item quantity="one">Ви можете закріпити лише %d чат</item>
+        <item quantity="other">Ви можете закріпити не більше %d чатів</item>
+    </plurals>
+    <plurals name="dm_share_group_members_and_others">
+        <item quantity="one">{visible_names} і ще {others_count}</item>
+        <item quantity="other">{visible_names} і ще {others_count}</item>
+    </plurals>
+    <plurals name="dm_state_seen_by">
+        <item quantity="one">Переглянули: %d</item>
+        <item quantity="other">Переглянули: %d</item>
+    </plurals>
+    <plurals name="dm_unread_messages">
+        <item quantity="one">%d непрочит. повідом.</item>
+        <item quantity="other">%d непрочит. повідом.</item>
+    </plurals>
+    <plurals name="dm_user_joined_and_follower_count">
+        <item quantity="one">Ви приєдналися {joined_date} • Читачів: {num_followers}</item>
+        <item quantity="other">Ви приєдналися {joined_date} • Читачів: {num_followers}</item>
+    </plurals>
+    <plurals name="duration_picker_set_days">
+        <item quantity="one">1 день</item>
+        <item quantity="other">%d дн.</item>
+    </plurals>
+    <plurals name="duration_picker_set_hours">
+        <item quantity="one">1 год</item>
+        <item quantity="other">%d год</item>
+    </plurals>
+    <plurals name="duration_picker_set_minutes">
+        <item quantity="one">1 хв</item>
+        <item quantity="other">%d хв</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">Перемотати вперед на %d секунду</item>
+        <item quantity="few">Перемотати вперед на %d секунди</item>
+        <item quantity="many">Перемотати вперед на %d секунд</item>
+        <item quantity="other">Перемотати вперед на %d секунди</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">Перемотати назад на %d секунду</item>
+        <item quantity="few">Перемотати назад на %d секунди</item>
+        <item quantity="many">Перемотати назад на %d секунд</item>
+        <item quantity="other">Перемотати назад на %d секунди</item>
+    </plurals>
+    <plurals name="facepile_content_description_phrase">
+        <item quantity="one">Зображення профілю для користувача {user_names}</item>
+        <item quantity="other">Зображення профілю для користувачів {user_names}</item>
+    </plurals>
+    <plurals name="full_screen_gallery_header_add">
+        <item quantity="one">Додати %d</item>
+        <item quantity="other">Додати %d</item>
+    </plurals>
+    <plurals name="graphql_errors_button">
+        <item quantity="one">%d помилка</item>
+        <item quantity="other">Помилок: %d</item>
+    </plurals>
+    <plurals name="guest_management_max_cohost_count_label">
+        <item quantity="one">Ви можете мати лише %1$d співорг.</item>
+        <item quantity="other">Ви можете мати лише %1$d співорг.</item>
+    </plurals>
+    <plurals name="guest_management_open_cohost_count_label">
+        <item quantity="one">Додайте ще не більше %1$d людини.</item>
+        <item quantity="other">Додайте не більше %1$d людей</item>
+    </plurals>
+    <plurals name="host_kudos_num_followers_gained">
+        <item quantity="one">У вас з’явився %1$d новий читач!</item>
+        <item quantity="other">У вас з’явилися нові читачі: %1$d!</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d год.</item>
+        <item quantity="other">%d год.</item>
+    </plurals>
+    <plurals name="humanization_prompt_followers">
+        <item quantity="one">%1$s читає %2$s.</item>
+        <item quantity="other">%1$s читають %2$s.</item>
+    </plurals>
+    <plurals name="humanization_prompt_topics">
+        <item quantity="one">Ви і %1$s обоє читаєте тему %2$s.</item>
+        <item quantity="other">Ви і %1$s обоє читаєте теми %2$s.</item>
+    </plurals>
+    <plurals name="likes">
+        <item quantity="one">%d вподобання</item>
+        <item quantity="other">Вподобань: %d</item>
+    </plurals>
+    <plurals name="list_member_count">
+        <item quantity="one">Учасник</item>
+        <item quantity="other">Учасники</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_message">
+        <item quantity="one">"Хороші описи зображень стислі, але детальні. Обов’язково перепишіть текст із зображення або надайте його короткий підсумок.
+
+Описи роблять платформу Х доступнішою для людей з обмеженими можливостями та всіх, кому потрібен додатковий контекст.
+
+Ви можете вимкнути це нагадування в налаштуваннях спеціальних можливостей."</item>
+        <item quantity="other">"Хороші описи зображень стислі, але детальні. Обов’язково перепишіть текст із зображення або надайте його короткий підсумок.
+
+Описи роблять платформу Х доступнішою для людей з обмеженими можливостями та всіх, кому потрібен додатковий контекст.
+
+Ви можете вимкнути це нагадування в налаштуваннях спеціальних можливостей."</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_positive_btn_text">
+        <item quantity="one">Додати опис</item>
+        <item quantity="other">Додати описи</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_title">
+        <item quantity="one">Не забудьте зробити своє зображення доступним</item>
+        <item quantity="other">Не забудьте зробити свої зображення доступними</item>
+    </plurals>
+    <plurals name="media_monetization_settings_categories_selected">
+        <item quantity="one">Вибрано категорій: %d</item>
+        <item quantity="other">Вибрано категорій: %d</item>
+    </plurals>
+    <plurals name="media_tag_remaining">
+        <item quantity="one">Ще можна позначити: %d.</item>
+        <item quantity="other">Ще можна позначити: %d.</item>
+    </plurals>
+    <plurals name="media_tag_tagged">
+        <item quantity="one">Позначено осіб: %d</item>
+        <item quantity="other">Позначено осіб: %d</item>
+    </plurals>
+    <plurals name="member_count">
+        <item quantity="one">%s учасник</item>
+        <item quantity="other">Учасників: %s</item>
+    </plurals>
+    <plurals name="members">
+        <item quantity="one">Учасників: %s</item>
+        <item quantity="other">Учасників: %s</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d хв.</item>
+        <item quantity="other">%d хв.</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d нове сповіщення</item>
+        <item quantity="few">%d нові сповіщення</item>
+        <item quantity="many">%d нових сповіщень</item>
+        <item quantity="other">%d нового сповіщення</item>
+    </plurals>
+    <plurals name="muted_keyword_bulk_delete_success">
+        <item quantity="one">Видалено %d слово</item>
+        <item quantity="other">Видалено слів: %d</item>
+    </plurals>
+    <plurals name="muted_keyword_selected_count">
+        <item quantity="one">Вибрано %d</item>
+        <item quantity="other">Вибрано %d</item>
+    </plurals>
+    <plurals name="narrowcast_community_member_count">
+        <item quantity="one">%s учасник</item>
+        <item quantity="other">Учасників: %s</item>
+    </plurals>
+    <plurals name="narrowcast_trusted_friends_count">
+        <item quantity="one">Людей: %s</item>
+        <item quantity="other">Людей: %s</item>
+    </plurals>
+    <plurals name="notification_description_after_sending_posts">
+        <item quantity="one">Пост надіслано</item>
+        <item quantity="few">Надіслано {total} пости</item>
+        <item quantity="many">Надіслано {total} постів</item>
+        <item quantity="other">Надіслано {total} посту</item>
+    </plurals>
+    <plurals name="notification_description_before_sending_posts">
+        <item quantity="one">Підготовка до надсилання посту…</item>
+        <item quantity="few">Підготовка до надсилання {total} постів…</item>
+        <item quantity="many">Підготовка до надсилання {total} постів…</item>
+        <item quantity="other">Підготовка до надсилання {total} посту…</item>
+    </plurals>
+    <plurals name="notification_description_deleting_drafts">
+        <item quantity="one">Видалення чернетки…</item>
+        <item quantity="few">Видалення чернеток ({current} з {total})…</item>
+        <item quantity="many">Видалення чернеток ({current} з {total})…</item>
+        <item quantity="other">Видалення чернеток ({current} з {total})…</item>
+    </plurals>
+    <plurals name="notification_description_editable_posts">
+        <item quantity="one">Видалення доступного для редагування посту…</item>
+        <item quantity="few">Видалення доступних для редагування постів ({current} з {total})…</item>
+        <item quantity="many">Видалення доступних для редагування постів ({current} з {total})…</item>
+        <item quantity="other">Видалення доступних для редагування постів ({current} з {total})…</item>
+    </plurals>
+    <plurals name="notification_description_preparing_media">
+        <item quantity="one">Підготування медіафайлу…</item>
+        <item quantity="few">Підготування медіафайлів ({current} з {total})…</item>
+        <item quantity="many">Підготування медіафайлів ({current} з {total})…</item>
+        <item quantity="other">Підготування медіафайлів ({current} з {total})…</item>
+    </plurals>
+    <plurals name="notification_description_sending_drafts">
+        <item quantity="one">Надсилання чернетки…</item>
+        <item quantity="few">Надсилання чернеток ({current} з {total})…</item>
+        <item quantity="many">Надсилання чернеток ({current} з {total})…</item>
+        <item quantity="other">Надсилання чернеток ({current} з {total})…</item>
+    </plurals>
+    <plurals name="notification_description_sending_posts">
+        <item quantity="one">Надсилання посту…</item>
+        <item quantity="few">Надсилання постів ({current} з {total})…</item>
+        <item quantity="many">Надсилання постів ({current} з {total})…</item>
+        <item quantity="other">Надсилання постів ({current} з {total})…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_media">
+        <item quantity="one">Завантаження медіафайлу…</item>
+        <item quantity="few">Завантаження медіафайлів ({current} з {total})…</item>
+        <item quantity="many">Завантаження медіафайлів ({current} з {total})…</item>
+        <item quantity="other">Завантаження медіафайлів ({current} з {total})…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_poll">
+        <item quantity="one">Завантаження опитування…</item>
+        <item quantity="few">Завантаження опитувань ({current} з {total})…</item>
+        <item quantity="many">Завантаження опитувань ({current} з {total})…</item>
+        <item quantity="other">Завантаження опитувань ({current} з {total})…</item>
+    </plurals>
+    <plurals name="notification_title_after_sending_posts">
+        <item quantity="one">Пост надіслано</item>
+        <item quantity="few">Пости надіслано</item>
+        <item quantity="many">Пости надіслано</item>
+        <item quantity="other">Пости надіслано</item>
+    </plurals>
+    <plurals name="notification_title_before_sending_posts">
+        <item quantity="one">Підготовка до надсилання посту</item>
+        <item quantity="few">Підготовка до надсилання постів</item>
+        <item quantity="many">Підготовка до надсилання постів</item>
+        <item quantity="other">Підготовка до надсилання постів</item>
+    </plurals>
+    <plurals name="notification_title_deleting_drafts">
+        <item quantity="one">Видалення чернетки</item>
+        <item quantity="few">Видалення чернеток</item>
+        <item quantity="many">Видалення чернеток</item>
+        <item quantity="other">Видалення чернеток</item>
+    </plurals>
+    <plurals name="notification_title_deleting_editable_posts">
+        <item quantity="one">Видалення доступного для редагування посту</item>
+        <item quantity="few">Видалення доступних для редагування постів</item>
+        <item quantity="many">Видалення доступних для редагування постів</item>
+        <item quantity="other">Видалення доступних для редагування постів</item>
+    </plurals>
+    <plurals name="notification_title_preparing_media">
+        <item quantity="one">Підготування медіафайлу</item>
+        <item quantity="few">Підготування медіафайлів</item>
+        <item quantity="many">Підготування медіафайлів</item>
+        <item quantity="other">Підготування медіафайлів</item>
+    </plurals>
+    <plurals name="notification_title_sending_drafts">
+        <item quantity="one">Надсилання чернетки</item>
+        <item quantity="few">Надсилання чернеток</item>
+        <item quantity="many">Надсилання чернеток</item>
+        <item quantity="other">Надсилання чернеток</item>
+    </plurals>
+    <plurals name="notification_title_sending_posts">
+        <item quantity="one">Надсилання посту</item>
+        <item quantity="few">Надсилання постів</item>
+        <item quantity="many">Надсилання постів</item>
+        <item quantity="other">Надсилання постів</item>
+    </plurals>
+    <plurals name="notification_title_uploading_media">
+        <item quantity="one">Завантаження медіафайлу</item>
+        <item quantity="few">Завантаження медіафайлів</item>
+        <item quantity="many">Завантаження медіафайлів</item>
+        <item quantity="other">Завантаження медіафайлів</item>
+    </plurals>
+    <plurals name="notification_title_uploading_poll">
+        <item quantity="one">Завантаження опитування</item>
+        <item quantity="few">Завантаження опитувань</item>
+        <item quantity="many">Завантаження опитувань</item>
+        <item quantity="other">Завантаження опитувань</item>
+    </plurals>
+    <plurals name="notification_undo_nudge">
+        <item quantity="one">Період скасування</item>
+        <item quantity="few">Період скасування</item>
+        <item quantity="many">Період скасування</item>
+        <item quantity="other">Період скасування</item>
+    </plurals>
+    <plurals name="others">
+        <item quantity="one">ще 1</item>
+        <item quantity="other">ще %d</item>
+    </plurals>
+    <plurals name="payment_ach_merchant_authorization_transactions_count">
+        <item quantity="one">1 транзакція</item>
+        <item quantity="few">Транзакцій: {count}</item>
+        <item quantity="many">Транзакцій: {count}</item>
+        <item quantity="other">Транзакцій: {count}</item>
+    </plurals>
+    <plurals name="payment_onboarding_terms_invitation_subtitle">
+        <item quantity="one">Продовжте, доки термін дії платежу не закінчився.</item>
+        <item quantity="other">Продовжте, доки термін дії платежів не закінчився.</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_hours">
+        <item quantity="one">%d година</item>
+        <item quantity="few">%d години</item>
+        <item quantity="many">%d годин</item>
+        <item quantity="other">%d години</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_minutes">
+        <item quantity="one">%d хвилина</item>
+        <item quantity="few">%d хвилини</item>
+        <item quantity="many">%d хвилин</item>
+        <item quantity="other">%d хвилини</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_seconds">
+        <item quantity="one">%d секунда</item>
+        <item quantity="few">%d секунди</item>
+        <item quantity="many">%d секунд</item>
+        <item quantity="other">%d секунди</item>
+    </plurals>
+    <plurals name="product_count">
+        <item quantity="one">%1$d продукт</item>
+        <item quantity="other">Продуктів: %1$d</item>
+    </plurals>
+    <plurals name="profile_about_username_changes">
+        <item quantity="one">Ім’я користувача змінено %s раз</item>
+        <item quantity="other">Ім’я користувача змінено %s рази(-ів)</item>
+    </plurals>
+    <plurals name="profile_creator_subscriptions_count">
+        <item quantity="one">передплата</item>
+        <item quantity="other">передплат(и)</item>
+    </plurals>
+    <plurals name="profile_follower_count">
+        <item quantity="one">читач</item>
+        <item quantity="other">читачі(в)</item>
+    </plurals>
+    <plurals name="profile_friends_following_others">
+        <item quantity="one">Ще %d</item>
+        <item quantity="other">Ще %d</item>
+    </plurals>
+    <plurals name="profile_stat_followers_text">
+        <item quantity="one">читач</item>
+        <item quantity="few">читачі</item>
+        <item quantity="many">читачів</item>
+        <item quantity="other">читача</item>
+    </plurals>
+    <plurals name="profile_stat_following_text">
+        <item quantity="one">читаний</item>
+        <item quantity="few">читаних</item>
+        <item quantity="many">читаних</item>
+        <item quantity="other">читаного</item>
+    </plurals>
+    <plurals name="profile_stat_subscribers_text">
+        <item quantity="one">передплатник</item>
+        <item quantity="few">передплатники</item>
+        <item quantity="many">передплатників</item>
+        <item quantity="other">передплатника</item>
+    </plurals>
+    <plurals name="profile_stat_subscriptions_text">
+        <item quantity="one">передплата</item>
+        <item quantity="few">передплати</item>
+        <item quantity="many">передплат</item>
+        <item quantity="other">передплати</item>
+    </plurals>
+    <plurals name="profile_super_followers_count">
+        <item quantity="one">Передплатник</item>
+        <item quantity="other">Передплатники</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_articles">
+        <item quantity="one">%s стаття</item>
+        <item quantity="other">Статей: %s</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_likes">
+        <item quantity="one">%s вподобав(ла)</item>
+        <item quantity="other">%s вподобань</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_media">
+        <item quantity="one">%s фото</item>
+        <item quantity="other">Фото й відео %s</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_timeline">
+        <item quantity="one">%s пост</item>
+        <item quantity="other">Постів: %s</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_peak_msg">
+        <item quantity="zero">Графік глядачів трансляції</item>
+        <item quantity="one">Графік глядачів трансляції. Найбільша кількість глядачів, яку ви мали о %2$s: %1$d.</item>
+        <item quantity="other">Графік глядачів трансляції. Найбільша кількість глядачів, яку ви мали о %2$s: %1$d.</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_point_msg">
+        <item quantity="one">О %2$s у вас було глядачів: %1$d.</item>
+        <item quantity="other">О %2$s у вас було глядачів: %1$d.</item>
+    </plurals>
+    <plurals name="ps__invite_follower">
+        <item quantity="zero">Немає читачів</item>
+        <item quantity="one">%d читач</item>
+        <item quantity="other">Читачів: %d</item>
+    </plurals>
+    <plurals name="ps__invited_num_followers_embolden">
+        <item quantity="one">*%1$s* запросив(ла) людей: %2$s</item>
+        <item quantity="other">*%1$s* запросив(ла) людей: %2$s</item>
+    </plurals>
+    <plurals name="ps__moderation_report_muted_by_moderator">
+        <item quantity="one">*Відхилили*: %1$s</item>
+        <item quantity="other">*Відхилили*: %1$s (%2$d)</item>
+    </plurals>
+    <plurals name="ps__moderation_report_unmuted_by_moderator">
+        <item quantity="one">*Повернули* %1$s</item>
+        <item quantity="other">*Повернули*: %1$s (%2$d)</item>
+    </plurals>
+    <plurals name="ps__new_messages">
+        <item quantity="one">Нових повідомлень: %1$d</item>
+        <item quantity="other">Нових повідомлень: %1$d</item>
+    </plurals>
+    <plurals name="ps__num_hearts">
+        <item quantity="one">%s серце</item>
+        <item quantity="other">Сердець: %s</item>
+    </plurals>
+    <plurals name="ps__stats_live_viewers">
+        <item quantity="one">ГЛЯДАЧІВ ПРЯМОЇ ТРАНСЛЯЦІЇ</item>
+        <item quantity="other">"ГЛЯДАЧІВ ПРЯМОЇ
+ТРАНСЛЯЦІЇ"</item>
+    </plurals>
+    <plurals name="ps__stats_replay_viewers">
+        <item quantity="one">ГЛЯДАЧІВ ПОВТОРУ</item>
+        <item quantity="other">ГЛЯДАЧІВ ПОВТОРУ</item>
+    </plurals>
+    <plurals name="ps__time_format_days">
+        <item quantity="one">%d дн.</item>
+        <item quantity="other">%d дн.</item>
+    </plurals>
+    <plurals name="ps__time_format_hours">
+        <item quantity="one">%d год</item>
+        <item quantity="other">%d год</item>
+    </plurals>
+    <plurals name="ps__time_format_minutes">
+        <item quantity="one">%d хв</item>
+        <item quantity="other">%d хв</item>
+    </plurals>
+    <plurals name="ps__time_format_seconds">
+        <item quantity="one">%d с</item>
+        <item quantity="other">%d с</item>
+    </plurals>
+    <plurals name="recording_replay_count_preview">
+        <item quantity="one">%s повтор</item>
+        <item quantity="other">Повторів: %s</item>
+    </plurals>
+    <plurals name="relationship_followers_following_others">
+        <item quantity="one">Ще %d особа</item>
+        <item quantity="other">Ще %d осіб</item>
+    </plurals>
+    <plurals name="replies">
+        <item quantity="one">%d відповідь</item>
+        <item quantity="other">Відповідей: %d</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others">
+        <item quantity="other">У відповідь ﻿%1$s і ще %2$d﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_exclusive">
+        <item quantity="other">У відповідь ﻿%1$s і ще %2$d﻿. Ваша відповідь також буде видима для інших Передплатників.</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_in_space">
+        <item quantity="other">У відповідь ﻿%1$s і ще %2$d﻿ у ﻿%3$s﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others">
+        <item quantity="other">У відповідь ﻿%1$s, %2$s і ще %3$d﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_exclusive">
+        <item quantity="other">У відповідь ﻿%1$s, %2$s і ще %3$d﻿. Ваша відповідь також буде видима для інших Передплатників.</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_in_space">
+        <item quantity="other">У відповідь ﻿%1$s, %2$s і ще %3$d ﻿ у ﻿%4$s﻿</item>
+    </plurals>
+    <plurals name="reported_tweet_reported_by">
+        <item quantity="one">Скаргу надіслано: {{}}%1$s{{}}</item>
+        <item quantity="other">Скаргу надіслано: {{}}%1$s членами{{}}</item>
+    </plurals>
+    <plurals name="retweets">
+        <item quantity="one">%d репост</item>
+        <item quantity="other">Репостів: %d</item>
+    </plurals>
+    <plurals name="safety_mode_preview_description">
+        <item quantity="one">Ми позначили %d профіль, що може поводитися агресивно чи розсилати спам.</item>
+        <item quantity="other">Ми позначили профілі (%d), що можуть поводитися агресивно чи розсилати спам.</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">%d с</item>
+        <item quantity="other">%d с</item>
+    </plurals>
+    <plurals name="send_cohost_invite">
+        <item quantity="one">Надіслати запрошення стати співорг.</item>
+        <item quantity="other">Надіслати запрошення стати співорг.</item>
+    </plurals>
+    <plurals name="settings_notif_tweets_count">
+        <item quantity="one">Осіб: %d</item>
+        <item quantity="other">%d людей</item>
+    </plurals>
+    <plurals name="share_card_likes">
+        <item quantity="one">{num} вподобання</item>
+        <item quantity="few">{num} вподобання</item>
+        <item quantity="many">{num} уподобань</item>
+        <item quantity="other">{num} уподобання</item>
+    </plurals>
+    <plurals name="share_card_replies">
+        <item quantity="one">{num} відповідь</item>
+        <item quantity="few">{num} відповіді</item>
+        <item quantity="many">{num} відповідей</item>
+        <item quantity="other">{num} відповіді</item>
+    </plurals>
+    <plurals name="social_follow_and_follow_and_others">
+        <item quantity="one">%1$s, %2$s і ще %3$d читають</item>
+        <item quantity="other">Читають %1$s, %2$s і ще %3$d</item>
+    </plurals>
+    <plurals name="spaces_additional_participants">
+        <item quantity="one">ще %1$s слухач</item>
+        <item quantity="other">ще %1$s слухачів</item>
+    </plurals>
+    <plurals name="spaces_blocked_warning">
+        <item quantity="one">Ви заблокували %1$d особу, яка говорить</item>
+        <item quantity="other">Ви заблокували %1$d осіб, які говорять</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_in_progress">
+        <item quantity="one">%1$s є в цій аудіокімнаті</item>
+        <item quantity="other">%1$s є в цій аудіокімнаті</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_replay">
+        <item quantity="one">%1$s був(-ла) в цій аудіокімнаті</item>
+        <item quantity="other">%1$s були в цій аудіокімнаті</item>
+    </plurals>
+    <plurals name="spaces_cohost_invites_sent_toast">
+        <item quantity="one">Надіслано запрошень стати співорг.: %1$d</item>
+        <item quantity="few">Надіслано запрошень стати співорг.:%1$d</item>
+        <item quantity="many">Надіслано запрошень стати співорг.: %1$d</item>
+        <item quantity="other">Надіслано запрошень стати співорг.: %1$d</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle">
+        <item quantity="one">Можна додати ще не більше %1$d особи.</item>
+        <item quantity="few">Можна додати ще не більше %1$d осіб.</item>
+        <item quantity="many">Можна додати ще не більше %1$d осіб.</item>
+        <item quantity="other">Можна додати ще не більше %1$d осіб</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle_full">
+        <item quantity="one">Ви можете мати лише %1$d співорг.</item>
+        <item quantity="few">Ви можете мати лише %1$d співорг.</item>
+        <item quantity="many">Ви можете мати лише %1$d співорг.</item>
+        <item quantity="other">Ви можете мати лише %1$d співорг.</item>
+    </plurals>
+    <plurals name="spaces_invite_confirmation">
+        <item quantity="one">До цієї аудіокімнати запрошено %1$d особу</item>
+        <item quantity="other">%1$d осіб запрошено до цієї аудіокімнати</item>
+    </plurals>
+    <plurals name="spaces_invite_send_cohost_cta">
+        <item quantity="one">Надіслати запрошення стати співорг.</item>
+        <item quantity="few">Надіслати запрошення стати співорг.</item>
+        <item quantity="many">Надіслати запрошення стати співорг.</item>
+        <item quantity="other">Надіслати запрошення стати співорг.</item>
+    </plurals>
+    <plurals name="spaces_invite_send_speaker_cta">
+        <item quantity="one">Надіслати запрошення стати промовцем</item>
+        <item quantity="few">Надіслати запрошення стати промовцем</item>
+        <item quantity="many">Надіслати запрошення стати промовцем</item>
+        <item quantity="other">Надіслати запрошення стати промовцем</item>
+    </plurals>
+    <plurals name="spaces_invite_sent_toast">
+        <item quantity="one">Запрошено до цієї аудіокімнати: %1$d особа</item>
+        <item quantity="few">Запрошено до цієї аудіокімнати: %1$d особи</item>
+        <item quantity="many">Запрошено до цієї аудіокімнати: %1$d осіб</item>
+        <item quantity="other">Запрошено до цієї аудіокімнати: %1$d осіб</item>
+    </plurals>
+    <plurals name="spaces_invite_speakers_subtitle">
+        <item quantity="one">Ви можете запросити говорити не більше %1$d особи</item>
+        <item quantity="few">Ви можете запросити говорити не більше %1$d осіб</item>
+        <item quantity="many">Ви можете запросити говорити не більше %1$d осіб</item>
+        <item quantity="other">Ви можете запросити говорити не більше %1$d осіб</item>
+    </plurals>
+    <plurals name="spaces_requested_pill_label">
+        <item quantity="one">%1$d запит</item>
+        <item quantity="few">%1$d запити</item>
+        <item quantity="many">%1$d запитів</item>
+        <item quantity="other">%1$d запиту</item>
+    </plurals>
+    <plurals name="spaces_sheet_anonymous_others">
+        <item quantity="one">+ ще %1$s</item>
+        <item quantity="few">+ ще %1$s</item>
+        <item quantity="many">+ ще %1$s</item>
+        <item quantity="other">+ ще %1$s</item>
+    </plurals>
+    <plurals name="spaces_speak_request_toast_label_many">
+        <item quantity="one">%1$d особа попросила висловитися</item>
+        <item quantity="few">%1$d людей попросили висловитися</item>
+        <item quantity="many">%1$d людей попросили висловитися</item>
+        <item quantity="other">%1$d людей попросили висловитися</item>
+    </plurals>
+    <plurals name="speakers_current_count">
+        <item quantity="one">%1$d мовець</item>
+        <item quantity="other">Промовців: %1$d</item>
+    </plurals>
+    <plurals name="speakers_listeners_count">
+        <item quantity="one">%1$d особа слухає</item>
+        <item quantity="other">Слухають: %1$d</item>
+    </plurals>
+    <plurals name="speakers_open_spots_count">
+        <item quantity="one">%1$d вільне місце</item>
+        <item quantity="other">%1$d вільних місць</item>
+    </plurals>
+    <plurals name="speakers_requests_count">
+        <item quantity="one">%1$d запит</item>
+        <item quantity="other">Запитів: %1$d</item>
+    </plurals>
+    <plurals name="stat_label_bookmarks">
+        <item quantity="one">закладка</item>
+        <item quantity="other">закладок</item>
+    </plurals>
+    <plurals name="stat_label_likes_sentence_case">
+        <item quantity="one">уподобання</item>
+        <item quantity="other">уподобання</item>
+    </plurals>
+    <plurals name="stat_label_quote_tweets">
+        <item quantity="one">Цитата</item>
+        <item quantity="other">Цитати</item>
+    </plurals>
+    <plurals name="stat_label_retweets_sentence_case">
+        <item quantity="one">Зробити репост</item>
+        <item quantity="other">Репости</item>
+    </plurals>
+    <plurals name="stat_label_verified_views_sentence_case">
+        <item quantity="one">перегляд підтвердженим профілем</item>
+        <item quantity="other">перегляди підтвердженими профілями</item>
+    </plurals>
+    <plurals name="stat_label_views_sentence_case">
+        <item quantity="one">перегляд</item>
+        <item quantity="other">переглядів</item>
+    </plurals>
+    <plurals name="subscription_duration_days">
+        <item quantity="one">день</item>
+        <item quantity="other">%d дн.</item>
+    </plurals>
+    <plurals name="subscription_duration_months">
+        <item quantity="one">місяць</item>
+        <item quantity="other">%d міс.</item>
+    </plurals>
+    <plurals name="subscription_duration_years">
+        <item quantity="one">рік</item>
+        <item quantity="other">%d р.</item>
+    </plurals>
+    <plurals name="subscription_offer_price_description_months">
+        <item quantity="one">{offer_price} за перший місяць, продовжується за {original_price}</item>
+        <item quantity="other">{offer_price} за перші %d міс., подовжується за {original_price}</item>
+    </plurals>
+    <plurals name="subscription_offer_title_special_offer_months">
+        <item quantity="one">{original_price_strike_through} {offer_price} за перший місяць</item>
+        <item quantity="other">{original_price_strike_through} {offer_price} за перші %d міс.</item>
+    </plurals>
+    <plurals name="thread_draft_more_post">
+        <item quantity="one">+ ще {num} пост</item>
+        <item quantity="few">+ ще {num} пости</item>
+        <item quantity="many">+ ще {num} постів</item>
+        <item quantity="other">+ ще {num} посту</item>
+    </plurals>
+    <plurals name="time_days">
+        <item quantity="one">%d дн</item>
+        <item quantity="other">%d дн</item>
+    </plurals>
+    <plurals name="time_days_ago">
+        <item quantity="one">%d ДН. ТОМУ</item>
+        <item quantity="other">%d ДНІВ ТОМУ</item>
+    </plurals>
+    <plurals name="time_hours">
+        <item quantity="one">%d год</item>
+        <item quantity="other">%d год</item>
+    </plurals>
+    <plurals name="time_hours_ago">
+        <item quantity="one">%d ГОД ТОМУ</item>
+        <item quantity="other">%d ГОДИН ТОМУ</item>
+    </plurals>
+    <plurals name="time_mins">
+        <item quantity="one">%d хв</item>
+        <item quantity="other">%d хв</item>
+    </plurals>
+    <plurals name="time_mins_ago">
+        <item quantity="one">%d ХВ ТОМУ</item>
+        <item quantity="other">%d ХВИЛИН ТОМУ</item>
+    </plurals>
+    <plurals name="time_secs">
+        <item quantity="one">%d с</item>
+        <item quantity="other">%d с</item>
+    </plurals>
+    <plurals name="time_weeks">
+        <item quantity="one">%d тиж.</item>
+        <item quantity="other">%d тиж.</item>
+    </plurals>
+    <plurals name="top_articles_time_window">
+        <item quantity="one">За останню годину</item>
+        <item quantity="other">За останні %s год.</item>
+    </plurals>
+    <plurals name="tweet_stat_followers">
+        <item quantity="one">{num} читач</item>
+        <item quantity="other">Читачів: {num}</item>
+    </plurals>
+    <plurals name="tweet_visibility_education_dialog_non_followers_text">
+        <item quantity="one">%1$s не читає вас.</item>
+        <item quantity="other">%1$s та інші не читають вас.</item>
+    </plurals>
+    <plurals name="undo_nudge_message">
+        <item quantity="one">Пост буде надіслано через %d секунду.</item>
+        <item quantity="few">Пост буде надіслано через %d секунди.</item>
+        <item quantity="many">Пост буде надіслано через %d секунд.</item>
+        <item quantity="other">Пост буде надіслано через %d секунди.</item>
+    </plurals>
+    <plurals name="undo_send_period_in_seconds">
+        <item quantity="one">%d с</item>
+        <item quantity="other">%d с</item>
+    </plurals>
+    <plurals name="upload_progress_sending_posts">
+        <item quantity="one">Пост надсилається…</item>
+        <item quantity="other">Пости (%d) надсилаються…</item>
+    </plurals>
+    <plurals name="verified_views">
+        <item quantity="one">%d перегляд підтвердженим профілем</item>
+        <item quantity="other">%d переглядів підтвердженими профілями</item>
+    </plurals>
+    <plurals name="weeks">
+        <item quantity="one">%d тижд.</item>
+        <item quantity="other">%d тижнів</item>
+    </plurals>
+    <plurals name="x_lite_time_weeks">
+        <item quantity="one">%d тиж.</item>
+        <item quantity="other">%d тиж.</item>
+    </plurals>
+    <plurals name="x_lite_time_years">
+        <item quantity="one">%d р.</item>
+        <item quantity="other">%d р.</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_gifs">
+        <item quantity="one">{count} GIF-файл</item>
+        <item quantity="few">{count} GIF-файли</item>
+        <item quantity="many">{count} GIF-файлів</item>
+        <item quantity="other">{count} GIF-файлу</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_other">
+        <item quantity="one">{count} вкладення</item>
+        <item quantity="few">{count} вкладення</item>
+        <item quantity="many">{count} вкладень</item>
+        <item quantity="other">{count} вкладення</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_photos">
+        <item quantity="one">{count} фото</item>
+        <item quantity="few">{count} фото</item>
+        <item quantity="many">{count} фото</item>
+        <item quantity="other">{count} фото</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_videos">
+        <item quantity="one">{count} відео</item>
+        <item quantity="few">{count} відео</item>
+        <item quantity="many">{count} відео</item>
+        <item quantity="other">{count} відео</item>
+    </plurals>
+    <plurals name="xchat_back_badge_unread_messages">
+        <item quantity="one">%1$d непрочит. повідом.</item>
+        <item quantity="few">%1$d непрочит. повідом.</item>
+        <item quantity="many">%1$d непрочит. повідом.</item>
+        <item quantity="other">%1$d непрочит. повідом.</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_over_limit">
+        <item quantity="one">%1$d байт понад ліміт</item>
+        <item quantity="few">%1$d байти понад ліміт</item>
+        <item quantity="many">%1$d байтів понад ліміт</item>
+        <item quantity="other">%1$d байта понад ліміт</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_remaining">
+        <item quantity="one">Залишається %1$d байт</item>
+        <item quantity="few">Залишається %1$d байти</item>
+        <item quantity="many">Залишається %1$d байтів</item>
+        <item quantity="other">Залишається %1$d байта</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_gifs">
+        <item quantity="one">{count} вкладений GIF-файл</item>
+        <item quantity="few">{count} вкладені GIF-файли</item>
+        <item quantity="many">{count} вкладених GIF-файлів</item>
+        <item quantity="other">{count} вкладеного GIF-файлу</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_other">
+        <item quantity="one">{count} вкладення</item>
+        <item quantity="few">{count} вкладення</item>
+        <item quantity="many">{count} вкладень</item>
+        <item quantity="other">{count} вкладення</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_photos">
+        <item quantity="one">{count} вкладене фото</item>
+        <item quantity="few">{count} вкладені фото</item>
+        <item quantity="many">{count} вкладених фото</item>
+        <item quantity="other">{count} вкладеного фото</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_videos">
+        <item quantity="one">{count} вкладене відео</item>
+        <item quantity="few">{count} вкладені відео</item>
+        <item quantity="many">{count} вкладених відео</item>
+        <item quantity="other">{count} вкладеного відео</item>
+    </plurals>
+    <plurals name="xchat_forward_media_max_conversations">
+        <item quantity="one">Переслати медіафайл можна щонайбільше до {num} розмови</item>
+        <item quantity="few">Переслати медіафайл можна щонайбільше до {num} розмов</item>
+        <item quantity="many">Переслати медіафайл можна щонайбільше до {num} розмов</item>
+        <item quantity="other">Переслати медіафайл можна щонайбільше до {num} розмови</item>
+    </plurals>
+    <plurals name="xchat_group_members_count">
+        <item quantity="one">{num} учасник</item>
+        <item quantity="few">{num} учасники</item>
+        <item quantity="many">{num} учасників</item>
+        <item quantity="other">{num} учасники</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_and_others">
+        <item quantity="one">{names} і ще {count} користувач</item>
+        <item quantity="few">{names} і ще {count} користувачі</item>
+        <item quantity="many">{names} і ще {count} користувачів</item>
+        <item quantity="other">{names} і ще {count} користувача</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_count">
+        <item quantity="one">{count} запит на повідомлення</item>
+        <item quantity="few">{count} запити на повідомлення</item>
+        <item quantity="many">{count} запитів на повідомлення</item>
+        <item quantity="other">{count} запиту на повідомлення</item>
+    </plurals>
+    <plurals name="xchat_inbox_new_messages">
+        <item quantity="one">Понад {count} нове повідомлення</item>
+        <item quantity="few">Понад {count} нові повідомлення</item>
+        <item quantity="many">Понад {count} нових повідомлень</item>
+        <item quantity="other">Понад {count} нового повідомлення</item>
+    </plurals>
+    <plurals name="xchat_inbox_years">
+        <item quantity="one">%d рік</item>
+        <item quantity="few">%d роки</item>
+        <item quantity="many">%d років</item>
+        <item quantity="other">%d року</item>
+    </plurals>
+    <plurals name="xchat_pinned_messages_count">
+        <item quantity="one">{count} закріплений повідомлення</item>
+        <item quantity="few">{count} закріплені повідомлення</item>
+        <item quantity="many">{count} закріплених повідомлень</item>
+        <item quantity="other">{count} закріплені повідомлення</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_days">
+        <item quantity="one">{count} день</item>
+        <item quantity="few">{count} дні</item>
+        <item quantity="many">{count} днів</item>
+        <item quantity="other">{count} дня</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_hours">
+        <item quantity="one">{count} година</item>
+        <item quantity="few">{count} години</item>
+        <item quantity="many">{count} годин</item>
+        <item quantity="other">{count} години</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_minutes">
+        <item quantity="one">{count} хвилина</item>
+        <item quantity="few">{count} хвилини</item>
+        <item quantity="many">{count} хвилин</item>
+        <item quantity="other">{count} хвилини</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_seconds">
+        <item quantity="one">{count} секунда</item>
+        <item quantity="few">{count} секунди</item>
+        <item quantity="many">{count} секунд</item>
+        <item quantity="other">{count} секунди</item>
+    </plurals>
+</resources>

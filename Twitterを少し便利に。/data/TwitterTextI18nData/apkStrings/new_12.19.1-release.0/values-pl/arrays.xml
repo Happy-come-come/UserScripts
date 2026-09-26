@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>Będziesz otrzymywać powiadomienia dotyczące nowych wpisów.</item>
+        <item>Będziesz otrzymywać powiadomienia dotyczące nowych wpisów i odpowiedzi.</item>
+        <item>Będziesz otrzymywać powiadomienia dotyczące nowych wpisów dla subskrybentów.</item>
+        <item>Będziesz otrzymywać powiadomienia dotyczące nowych wpisów z filmami na żywo.</item>
+        <item>Nie będziesz już otrzymywać powiadomień dotyczących nowych wpisów.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>Wszystkie wpisy</item>
+        <item>Wszystkie wpisy i odpowiedzi</item>
+        <item>Tylko wpisy dla subskrybentów</item>
+        <item>Tylko filmy na żywo</item>
+        <item>Wył.</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>Otrzymuj powiadomienia dotyczące wszystkich wpisów z tego konta.</item>
+        <item>Otrzymuj powiadomienia dotyczące wpisów i odpowiedzi z tego konta.</item>
+        <item>Otrzymuj tylko powiadomienia dotyczące wpisów dla subskrybentów.</item>
+        <item>Otrzymuj powiadomienia tylko o transmisjach na żywo.</item>
+        <item>Wyłącz powiadomienia dotyczące wpisów z tego konta.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>Opublikuj link</item>
+        <item>Skopiuj link</item>
+        <item>Wyślij link</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>Jaki jest Twój ogólny poziom zadowolenia z firmy %1$s?</item>
+        <item>Jaki jest Twój poziom zadowolenia z firmy %1$s?</item>
+        <item>Jaki jest Twój ogólny poziom zadowolenia z ostatniego kontaktu z firmą %1$s?</item>
+        <item>Jak ogólnie oceniasz kontakt z firmą %1$s?</item>
+        <item>Jak ogólnie oceniasz kontakt z firmą %1$s?</item>
+        <item>Jak oceniasz swój dotychczasowy kontakt z firmą %1$s?</item>
+        <item>Jak oceniasz obecność firmy %1$s na Twitterze?</item>
+        <item>Czy jesteś zadowolony/a z ostatniego kontaktu z firmą %1$s?</item>
+        <item>W jakim stopniu firma %1$s spełnia Twoje oczekiwania?</item>
+        <item>Jak oceniasz swój pobyt w obiekcie firmy %1$s?</item>
+        <item>Jak oceniasz swój poziom zadowolenia z obsługi w firmie %1$s?</item>
+        <item>Jak oceniasz swój poziom zadowolenia z obsługi podczas ostatniego kontaktu z firmą %1$s?</item>
+        <item>Jak oceniasz usługi świadczone przez firmę %1$s?</item>
+        <item>Czy jesteś zadowolony/a z wyników kontaktu z firmą %1$s?</item>
+        <item>Jak oceniasz możliwość rozwiązania Twojego problemu w firmie %1$s?</item>
+        <item>Jak oceniasz czas, w jakim firma %1$s udzieliła odpowiedzi?</item>
+        <item>Jak oceniasz szybkość usługi w firmie %1$s?</item>
+        <item>Jak oceniasz czas, w jakim firma %1$s rozwiązała Twój problem?</item>
+        <item>Jak oceniasz czas potrzebny do rozwiązania Twojego problemu w firmie %1$s?</item>
+        <item>Jak oceniasz tempo rozwiązywania problemu w firmie %1$s?</item>
+        <item>Jak oceniasz wiedzę konsultanta z firmy %1$s?</item>
+        <item>Jaki jest Twój poziom zadowolenia z pomocy pracownika firmy %1$s?</item>
+        <item>Jaki jest Twój poziom zadowolenia z pomocy specjalisty z firmy %1$s?</item>
+        <item>Jaki jest Twój poziom zadowolenia z pomocy przedstawiciela firmy %1$s?</item>
+        <item>Jak oceniasz swój ostatni kontakt w sprawach bankowych z firmą %1$s?</item>
+        <item>Jak oceniasz swoje ogólne wrażenia związane z wydarzeniem w firmie %1$s?</item>
+        <item>Jak oceniasz kontakt w sprawie płatności z firmą %1$s?</item>
+        <item>Jak oceniasz zakupy w firmie %1$s?</item>
+        <item>Jak oceniasz zakupy w firmie %1$s?</item>
+        <item>Jak oceniasz dostawę w firmie %1$s?</item>
+        <item>Jak oceniasz usługę wypożyczenia w firmie %1$s?</item>
+        <item>Jak oceniasz swoją ostatnią wizytę w sklepie firmy %1$s?</item>
+        <item>Jak oceniasz swój ostatni pobyt w hotelu %1$s?</item>
+        <item>Jak oceniasz swój ostatni lot z firmą %1$s?</item>
+        <item>Jak oceniasz swój ostatni przejazd z firmą %1$s?</item>
+        <item>Jak oceniasz swoją ostatnią podróż z firmą %1$s?</item>
+        <item>Jak ocenisz swoją ostatnią wizytę w firmie %1$s?</item>
+        <item>Jak oceniasz swój ostatni posiłek od firmy %1$s?</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 dni</item>
+        <item>12 miesięcy</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0,25x</item>
+        <item>0,5x</item>
+        <item>0,75x</item>
+        <item>Normalna</item>
+        <item>1,25x</item>
+        <item>1,5x</item>
+        <item>2x</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>Jaki jest Twój ogólny poziom zadowolenia z kontaktów z firmą %1$s?</item>
+        <item>Jaki jest Twój poziom zadowolenia z kontaktów z firmą %1$s?</item>
+        <item>Jaki jest Twój ogólny poziom zadowolenia z ostatniego kontaktu z firmą %1$s?</item>
+        <item>Jak ogólnie oceniasz kontakt z firmą %1$s?</item>
+        <item>Jak ogólnie oceniasz swój kontakt z firmą %1$s?</item>
+        <item>Jak oceniasz swój dotychczasowy kontakt z firmą %1$s?</item>
+        <item>Jak oceniasz swój dotychczasowy kontakt z firmą %1$s w serwisie X?</item>
+        <item>Czy jesteś zadowolony(-a) z ostatniego kontaktu z firmą %1$s?</item>
+        <item>W jakim stopniu firma %1$s spełnia Twoje oczekiwania?</item>
+        <item>Jak oceniasz swój pobyt w obiekcie firmy %1$s?</item>
+        <item>Jak oceniasz swój poziom zadowolenia z usług firmy %1$s?</item>
+        <item>Jak oceniasz swój poziom zadowolenia z obsługi podczas ostatniego kontaktu z firmą %1$s?</item>
+        <item>Jak oceniasz usługi świadczone przez firmę %1$s?</item>
+        <item>Czy jesteś zadowolony(-a) z efektów kontaktu z firmą %1$s?</item>
+        <item>Jak oceniasz zdolność firmy %1$s do rozwiązania Twojego problemu?</item>
+        <item>Jak oceniasz czas, w jakim firma %1$s udzieliła odpowiedzi?</item>
+        <item>Jak oceniasz szybkość świadczenia usług przez firmę %1$s?</item>
+        <item>Jak oceniasz czas potrzebny na znalezienie rozwiązania przez firmę %1$s?</item>
+        <item>Jak oceniasz czas potrzebny na rozwiązanie Twojego problemu w firmie %1$s?</item>
+        <item>Jak oceniasz szybkość znajdowania rozwiązania przez firmę %1$s?</item>
+        <item>Jak oceniasz wiedzę konsultanta z firmy %1$s?</item>
+        <item>Jaki jest Twój poziom zadowolenia z kontaktów z agentem firmy %1$s, który udzielał Ci pomocy?</item>
+        <item>Jaki jest Twój poziom zadowolenia z kontaktów ze specjalistą z firmy %1$s, który udzielał Ci pomocy?</item>
+        <item>Jaki jest Twój poziom zadowolenia z kontaktów z przedstawicielem firmy %1$s, który udzielał Ci pomocy?</item>
+        <item>Jak oceniasz swój ostatni kontakt w sprawach bankowych z firmą %1$s?</item>
+        <item>Jak oceniasz swoje ogólne wrażenia związane z wydarzeniem w firmie %1$s?</item>
+        <item>Jak oceniasz kontakt w sprawie płatności z firmą %1$s?</item>
+        <item>Jak oceniasz zakupy w firmie %1$s?</item>
+        <item>Jak oceniasz zakupy w firmie %1$s?</item>
+        <item>Jak oceniasz dostawę realizowaną przez firmę %1$s?</item>
+        <item>Jak oceniasz usługę wypożyczenia w firmie %1$s?</item>
+        <item>Jak oceniasz swoją ostatnią wizytę w sklepie %1$s?</item>
+        <item>Jak oceniasz swój ostatni pobyt w hotelu %1$s?</item>
+        <item>Jak oceniasz swój ostatni lot z firmą %1$s?</item>
+        <item>Jak oceniasz swój ostatni przejazd z firmą %1$s?</item>
+        <item>Jak oceniasz swoją ostatnią podróż z firmą %1$s?</item>
+        <item>Jak oceniasz swoją ostatnią wizytę w firmie %1$s?</item>
+        <item>Jak oceniasz swój ostatni posiłek od firmy %1$s?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>Jak duża jest szansa, że polecisz firmę %1$s znajomym?</item>
+        <item>Jak duża jest szansa, że polecisz firmę %1$s znajomemu?</item>
+        <item>Jak duża jest szansa, że polecisz firmę %1$s koledze z pracy?</item>
+        <item>Jak duża jest szansa, że polecisz firmę %1$s członkowi rodziny?</item>
+        <item>Jak duża jest szansa, że polecisz komuś innemu firmę %1$s?</item>
+        <item>Jak duża jest szansa, że polecisz firmę %1$s znajomemu lub koledze z pracy?</item>
+        <item>Jak duża jest szansa, że w przyszłości zrobisz zakupy w firmie %1$s?</item>
+        <item>Jak duża jest szansa, że polecisz firmę %1$s znajomym?</item>
+        <item>Czy polecisz firmę %1$s znajomemu lub koledze z pracy?</item>
+        <item>Jak duża jest szansa, że polecisz usługi firmy %1$s znajomym?</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>Duża liczba widzów</item>
+        <item>Pozytywna społeczność</item>
+        <item>Jakość filmów</item>
+        <item>Ciekawa rozmowa</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>Mała liczba widzów</item>
+        <item>Nękanie</item>
+        <item>Problemy z jakością wideo</item>
+        <item>Przesyłanie spamu w czacie</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 minut</item>
+        <item>30 minut</item>
+        <item>1 godzina</item>
+        <item>2 godziny</item>
+        <item>4 godziny</item>
+        <item>Codziennie</item>
+    </string-array>
+</resources>

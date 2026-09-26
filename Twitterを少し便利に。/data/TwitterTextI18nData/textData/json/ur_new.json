@@ -9,6 +9,196 @@
 		"arguments": ["noun"],
 		"value": "فالو کر رہا ہے{{noun}}"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "جواب"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Repost"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "لائک"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "بک مارک کریں"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "مزید دکھائیں"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "یہ تھریڈ دکھائیں"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "پچھلی تصویر"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "اگلی تصویر"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["From"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 stars – {{appNumRatings}} ratings"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Verified accounts"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "ایڈمن"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "موڈ"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "رکن"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "views"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "View quotes"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "View activity"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "کیا یہ نوٹ مددگار ہے؟"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "کارآمد"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "کسی حد تک کارآمد"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "غیر کارآمد"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "جلد آ رہا ہے"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Nowat"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Answer by Grok in Fun Mode"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Answer by Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Image by Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "مزید دکھائیں"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Create your version with Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Ask Grok yourself"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} web pages and posts"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Relevant"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "لائک"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "حالیہ"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Sort replies"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "آخری مرتبہ ترمیم کیا گیا"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "There’s a new version of this post."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "ترمیم کی ہسٹری کو کھولتا ہے"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "See the latest post"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Opens the new version of this post"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "آپ"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["منجانب"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "پول"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "یہ پول دکھائیں"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "حتمی نتائج"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Repost"
@@ -20,6 +210,26 @@
 	"following": {
 		"type": "string",
 		"value": "فالو کر رہے ہیں"
+	},
+	"follow": {
+		"type": "string",
+		"value": "فالو کریں"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "اسے بھی فالو کریں"
+	},
+	"followers": {
+		"type": "string",
+		"value": "فالورز"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "آپ کو فالو کر رہے ہیں"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "سبسکرپشن"
 	},
 	"unfollow": {
 		"type": "string",
@@ -55,8 +265,7 @@
 		"value": ["","،","،اور","دیگرجنہیںآپفالوکرتےہیںکیجانبسےفالوکردہ"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}post"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",

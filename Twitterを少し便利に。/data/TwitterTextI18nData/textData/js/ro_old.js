@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Fixate"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s a redistribuit"},
+	"replyAction": {"type":"string","value":"Răspunde"},
+	"repostAction": {"type":"string","value":"Repostează"},
+	"likeAction": {"type":"string","value":"Apreciază"},
+	"bookmarkAction": {"type":"string","value":"Marcaj"},
+	"showMore": {"type":"string","value":"Arată mai multe"},
+	"viewThread": {"type":"string","value":"Afișează acest fir"},
+	"previousImage": {"type":"string","value":"Imaginea anterioară"},
+	"nextImage": {"type":"string","value":"Imaginea următoare"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["De la "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 stele – "+e.appNumRatings+" evaluări"}
+	},
+	"verifiedAccount": {"type":"string","value":"Conturi verificate"},
+	"communityAdminBadge": {"type":"string","value":"Admin"},
+	"communityModeratorBadge": {"type":"string","value":"Mod."},
+	"communityMemberBadge": {"type":"string","value":"Membru al"},
+	"viewsLabel": {"type":"string","value":"vizualizări"},
+	"viewQuotes": {"type":"string","value":"Vezi citări"},
+	"viewActivity": {"type":"string","value":"Vezi activitatea"},
+	"communityNotes": {"type":"string","value":"Notele Comunității"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Nota este utilă?"},
+	"communityNoteHelpful": {"type":"string","value":"Utilă"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"Oarecum utilă"},
+	"communityNoteNotHelpful": {"type":"string","value":"Inutilă"},
+	"cashtagComingSoon": {"type":"string","value":"În curând"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Acum la "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Răspuns de la Grok în modul distractiv"},
+	"grokAnswer": {"type":"string","value":"Răspuns de la Grok"},
+	"grokImageBy": {"type":"string","value":"Imagine generată de Grok"},
+	"grokShowMore": {"type":"string","value":"Arată mai multe"},
+	"grokCreateVersion": {"type":"string","value":"Creează o versiune proprie cu Grok"},
+	"grokAskYourself": {"type":"string","value":"Întreabă-l pe Grok"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" pagin"+n(e.count,"i","ă","i")+" web"}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" post"+n(e.count,"ări","are","ări")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" pagini web și postări"}
+	},
+	"mostRelevant": {"type":"string","value":"Relevante"},
+	"mostLiked": {"type":"string","value":"Aprecieri"},
+	"mostRecent": {"type":"string","value":"Recente"},
+	"sortReplies": {"type":"string","value":"Sortare răspunsuri"},
+	"lastEdited": {"type":"string","value":"Editat ultima dată"},
+	"newPostVersion": {"type":"string","value":"Există o versiune nouă a acestei postări."},
+	"opensEditHistory": {"type":"string","value":"Se deschide istoricul modificărilor"},
+	"viewLatestPost": {"type":"string","value":"Vezi cea mai recentă postare"},
+	"opensLatestPost": {"type":"string","value":"Deschide versiunea nouă a acestei postări"},
+	"mediaTaggedSelf": {"type":"string","value":"Ai"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["De la "]}
+	},
+	"poll": {"type":"string","value":"Sondaj"},
+	"viewPoll": {"type":"string","value":"Afișează acest sondaj"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" "+r(e.count,"voturi","vot","de voturi")}
+	},
+	"pollEnded": {"type":"string","value":"Rezultatele finale"},
 	"retweet": {"type":"string","value":"Redistribuie"},
 	"unDoRetweet": {"type":"string","value":"Anulează Retweetul"},
 	"quoteTweet": {"type":"string","value":"Citează Tweetul"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"Conținut media"},
 	"profileTabTitleLikes": {"type":"string","value":"Aprecieri"},
 	"following": {"type":"string","value":"Urmărești"},
+	"follow": {"type":"string","value":"Urmărește"},
+	"followBack": {"type":"string","value":"Urmărește și tu"},
+	"followers": {"type":"string","value":"Urmăritori"},
+	"followsYou": {"type":"string","value":"Te urmărește"},
+	"subscriptions": {"type":"string","value":"Abonamente"},
 	"unfollow": {"type":"string","value":"Oprește urmărirea"},
 	"blocked": {"type":"string","value":"Blocat"},
 	"unblock": {"type":"string","value":"Deblochează"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Urmărit de "]}
+		"value": function(){return ["Urmărit de "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Urmărit de "," și de "]}
+		"value": function(){return ["Urmărit de "," și de "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Urmărit de ",", de "," și de "]}
+		"value": function(){return ["Urmărit de ",", de "," și de "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Urmărit de ",", "," și de încă "," persoane pe care le urmărești"]}
+		"value": function(){return ["Urmărit de ",", "," și de încă "," persoane pe care le urmărești"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" "+r(props.count,"Tweeturi","Tweet","de Tweeturi")]}
+		"value": function(){return [props.formattedCount+" "+r(props.count,"Tweeturi","Tweet","de Tweeturi")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Aprecier"+r(props.count,"i","e","i")]}
+		"value": function(){return [props.formattedCount+" Aprecier"+r(props.count,"i","e","i")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" fotografi"+r(props.count,"i și clipuri","e și clip","i și clipuri")+" video"]}
+		"value": function(){return [props.formattedCount+" fotografi"+n(props.count,"i și clipuri","e și clip","i și clipuri")+" video"]}
 	},
 	"home": {"type":"string","value":"Pagina principală"},
 	"explore": {"type":"string","value":"Explorează"},

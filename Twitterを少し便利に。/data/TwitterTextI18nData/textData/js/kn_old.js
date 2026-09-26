@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"ಪಿನ್ ಮಾಡಲಾಗಿರುವುದು"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s ಮರುಟ್ವೀಟಿಸಿದ್ದಾರೆ"},
+	"replyAction": {"type":"string","value":"ಪ್ರತಿಕ್ರಿಯಿಸಿ"},
+	"repostAction": {"type":"string","value":"ಮರುಪೋಸ್ಟ್ ಮಾಡಿ"},
+	"likeAction": {"type":"string","value":"ಇಷ್ಟಪಡಿ"},
+	"bookmarkAction": {"type":"string","value":"ಬುಕ್‌ಮಾರ್ಕ್"},
+	"showMore": {"type":"string","value":"ಇನ್ನಷ್ಟು ತೋರಿಸಿ"},
+	"viewThread": {"type":"string","value":"ಈ ಥ್ರೆಡ್ ತೋರಿಸಿ"},
+	"previousImage": {"type":"string","value":"ಹಿಂದಿನ ಇಮೇಜ್"},
+	"nextImage": {"type":"string","value":"ಮುಂದಿನ ಇಮೇಜ್"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return [""," ಇಂದ"]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 ಸ್ಟಾರ್‌ಗಳು – "+e.appNumRatings+" ರೇಟಿಂಗ್‌ಗಳು"}
+	},
+	"verifiedAccount": {"type":"string","value":"ಪರಿಶೀಲಿಸಿದ ಖಾತೆಗಳು"},
+	"communityAdminBadge": {"type":"string","value":"ಅ."},
+	"communityModeratorBadge": {"type":"string","value":"ಮಾ."},
+	"communityMemberBadge": {"type":"string","value":"ಸದಸ್ಯ"},
+	"viewsLabel": {"type":"string","value":"ವೀಕ್ಷಣೆಗಳು"},
+	"viewQuotes": {"type":"string","value":"ಉಲ್ಲೇಖಗಳನ್ನು ವೀಕ್ಷಿಸಿ"},
+	"viewActivity": {"type":"string","value":"ಚಟುವಟಿಕೆ ವೀಕ್ಷಿಸಿ"},
+	"communityNotes": {"type":"string","value":"ಕಮ್ಯೂನಿಟಿ ನೋಟ್ಸ್"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"ಈ ಟಿಪ್ಪಣಿ ಸಹಾಯಕವೇ?"},
+	"communityNoteHelpful": {"type":"string","value":"ಸಹಾಯಕ"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"ಬಹುತೇಕ ಸಹಾಯಕ"},
+	"communityNoteNotHelpful": {"type":"string","value":"ಸಹಾಯಕವಲ್ಲ"},
+	"cashtagComingSoon": {"type":"string","value":"ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["ಈಗ "," ನಲ್ಲಿ"]}
+	},
+	"grokAnswerFun": {"type":"string","value":"ಫನ್ ಮೋಡ್‌ನಲ್ಲಿ Grok ಮೂಲಕ ಉತ್ತರ"},
+	"grokAnswer": {"type":"string","value":"Grok ಮೂಲಕ ಉತ್ತರ"},
+	"grokImageBy": {"type":"string","value":"Grok ಮೂಲಕ ಚಿತ್ರ"},
+	"grokShowMore": {"type":"string","value":"ಇನ್ನಷ್ಟು ತೋರಿಸಿ"},
+	"grokCreateVersion": {"type":"string","value":"Grok ನೊಂದಿಗೆ ನಿಮ್ಮ ಆವೃತ್ತಿಯನ್ನು ರಚಿಸಿ"},
+	"grokAskYourself": {"type":"string","value":"Grok ಅನ್ನು ನೀವೇ ಕೇಳಿ"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" ವೆಬ್ ಪುಟ"+n(e.count,"","ಗಳು")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" ಪೋಸ್ಟ್"+n(e.count,"","‌ಗಳು")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" ವೆಬ್ ಪುಟಗಳು ಮತ್ತು ಪೋಸ್ಟ್‌ಗಳು"}
+	},
+	"mostRelevant": {"type":"string","value":"ಸಂಬಂಧಿತ"},
+	"mostLiked": {"type":"string","value":"ಇಷ್ಟಗಳು"},
+	"mostRecent": {"type":"string","value":"ಇತ್ತೀಚಿನ"},
+	"sortReplies": {"type":"string","value":"ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ಆಯೋಜಿಸಿ"},
+	"lastEdited": {"type":"string","value":"ಕೊನೆಯದಾಗಿ ಎಡಿಟ್ ಮಾಡಿರುವುದು"},
+	"newPostVersion": {"type":"string","value":"ಈ ಪೋಸ್ಟ್‌ನ ಹೊಸ ಆವೃತ್ತಿ ಲಭ್ಯವಿದೆ."},
+	"opensEditHistory": {"type":"string","value":"ಎಡಿಟ್ ಇತಿಹಾಸವನ್ನು ತೆರೆಯುತ್ತದೆ"},
+	"viewLatestPost": {"type":"string","value":"ಇತ್ತೀಚಿನ ಪೋಸ್ಟ್‌ ನೋಡಿ"},
+	"opensLatestPost": {"type":"string","value":"ಈ ಪೋಸ್ಟ್‌ನ ಹೊಸ ಆವೃತ್ತಿಯನ್ನು ತೆರೆಯುತ್ತದೆ"},
+	"mediaTaggedSelf": {"type":"string","value":"ನೀವು"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return [""," ಅವರಿಂದ"]}
+	},
+	"poll": {"type":"string","value":"ಸಮೀಕ್ಷೆ"},
+	"viewPoll": {"type":"string","value":"ಈ ಸಮೀಕ್ಷೆ ತೋರಿಸಿ"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" ಮತ"+n(e.count,"","ಗಳು")}
+	},
+	"pollEnded": {"type":"string","value":"ಅಂತಿಮ ಫಲಿತಾಂಶಗಳು"},
 	"retweet": {"type":"string","value":"ಮರುಟ್ವೀಟಿಸಿ"},
 	"unDoRetweet": {"type":"string","value":"ಮರುಟ್ವೀಟಿಸುವುದನ್ನು ರದ್ದುಮಾಡಿ"},
 	"quoteTweet": {"type":"string","value":"ಟ್ವೀಟ್ ಕೋಟ್ ಮಾಡಿ"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"ಮಾಧ್ಯಮ"},
 	"profileTabTitleLikes": {"type":"string","value":"ಇಷ್ಟಗಳು"},
 	"following": {"type":"string","value":"ಹಿಂಬಾಲಿಸಲಾಗುತ್ತಿದೆ"},
+	"follow": {"type":"string","value":"ಹಿಂಬಾಲಿಸು"},
+	"followBack": {"type":"string","value":"ಮರಳಿ ಹಿಂಬಾಲಿಸಿ"},
+	"followers": {"type":"string","value":"ಹಿಂಬಾಲಕರು"},
+	"followsYou": {"type":"string","value":"ನಿಮ್ಮನ್ನು ಹಿಂಬಾಲಿಸುತ್ತಾರೆ"},
+	"subscriptions": {"type":"string","value":"ಸಬ್‌ಸ್ಕ್ರಿಪ್ಷನ್‌ಗಳು"},
 	"unfollow": {"type":"string","value":"ಹಿ೦ಬಾಲಿಸದಿರು"},
 	"blocked": {"type":"string","value":"ತಡೆಹಿಡಿಯಲಾಗಿದೆ"},
 	"unblock": {"type":"string","value":"ತಡೆತೆರವು"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," ಅವರು ಹಿಂಬಾಲಿಸುತ್ತಿದ್ದಾರೆ"]}
+		"value": function(){return [""," ಅವರು ಹಿಂಬಾಲಿಸುತ್ತಿದ್ದಾರೆ"]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," ಮತ್ತು "," ಅವರು ಹಿಂಬಾಲಿಸುತ್ತಿದ್ದಾರೆ"]}
+		"value": function(){return [""," ಮತ್ತು "," ಅವರು ಹಿಂಬಾಲಿಸುತ್ತಿದ್ದಾರೆ"]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", ",", ಮತ್ತು "," ಅವರು ಹಿಂಬಾಲಿಸಿದ್ದಾರೆ"]}
+		"value": function(){return ["",", ",", ಮತ್ತು "," ಅವರು ಹಿಂಬಾಲಿಸಿದ್ದಾರೆ"]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", ",", ಮತ್ತು ನೀವು ಹಿಂಬಾಲಿಸುತ್ತಿರುವ "," ಇತರ ಜನರು ಹಿಂಬಾಲಿಸುತ್ತಿದ್ದಾರೆ"]}
+		"value": function(){return ["",", ",", ಮತ್ತು ನೀವು ಹಿಂಬಾಲಿಸುತ್ತಿರುವ "," ಇತರ ಜನರು ಹಿಂಬಾಲಿಸುತ್ತಿದ್ದಾರೆ"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ಟ್ವೀಟ್"+n(props.count,"","‌ಗಳು")]}
+		"value": function(){return [props.formattedCount+" ಟ್ವೀಟ್"+n(props.count,"","‌ಗಳು")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ಇಷ್ಟ"+n(props.count,"","ಗಳು")]}
+		"value": function(){return [props.formattedCount+" ಇಷ್ಟ"+n(props.count,"","ಗಳು")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೋಗಳು"+t(props.count,';/"',"")]}
+		"value": function(){return [props.formattedCount+" ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೋಗಳು"+n(props.count,';/"',"")]}
 	},
 	"home": {"type":"string","value":"ಹೋಮ್"},
 	"explore": {"type":"string","value":"ಅನ್ವೇಷಿಸಿ"},

@@ -15,7 +15,201 @@
 	},
 	"tweetsRetweeted": {
 		"type": "apkI18nTemplateFunction",
-		"value": "%s repostoval"
+		"value": "Uživatel %s retweetnul"
+	},
+	"replyAction": {
+		"type": "string",
+		"value": "Odpovědět"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Repost"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Lajknout"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Záložka"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Zobrazit více"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Zobrazit toto vlákno"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Předchozí obrázek"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Další obrázek"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Od"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5,0 hvězd – {{appNumRatings}} hodnocení"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Ověřené účty"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Správce"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Moder"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Člen"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "zobrazení"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Zobrazit citace"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Zobrazit aktivitu"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Komunitní poznámky"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Je tato poznámka užitečná?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "užitečnou"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "částečně užitečnou"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "neužitečnou"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Připravujeme"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Nyníza"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Odpověděl Grok v režimu Zábava"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Odpověděl Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Obrázek od funkce Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Zobrazit více"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Vytvořte si svou verzi funkce Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Zeptejte se Grok na něco"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} webových stránek a postů"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Související"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Lajky"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Poslední"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Seřadit odpovědi"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Poslední úprava"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "Existuje nová verze tohoto postu."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Otevře historii úprav"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "Zobrazit nejnovější post"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Otevře novou verzi tohoto postu"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Vy"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Oduživatele"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Hlasování"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Zobrazit toto hlasování"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Finální výsledky"
 	},
 	"retweet": {
 		"type": "string",
@@ -27,11 +221,11 @@
 	},
 	"quoteTweet": {
 		"type": "string",
-		"value": "Citace"
+		"value": "Citovat Tweet"
 	},
 	"profileTabTitleTimeline": {
 		"type": "string",
-		"value": "Posty"
+		"value": "Tweety"
 	},
 	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {
 		"type": "string",
@@ -52,6 +246,26 @@
 	"following": {
 		"type": "string",
 		"value": "Sleduji"
+	},
+	"follow": {
+		"type": "string",
+		"value": "Sledovat"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Také sledovat"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Sledující"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "vás sleduje"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Předplatná"
 	},
 	"unfollow": {
 		"type": "string",
@@ -87,12 +301,10 @@
 		"value": ["Uživatelesledujíuživatelé",",","adalšíuživatelé(","),kterésledujete"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}post"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Lajk"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
@@ -198,7 +410,7 @@
 	},
 	"postTweet": {
 		"type": "string",
-		"value": "Publikovat"
+		"value": "Tweetnout"
 	},
 	"settings": {
 		"type": "string",

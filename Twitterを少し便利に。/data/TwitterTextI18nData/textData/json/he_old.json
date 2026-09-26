@@ -9,6 +9,196 @@
 		"arguments": ["noun"],
 		"value": "עוקב{{noun}}"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "השב"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "לפרסם מחדש"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "סמן כאהוב"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "הוסף לסימניות"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "הצג עוד"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "הצג שרשור זה"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "תמונה קודמת"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "התמונה הבאה"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["מאת"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 כוכבים – {{appNumRatings}} דירוגים"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "חשבונות מאומתים"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "מנהל"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "מגשר"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "חבר"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "צפיות"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "הצגת ציטוטים"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "צפייה בפעילות"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "האם הערה זו הייתה מועילה?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "מועילה"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "די מועילה"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "לא מועילה"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "בקרוב"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["עכשיובמחירשל"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "תשובה באמצעות Grok במצב 'כיף'"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "תשובה באמצעות Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "תמונה שהופקה על ידי Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "הצג עוד"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "צור גרסה משלך עם Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "שאל את Grok בעצמך"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} דפי אינטרנט ופוסטים"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "רלוונטי"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "הערות \"אהבתי\""
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "אחרונים"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "מיון תשובות"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "נערך לאחרונה"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "קיימת גרסה חדשה של הפוסט הזה."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "פתיחת היסטוריית עריכה"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "הצג את הפוסט האחרון"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "פתיחת הגרסה החדשה של הפוסט הזה"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "אתה"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["מאת"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "סקר"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "הצג את הסקר הזה"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "תוצאות סופיות"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "צייץ מחדש"
@@ -20,6 +210,26 @@
 	"following": {
 		"type": "string",
 		"value": "עוקב"
+	},
+	"follow": {
+		"type": "string",
+		"value": "עקוב"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "עקוב בחזרה"
+	},
+	"followers": {
+		"type": "string",
+		"value": "עוקבים"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "עוקב אחריך"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "הרשמות כמנוי"
 	},
 	"unfollow": {
 		"type": "string",
@@ -55,12 +265,10 @@
 		"value": ["ברשימתהמעקבשל",",‏","ו-","אחריםשאחריהםאתהעוקב"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}ציו"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}אוהב"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",

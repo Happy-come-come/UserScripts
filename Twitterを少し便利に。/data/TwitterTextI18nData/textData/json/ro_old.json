@@ -17,6 +17,200 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "%s a redistribuit"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Răspunde"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Repostează"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Apreciază"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Marcaj"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Arată mai multe"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Afișează acest fir"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Imaginea anterioară"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Imaginea următoare"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Dela"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 stele – {{appNumRatings}} evaluări"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Conturi verificate"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Admin"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Mod."
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Membru al"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "vizualizări"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Vezi citări"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Vezi activitatea"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Notele Comunității"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Nota este utilă?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "Utilă"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "Oarecum utilă"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "Inutilă"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "În curând"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Acumla"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Răspuns de la Grok în modul distractiv"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Răspuns de la Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Imagine generată de Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Arată mai multe"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Creează o versiune proprie cu Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Întreabă-l pe Grok"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} pagini web și postări"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Relevante"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Aprecieri"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Recente"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Sortare răspunsuri"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Editat ultima dată"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "Există o versiune nouă a acestei postări."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Se deschide istoricul modificărilor"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "Vezi cea mai recentă postare"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Deschide versiunea nouă a acestei postări"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Ai"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Dela"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Sondaj"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Afișează acest sondaj"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Rezultatele finale"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Redistribuie"
@@ -53,6 +247,26 @@
 		"type": "string",
 		"value": "Urmărești"
 	},
+	"follow": {
+		"type": "string",
+		"value": "Urmărește"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Urmărește și tu"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Urmăritori"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Te urmărește"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Abonamente"
+	},
 	"unfollow": {
 		"type": "string",
 		"value": "Oprește urmărirea"
@@ -87,16 +301,13 @@
 		"value": ["Urmăritde",",","șideîncă","persoanepecareleurmărești"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Aprecier"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}fotografivideo"]
+		"type": "webI18nTemplateFunction"
 	},
 	"home": {
 		"type": "string",

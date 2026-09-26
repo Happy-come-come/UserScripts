@@ -17,6 +17,200 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "%s retwitteó"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Responder"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Repostear"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Me gusta"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Marcador"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Mostrar más"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Mostrar este hilo"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Imagen anterior"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Siguiente imagen"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["De"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 estrellas – {{appNumRatings}} calificaciones"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Cuentas verificadas"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Admin"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Mod"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Miembro"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "visualizaciones"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Ver citas"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Ver actividad"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Notas de la comunidad"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "¿Esta nota es útil?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "útil"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "algo útil"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "no útil"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Próximamente"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Valoractual"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Respuesta de Grok en modo Divertido"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Respuesta de Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Imagen de Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Mostrar más"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Crea tu versión con Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Pregúntale a Grok"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} páginas web y posts"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Relevante"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Me gusta"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Recientes"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Organizar respuestas"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Última edición"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "Hay una versión nueva de este post."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Abre el historial de ediciones"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "Ver el post más reciente"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Abre la nueva versión de este post"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Tú"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["De"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Encuesta"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Mostrar esta encuesta"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Resultados finales"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Retwittear"
@@ -53,6 +247,26 @@
 		"type": "string",
 		"value": "Siguiendo"
 	},
+	"follow": {
+		"type": "string",
+		"value": "Seguir"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Seguir tú también"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Seguidores"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Te sigue"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Suscripciones"
+	},
 	"unfollow": {
 		"type": "string",
 		"value": "Dejar de seguir"
@@ -87,8 +301,7 @@
 		"value": ["",",","y","másdelascuentasquesiguessiguenaesteusuario"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Tweet"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
@@ -117,7 +330,7 @@
 	},
 	"chat": {
 		"type": "string",
-		"value": "Chatear"
+		"value": "Chat"
 	},
 	"messages": {
 		"type": "string",

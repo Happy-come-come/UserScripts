@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": undefined,
 	"tweetsRetweeted": undefined,
+	"replyAction": {"type":"string","value":"Fúnlésì"},
+	"repostAction": {"type":"string","value":"Repost"},
+	"likeAction": {"type":"string","value":"Fẹ́rán"},
+	"bookmarkAction": {"type":"string","value":"Búkúmáàkì"},
+	"showMore": {"type":"string","value":"Fihàn sii"},
+	"viewThread": {"type":"string","value":"Ṣàfihàn tírẹ́ẹ̀dì yìí"},
+	"previousImage": {"type":"string","value":"Àwòran ti tẹ́lẹ̀"},
+	"nextImage": {"type":"string","value":"Àwọ̀ran tó kàn"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["From "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 stars – "+e.appNumRatings+" ratings"}
+	},
+	"verifiedAccount": {"type":"string","value":"Verified accounts"},
+	"communityAdminBadge": {"type":"string","value":"Olú"},
+	"communityModeratorBadge": {"type":"string","value":"Apẹ̀tù"},
+	"communityMemberBadge": {"type":"string","value":"Omọ-ẹgbẹ́"},
+	"viewsLabel": {"type":"string","value":"views"},
+	"viewQuotes": {"type":"string","value":"View quotes"},
+	"viewActivity": {"type":"string","value":"View activity"},
+	"communityNotes": undefined,
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Ǹjẹ́ àkọsílẹ̀ yí ṣe ìrànlọ́wọ́?"},
+	"communityNoteHelpful": {"type":"string","value":"Ranni Lọ́wọ́"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"Sá Ranni Lọ́wọ́"},
+	"communityNoteNotHelpful": {"type":"string","value":"Kò Rannilọ́wọ́"},
+	"cashtagComingSoon": {"type":"string","value":"Ó ń bọ̀ láìpẹ́"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Now at "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Answer by Grok in Fun Mode"},
+	"grokAnswer": {"type":"string","value":"Answer by Grok"},
+	"grokImageBy": {"type":"string","value":"Image by Grok"},
+	"grokShowMore": {"type":"string","value":"Fihàn sii"},
+	"grokCreateVersion": {"type":"string","value":"Create your version with Grok"},
+	"grokAskYourself": {"type":"string","value":"Ask Grok yourself"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" web page"+i(e.count,"","s")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" post"+i(e.count,"","s")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" web pages and posts"}
+	},
+	"mostRelevant": {"type":"string","value":"Relevant"},
+	"mostLiked": {"type":"string","value":"Àwọn ìfẹ́ràn"},
+	"mostRecent": {"type":"string","value":"Àìpẹ́"},
+	"sortReplies": {"type":"string","value":"Sort replies"},
+	"lastEdited": {"type":"string","value":"Àtúnṣe kẹyìn"},
+	"newPostVersion": {"type":"string","value":"There’s a new version of this post."},
+	"opensEditHistory": {"type":"string","value":"Ó ń ṣí ṣàtúnṣe ìtàn"},
+	"viewLatestPost": {"type":"string","value":"See the latest post"},
+	"opensLatestPost": {"type":"string","value":"Opens the new version of this post"},
+	"mediaTaggedSelf": {"type":"string","value":"Ìwọ"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["From "]}
+	},
+	"poll": {"type":"string","value":"Ìwádìí"},
+	"viewPoll": {"type":"string","value":"Show this poll"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(n){return"Àwọn ìbò "+n.formattedCount}
+	},
+	"pollEnded": {"type":"string","value":"Àwọn àbájáde ìkẹyìn"},
 	"retweet": {"type":"string","value":"Rìtíwìtì"},
 	"unDoRetweet": {"type":"string","value":"Dá Rìtwíìtì padà "},
 	"quoteTweet": undefined,
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": undefined,
 	"profileTabTitleLikes": undefined,
 	"following": {"type":"string","value":"Ń tẹ̀lé"},
+	"follow": {"type":"string","value":"Tẹ̀lé"},
+	"followBack": {"type":"string","value":"Follow back"},
+	"followers": {"type":"string","value":"Àwọn Olùtẹ̀lé"},
+	"followsYou": {"type":"string","value":"Ń tẹ̀lé ọ"},
+	"subscriptions": {"type":"string","value":"Àwọn Ìforúkọsílẹ̀"},
 	"unfollow": {"type":"string","value":"Má tẹ̀lé mọ́"},
 	"blocked": {"type":"string","value":"Ti Dínà"},
 	"unblock": {"type":"string","value":"Yọ ìdínà kúro"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Followed by "]}
+		"value": function(){return ["Followed by "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Followed by "," and "]}
+		"value": function(){return ["Followed by "," and "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Followed by ",", ",", and "]}
+		"value": function(){return ["Followed by ",", ",", and "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Followed by ",", ",", and "," others you follow"]}
+		"value": function(){return ["Followed by ",", ",", and "," others you follow"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Àwọn Twíìtì"]}
+		"value": function(){return [props.formattedCount+" Àwọn Twíìtì"]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Àwọn ìfẹ́ràn"]}
+		"value": function(){return [props.formattedCount+" Àwọn ìfẹ́ràn"]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" photos & videos"]}
+		"value": function(){return [props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"Ilé"},
 	"explore": {"type":"string","value":"Ìwádìí"},

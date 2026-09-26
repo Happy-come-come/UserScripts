@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="abbr_number_divider_billions">100000000</integer>
+    <integer name="abbr_number_divider_millions">10000</integer>
+    <integer name="abbr_number_divider_thousands">1000</integer>
+</resources>

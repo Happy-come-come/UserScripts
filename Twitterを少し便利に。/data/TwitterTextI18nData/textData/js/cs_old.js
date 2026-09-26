@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Připnuté"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"Uživatel %s retweetnul"},
+	"replyAction": {"type":"string","value":"Odpovědět"},
+	"repostAction": {"type":"string","value":"Repost"},
+	"likeAction": {"type":"string","value":"Lajknout"},
+	"bookmarkAction": {"type":"string","value":"Záložka"},
+	"showMore": {"type":"string","value":"Zobrazit více"},
+	"viewThread": {"type":"string","value":"Zobrazit toto vlákno"},
+	"previousImage": {"type":"string","value":"Předchozí obrázek"},
+	"nextImage": {"type":"string","value":"Další obrázek"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Od "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5,0 hvězd – "+e.appNumRatings+" hodnocení"}
+	},
+	"verifiedAccount": {"type":"string","value":"Ověřené účty"},
+	"communityAdminBadge": {"type":"string","value":"Správce"},
+	"communityModeratorBadge": {"type":"string","value":"Moder"},
+	"communityMemberBadge": {"type":"string","value":"Člen"},
+	"viewsLabel": {"type":"string","value":"zobrazení"},
+	"viewQuotes": {"type":"string","value":"Zobrazit citace"},
+	"viewActivity": {"type":"string","value":"Zobrazit aktivitu"},
+	"communityNotes": {"type":"string","value":"Komunitní poznámky"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Je tato poznámka užitečná?"},
+	"communityNoteHelpful": {"type":"string","value":"užitečnou"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"částečně užitečnou"},
+	"communityNoteNotHelpful": {"type":"string","value":"neužitečnou"},
+	"cashtagComingSoon": {"type":"string","value":"Připravujeme"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Nyní za "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Odpověděl Grok v režimu Zábava"},
+	"grokAnswer": {"type":"string","value":"Odpověděl Grok"},
+	"grokImageBy": {"type":"string","value":"Obrázek od funkce Grok"},
+	"grokShowMore": {"type":"string","value":"Zobrazit více"},
+	"grokCreateVersion": {"type":"string","value":"Vytvořte si svou verzi funkce Grok"},
+	"grokAskYourself": {"type":"string","value":"Zeptejte se Grok na něco"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" webov"+r(e.count,"é stránky","é stránky","á stránka","ých stránek")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" post"+r(e.count,"y","y","","y")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" webových stránek a postů"}
+	},
+	"mostRelevant": {"type":"string","value":"Související"},
+	"mostLiked": {"type":"string","value":"Lajky"},
+	"mostRecent": {"type":"string","value":"Poslední"},
+	"sortReplies": {"type":"string","value":"Seřadit odpovědi"},
+	"lastEdited": {"type":"string","value":"Poslední úprava"},
+	"newPostVersion": {"type":"string","value":"Existuje nová verze tohoto postu."},
+	"opensEditHistory": {"type":"string","value":"Otevře historii úprav"},
+	"viewLatestPost": {"type":"string","value":"Zobrazit nejnovější post"},
+	"opensLatestPost": {"type":"string","value":"Otevře novou verzi tohoto postu"},
+	"mediaTaggedSelf": {"type":"string","value":"Vy"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Od uživatele "]}
+	},
+	"poll": {"type":"string","value":"Hlasování"},
+	"viewPoll": {"type":"string","value":"Zobrazit toto hlasování"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" hlas"+n(e.count,"y","y","","ů")}
+	},
+	"pollEnded": {"type":"string","value":"Finální výsledky"},
 	"retweet": {"type":"string","value":"Retweetnout"},
 	"unDoRetweet": {"type":"string","value":"Zrušit Retweet"},
 	"quoteTweet": {"type":"string","value":"Citovat Tweet"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"Média"},
 	"profileTabTitleLikes": {"type":"string","value":"Lajky"},
 	"following": {"type":"string","value":"Sleduji"},
+	"follow": {"type":"string","value":"Sledovat"},
+	"followBack": {"type":"string","value":"Také sledovat"},
+	"followers": {"type":"string","value":"Sledující"},
+	"followsYou": {"type":"string","value":"vás sleduje"},
+	"subscriptions": {"type":"string","value":"Předplatná"},
 	"unfollow": {"type":"string","value":"Přestat sledovat"},
 	"blocked": {"type":"string","value":"Blokovaný"},
 	"unblock": {"type":"string","value":"Odblokovat"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Uživatele sleduje "]}
+		"value": function(){return ["Uživatele sleduje "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Uživatele sledují "," a "]}
+		"value": function(){return ["Uživatele sledují "," a "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Uživatel sledován uživateli ",", "," a "]}
+		"value": function(){return ["Uživatel sledován uživateli ",", "," a "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Uživatele sledují uživatelé ",", "," a další uživatelé (","), které sledujete"]}
+		"value": function(){return ["Uživatele sledují uživatelé ",", "," a další uživatelé (","), které sledujete"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Tweet"+n(props.count,"y","y","","ů")]}
+		"value": function(){return [props.formattedCount+" Tweet"+n(props.count,"y","y","","ů")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Lajk"+n(props.count,"y","y","","ů")]}
+		"value": function(){return [props.formattedCount+" Lajk"+n(props.count,"y","y","","ů")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" fotografie a videa"]}
+		"value": function(){return [props.formattedCount+" fotografie a videa"]}
 	},
 	"home": {"type":"string","value":"Hlavní stránka"},
 	"explore": {"type":"string","value":"Prozkoumat"},

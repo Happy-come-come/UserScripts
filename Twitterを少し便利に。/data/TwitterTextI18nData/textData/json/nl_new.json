@@ -17,6 +17,200 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "%s heeft deze post opnieuw geplaatst"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Beantwoorden"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Repost"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Leuk"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Bladwijzer"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Meer weergeven"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Deze collectie weergeven"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Vorige afbeelding"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Volgende afbeelding"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Van"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5 sterren – {{appNumRatings}} beoordelingen"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Geverifieerde accounts"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Beh."
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Mod."
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Lid"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "weergaven"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Geciteerde posts bekijken"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Activiteit bekijken"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Community-opmerkingen"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Is deze opmerking nuttig?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "nuttig"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "een beetje nuttig"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "niet nuttig"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Binnenkort beschikbaar"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Nuvoor"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Antwoord van Grok in de Funmodus"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Antwoord van Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Afbeelding van Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Meer weergeven"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Maak jouw versie met Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Vraag het zelf aan Grok"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} webpagina's en posts"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Relevant"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Vind-ik-leuks"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Recent"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Antwoorden sorteren"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Laatste bewerking"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "Er is een nieuwe versie van deze post."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Hierdoor wordt de bewerkingsgeschiedenis geopend"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "De nieuwste post bekijken"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Hierdoor wordt de nieuwe versie van deze post geopend"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Jij"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Van"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Poll"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Deze poll weergeven"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Eindresultaten"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Repost"
@@ -53,6 +247,26 @@
 		"type": "string",
 		"value": "Volgend"
 	},
+	"follow": {
+		"type": "string",
+		"value": "Volgen"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Ook volgen"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Volgers"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Volgt jou"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Abonnementen"
+	},
 	"unfollow": {
 		"type": "string",
 		"value": "Ontvolg"
@@ -87,12 +301,10 @@
 		"value": ["Gevolgddoor",",","en","anderendiejijvolgt"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}post"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Vind-ik-leuk"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",

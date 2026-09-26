@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>Saat ilmoituksen uusista julkaisuista.</item>
+        <item>Saat ilmoituksen uusista julkaisuista ja vastauksista.</item>
+        <item>Saat ilmoituksen uusista julkaisuista Tilaajille.</item>
+        <item>Saat ilmoituksen uusista live-videojulkaisuista.</item>
+        <item>Et enää saa ilmoituksia uusista julkaisuista.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>Kaikki julkaisut</item>
+        <item>Kaikki julkaisut ja vastaukset</item>
+        <item>Vain julkaisut Tilaajille</item>
+        <item>Vain live-video</item>
+        <item>Pois</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>Saa ilmoitus kaikista tämän tilin julkaisuista.</item>
+        <item>Saa ilmoitus tämän tilin julkaisuista ja vastauksista.</item>
+        <item>Saa ilmoitus vain julkaisuista Tilaajille.</item>
+        <item>Saa ilmoitus vain live-lähetyksistä.</item>
+        <item>Poista käytöstä ilmoitus tämän tilin julkaisuista.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>Julkaise linkki</item>
+        <item>Kopioi linkki</item>
+        <item>Lähetä linkki</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>Miten tyytyväinen olet kaikkiaan yritykseen %1$s?</item>
+        <item>Miten tyytyväinen olet yritykseen %1$s?</item>
+        <item>Miten tyytyväinen olit kaikkiaan äskettäiseen kokemukseesi yrityksestä %1$s?</item>
+        <item>Minkä kokonaisarvosanan %1$s saa sinulta?</item>
+        <item>Minkä kokonaisarvosanan %1$s saa sinulta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta tähänastisen kokemuksesi perusteella?</item>
+        <item>Minkä arvosanan %1$s saa sinulta Twitter-toiminnastaan?</item>
+        <item>Olitko tyytyväinen asiointiisi yrityksen %1$s kanssa?</item>
+        <item>Miten hyvin %1$s vastaa odotuksiasi?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vierailustasi?</item>
+        <item>Minkä arvosanan %1$s saa sinulta palvelusta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastikään saamastasi palvelusta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta palvelusta?</item>
+        <item>Olitko tyytyväinen asioinnin lopputulokseen yrityksen %1$s kanssa?</item>
+        <item>Minkä arvosanan %1$s saa sinulta pulmasi ratkaisemisesta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastausajasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta palvelunopeudesta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta asiasi ratkaisuun kuluneesta ajasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta pulmasi ratkaisunopeudesta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta asiasi ratkaisunopeudesta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta asiakaspalvelijan osaamisesta?</item>
+        <item>Miten tyytyväinen olit sinua auttaneeseen yrityksen %1$s asiakaspalvelijaan?</item>
+        <item>Miten tyytyväinen olit sinua auttaneeseen yrityksen %1$s asiantuntijaan?</item>
+        <item>Miten tyytyväinen olit sinua auttaneeseen yrityksen %1$s edustajaan?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastikään saamastasi pankkipalvelusta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta tapahtumasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta laskunmaksusta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta ostotapahtumasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta ostoskokemuksesta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta toimituksesta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vuokrauspalvelusta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta käynnistäsi myymälässä?</item>
+        <item>Minkä arvosanan %1$s saa sinulta äskettäisestä hotelliyöpymisestäsi?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastikään tekemästäsi lentomatkasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastikään saamastasi kyydistä?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastikään tekemästäsi matkasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta viimeaikaisesta käynnistäsi?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastikään nauttimastasi ateriasta?</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 päivää</item>
+        <item>12 kuukautta</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0,25x</item>
+        <item>0,5x</item>
+        <item>0,75x</item>
+        <item>Normaali</item>
+        <item>1,25x</item>
+        <item>1,5x</item>
+        <item>2x</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>Kuinka arvioisit kokonaistyytyväisyytesi yritykseen %1$s?</item>
+        <item>Kuinka tyytyväinen olet yritykseen %1$s?</item>
+        <item>Kuinka tyytyväinen olit kaikkiaan asiointikokemukseen yrityksen %1$s kanssa?</item>
+        <item>Kuinka arvioisit kokonaiskokemuksen yrityksen %1$s kanssa?</item>
+        <item>Kuinka arvioisit kokonaiskokemuksesi yrityksen %1$s kanssa?</item>
+        <item>Minkä arvosanan %1$s saa sinulta tähänastisen kokemuksesi perusteella?</item>
+        <item>Minkä arvosanan %1$s saa sinulta X-kokemuksesi perusteella?</item>
+        <item>Olitko tyytyväinen äskettäiseen kokemukseesi yrityksen %1$s kanssa?</item>
+        <item>Kuinka hyvin %1$s täyttää odotuksesi?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vierailukokemuksestasi?</item>
+        <item>Kuinka arvioisit palvelukokemuksen yrityksen %1$s kanssa?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastikään saamastasi palvelusta?</item>
+        <item>Kuinka arvioisit yritykseltä %1$s saamasi palvelun?</item>
+        <item>Olitko tyytyväinen keskustelun lopputulokseen yrityksen %1$s kanssa?</item>
+        <item>Minkä arvosanan %1$s saa sinulta ongelmasi ratkaisemisesta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastausajasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta palvelun nopeudesta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta ongelman ratkaisuajasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta ongelmasi ratkaisunopeudesta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta ongelman ratkaisuajasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta asiakaspalvelijan osaamisesta?</item>
+        <item>Kuinka tyytyväinen olit sinua auttaneeseen yrityksen %1$s asiakaspalvelijaan?</item>
+        <item>Kuinka tyytyväinen olit sinua auttaneeseen yrityksen %1$s asiantuntijaan?</item>
+        <item>Kuinka tyytyväinen olit sinua auttaneeseen yrityksen %1$s edustajaan?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastikään saamastasi pankkipalvelusta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta tapahtumasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta laskunmaksusta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta ostotapahtumasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta ostoskokemuksesta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta toimituksesta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vuokrauspalvelusta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta viimeaikaisesta käynnistäsi myymälässä?</item>
+        <item>Minkä arvosanan %1$s saa sinulta äskettäisestä hotelliyöpymisestäsi?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastikään tekemästäsi lentomatkasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastikään saamastasi kyydistä?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastikään tekemästäsi matkasta?</item>
+        <item>Minkä arvosanan %1$s saa sinulta viimeaikaisesta käynnistäsi?</item>
+        <item>Minkä arvosanan %1$s saa sinulta vastikään nauttimastasi ateriasta?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>Kuinka todennäköisesti suosittelisit yritystä %1$s ystävälle?</item>
+        <item>Kuinka todennäköisesti suosittelisit yritystä %1$s ystävällesi?</item>
+        <item>Kuinka todennäköisesti suosittelisit yritystä %1$s kollegalle?</item>
+        <item>Kuinka todennäköisesti suosittelisit yritystä %1$s perheenjäsenelle?</item>
+        <item>Kuinka todennäköisesti suosittelisit yritystä %1$s jollekulle muulle?</item>
+        <item>Kuinka todennäköisesti suosittelisit yritystä %1$s ystävälle tai kollegalle?</item>
+        <item>Kuinka todennäköisesti asioit yrityksessä %1$s tulevaisuudessa?</item>
+        <item>Kuinka todennäköisesti suosittelisit yritystä %1$s?</item>
+        <item>Suosittelisitko yritystä %1$s ystävälle tai kollegalle?</item>
+        <item>Kuinka todennäköisesti suosittelisit kokemustasi yrityksen kanssa %1$s ystävälle?</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>Hyvä katsojamäärä</item>
+        <item>Myönteinen yhteisö</item>
+        <item>Videon laatu</item>
+        <item>Kiinnostava keskustelu</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>Alhainen katsojamäärä</item>
+        <item>Häirintä</item>
+        <item>Ongelmat videossa</item>
+        <item>Roskapostia keskustelussa</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 minuuttia</item>
+        <item>30 minuuttia</item>
+        <item>1 tunti</item>
+        <item>2 tuntia</item>
+        <item>4 tuntia</item>
+        <item>Päivittäin</item>
+    </string-array>
+</resources>

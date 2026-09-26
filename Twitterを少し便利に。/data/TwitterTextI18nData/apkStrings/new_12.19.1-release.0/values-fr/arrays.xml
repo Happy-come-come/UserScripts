@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>Vous recevrez des notifications pour les nouveaux posts.</item>
+        <item>Vous recevrez des notifications pour les nouveaux posts et les nouvelles réponses.</item>
+        <item>Vous recevrez des notifications pour les nouveaux posts réservés aux Souscripteurs.</item>
+        <item>Vous recevrez des notifications pour les nouveaux posts sur les vidéos en direct.</item>
+        <item>Vous ne recevrez plus de notifications pour les nouveaux posts.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>Tous les posts</item>
+        <item>Tous les posts et toutes les réponses</item>
+        <item>"Uniquement les posts liés à l'abonnement"</item>
+        <item>Uniquement les vidéos en direct</item>
+        <item>Désactivé</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>Recevez des notifications pour tous les posts de ce compte.</item>
+        <item>Recevez des notifications pour les posts et les réponses de ce compte.</item>
+        <item>Recevez des notifications uniquement pour les posts réservés aux Souscripteurs.</item>
+        <item>Recevez des notifications uniquement pour les diffusions en direct.</item>
+        <item>Désactivez les notifications pour les posts de ce compte.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>Poster le lien</item>
+        <item>Copier le lien</item>
+        <item>Envoyer le lien</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>Quel est votre niveau de satisfaction générale avec %1$s ?</item>
+        <item>Dans quelle mesure êtes-vous satisfait de %1$s ?</item>
+        <item>Globalement, quel est votre degré de satisfaction concernant votre récente expérience avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre expérience globale avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre expérience globale avec %1$s ?</item>
+        <item>"Comment évalueriez-vous votre expérience jusqu'ici avec %1$s ?"</item>
+        <item>Comment évalueriez-vous votre expérience avec %1$s sur Twitter ?</item>
+        <item>Avez-vous été satisfait de votre récente expérience avec %1$s ?</item>
+        <item>Dans quelle mesure %1$s a-t-il répondu à vos attentes ?</item>
+        <item>Comment évalueriez-vous votre expérience client avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre expérience de service avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre récente expérience de service avec %1$s ?</item>
+        <item>Comment évalueriez-vous le service fourni par %1$s ?</item>
+        <item>Avez-vous été satisfait du résultat de votre interaction avec %1$s ?</item>
+        <item>Comment évalueriez-vous la capacité de %1$s à résoudre votre problème ?</item>
+        <item>Comment évalueriez-vous le délai de réponse de %1$s ?</item>
+        <item>Comment évalueriez-vous la rapidité du service de %1$s ?</item>
+        <item>Comment évalueriez-vous la durée de résolution avec %1$s ?</item>
+        <item>Comment évalueriez-vous le temps nécessaire à la résolution de votre problème avec %1$s ?</item>
+        <item>Comment évalueriez-vous la vitesse de résolution avec %1$s ?</item>
+        <item>"Comment évalueriez-vous l'expertise du conseiller %1$s ?"</item>
+        <item>"Êtes-vous satisfait de l'aide apportée par l'agent de %1$s ?"</item>
+        <item>Quel est votre degré de satisfaction avec le spécialiste %1$s qui vous a aidé ?</item>
+        <item>Quel est votre degré de satisfaction avec le représentant de %1$s qui vous a aidé ?</item>
+        <item>Comment évalueriez-vous votre récente expérience bancaire avec %1$s ?</item>
+        <item>"Comment évalueriez-vous l'expérience globale de l'évènement à %1$s ?"</item>
+        <item>Comment évalueriez-vous votre expérience de paiement de facture avec %1$s ?</item>
+        <item>"Comment évalueriez-vous votre expérience d'achat avec %1$s ?"</item>
+        <item>"Comment évalueriez-vous votre expérience d'achat avec %1$s ?"</item>
+        <item>Comment évalueriez-vous votre livraison avec %1$s?</item>
+        <item>Comment évalueriez-vous votre expérience de location avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre récente visite du magasin %1$s ?</item>
+        <item>"Comment évalueriez-vous votre récent séjour dans l'hôtel %1$s ?"</item>
+        <item>Comment évalueriez-vous votre récent vol avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre récent trajet avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre récent voyage avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre récente visite chez %1$s ?</item>
+        <item>Comment évalueriez-vous votre récent repas chez %1$s ?</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 jours</item>
+        <item>12 mois</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>x 0,25</item>
+        <item>x 0,5</item>
+        <item>x 0,75</item>
+        <item>Normal</item>
+        <item>x 1,25</item>
+        <item>x 1,5</item>
+        <item>x 2</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>Quel est votre niveau global de satisfaction avec %1$s ?</item>
+        <item>À quel point êtes-vous satisfait de %1$s ?</item>
+        <item>Globalement, quel est votre degré de satisfaction concernant votre expérience récente avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre expérience globale avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre expérience globale avec %1$s ?</item>
+        <item>"Comment évalueriez-vous votre expérience jusqu'à maintenant avec %1$s ?"</item>
+        <item>Comment évalueriez‑vous votre expérience sur X avec %1$s ?</item>
+        <item>Êtes-vous satisfait de votre expérience récente avec %1$s ?</item>
+        <item>Comment %1$s a-t-il répondu à vos attentes ?</item>
+        <item>Comment évalueriez-vous votre expérience de visiteur avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre expérience de service avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre récente expérience de service avec %1$s ?</item>
+        <item>Comment évalueriez-vous le service que vous avez reçu de %1$s ?</item>
+        <item>Êtes-vous satisfait du résultat de votre interaction avec %1$s ?</item>
+        <item>Comment évalueriez-vous la capacité de %1$s à résoudre votre problème ?</item>
+        <item>Comment évalueriez-vous le temps de réponse de %1$s ?</item>
+        <item>Comment évalueriez-vous la rapidité du service avec %1$s ?</item>
+        <item>Comment évalueriez-vous le temps de résolution avec %1$s ?</item>
+        <item>Comment évalueriez-vous la rapidité à résoudre votre problème avec %1$s ?</item>
+        <item>Comment évalueriez-vous la vitesse de résolution de %1$s ?</item>
+        <item>"Comment évalueriez-vous l'expertise du conseiller %1$s ?"</item>
+        <item>"Quel est votre degré de satisfaction concernant l'agent de %1$s qui vous a aidé ?"</item>
+        <item>Quel est votre degré de satisfaction concernant le spécialiste de %1$s qui vous a aidé ?</item>
+        <item>Quel est votre degré de satisfaction concernant le représentant de %1$s qui vous a aidé ?</item>
+        <item>Comment évalueriez-vous votre récente expérience bancaire avec %1$s ?</item>
+        <item>"Comment évalueriez-vous votre expérience globale de l'événement de %1$s ?"</item>
+        <item>Comment évalueriez-vous votre expérience de règlement de facture avec %1$s ?</item>
+        <item>"Comment évalueriez-vous votre expérience d'achat avec %1$s ?"</item>
+        <item>Comment évalueriez-vous votre expérience de shopping avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre expérience de livraison avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre expérience de location avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre récente visite au magasin %1$s ?</item>
+        <item>"Comment évalueriez-vous votre séjour récent à l'hôtel %1$s ?"</item>
+        <item>Comment évalueriez-vous votre vol récent avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre course récente avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre récent voyage avec %1$s ?</item>
+        <item>Comment évalueriez-vous votre visite récente chez %1$s ?</item>
+        <item>Comment évalueriez-vous votre récent repas chez %1$s ?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>Quelle est la probabilité que vous recommandiez %1$s à un ami ?</item>
+        <item>Quelle est la probabilité que vous recommandiez %1$s à un ami ?</item>
+        <item>Quelle est la probabilité que vous recommandiez %1$s à un collègue ?</item>
+        <item>Quelle est la probabilité que vous recommandiez %1$s à un membre de votre famille ?</item>
+        <item>Quelle est la probabilité que vous recommandiez %1$s à une autre personne ?</item>
+        <item>Quelle est la probabilité que vous recommandiez %1$s à un ami ou collègue ?</item>
+        <item>"Quelle est la probabilité que vous fassiez des achats chez %1$s à l'avenir ?"</item>
+        <item>Quelle est la probabilité que vous recommandiez %1$s ?</item>
+        <item>Recommanderiez-vous %1$s à un ami ou collègue ?</item>
+        <item>Quelle est la probabilité que vous recommandiez votre expérience avec %1$s à un ami ?</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>Nombre de spectateurs adéquat</item>
+        <item>Communauté positive</item>
+        <item>Qualité des vidéos</item>
+        <item>Discussion engageante</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>Faible nombre de spectateurs</item>
+        <item>Harcèlement</item>
+        <item>Problèmes de vidéo</item>
+        <item>Spam dans la discussion</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 heure</item>
+        <item>2 heures</item>
+        <item>4 heures</item>
+        <item>Une fois par jour</item>
+    </string-array>
+</resources>

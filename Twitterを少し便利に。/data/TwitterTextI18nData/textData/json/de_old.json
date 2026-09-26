@@ -17,6 +17,200 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "%s hat retweetet"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Antworten"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Reposten"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Gefällt mir"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Lesezeichen"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Mehr anzeigen"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Diesen Thread anzeigen"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Vorheriges Bild"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Nächstes Bild"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Von"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5,0 Sterne – {{appNumRatings}} Bewertungen"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Verifizierte Accounts"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Admin"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Mod"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Mitglied"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "Mal angezeigt"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Zitate anzeigen"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Aktivität anzeigen"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Kollektive Anmerkungen"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Ist diese Notiz hilfreich?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "hilfreich"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "etwas hilfreich"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "nicht hilfreich"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Demnächst verfügbar"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Jetztbei"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Antwort von Grok im Spaßmodus"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Antwort von Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Bild von Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Mehr anzeigen"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Deine Version mit Grok erstellen"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Grok selbst fragen"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} Webseiten und Posts"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Relevant"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Gefällt mir"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Neueste"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Antworten sortieren"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Zuletzt bearbeitet"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "Es gibt eine neue Version dieses Posts."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Öffnet den Änderungsverlauf"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "Neuesten Post anzeigen"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Öffnet die neue Version dieses Posts"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Du"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Von"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Umfrage"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Diese Umfrage anzeigen"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Endergebnisse"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Retweeten"
@@ -53,6 +247,26 @@
 		"type": "string",
 		"value": "Folge ich"
 	},
+	"follow": {
+		"type": "string",
+		"value": "Folgen"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Ebenfalls folgen"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Follower"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Folgt Dir"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Abonnements"
+	},
 	"unfollow": {
 		"type": "string",
 		"value": "Entfolgen"
@@ -87,12 +301,10 @@
 		"value": ["Gefolgtvon",",","und","weiterenPersonen,denendufolgst"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Tweet"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}„Gefälltmir“-Angabe"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",

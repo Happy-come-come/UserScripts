@@ -15,7 +15,201 @@
 	},
 	"tweetsRetweeted": {
 		"type": "apkI18nTemplateFunction",
-		"value": "%s препубликува"
+		"value": "%s ретуитна"
+	},
+	"replyAction": {
+		"type": "string",
+		"value": "Отговор"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Препубликуване"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Харесване"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Добавяне към отметките"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Показване на още"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Покажи тази нишка"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Предишното изображение"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Следващото изображение"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["От"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 звезди – {{appNumRatings}} оценки"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Потвърдени профили"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Адм."
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Мод."
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Член"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "преглеждания"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Преглед на цитатите"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Преглед на дейността"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Бележки на общността"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Тази бележка полезна ли е?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "полезна"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "донякъде полезна"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "безполезна"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Очаквай скоро"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Сегав"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Отговор от Grok в забавен режим"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Отговор от Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Изображение от Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Показване на още"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Създай своя собствена версия с помощта на Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Задай въпрос на Grok"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} уеб страници и публикации"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Уместно"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Харесвания"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Скорошни"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Сортиране на отговорите"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Последна редакция"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "Има нова версия на тази публикация."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Отваря историята на редакциите"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "Преглед на най-новата публикация"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Отваря новата версия на тази публикация"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Ти"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["От"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Анкета"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Показване на тази анкета"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Крайни резултати"
 	},
 	"retweet": {
 		"type": "string",
@@ -27,11 +221,11 @@
 	},
 	"quoteTweet": {
 		"type": "string",
-		"value": "Цитат"
+		"value": "Цитиране на туита"
 	},
 	"profileTabTitleTimeline": {
 		"type": "string",
-		"value": "Публикации"
+		"value": "Туитове"
 	},
 	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {
 		"type": "string",
@@ -52,6 +246,26 @@
 	"following": {
 		"type": "string",
 		"value": "Следвано"
+	},
+	"follow": {
+		"type": "string",
+		"value": "Следване"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Следване от теб"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Последователи"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Следва те"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Абонаменти"
 	},
 	"unfollow": {
 		"type": "string",
@@ -87,12 +301,10 @@
 		"value": ["Следван/аот",",","иоще",",коитоследваш"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}публикаци"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}харесван"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
@@ -198,7 +410,7 @@
 	},
 	"postTweet": {
 		"type": "string",
-		"value": "Публикуване"
+		"value": "Туит"
 	},
 	"settings": {
 		"type": "string",

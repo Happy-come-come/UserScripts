@@ -10,16 +10,98 @@ const text = {
 		"value": function(e){return"Следван(а)"+e.noun}
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Закачени"},
-	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s препубликува"},
+	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s ретуитна"},
+	"replyAction": {"type":"string","value":"Отговор"},
+	"repostAction": {"type":"string","value":"Препубликуване"},
+	"likeAction": {"type":"string","value":"Харесване"},
+	"bookmarkAction": {"type":"string","value":"Добавяне към отметките"},
+	"showMore": {"type":"string","value":"Показване на още"},
+	"viewThread": {"type":"string","value":"Покажи тази нишка"},
+	"previousImage": {"type":"string","value":"Предишното изображение"},
+	"nextImage": {"type":"string","value":"Следващото изображение"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["От "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 звезди – "+e.appNumRatings+" оценки"}
+	},
+	"verifiedAccount": {"type":"string","value":"Потвърдени профили"},
+	"communityAdminBadge": {"type":"string","value":"Адм."},
+	"communityModeratorBadge": {"type":"string","value":"Мод."},
+	"communityMemberBadge": {"type":"string","value":"Член"},
+	"viewsLabel": {"type":"string","value":"преглеждания"},
+	"viewQuotes": {"type":"string","value":"Преглед на цитатите"},
+	"viewActivity": {"type":"string","value":"Преглед на дейността"},
+	"communityNotes": {"type":"string","value":"Бележки на общността"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Тази бележка полезна ли е?"},
+	"communityNoteHelpful": {"type":"string","value":"полезна"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"донякъде полезна"},
+	"communityNoteNotHelpful": {"type":"string","value":"безполезна"},
+	"cashtagComingSoon": {"type":"string","value":"Очаквай скоро"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Сега в "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Отговор от Grok в забавен режим"},
+	"grokAnswer": {"type":"string","value":"Отговор от Grok"},
+	"grokImageBy": {"type":"string","value":"Изображение от Grok"},
+	"grokShowMore": {"type":"string","value":"Показване на още"},
+	"grokCreateVersion": {"type":"string","value":"Създай своя собствена версия с помощта на Grok"},
+	"grokAskYourself": {"type":"string","value":"Задай въпрос на Grok"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" уеб страниц"+t(e.count,"а","и")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" публикаци"+t(e.count,"я","и")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" уеб страници и публикации"}
+	},
+	"mostRelevant": {"type":"string","value":"Уместно"},
+	"mostLiked": {"type":"string","value":"Харесвания"},
+	"mostRecent": {"type":"string","value":"Скорошни"},
+	"sortReplies": {"type":"string","value":"Сортиране на отговорите"},
+	"lastEdited": {"type":"string","value":"Последна редакция"},
+	"newPostVersion": {"type":"string","value":"Има нова версия на тази публикация."},
+	"opensEditHistory": {"type":"string","value":"Отваря историята на редакциите"},
+	"viewLatestPost": {"type":"string","value":"Преглед на най-новата публикация"},
+	"opensLatestPost": {"type":"string","value":"Отваря новата версия на тази публикация"},
+	"mediaTaggedSelf": {"type":"string","value":"Ти"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["От "]}
+	},
+	"poll": {"type":"string","value":"Анкета"},
+	"viewPoll": {"type":"string","value":"Показване на тази анкета"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" глас"+t(e.count,"","а")}
+	},
+	"pollEnded": {"type":"string","value":"Крайни резултати"},
 	"retweet": {"type":"string","value":"Препубликуване"},
 	"unDoRetweet": {"type":"string","value":"Отмяна на препубликуване"},
-	"quoteTweet": {"type":"string","value":"Цитат"},
-	"profileTabTitleTimeline": {"type":"string","value":"Публикации"},
+	"quoteTweet": {"type":"string","value":"Цитиране на туита"},
+	"profileTabTitleTimeline": {"type":"string","value":"Туитове"},
 	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {"type":"string","value":"Отговори"},
 	"profileTabTitleHighlights": {"type":"string","value":"Акценти"},
 	"profileTabTitleMedia": {"type":"string","value":"Мултимедийно съдържание"},
 	"profileTabTitleLikes": {"type":"string","value":"Харесвания"},
 	"following": {"type":"string","value":"Следвано"},
+	"follow": {"type":"string","value":"Следване"},
+	"followBack": {"type":"string","value":"Следване от теб"},
+	"followers": {"type":"string","value":"Последователи"},
+	"followsYou": {"type":"string","value":"Следва те"},
+	"subscriptions": {"type":"string","value":"Абонаменти"},
 	"unfollow": {"type":"string","value":"Спиране на следването"},
 	"blocked": {"type":"string","value":"Блокиран/а"},
 	"unblock": {"type":"string","value":"Разблокиране"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Следван/а от "]}
+		"value": function(){return ["Следван/а от "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Следван/а от "," и "]}
+		"value": function(){return ["Следван/а от "," и "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Следван/а от ",", "," и "]}
+		"value": function(){return ["Следван/а от ",", "," и "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Следван/а от ",", "," и още ",", които следваш"]}
+		"value": function(){return ["Следван/а от ",", "," и още ",", които следваш"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" публикаци"+t(props.count,"я","и")]}
+		"value": function(){return [props.formattedCount+" публикаци"+t(props.count,"я","и")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" харесван"+t(props.count,"е","ия")]}
+		"value": function(){return [props.formattedCount+" харесван"+t(props.count,"е","ия")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" снимки и видеоклипове"]}
+		"value": function(){return [props.formattedCount+" снимки и видеоклипове"]}
 	},
 	"home": {"type":"string","value":"Начало"},
 	"explore": {"type":"string","value":"Изследване"},
@@ -88,7 +170,7 @@ const text = {
 		"arguments": ["screenName"],
 		"value": function(e){return"Превключване към @"+e.screenName}
 	},
-	"postTweet": {"type":"string","value":"Публикуване"},
+	"postTweet": {"type":"string","value":"Туит"},
 	"settings": {"type":"string","value":"Настройки"},
 	"now": {"type":"string","value":"Сега"},
 	"day": {"type":"string","value":"Ден"},

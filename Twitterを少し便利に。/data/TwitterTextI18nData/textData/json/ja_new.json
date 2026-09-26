@@ -17,6 +17,203 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "%sさんがリポストしました"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "返信"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "リポスト"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "いいね"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "ブックマーク"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "さらに表示"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "このスレッドを表示"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "前の画像"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "次の画像"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["","から"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 – {{appNumRatings}} 評価"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "認証済みアカウント"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "管理者"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "モ"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "メンバー"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "件の表示"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "引用を表示"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "アクティビティを表示"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "コミュニティノート"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "このノートは役に立ちましたか？"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "役に立った"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "少し役に立った"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "役に立たなかった"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "近日公開"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["現在"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Grok（ユーモアモード）による回答"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Grokによる回答"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Grokによる画像"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "さらに表示"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Grokでオリジナルバージョンを作成"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Grokに聞いてみる"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} ウェブページ"
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} 件のポスト"
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}}件のウェブページとポスト"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "関連性が高い"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "いいね"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "最新"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "返信を並べ替え"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "最終更新"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "このポストには新しいバージョンがあります"
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "編集履歴を開きます"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "最新ポストを表示"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "このポストの新しいバージョンを開きます"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "自分"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["投稿者:"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "投票"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "この投票を表示"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}}票"
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "最終結果"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "リポスト"
@@ -52,6 +249,26 @@
 	"following": {
 		"type": "string",
 		"value": "フォロー中"
+	},
+	"follow": {
+		"type": "string",
+		"value": "フォロー"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "フォローバック"
+	},
+	"followers": {
+		"type": "string",
+		"value": "フォロワー"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "フォローされています"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "サブスクリプション"
 	},
 	"unfollow": {
 		"type": "string",
@@ -157,7 +374,7 @@
 	},
 	"creatorStudio": {
 		"type": "string",
-		"value": "Creator Studio"
+		"value": "クリエイタースタジオ"
 	},
 	"lists": {
 		"type": "string",

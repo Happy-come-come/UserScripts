@@ -9,6 +9,197 @@
 		"arguments": ["noun"],
 		"value": "Ń tẹ̀lé{{noun}}"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Fúnlésì"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Repost"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Fẹ́rán"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Búkúmáàkì"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Fihàn sii"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Ṣàfihàn tírẹ́ẹ̀dì yìí"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Àwòran ti tẹ́lẹ̀"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Àwọ̀ran tó kàn"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["From"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 stars – {{appNumRatings}} ratings"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Verified accounts"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Olú"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Apẹ̀tù"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Omọ-ẹgbẹ́"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "views"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "View quotes"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "View activity"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Ǹjẹ́ àkọsílẹ̀ yí ṣe ìrànlọ́wọ́?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "Ranni Lọ́wọ́"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "Sá Ranni Lọ́wọ́"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "Kò Rannilọ́wọ́"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Ó ń bọ̀ láìpẹ́"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Nowat"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Answer by Grok in Fun Mode"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Answer by Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Image by Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Fihàn sii"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Create your version with Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Ask Grok yourself"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} web pages and posts"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Relevant"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Àwọn ìfẹ́ràn"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Àìpẹ́"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Sort replies"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Àtúnṣe kẹyìn"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "There’s a new version of this post."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Ó ń ṣí ṣàtúnṣe ìtàn"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "See the latest post"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Opens the new version of this post"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Ìwọ"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["From"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Ìwádìí"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Show this poll"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "Àwọn ìbò {{formattedCount}}"
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Àwọn àbájáde ìkẹyìn"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Repost"
@@ -20,6 +211,26 @@
 	"following": {
 		"type": "string",
 		"value": "Ń tẹ̀lé"
+	},
+	"follow": {
+		"type": "string",
+		"value": "Tẹ̀lé"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Follow back"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Àwọn Olùtẹ̀lé"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Ń tẹ̀lé ọ"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Àwọn Ìforúkọsílẹ̀"
 	},
 	"unfollow": {
 		"type": "string",
@@ -55,8 +266,7 @@
 		"value": ["Followedby",",",",and","othersyoufollow"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}post"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",

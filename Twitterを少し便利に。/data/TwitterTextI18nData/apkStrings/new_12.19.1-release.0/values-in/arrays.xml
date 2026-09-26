@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>Anda akan mendapatkan notifikasi untuk Postingan baru.</item>
+        <item>Anda akan mendapatkan notifikasi untuk Postingan &amp; balasan baru.</item>
+        <item>Anda akan mendapatkan notifikasi untuk Postingan Langganan baru.</item>
+        <item>Anda akan mendapatkan notifikasi untuk Postingan video Langsung.</item>
+        <item>Anda tidak akan mendapatkan notifikasi lagi untuk Postingan baru.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>Semua Postingan</item>
+        <item>Semua Postingan &amp; Balasan</item>
+        <item>Hanya Postingan Langganan</item>
+        <item>Hanya video langsung</item>
+        <item>Nonaktif</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>Dapatkan notifikasi untuk semua Postingan akun ini.</item>
+        <item>Dapatkan notifikasi untuk Postingan &amp; balasan dari akun ini.</item>
+        <item>Dapatkan notifikasi untuk Postingan Langganan saja.</item>
+        <item>Dapatkan notifikasi hanya untuk siaran langsung.</item>
+        <item>Nonaktifkan notifikasi untuk Postingan akun ini.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>Tautan postingan</item>
+        <item>Salin tautan</item>
+        <item>Kirim tautan</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>Secara keseluruhan, seberapa puaskah Anda dengan %1$s?</item>
+        <item>Seberapa puaskah Anda dengan %1$s?</item>
+        <item>Secara keseluruhan, seberapa puaskah Anda dengan pengalaman %1$s terkini Anda?</item>
+        <item>Bagaimana Anda menilai keseluruhan pengalaman Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai keseluruhan pengalaman Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman Anda sejauh ini bersama %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman Anda di Twitter bersama %1$s?</item>
+        <item>Puaskah Anda dengan pengalaman terkini Anda bersama %1$s?</item>
+        <item>Seberapa baik %1$s memenuhi ekspektasi Anda?</item>
+        <item>Bagaimana Anda menilai pengalaman bertamu Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman layanan terkini Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman layanan terkini Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai layanan yang Anda terima dari %1$s?</item>
+        <item>Puaskah Anda dengan hasil dari interaksi Anda dengan %1$s?</item>
+        <item>Bagaimana Anda menilai kemampuan penyelesaian masalah Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai jangka waktu merespons dari %1$s?</item>
+        <item>Bagaimana Anda menilai kecepatan layanan dari %1$s?</item>
+        <item>Bagaimana Anda menilai jangka waktu pemecahan masalah bersama %1$s?</item>
+        <item>Bagaimana Anda menilai jangka waktu penyelesaian masalah Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai kecepatan memecahkan masalah bersama %1$s?</item>
+        <item>Bagaimana Anda menilai keahlian penasihat %1$s?</item>
+        <item>Seberapa puaskah Anda dengan agen %1$s yang membantu Anda?</item>
+        <item>Seberapa puaskah Anda dengan tenaga ahli %1$s yang membantu Anda?</item>
+        <item>Seberapa puaskah Anda dengan perwakilan %1$s yang membantu Anda?</item>
+        <item>Bagaimana Anda menilai pengalaman perbankan terkini Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai keseluruhan pengalaman acara di %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman pembayaran tagihan Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman membeli Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman berbelanja Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman pengiriman Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman menyewa Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai kunjungan terkini Anda ke toko %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman terkini Anda menginap di hotel %1$s?</item>
+        <item>Bagaimana Anda menilai penerbangan terkini Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman berkendara terkini Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai perjalanan terkini Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai kunjungan terkini Anda ke %1$s?</item>
+        <item>Bagaimana Anda menilai hidangan terkini Anda di %1$s?</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 hari</item>
+        <item>12 bulan</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0,25x</item>
+        <item>0,5x</item>
+        <item>0,75x</item>
+        <item>Normal</item>
+        <item>1,25x</item>
+        <item>1,5x</item>
+        <item>2x</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>Secara keseluruhan, seberapa puaskah Anda dengan %1$s?</item>
+        <item>Seberapa puaskah Anda dengan %1$s?</item>
+        <item>Secara keseluruhan, seberapa puaskah Anda dengan pengalaman Anda dengan %1$s baru-baru ini?</item>
+        <item>Bagaimana Anda menilai keseluruhan pengalaman Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai keseluruhan pengalaman Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman Anda sejauh ini bersama %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman Anda di X bersama %1$s?</item>
+        <item>Puaskah Anda dengan pengalaman Anda baru-baru ini bersama %1$s?</item>
+        <item>Seberapa baik %1$s memenuhi ekspektasi Anda?</item>
+        <item>Bagaimana Anda menilai pengalaman Anda sebagai tamu di %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman layanan %1$s?</item>
+        <item>Bagaimana Anda menilai layanan %1$s baru-baru ini?</item>
+        <item>Bagaimana Anda menilai layanan yang Anda terima dari %1$s?</item>
+        <item>Puaskah Anda dengan hasil dari interaksi Anda dengan %1$s?</item>
+        <item>Bagaimana Anda menilai kemampuan Anda dalam menyelesaikan masalah dengan %1$s?</item>
+        <item>Bagaimana Anda menilai kecepatan respons %1$s?</item>
+        <item>Bagaimana Anda menilai kecepatan layanan dari %1$s?</item>
+        <item>Bagaimana Anda menilai kecepatan %1$s dalam mencari resolusi?</item>
+        <item>Bagaimana Anda menilai waktu yang diperlukan %1$s untuk menyelesaikan masalah Anda?</item>
+        <item>Bagaimana Anda menilai kecepatan pemecahan masalah %1$s?</item>
+        <item>Bagaimana Anda menilai keahlian penasihat %1$s?</item>
+        <item>Seberapa puaskah Anda dengan agen %1$s yang membantu Anda?</item>
+        <item>Seberapa puaskah Anda dengan tenaga ahli %1$s yang membantu Anda?</item>
+        <item>Seberapa puaskah Anda dengan staf %1$s yang membantu Anda?</item>
+        <item>Bagaimana Anda menilai layanan perbankan yang Anda terima dari %1$s baru-baru ini?</item>
+        <item>Bagaimana Anda menilai keseluruhan pengalaman acara di %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman pembayaran tagihan Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai layanan yang Anda terima saat membeli di %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman Anda berbelanja di %1$s?</item>
+        <item>Bagaimana Anda menilai layanan pengiriman %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman rental Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai kunjungan terbaru Anda ke toko %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman terbaru Anda menginap di hotel %1$s?</item>
+        <item>Bagaimana Anda menilai penerbangan Anda baru-baru ini bersama %1$s?</item>
+        <item>Bagaimana Anda menilai pengalaman Anda berkendara baru-baru ini dengan %1$s?</item>
+        <item>Bagaimana Anda menilai perjalanan terbaru Anda bersama %1$s?</item>
+        <item>Bagaimana Anda menilai kunjungan terbaru Anda ke %1$s?</item>
+        <item>Bagaimana Anda menilai hidangan Anda baru-baru ini di %1$s?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>Seberapa besar kemungkinan Anda merekomendasikan %1$s ke teman Anda?</item>
+        <item>Seberapa besar kemungkinan Anda merekomendasikan %1$s ke teman Anda?</item>
+        <item>Seberapa besar kemungkinan Anda merekomendasikan %1$s ke rekan Anda?</item>
+        <item>Seberapa besar kemungkinan Anda merekomendasikan %1$s ke keluarga Anda?</item>
+        <item>Seberapa besar kemungkinan Anda merekomendasikan %1$s ke orang lain?</item>
+        <item>Seberapa besar kemungkinan Anda merekomendasikan %1$s ke teman atau rekan Anda?</item>
+        <item>Seberapa besar kemungkinan Anda berbelanja %1$s di kemudian hari?</item>
+        <item>Seberapa besar kemungkinan Anda merekomendasikan %1$s?</item>
+        <item>Apakah Anda akan merekomendasikan %1$s ke teman atau rekan Anda?</item>
+        <item>Seberapa besar kemungkinan Anda merekomendasikan pengalaman Anda bersama %1$s ke teman Anda?</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>Jumlah Penonton Tinggi</item>
+        <item>Komunitas yang Positif</item>
+        <item>Kualitas Video</item>
+        <item>Obrolan yang Menarik</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>Jumlah Penonton Rendah</item>
+        <item>Pelecehan</item>
+        <item>Masalah Video</item>
+        <item>Spam dalam Obrolan</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 menit</item>
+        <item>30 menit</item>
+        <item>1 jam</item>
+        <item>2 jam</item>
+        <item>4 jam</item>
+        <item>Harian</item>
+    </string-array>
+</resources>

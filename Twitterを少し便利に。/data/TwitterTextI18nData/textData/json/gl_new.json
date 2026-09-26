@@ -9,6 +9,196 @@
 		"arguments": ["noun"],
 		"value": "Following{{noun}}"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Responder"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Repost"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Gústame"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Engadir aos marcadores"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Amosar máis"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Amosar este fío"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Imaxe anterior"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Seguinte imaxe"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["From"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 stars – {{appNumRatings}} ratings"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Verified accounts"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Administrador"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Moderador"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Membro"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "views"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Ver orzamento"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Ver actividade"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Esta nota paréceche útil?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "útil"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "algo útil"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "non útil"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Proximamente"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Nowat"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Answer by Grok in Fun Mode"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Answer by Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Image by Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Amosar máis"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Create your version with Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Ask Grok yourself"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} web pages and posts"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Pertinente"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Gústames"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Recentes"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Sort replies"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Last edited"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "There’s a new version of this post."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Opens edit history"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "See the latest post"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Opens the new version of this post"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Ti"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["De"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Enquisa"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Amosar esta enquisa"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Resultados finais"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Repost"
@@ -20,6 +210,26 @@
 	"following": {
 		"type": "string",
 		"value": "Seguindo"
+	},
+	"follow": {
+		"type": "string",
+		"value": "Seguir"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Seguir tamén"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Seguidores"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Séguete"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Subscriptions"
 	},
 	"unfollow": {
 		"type": "string",
@@ -55,12 +265,10 @@
 		"value": ["Seguidopor",",","e","usuariosmáisquesegues"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}post"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}gústame"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",

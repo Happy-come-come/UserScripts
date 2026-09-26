@@ -15,7 +15,201 @@
 	},
 	"tweetsRetweeted": {
 		"type": "apkI18nTemplateFunction",
-		"value": "%s je proslijedio/la objavu"
+		"value": "%s proslijedio/la je Tweet"
+	},
+	"replyAction": {
+		"type": "string",
+		"value": "Odgovori"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Proslijedi objavu"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Označi sa \"sviđa mi se\""
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Dodaj u knjižne oznake"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Prikaži još"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Pokaži tu nit razgovora"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Prethodna slika"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Sljedeća slika"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Od"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5,0 zvjezdica – broj ocjena: {{appNumRatings}}"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Provjereni računi"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Admin"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Mod."
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Član"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "prikaza"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Prikaz citata"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Prikaz aktivnosti"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Bilješke zajednice"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Je li ta napomena korisna?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "korisnom"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "donekle korisnom"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "ne smatrate korisnom"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Uskoro"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Sadaza"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Odgovor omogućuje Grok u Zabavnom načinu rada"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Odgovor omogućuje Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Sliku omogućuje Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Prikaži još"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Izradite svoju verziju uz značajku Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Sami pitajte Groka"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "Web-stranice i objave: {{count}}"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Relevantno"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Oznake „sviđa mi se”"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Nedavno"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Sortiraj odgovore"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Zadnja izmjena"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "Postoji nova verzija te objave."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Otvara se povijest izmjena"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "Pogledajte najnoviju objavu"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Otvara novu verziju te objave"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Vi"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Odkorisnika/ce"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Anketa"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Prikaži tu anketu"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Konačni rezultati"
 	},
 	"retweet": {
 		"type": "string",
@@ -27,11 +221,11 @@
 	},
 	"quoteTweet": {
 		"type": "string",
-		"value": "Citat"
+		"value": "Citiraj Tweet"
 	},
 	"profileTabTitleTimeline": {
 		"type": "string",
-		"value": "Objave"
+		"value": "Tweetovi"
 	},
 	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {
 		"type": "string",
@@ -52,6 +246,26 @@
 	"following": {
 		"type": "string",
 		"value": "Pratim"
+	},
+	"follow": {
+		"type": "string",
+		"value": "Počni pratiti"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Počni pratiti"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Osobe koje vas prate"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Prati vas"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Pretplate"
 	},
 	"unfollow": {
 		"type": "string",
@@ -87,16 +301,13 @@
 		"value": ["Prate",",","ijošnjih","kojeivipratite"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}nov"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}oznak„sviđamise”"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}fotografij"]
+		"type": "webI18nTemplateFunction"
 	},
 	"home": {
 		"type": "string",
@@ -198,7 +409,7 @@
 	},
 	"postTweet": {
 		"type": "string",
-		"value": "Objavi"
+		"value": "Tweetaj"
 	},
 	"settings": {
 		"type": "string",

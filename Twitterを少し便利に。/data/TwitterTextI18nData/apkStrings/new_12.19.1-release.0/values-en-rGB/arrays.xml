@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>"You'll get notifications for new Posts."</item>
+        <item>"You'll get notifications for new Posts &amp; replies."</item>
+        <item>"You'll get notifications for new Subscription Posts."</item>
+        <item>"You'll get notifications for new Live video Posts."</item>
+        <item>"You'll no longer get notifications for new Posts."</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>All Posts</item>
+        <item>All Posts &amp; Replies</item>
+        <item>Only Subscription Posts</item>
+        <item>Only live video</item>
+        <item>Off</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>Get notifications for all of this account’s Posts.</item>
+        <item>Get notifications for this account’s Posts &amp; replies.</item>
+        <item>Get notifications only for Subscription Posts.</item>
+        <item>Get notifications only for live broadcasts.</item>
+        <item>Turn off notifications for this account’s Posts.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>Post link</item>
+        <item>Copy link</item>
+        <item>Send link</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>"What's your overall satisfaction with %1$s?"</item>
+        <item>How satisfied are you with %1$s?</item>
+        <item>Overall, how satisfied were you with your recent %1$s experience?</item>
+        <item>How would you rate the overall experience with %1$s?</item>
+        <item>How would you rate your overall experience with %1$s?</item>
+        <item>How would you rate your experience so far with %1$s?</item>
+        <item>How would you rate your experience on Twitter with %1$s?</item>
+        <item>Were you satisfied with your recent experience with %1$s?</item>
+        <item>How well does %1$s meet your expectations?</item>
+        <item>How would you rate your guest experience with %1$s?</item>
+        <item>How would you rate your service experience with %1$s?</item>
+        <item>How would you rate your recent service experience with %1$s?</item>
+        <item>How would you rate the service you received from %1$s?ㅤ</item>
+        <item>Were you satisfied with the result of your interaction with %1$s?ㅤ</item>
+        <item>How would you rate the ability to resolve your issue with %1$s?ㅤ</item>
+        <item>How would you rate the response time from %1$s?ㅤ</item>
+        <item>How would you rate the speed of service from %1$s?</item>
+        <item>How would you rate the time to resolution with %1$s?ㅤ</item>
+        <item>How would you rate the time to resolve your issue with %1$s??</item>
+        <item>How would you rate the speed of resolution with %1$s ?</item>
+        <item>How would you rate the %1$s advisor’s expertise?</item>
+        <item>How satisfied were you with the %1$s agent who helped you?ㅤ</item>
+        <item>How satisfied were you with the%1$s specialist who helped you?</item>
+        <item>How satisfied were you with the %1$s representative who helped you?ㅤ</item>
+        <item>How would you rate your recent banking experience with %1$s?ㅤ</item>
+        <item>How would you rate the overall event experience at %1$s?ㅤ</item>
+        <item>How would you rate your bill pay experience with %1$s?ㅤ</item>
+        <item>How would you rate your purchase experience with %1$s?ㅤ</item>
+        <item>How would you rate your shopping experience with %1$s?ㅤ</item>
+        <item>How would you rate your delivery experience with %1$s?ㅤ</item>
+        <item>How would you rate your rental experience with %1$s?ㅤ</item>
+        <item>How would you rate your recent %1$s store visit?ㅤ</item>
+        <item>How would you rate your recent %1$s hotel stay?ㅤ</item>
+        <item>How would you rate your recent flight with %1$s?ㅤ</item>
+        <item>How would you rate your recent ride with %1$s?ㅤ</item>
+        <item>How would you rate your recent trip with %1$s?ㅤ</item>
+        <item>How would you rate your recent visit to %1$s?ㅤ</item>
+        <item>How would you rate your recent meal at %1$s?ㅤ</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 days</item>
+        <item>12 months</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0.25x</item>
+        <item>0.5x</item>
+        <item>0.75x</item>
+        <item>Normal</item>
+        <item>1.25x</item>
+        <item>1.5x</item>
+        <item>2x</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>What is your overall satisfaction with %1$s?</item>
+        <item>How satisfied are you with %1$s?</item>
+        <item>Overall, how satisfied were you with your recent %1$s experience?</item>
+        <item>How would you rate the overall experience with %1$s?</item>
+        <item>How would you rate your overall experience with %1$s?</item>
+        <item>How would you rate your experience so far with %1$s?</item>
+        <item>How would you rate your experience on X with %1$s?</item>
+        <item>Were you satisfied with your recent experience with %1$s?</item>
+        <item>How well does %1$s meet your expectations?</item>
+        <item>How would you rate your guest experience with %1$s?</item>
+        <item>How would you rate your service experience with %1$s?</item>
+        <item>How would you rate your recent service experience with %1$s?</item>
+        <item>How would you rate the service you received from %1$s?</item>
+        <item>Were you satisfied with the result of your interaction with %1$s?</item>
+        <item>How would you rate the ability to resolve your issue with %1$s?</item>
+        <item>How would you rate the response time from %1$s?</item>
+        <item>How would you rate the speed of service from %1$s?</item>
+        <item>How would you rate the time to resolution with %1$s?</item>
+        <item>How would you rate the time to resolve your issue with %1$s?</item>
+        <item>How would you rate the speed of resolution with %1$s?</item>
+        <item>"How would you rate the %1$s advisor's expertise?"</item>
+        <item>How satisfied were you with the %1$s agent who helped you?</item>
+        <item>How satisfied were you with the %1$s specialist who helped you?</item>
+        <item>How satisfied were you with the %1$s representative who helped you?</item>
+        <item>How would you rate your recent banking experience with %1$s?</item>
+        <item>How would you rate the overall event experience at %1$s?</item>
+        <item>How would you rate your bill pay experience with %1$s?</item>
+        <item>How would you rate your purchase experience with %1$s?</item>
+        <item>How would you rate your shopping experience with %1$s?</item>
+        <item>How would you rate your delivery experience with %1$s?</item>
+        <item>How would you rate your rental experience with %1$s?</item>
+        <item>How would you rate your recent %1$s store visit?</item>
+        <item>How would you rate your recent %1$s hotel stay?</item>
+        <item>How would you rate your recent flight with %1$s?</item>
+        <item>How would you rate your recent ride with %1$s?</item>
+        <item>How would you rate your recent trip with %1$s?</item>
+        <item>How would you rate your recent visit to %1$s?</item>
+        <item>How would you rate your recent meal at %1$s?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>How likely are you to recommend %1$s to a friend?</item>
+        <item>How likely is it that you would recommend %1$s to a friend?</item>
+        <item>How likely is it that you would recommend %1$s to a colleague?</item>
+        <item>How likely is it that you would recommend %1$s to a family member?</item>
+        <item>How likely is it that you would recommend %1$s to someone else?</item>
+        <item>How likely is it that you would recommend %1$s to a friend or colleague?</item>
+        <item>How likely is it that you would shop at %1$s in the future?ㅤ</item>
+        <item>How likely is it that you would recommend %1$s?</item>
+        <item>Would you recommend %1$s to a friend or colleague?</item>
+        <item>How likely are you to recommend your experience with %1$s to a friend??</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>Good Viewer Count</item>
+        <item>Positive Community</item>
+        <item>Video Quality</item>
+        <item>Engaging Chat</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>Low Viewer Count</item>
+        <item>Harassment</item>
+        <item>Video Issues</item>
+        <item>Spam In Chat</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>4 hours</item>
+        <item>Daily</item>
+    </string-array>
+</resources>

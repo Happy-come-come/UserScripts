@@ -17,6 +17,200 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "%s ha retuitat"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Respon"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Republicació"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "M'agrada"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Afegeix als preferits"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Mostra'n més"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Mostra el fil"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Imatge anterior"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Imatge següent"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["De"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5,0 estrelles – {{appNumRatings}} qualificacions"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Comptes verificats"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Admin"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Mod"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Membre"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "visualitzacions"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Mostra les cites"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Mostra l'activitat"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Notes de la Comunitat"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "La nota t'ha semblat útil?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "útil"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "en certa manera útil"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "poc útil"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Pròximament"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Araa"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Resposta de Grok en mode divertit"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Resposta de Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Imatge creada per Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Mostra'n més"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Crea'n una versió teva amb Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Pregunta-li-ho a Grok"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} pàgines web i publicacions"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Rellevant"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Agradaments"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Recents"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Ordena les respostes"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Última edició"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "Hi ha una versió nova de la publicació."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Obre l'historial d'edicions"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "Mostra la publicació més recent"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Obre la versió nova de la publicació"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Has"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["De:"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Enquesta"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Mostra l'enquesta"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Resultats finals"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Retuit"
@@ -53,6 +247,26 @@
 		"type": "string",
 		"value": "Seguint"
 	},
+	"follow": {
+		"type": "string",
+		"value": "Segueix"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Segueix-lo també"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Seguidors"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Et segueix"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Subscripcions"
+	},
 	"unfollow": {
 		"type": "string",
 		"value": "Deixa de seguir"
@@ -87,12 +301,10 @@
 		"value": ["Seguitpelsusuaris","i","iper","usuarismésquesegueixes"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Tuit"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Agradament"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",

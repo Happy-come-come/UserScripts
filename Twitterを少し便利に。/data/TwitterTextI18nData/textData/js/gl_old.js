@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": undefined,
 	"tweetsRetweeted": undefined,
+	"replyAction": {"type":"string","value":"Responder"},
+	"repostAction": {"type":"string","value":"Repost"},
+	"likeAction": {"type":"string","value":"Gústame"},
+	"bookmarkAction": {"type":"string","value":"Engadir aos marcadores"},
+	"showMore": {"type":"string","value":"Amosar máis"},
+	"viewThread": {"type":"string","value":"Amosar este fío"},
+	"previousImage": {"type":"string","value":"Imaxe anterior"},
+	"nextImage": {"type":"string","value":"Seguinte imaxe"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["From "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 stars – "+e.appNumRatings+" ratings"}
+	},
+	"verifiedAccount": {"type":"string","value":"Verified accounts"},
+	"communityAdminBadge": {"type":"string","value":"Administrador"},
+	"communityModeratorBadge": {"type":"string","value":"Moderador"},
+	"communityMemberBadge": {"type":"string","value":"Membro"},
+	"viewsLabel": {"type":"string","value":"views"},
+	"viewQuotes": {"type":"string","value":"Ver orzamento"},
+	"viewActivity": {"type":"string","value":"Ver actividade"},
+	"communityNotes": undefined,
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Esta nota paréceche útil?"},
+	"communityNoteHelpful": {"type":"string","value":"útil"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"algo útil"},
+	"communityNoteNotHelpful": {"type":"string","value":"non útil"},
+	"cashtagComingSoon": {"type":"string","value":"Proximamente"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Now at "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Answer by Grok in Fun Mode"},
+	"grokAnswer": {"type":"string","value":"Answer by Grok"},
+	"grokImageBy": {"type":"string","value":"Image by Grok"},
+	"grokShowMore": {"type":"string","value":"Amosar máis"},
+	"grokCreateVersion": {"type":"string","value":"Create your version with Grok"},
+	"grokAskYourself": {"type":"string","value":"Ask Grok yourself"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" web page"+s(e.count,"","s")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" post"+s(e.count,"","s")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" web pages and posts"}
+	},
+	"mostRelevant": {"type":"string","value":"Pertinente"},
+	"mostLiked": {"type":"string","value":"Gústames"},
+	"mostRecent": {"type":"string","value":"Recentes"},
+	"sortReplies": {"type":"string","value":"Sort replies"},
+	"lastEdited": {"type":"string","value":"Last edited"},
+	"newPostVersion": {"type":"string","value":"There’s a new version of this post."},
+	"opensEditHistory": {"type":"string","value":"Opens edit history"},
+	"viewLatestPost": {"type":"string","value":"See the latest post"},
+	"opensLatestPost": {"type":"string","value":"Opens the new version of this post"},
+	"mediaTaggedSelf": {"type":"string","value":"Ti"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["De "]}
+	},
+	"poll": {"type":"string","value":"Enquisa"},
+	"viewPoll": {"type":"string","value":"Amosar esta enquisa"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" voto"+t(e.count,"","s")}
+	},
+	"pollEnded": {"type":"string","value":"Resultados finais"},
 	"retweet": {"type":"string","value":"Rechouchiar"},
 	"unDoRetweet": {"type":"string","value":"Desfacer rechouchío"},
 	"quoteTweet": undefined,
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": undefined,
 	"profileTabTitleLikes": undefined,
 	"following": {"type":"string","value":"Seguindo"},
+	"follow": {"type":"string","value":"Seguir"},
+	"followBack": {"type":"string","value":"Seguir tamén"},
+	"followers": {"type":"string","value":"Seguidores"},
+	"followsYou": {"type":"string","value":"Séguete"},
+	"subscriptions": {"type":"string","value":"Subscriptions"},
 	"unfollow": {"type":"string","value":"Deixar de seguir"},
 	"blocked": {"type":"string","value":"Bloqueado"},
 	"unblock": {"type":"string","value":"Desbloquear"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Seguido por "]}
+		"value": function(){return ["Seguido por "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Seguido por "," e "]}
+		"value": function(){return ["Seguido por "," e "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Seguido por ",", "," e "]}
+		"value": function(){return ["Seguido por ",", "," e "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Seguido por ",", "," e "," usuarios máis que segues"]}
+		"value": function(){return ["Seguido por ",", "," e "," usuarios máis que segues"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" chío"+t(props.count,"","s")]}
+		"value": function(){return [props.formattedCount+" chío"+t(props.count,"","s")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" gústame"+t(props.count,"","s")]}
+		"value": function(){return [props.formattedCount+" gústame"+t(props.count,"","s")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" photos & videos"]}
+		"value": function(){return [props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"Inicio"},
 	"explore": {"type":"string","value":"Explorar"},

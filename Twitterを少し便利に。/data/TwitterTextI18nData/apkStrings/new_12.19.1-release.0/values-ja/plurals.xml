@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="a11y_composer_poll_choice_characters_remaining">
+        <item quantity="other">{count}文字残っています</item>
+    </plurals>
+    <plurals name="admin_tools_subtitle_members">
+        <item quantity="one">%d人のメンバー</item>
+        <item quantity="other">%d人のメンバー</item>
+    </plurals>
+    <plurals name="av_group_call_member_count">
+        <item quantity="one">%1$d 人のメンバー</item>
+        <item quantity="other">%1$d 人のメンバー</item>
+    </plurals>
+    <plurals name="badge_item_count">
+        <item quantity="one">%d件の新しいアイテム</item>
+        <item quantity="other">%d件の新しいアイテム</item>
+    </plurals>
+    <plurals name="cohost_current_count">
+        <item quantity="one">%1$d 共同ホスト</item>
+        <item quantity="other">%1$d 人の共同ホスト</item>
+    </plurals>
+    <plurals name="cohost_open_spots_count">
+        <item quantity="other">%1$d件の空きスポット</item>
+    </plurals>
+    <plurals name="community_member_count">
+        <item quantity="one">%d人のコミュニティメンバー</item>
+        <item quantity="other">%d人のコミュニティメンバー</item>
+    </plurals>
+    <plurals name="community_moderator_count">
+        <item quantity="one">%d人のモデレーター</item>
+        <item quantity="other">%d人のモデレーター</item>
+    </plurals>
+    <plurals name="community_navigation_join_requests_label">
+        <item quantity="one">%s件のリクエスト</item>
+        <item quantity="other">%s件のリクエスト</item>
+    </plurals>
+    <plurals name="community_navigation_new_unread_tweets_label">
+        <item quantity="one">%s件の新しいポスト</item>
+        <item quantity="other">%s件の新しいポスト</item>
+    </plurals>
+    <plurals name="community_navigation_pending_reports_label">
+        <item quantity="one">%s件の報告</item>
+        <item quantity="other">%s件の報告</item>
+    </plurals>
+    <plurals name="composer_count_progress_overflow_warning">
+        <item quantity="one">%d文字超過しています</item>
+        <item quantity="other">%d文字超過しています</item>
+    </plurals>
+    <plurals name="composer_count_progress_warning">
+        <item quantity="one">残り%d文字</item>
+        <item quantity="other">残り%d文字</item>
+    </plurals>
+    <plurals name="content_description_fleet_item_space_with_others">
+        <item quantity="one">%1$sさんのスペース。%2$d人が参加しています</item>
+        <item quantity="other">%1$sさんのスペース。%2$d人が参加しています</item>
+    </plurals>
+    <plurals name="data_sync_notif_title">
+        <item quantity="one">%d件の新しいみんなの反応</item>
+        <item quantity="other">%d件の新しいみんなの反応</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d日</item>
+        <item quantity="other">%d日</item>
+    </plurals>
+    <plurals name="dm_add_people_failure">
+        <item quantity="one">ユーザーをこのグループに追加できませんでした。</item>
+        <item quantity="other">%d人のユーザーをこのグループに追加できませんでした。</item>
+    </plurals>
+    <plurals name="dm_add_people_success">
+        <item quantity="one">ユーザーをグループに追加しました。</item>
+        <item quantity="other">%d人のユーザーをグループに追加しました。</item>
+    </plurals>
+    <plurals name="dm_follower_count_no_joined_date">
+        <item quantity="one">{num_followers}人のフォロワー</item>
+        <item quantity="other">{num_followers}人のフォロワー</item>
+    </plurals>
+    <plurals name="dm_group_account_name">
+        <item quantity="one">1人</item>
+        <item quantity="other">%d人</item>
+    </plurals>
+    <plurals name="dm_group_chat_count">
+        <item quantity="one">%d人とのグループチャット</item>
+        <item quantity="other">%d人とのグループチャット</item>
+    </plurals>
+    <plurals name="dm_group_conversation_participant_count">
+        <item quantity="one">%1$d人</item>
+        <item quantity="other">%1$d人</item>
+    </plurals>
+    <plurals name="dm_group_participant_count">
+        <item quantity="one">%1$sがこのグループに参加しています</item>
+        <item quantity="other">%1$sがこのグループに参加しています</item>
+    </plurals>
+    <plurals name="dm_group_participant_count_person_details">
+        <item quantity="one">他%1$s人</item>
+        <item quantity="other">他%1$s人</item>
+    </plurals>
+    <plurals name="dm_image_profile">
+        <item quantity="one">%sさんのプロフィール画像</item>
+        <item quantity="other">%sさんのプロフィール画像</item>
+    </plurals>
+    <plurals name="dm_new_people_you_may_know">
+        <item quantity="one">知り合いかもしれない%d人の新しいユーザー</item>
+        <item quantity="other">知り合いかもしれない%d人の新しいユーザー</item>
+    </plurals>
+    <plurals name="dm_new_requests">
+        <item quantity="one">%d件の新しいリクエスト</item>
+        <item quantity="other">%d件の新しいリクエスト</item>
+    </plurals>
+    <plurals name="dm_participant_added_by_deleted_user">
+        <item quantity="one">{participants}さんを追加しました</item>
+        <item quantity="other">{participants}さんを追加しました</item>
+    </plurals>
+    <plurals name="dm_pending_requests">
+        <item quantity="one">%d件の承認待ちリクエスト</item>
+        <item quantity="other">%s件の承認待ちリクエスト</item>
+    </plurals>
+    <plurals name="dm_people_you_may_know">
+        <item quantity="one">知り合いかもしれない%d人のユーザー</item>
+        <item quantity="other">知り合いかもしれない%d人のユーザー</item>
+    </plurals>
+    <plurals name="dm_pinned_conversations_max_count_exceeded_title">
+        <item quantity="one">固定できる会話は%d件までです</item>
+        <item quantity="other">固定できる会話は%d件までです</item>
+    </plurals>
+    <plurals name="dm_share_group_members_and_others">
+        <item quantity="one">{visible_names}さんと他{others_count}人</item>
+        <item quantity="other">{visible_names}さんと他{others_count}人</item>
+    </plurals>
+    <plurals name="dm_state_seen_by">
+        <item quantity="one">%d人が既読</item>
+        <item quantity="other">%d人が既読</item>
+    </plurals>
+    <plurals name="dm_unread_messages">
+        <item quantity="one">%d件の未読メッセージ</item>
+        <item quantity="other">%d件の未読メッセージ</item>
+    </plurals>
+    <plurals name="dm_user_joined_and_follower_count">
+        <item quantity="one">{joined_date}に登録 • {num_followers}人のフォロワー</item>
+        <item quantity="other">{joined_date}に登録 • {num_followers}人のフォロワー</item>
+    </plurals>
+    <plurals name="duration_picker_set_days">
+        <item quantity="one">1日</item>
+        <item quantity="other">%d日</item>
+    </plurals>
+    <plurals name="duration_picker_set_hours">
+        <item quantity="one">1時間</item>
+        <item quantity="other">%d時間</item>
+    </plurals>
+    <plurals name="duration_picker_set_minutes">
+        <item quantity="one">1分</item>
+        <item quantity="other">%d分</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">%d 秒早送り</item>
+        <item quantity="other">%d 秒早送り</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">%d 秒巻き戻し</item>
+        <item quantity="other">%d 秒巻き戻し</item>
+    </plurals>
+    <plurals name="facepile_content_description_phrase">
+        <item quantity="one">{user_names}さんのプロフィール画像</item>
+        <item quantity="other">{user_names}さんのプロフィール画像</item>
+    </plurals>
+    <plurals name="full_screen_gallery_header_add">
+        <item quantity="one">%d件を追加</item>
+        <item quantity="other">%d件を追加</item>
+    </plurals>
+    <plurals name="graphql_errors_button">
+        <item quantity="one">%d エラー</item>
+        <item quantity="other">%d エラー</item>
+    </plurals>
+    <plurals name="guest_management_max_cohost_count_label">
+        <item quantity="one">共同ホストは最大%1$d人です。</item>
+        <item quantity="other">共同ホストは最大%1$d人です。</item>
+    </plurals>
+    <plurals name="guest_management_open_cohost_count_label">
+        <item quantity="one">あと%1$d人のユーザーを追加できます。</item>
+        <item quantity="other">あと%1$d人のユーザーを追加できます。</item>
+    </plurals>
+    <plurals name="host_kudos_num_followers_gained">
+        <item quantity="one">%1$d件の新しいフォロワーを獲得しました。</item>
+        <item quantity="other">%1$d件の新しいフォロワーを獲得しました。</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d時間</item>
+        <item quantity="other">%d時間</item>
+    </plurals>
+    <plurals name="humanization_prompt_followers">
+        <item quantity="one">%1$sさんは%2$sさんをフォローしています。</item>
+        <item quantity="other">%1$sさんは%2$sさんをフォローしています。</item>
+    </plurals>
+    <plurals name="humanization_prompt_topics">
+        <item quantity="one">あなたと%1$sさんはどちらもトピック%2$sをフォローしています。</item>
+        <item quantity="other">あなたと%1$sさんはどちらもトピック%2$sをフォローしています。</item>
+    </plurals>
+    <plurals name="likes">
+        <item quantity="one">%d件のいいね</item>
+        <item quantity="other">%d件のいいね</item>
+    </plurals>
+    <plurals name="list_member_count">
+        <item quantity="one">メンバー</item>
+        <item quantity="other">メンバー</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_message">
+        <item quantity="one">"簡潔でありながら十分に説明することをおすすめします。画像内の文字を要約するか書き出してください。
+
+説明により、障がいをお持ちのユーザーや背景情報を求めているユーザーがXをより楽しめるようになります。
+
+このメッセージは、アクセシビリティ設定でオフにできます。"</item>
+        <item quantity="other">"簡潔でありながら十分に説明することをおすすめします。画像内の文字を要約するか書き出してください。
+
+説明により、障がいをお持ちのユーザーや背景情報を求めているユーザーがXをより楽しめるようになります。
+
+このメッセージは、アクセシビリティ設定でオフにできます。"</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_positive_btn_text">
+        <item quantity="one">説明を追加</item>
+        <item quantity="other">説明を追加</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_title">
+        <item quantity="one">画像をより多くのユーザーに理解してもらいましょう</item>
+        <item quantity="other">画像をより多くのユーザーに理解してもらいましょう</item>
+    </plurals>
+    <plurals name="media_monetization_settings_categories_selected">
+        <item quantity="one">%d個のカテゴリーを選択中</item>
+        <item quantity="other">%d個のカテゴリーを選択中</item>
+    </plurals>
+    <plurals name="media_tag_remaining">
+        <item quantity="one">あと%d人タグ付けできます。</item>
+        <item quantity="other">もう%d人タグ付け</item>
+    </plurals>
+    <plurals name="media_tag_tagged">
+        <item quantity="one">%d人がタグ付けされています</item>
+        <item quantity="other">%d人タグ付けされています</item>
+    </plurals>
+    <plurals name="member_count">
+        <item quantity="one">%s 人のメンバー</item>
+        <item quantity="other">%s 人のメンバー</item>
+    </plurals>
+    <plurals name="members">
+        <item quantity="one">%s人</item>
+        <item quantity="other">%s人</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d分</item>
+        <item quantity="other">%d分</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d 件の新しい通知</item>
+        <item quantity="other">%d 件の新しい通知</item>
+    </plurals>
+    <plurals name="muted_keyword_bulk_delete_success">
+        <item quantity="one">%d個のキーワードを削除しました</item>
+        <item quantity="other">%d個のキーワードを削除しました</item>
+    </plurals>
+    <plurals name="muted_keyword_selected_count">
+        <item quantity="one">%dを選択中</item>
+        <item quantity="other">%dを選択中</item>
+    </plurals>
+    <plurals name="narrowcast_community_member_count">
+        <item quantity="one">%s メンバー</item>
+        <item quantity="other">%s メンバー</item>
+    </plurals>
+    <plurals name="narrowcast_trusted_friends_count">
+        <item quantity="one">%s人</item>
+        <item quantity="other">%s人</item>
+    </plurals>
+    <plurals name="notification_description_after_sending_posts">
+        <item quantity="other">{total}件のポストを送信済み</item>
+    </plurals>
+    <plurals name="notification_description_before_sending_posts">
+        <item quantity="other">{total}件のポストの送信を準備中...</item>
+    </plurals>
+    <plurals name="notification_description_deleting_drafts">
+        <item quantity="other">{current}/{total}件の下書きを削除中...</item>
+    </plurals>
+    <plurals name="notification_description_editable_posts">
+        <item quantity="other">{current}/{total}件の編集可能なポストを削除中...</item>
+    </plurals>
+    <plurals name="notification_description_preparing_media">
+        <item quantity="other">{current}/{total}件のメディアを準備中…</item>
+    </plurals>
+    <plurals name="notification_description_sending_drafts">
+        <item quantity="other">{current}/{total}件の下書きを送信中...</item>
+    </plurals>
+    <plurals name="notification_description_sending_posts">
+        <item quantity="other">{current}/{total}件のポストを送信中...</item>
+    </plurals>
+    <plurals name="notification_description_uploading_media">
+        <item quantity="other">{current}/{total}件のメディアをアップロード中...</item>
+    </plurals>
+    <plurals name="notification_description_uploading_poll">
+        <item quantity="other">{current}/{total}件の投票をアップロード中...</item>
+    </plurals>
+    <plurals name="notification_title_after_sending_posts">
+        <item quantity="other">ポストを送信済み</item>
+    </plurals>
+    <plurals name="notification_title_before_sending_posts">
+        <item quantity="other">ポスト送信の準備中...</item>
+    </plurals>
+    <plurals name="notification_title_deleting_drafts">
+        <item quantity="other">下書きを削除中</item>
+    </plurals>
+    <plurals name="notification_title_deleting_editable_posts">
+        <item quantity="other">編集可能なポストを削除中</item>
+    </plurals>
+    <plurals name="notification_title_preparing_media">
+        <item quantity="other">メディアを準備中</item>
+    </plurals>
+    <plurals name="notification_title_sending_drafts">
+        <item quantity="other">下書きを送信中</item>
+    </plurals>
+    <plurals name="notification_title_sending_posts">
+        <item quantity="other">ポストを送信中</item>
+    </plurals>
+    <plurals name="notification_title_uploading_media">
+        <item quantity="other">メディアをアップロード中</item>
+    </plurals>
+    <plurals name="notification_title_uploading_poll">
+        <item quantity="other">投票をアップロード中</item>
+    </plurals>
+    <plurals name="notification_undo_nudge">
+        <item quantity="other">取り消し期間待ち</item>
+    </plurals>
+    <plurals name="others">
+        <item quantity="one">他1人</item>
+        <item quantity="other">他%d人</item>
+    </plurals>
+    <plurals name="payment_ach_merchant_authorization_transactions_count">
+        <item quantity="other">{count}件の取引</item>
+    </plurals>
+    <plurals name="payment_onboarding_terms_invitation_subtitle">
+        <item quantity="one">お支払いが期限切れになる前に続行してください。</item>
+        <item quantity="other">お支払いが期限切れになる前に続行してください。</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_hours">
+        <item quantity="other">%d時間</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_minutes">
+        <item quantity="other">%d分</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_seconds">
+        <item quantity="other">%d秒</item>
+    </plurals>
+    <plurals name="product_count">
+        <item quantity="one">%1$d個の商品</item>
+        <item quantity="other">%1$d個の商品</item>
+    </plurals>
+    <plurals name="profile_about_username_changes">
+        <item quantity="one">ユーザー名の変更%s回</item>
+        <item quantity="other">ユーザー名の変更%s回</item>
+    </plurals>
+    <plurals name="profile_creator_subscriptions_count">
+        <item quantity="one">サブスクリプション</item>
+        <item quantity="other">サブスクリプション</item>
+    </plurals>
+    <plurals name="profile_follower_count">
+        <item quantity="one">フォロワー</item>
+        <item quantity="other">フォロワー</item>
+    </plurals>
+    <plurals name="profile_friends_following_others">
+        <item quantity="one">他%d人</item>
+        <item quantity="other">他%d人</item>
+    </plurals>
+    <plurals name="profile_stat_followers_text">
+        <item quantity="other">人のフォロワー</item>
+    </plurals>
+    <plurals name="profile_stat_following_text">
+        <item quantity="other">フォロー中</item>
+    </plurals>
+    <plurals name="profile_stat_subscribers_text">
+        <item quantity="other">人のサブスクライバー</item>
+    </plurals>
+    <plurals name="profile_stat_subscriptions_text">
+        <item quantity="other">件のサブスクリプション</item>
+    </plurals>
+    <plurals name="profile_super_followers_count">
+        <item quantity="one">サブスクライバー</item>
+        <item quantity="other">サブスクライバー</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_articles">
+        <item quantity="one">%s 記事</item>
+        <item quantity="other">%s 記事</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_likes">
+        <item quantity="one">いいね %s</item>
+        <item quantity="other">いいね %s</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_media">
+        <item quantity="one">画像/動画 %s</item>
+        <item quantity="other">%s件の画像と動画</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_timeline">
+        <item quantity="one">%s ポスト</item>
+        <item quantity="other">%s件のポスト</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_peak_msg">
+        <item quantity="zero">ライブ放送視聴者数グラフ</item>
+        <item quantity="one">ライブ放送視聴者数のグラフです。%2$sに最大%1$d人が視聴しました。</item>
+        <item quantity="other">ライブ放送視聴者数のグラフです。%2$sに最大%1$d人が視聴しました。</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_point_msg">
+        <item quantity="one">%2$sに%1$d人が視聴しました。</item>
+        <item quantity="other">%2$sに%1$d人が視聴しました。</item>
+    </plurals>
+    <plurals name="ps__invite_follower">
+        <item quantity="zero">フォロワーはいません</item>
+        <item quantity="one">%d人のフォロワー</item>
+        <item quantity="other">%d人のフォロワー</item>
+    </plurals>
+    <plurals name="ps__invited_num_followers_embolden">
+        <item quantity="one">*%1$s*さんが%2$s人のユーザーを招待しました</item>
+        <item quantity="other">*%1$s*さんが%2$s人のユーザーを招待しました</item>
+    </plurals>
+    <plurals name="ps__moderation_report_muted_by_moderator">
+        <item quantity="one">%1$sさんが*ミュート*</item>
+        <item quantity="other">%1$s（%2$d）さんが*ミュート*</item>
+    </plurals>
+    <plurals name="ps__moderation_report_unmuted_by_moderator">
+        <item quantity="one">%1$sさんが*ミュートを解除*</item>
+        <item quantity="other">%1$s（%2$d）さんが*ミュート解除*</item>
+    </plurals>
+    <plurals name="ps__new_messages">
+        <item quantity="one">%1$d件の新着メッセージ</item>
+        <item quantity="other">%1$d件の新着メッセージ</item>
+    </plurals>
+    <plurals name="ps__num_hearts">
+        <item quantity="one">%s個のハート</item>
+        <item quantity="other">%s個のハート</item>
+    </plurals>
+    <plurals name="ps__stats_live_viewers">
+        <item quantity="one">ライブ視聴者</item>
+        <item quantity="other">ライブ視聴者</item>
+    </plurals>
+    <plurals name="ps__stats_replay_viewers">
+        <item quantity="one">リプレイ視聴者</item>
+        <item quantity="other">リプレイ視聴者</item>
+    </plurals>
+    <plurals name="ps__time_format_days">
+        <item quantity="one">%d日</item>
+        <item quantity="other">%d日</item>
+    </plurals>
+    <plurals name="ps__time_format_hours">
+        <item quantity="one">%d時間</item>
+        <item quantity="other">%d時間</item>
+    </plurals>
+    <plurals name="ps__time_format_minutes">
+        <item quantity="one">%d分</item>
+        <item quantity="other">%d分</item>
+    </plurals>
+    <plurals name="ps__time_format_seconds">
+        <item quantity="one">%d秒</item>
+        <item quantity="other">%d秒</item>
+    </plurals>
+    <plurals name="recording_replay_count_preview">
+        <item quantity="one">%s件のリプレイ</item>
+        <item quantity="other">%s件のリプレイ</item>
+    </plurals>
+    <plurals name="relationship_followers_following_others">
+        <item quantity="one">他%d人</item>
+        <item quantity="other">他%d人</item>
+    </plurals>
+    <plurals name="replies">
+        <item quantity="one">%d件の返信</item>
+        <item quantity="other">%d件の返信</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others">
+        <item quantity="other">返信先: ﻿%1$sさん、他%2$d人﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_exclusive">
+        <item quantity="other">返信先: ﻿%1$sさん、他%2$d人﻿。返信は他のサブスクライバーにも表示されます。</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_in_space">
+        <item quantity="other">返信先: ﻿%3$s﻿の﻿%1$sさんと他%2$d人﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others">
+        <item quantity="other">返信先: ﻿%1$sさん、%2$sさん、他%3$d人﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_exclusive">
+        <item quantity="other">返信先: ﻿%1$sさん、%2$sさん、他%3$d人﻿。返信は他のサブスクライバーにも表示されます。</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_in_space">
+        <item quantity="other">返信先: ﻿%4$s﻿の﻿%1$sさん、%2$sさん、他%3$d人﻿</item>
+    </plurals>
+    <plurals name="reported_tweet_reported_by">
+        <item quantity="one">{{}}%1$s{{}}が報告</item>
+        <item quantity="other">{{}}%1$s人のメンバー{{}}が報告</item>
+    </plurals>
+    <plurals name="retweets">
+        <item quantity="one">%d件のリポスト</item>
+        <item quantity="other">%d件のリポスト</item>
+    </plurals>
+    <plurals name="safety_mode_preview_description">
+        <item quantity="one">攻撃的な行為やスパム行為をしている可能性があるアカウントを%d件警告しました。</item>
+        <item quantity="other">攻撃的な行為やスパム行為をしている可能性があるアカウントを%d件警告しました。</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">%d秒</item>
+        <item quantity="other">%d秒</item>
+    </plurals>
+    <plurals name="send_cohost_invite">
+        <item quantity="one">共同ホストの招待を送信</item>
+        <item quantity="other">共同ホストの招待を送信</item>
+    </plurals>
+    <plurals name="settings_notif_tweets_count">
+        <item quantity="one">%d人</item>
+        <item quantity="other">%d人</item>
+    </plurals>
+    <plurals name="share_card_likes">
+        <item quantity="other">いいね{num}件</item>
+    </plurals>
+    <plurals name="share_card_replies">
+        <item quantity="other">{num}件の返信</item>
+    </plurals>
+    <plurals name="social_follow_and_follow_and_others">
+        <item quantity="one">%1$sさん、%2$sさんと他%3$d人がフォローしています</item>
+        <item quantity="other">%1$sさん、%2$sさんと他%3$d人がフォロー</item>
+    </plurals>
+    <plurals name="spaces_additional_participants">
+        <item quantity="one">他%1$s人のリスナー</item>
+        <item quantity="other">他%1$s人のリスナー</item>
+    </plurals>
+    <plurals name="spaces_blocked_warning">
+        <item quantity="one">%1$d人のスピーカーをブロックしています</item>
+        <item quantity="other">%1$d人のスピーカーをブロックしています</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_in_progress">
+        <item quantity="one">%1$sがこのスペースに参加しています</item>
+        <item quantity="other">%1$sがこのスペースに参加しています</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_replay">
+        <item quantity="one">このスペースには%1$s人参加しました</item>
+        <item quantity="other">このスペースには%1$s人参加しました</item>
+    </plurals>
+    <plurals name="spaces_cohost_invites_sent_toast">
+        <item quantity="other">%1$d 件の共同ホストの招待が送信されました</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle">
+        <item quantity="other">あと%1$d人のユーザーを追加できます。</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle_full">
+        <item quantity="other">共同ホストは最大%1$d人です。</item>
+    </plurals>
+    <plurals name="spaces_invite_confirmation">
+        <item quantity="one">%1$d人をこのスペースに招待しました</item>
+        <item quantity="other">%1$d人をこのスペースに招待しました</item>
+    </plurals>
+    <plurals name="spaces_invite_send_cohost_cta">
+        <item quantity="other">共同ホストの招待を送信</item>
+    </plurals>
+    <plurals name="spaces_invite_send_speaker_cta">
+        <item quantity="other">スピーカーの招待を送信</item>
+    </plurals>
+    <plurals name="spaces_invite_sent_toast">
+        <item quantity="other">%1$d人をこのスペースに招待しました</item>
+    </plurals>
+    <plurals name="spaces_invite_speakers_subtitle">
+        <item quantity="other">スピーカーとして招待できるのは最大%1$d人です</item>
+    </plurals>
+    <plurals name="spaces_requested_pill_label">
+        <item quantity="other">リクエスト済み（%1$d）</item>
+    </plurals>
+    <plurals name="spaces_sheet_anonymous_others">
+        <item quantity="other">他%1$s人</item>
+    </plurals>
+    <plurals name="spaces_speak_request_toast_label_many">
+        <item quantity="other">%1$d人が発言を希望しました</item>
+    </plurals>
+    <plurals name="speakers_current_count">
+        <item quantity="one">%1$d人のスピーカー</item>
+        <item quantity="other">%1$d人のスピーカー</item>
+    </plurals>
+    <plurals name="speakers_listeners_count">
+        <item quantity="one">%1$d人がリスニング中</item>
+        <item quantity="other">%1$d人がリスニング中</item>
+    </plurals>
+    <plurals name="speakers_open_spots_count">
+        <item quantity="one">%1$d件の空きスポット</item>
+        <item quantity="other">%1$d件の空きスポット</item>
+    </plurals>
+    <plurals name="speakers_requests_count">
+        <item quantity="one">%1$d件のリクエスト</item>
+        <item quantity="other">%1$d件のリクエスト</item>
+    </plurals>
+    <plurals name="stat_label_bookmarks">
+        <item quantity="one">ブックマーク</item>
+        <item quantity="other">ブックマーク</item>
+    </plurals>
+    <plurals name="stat_label_likes_sentence_case">
+        <item quantity="one">いいね</item>
+        <item quantity="other">いいね</item>
+    </plurals>
+    <plurals name="stat_label_quote_tweets">
+        <item quantity="one">件の引用</item>
+        <item quantity="other">件の引用</item>
+    </plurals>
+    <plurals name="stat_label_retweets_sentence_case">
+        <item quantity="one">リポスト</item>
+        <item quantity="other">リポスト</item>
+    </plurals>
+    <plurals name="stat_label_verified_views_sentence_case">
+        <item quantity="one">認証済みアカウントによる表示数</item>
+        <item quantity="other">認証済みアカウントによる表示数</item>
+    </plurals>
+    <plurals name="stat_label_views_sentence_case">
+        <item quantity="one">表示</item>
+        <item quantity="other">表示</item>
+    </plurals>
+    <plurals name="subscription_duration_days">
+        <item quantity="one">日</item>
+        <item quantity="other">%d日</item>
+    </plurals>
+    <plurals name="subscription_duration_months">
+        <item quantity="one">ヶ月</item>
+        <item quantity="other">%dヶ月</item>
+    </plurals>
+    <plurals name="subscription_duration_years">
+        <item quantity="one">年</item>
+        <item quantity="other">%d年</item>
+    </plurals>
+    <plurals name="subscription_offer_price_description_months">
+        <item quantity="one">最初の1ヶ月は{offer_price}。更新時は{original_price}</item>
+        <item quantity="other">最初の%dヶ月間は{offer_price}。更新時は{original_price}</item>
+    </plurals>
+    <plurals name="subscription_offer_title_special_offer_months">
+        <item quantity="one">最初の1ヶ月は{original_price_strike_through} {offer_price}</item>
+        <item quantity="other">%d最初の1ヶ月は{original_price_strike_through} {offer_price}</item>
+    </plurals>
+    <plurals name="thread_draft_more_post">
+        <item quantity="other">他{num}件のポスト</item>
+    </plurals>
+    <plurals name="time_days">
+        <item quantity="one">%d日</item>
+        <item quantity="other">%d日</item>
+    </plurals>
+    <plurals name="time_days_ago">
+        <item quantity="one">%d日前</item>
+        <item quantity="other">%d日前</item>
+    </plurals>
+    <plurals name="time_hours">
+        <item quantity="one">%d時間</item>
+        <item quantity="other">%d時間</item>
+    </plurals>
+    <plurals name="time_hours_ago">
+        <item quantity="one">%d時間前</item>
+        <item quantity="other">%d時間前</item>
+    </plurals>
+    <plurals name="time_mins">
+        <item quantity="one">%d分</item>
+        <item quantity="other">%d分</item>
+    </plurals>
+    <plurals name="time_mins_ago">
+        <item quantity="one">%d分前</item>
+        <item quantity="other">%d分前</item>
+    </plurals>
+    <plurals name="time_secs">
+        <item quantity="one">%d秒</item>
+        <item quantity="other">%d秒</item>
+    </plurals>
+    <plurals name="time_weeks">
+        <item quantity="one">%d週間</item>
+        <item quantity="other">%d週間</item>
+    </plurals>
+    <plurals name="top_articles_time_window">
+        <item quantity="one">過去1時間</item>
+        <item quantity="other">過去%s時間</item>
+    </plurals>
+    <plurals name="tweet_stat_followers">
+        <item quantity="one">{num}人のフォロワー</item>
+        <item quantity="other">{num}人のフォロワー</item>
+    </plurals>
+    <plurals name="tweet_visibility_education_dialog_non_followers_text">
+        <item quantity="one">%1$sさんからフォローされていません。</item>
+        <item quantity="other">%1$sさんなどからフォローされていません。</item>
+    </plurals>
+    <plurals name="undo_nudge_message">
+        <item quantity="other">ポストは%d秒で送信されます。</item>
+    </plurals>
+    <plurals name="undo_send_period_in_seconds">
+        <item quantity="one">%d秒</item>
+        <item quantity="other">%d秒</item>
+    </plurals>
+    <plurals name="upload_progress_sending_posts">
+        <item quantity="one">ポストを送信中…</item>
+        <item quantity="other">%d件のポストを送信中...</item>
+    </plurals>
+    <plurals name="verified_views">
+        <item quantity="one">認証済みアカウントによる表示: %d件</item>
+        <item quantity="other">認証済みアカウントによる表示: %d件</item>
+    </plurals>
+    <plurals name="weeks">
+        <item quantity="one">%d週間</item>
+        <item quantity="other">%d週間</item>
+    </plurals>
+    <plurals name="x_lite_time_weeks">
+        <item quantity="one">%d週間</item>
+        <item quantity="other">%d週間</item>
+    </plurals>
+    <plurals name="x_lite_time_years">
+        <item quantity="one">%d年</item>
+        <item quantity="other">%d年</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_gifs">
+        <item quantity="other">{count}個のGIF画像</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_other">
+        <item quantity="other">{count}個の添付ファイル</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_photos">
+        <item quantity="other">{count}個の画像</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_videos">
+        <item quantity="other">{count}個の動画</item>
+    </plurals>
+    <plurals name="xchat_back_badge_unread_messages">
+        <item quantity="other">%1$d件の未読メッセージ</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_over_limit">
+        <item quantity="other">%1$dバイトの制限超過</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_remaining">
+        <item quantity="other">残り%1$dバイト</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_gifs">
+        <item quantity="other">{count}個のGIF画像が添付</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_other">
+        <item quantity="other">{count}個の添付ファイル</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_photos">
+        <item quantity="other">{count}件の添付画像</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_videos">
+        <item quantity="other">{count}件の添付動画</item>
+    </plurals>
+    <plurals name="xchat_forward_media_max_conversations">
+        <item quantity="other">メディアは、最大{num}件の会話に転送できます</item>
+    </plurals>
+    <plurals name="xchat_group_members_count">
+        <item quantity="other">{num}人のメンバー</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_and_others">
+        <item quantity="other">{names}さんと他{count}人</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_count">
+        <item quantity="other">{count}件のメッセージリクエスト</item>
+    </plurals>
+    <plurals name="xchat_inbox_new_messages">
+        <item quantity="other">{count}+新しいメッセージ</item>
+    </plurals>
+    <plurals name="xchat_inbox_years">
+        <item quantity="other">%d年間</item>
+    </plurals>
+    <plurals name="xchat_pinned_messages_count">
+        <item quantity="other">{count}件の固定されたメッセージ</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_days">
+        <item quantity="other">{count}日間</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_hours">
+        <item quantity="other">{count}時間</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_minutes">
+        <item quantity="other">{count}分間</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_seconds">
+        <item quantity="other">{count}秒間</item>
+    </plurals>
+</resources>

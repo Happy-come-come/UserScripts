@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>‏ستتلقى تنبيهات عن المنشورات الجديدة.</item>
+        <item>‏ستتلقى تنبيهات عن المنشورات والردود الجديدة.</item>
+        <item>‏ستتلقى تنبيهات لمنشورات الاشتراكات الجديدة.</item>
+        <item>‏ستتلقى تنبيهات للمنشورات الجديدة التي تحتوي على فيديو مباشر.</item>
+        <item>‏لن تتلقى تنبيهات للمنشورات الجديدة بعد الآن.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>‏جميع المنشورات</item>
+        <item>‏جميع المنشورات والردود</item>
+        <item>‏منشورات الاشتراكات فقط</item>
+        <item>‏فيديو البث المباشر فقط</item>
+        <item>‏إيقاف</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>‏احصل على تنبيهات لجميع منشورات هذا الحساب.</item>
+        <item>‏احصل على تنبيهات للمنشورات والردود الخاصة بهذا الحساب.</item>
+        <item>‏احصل على تنبيهات لمنشورات الاشتراكات فقط.</item>
+        <item>‏احصل على تنبيهات لعمليات البث المباشرة فقط.</item>
+        <item>‏أوقف تشغيل التنبيهات الخاصة بمنشورات هذا الحساب.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>‏نشر الرابط</item>
+        <item>‏نسخ الرابط</item>
+        <item>‏إرسال الرابط</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>‏ما مدى رضاك العام مع %1$s؟</item>
+        <item>‏ما مدى رضاك عن %1$s؟</item>
+        <item>‏عمومًا، ما مدى رضاك عن تجربتك الأخيرة مع %1$s؟</item>
+        <item>‏كيف تقيّم عموم التجربة مع %1$s؟</item>
+        <item>‏كيف تقيّم عموم تجربتك مع %1$s؟</item>
+        <item>‏كيف تقيّم تجربتك حتى الآن مع %1$s؟</item>
+        <item>‏كيف تقيّم تجربتك على تويتر مع %1$s؟</item>
+        <item>‏هل كنت راضيًا عن تجربتك الأخيرة مع %1$s؟</item>
+        <item>‏ما مدى تلبية %1$s لتوقّعاتك؟</item>
+        <item>‏كيف تقيّم تجربة استضافتك مع %1$s؟</item>
+        <item>‏كيف تقيّم تجربتك للخدمة مع %1$s؟</item>
+        <item>‏كيف تقيّم تجربة خدمتك الأخيرة مع %1$s؟</item>
+        <item>‏كيف تقيّم الخدمة التي تلقّيتها من %1$s؟</item>
+        <item>‏هل كنت راضيًا عن نتيجة تفاعلك مع %1$s؟</item>
+        <item>‏كيف تقيّم القدرة على حلّ مشكلتك مع %1$s؟</item>
+        <item>‏كيف تقيّم وقت الاستجابة من %1$s؟</item>
+        <item>‏كيف تقيّم سرعة الخدمة من %1$s؟</item>
+        <item>‏كيف تقيّم زمن حلّ مشكلتك مع %1$s؟</item>
+        <item>‏كيف تقيّم زمن حلّ مشكلتك مع %1$s؟</item>
+        <item>‏كيف تقّيم سرعة حلّ مشكلتك مع %1$s؟</item>
+        <item>‏كيف تقيّم خبرة مستشار %1$s؟</item>
+        <item>‏ما مدى رضاك عن وكيل %1$s الذي ساعدك؟</item>
+        <item>‏ما مدى رضاك عن متخصّص %1$s الذي ساعدك؟</item>
+        <item>‏ما مدى رضاك عن ممثل %1$s الذي ساعدك؟</item>
+        <item>‏كيف تقيّم تجربتك المصرفيّة الأخيرة مع %1$s؟</item>
+        <item>‏كيف تقيّم عموم التجربة في %1$s؟</item>
+        <item>‏كيف تقيّم تجربتك للدفع مع %1$s؟</item>
+        <item>‏كيف تقيّم تجربتك للشراء مع %1$s؟</item>
+        <item>‏كيف تقيّم تجربتك للتسوّق مع %1$s؟</item>
+        <item>‏كيف تقيّم تجربتك لخدمة التوصيل مع %1$s؟</item>
+        <item>‏كيف تقيّم تجربتك للاستئجار مع %1$s؟</item>
+        <item>‏كيف تقيّم زيارتك الأخيرة لمتجر %1$s؟</item>
+        <item>‏كيف تقيّم إقامتك الأخيرة في فندق %1$s؟</item>
+        <item>‏كيف تقيّم رحلتك الجويّة الأخيرة مع %1$s؟</item>
+        <item>‏كيف تقيّم رحلتك الأخيرة مع %1$s؟</item>
+        <item>‏كيف تقيّم رحلتك الأخيرة مع %1$s؟</item>
+        <item>‏كيف تقيّم زيارتك الأخيرة إلى %1$s؟</item>
+        <item>‏كيف تقيّم وجبتك الأخيرة لدى %1$s؟</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>‏30 يوم</item>
+        <item>‏12 شهرًا</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>أسرع بـ 0.25 مرة</item>
+        <item>أسرع بـ 0.5 مرات</item>
+        <item>أسرع بـ 0.75 مرة</item>
+        <item>عادية</item>
+        <item>أسرع بـ 1.25 مرة</item>
+        <item>أسرع بـ 1.5 مرة</item>
+        <item>أسرع بمرتين</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>‏ما تقييم لإجمالي تجربتك مع %1$s؟</item>
+        <item>‏ما مدى رضاك عن %1$s؟</item>
+        <item>‏بشكل عام، ما مدى رضاك حول تجربتك الأخيرة مع %1$s؟</item>
+        <item>‏ما تقييم لإجمالي تجربتك مع %1$s؟</item>
+        <item>‏ما تقييمك لتجربتك مع %1$s بشكلٍ عام؟</item>
+        <item>‏ما تقييمك لتجربتك حتى الآن مع %1$s؟</item>
+        <item>‏ما تقييمك لتجربتك على X مع %1$s؟</item>
+        <item>‏هل كنتَ راضيًا عن تجربتك الأخيرة مع %1$s؟</item>
+        <item>‏إلى أي مدى يلبّي %1$s توقعاتك؟</item>
+        <item>‏كيف تقيّم تجربتك كنزيل في %1$s؟</item>
+        <item>‏ما مدى تقييمك لتجربة الخدمة في %1$s؟</item>
+        <item>‏ما مدى تقييمك لتجربة الخدمة الأخيرة التي تلقيتها مع %1$s؟</item>
+        <item>‏ما تقييمك للخدمة التي تلقيتها من %1$s؟</item>
+        <item>‏هل كنت راضيًا عن نتيجة تفاعلك مع %1$s؟</item>
+        <item>‏ما تقييمك لقدرتك على حل مشكلتك مع %1$s؟</item>
+        <item>‏ما تقييمك لوقت الاستجابة من %1$s؟</item>
+        <item>‏ما تقييمك لسرعة الخدمة من %1$s؟</item>
+        <item>‏ما تقييمك للوقت المستغرَق للحل في %1$s؟</item>
+        <item>‏ما تقييمك الوقت المستغرَق لحل مشكلتك في %1$s؟</item>
+        <item>‏ما تقييمك لسرعة الحل في %1$s؟</item>
+        <item>‏كيف تقيّم خبرة مستشار %1$s؟</item>
+        <item>‏ما مدى رضاك عن وكيل %1$s؟</item>
+        <item>‏ما مدى رضاك عن المختص في %1$s الذي قدّم لك المساعدة؟</item>
+        <item>‏ما مدى رضاك عن ممثل %1$s الذي قدّم لك المساعدة؟</item>
+        <item>‏ما تقييمك لتجربتك البنكية الأخيرة مع %1$s؟</item>
+        <item>‏ما تقييمك لإجمالي تجربة الحدث في %1$s؟</item>
+        <item>‏ما تقييمك لتجربية دفع الفواتير مع %1$s؟</item>
+        <item>‏ما تقييمك لتجربة الشراء في %1$s؟</item>
+        <item>‏كيف تقيّم تجربة التسوق في %1$s؟</item>
+        <item>‏كيف تقيم تجربة التوصيل مع %1$s؟</item>
+        <item>‏ما تقييمك تجربة خدمة الإيجار مع %1$s؟</item>
+        <item>‏ما تقييمك لزيارتك الأخيرة لمتجر %1$s؟</item>
+        <item>‏ما تقييمك لإقامتك الفندقية الأخيرة في %1$s؟</item>
+        <item>‏ما تقييمك لرحلتك الأخيرة مع %1$s؟</item>
+        <item>‏ما تقييمك للقيادة الأخيرة مع %1$s؟</item>
+        <item>‏ما تقييمك للنزهة الأخيرة مع %1$s؟</item>
+        <item>‏ما تقييمك للزيارة الأخيرة إلى %1$s؟</item>
+        <item>‏ما تقييمك لوجبتك الأخيرة في %1$s؟</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>‏إلى أي مدى تُوصي بـ %1$s إلى صديق؟</item>
+        <item>‏إلى أي مدى قد تُوصي بـ %1$s إلى صديق؟</item>
+        <item>‏ما مدى احتمال أن تقوم بتوصية %1$s لزميل؟</item>
+        <item>‏ما مدى احتمال أن تقوم بتوصية %1$s لأحد أفراد الأسرة؟</item>
+        <item>‏إلى أي مدى قد تُوصي بـ %1$s لشخص آخر؟</item>
+        <item>‏إلى أي مدى قد تُوصي بـ %1$s لصديق أو زميل؟</item>
+        <item>‏إلى أي مدى قد ترغب بالتسوّق في %1$s مستقبلًا؟</item>
+        <item>‏ما مدى احتمال أن تقوم بتوصية %1$s؟</item>
+        <item>‏هل ستوصي %1$s لصديق أو زميل؟</item>
+        <item>‏إلى أي مدى قد تُوصي بتجربتك مع %1$s إلى صديق؟</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>‏عدد مشاهدين جيد</item>
+        <item>‏مجتمع إيجابي</item>
+        <item>‏جودة الفيديو</item>
+        <item>‏دردشة جذابة</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>‏عدد مشاهدين منخفض</item>
+        <item>‏مضايقة</item>
+        <item>‏مشكلات الفيديو</item>
+        <item>‏رسائل مزعجة في الدردشة</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>‏‎@string/reader_mode_text_size_large</item>
+        <item>‏‎@string/reader_mode_text_size_medium</item>
+        <item>‏‎@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>‏‎@string/reader_mode_text_size_large_label</item>
+        <item>‏‎@string/reader_mode_text_size_medium_label</item>
+        <item>‏‎@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>‏15 دقيقة</item>
+        <item>‏30 دقيقة</item>
+        <item>‏ساعة واحدة</item>
+        <item>‏ساعتان</item>
+        <item>‏4 ساعات</item>
+        <item>‏يوميًا</item>
+    </string-array>
+</resources>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>‏תקבל הודעות לגבי פוסטים ותשובות חדשים.</item>
+        <item>‏תקבל הודעות על פוסטים ותשובות חדשים.</item>
+        <item>‏תקבל הודעות לגבי פוסטים חדשים של מינויים.</item>
+        <item>‏תקבל הודעות לגבי פוסטים שכוללים סרטונים חיים.</item>
+        <item>‏לא יישלחו יותר הודעות לגבי פוסטים חדשים.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>‏כל הפוסטים</item>
+        <item>‏כל הפוסטים והתשובות</item>
+        <item>‏רק פוסטים של מינויים</item>
+        <item>‏רק וידאו בשידור חי</item>
+        <item>‏כבוי</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>‏קבל הודעה על כל פוסט של חשבון זה.</item>
+        <item>‏קבל הודעה לגבי כל פוסט ותשובה של חשבון זה.</item>
+        <item>‏קבל הודעות רק לגבי פוסטים של מינויים.</item>
+        <item>‏קבל הודעות רק על שידורים חיים.</item>
+        <item>‏כבה הודעות לגבי פוסטים של חשבון זה.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>‏פרסום קישור</item>
+        <item>‏העתקת קישור</item>
+        <item>‏שליחת קישור</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>‏מהי רמת שביעות הרצון הכוללת שלך מ-%1$s?</item>
+        <item>‏עד כמה אתה מרוצה מ-%1$s?</item>
+        <item>‏בסך הכול, עד כמה היית מרוצה מהחוויה האחרונה שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את החוויה הכוללת שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את החוויה הכוללת שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את החוויה שלך עד כה עם %1$s?</item>
+        <item>‏איך היית מדרג את החוויה שלך בטוויטר עם %1$s?</item>
+        <item>‏האם היית מרוצה מהחוויה האחרונה שלך עם %1$s?</item>
+        <item>‏עד כמה %1$s עמד בציפיות שלך?</item>
+        <item>‏איך היית מדרג את חוויית ההתארחות שלך ב-%1$s?</item>
+        <item>‏איך היית מדרג את חוויית השירות שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את חוויית השירות האחרונה שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את השירות שקיבלת מ-%1$s?</item>
+        <item>‏האם היית מרוצה מהתוצאה של הקשר שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את היכולת לפתור את הבעיה שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את זמן התגובה של %1$s?</item>
+        <item>‏איך היית מדרג את מהירות השירות של %1$s?</item>
+        <item>‏איך היית מדרג את הזמן לפתרון הבעיה עם %1$s?</item>
+        <item>‏איך היית מדרג את משך הזמן שנדרש לפתרון הבעיה שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את מהירות הפתרון של %1$s?</item>
+        <item>‏איך היית מדרג את המומחיות של היועץ של %1$s?</item>
+        <item>‏עד כמה היית מרוצה מהסוכן של %1$s שעזר לך?</item>
+        <item>‏עד כמה היית מרוצה מהמומחה של %1$s שעזר לך?</item>
+        <item>‏עד כמה היית מרוצה מהנציג של %1$s שעזר לך?</item>
+        <item>‏איך היית מדרג את חוויית הבנקאות האחרונה שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את החוויה הכוללת באירוע עם %1$s?</item>
+        <item>‏איך היית מדרג את חוויית תשלום החשבון שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את חוויית הרכישה שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את חוויית הקניות שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את חוויית המשלוח שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את חווית השכירות שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את הביקור האחרון שלך בחנות %1$s?</item>
+        <item>‏איך היית מדרג את השהייה האחרונה שלך במלון %1$s?</item>
+        <item>‏איך היית מדרג את הטיסה האחרונה שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את הנסיעה האחרונה שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את הטיול האחרון שלך עם %1$s?</item>
+        <item>‏איך היית מדרג את הביקור האחרון שלך ב-%1$s?</item>
+        <item>‏איך היית מדרג את הארוחה האחרונה שלך ב-%1$s?</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>‏30 יום</item>
+        <item>‏12 חודשים</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0.25x</item>
+        <item>0.5x</item>
+        <item>0.75x</item>
+        <item>רגילה</item>
+        <item>1.25x</item>
+        <item>1.5x</item>
+        <item>2x</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>‏מה מידת שביעות רצונך הכוללת מ-%1$s?</item>
+        <item>‏עד כמה אתה מרוצה מ-%1$s?</item>
+        <item>‏בסך הכול, עד כמה מרוצה היית מהחוויה האחרונה עם %1$s?</item>
+        <item>‏איך היית מדרג את החוויה הכוללת עם %1$s?</item>
+        <item>‏איך היית מדרג את החוויה הכוללת עם %1$s?</item>
+        <item>‏איך היית מדרג את החוויה עד כה עם %1$s?</item>
+        <item>‏איך היית מדרג את החוויה ב-X עם %1$s?</item>
+        <item>‏האם היית מרוצה מהחוויה האחרונה עם %1$s?</item>
+        <item>‏עד כמה %1$s עמד בציפיותיך?</item>
+        <item>‏איך היית מדרג את חוויית האירוח אצל %1$s?</item>
+        <item>‏איך היית מדרג את חוויית השירות עם %1$s?</item>
+        <item>‏איך היית מדרג את חוויית השירות האחרונה עם %1$s?</item>
+        <item>‏איך היית מדרג את השירות שקיבלת מ-%1$s?</item>
+        <item>‏האם היית מרוצה מהתוצאה של הקשר עם %1$s?</item>
+        <item>‏איך היית מדרג את היכולת לפתור את בעיות עם %1$s?</item>
+        <item>‏איך היית מדרג את זמן התגובה של %1$s?</item>
+        <item>‏איך היית מדרג את מהירות השירות מ-%1$s?</item>
+        <item>‏איך היית מדרג את משך הזמן לפתרון בעיות עם %1$s?</item>
+        <item>‏איך היית מדרג את משך הזמן עד לפתרון הבעיה עם %1$s?</item>
+        <item>‏איך היית מדרג את מהירות פתרון הבעיה עם %1$s?</item>
+        <item>‏איך היית מדרג את המומחיות של היועץ של %1$s?</item>
+        <item>‏עד כמה היית מרוצה מהנציג של %1$s שעזר לך?</item>
+        <item>‏עד כמה היית מרוצה מהמומחה של %1$s שעזר לך?</item>
+        <item>‏עד כמה היית מרוצה מהנציג של %1$s שעזר לך?</item>
+        <item>‏איך היית מדרג את חוויית הבנקאות האחרונה עם %1$s?</item>
+        <item>‏איך היית מדרג את חוויית האירוע הכוללת ב-%1$s?</item>
+        <item>‏איך היית מדרג את חוויית תשלום החשבון עם %1$s?</item>
+        <item>‏איך היית מדרג את חוויית הרכישה עם %1$s?</item>
+        <item>‏איך היית מדרג את חוויית הקנייה עם %1$s?</item>
+        <item>‏איך היית מדרג את חוויית המשלוח של %1$s?</item>
+        <item>‏איך היית מדרג את חוויית ההשכרה מ-%1$s?</item>
+        <item>‏איך היית מדרג את הביקור האחרון בחנות של %1$s?</item>
+        <item>‏איך היית מדרג את השהייה האחרונה שלך בבית המלון %1$s?</item>
+        <item>‏איך היית מדרג את הטיסה האחרונה עם %1$s?</item>
+        <item>‏איך היית מדרג את הנסיעה האחרונה עם %1$s?</item>
+        <item>‏איך היית מדרג את הנסיעה האחרונה עם %1$s?</item>
+        <item>‏איך היית מדרג את הביקור האחרון ב-%1$s?</item>
+        <item>‏איך היית מדרג את הארוחה האחרונה ב-%1$s?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>‏מה הסבירות שתמליץ על %1$s לחבר?</item>
+        <item>‏מה הסבירות שתמליץ על %1$s לחבר?</item>
+        <item>‏מה הסבירות שתמליץ על %1$s לעמית?</item>
+        <item>‏מה הסבירות שתמליץ על %1$s לבן משפחה?</item>
+        <item>‏מה הסבירות שתמליץ על %1$s למישהו אחר?</item>
+        <item>‏מה הסבירות שתמליץ על %1$s לחבר או לעמית?</item>
+        <item>‏מה הסבירות שתערוך קניות ב-%1$s בעתיד?</item>
+        <item>‏מה הסבירות שתמליץ על %1$s?</item>
+        <item>‏האם היית ממליץ על %1$s לחבר או לעמית?</item>
+        <item>‏מה הסבירות שתמליץ על החוויה שלך עם %1$s לחבר?</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>‏ספירת צופים גבוהה</item>
+        <item>‏קהילה חיובית</item>
+        <item>‏איכות וידאו</item>
+        <item>"‏צ'אט מרתק"</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>‏ספירת צופים נמוכה</item>
+        <item>‏הטרדה</item>
+        <item>‏בעיות בסרטונים</item>
+        <item>"‏זבל בצ'אט"</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>‏‎@string/reader_mode_text_size_large</item>
+        <item>‏‎@string/reader_mode_text_size_medium</item>
+        <item>‏‎@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>‏‎@string/reader_mode_text_size_large_label</item>
+        <item>‏‎@string/reader_mode_text_size_medium_label</item>
+        <item>‏‎@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>‏רבע שעה</item>
+        <item>‏חצי שעה</item>
+        <item>‏שעה אחת</item>
+        <item>‏שעתיים</item>
+        <item>‏4 שעות</item>
+        <item>‏יומי</item>
+    </string-array>
+</resources>

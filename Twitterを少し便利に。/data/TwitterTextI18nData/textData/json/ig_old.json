@@ -9,6 +9,197 @@
 		"arguments": ["noun"],
 		"value": "Na-eso{{noun}}"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Zaghachi"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Repost"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Mmasị"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Ebenrụtụakā"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Gosikwuo"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Gosi eriri okwu a"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Onyonyo gara aga"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Onyonyo na-esote"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["From"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 stars – {{appNumRatings}} ratings"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Verified accounts"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "O.nch"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "O.nhz"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Onyeòtù"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "views"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "View quotes"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "View activity"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Ndetu a ọ na-enyere aka?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "Ọ na-enyere aka"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "Na-enye Obere Aka"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "Ọ Naghị Enye Aka"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Na-abịa n'oge adịghị anya"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Nowat"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Answer by Grok in Fun Mode"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Answer by Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Image by Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Gosikwuo"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Create your version with Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Ask Grok yourself"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} web pages and posts"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Relevant"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Mmasị"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Nke nso nso"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Sort replies"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Oge ikpeazụ edeziri ya"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "There’s a new version of this post."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "N'emepe ndezi aguguala"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "See the latest post"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Opens the new version of this post"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Gị"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["From"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Ntuli aka"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Show this poll"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} votu gasi"
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Nsonaazụ ikpeazụ"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Twiit Nzipụgharị"
@@ -20,6 +211,26 @@
 	"following": {
 		"type": "string",
 		"value": "Na-eso"
+	},
+	"follow": {
+		"type": "string",
+		"value": "Soro"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Follow back"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Ndị na-eso"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Na-eso gị"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Ndenye Aha"
 	},
 	"unfollow": {
 		"type": "string",

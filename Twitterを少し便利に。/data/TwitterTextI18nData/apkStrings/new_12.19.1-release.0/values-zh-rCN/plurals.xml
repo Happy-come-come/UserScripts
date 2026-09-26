@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="a11y_composer_poll_choice_characters_remaining">
+        <item quantity="other">剩余 {count} 个字符</item>
+    </plurals>
+    <plurals name="admin_tools_subtitle_members">
+        <item quantity="one">%d 位成员</item>
+        <item quantity="other">%d 位成员</item>
+    </plurals>
+    <plurals name="av_group_call_member_count">
+        <item quantity="one">%1$d 位成员</item>
+        <item quantity="other">%1$d 位成员</item>
+    </plurals>
+    <plurals name="badge_item_count">
+        <item quantity="one">%d 个新项目</item>
+        <item quantity="other">%d个新事项</item>
+    </plurals>
+    <plurals name="cohost_current_count">
+        <item quantity="one">%1$d 位共同主持人</item>
+        <item quantity="other">%1$d 位共同主持人</item>
+    </plurals>
+    <plurals name="cohost_open_spots_count">
+        <item quantity="other">%1$d 个空位</item>
+    </plurals>
+    <plurals name="community_member_count">
+        <item quantity="one">%d 社群成员</item>
+        <item quantity="other">%d 位社群成员</item>
+    </plurals>
+    <plurals name="community_moderator_count">
+        <item quantity="one">%d 版主</item>
+        <item quantity="other">%d 版主</item>
+    </plurals>
+    <plurals name="community_navigation_join_requests_label">
+        <item quantity="one">%s 请求</item>
+        <item quantity="other">%s 请求</item>
+    </plurals>
+    <plurals name="community_navigation_new_unread_tweets_label">
+        <item quantity="one">%s 个新帖子</item>
+        <item quantity="other">%s 个新帖子</item>
+    </plurals>
+    <plurals name="community_navigation_pending_reports_label">
+        <item quantity="one">%s 个举报</item>
+        <item quantity="other">%s 个举报</item>
+    </plurals>
+    <plurals name="composer_count_progress_overflow_warning">
+        <item quantity="one">%d 个字符太长</item>
+        <item quantity="other">%d 个字符太长</item>
+    </plurals>
+    <plurals name="composer_count_progress_warning">
+        <item quantity="one">还剩 %d 个字符</item>
+        <item quantity="other">还剩 %d 个字符</item>
+    </plurals>
+    <plurals name="content_description_fleet_item_space_with_others">
+        <item quantity="one">%1$s 的空间和另外 %2$d 个</item>
+        <item quantity="other">%1$s 的空间和另外 %2$d 个</item>
+    </plurals>
+    <plurals name="data_sync_notif_title">
+        <item quantity="one">%d 个新互动</item>
+        <item quantity="other">%d 个新互动</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d 天</item>
+        <item quantity="other">%d天</item>
+    </plurals>
+    <plurals name="dm_add_people_failure">
+        <item quantity="one">用户不能添加到此群组。</item>
+        <item quantity="other">%d 个用户不能添加到此群组。</item>
+    </plurals>
+    <plurals name="dm_add_people_success">
+        <item quantity="one">已添加用户到此群组。</item>
+        <item quantity="other">已添加 %d 个用户到此群组。</item>
+    </plurals>
+    <plurals name="dm_follower_count_no_joined_date">
+        <item quantity="one">{num_followers} 位关注者</item>
+        <item quantity="other">{num_followers} 位关注者</item>
+    </plurals>
+    <plurals name="dm_group_account_name">
+        <item quantity="one">1 人</item>
+        <item quantity="other">%d 人</item>
+    </plurals>
+    <plurals name="dm_group_chat_count">
+        <item quantity="one">和 %d 人群聊</item>
+        <item quantity="other">和 %d 人群聊</item>
+    </plurals>
+    <plurals name="dm_group_conversation_participant_count">
+        <item quantity="one">%1$d 人</item>
+        <item quantity="other">%1$d 人</item>
+    </plurals>
+    <plurals name="dm_group_participant_count">
+        <item quantity="one">这个群组有 %1$s</item>
+        <item quantity="other">这个群组有 %1$s</item>
+    </plurals>
+    <plurals name="dm_group_participant_count_person_details">
+        <item quantity="one">其他 %1$s 人</item>
+        <item quantity="other">其他 %1$s 人</item>
+    </plurals>
+    <plurals name="dm_image_profile">
+        <item quantity="one">%s 的个人资料图像</item>
+        <item quantity="other">%s 的个人资料图像</item>
+    </plurals>
+    <plurals name="dm_new_people_you_may_know">
+        <item quantity="one">%d 个你可能认识的新人</item>
+        <item quantity="other">%d 个你可能认识的新用户</item>
+    </plurals>
+    <plurals name="dm_new_requests">
+        <item quantity="one">%d 个新请求</item>
+        <item quantity="other">%d 个新请求</item>
+    </plurals>
+    <plurals name="dm_participant_added_by_deleted_user">
+        <item quantity="one">{participants} 已添加</item>
+        <item quantity="other">{participants} 已添加</item>
+    </plurals>
+    <plurals name="dm_pending_requests">
+        <item quantity="one">%d 个待通过的请求</item>
+        <item quantity="other">%s 个待通过的请求</item>
+    </plurals>
+    <plurals name="dm_people_you_may_know">
+        <item quantity="one">%d 个你可能认识的人</item>
+        <item quantity="other">%d 个你可能认识的人</item>
+    </plurals>
+    <plurals name="dm_pinned_conversations_max_count_exceeded_title">
+        <item quantity="one">你只能置顶 %d 个聊天</item>
+        <item quantity="other">你只能置顶 %d 个聊天</item>
+    </plurals>
+    <plurals name="dm_share_group_members_and_others">
+        <item quantity="one">{visible_names} 及另外 {others_count} 人</item>
+        <item quantity="other">{visible_names} 及另外 {others_count} 人</item>
+    </plurals>
+    <plurals name="dm_state_seen_by">
+        <item quantity="one">%d 人已读</item>
+        <item quantity="other">%d 人已读</item>
+    </plurals>
+    <plurals name="dm_unread_messages">
+        <item quantity="one">%d 条未读私信</item>
+        <item quantity="other">%d 条未读私信</item>
+    </plurals>
+    <plurals name="dm_user_joined_and_follower_count">
+        <item quantity="one">已加入 {joined_date} • {num_followers} 位关注者</item>
+        <item quantity="other">已加入 {joined_date} • {num_followers} 位关注者</item>
+    </plurals>
+    <plurals name="duration_picker_set_days">
+        <item quantity="one">1 天</item>
+        <item quantity="other">%d 天</item>
+    </plurals>
+    <plurals name="duration_picker_set_hours">
+        <item quantity="one">1 小时</item>
+        <item quantity="other">%d 小时</item>
+    </plurals>
+    <plurals name="duration_picker_set_minutes">
+        <item quantity="one">1分钟</item>
+        <item quantity="other">%d 分钟</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">快进 %d 秒</item>
+        <item quantity="other">快进 %d 秒</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">快退 %d 秒</item>
+        <item quantity="other">快退 %d 秒</item>
+    </plurals>
+    <plurals name="facepile_content_description_phrase">
+        <item quantity="one">{user_names} 的个人资料图像</item>
+        <item quantity="other">{user_names} 的个人资料图像</item>
+    </plurals>
+    <plurals name="full_screen_gallery_header_add">
+        <item quantity="one">添加 %d 项</item>
+        <item quantity="other">添加 %d 项</item>
+    </plurals>
+    <plurals name="graphql_errors_button">
+        <item quantity="one">%d 错误</item>
+        <item quantity="other">%d 错误</item>
+    </plurals>
+    <plurals name="guest_management_max_cohost_count_label">
+        <item quantity="one">你只能添加 %1$d 位共同主持人。</item>
+        <item quantity="other">你只能添加 %1$d 位共同主持人。</item>
+    </plurals>
+    <plurals name="guest_management_open_cohost_count_label">
+        <item quantity="one">最多再添加 %1$d 人。</item>
+        <item quantity="other">最多再添加 %1$d 人。</item>
+    </plurals>
+    <plurals name="host_kudos_num_followers_gained">
+        <item quantity="one">你获得了 %1$d 位新关注者！</item>
+        <item quantity="other">你获得了 %1$d 位新关注者！</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d小时</item>
+        <item quantity="other">%d小时</item>
+    </plurals>
+    <plurals name="humanization_prompt_followers">
+        <item quantity="one">%1$s 关注了 %2$s。</item>
+        <item quantity="other">%1$s 关注了 %2$s。</item>
+    </plurals>
+    <plurals name="humanization_prompt_topics">
+        <item quantity="one">你和 %1$s 都关注了话题 %2$s。</item>
+        <item quantity="other">你和 %1$s 都关注了话题 %2$s。</item>
+    </plurals>
+    <plurals name="likes">
+        <item quantity="one">%d 个喜欢</item>
+        <item quantity="other">%d 个喜欢</item>
+    </plurals>
+    <plurals name="list_member_count">
+        <item quantity="one">成员</item>
+        <item quantity="other">成员</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_message">
+        <item quantity="one">"好的图片描述应该保持简明而详尽。一定要总结或写出图片本身所包含的任何文字。
+
+你的描述将让残疾人以及每位想了解更多情况的用户都能在 X 上看到。
+
+你可以在“无障碍设置”中关闭此提醒。"</item>
+        <item quantity="other">"好的图片描述应该保持简明而详尽。一定要总结或写出图片本身所包含的任何文字。
+
+你的描述将让残疾人以及每位想了解更多情况的用户都能在 X 上看到。
+
+你可以在“无障碍设置”中关闭此提醒。"</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_positive_btn_text">
+        <item quantity="one">添加描述</item>
+        <item quantity="other">添加描述</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_title">
+        <item quantity="one">别忘了让你的图片可供别人访问</item>
+        <item quantity="other">别忘了让你的图片可供别人访问</item>
+    </plurals>
+    <plurals name="media_monetization_settings_categories_selected">
+        <item quantity="one">%d 分类已选择</item>
+        <item quantity="other">%d 分类已选择</item>
+    </plurals>
+    <plurals name="media_tag_remaining">
+        <item quantity="one">最多再圈上 %d 人。</item>
+        <item quantity="other">最多再圈出%d个人。</item>
+    </plurals>
+    <plurals name="media_tag_tagged">
+        <item quantity="one">%d 人已圈</item>
+        <item quantity="other">%d 个人被圈出</item>
+    </plurals>
+    <plurals name="member_count">
+        <item quantity="one">%s 成员</item>
+        <item quantity="other">%s 成员</item>
+    </plurals>
+    <plurals name="members">
+        <item quantity="one">%s 位成员</item>
+        <item quantity="other">%s 位成员</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d 分钟</item>
+        <item quantity="other">%d 分钟</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d 条新通知</item>
+        <item quantity="other">%d 条新通知</item>
+    </plurals>
+    <plurals name="muted_keyword_bulk_delete_success">
+        <item quantity="one">已删除 %d 个字</item>
+        <item quantity="other">已删除 %d 个字</item>
+    </plurals>
+    <plurals name="muted_keyword_selected_count">
+        <item quantity="one">已选 %d</item>
+        <item quantity="other">已选 %d</item>
+    </plurals>
+    <plurals name="narrowcast_community_member_count">
+        <item quantity="one">%s 成员</item>
+        <item quantity="other">%s 位成员</item>
+    </plurals>
+    <plurals name="narrowcast_trusted_friends_count">
+        <item quantity="one">%s 人</item>
+        <item quantity="other">%s 人</item>
+    </plurals>
+    <plurals name="notification_description_after_sending_posts">
+        <item quantity="other">已发送 {total} 个帖子</item>
+    </plurals>
+    <plurals name="notification_description_before_sending_posts">
+        <item quantity="other">正在准备发送 {total} 个帖子…</item>
+    </plurals>
+    <plurals name="notification_description_deleting_drafts">
+        <item quantity="other">正在删除草稿 {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_description_editable_posts">
+        <item quantity="other">正在删除可编辑帖子 {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_description_preparing_media">
+        <item quantity="other">正在准备媒体 {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_description_sending_drafts">
+        <item quantity="other">正在发送草稿 {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_description_sending_posts">
+        <item quantity="other">正在发送帖子 {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_media">
+        <item quantity="other">正在上传媒体 {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_poll">
+        <item quantity="other">正在上传投票 {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_title_after_sending_posts">
+        <item quantity="other">已发送帖子</item>
+    </plurals>
+    <plurals name="notification_title_before_sending_posts">
+        <item quantity="other">正在准备发送帖子</item>
+    </plurals>
+    <plurals name="notification_title_deleting_drafts">
+        <item quantity="other">正在删除草稿</item>
+    </plurals>
+    <plurals name="notification_title_deleting_editable_posts">
+        <item quantity="other">正在删除可编辑帖子</item>
+    </plurals>
+    <plurals name="notification_title_preparing_media">
+        <item quantity="other">正在准备媒体</item>
+    </plurals>
+    <plurals name="notification_title_sending_drafts">
+        <item quantity="other">正在发送草稿</item>
+    </plurals>
+    <plurals name="notification_title_sending_posts">
+        <item quantity="other">正在发送帖子</item>
+    </plurals>
+    <plurals name="notification_title_uploading_media">
+        <item quantity="other">正在上传媒体</item>
+    </plurals>
+    <plurals name="notification_title_uploading_poll">
+        <item quantity="other">正在上传投票</item>
+    </plurals>
+    <plurals name="notification_undo_nudge">
+        <item quantity="other">正在等待可撤销时段</item>
+    </plurals>
+    <plurals name="others">
+        <item quantity="one">另外 1 人</item>
+        <item quantity="other">另外 %d 个人</item>
+    </plurals>
+    <plurals name="payment_ach_merchant_authorization_transactions_count">
+        <item quantity="other">{count} 笔交易</item>
+    </plurals>
+    <plurals name="payment_onboarding_terms_invitation_subtitle">
+        <item quantity="one">在付款到期前继续。</item>
+        <item quantity="other">在付款到期前继续。</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_hours">
+        <item quantity="other">%d 小时</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_minutes">
+        <item quantity="other">%d分钟</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_seconds">
+        <item quantity="other">%d 秒</item>
+    </plurals>
+    <plurals name="product_count">
+        <item quantity="one">%1$d 件产品</item>
+        <item quantity="other">%1$d 件产品</item>
+    </plurals>
+    <plurals name="profile_about_username_changes">
+        <item quantity="one">%s 次用户名更改</item>
+        <item quantity="other">%s 次用户名更改</item>
+    </plurals>
+    <plurals name="profile_creator_subscriptions_count">
+        <item quantity="one">订阅</item>
+        <item quantity="other">订阅服务</item>
+    </plurals>
+    <plurals name="profile_follower_count">
+        <item quantity="one">关注者</item>
+        <item quantity="other">关注者</item>
+    </plurals>
+    <plurals name="profile_friends_following_others">
+        <item quantity="one">另外 %d 人</item>
+        <item quantity="other">另外 %d 人</item>
+    </plurals>
+    <plurals name="profile_stat_followers_text">
+        <item quantity="other">关注者</item>
+    </plurals>
+    <plurals name="profile_stat_following_text">
+        <item quantity="other">正在关注</item>
+    </plurals>
+    <plurals name="profile_stat_subscribers_text">
+        <item quantity="other">订阅者</item>
+    </plurals>
+    <plurals name="profile_stat_subscriptions_text">
+        <item quantity="other">订阅服务</item>
+    </plurals>
+    <plurals name="profile_super_followers_count">
+        <item quantity="one">订阅者</item>
+        <item quantity="other">订阅者</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_articles">
+        <item quantity="one">%s 文章</item>
+        <item quantity="other">%s 文章</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_likes">
+        <item quantity="one">%s 喜欢</item>
+        <item quantity="other">%s 喜欢</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_media">
+        <item quantity="one">%s照片</item>
+        <item quantity="other">%s 照片和视频</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_timeline">
+        <item quantity="one">%s 个帖子</item>
+        <item quantity="other">%s 个帖子</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_peak_msg">
+        <item quantity="zero">播客观众图表</item>
+        <item quantity="one">播客观众图表。你在 %2$s 时有 %1$d 名峰值观众。</item>
+        <item quantity="other">播客观众图表。你在 %2$s 时有 %1$d 名峰值观众。</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_point_msg">
+        <item quantity="one">你在 %2$s 时获得了 %1$d 个观众。</item>
+        <item quantity="other">你在 %2$s 时获得了 %1$d 个观众。</item>
+    </plurals>
+    <plurals name="ps__invite_follower">
+        <item quantity="zero">无关注者</item>
+        <item quantity="one">%d 个关注者</item>
+        <item quantity="other">%d 个关注者</item>
+    </plurals>
+    <plurals name="ps__invited_num_followers_embolden">
+        <item quantity="one">*%1$s* 邀请了 %2$s 个人</item>
+        <item quantity="other">*%1$s* 邀请了 %2$s 个人</item>
+    </plurals>
+    <plurals name="ps__moderation_report_muted_by_moderator">
+        <item quantity="one">被 %1$s *隐藏*</item>
+        <item quantity="other">被 %1$s (%2$d) *隐藏*</item>
+    </plurals>
+    <plurals name="ps__moderation_report_unmuted_by_moderator">
+        <item quantity="one">被 %1$s *取消隐藏*</item>
+        <item quantity="other">被 %1$s (%2$d) *取消隐藏*</item>
+    </plurals>
+    <plurals name="ps__new_messages">
+        <item quantity="one">%1$d 条新私信</item>
+        <item quantity="other">%1$d 条新私信</item>
+    </plurals>
+    <plurals name="ps__num_hearts">
+        <item quantity="one">%s 个爱心</item>
+        <item quantity="other">%s 个爱心</item>
+    </plurals>
+    <plurals name="ps__stats_live_viewers">
+        <item quantity="one">直播观众</item>
+        <item quantity="other">直播观众</item>
+    </plurals>
+    <plurals name="ps__stats_replay_viewers">
+        <item quantity="one">重播观众</item>
+        <item quantity="other">重播观众</item>
+    </plurals>
+    <plurals name="ps__time_format_days">
+        <item quantity="one">%d 天</item>
+        <item quantity="other">%d 天</item>
+    </plurals>
+    <plurals name="ps__time_format_hours">
+        <item quantity="one">%d 小时</item>
+        <item quantity="other">%d 小时</item>
+    </plurals>
+    <plurals name="ps__time_format_minutes">
+        <item quantity="one">%d 分</item>
+        <item quantity="other">%d 分</item>
+    </plurals>
+    <plurals name="ps__time_format_seconds">
+        <item quantity="one">%d 秒</item>
+        <item quantity="other">%d 秒</item>
+    </plurals>
+    <plurals name="recording_replay_count_preview">
+        <item quantity="one">%s 重播</item>
+        <item quantity="other">%s 次重播</item>
+    </plurals>
+    <plurals name="relationship_followers_following_others">
+        <item quantity="one">另外 %d 个人</item>
+        <item quantity="other">另外 %d 个人</item>
+    </plurals>
+    <plurals name="replies">
+        <item quantity="one">%d 条回复</item>
+        <item quantity="other">%d 条回复</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others">
+        <item quantity="other">回复给 ﻿%1$s 及另外 %2$d 人﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_exclusive">
+        <item quantity="other">回复 ﻿%1$s 和其他 %2$d 个人﻿。其他订阅者也会看到你的回复。</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_in_space">
+        <item quantity="other">回复给 ﻿%3$s﻿ 中的 ﻿%1$s 和其他 %2$d 个人﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others">
+        <item quantity="other">回复给 ﻿%1$s %2$s 及另外 %3$d 人﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_exclusive">
+        <item quantity="other">回复 ﻿%1$s %2$s 和其他 %3$d 个人﻿。其他订阅者也会看到你的回复。</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_in_space">
+        <item quantity="other">回复给 ﻿%4$s﻿ 中的 ﻿%1$s %2$s 和其他 %3$d 个人﻿</item>
+    </plurals>
+    <plurals name="reported_tweet_reported_by">
+        <item quantity="one">由 {{}}%1$s{{}} 举报</item>
+        <item quantity="other">被 {{}}%1$s 位成员报告{{}}</item>
+    </plurals>
+    <plurals name="retweets">
+        <item quantity="one">%d 转帖</item>
+        <item quantity="other">%d 转帖</item>
+    </plurals>
+    <plurals name="safety_mode_preview_description">
+        <item quantity="one">我们标记了 %d 个可能存在滥用或垃圾信息行为的账号。</item>
+        <item quantity="other">我们标记了 %d 个可能存在滥用或垃圾信息行为的账号。</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">%d 秒</item>
+        <item quantity="other">%d 秒</item>
+    </plurals>
+    <plurals name="send_cohost_invite">
+        <item quantity="one">发送共同主持人邀请</item>
+        <item quantity="other">发送共同主持人邀请</item>
+    </plurals>
+    <plurals name="settings_notif_tweets_count">
+        <item quantity="one">%d 人</item>
+        <item quantity="other">%d人</item>
+    </plurals>
+    <plurals name="share_card_likes">
+        <item quantity="other">{num} 个喜欢</item>
+    </plurals>
+    <plurals name="share_card_replies">
+        <item quantity="other">{num} 条回复</item>
+    </plurals>
+    <plurals name="social_follow_and_follow_and_others">
+        <item quantity="one">%1$s、%2$s 和另外 %3$d 人关注</item>
+        <item quantity="other">%1$s、%2$s 及另外%3$d人关注了</item>
+    </plurals>
+    <plurals name="spaces_additional_participants">
+        <item quantity="one">+%1$s 位其他听众</item>
+        <item quantity="other">+%1$s 位其他听众</item>
+    </plurals>
+    <plurals name="spaces_blocked_warning">
+        <item quantity="one">你屏蔽了 %1$d 个正在讲话的人</item>
+        <item quantity="other">你屏蔽了 %1$d 个正在讲话的人</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_in_progress">
+        <item quantity="one">%1$s 在这个空间里</item>
+        <item quantity="other">%1$s在这个空间里</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_replay">
+        <item quantity="one">%1$s 在这个空间中</item>
+        <item quantity="other">%1$s 在这个空间中</item>
+    </plurals>
+    <plurals name="spaces_cohost_invites_sent_toast">
+        <item quantity="other">%1$d 共同主持人邀请已发送</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle">
+        <item quantity="other">最多再添加 %1$d 人。</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle_full">
+        <item quantity="other">你只能添加 %1$d 位共同主持人。</item>
+    </plurals>
+    <plurals name="spaces_invite_confirmation">
+        <item quantity="one">%1$d 个人受邀加入这个空间</item>
+        <item quantity="other">%1$d 个人已受邀加入这个空间</item>
+    </plurals>
+    <plurals name="spaces_invite_send_cohost_cta">
+        <item quantity="other">发送共同主持人邀请</item>
+    </plurals>
+    <plurals name="spaces_invite_send_speaker_cta">
+        <item quantity="other">发送发言人邀请</item>
+    </plurals>
+    <plurals name="spaces_invite_sent_toast">
+        <item quantity="other">%1$d 个人已受邀加入这个空间</item>
+    </plurals>
+    <plurals name="spaces_invite_speakers_subtitle">
+        <item quantity="other">你最多可以邀请 %1$d 个人发言</item>
+    </plurals>
+    <plurals name="spaces_requested_pill_label">
+        <item quantity="other">已请求（%1$d）</item>
+    </plurals>
+    <plurals name="spaces_sheet_anonymous_others">
+        <item quantity="other">另外 %1$s 个人</item>
+    </plurals>
+    <plurals name="spaces_speak_request_toast_label_many">
+        <item quantity="other">%1$d 人要求发言</item>
+    </plurals>
+    <plurals name="speakers_current_count">
+        <item quantity="one">%1$d 个发言人</item>
+        <item quantity="other">%1$d 发言人</item>
+    </plurals>
+    <plurals name="speakers_listeners_count">
+        <item quantity="one">%1$d 人在收听</item>
+        <item quantity="other">%1$d 人在收听</item>
+    </plurals>
+    <plurals name="speakers_open_spots_count">
+        <item quantity="one">%1$d 个空位</item>
+        <item quantity="other">%1$d 个空位</item>
+    </plurals>
+    <plurals name="speakers_requests_count">
+        <item quantity="one">%1$d 请求</item>
+        <item quantity="other">%1$d 请求</item>
+    </plurals>
+    <plurals name="stat_label_bookmarks">
+        <item quantity="one">书签</item>
+        <item quantity="other">书签</item>
+    </plurals>
+    <plurals name="stat_label_likes_sentence_case">
+        <item quantity="one">喜欢</item>
+        <item quantity="other">喜欢</item>
+    </plurals>
+    <plurals name="stat_label_quote_tweets">
+        <item quantity="one">引用</item>
+        <item quantity="other">引用</item>
+    </plurals>
+    <plurals name="stat_label_retweets_sentence_case">
+        <item quantity="one">转帖</item>
+        <item quantity="other">转帖</item>
+    </plurals>
+    <plurals name="stat_label_verified_views_sentence_case">
+        <item quantity="one">认证查看次数</item>
+        <item quantity="other">认证查看次数</item>
+    </plurals>
+    <plurals name="stat_label_views_sentence_case">
+        <item quantity="one">查看</item>
+        <item quantity="other">查看</item>
+    </plurals>
+    <plurals name="subscription_duration_days">
+        <item quantity="one">天</item>
+        <item quantity="other">%d 天</item>
+    </plurals>
+    <plurals name="subscription_duration_months">
+        <item quantity="one">月</item>
+        <item quantity="other">%d月</item>
+    </plurals>
+    <plurals name="subscription_duration_years">
+        <item quantity="one">年</item>
+        <item quantity="other">%d年</item>
+    </plurals>
+    <plurals name="subscription_offer_price_description_months">
+        <item quantity="one">首月 {offer_price}，续订 {original_price}</item>
+        <item quantity="other">前 %d 个月价格为 {offer_price}，续订价格为 {original_price}</item>
+    </plurals>
+    <plurals name="subscription_offer_title_special_offer_months">
+        <item quantity="one">首月仅 {original_price_strike_through} {offer_price}</item>
+        <item quantity="other">前 %d 个月费用为 {original_price_strike_through} {offer_price}</item>
+    </plurals>
+    <plurals name="thread_draft_more_post">
+        <item quantity="other">+{num} 个额外帖子</item>
+    </plurals>
+    <plurals name="time_days">
+        <item quantity="one">%d 天</item>
+        <item quantity="other">%d天</item>
+    </plurals>
+    <plurals name="time_days_ago">
+        <item quantity="one">%d 天前</item>
+        <item quantity="other">%d天前</item>
+    </plurals>
+    <plurals name="time_hours">
+        <item quantity="one">%d小时</item>
+        <item quantity="other">%d小时</item>
+    </plurals>
+    <plurals name="time_hours_ago">
+        <item quantity="one">%d 小时前</item>
+        <item quantity="other">%d小时前</item>
+    </plurals>
+    <plurals name="time_mins">
+        <item quantity="one">%d 分</item>
+        <item quantity="other">%d分</item>
+    </plurals>
+    <plurals name="time_mins_ago">
+        <item quantity="one">%d 分钟之前</item>
+        <item quantity="other">%d分钟前</item>
+    </plurals>
+    <plurals name="time_secs">
+        <item quantity="one">%d 秒</item>
+        <item quantity="other">%d秒</item>
+    </plurals>
+    <plurals name="time_weeks">
+        <item quantity="one">%d 周</item>
+        <item quantity="other">%d 周</item>
+    </plurals>
+    <plurals name="top_articles_time_window">
+        <item quantity="one">最近 1 小时</item>
+        <item quantity="other">最近 %s 小时</item>
+    </plurals>
+    <plurals name="tweet_stat_followers">
+        <item quantity="one">{num} 位关注者</item>
+        <item quantity="other">{num} 位关注者</item>
+    </plurals>
+    <plurals name="tweet_visibility_education_dialog_non_followers_text">
+        <item quantity="one">%1$s 未关注你。</item>
+        <item quantity="other">%1$s 和其他没关注你的人。</item>
+    </plurals>
+    <plurals name="undo_nudge_message">
+        <item quantity="other">你的帖子将在 %d 秒后发送。</item>
+    </plurals>
+    <plurals name="undo_send_period_in_seconds">
+        <item quantity="one">%d 秒</item>
+        <item quantity="other">%d 秒</item>
+    </plurals>
+    <plurals name="upload_progress_sending_posts">
+        <item quantity="one">正在发送帖子…</item>
+        <item quantity="other">正在发送 %d 个帖子…</item>
+    </plurals>
+    <plurals name="verified_views">
+        <item quantity="one">%d 认证查看次数</item>
+        <item quantity="other">%d 认证查看次数</item>
+    </plurals>
+    <plurals name="weeks">
+        <item quantity="one">%d 周</item>
+        <item quantity="other">%d周</item>
+    </plurals>
+    <plurals name="x_lite_time_weeks">
+        <item quantity="one">%d 周</item>
+        <item quantity="other">%d 周</item>
+    </plurals>
+    <plurals name="x_lite_time_years">
+        <item quantity="one">%d 年</item>
+        <item quantity="other">%d 年</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_gifs">
+        <item quantity="other">{count} 个 GIF</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_other">
+        <item quantity="other">{count} 个附件</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_photos">
+        <item quantity="other">{count} 张照片</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_videos">
+        <item quantity="other">{count} 个视频</item>
+    </plurals>
+    <plurals name="xchat_back_badge_unread_messages">
+        <item quantity="other">%1$d 条未读私信</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_over_limit">
+        <item quantity="other">超出限额 %1$d 字节</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_remaining">
+        <item quantity="other">剩余 %1$d 字节</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_gifs">
+        <item quantity="other">{count} 个 GIF 已附加</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_other">
+        <item quantity="other">{count} 个附件已附加</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_photos">
+        <item quantity="other">{count} 张照片已附加</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_videos">
+        <item quantity="other">{count} 个视频已附加</item>
+    </plurals>
+    <plurals name="xchat_forward_media_max_conversations">
+        <item quantity="other">你最多可将媒体转发给 {num} 个会话</item>
+    </plurals>
+    <plurals name="xchat_group_members_count">
+        <item quantity="other">{num} 位成员</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_and_others">
+        <item quantity="other">{names} 及另外 {count} 人</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_count">
+        <item quantity="other">{count} 个私信请求</item>
+    </plurals>
+    <plurals name="xchat_inbox_new_messages">
+        <item quantity="other">{count}+ 新私信</item>
+    </plurals>
+    <plurals name="xchat_inbox_years">
+        <item quantity="other">%d 年</item>
+    </plurals>
+    <plurals name="xchat_pinned_messages_count">
+        <item quantity="other">{count} 条置顶私信</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_days">
+        <item quantity="other">{count} 天</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_hours">
+        <item quantity="other">{count} 小时</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_minutes">
+        <item quantity="other">{count}分钟</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_seconds">
+        <item quantity="other">{count} 秒</item>
+    </plurals>
+</resources>

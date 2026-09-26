@@ -9,6 +9,196 @@
 		"arguments": ["noun"],
 		"value": "Following{{noun}}"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Freagair"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Repost"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Thaitin seo le"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Leabharmharc"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Taispeáin tuilleadh"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Taispeáin an snáithe seo"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "An íomhá roimhe"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "An chéad íomhá eile"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["From"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 stars – {{appNumRatings}} ratings"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Verified accounts"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Riarachán"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Modhnóir"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Ball"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "views"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Féach ar shleachta"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Féach ar ghníomhaíocht"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "An bhfuil an nóta seo úsáideach?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "Cuidiúil"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "Beagáinín Cuidiúil"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "Nach Raibh Cuidiúil"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Ag teacht go luath"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Nowat"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Answer by Grok in Fun Mode"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Answer by Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Image by Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Taispeáin tuilleadh"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Create your version with Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Ask Grok yourself"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} web pages and posts"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Ábhartha"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Thaitin siad seo le"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Le déanaí"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Sort replies"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Last edited"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "There’s a new version of this post."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Opens edit history"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "See the latest post"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Opens the new version of this post"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Tusa"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Ó"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Vótáil"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Taispeáin an phobalbhreith seo"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Torthaí deiridh"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Repost"
@@ -20,6 +210,26 @@
 	"following": {
 		"type": "string",
 		"value": "Á Leanúint"
+	},
+	"follow": {
+		"type": "string",
+		"value": "Lean"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Lean ar ais"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Leantóirí"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Tá an duine seo do do leanúint"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Subscriptions"
 	},
 	"unfollow": {
 		"type": "string",
@@ -55,12 +265,10 @@
 		"value": ["Áleanúintag",",","agusag","eileatááleanúintagat"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}post"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Ismaithliom"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",

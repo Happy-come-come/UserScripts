@@ -11,15 +11,97 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Épinglées"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s a reposté"},
+	"replyAction": {"type":"string","value":"Répondre"},
+	"repostAction": {"type":"string","value":"Repost"},
+	"likeAction": {"type":"string","value":"Aimer"},
+	"bookmarkAction": {"type":"string","value":"Ajouter aux signets"},
+	"showMore": {"type":"string","value":"Voir plus"},
+	"viewThread": {"type":"string","value":"Afficher cette discussion"},
+	"previousImage": {"type":"string","value":"Image précédente"},
+	"nextImage": {"type":"string","value":"Image suivante"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["De "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5 étoiles – "+e.appNumRatings+" votes"}
+	},
+	"verifiedAccount": {"type":"string","value":"Comptes certifiés"},
+	"communityAdminBadge": {"type":"string","value":"Admin"},
+	"communityModeratorBadge": {"type":"string","value":"Modo"},
+	"communityMemberBadge": {"type":"string","value":"Membre"},
+	"viewsLabel": {"type":"string","value":"vues"},
+	"viewQuotes": {"type":"string","value":"Voir les citations"},
+	"viewActivity": {"type":"string","value":"Afficher l'activité"},
+	"communityNotes": {"type":"string","value":"Notes de la Communauté"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Cette note est-elle utile ?"},
+	"communityNoteHelpful": {"type":"string","value":"utile"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"en partie utile"},
+	"communityNoteNotHelpful": {"type":"string","value":"inutile"},
+	"cashtagComingSoon": {"type":"string","value":"Bientôt disponible"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Maintenant à "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Réponse de Grok en mode Fun"},
+	"grokAnswer": {"type":"string","value":"Réponse de Grok"},
+	"grokImageBy": {"type":"string","value":"Image de Grok"},
+	"grokShowMore": {"type":"string","value":"Voir plus"},
+	"grokCreateVersion": {"type":"string","value":"Créer ma version avec Grok"},
+	"grokAskYourself": {"type":"string","value":"Demander à Grok"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" page"+n(e.count,"","s")+" Web"}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" "+n(e.count,"post","nouveaux posts")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" pages Web et posts"}
+	},
+	"mostRelevant": {"type":"string","value":"Pertinence"},
+	"mostLiked": {"type":"string","value":"J'aime"},
+	"mostRecent": {"type":"string","value":"Récents"},
+	"sortReplies": {"type":"string","value":"Trier les réponses"},
+	"lastEdited": {"type":"string","value":"Dernière modification :"},
+	"newPostVersion": {"type":"string","value":"Il existe une nouvelle version de ce post."},
+	"opensEditHistory": {"type":"string","value":"Ouvre l'historique des modifications"},
+	"viewLatestPost": {"type":"string","value":"Voir le dernier post"},
+	"opensLatestPost": {"type":"string","value":"Ouvre la nouvelle version de ce post"},
+	"mediaTaggedSelf": {"type":"string","value":"Vous"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["De "]}
+	},
+	"poll": {"type":"string","value":"Question"},
+	"viewPoll": {"type":"string","value":"Afficher cette question"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" vote"+n(e.count,"","s")}
+	},
+	"pollEnded": {"type":"string","value":"Résultats finaux"},
 	"retweet": {"type":"string","value":"Repost"},
 	"unDoRetweet": {"type":"string","value":"Annuler le repost"},
 	"quoteTweet": {"type":"string","value":"Citation"},
 	"profileTabTitleTimeline": {"type":"string","value":"Posts"},
 	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {"type":"string","value":"Réponses"},
-	"profileTabTitleHighlights": {"type":"string","value":"Tweets marquants"},
+	"profileTabTitleHighlights": {"type":"string","value":"Posts marquants"},
 	"profileTabTitleMedia": {"type":"string","value":"Médias"},
 	"profileTabTitleLikes": {"type":"string","value":"\"J'aime\""},
 	"following": {"type":"string","value":"Abonné"},
+	"follow": {"type":"string","value":"Suivre"},
+	"followBack": {"type":"string","value":"Suivre en retour"},
+	"followers": {"type":"string","value":"Abonnés"},
+	"followsYou": {"type":"string","value":"Vous suit"},
+	"subscriptions": {"type":"string","value":"Souscriptions"},
 	"unfollow": {"type":"string","value":"Se désabonner"},
 	"blocked": {"type":"string","value":"Bloqué"},
 	"unblock": {"type":"string","value":"Débloquer"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Suivi par "]}
+		"value": function(){return ["Suivi par "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Suivi par "," et "]}
+		"value": function(){return ["Suivi par "," et "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Suivi par ",", "," et "]}
+		"value": function(){return ["Suivi par ",", "," et "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Suivi par ",", "," et "," autres personnes que vous suivez"]}
+		"value": function(){return ["Suivi par ",", "," et "," autres personnes que vous suivez"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" post"+r(props.count,"","s")]}
+		"value": function(){return [props.formattedCount+" post"+n(props.count,"","s")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" J''aime"]}
+		"value": function(){return [props.formattedCount+" J''aime"]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" photos et vidéos"]}
+		"value": function(){return [props.formattedCount+" photos et vidéos"]}
 	},
 	"home": {"type":"string","value":"Accueil"},
 	"explore": {"type":"string","value":"Explorer"},

@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"પિન કરેલ"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%sએ પુનટ્વીટ કરી"},
+	"replyAction": {"type":"string","value":"પ્રત્યુતર"},
+	"repostAction": {"type":"string","value":"રીપોસ્ટ કરો"},
+	"likeAction": {"type":"string","value":"લાઈક"},
+	"bookmarkAction": {"type":"string","value":"બુકમાર્ક"},
+	"showMore": {"type":"string","value":"વધુ દર્શાવો"},
+	"viewThread": {"type":"string","value":"આ થ્રેડ બતાવો"},
+	"previousImage": {"type":"string","value":"અગાઉની છબી"},
+	"nextImage": {"type":"string","value":"આગામીની છબી"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return [""," તરફથી"]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 સ્ટાર્સ – "+e.appNumRatings+" રેટિંગ્સ"}
+	},
+	"verifiedAccount": {"type":"string","value":"ચકાસાયેલાં એકાઉન્ટ્સ"},
+	"communityAdminBadge": {"type":"string","value":"એડમિન"},
+	"communityModeratorBadge": {"type":"string","value":"મોડ."},
+	"communityMemberBadge": {"type":"string","value":"સભ્ય"},
+	"viewsLabel": {"type":"string","value":"વ્યૂઝ"},
+	"viewQuotes": {"type":"string","value":"કવોટ્સ જુઓ"},
+	"viewActivity": {"type":"string","value":"પ્રવૃત્તિ જુઓ"},
+	"communityNotes": {"type":"string","value":"કોમ્યુનિટી નોટ્સ"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"શું આ નોંધ મદદરૂપ છે?"},
+	"communityNoteHelpful": {"type":"string","value":"મદદરૂપ"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"કેટલેક અંશે મદદરૂપ"},
+	"communityNoteNotHelpful": {"type":"string","value":"મદદરૂપ નથી"},
+	"cashtagComingSoon": {"type":"string","value":"ટૂંક સમયમાં આવી રહ્યું છે"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["હવે "," પર"]}
+	},
+	"grokAnswerFun": {"type":"string","value":"ફન મોડમાં Grok દ્વારા જવાબ આપો"},
+	"grokAnswer": {"type":"string","value":"Grok દ્વારા જવાબ આપો"},
+	"grokImageBy": {"type":"string","value":"Grok દ્વારા છબી"},
+	"grokShowMore": {"type":"string","value":"વધુ દર્શાવો"},
+	"grokCreateVersion": {"type":"string","value":"Grok સાથે તમારું સંસ્કરણ બનાવો"},
+	"grokAskYourself": {"type":"string","value":"તમારી જાતે Grokને પૂછો"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" વેબ પૃષ્ઠ"+t(e.count,"","ો")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" પોસ્ટ"+t(e.count,"","્સ ")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" વેબ પૃષ્ઠો અને પોસ્ટ"}
+	},
+	"mostRelevant": {"type":"string","value":"સંબંધિત છે"},
+	"mostLiked": {"type":"string","value":"લાઈક્સ"},
+	"mostRecent": {"type":"string","value":"તાજેતરનું"},
+	"sortReplies": {"type":"string","value":"પ્રત્યુત્તરોને સૉર્ટ કરો"},
+	"lastEdited": {"type":"string","value":"છેલ્લે સંપાદિત કર્યું:"},
+	"newPostVersion": {"type":"string","value":"આ પોસ્ટનું એક નવું સંસ્કરણ ઉપલબ્ધ છે"},
+	"opensEditHistory": {"type":"string","value":"સંપાદનનો ઇતિહાસ ખોલે છે"},
+	"viewLatestPost": {"type":"string","value":"નવીનતમ પોસ્ટ જુઓ"},
+	"opensLatestPost": {"type":"string","value":"આ પોસ્ટનું એક નવું સંસ્કરણ ખોલે છે"},
+	"mediaTaggedSelf": {"type":"string","value":"તમે"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return [""," તરફથી"]}
+	},
+	"poll": {"type":"string","value":"મતદાન"},
+	"viewPoll": {"type":"string","value":"આ મતદાન બતાવો"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" મત"}
+	},
+	"pollEnded": {"type":"string","value":"અંતિમ પરિણામો"},
 	"retweet": {"type":"string","value":"પુનટ્વીટ"},
 	"unDoRetweet": {"type":"string","value":"પુનટ્વીટને પૂર્વવત કરો"},
 	"quoteTweet": {"type":"string","value":"અવતરણની સાથે ટ્વીટ કરો"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"મીડિયા"},
 	"profileTabTitleLikes": {"type":"string","value":"લાઈક્સ"},
 	"following": {"type":"string","value":"અનુસરે છે"},
+	"follow": {"type":"string","value":"અનુસરો"},
+	"followBack": {"type":"string","value":"પાછા અનુસરો"},
+	"followers": {"type":"string","value":"અનુયાયીઓ"},
+	"followsYou": {"type":"string","value":"તમને અનુસરે છે"},
+	"subscriptions": {"type":"string","value":"સબ્સ્ક્રિપ્શન્સ"},
 	"unfollow": {"type":"string","value":"અનુસરવાનું બંધ કરો"},
 	"blocked": {"type":"string","value":"અવરોધિત કરેલું"},
 	"unblock": {"type":"string","value":"અનાવરોધિત"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," દ્વારા અનુસરવામાં આવેલ છે"]}
+		"value": function(){return [""," દ્વારા અનુસરવામાં આવેલ છે"]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," અને "," દ્વારા અનુસર્યા"]}
+		"value": function(){return [""," અને "," દ્વારા અનુસર્યા"]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", "," અને "," દ્વારા અનુસર્યા"]}
+		"value": function(){return ["",", "," અને "," દ્વારા અનુસર્યા"]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", "," અને તમે અનુસરો છો તે "," અન્યો દ્વારા અનુસર્યા"]}
+		"value": function(){return ["",", "," અને તમે અનુસરો છો તે "," અન્યો દ્વારા અનુસર્યા"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ટ્વીટ"+n(props.count,"","્સ")]}
+		"value": function(){return [props.formattedCount+" ટ્વીટ"+n(props.count,"","્સ")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" લાઈક"+n(props.count,"","્સ")]}
+		"value": function(){return [props.formattedCount+" લાઈક"+n(props.count,"","્સ")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ફોટા અને વિડિયોઝ"]}
+		"value": function(){return [props.formattedCount+" ફોટા અને વિડિયોઝ"]}
 	},
 	"home": {"type":"string","value":"હોમ"},
 	"explore": {"type":"string","value":"એક્સપ્લોર"},

@@ -17,6 +17,203 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "%s ได้รีทวีต"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "ตอบกลับ"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "รีโพสต์"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "ชื่นชอบ"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "บุ๊คมาร์ก"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "แสดงเพิ่มเติม"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "แสดงเธรดนี้"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "รูปภาพก่อนหน้า"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "รูปภาพถัดไป"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["จาก"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 ดาว – {{appNumRatings}} คะแนน"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "บัญชีที่ยืนยันแล้ว"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "ผดลรบ"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "ผดล"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "สมาชิก"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "ยอดดู"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "ดูการอ้างอิง"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "ดูความเคลื่อนไหว"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "หมายเหตุจากชุมชน"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "โน้ตนี้เป็นประโยชน์หรือไม่"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "เป็นประโยชน์"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "เป็นประโยชน์บางส่วน"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "ไม่เป็นประโยชน์"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "เร็วๆ นี้"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["ราคาเพียง"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "ตอบโดย Grok ในโหมดสนุกสนาน"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "ตอบโดย Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "รูปภาพโดย Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "แสดงเพิ่มเติม"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "สร้างเวอร์ชันของคุณด้วย Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "ถาม Grok ด้วยตัวคุณเอง"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} เว็บเพจ"
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} โพสต์"
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "หน้าเว็บและโพสต์ {{count}} รายการ"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "เกี่ยวข้อง"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "ความชอบ"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "ล่าสุด"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "จัดเรียงการตอบกลับ"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "แก้ไขล่าสุด"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "โพสต์นี้มีเวอร์ชันใหม่"
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "เปิดประวัติการแก้ไข"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "ดูโพสต์ล่าสุด"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "เปิดเวอร์ชันใหม่ของโพสต์นี้"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "คุณ"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["จาก"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "โพล"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "แสดงโพลนี้"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} โหวต"
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "ผลลัพธ์สุดท้าย"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "รีทวีต"
@@ -52,6 +249,26 @@
 	"following": {
 		"type": "string",
 		"value": "กําลังติดตาม"
+	},
+	"follow": {
+		"type": "string",
+		"value": "ติดตาม"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "ติดตามกลับ"
+	},
+	"followers": {
+		"type": "string",
+		"value": "ผู้ติดตาม"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "ติดตามคุณ"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "ระบบสมาชิก"
 	},
 	"unfollow": {
 		"type": "string",

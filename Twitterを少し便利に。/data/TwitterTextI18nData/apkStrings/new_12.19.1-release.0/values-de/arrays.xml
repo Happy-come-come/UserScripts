@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>Du erhältst Mitteilungen für neue Posts.</item>
+        <item>Du erhältst Mitteilungen für neue Posts und Antworten.</item>
+        <item>Du erhältst Mitteilungen für neue Abonnement-Posts.</item>
+        <item>Du erhältst Mitteilungen für neue Live-Video-Posts.</item>
+        <item>Du erhältst keine Mitteilungen mehr für neue Posts.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>Alle Posts</item>
+        <item>Alle Posts und Antworten</item>
+        <item>Nur Abonnement-Posts</item>
+        <item>Nur Live-Video</item>
+        <item>Aus</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>Mitteilungen für alle Posts dieses Accounts erhalten.</item>
+        <item>Mitteilungen für Posts und Antworten dieses Accounts erhalten.</item>
+        <item>Mitteilungen nur für Abonnement-Posts erhalten.</item>
+        <item>Mitteilungen nur für Live-Broadcasts erhalten.</item>
+        <item>Mitteilungen für die Posts dieses Accounts deaktivieren.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>Link posten</item>
+        <item>Link kopieren</item>
+        <item>Link senden</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>Wie zufrieden bist Du insgesamt mit %1$s?</item>
+        <item>Wie zufrieden bist Du mit %1$s?</item>
+        <item>Wie zufrieden warst Du in letzter Zeit insgesamt mit Deinem %1$s-Erlebnis?</item>
+        <item>Wie würdest Du Dein Gesamterlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest Du Dein Gesamterlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest Du Deine Erfahrung mit %1$s bis jetzt bewerten?</item>
+        <item>Wie würdest Du Deine Erfahrung mit %1$s auf Twitter bewerten?</item>
+        <item>Warst Du in letzter Zeit zufrieden mit Deinem %1$s-Erlebnis?</item>
+        <item>Wie gut erfüllt %1$s Deine Erwartungen?</item>
+        <item>Wie würdest Du Deine Erfahrung als Gast mit %1$s bewerten?</item>
+        <item>Wie würdest Du Deine Service-Erfahrung mit %1$s bewerten?</item>
+        <item>Wie würdest Du Deine letzte Service-Erfahrung mit %1$s bewerten?</item>
+        <item>Wie würdest Du den Service bewerten, den Du von %1$s erhalten hast?</item>
+        <item>Warst Du zufrieden mit dem Ergebnis Deiner Interaktion mit %1$s?</item>
+        <item>Wie würdest Du die Fähigkeit bewerten, Dein Problem mit %1$s zu lösen?</item>
+        <item>Wie würdest Du die Antwortzeit von %1$s bewerten?</item>
+        <item>Wie würdest Du die Servicegeschwindigkeit von %1$s bewerten?</item>
+        <item>Wie würdest Du die Dauer zur Problemlösung durch %1$s bewerten?</item>
+        <item>Wie würdest Du die Dauer bis zur Lösung Deines Problems mit %1$s bewerten?</item>
+        <item>Wie würdest Du die Geschwindigkeit der Problemlösung durch %1$s bewerten?</item>
+        <item>Wie würdest du das Fachwissen des Ratgebers von %1$s bewerten?</item>
+        <item>Wie zufrieden warst Du mit dem Bearbeiter von %1$s, der Dir geholfen hat?</item>
+        <item>Wie zufrieden warst Du mit dem Spezialisten von %1$s, der Dir geholfen hat?</item>
+        <item>Wie zufrieden warst Du mit dem Vertreter von %1$s, der Dir geholfen hat?</item>
+        <item>Wie würdest Du Deine gegenwärtige Bankerfahrung mit %1$s bewerten?</item>
+        <item>Wie würdest Du das Gesamterlebnis bei %1$s bewerten?</item>
+        <item>Wie würdest Du Deine Zahlungserfahrung mit %1$s bewerten?</item>
+        <item>Wie würdest Du Dein Kauferlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest Du Dein Einkaufserlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest Du Deine Liefererfahrung mit %1$s bewerten?</item>
+        <item>Wie würdest Du Dein Mieterlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest Du Dein Einkaufserlebnis bei %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest Du Deinen kürzlichen Hotelaufenthalt bei %1$s bewerten?</item>
+        <item>Wie würdest Du Deinen Flug mit %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest Du Deine Fahrt mit %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest Du Deine Reise mit %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest Du Deinen Besuch in %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest Du Dein Essen bei %1$s vor Kurzem bewerten?</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 Tage</item>
+        <item>12 Monate</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0,25-fach</item>
+        <item>0,5-fach</item>
+        <item>0,75-fach</item>
+        <item>Standard</item>
+        <item>1,25-fach</item>
+        <item>1,5-fach</item>
+        <item>2-fach</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>Wie zufrieden bist du insgesamt mit %1$s?</item>
+        <item>Wie zufrieden bist du mit %1$s?</item>
+        <item>Wie zufrieden warst du in letzter Zeit insgesamt mit deinem Erlebnis mit %1$s?</item>
+        <item>Wie würdest du das Gesamterlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest du dein Gesamterlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest du dein Erlebnis mit %1$s bis jetzt bewerten?</item>
+        <item>Wie würdest du deine Erfahrung mit %1$s auf X bewerten?</item>
+        <item>Warst du zufrieden mit deinem Erlebnis mit %1$s vor Kurzem?</item>
+        <item>Wie gut erfüllt %1$s deine Erwartungen?</item>
+        <item>Wie würdest du deine Erfahrung als Gast bei %1$s bewerten?</item>
+        <item>Wie würdest du dein Service-Erlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest du das Service-Erlebnis mit %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest du den Service bewerten, den du von %1$s erhalten hast?</item>
+        <item>Warst du zufrieden mit dem Ergebnis der Interaktion mit %1$s?</item>
+        <item>Wie würdest du die Fähigkeit bewerten, dein Problem mit %1$s zu lösen?</item>
+        <item>Wie würdest du die Antwortzeit von %1$s bewerten?</item>
+        <item>Wie würdest du die Schnelligkeit des Service von %1$s bewerten?</item>
+        <item>Wie würdest du bewerten, wie lange es bis zur Lösung deines Problems mit %1$s gedauert hat?</item>
+        <item>Wie würdest du bewerten, wie lange es bis zur Lösung deines Problems mit %1$s gedauert hat?</item>
+        <item>Wie würdest du bewerten, wie schnell die Lösung deines Problems mit %1$s ging?</item>
+        <item>Wie würdest du das Fachwissen des Beraters von %1$s bewerten?</item>
+        <item>Wie zufrieden warst du mit dem Beschäftigten von %1$s, der dir geholfen hat?</item>
+        <item>Wie zufrieden warst du mit dem Spezialisten von %1$s, der dir geholfen hat?</item>
+        <item>Wie zufrieden warst du mit dem Vertreter von %1$s, der dir geholfen hat?</item>
+        <item>Wie würdest du dein Bankerlebnis mit %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest du das Erlebnis beim Event bei %1$s insgesamt bewerten?</item>
+        <item>Wie würdest du dein Zahlungserlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest du dein Kauferlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest du dein Einkaufserlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest du dein Liefererlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest du dein Mieterlebnis mit %1$s bewerten?</item>
+        <item>Wie würdest du deinen Besuch im Geschäft von %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest du deine Hotelübernachtung bei %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest du deinen Flug mit %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest du deine Fahrt mit %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest du deine Reise mit %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest du deinen Besuch bei %1$s vor Kurzem bewerten?</item>
+        <item>Wie würdest du dein Essen bei %1$s vor Kurzem bewerten?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>Wie wahrscheinlich ist es, dass Du %1$s einem Freund empfiehlst?</item>
+        <item>Wie wahrscheinlich ist es, dass Du %1$s einem Freund empfiehlst?</item>
+        <item>Wie wahrscheinlich ist es, dass Du %1$s einem Kollegen empfiehlst?</item>
+        <item>Wie wahrscheinlich ist es, dass Du %1$s einem Familienmitglied empfiehlst?</item>
+        <item>Wie wahrscheinlich ist es, dass Du %1$s jemand anderem empfiehlst?</item>
+        <item>Wie wahrscheinlich ist es, dass Du %1$s einem Freund oder Kollegen empfiehlst?</item>
+        <item>Wie wahrscheinlich ist es, dass Du in Zukunft bei %1$s einkaufen wirst?</item>
+        <item>Wie wahrscheinlich ist es, dass Du %1$s weiterempfehlen wirst?</item>
+        <item>Würdest Du %1$s einem Freund oder Kollegen empfehlen?</item>
+        <item>Wie wahrscheinlich wirst Du Deine Erfahrung mit %1$s einem Freund empfehlen?</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>Gute Zuschauerzahl</item>
+        <item>Positive Community</item>
+        <item>Videoqualität</item>
+        <item>Interessanter Chat</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>Niedrige Zuschauerzahl</item>
+        <item>Belästigung</item>
+        <item>Videoprobleme</item>
+        <item>Spam im Chat</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 Minuten</item>
+        <item>30 Minuten</item>
+        <item>1 Stunde</item>
+        <item>2 Stunden</item>
+        <item>4 Stunden</item>
+        <item>Täglich</item>
+    </string-array>
+</resources>

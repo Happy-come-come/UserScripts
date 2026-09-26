@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Fissate"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"Ritwittato da %s"},
+	"replyAction": {"type":"string","value":"Rispondi"},
+	"repostAction": {"type":"string","value":"Repost"},
+	"likeAction": {"type":"string","value":"Metti Mi piace"},
+	"bookmarkAction": {"type":"string","value":"Salva nei segnalibri"},
+	"showMore": {"type":"string","value":"Mostra altro"},
+	"viewThread": {"type":"string","value":"Mostra questa discussione"},
+	"previousImage": {"type":"string","value":"Immagine precedente"},
+	"nextImage": {"type":"string","value":"Immagine successiva"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Da "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(i){return i.appStarRating+"/5 stelle - "+i.appNumRatings+" valutazioni"}
+	},
+	"verifiedAccount": {"type":"string","value":"Account verificati"},
+	"communityAdminBadge": {"type":"string","value":"Amministratore"},
+	"communityModeratorBadge": {"type":"string","value":"Mod"},
+	"communityMemberBadge": {"type":"string","value":"Membro"},
+	"viewsLabel": {"type":"string","value":"visualizzazioni"},
+	"viewQuotes": {"type":"string","value":"Visualizza citazioni"},
+	"viewActivity": {"type":"string","value":"Visualizza attività"},
+	"communityNotes": {"type":"string","value":"Note della collettività"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Questa nota è utile?"},
+	"communityNoteHelpful": {"type":"string","value":"utile"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"piuttosto utile"},
+	"communityNoteNotHelpful": {"type":"string","value":"non utile"},
+	"cashtagComingSoon": {"type":"string","value":"Prossimamente"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Ora a "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Risposta di Grok in modalità divertente"},
+	"grokAnswer": {"type":"string","value":"Risposta di Grok"},
+	"grokImageBy": {"type":"string","value":"Immagine generata da Grok"},
+	"grokShowMore": {"type":"string","value":"Mostra altro"},
+	"grokCreateVersion": {"type":"string","value":"Crea la tua versione con Grok"},
+	"grokAskYourself": {"type":"string","value":"Chiedi direttamente a Grok"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(i){return i.count+" pagin"+n(i.count,"a","e")+" Web"}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(i){return i.count+" "+n(i.count,"","nuovi ")+"post"}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(i){return i.count+" pagine Web e post"}
+	},
+	"mostRelevant": {"type":"string","value":"Pertinenza"},
+	"mostLiked": {"type":"string","value":"Mi piace"},
+	"mostRecent": {"type":"string","value":"Recenti"},
+	"sortReplies": {"type":"string","value":"Ordina risposte"},
+	"lastEdited": {"type":"string","value":"Ultima modifica:"},
+	"newPostVersion": {"type":"string","value":"È disponibile una nuova versione del post."},
+	"opensEditHistory": {"type":"string","value":"Apre la cronologia modifiche"},
+	"viewLatestPost": {"type":"string","value":"Visualizza il post più recente"},
+	"opensLatestPost": {"type":"string","value":"Apre la nuova versione del post"},
+	"mediaTaggedSelf": {"type":"string","value":"Tu"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Di "]}
+	},
+	"poll": {"type":"string","value":"Sondaggio"},
+	"viewPoll": {"type":"string","value":"Mostra il sondaggio"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" vot"+t(e.count,"o","i")}
+	},
+	"pollEnded": {"type":"string","value":"Risultati finali"},
 	"retweet": {"type":"string","value":"Ritwitta"},
 	"unDoRetweet": {"type":"string","value":"Annulla Retweet"},
 	"quoteTweet": {"type":"string","value":"Cita il Tweet"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"Contenuti"},
 	"profileTabTitleLikes": {"type":"string","value":"Mi piace"},
 	"following": {"type":"string","value":"Following"},
+	"follow": {"type":"string","value":"Segui"},
+	"followBack": {"type":"string","value":"Segui anche tu"},
+	"followers": {"type":"string","value":"Follower"},
+	"followsYou": {"type":"string","value":"Ti segue"},
+	"subscriptions": {"type":"string","value":"Abbonamenti"},
 	"unfollow": {"type":"string","value":"Smetti di seguire"},
 	"blocked": {"type":"string","value":"Bloccato"},
 	"unblock": {"type":"string","value":"Sblocca"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Seguito da "]}
+		"value": function(){return ["Seguito da "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Seguito da "," e "]}
+		"value": function(){return ["Seguito da "," e "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Seguito da ",", "," e "]}
+		"value": function(){return ["Seguito da ",", "," e "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Seguito da ",", "," e altri "," che segui"]}
+		"value": function(){return ["Seguito da ",", "," e altri "," che segui"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Tweet"]}
+		"value": function(){return [props.formattedCount+" Tweet"]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Mi piace"]}
+		"value": function(){return [props.formattedCount+" Mi piace"]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" foto e video"]}
+		"value": function(){return [props.formattedCount+" foto e video"]}
 	},
 	"home": {"type":"string","value":"Home"},
 	"explore": {"type":"string","value":"Esplora"},
@@ -62,7 +144,7 @@ const text = {
 	"connect_people": {
 		"type": "webI18nFunction",
 		"arguments": ["verb"],
-		"value": function(e){return"Segui"+e.verb}
+		"value": function(i){return"Segui"+i.verb}
 	},
 	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Messaggi"},

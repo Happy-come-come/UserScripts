@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="a11y_composer_poll_choice_characters_remaining">
+        <item quantity="other">Còn lại {count} ký tự</item>
+    </plurals>
+    <plurals name="admin_tools_subtitle_members">
+        <item quantity="one">%d thành viên</item>
+        <item quantity="other">%d thành viên</item>
+    </plurals>
+    <plurals name="av_group_call_member_count">
+        <item quantity="one">%1$d thành viên</item>
+        <item quantity="other">%1$d thành viên</item>
+    </plurals>
+    <plurals name="badge_item_count">
+        <item quantity="one">%d mục mới</item>
+        <item quantity="other">%d mục mới</item>
+    </plurals>
+    <plurals name="cohost_current_count">
+        <item quantity="one">%1$d đ.chủ phòng</item>
+        <item quantity="other">%1$d đ.chủ phòng</item>
+    </plurals>
+    <plurals name="cohost_open_spots_count">
+        <item quantity="other">%1$d chỗ trống</item>
+    </plurals>
+    <plurals name="community_member_count">
+        <item quantity="one">%d Thành viên cộng đồng</item>
+        <item quantity="other">%d Thành viên cộng đồng</item>
+    </plurals>
+    <plurals name="community_moderator_count">
+        <item quantity="one">%d Người kiểm duyệt</item>
+        <item quantity="other">%d Người kiểm duyệt</item>
+    </plurals>
+    <plurals name="community_navigation_join_requests_label">
+        <item quantity="one">%s yêu cầu</item>
+        <item quantity="other">%s yêu cầu</item>
+    </plurals>
+    <plurals name="community_navigation_new_unread_tweets_label">
+        <item quantity="one">%s bài đăng mới</item>
+        <item quantity="other">%s bài đăng mới</item>
+    </plurals>
+    <plurals name="community_navigation_pending_reports_label">
+        <item quantity="one">%s báo cáo</item>
+        <item quantity="other">%s báo cáo</item>
+    </plurals>
+    <plurals name="composer_count_progress_overflow_warning">
+        <item quantity="one">%d ký tự quá dài</item>
+        <item quantity="other">%d ký tự quá dài</item>
+    </plurals>
+    <plurals name="composer_count_progress_warning">
+        <item quantity="one">%d ký tự còn lại</item>
+        <item quantity="other">%d ký tự còn lại</item>
+    </plurals>
+    <plurals name="content_description_fleet_item_space_with_others">
+        <item quantity="one">Phòng của %1$s với %2$d người khác</item>
+        <item quantity="other">Phòng của %1$s với %2$d người khác</item>
+    </plurals>
+    <plurals name="data_sync_notif_title">
+        <item quantity="one">%d tương tác mới</item>
+        <item quantity="other">%d tương tác mới</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d ngày</item>
+        <item quantity="other">%d ngày</item>
+    </plurals>
+    <plurals name="dm_add_people_failure">
+        <item quantity="one">Không thể thêm người dùng vào nhóm này.</item>
+        <item quantity="other">Không thể thêm %d người dùng vào nhóm này.</item>
+    </plurals>
+    <plurals name="dm_add_people_success">
+        <item quantity="one">Đã thêm người dùng vào nhóm.</item>
+        <item quantity="other">Đã thêm %d người dùng vào nhóm.</item>
+    </plurals>
+    <plurals name="dm_follower_count_no_joined_date">
+        <item quantity="one">{num_followers} Người theo dõi</item>
+        <item quantity="other">{num_followers} Người theo dõi</item>
+    </plurals>
+    <plurals name="dm_group_account_name">
+        <item quantity="one">1 người</item>
+        <item quantity="other">%d người</item>
+    </plurals>
+    <plurals name="dm_group_chat_count">
+        <item quantity="one">Chat nhóm với %d người</item>
+        <item quantity="other">Chat nhóm với %d người</item>
+    </plurals>
+    <plurals name="dm_group_conversation_participant_count">
+        <item quantity="one">%1$d người</item>
+        <item quantity="other">%1$d người</item>
+    </plurals>
+    <plurals name="dm_group_participant_count">
+        <item quantity="one">Có %1$s trong nhóm này</item>
+        <item quantity="other">Có %1$s trong nhóm này</item>
+    </plurals>
+    <plurals name="dm_group_participant_count_person_details">
+        <item quantity="one">%1$s người khác</item>
+        <item quantity="other">%1$s người khác</item>
+    </plurals>
+    <plurals name="dm_image_profile">
+        <item quantity="one">Hình ảnh hồ sơ của %s</item>
+        <item quantity="other">Hình ảnh hồ sơ của %s</item>
+    </plurals>
+    <plurals name="dm_new_people_you_may_know">
+        <item quantity="one">%d người mới mà bạn có thể biết</item>
+        <item quantity="other">%d người mới mà bạn có thể biết</item>
+    </plurals>
+    <plurals name="dm_new_requests">
+        <item quantity="one">%d yêu cầu mới</item>
+        <item quantity="other">%d yêu cầu mới</item>
+    </plurals>
+    <plurals name="dm_participant_added_by_deleted_user">
+        <item quantity="one">Đã thêm {participants}</item>
+        <item quantity="other">Đã thêm {participants}</item>
+    </plurals>
+    <plurals name="dm_pending_requests">
+        <item quantity="one">%d yêu cầu đang chờ xử lý</item>
+        <item quantity="other">%s yêu cầu đang chờ xử lý</item>
+    </plurals>
+    <plurals name="dm_people_you_may_know">
+        <item quantity="one">%d người mà bạn có thể biết</item>
+        <item quantity="other">%d người mà bạn có thể biết</item>
+    </plurals>
+    <plurals name="dm_pinned_conversations_max_count_exceeded_title">
+        <item quantity="one">Bạn chỉ có thể ghim %d cuộc tán gẫu</item>
+        <item quantity="other">Bạn chỉ có thể ghim %d cuộc tán gẫu</item>
+    </plurals>
+    <plurals name="dm_share_group_members_and_others">
+        <item quantity="one">{visible_names} và {others_count} người khác</item>
+        <item quantity="other">{visible_names} và {others_count} người khác</item>
+    </plurals>
+    <plurals name="dm_state_seen_by">
+        <item quantity="one">%d người đã xem</item>
+        <item quantity="other">%d người đã xem</item>
+    </plurals>
+    <plurals name="dm_unread_messages">
+        <item quantity="one">%d tin nhắn chưa đọc</item>
+        <item quantity="other">%d tin nhắn chưa đọc</item>
+    </plurals>
+    <plurals name="dm_user_joined_and_follower_count">
+        <item quantity="one">Đã tham gia {joined_date} • {num_followers} Người theo dõi</item>
+        <item quantity="other">Đã tham gia {joined_date} • {num_followers} Người theo dõi</item>
+    </plurals>
+    <plurals name="duration_picker_set_days">
+        <item quantity="one">1 ngày</item>
+        <item quantity="other">%d ngày</item>
+    </plurals>
+    <plurals name="duration_picker_set_hours">
+        <item quantity="one">1 giờ</item>
+        <item quantity="other">%d giờ</item>
+    </plurals>
+    <plurals name="duration_picker_set_minutes">
+        <item quantity="one">1 phút</item>
+        <item quantity="other">%d phút</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">Tua nhanh %d giây</item>
+        <item quantity="other">Tua nhanh %d giây</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">Tua lại %d giây</item>
+        <item quantity="other">Tua lại %d giây</item>
+    </plurals>
+    <plurals name="facepile_content_description_phrase">
+        <item quantity="one">Hình ảnh hồ sơ của {user_names}</item>
+        <item quantity="other">Hình ảnh hồ sơ của {user_names}</item>
+    </plurals>
+    <plurals name="full_screen_gallery_header_add">
+        <item quantity="one">Thêm %d</item>
+        <item quantity="other">Thêm %d</item>
+    </plurals>
+    <plurals name="graphql_errors_button">
+        <item quantity="one">%d Lỗi</item>
+        <item quantity="other">%d Lỗi</item>
+    </plurals>
+    <plurals name="guest_management_max_cohost_count_label">
+        <item quantity="one">Bạn chỉ được phép thêm %1$d đ.chủ phòng.</item>
+        <item quantity="other">Bạn chỉ được phép thêm %1$d đ.chủ phòng.</item>
+    </plurals>
+    <plurals name="guest_management_open_cohost_count_label">
+        <item quantity="one">Tối đa thêm %1$d người.</item>
+        <item quantity="other">Tối đa thêm %1$d người.</item>
+    </plurals>
+    <plurals name="host_kudos_num_followers_gained">
+        <item quantity="one">Bạn có %1$d người theo dõi mới!</item>
+        <item quantity="other">Bạn có %1$d người theo dõi mới!</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d giờ</item>
+        <item quantity="other">%d giờ</item>
+    </plurals>
+    <plurals name="humanization_prompt_followers">
+        <item quantity="one">%1$s theo dõi %2$s.</item>
+        <item quantity="other">%1$s theo dõi %2$s.</item>
+    </plurals>
+    <plurals name="humanization_prompt_topics">
+        <item quantity="one">Cả bạn và %1$s đều theo dõi Chủ đề %2$s.</item>
+        <item quantity="other">Cả bạn và %1$s đều theo dõi Chủ đề %2$s.</item>
+    </plurals>
+    <plurals name="likes">
+        <item quantity="one">%d thích</item>
+        <item quantity="other">%d lượt thích</item>
+    </plurals>
+    <plurals name="list_member_count">
+        <item quantity="one">Thành viên</item>
+        <item quantity="other">Thành viên</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_message">
+        <item quantity="one">"Mô tả hình ảnh tốt là mô tả ngắn gọn nhưng chi tiết. Hãy đảm bảo tóm tắt hoặc viết ra mọi văn bản có chứa trong ảnh.
+
+Mô tả của bạn sẽ giúp người khuyết tật và tất cả những ai muốn tìm hiểu thêm nội dung truy cập vào X.
+
+Bạn có thể tắt lời nhắc này trong Cài đặt trợ năng."</item>
+        <item quantity="other">"Mô tả hình ảnh tốt là mô tả ngắn gọn nhưng đủ chi tiết. Hãy đảm bảo tóm tắt hoặc viết ra mọi văn bản có chứa trong ảnh.
+
+Mô tả của bạn sẽ giúp người khuyết tật và tất cả những ai muốn tìm hiểu thêm nội dung truy cập vào X.
+
+Bạn có thể tắt lời nhắc này trong Cài đặt trợ năng."</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_positive_btn_text">
+        <item quantity="one">Thêm mô tả</item>
+        <item quantity="other">Thêm mô tả</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_title">
+        <item quantity="one">Đừng quên để mọi người có thể truy cập hình ảnh của bạn</item>
+        <item quantity="other">Đừng quên để mọi người có thể truy cập hình ảnh của bạn</item>
+    </plurals>
+    <plurals name="media_monetization_settings_categories_selected">
+        <item quantity="one">%d mục được chọn</item>
+        <item quantity="other">%d mục được chọn</item>
+    </plurals>
+    <plurals name="media_tag_remaining">
+        <item quantity="one">Đánh dấu tối đa %d người nữa.</item>
+        <item quantity="other">Đánh dấu tối đa %d người nữa.</item>
+    </plurals>
+    <plurals name="media_tag_tagged">
+        <item quantity="one">%d người được đánh dấu</item>
+        <item quantity="other">%d người được đánh dấu</item>
+    </plurals>
+    <plurals name="member_count">
+        <item quantity="one">%s Thành viên</item>
+        <item quantity="other">%s thành viên</item>
+    </plurals>
+    <plurals name="members">
+        <item quantity="one">%s thành viên</item>
+        <item quantity="other">%s thành viên</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d phút</item>
+        <item quantity="other">%d phút</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d thông báo mới</item>
+        <item quantity="other">%d thông báo mới</item>
+    </plurals>
+    <plurals name="muted_keyword_bulk_delete_success">
+        <item quantity="one">Đã xóa %d từ</item>
+        <item quantity="other">Đã xóa %d từ</item>
+    </plurals>
+    <plurals name="muted_keyword_selected_count">
+        <item quantity="one">đã chọn %d</item>
+        <item quantity="other">đã chọn %d</item>
+    </plurals>
+    <plurals name="narrowcast_community_member_count">
+        <item quantity="one">%s Thành viên</item>
+        <item quantity="other">%s Thành viên</item>
+    </plurals>
+    <plurals name="narrowcast_trusted_friends_count">
+        <item quantity="one">%s người</item>
+        <item quantity="other">%s người</item>
+    </plurals>
+    <plurals name="notification_description_after_sending_posts">
+        <item quantity="other">Đã gửi {total} bài đăng</item>
+    </plurals>
+    <plurals name="notification_description_before_sending_posts">
+        <item quantity="other">Đang chuẩn bị gửi {total} bài đăng…</item>
+    </plurals>
+    <plurals name="notification_description_deleting_drafts">
+        <item quantity="other">Đang xóa bản thảo {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_description_editable_posts">
+        <item quantity="other">Đang xóa bài đăng có thể chỉnh sửa {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_description_preparing_media">
+        <item quantity="other">Đang chuẩn bị tệp phương tiện {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_description_sending_drafts">
+        <item quantity="other">Đang gửi bản thảo {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_description_sending_posts">
+        <item quantity="other">Đang gửi bài đăng {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_media">
+        <item quantity="other">Đang tải lên tệp phương tiện {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_poll">
+        <item quantity="other">Đang tải lên cuộc thăm dò {current}/{total}…</item>
+    </plurals>
+    <plurals name="notification_title_after_sending_posts">
+        <item quantity="other">Đã gửi bài đăng</item>
+    </plurals>
+    <plurals name="notification_title_before_sending_posts">
+        <item quantity="other">Đang chuẩn bị gửi bài đăng</item>
+    </plurals>
+    <plurals name="notification_title_deleting_drafts">
+        <item quantity="other">Xóa bản thảo</item>
+    </plurals>
+    <plurals name="notification_title_deleting_editable_posts">
+        <item quantity="other">Đang xóa bài đăng có thể chỉnh sửa</item>
+    </plurals>
+    <plurals name="notification_title_preparing_media">
+        <item quantity="other">Đang chuẩn bị tệp phương tiện</item>
+    </plurals>
+    <plurals name="notification_title_sending_drafts">
+        <item quantity="other">Đang gửi bản thảo</item>
+    </plurals>
+    <plurals name="notification_title_sending_posts">
+        <item quantity="other">Đang gửi bài đăng</item>
+    </plurals>
+    <plurals name="notification_title_uploading_media">
+        <item quantity="other">Đang tải lên tệp phương tiện</item>
+    </plurals>
+    <plurals name="notification_title_uploading_poll">
+        <item quantity="other">Đang tải lên cuộc thăm dò</item>
+    </plurals>
+    <plurals name="notification_undo_nudge">
+        <item quantity="other">Đang chờ hết thời gian hoàn tác</item>
+    </plurals>
+    <plurals name="others">
+        <item quantity="one">1 người khác</item>
+        <item quantity="other">%d người khác</item>
+    </plurals>
+    <plurals name="payment_ach_merchant_authorization_transactions_count">
+        <item quantity="other">{count} giao dịch</item>
+    </plurals>
+    <plurals name="payment_onboarding_terms_invitation_subtitle">
+        <item quantity="one">Tiếp tục trước khi khoản thanh toán hết hạn.</item>
+        <item quantity="other">Tiếp tục trước khi khoản thanh toán hết hạn.</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_hours">
+        <item quantity="other">%d giờ</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_minutes">
+        <item quantity="other">%d phút</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_seconds">
+        <item quantity="other">%d giây</item>
+    </plurals>
+    <plurals name="product_count">
+        <item quantity="one">%1$d sản phẩm</item>
+        <item quantity="other">%1$d sản phẩm</item>
+    </plurals>
+    <plurals name="profile_about_username_changes">
+        <item quantity="one">%s lần thay đổi tên người dùng</item>
+        <item quantity="other">%s lần thay đổi tên người dùng</item>
+    </plurals>
+    <plurals name="profile_creator_subscriptions_count">
+        <item quantity="one">Thuê bao</item>
+        <item quantity="other">Thuê bao</item>
+    </plurals>
+    <plurals name="profile_follower_count">
+        <item quantity="one">Người theo dõi</item>
+        <item quantity="other">Người theo dõi</item>
+    </plurals>
+    <plurals name="profile_friends_following_others">
+        <item quantity="one">%d người khác</item>
+        <item quantity="other">%d người khác</item>
+    </plurals>
+    <plurals name="profile_stat_followers_text">
+        <item quantity="other">Người theo dõi</item>
+    </plurals>
+    <plurals name="profile_stat_following_text">
+        <item quantity="other">Đang theo dõi</item>
+    </plurals>
+    <plurals name="profile_stat_subscribers_text">
+        <item quantity="other">Người đăng ký theo dõi</item>
+    </plurals>
+    <plurals name="profile_stat_subscriptions_text">
+        <item quantity="other">Người đăng ký theo dõi</item>
+    </plurals>
+    <plurals name="profile_super_followers_count">
+        <item quantity="one">Người đăng ký</item>
+        <item quantity="other">Người đăng ký</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_articles">
+        <item quantity="one">Bài viết %s</item>
+        <item quantity="other">Bài viết %s</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_likes">
+        <item quantity="one">%s Thích</item>
+        <item quantity="other">%s Thích</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_media">
+        <item quantity="one">%s Ảnh</item>
+        <item quantity="other">%s Ảnh &amp; video</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_timeline">
+        <item quantity="one">%s bài đăng</item>
+        <item quantity="other">%s bài đăng</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_peak_msg">
+        <item quantity="zero">Biểu đồ người xem nguồn phát</item>
+        <item quantity="one">Biểu đồ người xem nguồn phát. Bạn có số người xem cao nhất %1$d tại thời điểm %2$s.</item>
+        <item quantity="other">Biểu đồ người xem nguồn phát. Bạn có số người xem cao nhất %1$d tại thời điểm %2$s.</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_point_msg">
+        <item quantity="one">Bạn có %1$d người xem tại thời điểm %2$s.</item>
+        <item quantity="other">Bạn có %1$d người xem tại thời điểm %2$s.</item>
+    </plurals>
+    <plurals name="ps__invite_follower">
+        <item quantity="zero">Không có người theo dõi</item>
+        <item quantity="one">%d người theo dõi</item>
+        <item quantity="other">%d người theo dõi</item>
+    </plurals>
+    <plurals name="ps__invited_num_followers_embolden">
+        <item quantity="one">*%1$s* đã mời %2$s người</item>
+        <item quantity="other">*%1$s* đã mời %2$s người</item>
+    </plurals>
+    <plurals name="ps__moderation_report_muted_by_moderator">
+        <item quantity="one">*Tắt tiếng bởi* %1$s</item>
+        <item quantity="other">*Bị tắt tiếng bởi* %1$s (%2$d)</item>
+    </plurals>
+    <plurals name="ps__moderation_report_unmuted_by_moderator">
+        <item quantity="one">*Bật tiếng bởi* %1$s</item>
+        <item quantity="other">*Bật tiếng bởi* %1$s (%2$d)</item>
+    </plurals>
+    <plurals name="ps__new_messages">
+        <item quantity="one">%1$d Tin nhắn mới</item>
+        <item quantity="other">%1$d Tin nhắn mới</item>
+    </plurals>
+    <plurals name="ps__num_hearts">
+        <item quantity="one">%s trái tim</item>
+        <item quantity="other">%s trái tim</item>
+    </plurals>
+    <plurals name="ps__stats_live_viewers">
+        <item quantity="one">NGƯỜI XEM TRỰC TUYẾN</item>
+        <item quantity="other">NGƯỜI XEM TRỰC TUYẾN</item>
+    </plurals>
+    <plurals name="ps__stats_replay_viewers">
+        <item quantity="one">NGƯỜI XEM PHÁT LẠI</item>
+        <item quantity="other">NGƯỜI XEM PHÁT LẠI</item>
+    </plurals>
+    <plurals name="ps__time_format_days">
+        <item quantity="one">%d Ngày</item>
+        <item quantity="other">%d Ngày</item>
+    </plurals>
+    <plurals name="ps__time_format_hours">
+        <item quantity="one">%d Giờ</item>
+        <item quantity="other">%d Giờ</item>
+    </plurals>
+    <plurals name="ps__time_format_minutes">
+        <item quantity="one">%d Phút</item>
+        <item quantity="other">%d Phút</item>
+    </plurals>
+    <plurals name="ps__time_format_seconds">
+        <item quantity="one">%d Giây</item>
+        <item quantity="other">%d Giây</item>
+    </plurals>
+    <plurals name="recording_replay_count_preview">
+        <item quantity="one">%s phát lại</item>
+        <item quantity="other">%s lượt phát lại</item>
+    </plurals>
+    <plurals name="relationship_followers_following_others">
+        <item quantity="one">%d người khác</item>
+        <item quantity="other">%d người khác</item>
+    </plurals>
+    <plurals name="replies">
+        <item quantity="one">%d trả lời</item>
+        <item quantity="other">%d trả lời</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others">
+        <item quantity="other">Đang trả lời ﻿%1$s và %2$d người khác﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_exclusive">
+        <item quantity="other">Trả lời ﻿%1$s và %2$d ﻿ khác. Những Người đăng ký khác cũng sẽ nhìn thấy trả lời của bạn.</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_in_space">
+        <item quantity="other">Đang trả lời ﻿%1$s và %2$d người khác ﻿ trong ﻿%3$s uFEFF</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others">
+        <item quantity="other">Đang trả lời ﻿%1$s %2$s và %3$d người khác﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_exclusive">
+        <item quantity="other">Trả lời ﻿%1$s %2$s và %3$d ﻿ khác. Những Người đăng ký khác cũng sẽ nhìn thấy trả lời của bạn.</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_in_space">
+        <item quantity="other">Đang trả lời ﻿%1$s %2$s và %3$d người khác ﻿ trong ﻿%4$s uFEFF</item>
+    </plurals>
+    <plurals name="reported_tweet_reported_by">
+        <item quantity="one">Được báo cáo bởi {{}}%1$s{{}}</item>
+        <item quantity="other">Được báo cáo bởi {{}}%1$s thành viên{{}}</item>
+    </plurals>
+    <plurals name="retweets">
+        <item quantity="one">%d bài đăng lại</item>
+        <item quantity="other">%d bài đăng lại</item>
+    </plurals>
+    <plurals name="safety_mode_preview_description">
+        <item quantity="one">Chúng tôi đã gắn cờ %d tài khoản có khả năng lạm dụng hoặc gửi tin rác.</item>
+        <item quantity="other">Chúng tôi đã gắn cờ %d tài khoản có khả năng lạm dụng hoặc gửi tin rác.</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">%d giây</item>
+        <item quantity="other">%d giây</item>
+    </plurals>
+    <plurals name="send_cohost_invite">
+        <item quantity="one">Gửi lời mời đ.chủ phòng</item>
+        <item quantity="other">Gửi các lời mời làm đ.chủ phòng</item>
+    </plurals>
+    <plurals name="settings_notif_tweets_count">
+        <item quantity="one">%d người</item>
+        <item quantity="other">%d người</item>
+    </plurals>
+    <plurals name="share_card_likes">
+        <item quantity="other">{num} lượt thích</item>
+    </plurals>
+    <plurals name="share_card_replies">
+        <item quantity="other">{num} câu trả lời</item>
+    </plurals>
+    <plurals name="social_follow_and_follow_and_others">
+        <item quantity="one">%1$s, %2$s, và %3$d người khác theo dõi</item>
+        <item quantity="other">%1$s, %2$s, và %3$d người khác theo dõi</item>
+    </plurals>
+    <plurals name="spaces_additional_participants">
+        <item quantity="one">+%1$s người nghe khác</item>
+        <item quantity="other">+%1$s người nghe khác</item>
+    </plurals>
+    <plurals name="spaces_blocked_warning">
+        <item quantity="one">Bạn đã chặn %1$d người đang phát biểu</item>
+        <item quantity="other">Bạn đã chặn %1$d người đang phát biểu</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_in_progress">
+        <item quantity="one">%1$s ở trong Phòng này</item>
+        <item quantity="other">%1$s ở trong Phòng này</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_replay">
+        <item quantity="one">%1$s đã ở Phòng này</item>
+        <item quantity="other">%1$s đã ở Phòng này</item>
+    </plurals>
+    <plurals name="spaces_cohost_invites_sent_toast">
+        <item quantity="other">Đã gửi %1$d lời mời làm đ.chủ phòng</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle">
+        <item quantity="other">Tối đa thêm %1$d người.</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle_full">
+        <item quantity="other">Bạn chỉ được phép thêm %1$d đ.chủ phòng.</item>
+    </plurals>
+    <plurals name="spaces_invite_confirmation">
+        <item quantity="one">%1$d người đã được mời vào Phòng này</item>
+        <item quantity="other">%1$d người đã được mời vào Phòng này</item>
+    </plurals>
+    <plurals name="spaces_invite_send_cohost_cta">
+        <item quantity="other">Gửi lời mời làm đ.chủ phòng</item>
+    </plurals>
+    <plurals name="spaces_invite_send_speaker_cta">
+        <item quantity="other">Gửi lời mời phát biểu</item>
+    </plurals>
+    <plurals name="spaces_invite_sent_toast">
+        <item quantity="other">%1$d người đã được mời vào Phòng này</item>
+    </plurals>
+    <plurals name="spaces_invite_speakers_subtitle">
+        <item quantity="other">Bạn có thể mời tối đa %1$d người nói</item>
+    </plurals>
+    <plurals name="spaces_requested_pill_label">
+        <item quantity="other">Đã yêu cầu (%1$d)</item>
+    </plurals>
+    <plurals name="spaces_sheet_anonymous_others">
+        <item quantity="other">%1$s người khác</item>
+    </plurals>
+    <plurals name="spaces_speak_request_toast_label_many">
+        <item quantity="other">%1$d người đã yêu cầu phát biểu</item>
+    </plurals>
+    <plurals name="speakers_current_count">
+        <item quantity="one">%1$d người nói</item>
+        <item quantity="other">%1$d người nói</item>
+    </plurals>
+    <plurals name="speakers_listeners_count">
+        <item quantity="one">%1$d người đang nghe</item>
+        <item quantity="other">%1$d người đang nghe</item>
+    </plurals>
+    <plurals name="speakers_open_spots_count">
+        <item quantity="one">%1$d chỗ trống</item>
+        <item quantity="other">%1$d chỗ trống</item>
+    </plurals>
+    <plurals name="speakers_requests_count">
+        <item quantity="one">%1$d yêu cầu</item>
+        <item quantity="other">%1$d yêu cầu</item>
+    </plurals>
+    <plurals name="stat_label_bookmarks">
+        <item quantity="one">Dấu trang</item>
+        <item quantity="other">Dấu trang</item>
+    </plurals>
+    <plurals name="stat_label_likes_sentence_case">
+        <item quantity="one">Thích</item>
+        <item quantity="other">Lượt thích</item>
+    </plurals>
+    <plurals name="stat_label_quote_tweets">
+        <item quantity="one">Trích dẫn</item>
+        <item quantity="other">Trích dẫn</item>
+    </plurals>
+    <plurals name="stat_label_retweets_sentence_case">
+        <item quantity="one">Đăng lại</item>
+        <item quantity="other">Bài đăng lại</item>
+    </plurals>
+    <plurals name="stat_label_verified_views_sentence_case">
+        <item quantity="one">Lượt xem đã xác nhận</item>
+        <item quantity="other">Số lượt xem đã xác nhận</item>
+    </plurals>
+    <plurals name="stat_label_views_sentence_case">
+        <item quantity="one">Xem</item>
+        <item quantity="other">Lượt xem</item>
+    </plurals>
+    <plurals name="subscription_duration_days">
+        <item quantity="one">ngày</item>
+        <item quantity="other">%d ngày</item>
+    </plurals>
+    <plurals name="subscription_duration_months">
+        <item quantity="one">tháng</item>
+        <item quantity="other">%d tháng</item>
+    </plurals>
+    <plurals name="subscription_duration_years">
+        <item quantity="one">năm</item>
+        <item quantity="other">%d năm</item>
+    </plurals>
+    <plurals name="subscription_offer_price_description_months">
+        <item quantity="one">{offer_price} cho tháng đầu tiên, sau đó gia hạn với mức giá {original_price}</item>
+        <item quantity="other">{offer_price} cho %d tháng đầu tiên, sau đó gia hạn với mức giá {original_price}</item>
+    </plurals>
+    <plurals name="subscription_offer_title_special_offer_months">
+        <item quantity="one">{original_price_strike_through} {offer_price} cho tháng đầu tiên</item>
+        <item quantity="other">{original_price_strike_through} {offer_price} cho %d tháng đầu tiên</item>
+    </plurals>
+    <plurals name="thread_draft_more_post">
+        <item quantity="other">+{num} bài đăng khác</item>
+    </plurals>
+    <plurals name="time_days">
+        <item quantity="one">%d ngày</item>
+        <item quantity="other">%d ngày</item>
+    </plurals>
+    <plurals name="time_days_ago">
+        <item quantity="one">%d NGÀY TRƯỚC</item>
+        <item quantity="other">%d NGÀY TRƯỚC</item>
+    </plurals>
+    <plurals name="time_hours">
+        <item quantity="one">%d giờ</item>
+        <item quantity="other">%d giờ</item>
+    </plurals>
+    <plurals name="time_hours_ago">
+        <item quantity="one">%d GIỜ TRƯỚC</item>
+        <item quantity="other">%d GIỜ TRƯỚC</item>
+    </plurals>
+    <plurals name="time_mins">
+        <item quantity="one">%d phút</item>
+        <item quantity="other">%dphút</item>
+    </plurals>
+    <plurals name="time_mins_ago">
+        <item quantity="one">%d PHÚT TRƯỚC</item>
+        <item quantity="other">%d PHÚT TRƯỚC</item>
+    </plurals>
+    <plurals name="time_secs">
+        <item quantity="one">%d giây</item>
+        <item quantity="other">%d giây</item>
+    </plurals>
+    <plurals name="time_weeks">
+        <item quantity="one">%d tuần</item>
+        <item quantity="other">%d tuần</item>
+    </plurals>
+    <plurals name="top_articles_time_window">
+        <item quantity="one">Giờ qua</item>
+        <item quantity="other">%s giờ qua</item>
+    </plurals>
+    <plurals name="tweet_stat_followers">
+        <item quantity="one">{num} người theo dõi</item>
+        <item quantity="other">{num} người theo dõi</item>
+    </plurals>
+    <plurals name="tweet_visibility_education_dialog_non_followers_text">
+        <item quantity="one">%1$s không theo dõi bạn.</item>
+        <item quantity="other">%1$s người khác không theo dõi bạn.</item>
+    </plurals>
+    <plurals name="undo_nudge_message">
+        <item quantity="other">Bài đăng của bạn sẽ được gửi trong vòng %d giây.</item>
+    </plurals>
+    <plurals name="undo_send_period_in_seconds">
+        <item quantity="one">%d giây</item>
+        <item quantity="other">%d giây</item>
+    </plurals>
+    <plurals name="upload_progress_sending_posts">
+        <item quantity="one">Đang gửi bài đăng…</item>
+        <item quantity="other">Đang gửi %d bài đăng...</item>
+    </plurals>
+    <plurals name="verified_views">
+        <item quantity="one">%d lượt xem đã xác nhận</item>
+        <item quantity="other">%d lượt xem đã xác nhận</item>
+    </plurals>
+    <plurals name="weeks">
+        <item quantity="one">%d tuần</item>
+        <item quantity="other">%d tuần</item>
+    </plurals>
+    <plurals name="x_lite_time_weeks">
+        <item quantity="one">%d tuần</item>
+        <item quantity="other">%d tuần</item>
+    </plurals>
+    <plurals name="x_lite_time_years">
+        <item quantity="one">%d năm</item>
+        <item quantity="other">%d năm</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_gifs">
+        <item quantity="other">{count} ảnh GIF</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_other">
+        <item quantity="other">{count} tệp đính kèm</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_photos">
+        <item quantity="other">{count} ảnh</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_videos">
+        <item quantity="other">{count} video</item>
+    </plurals>
+    <plurals name="xchat_back_badge_unread_messages">
+        <item quantity="other">%1$d tin nhắn chưa đọc</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_over_limit">
+        <item quantity="other">%1$d byte vượt quá giới hạn</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_remaining">
+        <item quantity="other">Còn lại %1$d byte</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_gifs">
+        <item quantity="other">{count} ảnh GIF đính kèm</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_other">
+        <item quantity="other">Đã đính kèm {count} tệp</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_photos">
+        <item quantity="other">{count} ảnh đính kèm</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_videos">
+        <item quantity="other">{count} video đính kèm</item>
+    </plurals>
+    <plurals name="xchat_forward_media_max_conversations">
+        <item quantity="other">Bạn có thể chuyển tiếp tệp phương tiện đến tối đa {num} cuộc trò chuyện</item>
+    </plurals>
+    <plurals name="xchat_group_members_count">
+        <item quantity="other">{num} thành viên</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_and_others">
+        <item quantity="other">{names} và {count} người khác</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_count">
+        <item quantity="other">{count} yêu cầu nhắn tin</item>
+    </plurals>
+    <plurals name="xchat_inbox_new_messages">
+        <item quantity="other">{count}+ tin nhắn mới</item>
+    </plurals>
+    <plurals name="xchat_inbox_years">
+        <item quantity="other">%d năm</item>
+    </plurals>
+    <plurals name="xchat_pinned_messages_count">
+        <item quantity="other">{count} Tin nhắn đã ghim</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_days">
+        <item quantity="other">{count} ngày</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_hours">
+        <item quantity="other">{count} giờ</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_minutes">
+        <item quantity="other">{count} phút</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_seconds">
+        <item quantity="other">{count} giây</item>
+    </plurals>
+</resources>

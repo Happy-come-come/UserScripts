@@ -17,6 +17,200 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "%s uudelleentwiittasi"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Vastaa"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Uudelleenjulkaise"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Tykkää"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Lisää kirjanmerkkeihin"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Näytä lisää"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Näytä tämä ketju"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Edellinen kuva"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Seuraava kuva"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Lähteestä"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 tähteä – {{appNumRatings}} arvostelua"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Varmennetut tilit"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Järj.valv."
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Mod"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Jäsen"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "näyttöä"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Näytä lainaukset"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Näytä toiminnat"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Yhteisöhuomautukset"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Onko tämä huomautus hyödyllinen?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "hyödylliseksi"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "jossain määrin hyödylliseksi"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "hyödyttömäksi"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Tulossa pian"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Nythintaan"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Grokin vastaus hupailutilassa"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Grokin vastaus"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Kuvan muodosti Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Näytä lisää"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Laadi oma versio Grokin avulla"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Kysy itse Grokilta"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} verkkosivua ja julkaisua"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Relevantti"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Tykkäykset"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Uusimmat"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Lajittele vastaukset"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Muokattu viimeksi"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "Tästä julkaisusta on saatavana uusi versio."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Avaa muokkaushistorian"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "Näytä uusin julkaisu"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Avaa uuden version tästä julkaisusta"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Sinä"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Käyttäjältä"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Kysely"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Näytä tämä kysely"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Lopulliset tulokset"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Uudelleentwiittaa"
@@ -53,6 +247,26 @@
 		"type": "string",
 		"value": "Seurataan"
 	},
+	"follow": {
+		"type": "string",
+		"value": "Seuraa"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Seuraa takaisin"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Seuraajat"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Seuraa sinua"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Tilaukset"
+	},
 	"unfollow": {
 		"type": "string",
 		"value": "Älä seuraa"
@@ -87,12 +301,10 @@
 		"value": ["Seuraajina",",","ja","muuta,joitaseuraat"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}twiitti"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}tykkäys"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",

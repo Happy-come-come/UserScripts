@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>새 게시물에 대한 알림을 받습니다.</item>
+        <item>새 게시물 및 답글에 대한 알림을 받습니다.</item>
+        <item>새 구독자용 게시물에 대한 알림을 받습니다.</item>
+        <item>새 실시간 동영상 게시물에 대한 알림을 받습니다.</item>
+        <item>새 게시물에 대한 알림을 더 이상 받지 않습니다.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>모든 게시물</item>
+        <item>모든 게시물 및 답글</item>
+        <item>구독자용 게시물만</item>
+        <item>실시간 동영상만</item>
+        <item>끄기</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>이 계정의 모든 게시물에 대해 알림을 받습니다.</item>
+        <item>이 계정의 게시물과 답글에 대해 알림을 받습니다.</item>
+        <item>구독자용 게시물에 대해서만 알림을 받습니다.</item>
+        <item>실시간 생방송에 대해서만 알림을 받습니다.</item>
+        <item>이 계정의 게시물에 대한 알림을 받지 않습니다.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>링크 게시하기</item>
+        <item>링크 복사하기</item>
+        <item>링크 보내기</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>%1$s에 대한 전반적인 만족도는 어떠신가요?</item>
+        <item>%1$s에 얼마나 만족하셨나요?</item>
+        <item>최근 %1$s의 전반적인 경험에 얼마나 만족하셨나요?</item>
+        <item>%1$s 서비스의 전반적인 경험은 어떠셨나요?</item>
+        <item>%1$s 서비스의 전반적인 경험은 어떠셨나요?</item>
+        <item>지금까지의 %1$s 서비스 경험은 어떠셨나요?</item>
+        <item>트위터에서의 %1$s 서비스 경험은 어떠셨나요?</item>
+        <item>최근 %1$s의 경험에 얼마나 만족하셨나요?</item>
+        <item>%1$s의 경험은 얼마나 기대에 부응했나요?</item>
+        <item>%1$s 서비스를 통한 숙박 경험은 어떠셨나요?</item>
+        <item>%1$s의 서비스 경험은 어떠셨나요?</item>
+        <item>최근 %1$s의 서비스 경험은 어떠셨나요?</item>
+        <item>%1$s에서 받은 서비스는 어떠셨나요?</item>
+        <item>%1$s의 대응에 얼마나 만족하셨나요?</item>
+        <item>%1$s의 문제 해결 역량을 어떻게 평가하시나요?</item>
+        <item>%1$s의 응답 시간은 어떠셨나요?</item>
+        <item>%1$s의 서비스 속도는 어떠셨나요?</item>
+        <item>%1$s에서 문제를 해결하는 데 걸린 시간은 어떠셨나요?</item>
+        <item>%1$s에서 내 문제를 해결하는 데 걸린 시간은 어떠셨나요?</item>
+        <item>%1$s의 문제 해결 속도는 어떠셨나요?</item>
+        <item>%1$s 상담사의 전문성을 어떻게 평가하시나요?</item>
+        <item>나를 도와준 %1$s 담당자에게 얼마나 만족하셨나요?</item>
+        <item>나를 도와준 %1$s 전문가에게 얼마나 만족하셨나요?</item>
+        <item>나를 도와준 %1$s 담당자에게 얼마나 만족하셨나요?</item>
+        <item>최근 %1$s의 은행 업무 경험은 어떠셨나요?</item>
+        <item>%1$s의 전반적인 이벤트 경험은 어떠셨나요?</item>
+        <item>%1$s 서비스를 통한 결제 경험은 어떠셨나요?</item>
+        <item>%1$s 서비스를 통한 구매 경험은 어떠셨나요?</item>
+        <item>%1$s 서비스를 통한 쇼핑 경험은 어떠셨나요?</item>
+        <item>%1$s 서비스를 통한 배달 경험은 어떠셨나요?</item>
+        <item>%1$s 서비스를 통한 렌탈 경험은 어떠셨나요?</item>
+        <item>최근 %1$s 매장 방문은 어떠셨나요?</item>
+        <item>최근 %1$s 호텔 숙박은 어떠셨나요?</item>
+        <item>최근 %1$s 서비스를 통한 비행은 어떠셨나요?</item>
+        <item>최근 %1$s 서비스를 통한 탑승은 어떠셨나요?</item>
+        <item>최근 %1$s 서비스를 통한 여행은 어떠셨나요?</item>
+        <item>최근 %1$s 방문은 어떠셨나요?</item>
+        <item>최근 %1$s에서의 식사는 어떠셨나요?</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30일</item>
+        <item>12개월</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0.25배속</item>
+        <item>0.5배속</item>
+        <item>0.75배속</item>
+        <item>보통</item>
+        <item>1.25배속</item>
+        <item>1.5배속</item>
+        <item>2배속</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>%1$s에 대한 전반적인 만족도는 어떠신가요?</item>
+        <item>%1$s에 얼마나 만족하시나요?</item>
+        <item>최근 %1$s에 대한 전반적인 이용 경험에 얼마나 만족하시나요?</item>
+        <item>%1$s에 대한 전반적인 이용 경험은 어떠셨나요?</item>
+        <item>%1$s의 전반적인 이용 경험은 어떠셨나요?</item>
+        <item>지금까지의 %1$s 이용 경험은 어떠셨나요?</item>
+        <item>%1$s에서의 X 이용 경험은 어떠셨나요?</item>
+        <item>최근 %1$s 이용 경험에 만족하셨나요?</item>
+        <item>%1$s에서 기대한 만큼의 서비스를 받으셨나요?</item>
+        <item>%1$s 고객 경험은 어떠셨나요?</item>
+        <item>%1$s 서비스 경험은 어떠셨나요?</item>
+        <item>최근 %1$s 서비스 경험은 어떠셨나요?</item>
+        <item>%1$s에서 받으신 서비스는 어떠셨나요?</item>
+        <item>%1$s의 고객 응대에 얼마나 만족하셨나요?</item>
+        <item>%1$s의 문제 해결 능력은 어떠셨나요?</item>
+        <item>%1$s의 응대 속도는 어떠셨나요?</item>
+        <item>%1$s의 서비스 속도는 어떠셨나요?</item>
+        <item>%1$s의 문제 해결 시간은 어떠셨나요?</item>
+        <item>%1$s의 문제 해결 시간은 어떠셨나요?</item>
+        <item>%1$s의 문제 해결 속도는 어떠셨나요?</item>
+        <item>%1$s 상담사의 전문성을 어떻게 평가하시나요?</item>
+        <item>도움을 드린 %1$s 담당자에 얼마나 만족하셨나요?</item>
+        <item>도움을 드린 %1$s 전문 상담원에 얼마나 만족하셨나요?</item>
+        <item>도움을 드린 %1$s 담당자에 얼마나 만족하셨나요?</item>
+        <item>최근 %1$s 은행 서비스 경험은 어떠셨나요?</item>
+        <item>%1$s의 전반적인 이벤트 서비스는 어떠셨나요?</item>
+        <item>%1$s의 결제 서비스는 어떠셨나요?</item>
+        <item>%1$s 구매 경험은 어떠셨나요?</item>
+        <item>%1$s 쇼핑 경험은 어떠셨나요?</item>
+        <item>%1$s 배송 경험은 어떠셨나요?</item>
+        <item>%1$s 렌탈 서비스는 어떠셨나요?</item>
+        <item>최근 %1$s 매장 방문 경험은 어떠셨나요?</item>
+        <item>최근 %1$s 호텔 숙박 경험은 어떠셨나요?</item>
+        <item>최근 %1$s 항공편 이용 경험은 어떠셨나요?</item>
+        <item>최근 %1$s 차량 이용 경험은 어떠셨나요?</item>
+        <item>최근 %1$s 여행 경험은 어떠셨나요?</item>
+        <item>최근 %1$s 방문 경험은 어떠셨나요?</item>
+        <item>최근 %1$s 식사 경험은 어떠셨나요?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>%1$s을(를) 친구에게 추천할 의향이 있으신가요?</item>
+        <item>%1$s을(를) 친구에게 추천할 의향이 있으신가요?</item>
+        <item>%1$s을(를) 동료에게 추천할 의향이 있으신가요?</item>
+        <item>%1$s을(를) 가족에게 추천할 의향이 있으신가요?</item>
+        <item>%1$s을(를) 다른 사람에게 추천할 의향이 있으신가요?</item>
+        <item>%1$s을(를) 친구나 동료에게 추천할 의향이 있으신가요?</item>
+        <item>다음에도 %1$s에서 쇼핑할 의향이 있으신가요?</item>
+        <item>%1$s을(를) 추천할 의향이 있으신가요?</item>
+        <item>%1$s을(를) 친구나 동료에게 추천하시겠어요?</item>
+        <item>%1$s의 경험을 친구에게 추천할 의향이 있으신가요?</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>시청자 수가 충분함</item>
+        <item>긍정적인 커뮤니티</item>
+        <item>동영상 화질</item>
+        <item>참여도가 높은 채팅</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>시청자 수가 적음</item>
+        <item>욕설 및 괴롭힘</item>
+        <item>동영상 문제</item>
+        <item>대화 내 스팸</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15분</item>
+        <item>30분</item>
+        <item>1시간</item>
+        <item>2시간</item>
+        <item>4시간</item>
+        <item>일일</item>
+    </string-array>
+</resources>

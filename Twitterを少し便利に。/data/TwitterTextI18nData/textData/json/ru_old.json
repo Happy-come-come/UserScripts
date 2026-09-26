@@ -17,6 +17,200 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "%s ретвитнул(а)"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Ответить"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Сделать репост"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Нравится"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Закладка"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Показать еще"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Показать эту ветку"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Предыдущее изображение"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Следующее изображение"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["С"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}} из 5 звезд. Оценок: {{appNumRatings}}"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Подлинные учетные записи"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Адм."
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Мод."
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Участник"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "просм."
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Просмотр цитат"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Просмотр действий"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Примечания сообщества"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Полезно ли это примечание?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "полезное"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "отчасти полезное"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "бесполезное"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Скоро"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Теперьпо"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Ответ от Grok в забавном режиме"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Ответ от Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Изображение от Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Показать еще"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Создать собственную версию с Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Задать Grok тот же вопрос"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "Веб-страниц и постов: {{count}}"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Актуально"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Нравится"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Последние"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Упорядочить ответы"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Последняя редакция"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "У этого поста есть новая версия."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Открыть историю редактирования"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "Смотреть последний пост"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Открыть новую версию этого поста"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Вы"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Автор:"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Опрос"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Показать опрос"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Конечные результаты"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Ретвитнуть"
@@ -53,6 +247,26 @@
 		"type": "string",
 		"value": "Читаю"
 	},
+	"follow": {
+		"type": "string",
+		"value": "Читать"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Тоже начать читать"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Читатели"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Читает вас"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Подписки"
+	},
 	"unfollow": {
 		"type": "string",
 		"value": "Перестать читать"
@@ -87,12 +301,10 @@
 		"value": ["Вчитаемыху",",","иеще","пользователей,которыхвычитаете"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}твит"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}отмет«Нравится»"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",

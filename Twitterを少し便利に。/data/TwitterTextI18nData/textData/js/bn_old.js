@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"পিন করা হয়েছে"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s দ্বারা পুনঃ টুইটকৃত"},
+	"replyAction": {"type":"string","value":"উত্তর"},
+	"repostAction": {"type":"string","value":"রিপোস্ট"},
+	"likeAction": {"type":"string","value":"পছন্দ করুন"},
+	"bookmarkAction": {"type":"string","value":"বুকমার্ক"},
+	"showMore": {"type":"string","value":"আরও দেখান"},
+	"viewThread": {"type":"string","value":"এই থ্রেডটি দেখান"},
+	"previousImage": {"type":"string","value":"পূর্ববর্তী ছবি"},
+	"nextImage": {"type":"string","value":"পরবর্তী ছবি"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["","-এর তরফ থেকে"]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 স্টার – "+e.appNumRatings+" রেটিং"}
+	},
+	"verifiedAccount": {"type":"string","value":"যাচাইকৃত অ্যাকাউন্ট"},
+	"communityAdminBadge": {"type":"string","value":"অ্যাড"},
+	"communityModeratorBadge": {"type":"string","value":"মডঃ"},
+	"communityMemberBadge": {"type":"string","value":"সদস্য"},
+	"viewsLabel": {"type":"string","value":"ভিউ"},
+	"viewQuotes": {"type":"string","value":"উদ্ধৃতিগুলো দেখুন"},
+	"viewActivity": {"type":"string","value":"কার্যকলাপ দেখুন"},
+	"communityNotes": {"type":"string","value":"কমিউনিটি নোট"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"এই নোটটি কি সহায়ক?"},
+	"communityNoteHelpful": {"type":"string","value":"সহায়ক"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"আপাতত সহায়ক"},
+	"communityNoteNotHelpful": {"type":"string","value":"অসহায়ক"},
+	"cashtagComingSoon": {"type":"string","value":"শীঘ্রই আসছে"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["এখন "," এ"]}
+	},
+	"grokAnswerFun": {"type":"string","value":"মজাদার মোডে Grok-এর উত্তর"},
+	"grokAnswer": {"type":"string","value":"Grok প্রদত্ত উত্তর"},
+	"grokImageBy": {"type":"string","value":"Grok-এর তৈরি ছবি"},
+	"grokShowMore": {"type":"string","value":"আরও দেখান"},
+	"grokCreateVersion": {"type":"string","value":"Grok-এর সাথে আপনার সংস্করণ তৈরি করুন"},
+	"grokAskYourself": {"type":"string","value":"নিজেই Grok-কে জিজ্ঞাসা করুন"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" ওয়েব পেজ"}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" পোস্ট"}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+"টি ওয়েব পেজ এবং পোস্ট"}
+	},
+	"mostRelevant": {"type":"string","value":"প্রাসঙ্গিক"},
+	"mostLiked": {"type":"string","value":"পছন্দ"},
+	"mostRecent": {"type":"string","value":"সাম্প্রতিক"},
+	"sortReplies": {"type":"string","value":"উত্তরগুলো বাছুন"},
+	"lastEdited": {"type":"string","value":"শেষ এডিট করা হয়েছে"},
+	"newPostVersion": {"type":"string","value":"এই পোস্টের একটি নতুন সংস্করণ আছে।"},
+	"opensEditHistory": {"type":"string","value":"এডিটের ইতিহাস খোলে"},
+	"viewLatestPost": {"type":"string","value":"সর্বশেষ পোস্টটি দেখুন"},
+	"opensLatestPost": {"type":"string","value":"এই পোস্টের একটি নতুন সংস্করণ খোলে"},
+	"mediaTaggedSelf": {"type":"string","value":"আপনি"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["","-এর থেকে"]}
+	},
+	"poll": {"type":"string","value":"পোল"},
+	"viewPoll": {"type":"string","value":"এই পোলটি দেখান"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" টি ভোট"}
+	},
+	"pollEnded": {"type":"string","value":"চূড়ান্ত ফলাফল"},
 	"retweet": {"type":"string","value":"পুনঃটুইট"},
 	"unDoRetweet": {"type":"string","value":"পুনঃ টুইট পুর্বাবস্থায় ফেরান"},
 	"quoteTweet": {"type":"string","value":"টুইট উদ্ধৃত করুন"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"মিডিয়া"},
 	"profileTabTitleLikes": {"type":"string","value":"পছন্দ"},
 	"following": {"type":"string","value":"অনুসরণ করছেন"},
+	"follow": {"type":"string","value":"অনুসরণ করুন"},
+	"followBack": {"type":"string","value":"ফিরে অনুসরণ করুন"},
+	"followers": {"type":"string","value":"অনুসরণকারীগণ"},
+	"followsYou": {"type":"string","value":"আপনাকে অনুসরণ করছে"},
+	"subscriptions": {"type":"string","value":"সাবস্ক্রিপশন"},
 	"unfollow": {"type":"string","value":"অনুসরণ বাতিল করুন"},
 	"blocked": {"type":"string","value":"অবরুদ্ধ"},
 	"unblock": {"type":"string","value":"অবরোধ মুক্ত করুন"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," অনুসরণ করছেন"]}
+		"value": function(){return [""," অনুসরণ করছেন"]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," এবং "," অনুসরণ করছেন"]}
+		"value": function(){return [""," এবং "," অনুসরণ করছেন"]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", ",", এবং ","  অনুসরণ করছেন"]}
+		"value": function(){return ["",", ",", এবং ","  অনুসরণ করছেন"]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["আপনার অনুসরণ করা ",", ",", এবং অন্য "," জন অনুসরণ করেছেন"]}
+		"value": function(){return ["আপনার অনুসরণ করা ",", ",", এবং অন্য "," জন অনুসরণ করেছেন"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" টুইট"+n(props.count,"","গুলো")]}
+		"value": function(){return [props.formattedCount+" টুইট"+n(props.count,"","গুলো")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" পছন্দ"+n(props.count," করুন","গুলো")]}
+		"value": function(){return [props.formattedCount+" পছন্দ"+n(props.count," করুন","গুলো")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ফটো ও ভিডিও"]}
+		"value": function(){return [props.formattedCount+" ফটো ও ভিডিও"]}
 	},
 	"home": {"type":"string","value":"হোম"},
 	"explore": {"type":"string","value":"এক্সপ্লোর করুন"},

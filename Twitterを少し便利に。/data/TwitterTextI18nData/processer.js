@@ -1,18 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const axios = require('axios');
 const vm = require('vm');
-const parser = require('@babel/parser');
-const { XMLParser } = require('fast-xml-parser');
-const xmlParser = new XMLParser({
-	ignoreAttributes: false,
-	attributeNamePrefix: "@_",
-	preserveOrder: false,
-	trimValues: true,
-	parseTagValue: true,
-	parseAttributeValue: true,
-	allowBooleanAttributes: true,
-});
 (function (){
 	'use strict';
 	const keyTranslation = {
@@ -77,9 +65,13 @@ const xmlParser = new XMLParser({
 	}, {});
 
 	async function main(){
+		console.log('Web版の翻訳データを処理しています...');
 		await processWebData();
+		console.log('APK版の翻訳データを処理しています...');
 		await processApkData();
+		console.log('出力ファイルを生成しています...');
 		await genarateTextData();
+		console.log('翻訳データの処理が完了しました。');
 	}
 
 	async function genarateTextData(){
@@ -90,6 +82,54 @@ const xmlParser = new XMLParser({
 			"pinnedListsModuleHeader": "pinned_lists_module_header", // "固定"
 			"tweetsRetweeted": "tweets_retweeted", // "%sさんがリツイートしました"
 			// ツイートノードアクション
+			"replyAction": "d17df548", // "返信"
+			"repostAction": "g062295e", // "リポスト"
+			"likeAction": "fe731016", // "いいね"
+			"bookmarkAction": "gb303814", // "ブックマーク"
+			"showMore": "d228a9a0", // "さらに表示"
+			"viewThread": "i569ff3e", // "このスレッドを表示"
+			"previousImage": "f96a38a2", // "前の画像"
+			"nextImage": "i7d24b36", // "次の画像"
+			"cardSource": "gec4f969", // function(){return ["From "]} / function(){return ["","から"]}
+			"cardAppRating": "h2f9258f", // appStarRating/5.0 stars – appNumRatings ratings
+			"verifiedAccount": "f19e4bfc", // "認証済みアカウント"
+			"communityAdminBadge": "f9633e62", // "管理者" / "Admin"
+			"communityModeratorBadge": "a46e92c2", // "モ" / "Mod"
+			"communityMemberBadge": "dab106f8", // "メンバー" / "Member"
+			"viewsLabel": "d9508ab0", // "件の表示"
+			"viewQuotes": "a0b24576", // "引用を表示"
+			"viewActivity": "e0d2d264", // "アクティビティを表示"
+			"communityNotes": "birdwatch_pivot_header_title", // "コミュニティノート" / "Community Notes"
+			"communityNoteHelpfulQuestion": "a7338bc2", // "このノートは役に立ちましたか？" / "Is this note helpful?"
+			"communityNoteHelpful": "d39720d3", // "役に立った" / "Helpful"
+			"communityNoteSomewhatHelpful": "i7d91dc9", // "少し役に立った" / "Somewhat Helpful"
+			"communityNoteNotHelpful": "c75b7fb4", // "役に立たなかった" / "Not Helpful"
+			"cashtagComingSoon": "ebf5ec26", // "近日公開" / "Coming soon"
+			"cashtagNowAt": "c2485dfb", // function(){return ["現在 "]} / function(){return ["Now at "]}
+			"grokAnswerFun": "gdd173da", // "Grok（ユーモアモード）による回答"
+			"grokAnswer": "dfd6eeac", // "Grokによる回答"
+			"grokImageBy": "deceb214", // "Grokによる画像"
+			"grokShowMore": "hf3f8e3a", // "さらに表示"
+			"grokCreateVersion": "h504ea5e", // "Grokでオリジナルバージョンを作成"
+			"grokAskYourself": "eb722de2", // "Grokに聞いてみる"
+			"grokWebPages": "e82adfeb",
+			"grokPosts": "cfb8c1f7",
+			"grokWebAndPosts": "g78032d5",
+			"mostRelevant": "h67428e2", // "関連性が高い"
+			"mostLiked": "d7b8ebaa", // "いいね"
+			"mostRecent": "a8d68f62", // "新しい順"
+			"sortReplies": "j9a4bb28", // "返信を並べ替え"
+			"lastEdited": "e1b95ab0", // "最終更新"
+			"newPostVersion": "h092d520", // "このポストには新しいバージョンがあります"
+			"opensEditHistory": "a897c4d6", // "編集履歴を開きます"
+			"viewLatestPost": "d9587114", // "最新ポストを表示"
+			"opensLatestPost": "b7b86c3c", // "このポストの新しいバージョンを開きます"
+			"mediaTaggedSelf": "f8e8e32e", // "自分" / "You"
+			"mediaSourcePrefix": "dbf19261", // function(){return ["投稿者: "]} / function(){return ["From "]}
+			"poll": "ec10ee02", // "投票"
+			"viewPoll": "i5f742fe", // "この投票を表示"
+			"pollVotes": "c2b81e9d", // function(e){return e.formattedCount+"票"}
+			"pollEnded": "a3edf99a", // "終了" / "Final results"
 			"retweet": ["d6c8514a", "f2919fb8"], // "リツイート", "リポスト"
 			"unDoRetweet": ["f3bbbb88", "fd1e5446"], // "リツイートを取り消す", "リポストを取り消す"
 			"quoteTweet": "quote_tweet", // "引用ツイート", "引用"
@@ -100,6 +140,11 @@ const xmlParser = new XMLParser({
 			"profileTabTitleMedia": "profile_tab_title_media", // "メディア"
 			"profileTabTitleLikes": "profile_tab_title_likes", // "いいね"
 			"following": "c3befdbe", // "フォロー中"
+			"follow": "eb5f060c", // "フォロー"
+			"followBack": "a5f7ce12", // "フォローバック"
+			"followers": "c64974fc", // "フォロワー"
+			"followsYou": "b7f1e58a", // "フォローされています"
+			"subscriptions": "d7b51c68", // "サブスクリプション"
 			"unfollow": "d3029dbc", // "フォロー解除"
 			"blocked": "i8cfb6e6", // "ブロック中"
 			"unblock": "ea100d6a", // "ブロック解除"
@@ -249,78 +294,20 @@ const xmlParser = new XMLParser({
 				if(typeof currentData === 'object' && typeof currentData.value === 'function'){
 					let value;
 
-					const fnStr = currentData.value.toString();
-					const ast = parser.parse('(' + fnStr + ')');
-					const fnNode = ast.program.body[0].expression;
-					const body = fnNode.body.body;
-
-					if(currentData.type === 'webI18nFunction'){
-						const argName = fnNode.params[0]?.name ?? 'e';
-						const returnNode = body.find(n => n.type === 'ReturnStatement');
-						if(returnNode){
-							const expr = returnNode.argument;
-
-							function extractParts(node){
-								if(node.type === 'BinaryExpression'){
-									return extractParts(node.left) + extractParts(node.right);
-								}
-								if(node.type === 'StringLiteral'){
-									return node.value;
-								}
-								if(node.type === 'MemberExpression'){
-									if(
-										node.object.type === 'Identifier' &&
-										node.object.name === argName &&
-										node.property.type === 'Identifier'
-									){
-										return `{{${node.property.name}}}`;
-									}
-								}
-								return '';
-							}
-
-							value = extractParts(expr);
-						}
-
-					}else if(currentData.type === 'webI18nTemplateFunction'){
-						const returnNode = body.find(n => n.type === 'ReturnStatement');
-
-						if(returnNode && returnNode.argument.type === 'ArrayExpression'){
-							value = returnNode.argument.elements.map(elem => {
-								if(elem.type === 'StringLiteral'){
-									return elem.value;
-								}
-
-								if(elem.type === 'BinaryExpression'){
-									const parts = [];
-
-									function extractParts(node){
-										if(node.type === 'BinaryExpression'){
-											extractParts(node.left);
-											extractParts(node.right);
-										}else if(node.type === 'StringLiteral'){
-											parts.push(node.value);
-										}else if(node.type === 'MemberExpression'){
-											if(
-												node.object.type === 'ThisExpression' &&
-												node.property.type === 'Identifier'
-											){
-												parts.push(`{{${node.property.name}}}`);
-											}else if(
-												node.object.type === 'MemberExpression' &&
-												node.object.property.name === 'props' &&
-												node.property.type === 'Identifier'
-											){
-												parts.push(`{{${node.property.name}}}`);
-											}
-										}
-									}
-
-									extractParts(elem);
-									return parts.join('');
-								}
+					const placeholders = new Proxy({}, {
+						get: (_, property) => `{{${String(property)}}}`
+					});
+					try{
+						if(currentData.type === 'webI18nFunction'){
+							value = currentData.value(placeholders);
+						}else if(currentData.type === 'webI18nTemplateFunction'){
+							const templateThis = new Proxy({props: placeholders}, {
+								get: (target, property) => property in target ? target[property] : `{{${String(property)}}}`
 							});
+							value = currentData.value.call(templateThis);
 						}
+					}catch{
+						value = undefined;
 					}
 
 					acc[v] = {
@@ -356,6 +343,7 @@ const xmlParser = new XMLParser({
 			fs.writeFileSync(jsOutputPath, jsOutputData, 'utf8');
 			return "OK";
 		}
+
 	}
 
 	async function processWebData(){
@@ -381,39 +369,49 @@ const xmlParser = new XMLParser({
 				fs.writeFileSync(cachePath, raw, 'utf8');
 			}
 
-			const functionName = raw.match(/\}([a-z])\(\"/)[1];
+			const registerFunctionMatch = raw.match(
+				/\b(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=\s*[^;]*?\._register\s*\(/
+			);
+			if(!registerFunctionMatch){
+				throw new Error(`i18n登録関数を取得できませんでした: ${url.href}`);
+			}
+			const functionName = registerFunctionMatch[1];
+			const escapedFunctionName = functionName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+			const firstRegistrationMatch = new RegExp(`\\b${escapedFunctionName}\\(\"[a-z0-9]{8}\"`).exec(raw.slice(registerFunctionMatch.index));
+			const registrationsStart = firstRegistrationMatch ? registerFunctionMatch.index + firstRegistrationMatch.index : -1;
+			const registrationsEndMatch = /;var\s+[A-Za-z_$][\w$]*\s*=\s*[A-Za-z_$][\w$]*\(\d+\)/g;
+			registrationsEndMatch.lastIndex = registrationsStart;
+			const registrationsEnd = registrationsEndMatch.exec(raw)?.index;
+			if(registrationsStart < 0 || registrationsEnd === undefined){
+				throw new Error(`i18n登録データの範囲を取得できませんでした: ${url.href}`);
+			}
+
 			const overRideFunction = `function ${functionName}(key, val){
 				if(typeof val === 'string'){
-					result[key] = {
-						"type": "string",
-						"value": val
-					};
+					result[key] = {type: 'string', value: val};
 				}else if(typeof val === 'function'){
 					const functionString = val.toString();
 					const paramName = functionString.match(/^function\\s*\\(([^)]*)\\)/)?.[1]?.trim() || functionString.match(/^\\(?\\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\\s*\\)?\\s*=>/)?.[1]?.trim() || 'e';
 					const propRegex = new RegExp('\\\\b' + paramName + '\\\\.([a-zA-Z0-9_]+)', 'g');
 					const props = new Set();
 					let match;
-					while((match = propRegex.exec(functionString)) !== null){
-						props.add(match[1]);
-					}
-					result[key] = {
-						"type": "webI18nFunction",
-						"arguments": Array.from(props),
-						"value": val
-					};
+					while((match = propRegex.exec(functionString)) !== null)props.add(match[1]);
+					result[key] = {type: 'webI18nFunction', arguments: Array.from(props), value: val};
 				}
-			};`;
-
-			const replaced = raw.replace(/^("use strict";|try).*\)\)}}\);function/, `${overRideFunction};function `)
-				.replace(/\);var.*$/m, ');');
-
+			}`;
 			const context = {result: {}, console};
 			vm.createContext(context);
-			vm.runInContext(replaced, context);
+			vm.runInContext(overRideFunction, context);
+			const registrationCalls = splitTopLevelCalls(raw.slice(registrationsStart, registrationsEnd));
+			for(let i = 0; i < registrationCalls.length; i += 200){
+				try{
+					vm.runInContext(registrationCalls.slice(i, i + 200).join(';'), context);
+				}catch(error){
+					throw new Error(`i18n登録データの実行に失敗しました (${url.href}, ${i}-${Math.min(i + 199, registrationCalls.length - 1)}): ${error.message}`, {cause: error});
+				}
+			}
 
-			const templateFunctionsArray = `${raw.match(/\([a-z][=|,](\[\{.*\]\}\}),\{key:\"templateReducer\"/)[1]}]`;
-			const templateFunctions = vm.runInNewContext(`(${templateFunctionsArray})`);
+			const templateFunctions = extractTemplateFunctions(raw);
 			for(const templateFunction of templateFunctions){
 				context.result[templateFunction.key] = {
 					"type": "webI18nTemplateFunction",
@@ -440,7 +438,110 @@ const xmlParser = new XMLParser({
 		}
 	}
 
+	function extractTemplateFunctions(raw){
+		const result = new Map();
+		const patterns = [
+			/\bkey:\s*"([a-z0-9]{8})"\s*,\s*get:\s*function\s*\(\)\s*\{\s*return\s*/g,
+			/\bget\s+([a-z0-9]{8})\s*\(\)\s*\{\s*return\s*/g
+		];
+		for(const pattern of patterns){
+			let match;
+			while((match = pattern.exec(raw)) !== null){
+				const arrayStart = skipWhitespace(raw, pattern.lastIndex);
+				if(raw[arrayStart] !== '[')continue;
+				const arrayEnd = findClosingBracket(raw, arrayStart);
+				if(arrayEnd < 0){
+					throw new Error(`テンプレート関数 ${match[1]} の終端を取得できませんでした`);
+				}
+				const getter = vm.runInNewContext(`(function(){return ${raw.slice(arrayStart, arrayEnd + 1)}})`);
+				result.set(match[1], {key: match[1], get: getter});
+				pattern.lastIndex = arrayEnd + 1;
+			}
+		}
+		return Array.from(result.values());
+	}
+
+	function skipWhitespace(source, index){
+		while(index < source.length && /\s/.test(source[index]))index++;
+		return index;
+	}
+
+	function findClosingBracket(source, openIndex){
+		let depth = 0;
+		let quote = null;
+		let escaped = false;
+		for(let i = openIndex; i < source.length; i++){
+			const char = source[i];
+			if(quote){
+				if(escaped){
+					escaped = false;
+				}else if(char === '\\'){
+					escaped = true;
+				}else if(char === quote){
+					quote = null;
+				}
+				continue;
+			}
+			if(char === '"' || char === "'" || char === '`'){
+				quote = char;
+			}else if(char === '['){
+				depth++;
+			}else if(char === ']' && --depth === 0){
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	function splitTopLevelCalls(source){
+		const calls = [];
+		let start = 0;
+		let parentheses = 0;
+		let brackets = 0;
+		let braces = 0;
+		let quote = null;
+		let escaped = false;
+		for(let i = 0; i < source.length; i++){
+			const char = source[i];
+			if(quote){
+				if(escaped){
+					escaped = false;
+				}else if(char === '\\'){
+					escaped = true;
+				}else if(char === quote){
+					quote = null;
+				}
+				continue;
+			}
+			if(char === '"' || char === "'" || char === '`'){
+				quote = char;
+			}else if(char === '('){
+				parentheses++;
+			}else if(char === ')'){
+				parentheses--;
+			}else if(char === '['){
+				brackets++;
+			}else if(char === ']'){
+				brackets--;
+			}else if(char === '{'){
+				braces++;
+			}else if(char === '}'){
+				braces--;
+			}else if(char === ',' && parentheses === 0 && brackets === 0 && braces === 0){
+				calls.push(source.slice(start, i));
+				start = i + 1;
+			}
+		}
+		const lastCall = source.slice(start).replace(/;\s*$/, '');
+		if(lastCall)calls.push(lastCall);
+		return calls;
+	}
+
 	async function processApkData(){
+		const apkDirectories = {
+			old: findApkDirectory('old'),
+			new: findApkDirectory('new')
+		};
 		for(const lang in keyTranslation){
 			await process(lang, 'old');
 			await process(lang, 'new');
@@ -448,14 +549,17 @@ const xmlParser = new XMLParser({
 		async function process(lang, type){
 			let dirName = keyTranslation[lang].apk;
 			if(!dirName)return;
-			const apkDirName = type === 'old' ? 'old_9.98.0-release.0' : 'new_10.88.1-release.0';
+			const apkDirName = apkDirectories[type];
 			const apkXmlPath = path.join('./apkStrings', apkDirName, dirName, 'strings.xml');
+			if(!fs.existsSync(apkXmlPath)){
+				console.warn(`APK翻訳ファイルをスキップします (${lang}/${type}): ${apkXmlPath}`);
+				return;
+			}
 			const xmlFile = fs.readFileSync(apkXmlPath, 'utf8');
-			const jsonData = xmlParser.parse(xmlFile);
-			const apkTextData = jsonData.resources.string.reduce((acc, item) => {
-				acc[item['@_name']] = {
-					type: typeof item['#text'] === 'string' && item['#text'].match(/%(\d+\$)?s/g) ? "apkI18nTemplateFunction" : "string",
-					value: item['#text']
+			const apkTextData = parseAndroidStrings(xmlFile).reduce((acc, item) => {
+				acc[item.name] = {
+					type: item.value.match(/%(\d+\$)?s/g) ? "apkI18nTemplateFunction" : "string",
+					value: item.value
 				};
 				return acc;
 			}, {});
@@ -474,18 +578,57 @@ const xmlParser = new XMLParser({
 		}
 	}
 
+	function findApkDirectory(type){
+		const prefix = `${type}_`;
+		const directories = fs.readdirSync('./apkStrings', {withFileTypes: true})
+			.filter(entry => entry.isDirectory() && entry.name.startsWith(prefix))
+			.map(entry => entry.name)
+			.sort((a, b) => b.localeCompare(a, undefined, {numeric: true}));
+		if(!directories.length){
+			throw new Error(`apkStrings内に ${prefix} で始まるディレクトリがありません`);
+		}
+		console.log(`${type} APK: ${directories[0]}`);
+		return directories[0];
+	}
+
+	function parseAndroidStrings(xml){
+		const strings = [];
+		const stringPattern = /<string\b([^>]*)>([\s\S]*?)<\/string>/g;
+		let match;
+		while((match = stringPattern.exec(xml)) !== null){
+			const name = match[1].match(/\bname\s*=\s*(["'])(.*?)\1/)?.[2];
+			if(!name)continue;
+			const value = decodeXmlEntities(match[2].replace(/<[^>]*>/g, '')).trim();
+			strings.push({name: decodeXmlEntities(name), value});
+		}
+		return strings;
+	}
+
+	function decodeXmlEntities(value){
+		return value.replace(/&#(x[0-9a-f]+|\d+);|&(quot|apos|lt|gt|amp);/gi, (entity, numeric, named) => {
+			if(numeric){
+				const codePoint = numeric[0].toLowerCase() === 'x' ? parseInt(numeric.slice(1), 16) : parseInt(numeric, 10);
+				return String.fromCodePoint(codePoint);
+			}
+			return {quot: '"', apos: "'", lt: '<', gt: '>', amp: '&'}[named.toLowerCase()];
+		});
+	}
+
 	async function getData(url){
-		const response = await axios.get(url, {
+		const response = await fetch(url, {
 			headers: {
 				'User-Agent': 'Mozilla/5.0',
 				'Accept': 'text/javascript, */*; q=0.01',
-				'Accept-Encoding': 'gzip, deflate, br',
-				'Connection': 'keep-alive',
 				'Referer': 'https://x.com/',
 			}
 		});
-		const data = response.data;
-		return data;
+		if(!response.ok){
+			throw new Error(`データの取得に失敗しました (${response.status} ${response.statusText}): ${url}`);
+		}
+		return await response.text();
 	}
-	main();
+	main().catch(error => {
+		console.error(error);
+		process.exitCode = 1;
+	});
 })();

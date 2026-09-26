@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": undefined,
 	"tweetsRetweeted": undefined,
+	"replyAction": {"type":"string","value":"Erantzun"},
+	"repostAction": {"type":"string","value":"Repost"},
+	"likeAction": {"type":"string","value":"Atsegin"},
+	"bookmarkAction": {"type":"string","value":"Laster-marka"},
+	"showMore": {"type":"string","value":"Gehiago erakutsi"},
+	"viewThread": {"type":"string","value":"Erakutsi haria"},
+	"previousImage": {"type":"string","value":"Aurreko irudia"},
+	"nextImage": {"type":"string","value":"Hurrengo irudia"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["From "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 stars – "+e.appNumRatings+" ratings"}
+	},
+	"verifiedAccount": {"type":"string","value":"Verified accounts"},
+	"communityAdminBadge": {"type":"string","value":"Administratzailea"},
+	"communityModeratorBadge": {"type":"string","value":"Moderatzailea"},
+	"communityMemberBadge": {"type":"string","value":"Kidea"},
+	"viewsLabel": {"type":"string","value":"views"},
+	"viewQuotes": {"type":"string","value":"Ikusi aipamenak"},
+	"viewActivity": {"type":"string","value":"Ikusi jarduerak"},
+	"communityNotes": undefined,
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Lagungarria da ohar hau?"},
+	"communityNoteHelpful": {"type":"string","value":"Lagungarri"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"Nahiko lagungarri"},
+	"communityNoteNotHelpful": {"type":"string","value":"Ez-lagungarri"},
+	"cashtagComingSoon": {"type":"string","value":"Laister"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Now at "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Answer by Grok in Fun Mode"},
+	"grokAnswer": {"type":"string","value":"Answer by Grok"},
+	"grokImageBy": {"type":"string","value":"Image by Grok"},
+	"grokShowMore": {"type":"string","value":"Gehiago erakutsi"},
+	"grokCreateVersion": {"type":"string","value":"Create your version with Grok"},
+	"grokAskYourself": {"type":"string","value":"Ask Grok yourself"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" web page"+n(e.count,"","s")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" post"+n(e.count,"","s")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" web pages and posts"}
+	},
+	"mostRelevant": {"type":"string","value":"Aipagarria"},
+	"mostLiked": {"type":"string","value":"Atsegiteak"},
+	"mostRecent": {"type":"string","value":"Azkenak"},
+	"sortReplies": {"type":"string","value":"Sort replies"},
+	"lastEdited": {"type":"string","value":"Last edited"},
+	"newPostVersion": {"type":"string","value":"There’s a new version of this post."},
+	"opensEditHistory": {"type":"string","value":"Opens edit history"},
+	"viewLatestPost": {"type":"string","value":"See the latest post"},
+	"opensLatestPost": {"type":"string","value":"Opens the new version of this post"},
+	"mediaTaggedSelf": {"type":"string","value":"Zu"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Norena: "]}
+	},
+	"poll": {"type":"string","value":"Bozketa"},
+	"viewPoll": {"type":"string","value":"Erakutsi bozketa hau"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return""+o(e.count,"bozka "+e.formattedCount,e.formattedCount+" bozka")}
+	},
+	"pollEnded": {"type":"string","value":"Azken emaitzak"},
 	"retweet": {"type":"string","value":"Repost"},
 	"unDoRetweet": {"type":"string","value":"Undo repost"},
 	"quoteTweet": undefined,
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": undefined,
 	"profileTabTitleLikes": undefined,
 	"following": {"type":"string","value":"Jarraitzen"},
+	"follow": {"type":"string","value":"Jarraitu"},
+	"followBack": {"type":"string","value":"Jarraitu berriro"},
+	"followers": {"type":"string","value":"Jarraitzaileak"},
+	"followsYou": {"type":"string","value":"Jarraitzen zaitu"},
+	"subscriptions": {"type":"string","value":"Subscriptions"},
 	"unfollow": {"type":"string","value":"Utzi jarraitzeari"},
 	"blocked": {"type":"string","value":"Blokeatua"},
 	"unblock": {"type":"string","value":"Desblokeatu"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," erabiltzaileak jarraitua"]}
+		"value": function(){return [""," erabiltzaileak jarraitua"]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," eta "," erabiltzaileek jarraitua"]}
+		"value": function(){return [""," eta "," erabiltzaileek jarraitua"]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", "," eta "," erabiltzaileek jarraitua"]}
+		"value": function(){return ["",", "," eta "," erabiltzaileek jarraitua"]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," erabiltzaileak, "," erabiltzaileak eta zuk jarraitutako beste "," erabiltzailek jarraitua"]}
+		"value": function(){return [""," erabiltzaileak, "," erabiltzaileak eta zuk jarraitutako beste "," erabiltzailek jarraitua"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" post"+n(props.count,"","s")]}
+		"value": function(){return [props.formattedCount+" post"+n(props.count,"","s")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" atsegite"]}
+		"value": function(){return [props.formattedCount+" atsegite"]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" photos & videos"]}
+		"value": function(){return [props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"Hasiera"},
 	"explore": {"type":"string","value":"Arakatu"},

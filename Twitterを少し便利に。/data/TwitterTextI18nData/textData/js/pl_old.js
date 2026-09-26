@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Przypięte"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s podał/a dalej Tweeta"},
+	"replyAction": {"type":"string","value":"Odpowiedz"},
+	"repostAction": {"type":"string","value":"Podaj dalej wpis"},
+	"likeAction": {"type":"string","value":"Lubię"},
+	"bookmarkAction": {"type":"string","value":"Zakładka"},
+	"showMore": {"type":"string","value":"Pokaż więcej"},
+	"viewThread": {"type":"string","value":"Pokaż ten wątek"},
+	"previousImage": {"type":"string","value":"Poprzedni obraz"},
+	"nextImage": {"type":"string","value":"Następny obraz"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Ze strony "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(a){return"Gwiazdki: "+a.appStarRating+"/5,0; oceny: "+a.appNumRatings}
+	},
+	"verifiedAccount": {"type":"string","value":"Zweryfikowane konta"},
+	"communityAdminBadge": {"type":"string","value":"Admin"},
+	"communityModeratorBadge": {"type":"string","value":"Mod"},
+	"communityMemberBadge": {"type":"string","value":"Członek"},
+	"viewsLabel": {"type":"string","value":"wyświetl."},
+	"viewQuotes": {"type":"string","value":"Wyświetl cytaty"},
+	"viewActivity": {"type":"string","value":"Wyświetl aktywność"},
+	"communityNotes": {"type":"string","value":"Uwagi Społeczności"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Czy ta uwaga jest pomocna?"},
+	"communityNoteHelpful": {"type":"string","value":"pomocną"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"średnio pomocną"},
+	"communityNoteNotHelpful": {"type":"string","value":"niepomocną"},
+	"cashtagComingSoon": {"type":"string","value":"Wkrótce"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Teraz za "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Odpowiedź Groka w trybie zabawnym"},
+	"grokAnswer": {"type":"string","value":"Odpowiedź Groka"},
+	"grokImageBy": {"type":"string","value":"Obraz utworzony przez Groka"},
+	"grokShowMore": {"type":"string","value":"Pokaż więcej"},
+	"grokCreateVersion": {"type":"string","value":"Utwórz swoją wersję za pomocą Groka"},
+	"grokAskYourself": {"type":"string","value":"Zapytaj Groka samodzielnie"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(a){return a.count+" stron"+r(a.count,"y internetowe"," internetowych","a internetowa","y internetowej")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(a){return a.count+" wpis"+r(a.count,"y","ów","","u")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(a){return"Strony internetowe i wpisy: "+a.count}
+	},
+	"mostRelevant": {"type":"string","value":"Trafne"},
+	"mostLiked": {"type":"string","value":"Polubienia"},
+	"mostRecent": {"type":"string","value":"Najnowsze"},
+	"sortReplies": {"type":"string","value":"Sortuj odpowiedzi"},
+	"lastEdited": {"type":"string","value":"Ostatnia zmiana:"},
+	"newPostVersion": {"type":"string","value":"Istnieje nowa wersja tego wpisu."},
+	"opensEditHistory": {"type":"string","value":"Otwiera historię edycji"},
+	"viewLatestPost": {"type":"string","value":"Zobacz najnowszy wpis"},
+	"opensLatestPost": {"type":"string","value":"Otwiera nową wersję tego wpisu"},
+	"mediaTaggedSelf": {"type":"string","value":"Ty"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Od "]}
+	},
+	"poll": {"type":"string","value":"Głosowanie"},
+	"viewPoll": {"type":"string","value":"Pokaż głosowanie"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" głos"+n(e.count,"y","ów","","ów")}
+	},
+	"pollEnded": {"type":"string","value":"Wyniki końcowe"},
 	"retweet": {"type":"string","value":"Podaj dalej"},
 	"unDoRetweet": {"type":"string","value":"Cofnij podanie dalej"},
 	"quoteTweet": {"type":"string","value":"Cytuj tweeta"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"Multimedia"},
 	"profileTabTitleLikes": {"type":"string","value":"Polubienia"},
 	"following": {"type":"string","value":"Obserwujesz"},
+	"follow": {"type":"string","value":"Obserwuj"},
+	"followBack": {"type":"string","value":"Również obserwuj"},
+	"followers": {"type":"string","value":"Obserwujący"},
+	"followsYou": {"type":"string","value":"Obserwuje Cię"},
+	"subscriptions": {"type":"string","value":"Subskrypcje"},
 	"unfollow": {"type":"string","value":"Przestań obserwować"},
 	"blocked": {"type":"string","value":"Zablokowano"},
 	"unblock": {"type":"string","value":"Odblokuj"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Obserwowany przez: "]}
+		"value": function(){return ["Obserwowany przez: "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Obserwowany przez: "," i "]}
+		"value": function(){return ["Obserwowany przez: "," i "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Obserwowany przez: ",", "," i "]}
+		"value": function(){return ["Obserwowany przez: ",", "," i "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Obserwowany przez ",", "," i "," innych użytkowników. których obserwujesz"]}
+		"value": function(){return ["Obserwowany przez ",", "," i "," innych użytkowników. których obserwujesz"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Tweet"+n(props.count,"y","ów","","ów")]}
+		"value": function(){return [props.formattedCount+" Tweet"+n(props.count,"y","ów","","ów")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Polubie"+n(props.count,"nia","ń","nie","ń")]}
+		"value": function(){return [props.formattedCount+" Polubie"+n(props.count,"nia","ń","nie","ń")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" zdję"+n(props.count,"cia i filmy","ć i filmów","cie i film","cia i filmu")]}
+		"value": function(){return [props.formattedCount+" zdję"+r(props.count,"cia i filmy","ć i filmów","cie i film","cia i filmu")]}
 	},
 	"home": {"type":"string","value":"Główna"},
 	"explore": {"type":"string","value":"Przeglądaj"},
@@ -62,7 +144,7 @@ const text = {
 	"connect_people": {
 		"type": "webI18nFunction",
 		"arguments": ["verb"],
-		"value": function(e){return"Obserwuj"+e.verb}
+		"value": function(a){return"Obserwuj"+a.verb}
 	},
 	"chat": {"type":"string","value":"Czat"},
 	"messages": {"type":"string","value":"Wiadomości"},

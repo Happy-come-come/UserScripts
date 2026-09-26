@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="a11y_composer_poll_choice_characters_remaining">
+        <item quantity="one">Pozostał {count} znak</item>
+        <item quantity="few">Pozostały {count} znaki</item>
+        <item quantity="many">Pozostało {count} znaków</item>
+        <item quantity="other">Pozostało {count} znaku</item>
+    </plurals>
+    <plurals name="admin_tools_subtitle_members">
+        <item quantity="one">%d użytkownik</item>
+        <item quantity="other">%d użytkowników</item>
+    </plurals>
+    <plurals name="av_group_call_member_count">
+        <item quantity="one">%1$d członek</item>
+        <item quantity="other">%1$d członków</item>
+    </plurals>
+    <plurals name="badge_item_count">
+        <item quantity="one">%d nowa pozycja</item>
+        <item quantity="other">Nowe pozycje: %d</item>
+    </plurals>
+    <plurals name="cohost_current_count">
+        <item quantity="one">%1$d współhost</item>
+        <item quantity="other">Współhości: %1$d</item>
+    </plurals>
+    <plurals name="cohost_open_spots_count">
+        <item quantity="one">%1$d wolne miejsce</item>
+        <item quantity="few">%1$d wolne miejsca</item>
+        <item quantity="many">%1$d wolnych miejsc</item>
+        <item quantity="other">%1$d wolnego miejsca</item>
+    </plurals>
+    <plurals name="community_member_count">
+        <item quantity="one">%d członek Grupy dyskusyjnej</item>
+        <item quantity="other">%d członków Grupy dyskusyjnej</item>
+    </plurals>
+    <plurals name="community_moderator_count">
+        <item quantity="one">%d moderator</item>
+        <item quantity="other">%d moderatorów</item>
+    </plurals>
+    <plurals name="community_navigation_join_requests_label">
+        <item quantity="one">%s prośba</item>
+        <item quantity="other">Prośby: %s</item>
+    </plurals>
+    <plurals name="community_navigation_new_unread_tweets_label">
+        <item quantity="one">%s nowy wpis</item>
+        <item quantity="other">Nowe wpisy: %s</item>
+    </plurals>
+    <plurals name="community_navigation_pending_reports_label">
+        <item quantity="one">%s zgłoszenie</item>
+        <item quantity="other">Zgłoszenia: %s</item>
+    </plurals>
+    <plurals name="composer_count_progress_overflow_warning">
+        <item quantity="one">Przekroczono limit znaków o: %d</item>
+        <item quantity="other">Przekroczono limit znaków o: %d</item>
+    </plurals>
+    <plurals name="composer_count_progress_warning">
+        <item quantity="one">Zostało znaków: %d</item>
+        <item quantity="other">Zostało znaków: %d</item>
+    </plurals>
+    <plurals name="content_description_fleet_item_space_with_others">
+        <item quantity="one">Pokój użytkownika %1$s i %2$d innego</item>
+        <item quantity="other">Pokój użytkownika %1$s i %2$d innych</item>
+    </plurals>
+    <plurals name="data_sync_notif_title">
+        <item quantity="one">%d nowa interakcja</item>
+        <item quantity="other">Nowe interakcje: %d</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d dzień</item>
+        <item quantity="other">%d dni</item>
+    </plurals>
+    <plurals name="dm_add_people_failure">
+        <item quantity="one">Nie udało się dodać użytkownika do tej grupy.</item>
+        <item quantity="other">%d użytkowników nie udało się dodać do tej grupy.</item>
+    </plurals>
+    <plurals name="dm_add_people_success">
+        <item quantity="one">Dodano użytkownika do grupy.</item>
+        <item quantity="other">Do grupy dodano %d użytkowników.</item>
+    </plurals>
+    <plurals name="dm_follower_count_no_joined_date">
+        <item quantity="one">{num_followers} obserwujący</item>
+        <item quantity="other">{num_followers} obserwujących</item>
+    </plurals>
+    <plurals name="dm_group_account_name">
+        <item quantity="one">1 osoba</item>
+        <item quantity="other">%d użytkowników wysłało Tweeta</item>
+    </plurals>
+    <plurals name="dm_group_chat_count">
+        <item quantity="one">Rozmowa grupowa z %d użytkownikiem</item>
+        <item quantity="other">Czat grupowy z %d użytkowników</item>
+    </plurals>
+    <plurals name="dm_group_conversation_participant_count">
+        <item quantity="one">%1$d użytkownik</item>
+        <item quantity="other">%1$d użytkowników</item>
+    </plurals>
+    <plurals name="dm_group_participant_count">
+        <item quantity="one">W grupie jest %1$s</item>
+        <item quantity="other">W tej grupie jest %1$s</item>
+    </plurals>
+    <plurals name="dm_group_participant_count_person_details">
+        <item quantity="one">jeszcze %1$s osoba</item>
+        <item quantity="other">%1$s innych użytkowników</item>
+    </plurals>
+    <plurals name="dm_image_profile">
+        <item quantity="one">Zdjęcie profilowe użytkownika %s</item>
+        <item quantity="other">Zdjęcia profilowe użytkownika %s</item>
+    </plurals>
+    <plurals name="dm_new_people_you_may_know">
+        <item quantity="one">Nowa osoba, którą możesz znać: %d</item>
+        <item quantity="other">Nowe osoby, które możesz znać: %d</item>
+    </plurals>
+    <plurals name="dm_new_requests">
+        <item quantity="one">%d nowe zaproszenie do rozmowy</item>
+        <item quantity="other">Nowe zaproszenia do rozmowy: %d</item>
+    </plurals>
+    <plurals name="dm_participant_added_by_deleted_user">
+        <item quantity="one">Dodano użytkownika {participants}</item>
+        <item quantity="other">Dodano użytkowników: {participants}</item>
+    </plurals>
+    <plurals name="dm_pending_requests">
+        <item quantity="one">%d oczekujące zaproszenie do rozmowy</item>
+        <item quantity="other">Oczekujące zaproszenia do rozmowy: %s</item>
+    </plurals>
+    <plurals name="dm_people_you_may_know">
+        <item quantity="one">%d osoba, którą możesz znać</item>
+        <item quantity="other">Osoby, które możesz znać: %d</item>
+    </plurals>
+    <plurals name="dm_pinned_conversations_max_count_exceeded_title">
+        <item quantity="one">Możesz przypiąć tylko %d rozmowę</item>
+        <item quantity="other">Maks. liczba rozmów, które możesz przypiąć: %d</item>
+    </plurals>
+    <plurals name="dm_share_group_members_and_others">
+        <item quantity="one">{visible_names} i {others_count} inny</item>
+        <item quantity="other">{visible_names} i {others_count} innych</item>
+    </plurals>
+    <plurals name="dm_state_seen_by">
+        <item quantity="one">Wyświetlone przez %d użytkownika</item>
+        <item quantity="other">Wyświetlone przez %d użytkowników</item>
+    </plurals>
+    <plurals name="dm_unread_messages">
+        <item quantity="one">%d nieprzeczytana wiadomość</item>
+        <item quantity="other">Nieprzeczytane wiadomości: %d</item>
+    </plurals>
+    <plurals name="dm_user_joined_and_follower_count">
+        <item quantity="one">Dołączył/a {joined_date} • {num_followers} obserwujący</item>
+        <item quantity="other">Dołączył/a {joined_date} • {num_followers} obserwujących</item>
+    </plurals>
+    <plurals name="duration_picker_set_days">
+        <item quantity="one">1 dzień</item>
+        <item quantity="other">%d dni</item>
+    </plurals>
+    <plurals name="duration_picker_set_hours">
+        <item quantity="one">1 godzina</item>
+        <item quantity="other">%d godz.</item>
+    </plurals>
+    <plurals name="duration_picker_set_minutes">
+        <item quantity="one">1 minuta</item>
+        <item quantity="other">%d min</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">Przewiń do przodu o %d sekundę</item>
+        <item quantity="few">Przewiń do przodu o %d sekundy</item>
+        <item quantity="many">Przewiń do przodu o %d sekund</item>
+        <item quantity="other">Przewiń do przodu o %d sekundy</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">Przewiń do tyłu o %d sekundę</item>
+        <item quantity="few">Przewiń do tyłu o %d sekundy</item>
+        <item quantity="many">Przewiń do tyłu o %d sekund</item>
+        <item quantity="other">Przewiń do tyłu o %d sekundy</item>
+    </plurals>
+    <plurals name="facepile_content_description_phrase">
+        <item quantity="one">Obraz profilowy użytkownika {user_names}</item>
+        <item quantity="other">Obrazy profilowe użytkownika {user_names}</item>
+    </plurals>
+    <plurals name="full_screen_gallery_header_add">
+        <item quantity="one">Dodaj %d</item>
+        <item quantity="other">Dodaj %d</item>
+    </plurals>
+    <plurals name="graphql_errors_button">
+        <item quantity="one">Błąd %d</item>
+        <item quantity="other">Błąd %d</item>
+    </plurals>
+    <plurals name="guest_management_max_cohost_count_label">
+        <item quantity="one">Możesz dodać tylko %1$d współhosta.</item>
+        <item quantity="other">Możesz dodać maks. %1$d współhostów</item>
+    </plurals>
+    <plurals name="guest_management_open_cohost_count_label">
+        <item quantity="one">Dodaj jeszcze maks. %1$d użytkowników.</item>
+        <item quantity="other">Dodaj do %1$d użytkowników.</item>
+    </plurals>
+    <plurals name="host_kudos_num_followers_gained">
+        <item quantity="one">Masz %1$d nowego obserwującego!</item>
+        <item quantity="other">Masz %1$d nowych obserwujących!</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d godzina</item>
+        <item quantity="other">%d godz.</item>
+    </plurals>
+    <plurals name="humanization_prompt_followers">
+        <item quantity="one">%1$s obserwuje %2$s.</item>
+        <item quantity="other">%1$s obserwują %2$s.</item>
+    </plurals>
+    <plurals name="humanization_prompt_topics">
+        <item quantity="one">Ty i użytkownik %1$s oboje obserwujecie Temat %2$s.</item>
+        <item quantity="other">Ty i użytkownik %1$s oboje obserwujecie Tematy %2$s.</item>
+    </plurals>
+    <plurals name="likes">
+        <item quantity="one">%d polubienie</item>
+        <item quantity="other">Polubienia: %d</item>
+    </plurals>
+    <plurals name="list_member_count">
+        <item quantity="one">Użytkownik</item>
+        <item quantity="other">Użytkownicy</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_message">
+        <item quantity="one">"Dobre opisy są zwięzłe i precyzyjne, powinny też zawierać tekst widoczny na zdjęciu lub jego streszczenie.
+
+Twój opis sprawia, że serwis X może łatwiej dotrzeć do osób niepełnosprawnych oraz do użytkowników, którzy chcą dowiedzieć się więcej.
+
+To przypomnienie możesz wyłączyć w ustawieniach ułatwień dostępu."</item>
+        <item quantity="other">"Dobre opisy są zwięzłe i precyzyjne, powinny też zawierać tekst widoczny na zdjęciu lub jego streszczenie.
+
+Twoje opisy sprawiają, że serwis X może łatwiej dotrzeć do osób niepełnosprawnych oraz do użytkowników, którzy chcą dowiedzieć się więcej.
+
+To przypomnienie możesz wyłączyć w ustawieniach ułatwień dostępu."</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_positive_btn_text">
+        <item quantity="one">Dodaj opis</item>
+        <item quantity="other">Dodaj opisy</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_title">
+        <item quantity="one">Nie zapomnij o ułatwieniach dostępu do zdjęcia</item>
+        <item quantity="other">Nie zapomnij o ułatwieniach dostępu do zdjęć</item>
+    </plurals>
+    <plurals name="media_monetization_settings_categories_selected">
+        <item quantity="one">%d wybrana kategoria</item>
+        <item quantity="other">Wybrane kategorie: %d</item>
+    </plurals>
+    <plurals name="media_tag_remaining">
+        <item quantity="one">Ilość osób, które możesz jeszcze oznaczyć: %d</item>
+        <item quantity="other">Oznacz jeszcze maksymalnie %d osób.</item>
+    </plurals>
+    <plurals name="media_tag_tagged">
+        <item quantity="one">%d oznaczona osoba</item>
+        <item quantity="other">Oznaczone osoby: %d</item>
+    </plurals>
+    <plurals name="member_count">
+        <item quantity="one">%s użytkownik</item>
+        <item quantity="other">%s członków</item>
+    </plurals>
+    <plurals name="members">
+        <item quantity="one">%s użytkownik</item>
+        <item quantity="other">%s użytkowników</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d minuta</item>
+        <item quantity="other">%d min</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d nowe powiadomienie</item>
+        <item quantity="few">%d nowe powiadomienia</item>
+        <item quantity="many">%d nowych powiadomień</item>
+        <item quantity="other">%d nowego powiadomienia</item>
+    </plurals>
+    <plurals name="muted_keyword_bulk_delete_success">
+        <item quantity="one">Usunięto %d słowo</item>
+        <item quantity="other">Usunięte słowa: %d</item>
+    </plurals>
+    <plurals name="muted_keyword_selected_count">
+        <item quantity="one">Wybrano %d</item>
+        <item quantity="other">Wybrano %d</item>
+    </plurals>
+    <plurals name="narrowcast_community_member_count">
+        <item quantity="one">%s użytkownik</item>
+        <item quantity="other">Członkowie: %s</item>
+    </plurals>
+    <plurals name="narrowcast_trusted_friends_count">
+        <item quantity="one">%s użytkownik podał dalej Tweeta</item>
+        <item quantity="other">%s użytkowników</item>
+    </plurals>
+    <plurals name="notification_description_after_sending_posts">
+        <item quantity="one">Wysłano wpis</item>
+        <item quantity="few">Wysłano {total} wpisy</item>
+        <item quantity="many">Wysłano {total} wpisów</item>
+        <item quantity="other">Wysłano {total} wpisu</item>
+    </plurals>
+    <plurals name="notification_description_before_sending_posts">
+        <item quantity="one">Przygotowywanie do wysłania wpisu…</item>
+        <item quantity="few">Przygotowywanie do wysłania {total} wpisów…</item>
+        <item quantity="many">Przygotowywanie do wysłania {total} wpisów…</item>
+        <item quantity="other">Przygotowywanie do wysłania {total} wpisu…</item>
+    </plurals>
+    <plurals name="notification_description_deleting_drafts">
+        <item quantity="one">Usuwanie szkicu…</item>
+        <item quantity="few">Usuwanie {current} z {total} szkiców…</item>
+        <item quantity="many">Usuwanie {current} z {total} szkiców…</item>
+        <item quantity="other">Usuwanie {current} z {total} szkicu…</item>
+    </plurals>
+    <plurals name="notification_description_editable_posts">
+        <item quantity="one">Usuwanie edytowalnego wpisu…</item>
+        <item quantity="few">Usuwanie {current} z {total} edytowalnych wpisów…</item>
+        <item quantity="many">Usuwanie {current} z {total} edytowalnych wpisów…</item>
+        <item quantity="other">Usuwanie {current} z {total} edytowalnego wpisu…</item>
+    </plurals>
+    <plurals name="notification_description_preparing_media">
+        <item quantity="one">Przygotowywanie multimedium…</item>
+        <item quantity="few">Przygotowywanie {current} z {total} multimediów…</item>
+        <item quantity="many">Przygotowywanie {current} z {total} multimediów…</item>
+        <item quantity="other">Przygotowywanie {current} z {total} multimedium…</item>
+    </plurals>
+    <plurals name="notification_description_sending_drafts">
+        <item quantity="one">Wysyłanie szkicu…</item>
+        <item quantity="few">Wysyłanie {current} z {total} szkiców…</item>
+        <item quantity="many">Wysyłanie {current} z {total} szkiców…</item>
+        <item quantity="other">Wysyłanie {current} z {total} szkicu…</item>
+    </plurals>
+    <plurals name="notification_description_sending_posts">
+        <item quantity="one">Wysyłanie wpisu…</item>
+        <item quantity="few">Wysyłanie {current} z {total} wpisów…</item>
+        <item quantity="many">Wysyłanie {current} z {total} wpisów…</item>
+        <item quantity="other">Wysyłanie {current} z {total} wpisów…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_media">
+        <item quantity="one">Przesyłanie multimediów…</item>
+        <item quantity="few">Przesyłanie {current} z {total} multimediów…</item>
+        <item quantity="many">Przesyłanie {current} of {total} multimediów…</item>
+        <item quantity="other">Przesyłanie {current} of {total} multimediów…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_poll">
+        <item quantity="one">Przesyłanie głosowania…</item>
+        <item quantity="few">Przesyłanie {current} z {total} głosowań…</item>
+        <item quantity="many">Przesyłanie {current} z {total} głosowań…</item>
+        <item quantity="other">Przesyłanie {current} z {total} głosowania…</item>
+    </plurals>
+    <plurals name="notification_title_after_sending_posts">
+        <item quantity="one">Wysłany wpis</item>
+        <item quantity="few">Wysłane wpisy</item>
+        <item quantity="many">Wysłanych wpisów</item>
+        <item quantity="other">Wysłanego wpisu</item>
+    </plurals>
+    <plurals name="notification_title_before_sending_posts">
+        <item quantity="one">Przygotowywanie do wysłania wpisu</item>
+        <item quantity="few">Przygotowywanie do wysłania wpisów</item>
+        <item quantity="many">Przygotowywanie do wysłania wpisów</item>
+        <item quantity="other">Przygotowywanie do wysłania wpisu</item>
+    </plurals>
+    <plurals name="notification_title_deleting_drafts">
+        <item quantity="one">Usuwanie szkicu</item>
+        <item quantity="few">Usuwanie szkiców</item>
+        <item quantity="many">Usuwanie szkiców</item>
+        <item quantity="other">Usuwanie szkicu</item>
+    </plurals>
+    <plurals name="notification_title_deleting_editable_posts">
+        <item quantity="one">Usuwanie edytowalnego wpisu</item>
+        <item quantity="few">Usuwanie edytowalnych wpisów</item>
+        <item quantity="many">Usuwanie edytowalnych wpisów</item>
+        <item quantity="other">Usuwanie edytowalnego wpisu</item>
+    </plurals>
+    <plurals name="notification_title_preparing_media">
+        <item quantity="one">Przygotowywanie multimedium</item>
+        <item quantity="few">Przygotowywanie multimediów</item>
+        <item quantity="many">Przygotowywanie multimediów</item>
+        <item quantity="other">Przygotowywanie multimedium</item>
+    </plurals>
+    <plurals name="notification_title_sending_drafts">
+        <item quantity="one">Wysyłanie szkicu</item>
+        <item quantity="few">Wysyłanie szkiców</item>
+        <item quantity="many">Wysyłanie szkiców</item>
+        <item quantity="other">Wysyłanie szkicu</item>
+    </plurals>
+    <plurals name="notification_title_sending_posts">
+        <item quantity="one">Wysyłanie wpisu</item>
+        <item quantity="few">Wysyłanie wpisów</item>
+        <item quantity="many">Wysyłanie wpisów</item>
+        <item quantity="other">Wysyłanie wpisu</item>
+    </plurals>
+    <plurals name="notification_title_uploading_media">
+        <item quantity="one">Przesyłanie multimedium</item>
+        <item quantity="few">Przesyłanie multimediów</item>
+        <item quantity="many">Przesyłanie multimediów</item>
+        <item quantity="other">Przesyłanie multimedium</item>
+    </plurals>
+    <plurals name="notification_title_uploading_poll">
+        <item quantity="one">Przesyłanie głosowania</item>
+        <item quantity="few">Przesyłanie głosowań</item>
+        <item quantity="many">Przesyłanie głosowań</item>
+        <item quantity="other">Przesyłanie głosowania</item>
+    </plurals>
+    <plurals name="notification_undo_nudge">
+        <item quantity="one">Oczekiwanie na czas na wycofanie</item>
+        <item quantity="few">Oczekiwanie na czas na wycofanie</item>
+        <item quantity="many">Oczekiwanie na czas na wycofanie</item>
+        <item quantity="other">Oczekiwanie na czas na wycofanie</item>
+    </plurals>
+    <plurals name="others">
+        <item quantity="one">jeszcze jedna osoba</item>
+        <item quantity="other">%d innych użytkowników</item>
+    </plurals>
+    <plurals name="payment_ach_merchant_authorization_transactions_count">
+        <item quantity="one">1 transakcja</item>
+        <item quantity="few">{count} transakcje</item>
+        <item quantity="many">{count} transakcji</item>
+        <item quantity="other">{count} transakcji</item>
+    </plurals>
+    <plurals name="payment_onboarding_terms_invitation_subtitle">
+        <item quantity="one">Kontynuuj, zanim płatność wygaśnie.</item>
+        <item quantity="other">Kontynuuj, zanim płatność wygaśnie.</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_hours">
+        <item quantity="one">%d godzina</item>
+        <item quantity="few">%d godziny</item>
+        <item quantity="many">%d godzin</item>
+        <item quantity="other">%d godziny</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_minutes">
+        <item quantity="one">%d minuta</item>
+        <item quantity="few">%d minuty</item>
+        <item quantity="many">%d minut</item>
+        <item quantity="other">%d minuty</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_seconds">
+        <item quantity="one">%d sekunda</item>
+        <item quantity="few">%d sekundy</item>
+        <item quantity="many">%d sekund</item>
+        <item quantity="other">%d sekundy</item>
+    </plurals>
+    <plurals name="product_count">
+        <item quantity="one">%1$d produkt</item>
+        <item quantity="other">Produkty (%1$d)</item>
+    </plurals>
+    <plurals name="profile_about_username_changes">
+        <item quantity="one">%s zmiana nazwy użytkownika</item>
+        <item quantity="other">Zmiany nazwy użytkownika: %s</item>
+    </plurals>
+    <plurals name="profile_creator_subscriptions_count">
+        <item quantity="one">Subskrypcja</item>
+        <item quantity="other">Subskrypcje</item>
+    </plurals>
+    <plurals name="profile_follower_count">
+        <item quantity="one">Obserwujący</item>
+        <item quantity="other">Obserwujący</item>
+    </plurals>
+    <plurals name="profile_friends_following_others">
+        <item quantity="one">%d innych użytkowników</item>
+        <item quantity="other">%d innych użytkowników</item>
+    </plurals>
+    <plurals name="profile_stat_followers_text">
+        <item quantity="one">Obserwujący</item>
+        <item quantity="few">Obserwujących</item>
+        <item quantity="many">Obserwujących</item>
+        <item quantity="other">Obserwującego</item>
+    </plurals>
+    <plurals name="profile_stat_following_text">
+        <item quantity="one">Obserwowany</item>
+        <item quantity="few">Obserwowanych</item>
+        <item quantity="many">Obserwowanych</item>
+        <item quantity="other">Obserwowanego</item>
+    </plurals>
+    <plurals name="profile_stat_subscribers_text">
+        <item quantity="one">Subskrybent</item>
+        <item quantity="few">Subskrybenci</item>
+        <item quantity="many">Subskrybentów</item>
+        <item quantity="other">Subskrybenta</item>
+    </plurals>
+    <plurals name="profile_stat_subscriptions_text">
+        <item quantity="one">Subskrypcja</item>
+        <item quantity="few">Subskrypcje</item>
+        <item quantity="many">Subskrypcji</item>
+        <item quantity="other">Subskrypcji</item>
+    </plurals>
+    <plurals name="profile_super_followers_count">
+        <item quantity="one">Subskrybent</item>
+        <item quantity="other">Subskrybenci</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_articles">
+        <item quantity="one">%s artykuł</item>
+        <item quantity="other">Artykuły: %s</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_likes">
+        <item quantity="one">%s raz polubiony</item>
+        <item quantity="other">%s razy polubiony</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_media">
+        <item quantity="one">Zdjęcie: %s</item>
+        <item quantity="other">%s Zdjęcia i filmy</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_timeline">
+        <item quantity="one">%s wpis</item>
+        <item quantity="other">Wpisy: %s</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_peak_msg">
+        <item quantity="zero">Wykres liczby widzów transmisji</item>
+        <item quantity="one">Wykres liczby widzów transmisji. Najwięcej użytkowników (%1$d) oglądało transmisję o godzinie %2$s.</item>
+        <item quantity="other">Wykres liczby widzów transmisji. Najwięcej osób (%1$d) oglądało transmisję o godzinie %2$s.</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_point_msg">
+        <item quantity="one">Liczba użytkowników o godzinie %2$s: %1$d</item>
+        <item quantity="other">Liczba użytkowników o godzinie %2$s: %1$d</item>
+    </plurals>
+    <plurals name="ps__invite_follower">
+        <item quantity="zero">Brak obserwujących</item>
+        <item quantity="one">Obserwujący: %d</item>
+        <item quantity="other">Obserwujący: %d</item>
+    </plurals>
+    <plurals name="ps__invited_num_followers_embolden">
+        <item quantity="one">*%1$s* zaprosił/a %2$s osobę</item>
+        <item quantity="other">*%1$s* zaprosił/a kilka osób: %2$s</item>
+    </plurals>
+    <plurals name="ps__moderation_report_muted_by_moderator">
+        <item quantity="one">*Wyciszone przez* %1$s</item>
+        <item quantity="other">*Wyciszone przez* %1$s (%2$d)</item>
+    </plurals>
+    <plurals name="ps__moderation_report_unmuted_by_moderator">
+        <item quantity="one">%1$s *wyłączył/a wyciszenie*</item>
+        <item quantity="other">*Wyciszenie wyłączone przez* %1$s (%2$d)</item>
+    </plurals>
+    <plurals name="ps__new_messages">
+        <item quantity="one">%1$d nowa wiadomość</item>
+        <item quantity="other">Nowe wiadomości: %1$d</item>
+    </plurals>
+    <plurals name="ps__num_hearts">
+        <item quantity="one">%s serduszko</item>
+        <item quantity="other">Serduszka: %s</item>
+    </plurals>
+    <plurals name="ps__stats_live_viewers">
+        <item quantity="one">WIDZ NA ŻYWO</item>
+        <item quantity="other">WIDZOWIE NA ŻYWO</item>
+    </plurals>
+    <plurals name="ps__stats_replay_viewers">
+        <item quantity="one">WIDZ POWTÓRKI</item>
+        <item quantity="other">WIDZOWIE POWTÓRKI</item>
+    </plurals>
+    <plurals name="ps__time_format_days">
+        <item quantity="one">%d dzień</item>
+        <item quantity="other">%d dni</item>
+    </plurals>
+    <plurals name="ps__time_format_hours">
+        <item quantity="one">%d godz.</item>
+        <item quantity="other">%d godz.</item>
+    </plurals>
+    <plurals name="ps__time_format_minutes">
+        <item quantity="one">%d min</item>
+        <item quantity="other">%d min</item>
+    </plurals>
+    <plurals name="ps__time_format_seconds">
+        <item quantity="one">%d s</item>
+        <item quantity="other">%d s</item>
+    </plurals>
+    <plurals name="recording_replay_count_preview">
+        <item quantity="one">%s odtwórz ponownie</item>
+        <item quantity="other">Odtworzenia: %s</item>
+    </plurals>
+    <plurals name="relationship_followers_following_others">
+        <item quantity="one">jeszcze %d użytkownik</item>
+        <item quantity="other">%d innych użytkowników</item>
+    </plurals>
+    <plurals name="replies">
+        <item quantity="one">%d odpowiedź</item>
+        <item quantity="other">%d odpowiedzi</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others">
+        <item quantity="other">W odpowiedzi do ﻿%1$s i jeszcze %2$d osób﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_exclusive">
+        <item quantity="other">Odpowiadasz ﻿%1$s i %2$d innych użytkowników﻿. Twoja odpowiedź będzie widoczna dla innych subskrybentów.</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_in_space">
+        <item quantity="other">W odpowiedzi do ﻿%1$s i %2$d others﻿ w ﻿%3$s﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others">
+        <item quantity="other">W odpowiedzi do ﻿%1$s, %2$s i %3$d innych osób﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_exclusive">
+        <item quantity="other">Odpowiadasz ﻿%1$s %2$s i %3$d innych użytkowników﻿. Twoja odpowiedź będzie widoczna dla innych Subskrybentów.</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_in_space">
+        <item quantity="other">W odpowiedzi do ﻿%1$s %2$s i %3$d innych użytkowników﻿ w ﻿%4$s﻿</item>
+    </plurals>
+    <plurals name="reported_tweet_reported_by">
+        <item quantity="one">Zgłoszone przez {{}}%1$s{{}}</item>
+        <item quantity="other">Zgłoszone przez {{}}%1$s członków{{}}</item>
+    </plurals>
+    <plurals name="retweets">
+        <item quantity="one">%d podanie dalej</item>
+        <item quantity="other">Podania dalej: %d</item>
+    </plurals>
+    <plurals name="safety_mode_preview_description">
+        <item quantity="one">Oznaczyliśmy %d konto, za pośrednictwem którego może dochodzić do nadużyć lub wysyłania spamu.</item>
+        <item quantity="other">Oznaczyliśmy konta, za pośrednictwem których może dochodzić do nadużyć lub wysyłania spamu – jest ich %d.</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">%d sek.</item>
+        <item quantity="other">%d sek.</item>
+    </plurals>
+    <plurals name="send_cohost_invite">
+        <item quantity="one">Wyślij zaproszenie</item>
+        <item quantity="other">Wyślij zaproszenia do wspólnego poprowadzenia Pokoju</item>
+    </plurals>
+    <plurals name="settings_notif_tweets_count">
+        <item quantity="one">%d osoba</item>
+        <item quantity="other">%d osób</item>
+    </plurals>
+    <plurals name="share_card_likes">
+        <item quantity="one">{num} polubienie</item>
+        <item quantity="few">{num} polubienia</item>
+        <item quantity="many">{num} polubień</item>
+        <item quantity="other">{num} polubienia</item>
+    </plurals>
+    <plurals name="share_card_replies">
+        <item quantity="one">{num} odpowiedź</item>
+        <item quantity="few">{num} odpowiedzi</item>
+        <item quantity="many">{num} odpowiedzi</item>
+        <item quantity="other">{num} odpowiedzi</item>
+    </plurals>
+    <plurals name="social_follow_and_follow_and_others">
+        <item quantity="one">Obserwuje %1$s, %2$s i jeszcze %3$d innych</item>
+        <item quantity="other">Obserwują %1$s, %2$s i jeszcze kilka osób (%3$d)</item>
+    </plurals>
+    <plurals name="spaces_additional_participants">
+        <item quantity="one">+%1$s jeszcze jeden słuchacz</item>
+        <item quantity="other">+%1$s innych słuchaczy</item>
+    </plurals>
+    <plurals name="spaces_blocked_warning">
+        <item quantity="one">Zablokowałeś/aś %1$d mówiącego użytkownika</item>
+        <item quantity="other">Zablokowałeś/aś %1$d mówiących użytkowników</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_in_progress">
+        <item quantity="one">%1$s w tym Pokoju</item>
+        <item quantity="other">%1$s w tym Pokoju</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_replay">
+        <item quantity="one">%1$s brał/a udział w tym Pokoju</item>
+        <item quantity="other">%1$s brali/ły udział w tym Pokoju</item>
+    </plurals>
+    <plurals name="spaces_cohost_invites_sent_toast">
+        <item quantity="one">%1$d użytkownikowi wysłano zaproszenie do zostania współhostem</item>
+        <item quantity="few">%1$d użytkownikom wysłano zaproszenia do zostania współhostem</item>
+        <item quantity="many">%1$d użytkownikom wysłano zaproszenia do zostania współhostem</item>
+        <item quantity="other">%1$d użytkownika wysłano zaproszenie do zostania współhostem</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle">
+        <item quantity="one">Dodaj jeszcze maksymalnie %1$d użytkownika.</item>
+        <item quantity="few">Dodaj jeszcze maksymalnie %1$d użytkowników.</item>
+        <item quantity="many">Dodaj jeszcze maksymalnie %1$d użytkowników.</item>
+        <item quantity="other">Dodaj jeszcze maksymalnie %1$d użytkownika.</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle_full">
+        <item quantity="one">Możesz dodać tylko %1$d współhosta.</item>
+        <item quantity="few">Możesz dodać tylko %1$d współhostów.</item>
+        <item quantity="many">Możesz dodać tylko %1$d współhostów.</item>
+        <item quantity="other">Możesz dodać tylko %1$d współhosta.</item>
+    </plurals>
+    <plurals name="spaces_invite_confirmation">
+        <item quantity="one">%1$d osoba została zaproszona do tego Pokoju</item>
+        <item quantity="other">%1$d użytkowników zostało zaproszonych do tego Pokoju</item>
+    </plurals>
+    <plurals name="spaces_invite_send_cohost_cta">
+        <item quantity="one">Wyślij zaproszenie do zostania współhostem</item>
+        <item quantity="few">Wyślij zaproszenia do zostania współhostem</item>
+        <item quantity="many">Wyślij zaproszenia do zostania współhostem</item>
+        <item quantity="other">Wyślij zaproszenia do zostania współhostem</item>
+    </plurals>
+    <plurals name="spaces_invite_send_speaker_cta">
+        <item quantity="one">Wyślij zaproszenie do zabrania głosu</item>
+        <item quantity="few">Wyślij zaproszenia do zabrania głosu</item>
+        <item quantity="many">Wyślij zaproszenia do zabrania głosu</item>
+        <item quantity="other">Wyślij zaproszenia do zabrania głosu</item>
+    </plurals>
+    <plurals name="spaces_invite_sent_toast">
+        <item quantity="one">%1$d osoba została zaproszona do tego Pokoju</item>
+        <item quantity="few">%1$d osoby zostały zaproszone do tego Pokoju</item>
+        <item quantity="many">%1$d osób zostało zaproszonych do tego Pokoju</item>
+        <item quantity="other">%1$d osoby zostało zaproszone do tego Pokoju</item>
+    </plurals>
+    <plurals name="spaces_invite_speakers_subtitle">
+        <item quantity="one">Możesz zaprosić maksymalnie %1$d osobę do zabrania głosu</item>
+        <item quantity="few">Możesz zaprosić maksymalnie %1$d osoby do zabrania głosu</item>
+        <item quantity="many">Możesz zaprosić maksymalnie %1$d osób do zabrania głosu</item>
+        <item quantity="other">Możesz zaprosić maksymalnie %1$d osoby do zabrania głosu</item>
+    </plurals>
+    <plurals name="spaces_requested_pill_label">
+        <item quantity="one">Wysłano prośbę (%1$d)</item>
+        <item quantity="few">Wysłano prośbę (%1$d)</item>
+        <item quantity="many">Wysłano prośbę (%1$d)</item>
+        <item quantity="other">Wysłano prośbę (%1$d)</item>
+    </plurals>
+    <plurals name="spaces_sheet_anonymous_others">
+        <item quantity="one">+%1$s</item>
+        <item quantity="few">+%1$s</item>
+        <item quantity="many">+%1$s</item>
+        <item quantity="other">+%1$s</item>
+    </plurals>
+    <plurals name="spaces_speak_request_toast_label_many">
+        <item quantity="one">%1$d osoba poprosiła o głos</item>
+        <item quantity="few">%1$d osoby poprosiły o głos</item>
+        <item quantity="many">%1$d osób poprosiło o głos</item>
+        <item quantity="other">%1$d osoby poprosiło o głos</item>
+    </plurals>
+    <plurals name="speakers_current_count">
+        <item quantity="one">%1$d mówca</item>
+        <item quantity="other">Mówcy: %1$d</item>
+    </plurals>
+    <plurals name="speakers_listeners_count">
+        <item quantity="one">%1$d osoba słucha</item>
+        <item quantity="other">Słuchacze: %1$d</item>
+    </plurals>
+    <plurals name="speakers_open_spots_count">
+        <item quantity="one">%1$d wolne miejsce</item>
+        <item quantity="other">Wolne miejsca: %1$d</item>
+    </plurals>
+    <plurals name="speakers_requests_count">
+        <item quantity="one">%1$d prośba</item>
+        <item quantity="other">Prośby (%1$d)</item>
+    </plurals>
+    <plurals name="stat_label_bookmarks">
+        <item quantity="one">Zakładka</item>
+        <item quantity="other">Zakładki</item>
+    </plurals>
+    <plurals name="stat_label_likes_sentence_case">
+        <item quantity="one">Polubienie</item>
+        <item quantity="other">Polubienia</item>
+    </plurals>
+    <plurals name="stat_label_quote_tweets">
+        <item quantity="one">cytat z Tweeta</item>
+        <item quantity="other">Cytaty</item>
+    </plurals>
+    <plurals name="stat_label_retweets_sentence_case">
+        <item quantity="one">Podaj dalej wpis</item>
+        <item quantity="other">Wpisy podane dalej</item>
+    </plurals>
+    <plurals name="stat_label_verified_views_sentence_case">
+        <item quantity="one">Wyświetlenie dokonane przez zweryfikowanego użytkownika</item>
+        <item quantity="other">Wyświetlenia dokonane przez zweryfikowanych użytkowników</item>
+    </plurals>
+    <plurals name="stat_label_views_sentence_case">
+        <item quantity="one">Zobacz</item>
+        <item quantity="other">Wyświetlenia</item>
+    </plurals>
+    <plurals name="subscription_duration_days">
+        <item quantity="one">dzień</item>
+        <item quantity="other">%d dni</item>
+    </plurals>
+    <plurals name="subscription_duration_months">
+        <item quantity="one">miesiąc</item>
+        <item quantity="other">%d miesięcy</item>
+    </plurals>
+    <plurals name="subscription_duration_years">
+        <item quantity="one">rok</item>
+        <item quantity="other">%d lat</item>
+    </plurals>
+    <plurals name="subscription_offer_price_description_months">
+        <item quantity="one">{offer_price} za pierwszy miesiąc, odnowienie za {original_price}</item>
+        <item quantity="other">{offer_price} za pierwsze %d mies., odnowienie za {original_price}</item>
+    </plurals>
+    <plurals name="subscription_offer_title_special_offer_months">
+        <item quantity="one">{original_price_strike_through} {offer_price} za pierwszy miesiąc</item>
+        <item quantity="other">{original_price_strike_through} {offer_price} za pierwsze %d mies.</item>
+    </plurals>
+    <plurals name="thread_draft_more_post">
+        <item quantity="one">i jeszcze {num} wpis</item>
+        <item quantity="few">i jeszcze {num} wpisy</item>
+        <item quantity="many">i jeszcze {num} wpisów</item>
+        <item quantity="other">i jeszcze {num} wpisu</item>
+    </plurals>
+    <plurals name="time_days">
+        <item quantity="one">%d dzień</item>
+        <item quantity="other">%d dni</item>
+    </plurals>
+    <plurals name="time_days_ago">
+        <item quantity="one">%d DZIEŃ TEMU</item>
+        <item quantity="other">%d DNI TEMU</item>
+    </plurals>
+    <plurals name="time_hours">
+        <item quantity="one">%d g.</item>
+        <item quantity="other">%d g.</item>
+    </plurals>
+    <plurals name="time_hours_ago">
+        <item quantity="one">%d GODZINĘ TEMU</item>
+        <item quantity="other">%d GODZIN TEMU</item>
+    </plurals>
+    <plurals name="time_mins">
+        <item quantity="one">%d min</item>
+        <item quantity="other">%d min</item>
+    </plurals>
+    <plurals name="time_mins_ago">
+        <item quantity="one">%d MINUTĘ TEMU</item>
+        <item quantity="other">%d MINUT TEMU</item>
+    </plurals>
+    <plurals name="time_secs">
+        <item quantity="one">%d s</item>
+        <item quantity="other">%d s</item>
+    </plurals>
+    <plurals name="time_weeks">
+        <item quantity="one">%d t.</item>
+        <item quantity="other">%d t.</item>
+    </plurals>
+    <plurals name="top_articles_time_window">
+        <item quantity="one">Ostatnia godzina</item>
+        <item quantity="other">Ostatnie %s godz.</item>
+    </plurals>
+    <plurals name="tweet_stat_followers">
+        <item quantity="one">{num} obserwujący</item>
+        <item quantity="other">{num} obserwujących</item>
+    </plurals>
+    <plurals name="tweet_visibility_education_dialog_non_followers_text">
+        <item quantity="one">%1$s nie obserwuje Cię</item>
+        <item quantity="other">%1$s i innych użytkowników nie obserwuje Cię</item>
+    </plurals>
+    <plurals name="undo_nudge_message">
+        <item quantity="one">Twój wpis zostanie wysłany za %d sekundę.</item>
+        <item quantity="few">Twój wpis zostanie wysłany za %d sekundy.</item>
+        <item quantity="many">Twój wpis zostanie wysłany za %d sekund.</item>
+        <item quantity="other">Twój wpis zostanie wysłany za %d sekundy.</item>
+    </plurals>
+    <plurals name="undo_send_period_in_seconds">
+        <item quantity="one">%d sek.</item>
+        <item quantity="other">%d sek.</item>
+    </plurals>
+    <plurals name="upload_progress_sending_posts">
+        <item quantity="one">Trwa wysyłanie wpisu...</item>
+        <item quantity="other">Trwa wysyłanie %d wpisów...</item>
+    </plurals>
+    <plurals name="verified_views">
+        <item quantity="one">%d wyświetlenie dokonane przez zweryfikowanego użytkownika</item>
+        <item quantity="other">Wyświetlenia dokonane przez zweryfikowanych użytkowników: %d</item>
+    </plurals>
+    <plurals name="weeks">
+        <item quantity="one">%d tydzień</item>
+        <item quantity="other">%d tygodni</item>
+    </plurals>
+    <plurals name="x_lite_time_weeks">
+        <item quantity="one">%d t.</item>
+        <item quantity="other">%d t.</item>
+    </plurals>
+    <plurals name="x_lite_time_years">
+        <item quantity="one">%d r./l.</item>
+        <item quantity="other">%d r./l.</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_gifs">
+        <item quantity="one">{count} plik GIF</item>
+        <item quantity="few">{count} pliki GIF</item>
+        <item quantity="many">{count} plików GIF</item>
+        <item quantity="other">{count} pliku GIF</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_other">
+        <item quantity="one">{count} załącznik</item>
+        <item quantity="few">{count} załączniki</item>
+        <item quantity="many">{count} załączników</item>
+        <item quantity="other">{count} załącznika</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_photos">
+        <item quantity="one">{count} zdjęcie</item>
+        <item quantity="few">{count} zdjęcia</item>
+        <item quantity="many">{count} zdjęć</item>
+        <item quantity="other">{count} zdjęcia</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_videos">
+        <item quantity="one">{count} film</item>
+        <item quantity="few">{count} filmy</item>
+        <item quantity="many">{count} filmów</item>
+        <item quantity="other">{count} filmu</item>
+    </plurals>
+    <plurals name="xchat_back_badge_unread_messages">
+        <item quantity="one">%1$d nieprzeczytana wiadomość</item>
+        <item quantity="few">%1$d nieprzeczytane wiadomości</item>
+        <item quantity="many">%1$d nieprzeczytanych wiadomości</item>
+        <item quantity="other">%1$d nieprzeczytanej wiadomości</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_over_limit">
+        <item quantity="one">%1$d bajt ponad limit</item>
+        <item quantity="few">%1$d bajty ponad limit</item>
+        <item quantity="many">%1$d bajtów ponad limit</item>
+        <item quantity="other">%1$d bajtu ponad limit</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_remaining">
+        <item quantity="one">Pozostał %1$d bajt</item>
+        <item quantity="few">Pozostały %1$d bajty</item>
+        <item quantity="many">Pozostało %1$d bajtów</item>
+        <item quantity="other">Pozostało %1$d bajtu</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_gifs">
+        <item quantity="one">Załączono {count} plik GIF</item>
+        <item quantity="few">Załączono {count} pliki GIF</item>
+        <item quantity="many">Załączono {count} plików GIF</item>
+        <item quantity="other">Załączono {count} pliku GIF</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_other">
+        <item quantity="one">Dołączono {count} załącznik</item>
+        <item quantity="few">Dołączono {count} załączniki</item>
+        <item quantity="many">Dołączono {count} załączników</item>
+        <item quantity="other">Dołączono {count} załącznika</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_photos">
+        <item quantity="one">Załączono {count} zdjęcie</item>
+        <item quantity="few">Załączono {count} zdjęcia</item>
+        <item quantity="many">Załączono {count} zdjęć</item>
+        <item quantity="other">Załączono {count} zdjęcia</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_videos">
+        <item quantity="one">Załączono {count} film</item>
+        <item quantity="few">Załączono {count} filmy</item>
+        <item quantity="many">Załączono {count} filmów</item>
+        <item quantity="other">Załączono {count} filmu</item>
+    </plurals>
+    <plurals name="xchat_forward_media_max_conversations">
+        <item quantity="one">Możesz przesłać dalej multimedia do maksymalnie {num} rozmowy</item>
+        <item quantity="few">Możesz przesłać dalej multimedia do maksymalnie {num} rozmów</item>
+        <item quantity="many">Możesz przesłać dalej multimedia do maksymalnie {num} rozmów</item>
+        <item quantity="other">Możesz przesłać dalej multimedia do maksymalnie {num} rozmowy</item>
+    </plurals>
+    <plurals name="xchat_group_members_count">
+        <item quantity="one">{num} członek</item>
+        <item quantity="few">{num} członków</item>
+        <item quantity="many">{num} członków</item>
+        <item quantity="other">{num} członka</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_and_others">
+        <item quantity="one">Użytkownik {names} i {count} inny</item>
+        <item quantity="few">Użytkownik {names} i {count} innych</item>
+        <item quantity="many">Użytkownik {names} i {count} innych</item>
+        <item quantity="other">Użytkownik {names} i {count} innego</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_count">
+        <item quantity="one">{count} zaproszenie do rozmowy</item>
+        <item quantity="few">{count} zaproszenia do rozmowy</item>
+        <item quantity="many">{count} zaproszeń do rozmowy</item>
+        <item quantity="other">{count} zaproszenia do rozmowy</item>
+    </plurals>
+    <plurals name="xchat_inbox_new_messages">
+        <item quantity="one">i jeszcze {count} nowa wiadomość</item>
+        <item quantity="few">i jeszcze {count} nowe wiadomości</item>
+        <item quantity="many">i jeszcze {count} nowych wiadomości</item>
+        <item quantity="other">i jeszcze {count} nowej wiadomości</item>
+    </plurals>
+    <plurals name="xchat_inbox_years">
+        <item quantity="one">%d rok</item>
+        <item quantity="few">%d lata</item>
+        <item quantity="many">%d lat</item>
+        <item quantity="other">%d roku</item>
+    </plurals>
+    <plurals name="xchat_pinned_messages_count">
+        <item quantity="one">{count} przypięta wiadomość</item>
+        <item quantity="few">{count} przypięte wiadomości</item>
+        <item quantity="many">{count} przypiętych wiadomości</item>
+        <item quantity="other">{count} przypiętej wiadomości</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_days">
+        <item quantity="one">{count} dzień</item>
+        <item quantity="few">{count} dni</item>
+        <item quantity="many">{count} dni</item>
+        <item quantity="other">{count} dnia</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_hours">
+        <item quantity="one">{count} godzina</item>
+        <item quantity="few">{count} godziny</item>
+        <item quantity="many">{count} godzin</item>
+        <item quantity="other">{count} godziny</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_minutes">
+        <item quantity="one">{count} minuta</item>
+        <item quantity="few">{count} minuty</item>
+        <item quantity="many">{count} minut</item>
+        <item quantity="other">{count} minuty</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_seconds">
+        <item quantity="one">{count} sekunda</item>
+        <item quantity="few">{count} sekundy</item>
+        <item quantity="many">{count} sekund</item>
+        <item quantity="other">{count} sekundy</item>
+    </plurals>
+</resources>

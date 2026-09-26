@@ -15,7 +15,202 @@
 	},
 	"tweetsRetweeted": {
 		"type": "apkI18nTemplateFunction",
-		"value": "%s રીપોસ્ટ થઈ"
+		"value": "%sએ પુનટ્વીટ કરી"
+	},
+	"replyAction": {
+		"type": "string",
+		"value": "પ્રત્યુતર"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "રીપોસ્ટ કરો"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "લાઈક"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "બુકમાર્ક"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "વધુ દર્શાવો"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "આ થ્રેડ બતાવો"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "અગાઉની છબી"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "આગામીની છબી"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["","તરફથી"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 સ્ટાર્સ – {{appNumRatings}} રેટિંગ્સ"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "ચકાસાયેલાં એકાઉન્ટ્સ"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "એડમિન"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "મોડ."
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "સભ્ય"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "વ્યૂઝ"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "કવોટ્સ જુઓ"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "પ્રવૃત્તિ જુઓ"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "કોમ્યુનિટી નોટ્સ"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "શું આ નોંધ મદદરૂપ છે?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "મદદરૂપ"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "કેટલેક અંશે મદદરૂપ"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "મદદરૂપ નથી"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "ટૂંક સમયમાં આવી રહ્યું છે"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["હવે","પર"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "ફન મોડમાં Grok દ્વારા જવાબ આપો"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Grok દ્વારા જવાબ આપો"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Grok દ્વારા છબી"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "વધુ દર્શાવો"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Grok સાથે તમારું સંસ્કરણ બનાવો"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "તમારી જાતે Grokને પૂછો"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} વેબ પૃષ્ઠો અને પોસ્ટ"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "સંબંધિત છે"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "લાઈક્સ"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "તાજેતરનું"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "પ્રત્યુત્તરોને સૉર્ટ કરો"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "છેલ્લે સંપાદિત કર્યું:"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "આ પોસ્ટનું એક નવું સંસ્કરણ ઉપલબ્ધ છે"
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "સંપાદનનો ઇતિહાસ ખોલે છે"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "નવીનતમ પોસ્ટ જુઓ"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "આ પોસ્ટનું એક નવું સંસ્કરણ ખોલે છે"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "તમે"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["","તરફથી"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "મતદાન"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "આ મતદાન બતાવો"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} મત"
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "અંતિમ પરિણામો"
 	},
 	"retweet": {
 		"type": "string",
@@ -27,11 +222,11 @@
 	},
 	"quoteTweet": {
 		"type": "string",
-		"value": "અવતરણ"
+		"value": "અવતરણની સાથે ટ્વીટ કરો"
 	},
 	"profileTabTitleTimeline": {
 		"type": "string",
-		"value": "પોસ્ટ્સ"
+		"value": "ટ્વીટસ્"
 	},
 	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {
 		"type": "string",
@@ -52,6 +247,26 @@
 	"following": {
 		"type": "string",
 		"value": "અનુસરે છે"
+	},
+	"follow": {
+		"type": "string",
+		"value": "અનુસરો"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "પાછા અનુસરો"
+	},
+	"followers": {
+		"type": "string",
+		"value": "અનુયાયીઓ"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "તમને અનુસરે છે"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "સબ્સ્ક્રિપ્શન્સ"
 	},
 	"unfollow": {
 		"type": "string",
@@ -87,12 +302,10 @@
 		"value": ["",",","અનેતમેઅનુસરોછોતે","અન્યોદ્વારાઅનુસર્યા"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}પોસ્ટ"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}લાઈક"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
@@ -198,7 +411,7 @@
 	},
 	"postTweet": {
 		"type": "string",
-		"value": "પોસ્ટ કરો"
+		"value": "ટ્વીટ"
 	},
 	"settings": {
 		"type": "string",

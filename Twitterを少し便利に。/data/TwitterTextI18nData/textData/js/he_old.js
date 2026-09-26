@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": undefined,
 	"tweetsRetweeted": undefined,
+	"replyAction": {"type":"string","value":"השב"},
+	"repostAction": {"type":"string","value":"לפרסם מחדש"},
+	"likeAction": {"type":"string","value":"סמן כאהוב"},
+	"bookmarkAction": {"type":"string","value":"הוסף לסימניות"},
+	"showMore": {"type":"string","value":"הצג עוד"},
+	"viewThread": {"type":"string","value":"הצג שרשור זה"},
+	"previousImage": {"type":"string","value":"תמונה קודמת"},
+	"nextImage": {"type":"string","value":"התמונה הבאה"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["מאת "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 כוכבים – "+e.appNumRatings+" דירוגים"}
+	},
+	"verifiedAccount": {"type":"string","value":"חשבונות מאומתים"},
+	"communityAdminBadge": {"type":"string","value":"מנהל"},
+	"communityModeratorBadge": {"type":"string","value":"מגשר"},
+	"communityMemberBadge": {"type":"string","value":"חבר"},
+	"viewsLabel": {"type":"string","value":"צפיות"},
+	"viewQuotes": {"type":"string","value":"הצגת ציטוטים"},
+	"viewActivity": {"type":"string","value":"צפייה בפעילות"},
+	"communityNotes": undefined,
+	"communityNoteHelpfulQuestion": {"type":"string","value":"האם הערה זו הייתה מועילה?"},
+	"communityNoteHelpful": {"type":"string","value":"מועילה"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"די מועילה"},
+	"communityNoteNotHelpful": {"type":"string","value":"לא מועילה"},
+	"cashtagComingSoon": {"type":"string","value":"בקרוב"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["עכשיו במחיר של "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"תשובה באמצעות Grok במצב 'כיף'"},
+	"grokAnswer": {"type":"string","value":"תשובה באמצעות Grok"},
+	"grokImageBy": {"type":"string","value":"תמונה שהופקה על ידי Grok"},
+	"grokShowMore": {"type":"string","value":"הצג עוד"},
+	"grokCreateVersion": {"type":"string","value":"צור גרסה משלך עם Grok"},
+	"grokAskYourself": {"type":"string","value":"שאל את Grok בעצמך"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" ד"+n(e.count,"פי","ף","פי","פי")+" אינטרנט"}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" פוסט"+n(e.count,"ים","","ים","ים")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" דפי אינטרנט ופוסטים"}
+	},
+	"mostRelevant": {"type":"string","value":"רלוונטי"},
+	"mostLiked": {"type":"string","value":"הערות \"אהבתי\""},
+	"mostRecent": {"type":"string","value":"אחרונים"},
+	"sortReplies": {"type":"string","value":"מיון תשובות"},
+	"lastEdited": {"type":"string","value":"נערך לאחרונה"},
+	"newPostVersion": {"type":"string","value":"קיימת גרסה חדשה של הפוסט הזה."},
+	"opensEditHistory": {"type":"string","value":"פתיחת היסטוריית עריכה"},
+	"viewLatestPost": {"type":"string","value":"הצג את הפוסט האחרון"},
+	"opensLatestPost": {"type":"string","value":"פתיחת הגרסה החדשה של הפוסט הזה"},
+	"mediaTaggedSelf": {"type":"string","value":"אתה"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["מאת "]}
+	},
+	"poll": {"type":"string","value":"סקר"},
+	"viewPoll": {"type":"string","value":"הצג את הסקר הזה"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return""+n(e.count,e.formattedCount+" קולות","קול "+e.formattedCount,e.formattedCount+" קולות",e.formattedCount+" קולות")}
+	},
+	"pollEnded": {"type":"string","value":"תוצאות סופיות"},
 	"retweet": {"type":"string","value":"צייץ מחדש"},
 	"unDoRetweet": {"type":"string","value":"ביטול ציוץ מחדש"},
 	"quoteTweet": undefined,
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": undefined,
 	"profileTabTitleLikes": undefined,
 	"following": {"type":"string","value":"עוקב"},
+	"follow": {"type":"string","value":"עקוב"},
+	"followBack": {"type":"string","value":"עקוב בחזרה"},
+	"followers": {"type":"string","value":"עוקבים"},
+	"followsYou": {"type":"string","value":"עוקב אחריך"},
+	"subscriptions": {"type":"string","value":"הרשמות כמנוי"},
 	"unfollow": {"type":"string","value":"הפסק לעקוב"},
 	"blocked": {"type":"string","value":"חסום"},
 	"unblock": {"type":"string","value":"שחרר חסימה"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["ברשימת המעקב של "]}
+		"value": function(){return ["ברשימת המעקב של "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["ברשימת המעקב של "," ושל "]}
+		"value": function(){return ["ברשימת המעקב של "," ושל "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["ברשימת המעקב של ","‏, "," ו-"]}
+		"value": function(){return ["ברשימת המעקב של ","‏, "," ו-"]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["ברשימת המעקב של ",",‏ "," ו-"," אחרים שאחריהם אתה עוקב"]}
+		"value": function(){return ["ברשימת המעקב של ",",‏ "," ו-"," אחרים שאחריהם אתה עוקב"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ציו"+n(props.count,"צים","ץ","צים","צים")]}
+		"value": function(){return [props.formattedCount+" ציו"+n(props.count,"צים","ץ","צים","צים")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" אוהב"+n(props.count,"","ים","","")]}
+		"value": function(){return [props.formattedCount+" אוהב"+n(props.count,"","ים","","")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" תמונות וסרטונים"]}
+		"value": function(){return [props.formattedCount+" תמונות וסרטונים"]}
 	},
 	"home": {"type":"string","value":"דף הבית"},
 	"explore": {"type":"string","value":"גילוי"},

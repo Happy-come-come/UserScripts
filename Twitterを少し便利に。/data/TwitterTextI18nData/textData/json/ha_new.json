@@ -9,17 +9,121 @@
 		"arguments": ["noun"],
 		"value": "Ana bin{{noun}}"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Amsa"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "So"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Alama"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Nuna ƙari"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Nuna wannan zaren tattaunwa"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Hoto na baya"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Hoto na gaba"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Ko bayanin ya taimaka?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "Mai Taimako"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "Ɗan Taimako Kaɗan"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "Bai Taimaka ba"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Nuna ƙari"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "So-so"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Na kwanan nan"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "An gyara ƙarshe"
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Yana buɗe tarihin gyara"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Kai"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["From"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Zaɓe"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Show this poll"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Sakamako na ƙarshe"
+	},
 	"retweet": {
 		"type": "string",
-		"value": "Repost"
+		"value": "Sake yin tweet"
 	},
 	"unDoRetweet": {
 		"type": "string",
-		"value": "Undo repost"
+		"value": "Fasa Sake tweet"
 	},
 	"following": {
 		"type": "string",
 		"value": "Ana bin"
+	},
+	"follow": {
+		"type": "string",
+		"value": "Bi"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Mabiya"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Yana bin ka"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Biyan Kuɗi"
 	},
 	"unfollow": {
 		"type": "string",
@@ -55,16 +159,10 @@
 		"value": ["Followedby",",",",and","othersyoufollow"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}post"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Like"]
-	},
-	"mediaNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}photos&videos"]
+		"type": "webI18nTemplateFunction"
 	},
 	"home": {
 		"type": "string",
@@ -78,22 +176,9 @@
 		"type": "string",
 		"value": "Sanarwa"
 	},
-	"connect_people": {
-		"type": "webI18nFunction",
-		"arguments": ["verb"],
-		"value": "Follow{{verb}}"
-	},
-	"chat": {
-		"type": "string",
-		"value": "Chat"
-	},
 	"messages": {
 		"type": "string",
 		"value": "Saƙonni"
-	},
-	"grok": {
-		"type": "string",
-		"value": "Grok"
 	},
 	"bookmarks": {
 		"type": "string",
@@ -110,10 +195,6 @@
 	"communities": {
 		"type": "string",
 		"value": "Al'umma"
-	},
-	"premium": {
-		"type": "string",
-		"value": "Premium"
 	},
 	"verifiedOrg": {
 		"type": "string",
@@ -134,14 +215,6 @@
 	"monetization": {
 		"type": "string",
 		"value": "Samun kuɗi"
-	},
-	"ads": {
-		"type": "string",
-		"value": "Ads"
-	},
-	"createYourSpace": {
-		"type": "string",
-		"value": "Create your Space"
 	},
 	"settingsAndPrivacy": {
 		"type": "string",
@@ -183,53 +256,5 @@
 	"year": {
 		"type": "string",
 		"value": "Shekara"
-	},
-	"january": {
-		"type": "string",
-		"value": "Janairu"
-	},
-	"february": {
-		"type": "string",
-		"value": "Faburairu"
-	},
-	"march": {
-		"type": "string",
-		"value": "Maris"
-	},
-	"april": {
-		"type": "string",
-		"value": "Afrilu"
-	},
-	"may": {
-		"type": "string",
-		"value": "Mayu"
-	},
-	"june": {
-		"type": "string",
-		"value": "Yuni"
-	},
-	"july": {
-		"type": "string",
-		"value": "Yuli"
-	},
-	"august": {
-		"type": "string",
-		"value": "Agusta"
-	},
-	"september": {
-		"type": "string",
-		"value": "Satumba"
-	},
-	"october": {
-		"type": "string",
-		"value": "Oktuba"
-	},
-	"november": {
-		"type": "string",
-		"value": "Nuwamba"
-	},
-	"december": {
-		"type": "string",
-		"value": "Disamba"
 	}
 }

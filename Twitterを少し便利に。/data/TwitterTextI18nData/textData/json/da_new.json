@@ -15,7 +15,201 @@
 	},
 	"tweetsRetweeted": {
 		"type": "apkI18nTemplateFunction",
-		"value": "%s repostede"
+		"value": "%s retweetede"
+	},
+	"replyAction": {
+		"type": "string",
+		"value": "Svar"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Repost"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Like"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Føj til bogmærker"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Vis mere"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Vis denne tråd"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Forrige billede"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Næste billede"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Fra"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5,0 stjerner – {{appNumRatings}} bedømmelser"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Verificerede konti"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Admin"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Mod."
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Medlem"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "visninger"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Vis citater"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Vis aktivitet"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Fællesskabsnoter"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Er denne note nyttig?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "Nyttig"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "Nogenlunde nyttig"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "Ikke nyttig"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Kommer snart"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Nukl."]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Svar fra Grok i tilstanden Sjov"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Svar fra Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Billede af Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Vis mere"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Opret din version med Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Spørg selv Grok"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} websider og posts"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Relevant"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Likes"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Nye"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Sortér svar"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Sidst redigeret"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "Der er en ny version af denne post."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Åbner redigeringshistorik"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "Se den seneste post"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Åbner den nye version af denne post"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Dig"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Fra"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Afstemning"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Vis denne afstemning."
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Endelige resultater"
 	},
 	"retweet": {
 		"type": "string",
@@ -27,11 +221,11 @@
 	},
 	"quoteTweet": {
 		"type": "string",
-		"value": "Citat"
+		"value": "Citér tweet"
 	},
 	"profileTabTitleTimeline": {
 		"type": "string",
-		"value": "Posts"
+		"value": "Tweets"
 	},
 	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {
 		"type": "string",
@@ -52,6 +246,26 @@
 	"following": {
 		"type": "string",
 		"value": "Følger"
+	},
+	"follow": {
+		"type": "string",
+		"value": "Følg"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Følg tilbage"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Følgere"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Følger dig"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Abonnementer"
 	},
 	"unfollow": {
 		"type": "string",
@@ -87,12 +301,10 @@
 		"value": ["Følgesaf",",","og","andre,somdufølger"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}post"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Like"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
@@ -198,7 +410,7 @@
 	},
 	"postTweet": {
 		"type": "string",
-		"value": "Post"
+		"value": "Tweet"
 	},
 	"settings": {
 		"type": "string",

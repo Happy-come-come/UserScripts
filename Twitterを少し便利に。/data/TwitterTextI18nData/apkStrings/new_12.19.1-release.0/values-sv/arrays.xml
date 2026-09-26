@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>Du får notiser om nya inlägg.</item>
+        <item>Du får notiser om nya inlägg och svar</item>
+        <item>Du får notiser om nya prenumerationsinlägg.</item>
+        <item>Du får notiser om nya livevideoinlägg.</item>
+        <item>Du får inte längre notiser om nya inlägg.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>Alla inlägg</item>
+        <item>Alla inlägg och svar</item>
+        <item>Bara prenumerationsinlägg</item>
+        <item>Bara livevideo</item>
+        <item>Av</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>Få notiser om alla detta kontos inlägg.</item>
+        <item>Få notiser om alla detta kontos inlägg och svar.</item>
+        <item>Få notiser endast om nya prenumerationsinlägg.</item>
+        <item>Få notiser endast om livesändningar.</item>
+        <item>Stäng av notiser om detta kontos inlägg.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>Lägg upp en länk</item>
+        <item>Kopiera länk</item>
+        <item>Skicka länk</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>Vad är din helhetsbedömning av %1$s?</item>
+        <item>Hur nöjd är du med %1$s?</item>
+        <item>Hur nöjd är du med din senaste upplevelse av %1$s?</item>
+        <item>Hur bedömer du din sammantagna erfarenhet av %1$s?</item>
+        <item>Hur nöjd är du med din senaste upplevelse av %1$s?</item>
+        <item>Hur bedömer du dina erfarenheter av %1$s hittills?</item>
+        <item>Hur bedömer du upplevelsen på Twitter med %1$s?</item>
+        <item>Var du nöjd med din senaste upplevelse med %1$s?</item>
+        <item>Hur väl uppfyller %1$s dina förväntningar?</item>
+        <item>Hur skulle du betygsätta din upplevelse som gäst hos %1$s?</item>
+        <item>Hur bedömer du servicen hos %1$s?</item>
+        <item>Hur bedömer du servicen hos %1$s senaste gången?</item>
+        <item>Hur bedömer du servicen du fick av %1$s?</item>
+        <item>Är du nöjd med resultatet av din kontakt med %1$s?</item>
+        <item>"Hur skulle du bedöma %1$s's förmåga att lösa ditt problem?"</item>
+        <item>Hur skulle du bedöma svarstiden hos %1$s?</item>
+        <item>Hur bedömer du hastigheten på servicen hos %1$s?</item>
+        <item>Hur skulle du betygsätta tiden det tog att lösa ditt problem hos %1$s?</item>
+        <item>Hur bedömer du tiden det tog att lösa ditt problem med %1$s?</item>
+        <item>Hur bedömer du snabbheten med vilken %1$s löste problemet?</item>
+        <item>Hur bedömer du expertkunskaperna hos rådgivaren från %1$s?</item>
+        <item>Hur nöjd är du med den %1$s rådgivare som hjälpte dig?</item>
+        <item>Hur nöjd är du med den specialist hos %1$s som assisterade dig?</item>
+        <item>Hur nöjd är du med den representant för %1$s som hjälpte dig?</item>
+        <item>Hur bedömer du den senaste banktransaktionen hos %1$s?</item>
+        <item>Vilket är ditt sammanlagda betyg av %1$s?</item>
+        <item>Hur bedömer du betalningsmomentet hos %1$s?</item>
+        <item>Vilket betyg skulle du ge ditt senaste köp hos %1$s?</item>
+        <item>Vilket betyg skulle du ge ditt senaste köp hos %1$s?</item>
+        <item>Vilket betyg skulle du ge den senaste leveransen från %1$s?</item>
+        <item>Vilket betyg skulle du ge den senaste gången du hyrde av %1$s?</item>
+        <item>Hur bedömer du ditt senaste besök i en %1$s butik?</item>
+        <item>Vilket betyg skulle du ge din senaste hotellvistelse hos %1$s?</item>
+        <item>Vilket betyg skulle du ge din senaste flygning med %1$s?</item>
+        <item>Vilket betyg skulle du ge din senaste åktur med %1$s?</item>
+        <item>Vilket betyg skulle du ge din senaste resa med %1$s?</item>
+        <item>Vilket betyg skulle du ge ditt senaste besök hos %1$s?</item>
+        <item>Vilket betyg skulle du ge din senaste måltid hos %1$s?</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 dagar</item>
+        <item>Tolv månader</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0,25x</item>
+        <item>0,5x</item>
+        <item>0,75x</item>
+        <item>Normal</item>
+        <item>1,25x</item>
+        <item>1,5x</item>
+        <item>2x</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>Hur nöjd är du totalt med %1$s?</item>
+        <item>Hur nöjd är du med %1$s?</item>
+        <item>Hur nöjd är du allmänt med ditt bemötande från %1$s?</item>
+        <item>Vad är ditt allmänna omdöme om %1$s?</item>
+        <item>Vad är ditt allmänna omdöme om %1$s?</item>
+        <item>Vad är ditt omdöme hittills om %1$s?</item>
+        <item>Vad är ditt omdöme om %1$s på X?</item>
+        <item>Hur nöjd är du allmänt med bemötandet från %1$s?</item>
+        <item>Hur pass väl uppfyllde %1$s dina förväntningar?</item>
+        <item>Hur bedömer du hur det var att vara gäst hos %1$s?</item>
+        <item>Hur bedömer du den service du fick av %1$s?</item>
+        <item>Hur bedömer du den service du fick nyligen av %1$s?</item>
+        <item>Vad tycker du om den service du fick av %1$s?</item>
+        <item>Var du nöjd med resultatet av interaktionen med %1$s?</item>
+        <item>Hur bedömer du möjligheten att lösa ditt problem med %1$s?</item>
+        <item>Hur bedömer du %1$ss svarstid?</item>
+        <item>Hur bedömer du hur snabbt det gick att få hjälp av %1$s?</item>
+        <item>Hur bedömer du hur lång tid det gick att lösa problemet med %1$s?</item>
+        <item>Vad tycker du om den tid det tog att lösa ditt problem med %1$s?</item>
+        <item>Vad tycker du om hur lång tid det tog att lösa problemet med %1$s?</item>
+        <item>Hur bedömer du expertkunskparna hos %1$s-rådgivaren?</item>
+        <item>Hur nöjd är du med %1$s-agenten som hjälpte dig?</item>
+        <item>Hur nöjd är du med %1$s-specialisten som hjälpte dig?</item>
+        <item>Hur nöjd är du med %1$s-representanten som hjälpte dig?</item>
+        <item>Vad tycker du om den banktjänst du erhöll nyligen från %1$s?</item>
+        <item>Vad tycker du allmänt om det senaste evenemanget på %1$s?</item>
+        <item>Hur tycker du det gick att betala din faktura med %1$s?</item>
+        <item>Hur tycker du det gick att handla av %1$s?</item>
+        <item>Hur bedömer du shoppingen hos %1$s?</item>
+        <item>Hur bedömer du leveransen från %1$s?</item>
+        <item>Hur bedömer du hur det har gått att hyra av %1$s?</item>
+        <item>Hur bedömer du ditt senaste butiksbesök hos %1$s?</item>
+        <item>Hur bedömer du din senaste hotellvistelse hos %1$s?</item>
+        <item>Hur bedömer du din senaste flygresa med %1$s?</item>
+        <item>Hur bedömer du din senaste tur med %1$s?</item>
+        <item>Hur bedömer du din senaste resa med %1$s?</item>
+        <item>Hur bedömer du ditt senaste besök hos %1$s?</item>
+        <item>Vad tycker du om din senaste måltid hos %1$s?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>Hur troligt är det att du skulle rekommendera %1$s till en vän?</item>
+        <item>Hur troligt är det att du skulle rekommendera %1$s till en vän?</item>
+        <item>Hur troligt är det att du skulle rekommendera %1$s till en kollega?</item>
+        <item>Hur troligt är det att du skulle rekommendera %1$s till en familjemedlem?</item>
+        <item>Hur troligt är det att du skulle rekommendera %1$s till någon annan?</item>
+        <item>Hur troligt är det att du skulle rekommendera %1$s till en vän eller kollega?</item>
+        <item>Hur troligt är det att du skulle handla hos %1$s i i framtiden?</item>
+        <item>Hur troligt är det att du skulle rekommendera %1$s?</item>
+        <item>Skulle du rekommendera %1$s till en vän eller en kollega?</item>
+        <item>Hur troligt är det att du skulle rekommendera din upplevelse med %1$s till en vän?</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>Bra antal tittare</item>
+        <item>Positiv grupp</item>
+        <item>Videokvalitet</item>
+        <item>Engagerande chatt</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>Lågt antal tittare</item>
+        <item>Trakasserier</item>
+        <item>Videoproblem</item>
+        <item>Spam i chatten</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 minuter</item>
+        <item>30 minuter</item>
+        <item>1 timme</item>
+        <item>2 timmar</item>
+        <item>4 timmar</item>
+        <item>Dagligen</item>
+    </string-array>
+</resources>

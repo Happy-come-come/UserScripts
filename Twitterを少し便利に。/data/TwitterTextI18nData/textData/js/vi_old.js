@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Đã ghim"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s đã Tweet lại"},
+	"replyAction": {"type":"string","value":"Trả lời"},
+	"repostAction": {"type":"string","value":"Đăng lại"},
+	"likeAction": {"type":"string","value":"Thích"},
+	"bookmarkAction": {"type":"string","value":"Đánh dấu trang"},
+	"showMore": {"type":"string","value":"Hiển thị thêm"},
+	"viewThread": {"type":"string","value":"Hiển thị chuỗi hội thoại này"},
+	"previousImage": {"type":"string","value":"Ảnh trước"},
+	"nextImage": {"type":"string","value":"Ảnh tiếp theo"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Từ "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(n){return n.appStarRating+"/5 sao – "+n.appNumRatings+" lượt đánh giá"}
+	},
+	"verifiedAccount": {"type":"string","value":"Tài khoản đã xác nhận"},
+	"communityAdminBadge": {"type":"string","value":"QTV"},
+	"communityModeratorBadge": {"type":"string","value":"NKD"},
+	"communityMemberBadge": {"type":"string","value":"Thành viên"},
+	"viewsLabel": {"type":"string","value":"lượt xem"},
+	"viewQuotes": {"type":"string","value":"Xem trích dẫn"},
+	"viewActivity": {"type":"string","value":"Xem hoạt động"},
+	"communityNotes": {"type":"string","value":"Ghi chép cho cộng đồng"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Ghi chú này có hữu ích không?"},
+	"communityNoteHelpful": {"type":"string","value":"Hữu ích"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"Hữu ích phần nào"},
+	"communityNoteNotHelpful": {"type":"string","value":"Không hữu ích"},
+	"cashtagComingSoon": {"type":"string","value":"Sắp xuất hiện"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Hiện với giá "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Câu trả lời của Grok ở Chế độ hài hước"},
+	"grokAnswer": {"type":"string","value":"Câu trả lời của Grok"},
+	"grokImageBy": {"type":"string","value":"Hình ảnh do Grok tạo"},
+	"grokShowMore": {"type":"string","value":"Hiển thị thêm"},
+	"grokCreateVersion": {"type":"string","value":"Tạo phiên bản của bạn bằng Grok"},
+	"grokAskYourself": {"type":"string","value":"Hãy hỏi Grok"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(n){return n.count+" trang web"}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(n){return n.count+" bài đăng"}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(n){return n.count+" trang web và bài đăng"}
+	},
+	"mostRelevant": {"type":"string","value":"Có liên quan"},
+	"mostLiked": {"type":"string","value":"Lượt thích"},
+	"mostRecent": {"type":"string","value":"Gần đây"},
+	"sortReplies": {"type":"string","value":"Sắp xếp câu trả lời"},
+	"lastEdited": {"type":"string","value":"Được chỉnh sửa lần cuối "},
+	"newPostVersion": {"type":"string","value":"Bài đăng này đã có phiên bản mới."},
+	"opensEditHistory": {"type":"string","value":"Mở lịch sử chỉnh sửa"},
+	"viewLatestPost": {"type":"string","value":"Xem bài đăng mới nhất"},
+	"opensLatestPost": {"type":"string","value":"Mở phiên bản mới của bài đăng này"},
+	"mediaTaggedSelf": {"type":"string","value":"Bạn"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Từ "]}
+	},
+	"poll": {"type":"string","value":"Thăm dò"},
+	"viewPoll": {"type":"string","value":"Hiển thị cuộc thăm dò này"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(n){return n.formattedCount+" bầu chọn"}
+	},
+	"pollEnded": {"type":"string","value":"Kết quả cuối cùng"},
 	"retweet": {"type":"string","value":"Tweet lại"},
 	"unDoRetweet": {"type":"string","value":"Hoàn tác Tweet lại"},
 	"quoteTweet": {"type":"string","value":"Trích dẫn Tweet"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"Phương tiện"},
 	"profileTabTitleLikes": {"type":"string","value":"Lượt thích"},
 	"following": {"type":"string","value":"Đang theo dõi"},
+	"follow": {"type":"string","value":"Theo dõi"},
+	"followBack": {"type":"string","value":"Theo dõi lại"},
+	"followers": {"type":"string","value":"Người theo dõi"},
+	"followsYou": {"type":"string","value":"Theo dõi bạn"},
+	"subscriptions": {"type":"string","value":"Đăng ký"},
 	"unfollow": {"type":"string","value":"Ngừng theo dõi"},
 	"blocked": {"type":"string","value":"Bị chặn"},
 	"unblock": {"type":"string","value":"Bỏ chặn"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Được theo dõi bởi "]}
+		"value": function(){return ["Được theo dõi bởi "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Được theo dõi bởi "," và "]}
+		"value": function(){return ["Được theo dõi bởi "," và "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Được theo dõi bởi ",", ",", và "]}
+		"value": function(){return ["Được theo dõi bởi ",", ",", và "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Được theo dõi bởi ",", ",", và "," người khác mà bạn theo dõi"]}
+		"value": function(){return ["Được theo dõi bởi ",", ",", và "," người khác mà bạn theo dõi"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Tweet"]}
+		"value": function(){return [props.formattedCount+" Tweet"]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Lượt thích"]}
+		"value": function(){return [props.formattedCount+" Lượt thích"]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" ảnh và video"]}
+		"value": function(){return [props.formattedCount+" ảnh và video"]}
 	},
 	"home": {"type":"string","value":"Trang chủ"},
 	"explore": {"type":"string","value":"Khám phá"},

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>Je ontvangt meldingen voor nieuwe posts.</item>
+        <item>Je ontvangt meldingen voor nieuwe posts en antwoorden.</item>
+        <item>Je ontvangt meldingen voor nieuwe Abonnementenposts.</item>
+        <item>Je ontvangt meldingen voor nieuwe live-videoposts.</item>
+        <item>Je ontvangt geen meldingen meer voor nieuwe posts.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>Alle posts</item>
+        <item>Alle posts en antwoorden</item>
+        <item>Alleen Abonnementenposts</item>
+        <item>Alleen live-video</item>
+        <item>Uit</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>Ontvang meldingen voor alle posts van dit account.</item>
+        <item>Ontvang meldingen voor posts en antwoorden van dit account.</item>
+        <item>Ontvang alleen meldingen voor Abonnementenposts.</item>
+        <item>Ontvang alleen meldingen voor live-uitzendingen.</item>
+        <item>Schakel meldingen uit voor alle posts van dit account.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>Link plaatsen</item>
+        <item>Link kopiëren</item>
+        <item>Link verzenden</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>Hoe tevreden ben je over het algemeen met %1$s?</item>
+        <item>Hoe tevreden ben je met %1$s?</item>
+        <item>Hoe tevreden was je over het algemeen over je ervaring bij %1$s?</item>
+        <item>Hoe tevreden was je over de algemene ervaring bij %1$s?</item>
+        <item>Hoe tevreden was je over je algemene ervaring bij %1$s?</item>
+        <item>Hoe tevreden ben je tot nu toe je over je ervaring bij %1$s?</item>
+        <item>Hoe tevreden ben je over je ervaring op Twitter met %1$s?</item>
+        <item>Was je tevreden over je recente ervaring bij %1$s?</item>
+        <item>In hoeverre voldoet %1$s aan je verwachtingen?</item>
+        <item>Hoe tevreden was je over je ervaring als gast bij %1$s?</item>
+        <item>Hoe tevreden was je over de service van %1$s?</item>
+        <item>Hoe tevreden was je over je recente ervaring met de service van %1$s?</item>
+        <item>Hoe tevreden was je over de service van %1$s?</item>
+        <item>Was je tevreden over het resultaat van je interactie met %1$s?</item>
+        <item>Hoe tevreden was je over de probleemoplossing van %1$s?</item>
+        <item>Hoe tevreden was je over de tijd die %1$s nodig had om een antwoord te sturen?</item>
+        <item>Hoe tevreden was je over de snelheid van de service van %1$s?</item>
+        <item>Hoe tevreden was je over de tijd die %1$s nodig had om een oplossing te vinden?</item>
+        <item>Hoe tevreden was je over de tijd die %1$s nodig had om je probleem op te lossen?</item>
+        <item>Hoe tevreden was je over de tijd die %1$s nodig had om een oplossing te vinden?</item>
+        <item>Hoe tevreden ben je over de expertise van de adviseur van %1$s?</item>
+        <item>Hoe tevreden was je over de agent van %1$s die je heeft geholpen?</item>
+        <item>Hoe tevreden was je over de specialist van %1$s die je heeft geholpen?</item>
+        <item>Hoe tevreden was je over de vertegenwoordiger van %1$s die je heeft geholpen?</item>
+        <item>Hoe tevreden was je over je recente bankierervaring met %1$s?</item>
+        <item>Hoe tevreden was je over het algemeen over je ervaring bij het evenement bij %1$s?</item>
+        <item>Hoe tevreden was je over de ervaring met het betalen van een rekening met %1$s?</item>
+        <item>Hoe tevreden was je over de aankoopervaring bij %1$s?</item>
+        <item>Hoe tevreden was je over de winkelervaring bij %1$s?</item>
+        <item>Hoe tevreden was je over de verzending bij %1$s?</item>
+        <item>Hoe tevreden was je over de ervaring met huren bij %1$s?</item>
+        <item>Hoe tevreden was je over je recente bezoek aan de winkel van %1$s?</item>
+        <item>Hoe tevreden was je over je recente hotelverblijf bij %1$s?</item>
+        <item>Hoe tevreden was je over je recente vlucht met %1$s?</item>
+        <item>Hoe tevreden was je over je recente rit met %1$s?</item>
+        <item>Hoe tevreden was je over je recente reis met %1$s?</item>
+        <item>Hoe tevreden was je over je recente bezoek aan %1$s?</item>
+        <item>Hoe tevreden was je over je recente maaltijd bij %1$s?</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 dagen</item>
+        <item>12 maanden</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0,25x</item>
+        <item>0,5x</item>
+        <item>0,75x</item>
+        <item>Normaal</item>
+        <item>1,25x</item>
+        <item>1,5x</item>
+        <item>2x</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>Hoe tevreden ben je in het algemeen over %1$s?</item>
+        <item>Hoe tevreden ben je over %1$s?</item>
+        <item>Hoe tevreden was je over het algemeen over je recente ervaring bij %1$s?</item>
+        <item>Hoe tevreden was je over de algemene ervaring bij %1$s?</item>
+        <item>Hoe tevreden was je over je algemene ervaring bij %1$s?</item>
+        <item>Hoe tevreden ben je tot nu toe je over je ervaring bij %1$s?</item>
+        <item>Hoe tevreden ben je over je ervaring op X met %1$s?</item>
+        <item>Ben je tevreden over je recente ervaring met %1$s?</item>
+        <item>Hoe goed voldeed %1$s aan je verwachtingen?</item>
+        <item>Hoe tevreden was je over je ervaring als gast bij %1$s?</item>
+        <item>Hoe tevreden was je over de service van %1$s?</item>
+        <item>Hoe tevreden was je over je recente ervaring met de service van %1$s?</item>
+        <item>Hoe tevreden was je over de service van %1$s?</item>
+        <item>Was je tevreden over het resultaat van je interactie met %1$s?</item>
+        <item>Hoe tevreden was je over de probleemoplossing van %1$s?</item>
+        <item>Hoe tevreden was je over de tijd die %1$s nodig had om een antwoord te sturen?</item>
+        <item>Hoe tevreden was je over de snelheid van de service van %1$s?</item>
+        <item>Hoe tevreden was je over de tijd die %1$s nodig had om een oplossing te vinden?</item>
+        <item>Hoe tevreden was je over de tijd die %1$s nodig had om je probleem op te lossen?</item>
+        <item>Hoe tevreden was je over de tijd die %1$s nodig had om een oplossing te vinden?</item>
+        <item>Hoe tevreden was je over de expertise van de adviseur van %1$s?</item>
+        <item>Hoe tevreden was je over de agent van %1$s die je heeft geholpen?</item>
+        <item>Hoe tevreden was je over de specialist van %1$s die je heeft geholpen?</item>
+        <item>Hoe tevreden was je over de vertegenwoordiger van %1$s die je heeft geholpen?</item>
+        <item>Hoe tevreden was je over je recente bankierervaring met %1$s?</item>
+        <item>Hoe tevreden was je over de ervaring bij het evenement bij %1$s?</item>
+        <item>Hoe tevreden was je over de ervaring met het betalen van een rekening van %1$s?</item>
+        <item>Hoe tevreden was je over de aankoopervaring bij %1$s?</item>
+        <item>Hoe tevreden was je over de winkelervaring bij %1$s?</item>
+        <item>Hoe tevreden was je over de verzending bij %1$s?</item>
+        <item>Hoe tevreden was je over de ervaring met huren bij %1$s?</item>
+        <item>Hoe tevreden was je over je recente bezoek aan de winkel van %1$s?</item>
+        <item>Hoe tevreden was je over je recente hotelverblijf bij %1$s?</item>
+        <item>Hoe tevreden was je over je recente vlucht met %1$s?</item>
+        <item>Hoe tevreden was je over je recente rit met %1$s?</item>
+        <item>Hoe tevreden was je over je recente reis met %1$s?</item>
+        <item>Hoe tevreden was je over je recente bezoek aan %1$s?</item>
+        <item>Hoe tevreden was je over je recente maaltijd bij %1$s?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>Zou je %1$s aanraden aan een vriend?</item>
+        <item>Zou je %1$s aanraden aan een vriend?</item>
+        <item>Zou je %1$s aanraden aan een collega?</item>
+        <item>Zou je %1$s aanraden aan een familielid?</item>
+        <item>Zou je %1$s aanraden aan een ander?</item>
+        <item>Zou je %1$s aanraden aan een vriend of collega?</item>
+        <item>Zou je in de toekomst winkelen bij %1$s?</item>
+        <item>Zou je %1$s aanraden?</item>
+        <item>Zou je %1$s aanraden aan een vriend of collega?</item>
+        <item>Zou je je ervaring met %1$s aanraden aan een vriend?</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>Goed aantal kijkers</item>
+        <item>Positieve community</item>
+        <item>Videokwaliteit</item>
+        <item>Boeiende chat</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>Laag aantal kijkers</item>
+        <item>Intimidatie</item>
+        <item>Problemen met video</item>
+        <item>Spam in chat</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 minuten</item>
+        <item>30 minuten</item>
+        <item>1 uur</item>
+        <item>2 uur</item>
+        <item>4 uur</item>
+        <item>Dagelijks</item>
+    </string-array>
+</resources>

@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Kiinnitetyt"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s uudelleentwiittasi"},
+	"replyAction": {"type":"string","value":"Vastaa"},
+	"repostAction": {"type":"string","value":"Uudelleenjulkaise"},
+	"likeAction": {"type":"string","value":"Tykkää"},
+	"bookmarkAction": {"type":"string","value":"Lisää kirjanmerkkeihin"},
+	"showMore": {"type":"string","value":"Näytä lisää"},
+	"viewThread": {"type":"string","value":"Näytä tämä ketju"},
+	"previousImage": {"type":"string","value":"Edellinen kuva"},
+	"nextImage": {"type":"string","value":"Seuraava kuva"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Lähteestä "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(a){return a.appStarRating+"/5.0 tähteä – "+a.appNumRatings+" arvostelua"}
+	},
+	"verifiedAccount": {"type":"string","value":"Varmennetut tilit"},
+	"communityAdminBadge": {"type":"string","value":"Järj.valv."},
+	"communityModeratorBadge": {"type":"string","value":"Mod"},
+	"communityMemberBadge": {"type":"string","value":"Jäsen"},
+	"viewsLabel": {"type":"string","value":"näyttöä"},
+	"viewQuotes": {"type":"string","value":"Näytä lainaukset"},
+	"viewActivity": {"type":"string","value":"Näytä toiminnat"},
+	"communityNotes": {"type":"string","value":"Yhteisöhuomautukset"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Onko tämä huomautus hyödyllinen?"},
+	"communityNoteHelpful": {"type":"string","value":"hyödylliseksi"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"jossain määrin hyödylliseksi"},
+	"communityNoteNotHelpful": {"type":"string","value":"hyödyttömäksi"},
+	"cashtagComingSoon": {"type":"string","value":"Tulossa pian"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Nyt hintaan "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Grokin vastaus hupailutilassa"},
+	"grokAnswer": {"type":"string","value":"Grokin vastaus"},
+	"grokImageBy": {"type":"string","value":"Kuvan muodosti Grok"},
+	"grokShowMore": {"type":"string","value":"Näytä lisää"},
+	"grokCreateVersion": {"type":"string","value":"Laadi oma versio Grokin avulla"},
+	"grokAskYourself": {"type":"string","value":"Kysy itse Grokilta"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(a){return a.count+" verkkosivu"+s(a.count,"","a")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(a){return a.count+" "+s(a.count,"julkaisu","uutta julkaisua")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(a){return a.count+" verkkosivua ja julkaisua"}
+	},
+	"mostRelevant": {"type":"string","value":"Relevantti"},
+	"mostLiked": {"type":"string","value":"Tykkäykset"},
+	"mostRecent": {"type":"string","value":"Uusimmat"},
+	"sortReplies": {"type":"string","value":"Lajittele vastaukset"},
+	"lastEdited": {"type":"string","value":"Muokattu viimeksi"},
+	"newPostVersion": {"type":"string","value":"Tästä julkaisusta on saatavana uusi versio."},
+	"opensEditHistory": {"type":"string","value":"Avaa muokkaushistorian"},
+	"viewLatestPost": {"type":"string","value":"Näytä uusin julkaisu"},
+	"opensLatestPost": {"type":"string","value":"Avaa uuden version tästä julkaisusta"},
+	"mediaTaggedSelf": {"type":"string","value":"Sinä"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Käyttäjältä "]}
+	},
+	"poll": {"type":"string","value":"Kysely"},
+	"viewPoll": {"type":"string","value":"Näytä tämä kysely"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(t){return t.formattedCount+" ään"+n(t.count,"i","tä")}
+	},
+	"pollEnded": {"type":"string","value":"Lopulliset tulokset"},
 	"retweet": {"type":"string","value":"Uudelleentwiittaa"},
 	"unDoRetweet": {"type":"string","value":"Kumoa uudelleentwiittaus"},
 	"quoteTweet": {"type":"string","value":"Lainaa twiittiä"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"Media"},
 	"profileTabTitleLikes": {"type":"string","value":"Tykkäykset"},
 	"following": {"type":"string","value":"Seurataan"},
+	"follow": {"type":"string","value":"Seuraa"},
+	"followBack": {"type":"string","value":"Seuraa takaisin"},
+	"followers": {"type":"string","value":"Seuraajat"},
+	"followsYou": {"type":"string","value":"Seuraa sinua"},
+	"subscriptions": {"type":"string","value":"Tilaukset"},
 	"unfollow": {"type":"string","value":"Älä seuraa"},
 	"blocked": {"type":"string","value":"Estetty"},
 	"unblock": {"type":"string","value":"Poista esto"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Seuraajana "]}
+		"value": function(){return ["Seuraajana "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Seuraajina "," ja "]}
+		"value": function(){return ["Seuraajina "," ja "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Seuraajina ",", "," ja "]}
+		"value": function(){return ["Seuraajina ",", "," ja "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Seuraajina ",", "," ja "," muuta, joita seuraat"]}
+		"value": function(){return ["Seuraajina ",", "," ja "," muuta, joita seuraat"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" twiitti"+n(props.count,"","ä")]}
+		"value": function(){return [props.formattedCount+" twiitti"+n(props.count,"","ä")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" tykkäys"+n(props.count,"","tä")]}
+		"value": function(){return [props.formattedCount+" tykkäys"+n(props.count,"","tä")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" kuvaa ja videota"]}
+		"value": function(){return [props.formattedCount+" kuvaa ja videota"]}
 	},
 	"home": {"type":"string","value":"Etusivu"},
 	"explore": {"type":"string","value":"Selaa"},

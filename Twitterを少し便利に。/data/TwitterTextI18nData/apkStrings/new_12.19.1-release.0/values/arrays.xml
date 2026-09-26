@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>"You'll get notifications for new Posts."</item>
+        <item>"You'll get notifications for new Posts &amp; replies."</item>
+        <item>"You'll get notifications for new Subscription Posts."</item>
+        <item>"You'll get notifications for new Live video Posts."</item>
+        <item>"You'll no longer get notifications for new Posts."</item>
+    </string-array>
+    <integer-array name="account_notif_option_values">
+        <item>1</item>
+        <item>5</item>
+        <item>4</item>
+        <item>2</item>
+        <item>0</item>
+    </integer-array>
+    <string-array name="account_notif_options">
+        <item>All Posts</item>
+        <item>All Posts &amp; Replies</item>
+        <item>Only Subscription Posts</item>
+        <item>Only live video</item>
+        <item>Off</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>Get notifications for all of this account’s Posts.</item>
+        <item>Get notifications for this account’s Posts &amp; replies.</item>
+        <item>Get notifications only for Subscription Posts.</item>
+        <item>Get notifications only for live broadcasts.</item>
+        <item>Turn off notifications for this account’s Posts.</item>
+    </string-array>
+    <array name="allowlisted_device_ids" />
+    <string-array name="assume_strong_biometrics_models">
+        <item>Pixel 4</item>
+        <item>Pixel 4 XL</item>
+    </string-array>
+    <string-array name="auto_play_entries">
+        <item>@string/settings_video_autoplay_use_mobile_wifi</item>
+        <item>@string/settings_video_autoplay_use_wifi_only</item>
+        <item>@string/settings_video_autoplay_never</item>
+    </string-array>
+    <string-array name="auto_play_values">
+        <item>wifi_and_mobile</item>
+        <item>wifi_only</item>
+        <item>never</item>
+    </string-array>
+    <array name="camera_flash_toggle_drawables">
+        <item>@drawable/ic_vector_camera_flash_off</item>
+        <item>@drawable/ic_vector_camera_flash</item>
+        <item>@drawable/ic_vector_camera_flash</item>
+    </array>
+    <string-array name="card_long_press_options">
+        <item>Post link</item>
+        <item>Copy link</item>
+        <item>Send link</item>
+    </string-array>
+    <string-array name="category_names">
+        <item>@string/emoji_category_emotions</item>
+        <item>@string/emoji_category_people</item>
+        <item>@string/emoji_category_animals_nature</item>
+        <item>@string/emoji_category_food_drink</item>
+        <item>@string/emoji_category_travel_places</item>
+        <item>@string/emoji_category_activity</item>
+        <item>@string/emoji_category_objects</item>
+        <item>@string/emoji_category_symbols</item>
+        <item>@string/emoji_category_flags</item>
+    </string-array>
+    <string-array name="change_photo_options">
+        <item>@string/edit_profile_take_photo</item>
+        <item>@string/edit_profile_choose_existing_photo</item>
+    </string-array>
+    <string-array name="change_photo_options_ocf">
+        <item>@string/edit_profile_take_photo</item>
+        <item>@string/edit_profile_choose_existing_photo</item>
+    </string-array>
+    <array name="com_google_android_gms_fonts_certs">
+        <item>@array/com_google_android_gms_fonts_certs_dev</item>
+        <item>@array/com_google_android_gms_fonts_certs_prod</item>
+    </array>
+    <string-array name="com_google_android_gms_fonts_certs_dev">
+        <item>MIIEqDCCA5CgAwIBAgIJANWFuGx90071MA0GCSqGSIb3DQEBBAUAMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbTAeFw0wODA0MTUyMzM2NTZaFw0zNTA5MDEyMzM2NTZaMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbTCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBANbOLggKv+IxTdGNs8/TGFy0PTP6DHThvbbR24kT9ixcOd9W+EaBPWW+wPPKQmsHxajtWjmQwWfna8mZuSeJS48LIgAZlKkpFeVyxW0qMBujb8X8ETrWy550NaFtI6t9+u7hZeTfHwqNvacKhp1RbE6dBRGWynwMVX8XW8N1+UjFaq6GCJukT4qmpN2afb8sCjUigq0GuMwYXrFVee74bQgLHWGJwPmvmLHC69EH6kWr22ijx4OKXlSIx2xT1AsSHee70w5iDBiK4aph27yH3TxkXy9V89TDdexAcKk/cVHYNnDBapcavl7y0RiQ4biu8ymM8Ga/nmzhRKya6G0cGw8CAQOjgfwwgfkwHQYDVR0OBBYEFI0cxb6VTEM8YYY6FbBMvAPyT+CyMIHJBgNVHSMEgcEwgb6AFI0cxb6VTEM8YYY6FbBMvAPyT+CyoYGapIGXMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbYIJANWFuGx90071MAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEEBQADggEBABnTDPEF+3iSP0wNfdIjIz1AlnrPzgAIHVvXxunW7SBrDhEglQZBbKJEk5kT0mtKoOD1JMrSu1xuTKEBahWRbqHsXclaXjoBADb0kkjVEJu/Lh5hgYZnOjvlba8Ld7HCKePCVePoTJBdI4fvugnL8TsgK05aIskyY0hKI9L8KfqfGTl1lzOv2KoWD0KWwtAWPoGChZxmQ+nBli+gwYMzM1vAkP+aayLe0a1EQimlOalO762r0GXO0ks+UeXde2Z4e+8S/pf7pITEI/tP+MxJTALw9QUWEv9lKTk+jkbqxbsh8nfBUapfKqYn0eidpwq2AzVp3juYl7//fKnaPhJD9gs=</item>
+    </string-array>
+    <string-array name="com_google_android_gms_fonts_certs_prod">
+        <item>MIIEQzCCAyugAwIBAgIJAMLgh0ZkSjCNMA0GCSqGSIb3DQEBBAUAMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDAeFw0wODA4MjEyMzEzMzRaFw0zNjAxMDcyMzEzMzRaMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBAKtWLgDYO6IIrgqWbxJOKdoR8qtW0I9Y4sypEwPpt1TTcvZApxsdyxMJZ2JORland2qSGT2y5b+3JKkedxiLDmpHpDsz2WCbdxgxRczfey5YZnTJ4VZbH0xqWVW/8lGmPav5xVwnIiJS6HXk+BVKZF+JcWjAsb/GEuq/eFdpuzSqeYTcfi6idkyugwfYwXFU1+5fZKUaRKYCwkkFQVfcAs1fXA5V+++FGfvjJ/CxURaSxaBvGdGDhfXE28LWuT9ozCl5xw4Yq5OGazvV24mZVSoOO0yZ31j7kYvtwYK6NeADwbSxDdJEqO4k//0zOHKrUiGYXtqw/A0LFFtqoZKFjnkCAQOjgdkwgdYwHQYDVR0OBBYEFMd9jMIhF1Ylmn/Tgt9r45jk14alMIGmBgNVHSMEgZ4wgZuAFMd9jMIhF1Ylmn/Tgt9r45jk14aloXikdjB0MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLR29vZ2xlIEluYy4xEDAOBgNVBAsTB0FuZHJvaWQxEDAOBgNVBAMTB0FuZHJvaWSCCQDC4IdGZEowjTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBAUAA4IBAQBt0lLO74UwLDYKqs6Tm8/yzKkEu116FmH4rkaymUIE0P9KaMftGlMexFlaYjzmB2OxZyl6euNXEsQH8gjwyxCUKRJNexBiGcCEyj6z+a1fuHHvkiaai+KL8W1EyNmgjmyy8AW7P+LLlkR+ho5zEHatRbM/YAnqGcFh5iZBqpknHf1SKMXFh4dd239FJ1jWYfbMDMy3NS5CTMQ2XFI1MvcyUTdZPErjQfTbQe3aDQsQcafEQPD+nqActifKZ0Np0IS9L9kR/wbNvyz6ENwPiTrjV2KRkEjH78ZMcUQXg0L3BYHJ3lc69Vs5Ddf9uUGGMYldX3WfMBEmh/9iFBDAaTCK</item>
+    </string-array>
+    <array name="crypto_fingerprint_fallback_prefixes" />
+    <string-array name="crypto_fingerprint_fallback_vendors">
+        <item>samsung</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>What is your overall satisfaction with %1$s?</item>
+        <item>How satisfied are you with %1$s?</item>
+        <item>Overall, how satisfied were you with your recent %1$s experience?</item>
+        <item>How would you rate the overall experience with %1$s?</item>
+        <item>How would you rate your overall experience with %1$s?</item>
+        <item>How would you rate your experience so far with %1$s?</item>
+        <item>How would you rate your experience on Twitter with %1$s?</item>
+        <item>Were you satisfied with your recent experience with %1$s?</item>
+        <item>How well does %1$s meet your expectations?</item>
+        <item>How would you rate your guest experience with %1$s?</item>
+        <item>How would you rate your service experience with %1$s?</item>
+        <item>How would you rate your recent service experience with %1$s?</item>
+        <item>How would you rate the service you received from %1$s?</item>
+        <item>Were you satisfied with the result of your interaction with %1$s?</item>
+        <item>How would you rate the ability to resolve your issue with %1$s?</item>
+        <item>How would you rate the response time from %1$s?</item>
+        <item>How would you rate the speed of service from %1$s?</item>
+        <item>How would you rate the time to resolution with %1$s?</item>
+        <item>How would you rate the time to resolve your issue with %1$s?</item>
+        <item>How would you rate the speed of resolution with %1$s?</item>
+        <item>How would you rate the %1$s advisor’s expertise?</item>
+        <item>How satisfied were you with the %1$s agent who helped you?</item>
+        <item>How satisfied were you with the %1$s specialist who helped you?</item>
+        <item>How satisfied were you with the %1$s representative who helped you?</item>
+        <item>How would you rate your recent banking experience with %1$s?</item>
+        <item>How would you rate the overall event experience at %1$s?</item>
+        <item>How would you rate your bill pay experience with %1$s?</item>
+        <item>How would you rate your purchase experience with %1$s?</item>
+        <item>How would you rate your shopping experience with %1$s?</item>
+        <item>How would you rate your delivery experience with %1$s?</item>
+        <item>How would you rate your rental experience with %1$s?</item>
+        <item>How would you rate your recent %1$s store visit?</item>
+        <item>How would you rate your recent %1$s hotel stay?</item>
+        <item>How would you rate your recent flight with %1$s?</item>
+        <item>How would you rate your recent ride with %1$s?</item>
+        <item>How would you rate your recent trip with %1$s?</item>
+        <item>How would you rate your recent visit to %1$s?</item>
+        <item>How would you rate your recent meal at %1$s?</item>
+    </string-array>
+    <string-array name="data_retention_period_values">
+        <item>30_days</item>
+        <item>1_year</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 days</item>
+        <item>12 months</item>
+    </string-array>
+    <string-array name="delay_showing_prompt_models">
+        <item>Pixel 4</item>
+        <item>Pixel 4 XL</item>
+    </string-array>
+    <array name="emoji_by_category_raw_resources">
+        <item>@raw/emoji_category_emotions</item>
+        <item>@raw/emoji_category_people</item>
+        <item>@raw/emoji_category_animals_nature</item>
+        <item>@raw/emoji_category_food_drink</item>
+        <item>@raw/emoji_category_travel_places</item>
+        <item>@raw/emoji_category_activity</item>
+        <item>@raw/emoji_category_objects</item>
+        <item>@raw/emoji_category_symbols</item>
+        <item>@raw/emoji_category_flags</item>
+    </array>
+    <array name="emoji_by_category_raw_resources_gender_inclusive">
+        <item>@raw/emoji_category_emotions</item>
+        <item>@raw/emoji_category_people_gender_inclusive</item>
+        <item>@raw/emoji_category_animals_nature</item>
+        <item>@raw/emoji_category_food_drink</item>
+        <item>@raw/emoji_category_travel_places</item>
+        <item>@raw/emoji_category_activity</item>
+        <item>@raw/emoji_category_objects</item>
+        <item>@raw/emoji_category_symbols</item>
+        <item>@raw/emoji_category_flags</item>
+    </array>
+    <array name="emoji_categories_icons">
+        <item>@drawable/gm_filled_emoji_emotions_vd_theme_24</item>
+        <item>@drawable/gm_filled_emoji_people_vd_theme_24</item>
+        <item>@drawable/gm_filled_emoji_nature_vd_theme_24</item>
+        <item>@drawable/gm_filled_emoji_food_beverage_vd_theme_24</item>
+        <item>@drawable/gm_filled_emoji_transportation_vd_theme_24</item>
+        <item>@drawable/gm_filled_emoji_events_vd_theme_24</item>
+        <item>@drawable/gm_filled_emoji_objects_vd_theme_24</item>
+        <item>@drawable/gm_filled_emoji_symbols_vd_theme_24</item>
+        <item>@drawable/gm_filled_flag_vd_theme_24</item>
+    </array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0.25x</item>
+        <item>0.5x</item>
+        <item>0.75x</item>
+        <item>Normal</item>
+        <item>1.25x</item>
+        <item>1.5x</item>
+        <item>2x</item>
+    </string-array>
+    <string-array name="explore_synonym">
+        <item>explorer</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>What is your overall satisfaction with %1$s?</item>
+        <item>How satisfied are you with %1$s?</item>
+        <item>Overall, how satisfied were you with your recent %1$s experience?</item>
+        <item>How would you rate the overall experience with %1$s?</item>
+        <item>How would you rate your overall experience with %1$s?</item>
+        <item>How would you rate your experience so far with %1$s?</item>
+        <item>How would you rate your experience on X with %1$s?</item>
+        <item>Were you satisfied with your recent experience with %1$s?</item>
+        <item>How well does %1$s meet your expectations?</item>
+        <item>How would you rate your guest experience with %1$s?</item>
+        <item>How would you rate your service experience with %1$s?</item>
+        <item>How would you rate your recent service experience with %1$s?</item>
+        <item>How would you rate the service you received from %1$s?</item>
+        <item>Were you satisfied with the result of your interaction with %1$s?</item>
+        <item>How would you rate the ability to resolve your issue with %1$s?</item>
+        <item>How would you rate the response time from %1$s?</item>
+        <item>How would you rate the speed of service from %1$s?</item>
+        <item>How would you rate the time to resolution with %1$s?</item>
+        <item>How would you rate the time to resolve your issue with %1$s?</item>
+        <item>How would you rate the speed of resolution with %1$s?</item>
+        <item>"How would you rate the %1$s advisor's expertise?"</item>
+        <item>How satisfied were you with the %1$s agent who helped you?</item>
+        <item>How satisfied were you with the %1$s specialist who helped you?</item>
+        <item>How satisfied were you with the %1$s representative who helped you?</item>
+        <item>How would you rate your recent banking experience with %1$s?</item>
+        <item>How would you rate the overall event experience at %1$s?</item>
+        <item>How would you rate your bill pay experience with %1$s?</item>
+        <item>How would you rate your purchase experience with %1$s?</item>
+        <item>How would you rate your shopping experience with %1$s?</item>
+        <item>How would you rate your delivery experience with %1$s?</item>
+        <item>How would you rate your rental experience with %1$s?</item>
+        <item>How would you rate your recent %1$s store visit?</item>
+        <item>How would you rate your recent %1$s hotel stay?</item>
+        <item>How would you rate your recent flight with %1$s?</item>
+        <item>How would you rate your recent ride with %1$s?</item>
+        <item>How would you rate your recent trip with %1$s?</item>
+        <item>How would you rate your recent visit to %1$s?</item>
+        <item>How would you rate your recent meal at %1$s?</item>
+    </string-array>
+    <string-array name="hide_fingerprint_instantly_prefixes">
+        <item>SM-A50</item>
+        <item>SM-G973</item>
+        <item>SM-G975</item>
+        <item>SM-G977</item>
+        <item>SM-G770</item>
+        <item>SM-N970</item>
+        <item>SM-N971</item>
+        <item>SM-N975</item>
+        <item>SM-N976</item>
+        <item>SM-N770</item>
+        <item>SC-03L</item>
+        <item>SC-04L</item>
+        <item>SC-05L</item>
+        <item>SC-01M</item>
+        <item>SCV41</item>
+        <item>SCV42</item>
+        <item>SCV45</item>
+    </string-array>
+    <string-array name="http_client_entries">
+        <item>DebugOkHttpOperationClient/OkHttp3 (Default)</item>
+        <item>PinningOkHttpOperationClient</item>
+        <item>Charles</item>
+    </string-array>
+    <string-array name="http_client_mock_entries">
+        <item>No mocks</item>
+        <item>@string/http_mock_empty_home</item>
+        <item>@string/http_mock_revenue</item>
+        <item>@string/http_mock_tweet_view</item>
+        <item>@string/http_mock_wtf</item>
+        <item>@string/http_mock_timeline_prompt</item>
+        <item>@string/http_mock_notifications</item>
+        <item>@string/http_mock_media_gallery</item>
+        <item>@string/http_mock_banner</item>
+        <item>@string/http_mock_happening_now_module</item>
+        <item>@string/http_mock_self_thread</item>
+        <item>@string/http_mock_self_thread_tweet_detail</item>
+        <item>@string/http_mock_reactive_blending_article</item>
+        <item>@string/http_mock_timeline_interest_follow_prompt</item>
+        <item>@string/http_mock_ads_media_overlay</item>
+    </string-array>
+    <string-array name="http_client_values">
+        <item>com.twitter.network.debug.DebugOkHttpOperationClient</item>
+        <item>com.twitter.network.PinningOkHttp4OperationClient</item>
+        <item>com.twitter.network.debug.CharlesOkHttpOperationClient</item>
+    </string-array>
+    <string-array name="media_quality_entries">
+        <item>@string/settings_media_quality_use_mobile_wifi</item>
+        <item>@string/settings_media_quality_use_wifi_only</item>
+        <item>@string/settings_media_quality_never</item>
+    </string-array>
+    <string-array name="media_quality_values">
+        <item>wifi_and_mobile</item>
+        <item>wifi_only</item>
+        <item>never</item>
+    </string-array>
+    <string-array name="media_tagging_setting_entries">
+        <item>@string/media_tagging_setting_anyone</item>
+        <item>@string/media_tagging_setting_follow</item>
+        <item>@string/media_tagging_setting_no_one</item>
+    </string-array>
+    <string-array name="media_tagging_setting_values">
+        <item>@string/media_tagging_setting_value_all</item>
+        <item>@string/media_tagging_setting_value_following</item>
+        <item>@string/media_tagging_setting_value_none</item>
+    </string-array>
+    <integer-array name="new_filter_intensities">
+        <item>100</item>
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>100</item>
+    </integer-array>
+    <string-array name="new_filter_names">
+        <item>@string/filter_name_no_filter</item>
+        <item>@string/filter_name_radiant</item>
+        <item>@string/filter_name_positive</item>
+        <item>@string/filter_name_warm</item>
+        <item>@string/filter_name_breeze</item>
+        <item>@string/filter_name_glow</item>
+        <item>@string/filter_name_golden</item>
+        <item>@string/filter_name_fame</item>
+        <item>@string/filter_name_stark</item>
+    </string-array>
+    <integer-array name="new_filters">
+        <item>0</item>
+        <item>@integer/filter_id_radiant</item>
+        <item>@integer/filter_id_positive</item>
+        <item>@integer/filter_id_new_warm</item>
+        <item>@integer/filter_id_breeze</item>
+        <item>@integer/filter_id_glow</item>
+        <item>@integer/filter_id_golden</item>
+        <item>@integer/filter_id_fame</item>
+        <item>@integer/filter_id_stark</item>
+    </integer-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>How likely are you to recommend %1$s to a friend?</item>
+        <item>How likely is it that you would recommend %1$s to a friend?</item>
+        <item>How likely is it that you would recommend %1$s to a colleague?</item>
+        <item>How likely is it that you would recommend %1$s to a family member?</item>
+        <item>How likely is it that you would recommend %1$s to someone else?</item>
+        <item>How likely is it that you would recommend %1$s to a friend or colleague?</item>
+        <item>How likely is it that you would shop at %1$s in the future?</item>
+        <item>How likely is it that you would recommend %1$s?</item>
+        <item>Would you recommend %1$s to a friend or colleague?</item>
+        <item>How likely are you to recommend your experience with %1$s to a friend?</item>
+    </string-array>
+    <string-array name="parody_commentary_fan_label_entries">
+        <item>@string/parody_commentary_fan_setting_option_none</item>
+        <item>@string/parody_label_text</item>
+        <item>@string/commentary_label_text</item>
+        <item>@string/fan_label_text</item>
+    </string-array>
+    <string-array name="parody_commentary_fan_label_values">
+        <item>None</item>
+        <item>Parody</item>
+        <item>Commentary</item>
+        <item>Fan</item>
+    </string-array>
+    <array name="preloaded_fonts">
+        <item>@font/plaid_inconsolata</item>
+    </array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>Good Viewer Count</item>
+        <item>Positive Community</item>
+        <item>Video Quality</item>
+        <item>Engaging Chat</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>Low Viewer Count</item>
+        <item>Harassment</item>
+        <item>Video Issues</item>
+        <item>Spam In Chat</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>@string/reader_mode_text_size_large</item>
+        <item>@string/reader_mode_text_size_medium</item>
+        <item>@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>@string/reader_mode_text_size_large_label</item>
+        <item>@string/reader_mode_text_size_medium_label</item>
+        <item>@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_interval_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>240</item>
+        <item>1440</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>4 hours</item>
+        <item>Daily</item>
+    </string-array>
+    <string-array name="safety_mode_duration_entries">
+        <item>@string/safety_mode_duration_one_day</item>
+        <item>@string/safety_mode_duration_three_days</item>
+        <item>@string/safety_mode_duration_seven_days</item>
+    </string-array>
+    <string-array name="safety_mode_duration_values">
+        <item>1</item>
+        <item>3</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="settings_policy">
+        <item>@string/media_settings_policy_url</item>
+        <item>@string/sensitive_media_policy_url</item>
+    </string-array>
+    <string-array name="settings_update_phone_options">
+        <item>@string/settings_update_phone</item>
+        <item>@string/settings_delete_phone</item>
+        <item>@string/cancel</item>
+    </string-array>
+</resources>

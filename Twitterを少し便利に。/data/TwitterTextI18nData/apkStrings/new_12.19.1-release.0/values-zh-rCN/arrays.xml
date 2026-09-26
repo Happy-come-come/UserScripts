@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>你将收到新帖子的通知。</item>
+        <item>你将收到新帖子和回复通知。</item>
+        <item>你将收到新订阅服务帖子的通知。</item>
+        <item>你将收到新直播视频帖子的通知。</item>
+        <item>你将不会再收到新帖子通知。</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>所有帖子</item>
+        <item>所有帖子和回复</item>
+        <item>仅限订阅帖子</item>
+        <item>仅直播视频</item>
+        <item>关闭</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>收到这个账号的所有帖子通知。</item>
+        <item>收到这个账号的帖子和回复通知。</item>
+        <item>仅接收订阅服务帖子的通知。</item>
+        <item>仅获取直播播客的通知。</item>
+        <item>关闭此账号的帖子通知。</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>帖子链接</item>
+        <item>复制链接</item>
+        <item>发送链接</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>你对 %1$s 的总体满意度如何？</item>
+        <item>你对 %1$s 满意吗？</item>
+        <item>总体上来说，你对最近在 %1$s 的体验有多满意？</item>
+        <item>你给 %1$s 的整体体验打几分？</item>
+        <item>你给 %1$s 的整体体验打几分？</item>
+        <item>你如何评价到目前为止你的 %1$s 体验？</item>
+        <item>你如何评价在 Twitter 上的 %1$s 体验？</item>
+        <item>你对近期 %1$s 体验的满意度如何?</item>
+        <item>%1$s 在满足你的期望上做得怎么样？</item>
+        <item>你会如何评价你在 %1$s 的顾客体验？</item>
+        <item>你如何评价你在 %1$s 的服务体验？</item>
+        <item>你如何评价近期你在 %1$s 的服务体验？</item>
+        <item>你给 %1$s 提供的服务打几分？</item>
+        <item>你对你与 %1$s 的互动结果满意吗？</item>
+        <item>你如何评价 %1$s 解决你的问题的能力?</item>
+        <item>你给 %1$s 的响应时间打几分？</item>
+        <item>你给 %1$s 的服务速度打几分？</item>
+        <item>你给 %1$s 解决问题的时间打几分？</item>
+        <item>你给 %1$s 解决你问题的时间打几分？</item>
+        <item>你给 %1$s 解决问题的速度打几分？</item>
+        <item>你给 %1$s 顾问的专业知识打几分?</item>
+        <item>你对帮助你的 %1$s 代理人有多满意？</item>
+        <item>你对帮助你的 %1$s 专家有多满意？</item>
+        <item>你对帮助你的 %1$s 代表有多满意？</item>
+        <item>你如何评价近期你在 %1$s 的银行体验？</item>
+        <item>你给 %1$s 的整体活动体验打几分？</item>
+        <item>你如何评价你在 %1$s 的账单支付体验？</item>
+        <item>你如何评价你在 %1$s 的购买体验？</item>
+        <item>你给 %1$s 的购物体验打几分？</item>
+        <item>你如何评价你在 %1$s 的交付体验？</item>
+        <item>你给 %1$s 的租赁体验打几分？</item>
+        <item>你如何评价你近期在 %1$s 的到店参观？</item>
+        <item>你如何评价你近期在 %1$s 的酒店住宿？</item>
+        <item>你如何评价你近期的 %1$s 飞行体验？</item>
+        <item>你如何评价你近期的 %1$s 乘坐体验？</item>
+        <item>你如何评价你近期乘坐 %1$s 的旅行？</item>
+        <item>你如何评价近期你在 %1$s 的参观？</item>
+        <item>你如何评价你近期在 %1$s 的用餐？</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 天</item>
+        <item>12 个月</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0.25 倍</item>
+        <item>0.5 倍</item>
+        <item>0.75 倍</item>
+        <item>正常</item>
+        <item>1.25 倍</item>
+        <item>1.5 倍</item>
+        <item>2 倍</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>你对利用 %1$s 的总体满意度如何？</item>
+        <item>你利用 %1$s 的满意度如何？</item>
+        <item>总体来说，你对你的近期 %1$s 体验有多满意？</item>
+        <item>你会如何评价在 %1$s 的总体体验？</item>
+        <item>你会如何评价你在 %1$s 的总体体验？</item>
+        <item>你会如何评价目前为止你在 %1$s 的体验？</item>
+        <item>你会如何评价你在 X 上利用 %1$s 的体验？</item>
+        <item>你对你的近期利用 %1$s 的体验是否满意？</item>
+        <item>%1$s 满足你的期望程度如何？</item>
+        <item>你如何评价你在 %1$s 的宾客体验？</item>
+        <item>你会如何评价你最近在 %1$s 的服务体验？</item>
+        <item>你如何评价你近期在 %1$s 的服务体验？</item>
+        <item>你如何评价 %1$s 提供的服务？</item>
+        <item>你对近期利用 %1$s 的互动结果是否满意？</item>
+        <item>你如何评价解决你利用 %1$s 的问题的能力？</item>
+        <item>你如何评价 %1$s 的响应时间？</item>
+        <item>你如何评价 %1$s 的服务速度？</item>
+        <item>你如何评价解决你在 %1$s 的问题所花的时间？</item>
+        <item>你如何评价解决你在 %1$s 的问题所花的时间？</item>
+        <item>你如何评价 %1$s 的解决方案的速度？</item>
+        <item>你给 %1$s 顾问的专业知识打几分?</item>
+        <item>你对帮助过你的 %1$s 代理商的满意程度如何？</item>
+        <item>你对帮助过你的 %1$s 专家的满意程度如何？</item>
+        <item>你对帮助过你的 %1$s 代表的满意程度如何？</item>
+        <item>你会如何评价你在 %1$s 的近期银行体验？</item>
+        <item>你会如何评价你在 %1$s 的总体事件体验？</item>
+        <item>你会如何评价你在 %1$s 的账单支付体验？</item>
+        <item>你会如何评价你在 %1$s 的购买体验？</item>
+        <item>你会如何评价你在 %1$s 的购物体验？</item>
+        <item>你如何评价你在 %1$s 的交付体验？</item>
+        <item>你会如何评价你在 %1$s 的租赁体验？</item>
+        <item>你会如何评价你最近在 %1$s 商店的访问？</item>
+        <item>你会如何评价你最近在 %1$s 的酒店住宿？</item>
+        <item>你会如何评价你最近在 %1$s 的飞行？</item>
+        <item>你如何评价你最近在 %1$s 的旅行？</item>
+        <item>你如何评价你最近利用 %1$s 的旅程？</item>
+        <item>你会如何评价你最近对 %1$s 的访问？</item>
+        <item>你会如何评价你最近在 %1$s 的用餐？</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>你有多大可能会向朋友推荐 %1$s？</item>
+        <item>你有多大可能会向朋友推荐 %1$s？</item>
+        <item>你有多大可能会向同事推荐 %1$s？</item>
+        <item>你有多大可能会向家人推荐 %1$s？</item>
+        <item>你有多大可能会向其他人推荐 %1$s？</item>
+        <item>你有多大可能会向朋友或同事推荐 %1$s？</item>
+        <item>今后你有多大可能会在 %1$s 购物？</item>
+        <item>你有多大可能会推荐 %1$s？</item>
+        <item>你会向朋友或同事推荐 %1$s 吗？</item>
+        <item>你有多大可能会向朋友推荐你在 %1$s 的体验？</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>观众人数多</item>
+        <item>积极的社区</item>
+        <item>视频质量</item>
+        <item>活跃的聊天氛围</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>观众人数少</item>
+        <item>骚扰行为</item>
+        <item>视频问题</item>
+        <item>聊天中有垃圾信息</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 分钟</item>
+        <item>30分钟</item>
+        <item>1 小时</item>
+        <item>2 小时</item>
+        <item>4 小时</item>
+        <item>每天一次</item>
+    </string-array>
+</resources>

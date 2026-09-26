@@ -17,6 +17,200 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "%s ретвітнув(ла)"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Відповісти"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Зробити репост"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Вподобати"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Закладка"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Показати більше"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Показати цей потік"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Попереднє зображення"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Наступне зображення"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["З"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}} із 5 зірок. Оцінок: {{appNumRatings}}"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Підтверджені профілі"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Адмін"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Модер"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Учасник"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "перегл."
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Переглянути цитати"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Переглянути дії"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Замітки від спільноти"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Ця примітка корисна?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "корисну"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "корисну певною мірою"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "некорисну"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Незабаром"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Заразпо"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Відповідь від Grok у кумедному режимі"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Відповідь від Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Зображення від Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Показати більше"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Створити власну версію з Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Поставити Grok те саме запитання"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "Веб-сторінок і постів: {{count}}"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Актуальні"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Вподобання"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Нещодавні"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Сортувати відповіді"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Востаннє змінено"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "Є нова версія цього посту."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Відкриває історію редагування"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "Переглянути останній пост"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Відкриває нову версію цього посту"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Ви"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Від"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Опитування"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Показати це опитування"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Остаточні результати"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Ретвітнути"
@@ -53,6 +247,26 @@
 		"type": "string",
 		"value": "Стрічка"
 	},
+	"follow": {
+		"type": "string",
+		"value": "Читати"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Теж читати"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Читачі"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Читає вас"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Передплати"
+	},
 	"unfollow": {
 		"type": "string",
 		"value": "Не читати"
@@ -87,12 +301,10 @@
 		"value": ["Читають",",","іще","з-поміжтих,коговичитаєте"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Твіт"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Уподобан"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",

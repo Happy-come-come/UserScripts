@@ -9,6 +9,196 @@
 		"arguments": ["noun"],
 		"value": "Sinusundan{{noun}}"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Sumagot"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "I-repost"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Gustuhin"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Bookmark"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Magpakita pa"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Ipakita ang thread na ito"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Nakaraang larawan"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Susunod na larawan"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Mulasa"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 star – {{appNumRatings}} (na) rating"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Mga Beripikadong account"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Admin"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Mod"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Miyembro"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "(na) view"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Tingnan ang mga quote"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Tingnan ang aktibidad"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Kapaki-pakinabang ba ang note na ito?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "Kapaki-pakinabang"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "Medyo Kapaki-pakinabang"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "Hindi Kapaki-pakinabang"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Malapit na"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Ngayonsahalagang"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Sinagot ng Grok sa Fun Mode"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Sinagot ng Grok "
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Larawang ginawa ni Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Magpakita pa"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Gumawa ng bersyon mo gamit ang Grok"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Ikaw ang mismong magtanong sa Grok"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} (na) web page at post"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Nauugnay"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Mga Gusto"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "Kamakailan"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "I-sort ang mga reply"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Huling na-edit"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "May bagong bersyon ng post na ito."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Binubuksan ang history ng pag-edit"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "Tingnan ang pinakabagong post"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Binubuksan ang bagong bersyon ng post na ito"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Ikaw"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Mulakay"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Poll"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Ipakita ang poll na ito"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Pinal na mga resulta"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "I-retweet"
@@ -20,6 +210,26 @@
 	"following": {
 		"type": "string",
 		"value": "Sinusundan"
+	},
+	"follow": {
+		"type": "string",
+		"value": "Sundan"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Sundan din"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Mga Tagasunod"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Sinusundan ka"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Subscriptions"
 	},
 	"unfollow": {
 		"type": "string",
@@ -55,16 +265,13 @@
 		"value": ["Sinusundannina",",",",atng","pangsinusundanmo"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Tweet"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}Like"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}larawanatvideo"]
+		"type": "webI18nTemplateFunction"
 	},
 	"home": {
 		"type": "string",

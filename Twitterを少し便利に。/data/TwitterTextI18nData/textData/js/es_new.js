@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Fijadas"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s reposteado"},
+	"replyAction": {"type":"string","value":"Responder"},
+	"repostAction": {"type":"string","value":"Repostear"},
+	"likeAction": {"type":"string","value":"Me gusta"},
+	"bookmarkAction": {"type":"string","value":"Marcador"},
+	"showMore": {"type":"string","value":"Mostrar más"},
+	"viewThread": {"type":"string","value":"Mostrar este hilo"},
+	"previousImage": {"type":"string","value":"Imagen anterior"},
+	"nextImage": {"type":"string","value":"Siguiente imagen"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["De "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 estrellas – "+e.appNumRatings+" calificaciones"}
+	},
+	"verifiedAccount": {"type":"string","value":"Cuentas verificadas"},
+	"communityAdminBadge": {"type":"string","value":"Admin"},
+	"communityModeratorBadge": {"type":"string","value":"Mod"},
+	"communityMemberBadge": {"type":"string","value":"Miembro"},
+	"viewsLabel": {"type":"string","value":"visualizaciones"},
+	"viewQuotes": {"type":"string","value":"Ver citas"},
+	"viewActivity": {"type":"string","value":"Ver actividad"},
+	"communityNotes": {"type":"string","value":"Notas de la comunidad"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"¿Esta nota es útil?"},
+	"communityNoteHelpful": {"type":"string","value":"útil"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"algo útil"},
+	"communityNoteNotHelpful": {"type":"string","value":"no útil"},
+	"cashtagComingSoon": {"type":"string","value":"Próximamente"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Valor actual "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Respuesta de Grok en modo Divertido"},
+	"grokAnswer": {"type":"string","value":"Respuesta de Grok"},
+	"grokImageBy": {"type":"string","value":"Imagen de Grok"},
+	"grokShowMore": {"type":"string","value":"Mostrar más"},
+	"grokCreateVersion": {"type":"string","value":"Crea tu versión con Grok"},
+	"grokAskYourself": {"type":"string","value":"Pregúntale a Grok"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" página"+r(e.count,"","s")+" web"}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" post"+r(e.count,"","s")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" páginas web y posts"}
+	},
+	"mostRelevant": {"type":"string","value":"Relevante"},
+	"mostLiked": {"type":"string","value":"Me gusta"},
+	"mostRecent": {"type":"string","value":"Recientes"},
+	"sortReplies": {"type":"string","value":"Organizar respuestas"},
+	"lastEdited": {"type":"string","value":"Última edición"},
+	"newPostVersion": {"type":"string","value":"Hay una versión nueva de este post."},
+	"opensEditHistory": {"type":"string","value":"Abre el historial de ediciones"},
+	"viewLatestPost": {"type":"string","value":"Ver el post más reciente"},
+	"opensLatestPost": {"type":"string","value":"Abre la nueva versión de este post"},
+	"mediaTaggedSelf": {"type":"string","value":"Tú"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["De "]}
+	},
+	"poll": {"type":"string","value":"Encuesta"},
+	"viewPoll": {"type":"string","value":"Mostrar esta encuesta"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" voto"+r(e.count,"","s")}
+	},
+	"pollEnded": {"type":"string","value":"Resultados finales"},
 	"retweet": {"type":"string","value":"Repostear"},
 	"unDoRetweet": {"type":"string","value":"Deshacer repost"},
 	"quoteTweet": {"type":"string","value":"Cita"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"Multimedia"},
 	"profileTabTitleLikes": {"type":"string","value":"Me gusta"},
 	"following": {"type":"string","value":"Siguiendo"},
+	"follow": {"type":"string","value":"Seguir"},
+	"followBack": {"type":"string","value":"Seguir tú también"},
+	"followers": {"type":"string","value":"Seguidores"},
+	"followsYou": {"type":"string","value":"Te sigue"},
+	"subscriptions": {"type":"string","value":"Suscripciones"},
 	"unfollow": {"type":"string","value":"Dejar de seguir"},
 	"blocked": {"type":"string","value":"Bloqueado"},
 	"unblock": {"type":"string","value":"Desbloquear"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," sigue a este usuario"]}
+		"value": function(){return [""," sigue a este usuario"]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," y "," siguen a este usuario"]}
+		"value": function(){return [""," y "," siguen a este usuario"]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", "," y "," siguen a este usuario"]}
+		"value": function(){return ["",", "," y "," siguen a este usuario"]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", "," y "," más de las cuentas que sigues siguen a este usuario"]}
+		"value": function(){return ["",", "," y "," más de las cuentas que sigues siguen a este usuario"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" post"+r(props.count,"","s")]}
+		"value": function(){return [props.formattedCount+" post"+r(props.count,"","s")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Me gusta"]}
+		"value": function(){return [props.formattedCount+" Me gusta"]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" fotos y videos"]}
+		"value": function(){return [props.formattedCount+" fotos y videos"]}
 	},
 	"home": {"type":"string","value":"Inicio"},
 	"explore": {"type":"string","value":"Explorar"},
@@ -64,7 +146,7 @@ const text = {
 		"arguments": ["verb"],
 		"value": function(e){return"Seguir"+e.verb}
 	},
-	"chat": {"type":"string","value":"Chatear"},
+	"chat": {"type":"string","value":"Chat"},
 	"messages": {"type":"string","value":"Mensajes"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Guardados"},

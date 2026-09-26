@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"Pinned"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s Retweeted"},
+	"replyAction": {"type":"string","value":"Reply"},
+	"repostAction": {"type":"string","value":"Repost"},
+	"likeAction": {"type":"string","value":"Like"},
+	"bookmarkAction": {"type":"string","value":"Bookmark"},
+	"showMore": {"type":"string","value":"Show more"},
+	"viewThread": {"type":"string","value":"Show this thread"},
+	"previousImage": {"type":"string","value":"Previous image"},
+	"nextImage": {"type":"string","value":"Next image"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["From "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 stars – "+e.appNumRatings+" ratings"}
+	},
+	"verifiedAccount": {"type":"string","value":"Verified accounts"},
+	"communityAdminBadge": {"type":"string","value":"Admin"},
+	"communityModeratorBadge": {"type":"string","value":"Mod"},
+	"communityMemberBadge": {"type":"string","value":"Member"},
+	"viewsLabel": {"type":"string","value":"views"},
+	"viewQuotes": {"type":"string","value":"View quotes"},
+	"viewActivity": {"type":"string","value":"View activity"},
+	"communityNotes": {"type":"string","value":"Community Notes"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Is this note helpful?"},
+	"communityNoteHelpful": {"type":"string","value":"Helpful"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"Somewhat Helpful"},
+	"communityNoteNotHelpful": {"type":"string","value":"Not Helpful"},
+	"cashtagComingSoon": {"type":"string","value":"Coming soon"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Now at "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Answer by Grok in Fun Mode"},
+	"grokAnswer": {"type":"string","value":"Answer by Grok"},
+	"grokImageBy": {"type":"string","value":"Image by Grok"},
+	"grokShowMore": {"type":"string","value":"Show more"},
+	"grokCreateVersion": {"type":"string","value":"Create your version with Grok"},
+	"grokAskYourself": {"type":"string","value":"Ask Grok yourself"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" web page"+r(e.count,"","s")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" post"+r(e.count,"","s")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" web pages and posts"}
+	},
+	"mostRelevant": {"type":"string","value":"Relevant"},
+	"mostLiked": {"type":"string","value":"Likes"},
+	"mostRecent": {"type":"string","value":"Recent"},
+	"sortReplies": {"type":"string","value":"Sort replies"},
+	"lastEdited": {"type":"string","value":"Last edited"},
+	"newPostVersion": {"type":"string","value":"There’s a new version of this post."},
+	"opensEditHistory": {"type":"string","value":"Opens edit history"},
+	"viewLatestPost": {"type":"string","value":"See the latest post"},
+	"opensLatestPost": {"type":"string","value":"Opens the new version of this post"},
+	"mediaTaggedSelf": {"type":"string","value":"You"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["From "]}
+	},
+	"poll": {"type":"string","value":"Poll"},
+	"viewPoll": {"type":"string","value":"Show this poll"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" vote"+n(e.count,"","s")}
+	},
+	"pollEnded": {"type":"string","value":"Final results"},
 	"retweet": {"type":"string","value":"Retweet"},
 	"unDoRetweet": {"type":"string","value":"Undo Retweet"},
 	"quoteTweet": {"type":"string","value":"Quote Tweet"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"Media"},
 	"profileTabTitleLikes": {"type":"string","value":"Likes"},
 	"following": {"type":"string","value":"Following"},
+	"follow": {"type":"string","value":"Follow"},
+	"followBack": {"type":"string","value":"Follow back"},
+	"followers": {"type":"string","value":"Followers"},
+	"followsYou": {"type":"string","value":"Follows you"},
+	"subscriptions": {"type":"string","value":"Subscriptions"},
 	"unfollow": {"type":"string","value":"Unfollow"},
 	"blocked": {"type":"string","value":"Blocked"},
 	"unblock": {"type":"string","value":"Unblock"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Followed by "]}
+		"value": function(){return ["Followed by "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Followed by "," and "]}
+		"value": function(){return ["Followed by "," and "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Followed by ",", ",", and "]}
+		"value": function(){return ["Followed by ",", ",", and "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Followed by ",", ",", and "," others you follow"]}
+		"value": function(){return ["Followed by ",", ",", and "," others you follow"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Tweet"+n(props.count,"","s")]}
+		"value": function(){return [props.formattedCount+" Tweet"+n(props.count,"","s")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Like"+n(props.count,"","s")]}
+		"value": function(){return [props.formattedCount+" Like"+n(props.count,"","s")]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" photos & videos"]}
+		"value": function(){return [props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"Home"},
 	"explore": {"type":"string","value":"Explore"},

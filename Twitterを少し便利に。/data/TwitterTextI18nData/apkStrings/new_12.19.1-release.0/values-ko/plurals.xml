@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="a11y_composer_poll_choice_characters_remaining">
+        <item quantity="other">{count}자 남음</item>
+    </plurals>
+    <plurals name="admin_tools_subtitle_members">
+        <item quantity="one">멤버 %d명</item>
+        <item quantity="other">멤버 %d명</item>
+    </plurals>
+    <plurals name="av_group_call_member_count">
+        <item quantity="one">멤버 %1$d명</item>
+        <item quantity="other">멤버 %1$d명</item>
+    </plurals>
+    <plurals name="badge_item_count">
+        <item quantity="one">새 소식 %d개</item>
+        <item quantity="other">%d개 새 소식</item>
+    </plurals>
+    <plurals name="cohost_current_count">
+        <item quantity="one">%1$d 공동 진행자</item>
+        <item quantity="other">%1$d 공동 진행자</item>
+    </plurals>
+    <plurals name="cohost_open_spots_count">
+        <item quantity="other">%1$d 빈 자리</item>
+    </plurals>
+    <plurals name="community_member_count">
+        <item quantity="one">커뮤니티 멤버 %d명</item>
+        <item quantity="other">커뮤니티 멤버 %d명</item>
+    </plurals>
+    <plurals name="community_moderator_count">
+        <item quantity="one">중재자 %d명</item>
+        <item quantity="other">중재자 %d명</item>
+    </plurals>
+    <plurals name="community_navigation_join_requests_label">
+        <item quantity="one">요청 %s개</item>
+        <item quantity="other">요청 %s개</item>
+    </plurals>
+    <plurals name="community_navigation_new_unread_tweets_label">
+        <item quantity="one">새 게시물 %s개</item>
+        <item quantity="other">새 게시물 %s개</item>
+    </plurals>
+    <plurals name="community_navigation_pending_reports_label">
+        <item quantity="one">신고 %s건</item>
+        <item quantity="other">신고 %s건</item>
+    </plurals>
+    <plurals name="composer_count_progress_overflow_warning">
+        <item quantity="one">%d자 초과</item>
+        <item quantity="other">%d자 초과</item>
+    </plurals>
+    <plurals name="composer_count_progress_warning">
+        <item quantity="one">%d자 남음</item>
+        <item quantity="other">%d자 남음</item>
+    </plurals>
+    <plurals name="content_description_fleet_item_space_with_others">
+        <item quantity="one">%1$s 님의 스페이스(%2$d명 참여 중)</item>
+        <item quantity="other">%1$s 님의 스페이스(%2$d명 참여 중)</item>
+    </plurals>
+    <plurals name="data_sync_notif_title">
+        <item quantity="one">새 반응 %d개</item>
+        <item quantity="other">새 반응 %d개</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d일</item>
+        <item quantity="other">%d일</item>
+    </plurals>
+    <plurals name="dm_add_people_failure">
+        <item quantity="one">사용자를 이 그룹에 추가하지 못했습니다.</item>
+        <item quantity="other">%d명의 사용자를 이 그룹에 추가하지 못했습니다.</item>
+    </plurals>
+    <plurals name="dm_add_people_success">
+        <item quantity="one">그룹에 사용자를 추가했습니다.</item>
+        <item quantity="other">%d명의 사용자를 그룹에 추가했습니다.</item>
+    </plurals>
+    <plurals name="dm_follower_count_no_joined_date">
+        <item quantity="one">팔로워 {num_followers}명</item>
+        <item quantity="other">팔로워 {num_followers}명</item>
+    </plurals>
+    <plurals name="dm_group_account_name">
+        <item quantity="one">1명</item>
+        <item quantity="other">%d명</item>
+    </plurals>
+    <plurals name="dm_group_chat_count">
+        <item quantity="one">%d명과 단체 채팅</item>
+        <item quantity="other">%d명과 단체 채팅</item>
+    </plurals>
+    <plurals name="dm_group_conversation_participant_count">
+        <item quantity="one">%1$d명</item>
+        <item quantity="other">%1$d명</item>
+    </plurals>
+    <plurals name="dm_group_participant_count">
+        <item quantity="one">이 그룹에 %1$s명이 있습니다</item>
+        <item quantity="other">이 그룹에 %1$s명이 있습니다</item>
+    </plurals>
+    <plurals name="dm_group_participant_count_person_details">
+        <item quantity="one">기타 %1$s명</item>
+        <item quantity="other">기타 %1$s명</item>
+    </plurals>
+    <plurals name="dm_image_profile">
+        <item quantity="one">%s 님의 프로필 이미지</item>
+        <item quantity="other">%s 님의 프로필 이미지</item>
+    </plurals>
+    <plurals name="dm_new_people_you_may_know">
+        <item quantity="one">알 수도 있는 새 사용자 %d명</item>
+        <item quantity="other">알 수도 있는 새 사용자 %d명</item>
+    </plurals>
+    <plurals name="dm_new_requests">
+        <item quantity="one">새로운 요청 %d개</item>
+        <item quantity="other">새로운 요청 %d개</item>
+    </plurals>
+    <plurals name="dm_participant_added_by_deleted_user">
+        <item quantity="one">{participants} 님이 추가되었습니다</item>
+        <item quantity="other">{participants} 님이 추가되었습니다</item>
+    </plurals>
+    <plurals name="dm_pending_requests">
+        <item quantity="one">대기 중인 요청 %d개</item>
+        <item quantity="other">승인 대기 중인 팔로워 요청 %s개</item>
+    </plurals>
+    <plurals name="dm_people_you_may_know">
+        <item quantity="one">알 수도 있는 사람 %d명</item>
+        <item quantity="other">알 수도 있는 사람 %d명</item>
+    </plurals>
+    <plurals name="dm_pinned_conversations_max_count_exceeded_title">
+        <item quantity="one">%d개의 대화만 메인에 올릴 수 있습니다</item>
+        <item quantity="other">%d개의 대화만 메인에 올릴 수 있습니다</item>
+    </plurals>
+    <plurals name="dm_share_group_members_and_others">
+        <item quantity="one">{visible_names} 님 외 {others_count}명</item>
+        <item quantity="other">{visible_names} 님 외 {others_count}명</item>
+    </plurals>
+    <plurals name="dm_state_seen_by">
+        <item quantity="one">%d명이 읽음</item>
+        <item quantity="other">%d명이 읽음</item>
+    </plurals>
+    <plurals name="dm_unread_messages">
+        <item quantity="one">안 읽은 쪽지 %d개</item>
+        <item quantity="other">안 읽은 쪽지 %d개</item>
+    </plurals>
+    <plurals name="dm_user_joined_and_follower_count">
+        <item quantity="one">{joined_date}에 가입함 • 팔로워 {num_followers}명</item>
+        <item quantity="other">{joined_date}에 가입함 • 팔로워 {num_followers}명</item>
+    </plurals>
+    <plurals name="duration_picker_set_days">
+        <item quantity="one">하루</item>
+        <item quantity="other">%d일</item>
+    </plurals>
+    <plurals name="duration_picker_set_hours">
+        <item quantity="one">1시간</item>
+        <item quantity="other">%d시간</item>
+    </plurals>
+    <plurals name="duration_picker_set_minutes">
+        <item quantity="one">1분</item>
+        <item quantity="other">%d분</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">%d초 빨리 감기</item>
+        <item quantity="other">%d초 빨리 감기</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">%d초 되감기</item>
+        <item quantity="other">%d초 되감기</item>
+    </plurals>
+    <plurals name="facepile_content_description_phrase">
+        <item quantity="one">{user_names}의 프로필 이미지</item>
+        <item quantity="other">{user_names}의 프로필 이미지</item>
+    </plurals>
+    <plurals name="full_screen_gallery_header_add">
+        <item quantity="one">%d개 추가</item>
+        <item quantity="other">%d개 추가</item>
+    </plurals>
+    <plurals name="graphql_errors_button">
+        <item quantity="one">%d개의 오류</item>
+        <item quantity="other">%d개의 오류</item>
+    </plurals>
+    <plurals name="guest_management_max_cohost_count_label">
+        <item quantity="one">%1$d명의 공동 진행자만 허용됩니다.</item>
+        <item quantity="other">%1$d명의 공동 진행자만 허용됩니다.</item>
+    </plurals>
+    <plurals name="guest_management_open_cohost_count_label">
+        <item quantity="one">공동 진행자를 최대 %1$d명 더 추가하세요.</item>
+        <item quantity="other">공동 진행자를 최대 %1$d명 더 추가하세요.</item>
+    </plurals>
+    <plurals name="host_kudos_num_followers_gained">
+        <item quantity="one">새 팔로워가 %1$d명 생겼습니다.</item>
+        <item quantity="other">새 팔로워가 %1$d명 생겼습니다.</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d시간</item>
+        <item quantity="other">%d시간</item>
+    </plurals>
+    <plurals name="humanization_prompt_followers">
+        <item quantity="one">%1$s 님이 %2$s 님을 팔로우합니다.</item>
+        <item quantity="other">%1$s 님이 %2$s 님을 팔로우합니다.</item>
+    </plurals>
+    <plurals name="humanization_prompt_topics">
+        <item quantity="one">귀하와 %1$s 님이 모두 %2$s 토픽을 팔로우합니다.</item>
+        <item quantity="other">귀하와 %1$s 님이 모두 %2$s 토픽을 팔로우합니다.</item>
+    </plurals>
+    <plurals name="likes">
+        <item quantity="one">%d개의 마음에 들어요</item>
+        <item quantity="other">%d개의 마음에 들어요</item>
+    </plurals>
+    <plurals name="list_member_count">
+        <item quantity="one">멤버</item>
+        <item quantity="other">멤버</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_message">
+        <item quantity="one">"이미지 설명은 간결하지만 상세한 것이 좋습니다. 이미지에 문구가 있으면 요약하거나 작성해 주세요.
+
+설명을 추가하면 장애가 있는 사람과 추가적인 배경 정보를 찾는 모든 사람이 X를 이용할 수 있습니다.
+
+접근성 설정에서 이 알림을 끌 수 있습니다."</item>
+        <item quantity="other">"이미지 설명은 간결하지만 상세한 것이 좋습니다. 이미지에 문구가 있으면 요약하거나 작성해 주세요.
+
+설명을 추가하면 장애가 있는 사람과 추가적인 배경 정보를 찾는 모든 사람이 X를 이용할 수 있습니다.
+
+접근성 설정에서 이 알림을 끌 수 있습니다."</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_positive_btn_text">
+        <item quantity="one">설명 추가하기</item>
+        <item quantity="other">설명 추가하기</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_title">
+        <item quantity="one">모든 사람이 이미지를 이용할 수 있도록 도와주세요</item>
+        <item quantity="other">모든 사람이 이미지를 이용할 수 있도록 도와주세요</item>
+    </plurals>
+    <plurals name="media_monetization_settings_categories_selected">
+        <item quantity="one">카테고리 %d개 선택됨</item>
+        <item quantity="other">카테고리 %d개 선택됨</item>
+    </plurals>
+    <plurals name="media_tag_remaining">
+        <item quantity="one">%d명 더 태그할 수 있습니다.</item>
+        <item quantity="other">%d명 더 태그할 수 있음</item>
+    </plurals>
+    <plurals name="media_tag_tagged">
+        <item quantity="one">%d명 태그했습니다</item>
+        <item quantity="other">%d명 태그함</item>
+    </plurals>
+    <plurals name="member_count">
+        <item quantity="one">%s 멤버</item>
+        <item quantity="other">멤버 %s명</item>
+    </plurals>
+    <plurals name="members">
+        <item quantity="one">멤버 %s명</item>
+        <item quantity="other">멤버 %s명</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d분</item>
+        <item quantity="other">%d분</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">새 알림 %d개</item>
+        <item quantity="other">새 알림 %d개</item>
+    </plurals>
+    <plurals name="muted_keyword_bulk_delete_success">
+        <item quantity="one">단어 %d개를 삭제했습니다</item>
+        <item quantity="other">단어 %d개를 삭제했습니다</item>
+    </plurals>
+    <plurals name="muted_keyword_selected_count">
+        <item quantity="one">%d 선택됨</item>
+        <item quantity="other">%d 선택됨</item>
+    </plurals>
+    <plurals name="narrowcast_community_member_count">
+        <item quantity="one">멤버 %s명</item>
+        <item quantity="other">멤버 %s명</item>
+    </plurals>
+    <plurals name="narrowcast_trusted_friends_count">
+        <item quantity="one">%s명</item>
+        <item quantity="other">%s명</item>
+    </plurals>
+    <plurals name="notification_description_after_sending_posts">
+        <item quantity="other">게시물 {total}개 보냄</item>
+    </plurals>
+    <plurals name="notification_description_before_sending_posts">
+        <item quantity="other">게시물 {total}개 전송 준비 중...</item>
+    </plurals>
+    <plurals name="notification_description_deleting_drafts">
+        <item quantity="other">초안 삭제 중...({current}/{total})</item>
+    </plurals>
+    <plurals name="notification_description_editable_posts">
+        <item quantity="other">편집 가능한 게시물 삭제 중...({current}/{total})</item>
+    </plurals>
+    <plurals name="notification_description_preparing_media">
+        <item quantity="other">미디어 준비 중...({current}/{total})</item>
+    </plurals>
+    <plurals name="notification_description_sending_drafts">
+        <item quantity="other">초안 전송 중({current}/{total})</item>
+    </plurals>
+    <plurals name="notification_description_sending_posts">
+        <item quantity="other">게시물 전송 중...({current}/{total})</item>
+    </plurals>
+    <plurals name="notification_description_uploading_media">
+        <item quantity="other">미디어 업로드 중...({current}/{total})</item>
+    </plurals>
+    <plurals name="notification_description_uploading_poll">
+        <item quantity="other">투표 업로드 중...({current}/{total})</item>
+    </plurals>
+    <plurals name="notification_title_after_sending_posts">
+        <item quantity="other">게시물 보냄</item>
+    </plurals>
+    <plurals name="notification_title_before_sending_posts">
+        <item quantity="other">게시물 전송 준비 중</item>
+    </plurals>
+    <plurals name="notification_title_deleting_drafts">
+        <item quantity="other">초안 삭제 중</item>
+    </plurals>
+    <plurals name="notification_title_deleting_editable_posts">
+        <item quantity="other">편집 가능한 게시물 삭제 중</item>
+    </plurals>
+    <plurals name="notification_title_preparing_media">
+        <item quantity="other">미디어 준비 중</item>
+    </plurals>
+    <plurals name="notification_title_sending_drafts">
+        <item quantity="other">초안 전송 중</item>
+    </plurals>
+    <plurals name="notification_title_sending_posts">
+        <item quantity="other">게시물 전송 중</item>
+    </plurals>
+    <plurals name="notification_title_uploading_media">
+        <item quantity="other">미디어 업로드 중</item>
+    </plurals>
+    <plurals name="notification_title_uploading_poll">
+        <item quantity="other">투표 업로드 중</item>
+    </plurals>
+    <plurals name="notification_undo_nudge">
+        <item quantity="other">실행 취소 가능 시간 대기 중</item>
+    </plurals>
+    <plurals name="others">
+        <item quantity="one">추가 1명</item>
+        <item quantity="other">다른 사람 %d명</item>
+    </plurals>
+    <plurals name="payment_ach_merchant_authorization_transactions_count">
+        <item quantity="other">{count} 거래</item>
+    </plurals>
+    <plurals name="payment_onboarding_terms_invitation_subtitle">
+        <item quantity="one">결제 기간이 만료되기 전에 진행하세요.</item>
+        <item quantity="other">결제 기간이 만료되기 전에 진행하세요.</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_hours">
+        <item quantity="other">%d시간</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_minutes">
+        <item quantity="other">%d분</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_seconds">
+        <item quantity="other">%d초</item>
+    </plurals>
+    <plurals name="product_count">
+        <item quantity="one">제품 %1$d개</item>
+        <item quantity="other">제품 %1$d개</item>
+    </plurals>
+    <plurals name="profile_about_username_changes">
+        <item quantity="one">사용자 아이디 %s회 변경</item>
+        <item quantity="other">사용자 아이디 %s회 변경</item>
+    </plurals>
+    <plurals name="profile_creator_subscriptions_count">
+        <item quantity="one">구독</item>
+        <item quantity="other">구독</item>
+    </plurals>
+    <plurals name="profile_follower_count">
+        <item quantity="one">팔로워</item>
+        <item quantity="other">팔로워</item>
+    </plurals>
+    <plurals name="profile_friends_following_others">
+        <item quantity="one">외 %d명</item>
+        <item quantity="other">외 %d명</item>
+    </plurals>
+    <plurals name="profile_stat_followers_text">
+        <item quantity="other">팔로워</item>
+    </plurals>
+    <plurals name="profile_stat_following_text">
+        <item quantity="other">팔로우 중</item>
+    </plurals>
+    <plurals name="profile_stat_subscribers_text">
+        <item quantity="other">구독자</item>
+    </plurals>
+    <plurals name="profile_stat_subscriptions_text">
+        <item quantity="other">구독</item>
+    </plurals>
+    <plurals name="profile_super_followers_count">
+        <item quantity="one">구독자</item>
+        <item quantity="other">구독자</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_articles">
+        <item quantity="one">%s 아티클</item>
+        <item quantity="other">%s 아티클</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_likes">
+        <item quantity="one">마음에 들어요 %s회</item>
+        <item quantity="other">마음에 들어요 %s회</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_media">
+        <item quantity="one">사진 %s개</item>
+        <item quantity="other">사진 및 동영상 %s개</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_timeline">
+        <item quantity="one">%s 게시</item>
+        <item quantity="other">게시물 %s개</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_peak_msg">
+        <item quantity="zero">생방송 시청자 그래프</item>
+        <item quantity="one">생방송 시청자 그래프입니다. %2$s에 시청자가 %1$d명으로 가장 많았습니다.</item>
+        <item quantity="other">생방송 시청자 그래프입니다. %2$s에 시청자가 %1$d명으로 가장 많았습니다.</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_point_msg">
+        <item quantity="one">%2$s에 %1$d명이 시청했습니다.</item>
+        <item quantity="other">%2$s에 %1$d명이 시청했습니다.</item>
+    </plurals>
+    <plurals name="ps__invite_follower">
+        <item quantity="zero">팔로워 없음</item>
+        <item quantity="one">팔로워 %d명</item>
+        <item quantity="other">팔로워 %d명</item>
+    </plurals>
+    <plurals name="ps__invited_num_followers_embolden">
+        <item quantity="one">*%1$s* 님이 %2$s명을 초대했습니다</item>
+        <item quantity="other">*%1$s* 님이 %2$s명을 초대했습니다</item>
+    </plurals>
+    <plurals name="ps__moderation_report_muted_by_moderator">
+        <item quantity="one">%1$s 님이 *뮤트함*</item>
+        <item quantity="other">%1$s(%2$d) 님이 *뮤트함*</item>
+    </plurals>
+    <plurals name="ps__moderation_report_unmuted_by_moderator">
+        <item quantity="one">%1$s 님이 *언뮤트함*</item>
+        <item quantity="other">%1$s(%2$d) 님이 *언뮤트함*</item>
+    </plurals>
+    <plurals name="ps__new_messages">
+        <item quantity="one">새로운 쪽지 %1$d개</item>
+        <item quantity="other">새 쪽지 %1$d개</item>
+    </plurals>
+    <plurals name="ps__num_hearts">
+        <item quantity="one">%s 하트</item>
+        <item quantity="other">%s 하트</item>
+    </plurals>
+    <plurals name="ps__stats_live_viewers">
+        <item quantity="one">생방송 시청자</item>
+        <item quantity="other">생방송 시청자</item>
+    </plurals>
+    <plurals name="ps__stats_replay_viewers">
+        <item quantity="one">다시보기 시청자</item>
+        <item quantity="other">다시보기 시청자</item>
+    </plurals>
+    <plurals name="ps__time_format_days">
+        <item quantity="one">%d일</item>
+        <item quantity="other">%d일</item>
+    </plurals>
+    <plurals name="ps__time_format_hours">
+        <item quantity="one">%d시간</item>
+        <item quantity="other">%d시간</item>
+    </plurals>
+    <plurals name="ps__time_format_minutes">
+        <item quantity="one">%d분</item>
+        <item quantity="other">%d분</item>
+    </plurals>
+    <plurals name="ps__time_format_seconds">
+        <item quantity="one">%d초</item>
+        <item quantity="other">%d초</item>
+    </plurals>
+    <plurals name="recording_replay_count_preview">
+        <item quantity="one">%s회 재생</item>
+        <item quantity="other">%s회 재생</item>
+    </plurals>
+    <plurals name="relationship_followers_following_others">
+        <item quantity="one">기타 %d명</item>
+        <item quantity="other">기타 %d명</item>
+    </plurals>
+    <plurals name="replies">
+        <item quantity="one">%d개의 답글</item>
+        <item quantity="other">%d개의 답글</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others">
+        <item quantity="other">﻿%1$s 님 외 %2$d명﻿에게 보내는 답글</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_exclusive">
+        <item quantity="other">﻿%1$s 님 외 %2$d명에게﻿ 보내는 답글. 다른 구독자도 내 답글을 볼 수 있습니다.</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_in_space">
+        <item quantity="other">﻿%3$s﻿의 ﻿%1$s 및 기타 %2$d명﻿에게 답글하기</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others">
+        <item quantity="other">﻿%1$s 님, %2$s 님 외 %3$d명﻿에게 보내는 답글</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_exclusive">
+        <item quantity="other">﻿%1$s %2$s 님 외 %3$d명에게﻿ 보내는 답글. 다른 구독자도 이 답글을 볼 수 있습니다.</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_in_space">
+        <item quantity="other">﻿%4$s﻿의 ﻿%1$s %2$s 및 기타 %3$d명﻿에게 답글하기</item>
+    </plurals>
+    <plurals name="reported_tweet_reported_by">
+        <item quantity="one">{{}}%1$s{{}} 님이 신고</item>
+        <item quantity="other">{{}}%1$s 멤버{{}}에 의해 신고됨</item>
+    </plurals>
+    <plurals name="retweets">
+        <item quantity="one">%d 재게시</item>
+        <item quantity="other">재게시 %d회</item>
+    </plurals>
+    <plurals name="safety_mode_preview_description">
+        <item quantity="one">가학적이거나 스팸성일 수 있는 계정 %d개에 경고 표시를 했습니다.</item>
+        <item quantity="other">가학적이거나 스팸성일 수 있는 계정 %d개에 경고 표시를 했습니다.</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">%d초</item>
+        <item quantity="other">%d초</item>
+    </plurals>
+    <plurals name="send_cohost_invite">
+        <item quantity="one">공동 진행자 초대장 보내기</item>
+        <item quantity="other">공동 진행자 초대장 보내기</item>
+    </plurals>
+    <plurals name="settings_notif_tweets_count">
+        <item quantity="one">%d명</item>
+        <item quantity="other">%d명의 사용자</item>
+    </plurals>
+    <plurals name="share_card_likes">
+        <item quantity="other">마음에 들어요 {num}회</item>
+    </plurals>
+    <plurals name="share_card_replies">
+        <item quantity="other">답글 {num}개</item>
+    </plurals>
+    <plurals name="social_follow_and_follow_and_others">
+        <item quantity="one">%1$s 님, %2$s 님 외 %3$d명이 팔로우합니다</item>
+        <item quantity="other">%1$s, %2$s 님을 비롯한 %3$d명이 팔로우합니다</item>
+    </plurals>
+    <plurals name="spaces_additional_participants">
+        <item quantity="one">%1$s명 이상의 다른 청취자</item>
+        <item quantity="other">%1$s명 이상의 다른 청취자</item>
+    </plurals>
+    <plurals name="spaces_blocked_warning">
+        <item quantity="one">이야기 중인 사용자 %1$d명을 차단했습니다</item>
+        <item quantity="other">이야기 중인 사용자 %1$d명을 차단했습니다</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_in_progress">
+        <item quantity="one">%1$s 님이 이 스페이스에 참여 중입니다</item>
+        <item quantity="other">%1$s 님이 이 스페이스에 참여 중입니다</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_replay">
+        <item quantity="one">%1$s 님이 이 스페이스에 참가했습니다</item>
+        <item quantity="other">%1$s 님이 이 스페이스에 참가했습니다</item>
+    </plurals>
+    <plurals name="spaces_cohost_invites_sent_toast">
+        <item quantity="other">에게 공동 진행자 초대장을 발송했습니다</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle">
+        <item quantity="other">공동 진행자를 최대 %1$d명 더 추가하세요.</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle_full">
+        <item quantity="other">명의 공동 진행자만 허용됩니다.</item>
+    </plurals>
+    <plurals name="spaces_invite_confirmation">
+        <item quantity="one">이 스페이스에 %1$d명을 초대했습니다</item>
+        <item quantity="other">이 스페이스에 %1$d명을 초대했습니다</item>
+    </plurals>
+    <plurals name="spaces_invite_send_cohost_cta">
+        <item quantity="other">공동 진행자 초대장 보내기</item>
+    </plurals>
+    <plurals name="spaces_invite_send_speaker_cta">
+        <item quantity="other">발언자 초대장 보내기</item>
+    </plurals>
+    <plurals name="spaces_invite_sent_toast">
+        <item quantity="other">이 스페이스에 %1$d명을 초대했습니다</item>
+    </plurals>
+    <plurals name="spaces_invite_speakers_subtitle">
+        <item quantity="other">최대 10명까지 발표자를 초대할 수 있습니다</item>
+    </plurals>
+    <plurals name="spaces_requested_pill_label">
+        <item quantity="other">요청(%1$d명)</item>
+    </plurals>
+    <plurals name="spaces_sheet_anonymous_others">
+        <item quantity="other">+%1$s 기타</item>
+    </plurals>
+    <plurals name="spaces_speak_request_toast_label_many">
+        <item quantity="other">%1$d명이 발언을 요청함</item>
+    </plurals>
+    <plurals name="speakers_current_count">
+        <item quantity="one">발언자 %1$d명</item>
+        <item quantity="other">발언자 %1$d명</item>
+    </plurals>
+    <plurals name="speakers_listeners_count">
+        <item quantity="one">%1$d 명이 청취 중입니다</item>
+        <item quantity="other">%1$d명이 청취 중입니다</item>
+    </plurals>
+    <plurals name="speakers_open_spots_count">
+        <item quantity="one">빈 자리 %1$d개</item>
+        <item quantity="other">빈 자리 %1$d개</item>
+    </plurals>
+    <plurals name="speakers_requests_count">
+        <item quantity="one">%1$d개의 요청</item>
+        <item quantity="other">%1$d개의 요청</item>
+    </plurals>
+    <plurals name="stat_label_bookmarks">
+        <item quantity="one">북마크</item>
+        <item quantity="other">북마크</item>
+    </plurals>
+    <plurals name="stat_label_likes_sentence_case">
+        <item quantity="one">마음에 들어요</item>
+        <item quantity="other">마음에 들어요</item>
+    </plurals>
+    <plurals name="stat_label_quote_tweets">
+        <item quantity="one">인용</item>
+        <item quantity="other">인용</item>
+    </plurals>
+    <plurals name="stat_label_retweets_sentence_case">
+        <item quantity="one">재게시</item>
+        <item quantity="other">재게시물</item>
+    </plurals>
+    <plurals name="stat_label_verified_views_sentence_case">
+        <item quantity="one">인증 계정 조회수</item>
+        <item quantity="other">인증 계정 조회수</item>
+    </plurals>
+    <plurals name="stat_label_views_sentence_case">
+        <item quantity="one">조회수</item>
+        <item quantity="other">조회수</item>
+    </plurals>
+    <plurals name="subscription_duration_days">
+        <item quantity="one">일</item>
+        <item quantity="other">%d일</item>
+    </plurals>
+    <plurals name="subscription_duration_months">
+        <item quantity="one">월</item>
+        <item quantity="other">%d개월</item>
+    </plurals>
+    <plurals name="subscription_duration_years">
+        <item quantity="one">년</item>
+        <item quantity="other">%d년</item>
+    </plurals>
+    <plurals name="subscription_offer_price_description_months">
+        <item quantity="one">첫 달 구독료 {offer_price}, 이후 {original_price}로 갱신</item>
+        <item quantity="other">첫 {offer_price}개월 구독료 %d, 이후 {original_price}로 갱신</item>
+    </plurals>
+    <plurals name="subscription_offer_title_special_offer_months">
+        <item quantity="one">첫 달 구독료 {original_price_strike_through} {offer_price}</item>
+        <item quantity="other">첫 %d개월 구독료 {original_price_strike_through} {offer_price}</item>
+    </plurals>
+    <plurals name="thread_draft_more_post">
+        <item quantity="other">+{num}개의 추가 게시물</item>
+    </plurals>
+    <plurals name="time_days">
+        <item quantity="one">%d일</item>
+        <item quantity="other">%d일</item>
+    </plurals>
+    <plurals name="time_days_ago">
+        <item quantity="one">%d일 전</item>
+        <item quantity="other">%d일 전</item>
+    </plurals>
+    <plurals name="time_hours">
+        <item quantity="one">%d시</item>
+        <item quantity="other">%d시</item>
+    </plurals>
+    <plurals name="time_hours_ago">
+        <item quantity="one">%d시간 전</item>
+        <item quantity="other">%d시간 전</item>
+    </plurals>
+    <plurals name="time_mins">
+        <item quantity="one">%d분</item>
+        <item quantity="other">%d분</item>
+    </plurals>
+    <plurals name="time_mins_ago">
+        <item quantity="one">%d분 전</item>
+        <item quantity="other">%d분 전</item>
+    </plurals>
+    <plurals name="time_secs">
+        <item quantity="one">%d초</item>
+        <item quantity="other">%d초</item>
+    </plurals>
+    <plurals name="time_weeks">
+        <item quantity="one">%d주</item>
+        <item quantity="other">%d주</item>
+    </plurals>
+    <plurals name="top_articles_time_window">
+        <item quantity="one">마지막 시간</item>
+        <item quantity="other">지난 %s시간 동안</item>
+    </plurals>
+    <plurals name="tweet_stat_followers">
+        <item quantity="one">팔로워 {num}명</item>
+        <item quantity="other">팔로워 {num}명</item>
+    </plurals>
+    <plurals name="tweet_visibility_education_dialog_non_followers_text">
+        <item quantity="one">%1$s님은 나를 팔로우하지 않습니다.</item>
+        <item quantity="other">%1$s님 외 다른 사람들은 나를 팔로우하지 않습니다.</item>
+    </plurals>
+    <plurals name="undo_nudge_message">
+        <item quantity="other">게시물이 %d 초 후 전송됩니다.</item>
+    </plurals>
+    <plurals name="undo_send_period_in_seconds">
+        <item quantity="one">%d초</item>
+        <item quantity="other">%d초</item>
+    </plurals>
+    <plurals name="upload_progress_sending_posts">
+        <item quantity="one">게시물 전송 중</item>
+        <item quantity="other">게시물 %d개 전송 중</item>
+    </plurals>
+    <plurals name="verified_views">
+        <item quantity="one">인증 계정 조회수 %d회</item>
+        <item quantity="other">인증 계정 조회수 %d회</item>
+    </plurals>
+    <plurals name="weeks">
+        <item quantity="one">%d주</item>
+        <item quantity="other">%d주</item>
+    </plurals>
+    <plurals name="x_lite_time_weeks">
+        <item quantity="one">%d주</item>
+        <item quantity="other">%d주</item>
+    </plurals>
+    <plurals name="x_lite_time_years">
+        <item quantity="one">%d년</item>
+        <item quantity="other">%d년</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_gifs">
+        <item quantity="other">GIF {count}개</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_other">
+        <item quantity="other">첨부 파일 {count}개</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_photos">
+        <item quantity="other">사진 {count}장</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_videos">
+        <item quantity="other">동영상 {count}개</item>
+    </plurals>
+    <plurals name="xchat_back_badge_unread_messages">
+        <item quantity="other">안 읽은 메시지 %1$d개</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_over_limit">
+        <item quantity="other">%1$d바이트 초과되었습니다</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_remaining">
+        <item quantity="other">%1$d바이트 남음</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_gifs">
+        <item quantity="other">GIF {count}개 첨부</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_other">
+        <item quantity="other">첨부 파일 {count}개 첨부</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_photos">
+        <item quantity="other">사진 {count}장 첨부</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_videos">
+        <item quantity="other">동영상 {count}개 첨부</item>
+    </plurals>
+    <plurals name="xchat_forward_media_max_conversations">
+        <item quantity="other">미디어를 최대 {num}개의 대화로 전달할 수 있습니다</item>
+    </plurals>
+    <plurals name="xchat_group_members_count">
+        <item quantity="other">멤버 {num}명</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_and_others">
+        <item quantity="other">{names} 외 {count}개</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_count">
+        <item quantity="other">{count}개 메시지 요청</item>
+    </plurals>
+    <plurals name="xchat_inbox_new_messages">
+        <item quantity="other">새 쪽지 {count}개</item>
+    </plurals>
+    <plurals name="xchat_inbox_years">
+        <item quantity="other">%d년</item>
+    </plurals>
+    <plurals name="xchat_pinned_messages_count">
+        <item quantity="other">메인에 올린 메시지 {count}개</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_days">
+        <item quantity="other">{count}일</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_hours">
+        <item quantity="other">{count}시간</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_minutes">
+        <item quantity="other">{count}분</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_seconds">
+        <item quantity="other">{count}초</item>
+    </plurals>
+</resources>

@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="a11y_composer_poll_choice_characters_remaining">
+        <item quantity="other">เหลืออีก {count} ตัวอักษร</item>
+    </plurals>
+    <plurals name="admin_tools_subtitle_members">
+        <item quantity="one">สมาชิก %d คน</item>
+        <item quantity="other">สมาชิก %d คน</item>
+    </plurals>
+    <plurals name="av_group_call_member_count">
+        <item quantity="one">สมาชิก %1$d คน</item>
+        <item quantity="other">สมาชิก %1$d คน</item>
+    </plurals>
+    <plurals name="badge_item_count">
+        <item quantity="one">%d สิ่งใหม่</item>
+        <item quantity="other">%d รายการใหม่</item>
+    </plurals>
+    <plurals name="cohost_current_count">
+        <item quantity="one">%1$d โฮสต์ร่วม</item>
+        <item quantity="other">%1$d โฮสต์ร่วม</item>
+    </plurals>
+    <plurals name="cohost_open_spots_count">
+        <item quantity="other">%1$d ที่ว่าง</item>
+    </plurals>
+    <plurals name="community_member_count">
+        <item quantity="one">%d สมาชิกในชุมชน</item>
+        <item quantity="other">%d สมาชิกในชุมชน</item>
+    </plurals>
+    <plurals name="community_moderator_count">
+        <item quantity="one">%d ผู้ดูแล</item>
+        <item quantity="other">%d ผู้ดูแล</item>
+    </plurals>
+    <plurals name="community_navigation_join_requests_label">
+        <item quantity="one">%s คำขอ</item>
+        <item quantity="other">%s คำขอ</item>
+    </plurals>
+    <plurals name="community_navigation_new_unread_tweets_label">
+        <item quantity="one">%s โพสต์ใหม่</item>
+        <item quantity="other">%s โพสต์ใหม่</item>
+    </plurals>
+    <plurals name="community_navigation_pending_reports_label">
+        <item quantity="one">%s รายงาน</item>
+        <item quantity="other">%s รายงาน</item>
+    </plurals>
+    <plurals name="composer_count_progress_overflow_warning">
+        <item quantity="one">%d ตัวอักษรยาวเกินไป</item>
+        <item quantity="other">%d ตัวอักษรยาวเกินไป</item>
+    </plurals>
+    <plurals name="composer_count_progress_warning">
+        <item quantity="one">เหลืออีก %d ตัวอักษร</item>
+        <item quantity="other">เหลืออีก %d ตัวอักษร</item>
+    </plurals>
+    <plurals name="content_description_fleet_item_space_with_others">
+        <item quantity="one">พื้นที่สนทนาของ %1$s และอีก %2$d คน</item>
+        <item quantity="other">พื้นที่สนทนาของ %1$s และอีก %2$d คน</item>
+    </plurals>
+    <plurals name="data_sync_notif_title">
+        <item quantity="one">%d การโต้ตอบใหม่</item>
+        <item quantity="other">%d การโต้ตอบใหม่</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d วัน</item>
+        <item quantity="other">%d วัน</item>
+    </plurals>
+    <plurals name="dm_add_people_failure">
+        <item quantity="one">ไม่สามารถเพิ่มผู้ใช้ลงในกลุ่มนี้ได้</item>
+        <item quantity="other">ไม่สามารถเพิ่มผู้ใช้ %d รายลงในกลุ่มนี้ได้</item>
+    </plurals>
+    <plurals name="dm_add_people_success">
+        <item quantity="one">เพิ่มผู้ใช้ลงในกลุ่มนี้แล้ว</item>
+        <item quantity="other">เพิ่มผู้ใช้ %d รายลงในกลุ่มนี้แล้ว</item>
+    </plurals>
+    <plurals name="dm_follower_count_no_joined_date">
+        <item quantity="one">ผู้ติดตาม {num_followers} คน</item>
+        <item quantity="other">ผู้ติดตาม {num_followers} คน</item>
+    </plurals>
+    <plurals name="dm_group_account_name">
+        <item quantity="one">1 คน</item>
+        <item quantity="other">%d คน</item>
+    </plurals>
+    <plurals name="dm_group_chat_count">
+        <item quantity="one">แชทกลุ่มที่มี %d คน</item>
+        <item quantity="other">แชทกลุ่มที่มี %d คน</item>
+    </plurals>
+    <plurals name="dm_group_conversation_participant_count">
+        <item quantity="one">%1$d คน</item>
+        <item quantity="other">%1$d คน</item>
+    </plurals>
+    <plurals name="dm_group_participant_count">
+        <item quantity="one">มี %1$s คนอยู่ในกลุ่มนี้</item>
+        <item quantity="other">มี %1$s คนอยู่ในกลุ่มนี้</item>
+    </plurals>
+    <plurals name="dm_group_participant_count_person_details">
+        <item quantity="one">อีก %1$s คน</item>
+        <item quantity="other">อีก %1$s คน</item>
+    </plurals>
+    <plurals name="dm_image_profile">
+        <item quantity="one">ภาพโปรไฟล์ของ %s</item>
+        <item quantity="other">ภาพข้อมูลส่วนตัวของ %s</item>
+    </plurals>
+    <plurals name="dm_new_people_you_may_know">
+        <item quantity="one">%d คนใหม่ที่คุณอาจรู้จัก</item>
+        <item quantity="other">%d ผู้คนใหม่ที่คุณอาจรู้จัก</item>
+    </plurals>
+    <plurals name="dm_new_requests">
+        <item quantity="one">%d คำขอใหม่</item>
+        <item quantity="other">%d คำขอใหม่</item>
+    </plurals>
+    <plurals name="dm_participant_added_by_deleted_user">
+        <item quantity="one">{participants} ถูกเพิ่มแล้ว</item>
+        <item quantity="other">{participants} ถูกเพิ่มแล้ว</item>
+    </plurals>
+    <plurals name="dm_pending_requests">
+        <item quantity="one">%d คําขอที่รอดําเนินการ</item>
+        <item quantity="other">%s คําขอที่รอดําเนินการ</item>
+    </plurals>
+    <plurals name="dm_people_you_may_know">
+        <item quantity="one">%d คนที่คุณอาจรู้จัก</item>
+        <item quantity="other">%d ผู้คนที่คุณอาจรู้จัก</item>
+    </plurals>
+    <plurals name="dm_pinned_conversations_max_count_exceeded_title">
+        <item quantity="one">คุณสามารถปักหมุดได้ %d แชทเท่านั้น</item>
+        <item quantity="other">คุณสามารถปักหมุดได้ %d แชทเท่านั้น</item>
+    </plurals>
+    <plurals name="dm_share_group_members_and_others">
+        <item quantity="one">{visible_names} และอีก {others_count} คน</item>
+        <item quantity="other">{visible_names} และอีก {others_count} คน</item>
+    </plurals>
+    <plurals name="dm_state_seen_by">
+        <item quantity="one">อ่านแล้ว %d คน</item>
+        <item quantity="other">อ่านแล้ว %d คน</item>
+    </plurals>
+    <plurals name="dm_unread_messages">
+        <item quantity="one">%d ข้อความที่ยังไม่ได้อ่าน</item>
+        <item quantity="other">%d ข้อความที่ยังไม่ได้อ่าน</item>
+    </plurals>
+    <plurals name="dm_user_joined_and_follower_count">
+        <item quantity="one">เข้าร่วมเมื่อ {joined_date} • ผู้ติดตาม {num_followers} คน</item>
+        <item quantity="other">เข้าร่วมเมื่อ {joined_date} • ผู้ติดตาม {num_followers} คน</item>
+    </plurals>
+    <plurals name="duration_picker_set_days">
+        <item quantity="one">1 วัน</item>
+        <item quantity="other">%d วัน</item>
+    </plurals>
+    <plurals name="duration_picker_set_hours">
+        <item quantity="one">1 ชั่วโมง</item>
+        <item quantity="other">%d ชั่วโมง</item>
+    </plurals>
+    <plurals name="duration_picker_set_minutes">
+        <item quantity="one">1 นาที</item>
+        <item quantity="other">%d นาที</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">กรอไปข้างหน้า %d วินาที</item>
+        <item quantity="other">กรอไปข้างหน้า %d วินาที</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">กรอกลับ %d วินาที</item>
+        <item quantity="other">กรอกลับ %d วินาที</item>
+    </plurals>
+    <plurals name="facepile_content_description_phrase">
+        <item quantity="one">รูปภาพในข้อมูลส่วนตัวของ {user_names}</item>
+        <item quantity="other">รูปภาพในข้อมูลส่วนตัวของ {user_names}</item>
+    </plurals>
+    <plurals name="full_screen_gallery_header_add">
+        <item quantity="one">เพิ่ม %d</item>
+        <item quantity="other">เพิ่ม %d</item>
+    </plurals>
+    <plurals name="graphql_errors_button">
+        <item quantity="one">ข้อผิดพลาด %d</item>
+        <item quantity="other">ข้อผิดพลาด %d</item>
+    </plurals>
+    <plurals name="guest_management_max_cohost_count_label">
+        <item quantity="one">คุณเพิ่มโฮสต์ร่วมได้ %1$d คนเท่านั้น</item>
+        <item quantity="other">คุณเพิ่มโฮสต์ร่วมได้ %1$d คนเท่านั้น</item>
+    </plurals>
+    <plurals name="guest_management_open_cohost_count_label">
+        <item quantity="one">เพิ่มได้สูงสุดอีก %1$d คน</item>
+        <item quantity="other">เพิ่มได้สูงสุดอีก %1$d คน</item>
+    </plurals>
+    <plurals name="host_kudos_num_followers_gained">
+        <item quantity="one">คุณมีผู้ติดตามใหม่ %1$d คน!</item>
+        <item quantity="other">คุณมีผู้ติดตามใหม่ %1$d คน!</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d ชั่วโมง</item>
+        <item quantity="other">%d ชั่วโมง</item>
+    </plurals>
+    <plurals name="humanization_prompt_followers">
+        <item quantity="one">%1$s ติดตาม %2$s</item>
+        <item quantity="other">%1$s ติดตาม %2$s</item>
+    </plurals>
+    <plurals name="humanization_prompt_topics">
+        <item quantity="one">ทั้งคุณและ %1$s ติดตามหัวข้อ %2$s</item>
+        <item quantity="other">ทั้งคุณและ %1$s ติดตามหัวข้อ %2$s</item>
+    </plurals>
+    <plurals name="likes">
+        <item quantity="one">%d คนชื่นชอบ</item>
+        <item quantity="other">%d คนชื่นชอบ</item>
+    </plurals>
+    <plurals name="list_member_count">
+        <item quantity="one">สมาชิก</item>
+        <item quantity="other">สมาชิก</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_message">
+        <item quantity="one">"คำอธิบายรูปภาพที่ดีต้องกระชับแต่ให้รายละเอียดครบถ้วน อย่าลืมสรุปหรือเขียนข้อความในตัวภาพด้วย
+
+คำอธิบายของคุณทำให้ X สามารถเข้าถึงผู้ทุพพลภาพและทุกคนที่ต้องการบริบทมากขึ้นได้
+
+คุณสามารถปิดการแจ้งเตือนนี้ได้ในการตั้งค่าการเข้าถึง"</item>
+        <item quantity="other">"คำอธิบายรูปภาพที่ดีต้องกระชับแต่ให้รายละเอียดครบถ้วน อย่าลืมสรุปหรือเขียนข้อความในตัวภาพด้วย
+
+คำอธิบายของคุณทำให้ X สามารถเข้าถึงผู้ทุพพลภาพและทุกคนที่ต้องการบริบทมากขึ้นได้
+
+คุณสามารถปิดการแจ้งเตือนนี้ได้ในการตั้งค่าการเข้าถึง"</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_positive_btn_text">
+        <item quantity="one">เพิ่มคำอธิบาย</item>
+        <item quantity="other">เพิ่มคำอธิบาย</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_title">
+        <item quantity="one">อย่าลืมทำให้รูปภาพของคุณเข้าถึงได้</item>
+        <item quantity="other">อย่าลืมทำให้รูปภาพของคุณเข้าถึงได้</item>
+    </plurals>
+    <plurals name="media_monetization_settings_categories_selected">
+        <item quantity="one">%d หมวดหมู่ที่เลือก</item>
+        <item quantity="other">%d หมวดหมู่ที่เลือก</item>
+    </plurals>
+    <plurals name="media_tag_remaining">
+        <item quantity="one">แท็กอีกได้ถึง %d คน</item>
+        <item quantity="other">แท็กอีกได้ถึง %d คน</item>
+    </plurals>
+    <plurals name="media_tag_tagged">
+        <item quantity="one">%d คนถูกแท็ก</item>
+        <item quantity="other">%d คนถูกแท็ก</item>
+    </plurals>
+    <plurals name="member_count">
+        <item quantity="one">สมาชิก %s คน</item>
+        <item quantity="other">สมาชิก %s คน</item>
+    </plurals>
+    <plurals name="members">
+        <item quantity="one">สมาชิก %s คน</item>
+        <item quantity="other">สมาชิก %s คน</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d นาที</item>
+        <item quantity="other">%d นาที</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">การแจ้งเตือนใหม่ %d รายการ</item>
+        <item quantity="other">การแจ้งเตือนใหม่ %d รายการ</item>
+    </plurals>
+    <plurals name="muted_keyword_bulk_delete_success">
+        <item quantity="one">ลบไป %d คำแล้ว</item>
+        <item quantity="other">ลบไป %d คำแล้ว</item>
+    </plurals>
+    <plurals name="muted_keyword_selected_count">
+        <item quantity="one">เลือกไว้ %d</item>
+        <item quantity="other">เลือกไว้ %d</item>
+    </plurals>
+    <plurals name="narrowcast_community_member_count">
+        <item quantity="one">สมาชิก %s คน</item>
+        <item quantity="other">สมาชิก %s คน</item>
+    </plurals>
+    <plurals name="narrowcast_trusted_friends_count">
+        <item quantity="one">%s คน</item>
+        <item quantity="other">%s คน</item>
+    </plurals>
+    <plurals name="notification_description_after_sending_posts">
+        <item quantity="other">ส่ง {total} โพสต์</item>
+    </plurals>
+    <plurals name="notification_description_before_sending_posts">
+        <item quantity="other">กำลังเตรียมส่ง {total} โพสต์…</item>
+    </plurals>
+    <plurals name="notification_description_deleting_drafts">
+        <item quantity="other">กำลังลบร่าง {current} จากทั้งหมด {total}…</item>
+    </plurals>
+    <plurals name="notification_description_editable_posts">
+        <item quantity="other">กำลังลบโพสต์ที่แก้ไขได้ {current} จากทั้งหมด {total}...</item>
+    </plurals>
+    <plurals name="notification_description_preparing_media">
+        <item quantity="other">กำลังเตรียมสื่อ {current} จากทั้งหมด {total}…</item>
+    </plurals>
+    <plurals name="notification_description_sending_drafts">
+        <item quantity="other">กำลังส่งร่าง {current} จากทั้งหมด {total}…</item>
+    </plurals>
+    <plurals name="notification_description_sending_posts">
+        <item quantity="other">กำลังส่งโพสต์ {current} จากทั้งหมด {total}…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_media">
+        <item quantity="other">กำลังอัปโหลดสื่อ {current} จากทั้งหมด {total}…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_poll">
+        <item quantity="other">กำลังอัปโหลดโพล {current} จากทั้งหมด {total}…</item>
+    </plurals>
+    <plurals name="notification_title_after_sending_posts">
+        <item quantity="other">โพสต์ที่ส่งแล้ว</item>
+    </plurals>
+    <plurals name="notification_title_before_sending_posts">
+        <item quantity="other">กำลังเตรียมส่งโพสต์</item>
+    </plurals>
+    <plurals name="notification_title_deleting_drafts">
+        <item quantity="other">กำลังลบร่าง</item>
+    </plurals>
+    <plurals name="notification_title_deleting_editable_posts">
+        <item quantity="other">กำลังลบโพสต์ที่แก้ไขได้</item>
+    </plurals>
+    <plurals name="notification_title_preparing_media">
+        <item quantity="other">กำลังเตรียมสื่อ</item>
+    </plurals>
+    <plurals name="notification_title_sending_drafts">
+        <item quantity="other">กำลังส่งร่าง</item>
+    </plurals>
+    <plurals name="notification_title_sending_posts">
+        <item quantity="other">กำลังส่งโพสต์</item>
+    </plurals>
+    <plurals name="notification_title_uploading_media">
+        <item quantity="other">กำลังอัปโหลดสื่อ</item>
+    </plurals>
+    <plurals name="notification_title_uploading_poll">
+        <item quantity="other">กำลังอัปโหลดโพล</item>
+    </plurals>
+    <plurals name="notification_undo_nudge">
+        <item quantity="other">กำลังรอระยะเวลายกเลิก</item>
+    </plurals>
+    <plurals name="others">
+        <item quantity="one">อีก 1 รายการ</item>
+        <item quantity="other">อีก %d คน</item>
+    </plurals>
+    <plurals name="payment_ach_merchant_authorization_transactions_count">
+        <item quantity="other">ธุรกรรม {count} รายการ</item>
+    </plurals>
+    <plurals name="payment_onboarding_terms_invitation_subtitle">
+        <item quantity="one">ดำเนินการต่อก่อนที่การชำระเงินจะหมดอายุ</item>
+        <item quantity="other">ดำเนินการต่อก่อนที่การชำระเงินจะหมดอายุ</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_hours">
+        <item quantity="other">%d ชั่วโมง</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_minutes">
+        <item quantity="other">%d นาที</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_seconds">
+        <item quantity="other">%d วินาที</item>
+    </plurals>
+    <plurals name="product_count">
+        <item quantity="one">%1$d ผลิตภัณฑ์</item>
+        <item quantity="other">%1$d ผลิตภัณฑ์</item>
+    </plurals>
+    <plurals name="profile_about_username_changes">
+        <item quantity="one">การเปลี่ยนแปลงชื่อผู้ใช้ %s ครั้ง</item>
+        <item quantity="other">การเปลี่ยนแปลงชื่อผู้ใช้ %s ครั้ง</item>
+    </plurals>
+    <plurals name="profile_creator_subscriptions_count">
+        <item quantity="one">ระบบสมาชิก</item>
+        <item quantity="other">ระบบสมาชิก</item>
+    </plurals>
+    <plurals name="profile_follower_count">
+        <item quantity="one">ผู้ติดตาม</item>
+        <item quantity="other">ผู้ติดตาม</item>
+    </plurals>
+    <plurals name="profile_friends_following_others">
+        <item quantity="one">อีก %d คน</item>
+        <item quantity="other">อีก %d คน</item>
+    </plurals>
+    <plurals name="profile_stat_followers_text">
+        <item quantity="other">ผู้ติดตาม</item>
+    </plurals>
+    <plurals name="profile_stat_following_text">
+        <item quantity="other">กําลังติดตาม</item>
+    </plurals>
+    <plurals name="profile_stat_subscribers_text">
+        <item quantity="other">สมาชิก</item>
+    </plurals>
+    <plurals name="profile_stat_subscriptions_text">
+        <item quantity="other">ระบบสมาชิก</item>
+    </plurals>
+    <plurals name="profile_super_followers_count">
+        <item quantity="one">สมาชิก</item>
+        <item quantity="other">สมาชิก</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_articles">
+        <item quantity="one">%s บทความ</item>
+        <item quantity="other">%s บทความ</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_likes">
+        <item quantity="one">%s ชื่นชอบ</item>
+        <item quantity="other">%s ความชอบ</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_media">
+        <item quantity="one">%s ภาพ</item>
+        <item quantity="other">%s ภาพและวิดีโอ</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_timeline">
+        <item quantity="one">%s โพสต์</item>
+        <item quantity="other">%s โพสต์</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_peak_msg">
+        <item quantity="zero">กราฟแสดงยอดผู้ชมการออกอากาศ</item>
+        <item quantity="one">กราฟแสดงยอดผู้ชมการออกอากาศ ตอน %2$s คุณมียอดผู้ชมสูงสุดที่ %1$d คน</item>
+        <item quantity="other">กราฟแสดงยอดผู้ชมการออกอากาศ ตอน %2$s คุณมียอดผู้ชมสูงสุดที่ %1$d คน</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_point_msg">
+        <item quantity="one">ตอน %2$s คุณมีผู้ชมอยู่ %1$d คน</item>
+        <item quantity="other">ตอน %2$s คุณมีผู้ชมอยู่ %1$d คน</item>
+    </plurals>
+    <plurals name="ps__invite_follower">
+        <item quantity="zero">ไม่มีผู้ติดตาม</item>
+        <item quantity="one">ผู้ติดตาม %d คน</item>
+        <item quantity="other">ผู้ติดตาม %d คน</item>
+    </plurals>
+    <plurals name="ps__invited_num_followers_embolden">
+        <item quantity="one">*%1$s* เชิญ %2$s คนแล้ว</item>
+        <item quantity="other">*%1$s* เชิญ %2$s คนแล้ว</item>
+    </plurals>
+    <plurals name="ps__moderation_report_muted_by_moderator">
+        <item quantity="one">*ซ่อนโดย* %1$s</item>
+        <item quantity="other">*ถูกซ่อนโดย* %1$s (%2$d)</item>
+    </plurals>
+    <plurals name="ps__moderation_report_unmuted_by_moderator">
+        <item quantity="one">*เลิกซ่อนโดย* %1$s</item>
+        <item quantity="other">*เลิกซ่อนโดย* %1$s (%2$d)</item>
+    </plurals>
+    <plurals name="ps__new_messages">
+        <item quantity="one">%1$d ข้อความใหม่</item>
+        <item quantity="other">%1$d ข้อความใหม่</item>
+    </plurals>
+    <plurals name="ps__num_hearts">
+        <item quantity="one">%s หัวใจ</item>
+        <item quantity="other">%s หัวใจ</item>
+    </plurals>
+    <plurals name="ps__stats_live_viewers">
+        <item quantity="one">ผู้ชมในขณะนี้</item>
+        <item quantity="other">ผู้ชมในขณะนี้</item>
+    </plurals>
+    <plurals name="ps__stats_replay_viewers">
+        <item quantity="one">ผู้ชมหลังการออกอากาศสด</item>
+        <item quantity="other">ผู้ชมหลังการออกอากาศสด</item>
+    </plurals>
+    <plurals name="ps__time_format_days">
+        <item quantity="one">%d วัน</item>
+        <item quantity="other">%d วัน</item>
+    </plurals>
+    <plurals name="ps__time_format_hours">
+        <item quantity="one">%d ชั่วโมง</item>
+        <item quantity="other">%d ชั่วโมง</item>
+    </plurals>
+    <plurals name="ps__time_format_minutes">
+        <item quantity="one">%d นาที</item>
+        <item quantity="other">%d นาที</item>
+    </plurals>
+    <plurals name="ps__time_format_seconds">
+        <item quantity="one">%d วินาที</item>
+        <item quantity="other">%d วินาที</item>
+    </plurals>
+    <plurals name="recording_replay_count_preview">
+        <item quantity="one">%s เล่นใหม่</item>
+        <item quantity="other">การเล่นใหม่ %s ครั้ง</item>
+    </plurals>
+    <plurals name="relationship_followers_following_others">
+        <item quantity="one">อีก %d คน</item>
+        <item quantity="other">อีก %d คน</item>
+    </plurals>
+    <plurals name="replies">
+        <item quantity="one">%d ตอบกลับ</item>
+        <item quantity="other">%d ตอบกลับ</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others">
+        <item quantity="other">กำลังตอบกลับถึง ﻿%1$s และอีก %2$d คน﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_exclusive">
+        <item quantity="other">ตอบกลับถึง ﻿%1$s และอีก %2$d คน﻿ สมาชิกคนอื่นๆ จะมองเห็นการตอบกลับของคุณเช่นกัน</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_in_space">
+        <item quantity="other">กำลังตอบกลับถึง ﻿%1$s และอีก %2$d คน﻿ ใน ﻿%3$s﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others">
+        <item quantity="other">กำลังตอบกลับถึง ﻿%1$s %2$s และอีก%3$d คน﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_exclusive">
+        <item quantity="other">ตอบกลับถึง ﻿%1$s %2$s และอีก %3$d คน﻿ สมาชิกคนอื่นๆ จะมองเห็นการตอบกลับของคุณเช่นกัน</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_in_space">
+        <item quantity="other">กำลังตอบกลับถึง ﻿%1$s %2$s และอีก %3$d คน﻿ ใน ﻿%4$s﻿</item>
+    </plurals>
+    <plurals name="reported_tweet_reported_by">
+        <item quantity="one">รายงานโดย {{}}%1$s{{}}</item>
+        <item quantity="other">รายงานโดย {{}}%1$s สมาชิก{{}}</item>
+    </plurals>
+    <plurals name="retweets">
+        <item quantity="one">%d รีโพสต์</item>
+        <item quantity="other">%d รีโพสต์</item>
+    </plurals>
+    <plurals name="safety_mode_preview_description">
+        <item quantity="one">เราทำเครื่องหมาย %d บัญชีที่อาจเป็นบัญชีที่ไม่เหมาะสมหรือเป็นสแปม</item>
+        <item quantity="other">เราทำเครื่องหมาย %d บัญชีที่อาจเป็นบัญชีที่ไม่เหมาะสมหรือเป็นสแปม</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">%d วินาที</item>
+        <item quantity="other">%d วินาที</item>
+    </plurals>
+    <plurals name="send_cohost_invite">
+        <item quantity="one">ส่งคำเชิญให้เป็นโฮสต์ร่วม</item>
+        <item quantity="other">ส่งคำเชิญให้เป็นโฮสต์ร่วม</item>
+    </plurals>
+    <plurals name="settings_notif_tweets_count">
+        <item quantity="one">%d คน</item>
+        <item quantity="other">%d คน</item>
+    </plurals>
+    <plurals name="share_card_likes">
+        <item quantity="other">ชื่นชอบ {num} คน</item>
+    </plurals>
+    <plurals name="share_card_replies">
+        <item quantity="other">{num} การตอบกลับ</item>
+    </plurals>
+    <plurals name="social_follow_and_follow_and_others">
+        <item quantity="one">%1$s, %2$s และอีก %3$d คนติดตาม</item>
+        <item quantity="other">%1$s, %2$s และอีก %3$d คนติดตาม</item>
+    </plurals>
+    <plurals name="spaces_additional_participants">
+        <item quantity="one">+ผู้ฟังอีก %1$s คน</item>
+        <item quantity="other">+ผู้ฟังอีก %1$s คน</item>
+    </plurals>
+    <plurals name="spaces_blocked_warning">
+        <item quantity="one">คุณบล็อคคนที่กำลังพูด %1$d คน</item>
+        <item quantity="other">คุณบล็อคผู้คนที่กำลังพูด %1$d คน</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_in_progress">
+        <item quantity="one">%1$s อยู่ในพื้นที่สนทนานี้</item>
+        <item quantity="other">%1$s อยู่ในพื้นที่สนทนานี้</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_replay">
+        <item quantity="one">%1$s เคยอยู่ในพื้นที่สนทนานี้</item>
+        <item quantity="other">%1$s เคยอยู่ในพื้นที่สนทนานี้</item>
+    </plurals>
+    <plurals name="spaces_cohost_invites_sent_toast">
+        <item quantity="other">ส่งคำเชิญการเป็นโฮสต์ร่วม %1$d รายการแล้ว</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle">
+        <item quantity="other">เพิ่มได้สูงสุดอีก %1$d คน</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle_full">
+        <item quantity="other">คุณเพิ่มโฮสต์ร่วมได้ %1$d คนเท่านั้น</item>
+    </plurals>
+    <plurals name="spaces_invite_confirmation">
+        <item quantity="one">%1$d คนได้รับเชิญให้เข้าร่วมพื้นที่สนทนานี้</item>
+        <item quantity="other">%1$d คนได้รับเชิญให้เข้าร่วมพื้นที่สนทนานี้</item>
+    </plurals>
+    <plurals name="spaces_invite_send_cohost_cta">
+        <item quantity="other">ส่งคำเชิญให้เป็นโฮสต์ร่วม</item>
+    </plurals>
+    <plurals name="spaces_invite_send_speaker_cta">
+        <item quantity="other">ส่งคำเชิญให้เป็นผู้พูด</item>
+    </plurals>
+    <plurals name="spaces_invite_sent_toast">
+        <item quantity="other">%1$d คนได้รับเชิญให้เข้าร่วมพื้นที่สนทนานี้</item>
+    </plurals>
+    <plurals name="spaces_invite_speakers_subtitle">
+        <item quantity="other">คุณสามารถเชิญผู้คนให้พูดสูงสุด %1$d คน</item>
+    </plurals>
+    <plurals name="spaces_requested_pill_label">
+        <item quantity="other">ส่งคำขอแล้ว (%1$d)</item>
+    </plurals>
+    <plurals name="spaces_sheet_anonymous_others">
+        <item quantity="other">อีก%1$s คน</item>
+    </plurals>
+    <plurals name="spaces_speak_request_toast_label_many">
+        <item quantity="other">%1$d คนขอพูด</item>
+    </plurals>
+    <plurals name="speakers_current_count">
+        <item quantity="one">ผู้พูด %1$d คน</item>
+        <item quantity="other">ผู้พูด %1$d คน</item>
+    </plurals>
+    <plurals name="speakers_listeners_count">
+        <item quantity="one">%1$d คนกำลังฟัง</item>
+        <item quantity="other">%1$d คนกำลังฟัง</item>
+    </plurals>
+    <plurals name="speakers_open_spots_count">
+        <item quantity="one">%1$d ที่ว่าง</item>
+        <item quantity="other">%1$d ที่ว่าง</item>
+    </plurals>
+    <plurals name="speakers_requests_count">
+        <item quantity="one">%1$d คำขอ</item>
+        <item quantity="other">%1$d คำขอ</item>
+    </plurals>
+    <plurals name="stat_label_bookmarks">
+        <item quantity="one">บุ๊คมาร์ก</item>
+        <item quantity="other">บุ๊คมาร์ก</item>
+    </plurals>
+    <plurals name="stat_label_likes_sentence_case">
+        <item quantity="one">ชื่นชอบ</item>
+        <item quantity="other">ความชอบ</item>
+    </plurals>
+    <plurals name="stat_label_quote_tweets">
+        <item quantity="one">อ้างอิง</item>
+        <item quantity="other">อ้างอิง</item>
+    </plurals>
+    <plurals name="stat_label_retweets_sentence_case">
+        <item quantity="one">รีโพสต์</item>
+        <item quantity="other">รีโพสต์</item>
+    </plurals>
+    <plurals name="stat_label_verified_views_sentence_case">
+        <item quantity="one">ยอดการรับชมที่ยืนยันแล้ว</item>
+        <item quantity="other">ยอดการรับชมที่ยืนยันแล้ว</item>
+    </plurals>
+    <plurals name="stat_label_views_sentence_case">
+        <item quantity="one">ยอดดู</item>
+        <item quantity="other">ยอดดู</item>
+    </plurals>
+    <plurals name="subscription_duration_days">
+        <item quantity="one">วัน</item>
+        <item quantity="other">%d วัน</item>
+    </plurals>
+    <plurals name="subscription_duration_months">
+        <item quantity="one">เดือน</item>
+        <item quantity="other">%d เดือน</item>
+    </plurals>
+    <plurals name="subscription_duration_years">
+        <item quantity="one">ปี</item>
+        <item quantity="other">%d ปี</item>
+    </plurals>
+    <plurals name="subscription_offer_price_description_months">
+        <item quantity="one">{offer_price} สำหรับเดือนแรก ต่ออายุในราคา {original_price}</item>
+        <item quantity="other">{offer_price} สำหรับ %d เดือนแรก ต่ออายุในราคา {original_price}</item>
+    </plurals>
+    <plurals name="subscription_offer_title_special_offer_months">
+        <item quantity="one">{original_price_strike_through} {offer_price} สำหรับเดือนแรกของคุณ</item>
+        <item quantity="other">{original_price_strike_through} {offer_price} สำหรับ %d เดือนแรกของคุณ</item>
+    </plurals>
+    <plurals name="thread_draft_more_post">
+        <item quantity="other">+ อีก{num} โพสต์</item>
+    </plurals>
+    <plurals name="time_days">
+        <item quantity="one">%dd</item>
+        <item quantity="other">%dd</item>
+    </plurals>
+    <plurals name="time_days_ago">
+        <item quantity="one">%d วันที่แล้ว</item>
+        <item quantity="other">%d วันที่แล้ว</item>
+    </plurals>
+    <plurals name="time_hours">
+        <item quantity="one">%dh</item>
+        <item quantity="other">%dh</item>
+    </plurals>
+    <plurals name="time_hours_ago">
+        <item quantity="one">%d ชั่วโมงที่แล้ว</item>
+        <item quantity="other">%d ชั่วโมงที่แล้ว</item>
+    </plurals>
+    <plurals name="time_mins">
+        <item quantity="one">%dm</item>
+        <item quantity="other">%dm</item>
+    </plurals>
+    <plurals name="time_mins_ago">
+        <item quantity="one">%d นาทีที่แล้ว</item>
+        <item quantity="other">%d นาทีที่แล้ว</item>
+    </plurals>
+    <plurals name="time_secs">
+        <item quantity="one">%d วิ</item>
+        <item quantity="other">%ds</item>
+    </plurals>
+    <plurals name="time_weeks">
+        <item quantity="one">%d สัปดาห์</item>
+        <item quantity="other">%d สัปดาห์</item>
+    </plurals>
+    <plurals name="top_articles_time_window">
+        <item quantity="one">ชั่วโมงที่แล้ว</item>
+        <item quantity="other">%s ชั่วโมงที่แล้ว</item>
+    </plurals>
+    <plurals name="tweet_stat_followers">
+        <item quantity="one">ผู้ติดตาม {num} คน</item>
+        <item quantity="other">ผู้ติดตาม {num} คน</item>
+    </plurals>
+    <plurals name="tweet_visibility_education_dialog_non_followers_text">
+        <item quantity="one">%1$s ไม่ได้ติดตามคุณ</item>
+        <item quantity="other">%1$s และคนอื่นๆ ไม่ได้ติดตามคุณ</item>
+    </plurals>
+    <plurals name="undo_nudge_message">
+        <item quantity="other">โพสต์ของคุณจะถูกส่งภายใน %d วินาที</item>
+    </plurals>
+    <plurals name="undo_send_period_in_seconds">
+        <item quantity="one">%d วินาที</item>
+        <item quantity="other">%d วินาที</item>
+    </plurals>
+    <plurals name="upload_progress_sending_posts">
+        <item quantity="one">กำลังส่งโพสต์…</item>
+        <item quantity="other">กำลังส่ง %d โพสต์…</item>
+    </plurals>
+    <plurals name="verified_views">
+        <item quantity="one">ยอดการรับชมที่ยืนยันแล้ว %d รายการ</item>
+        <item quantity="other">ยอดการรับชมที่ยืนยันแล้ว %d รายการ</item>
+    </plurals>
+    <plurals name="weeks">
+        <item quantity="one">%d สัปดาห์</item>
+        <item quantity="other">%d สัปดาห์</item>
+    </plurals>
+    <plurals name="x_lite_time_weeks">
+        <item quantity="one">%d สัปดาห์</item>
+        <item quantity="other">%d สัปดาห์</item>
+    </plurals>
+    <plurals name="x_lite_time_years">
+        <item quantity="one">%d ปี</item>
+        <item quantity="other">%d ปี</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_gifs">
+        <item quantity="other">GIF {count} รายการ</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_other">
+        <item quantity="other">ไฟล์แนบ {count} รายการ</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_photos">
+        <item quantity="other">รูปภาพ {count} รูป</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_videos">
+        <item quantity="other">วิดีโอ {count} รายการ</item>
+    </plurals>
+    <plurals name="xchat_back_badge_unread_messages">
+        <item quantity="other">ข้อความที่ยังไม่ได้อ่าน %1$d รายการ</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_over_limit">
+        <item quantity="other">%1$d ไบต์ที่เกินขีดจำกัด</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_remaining">
+        <item quantity="other">%1$d ไบต์ที่เหลือ</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_gifs">
+        <item quantity="other">{count} ไฟล์ GIF แนบมาด้วย</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_other">
+        <item quantity="other">{count} ไฟล์ได้แนบมาด้วย</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_photos">
+        <item quantity="other">{count} รูปภาพได้แนบมาด้วย</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_videos">
+        <item quantity="other">{count} วิดีโอได้แนบมาด้วย</item>
+    </plurals>
+    <plurals name="xchat_forward_media_max_conversations">
+        <item quantity="other">คุณสามารถส่งต่อสื่อไปยังบทสนทนาได้สูงสุดถึง {num} รายการ</item>
+    </plurals>
+    <plurals name="xchat_group_members_count">
+        <item quantity="other">สมาชิก {num} คน</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_and_others">
+        <item quantity="other">{names} และอีก {count} คน</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_count">
+        <item quantity="other">{count} คำขอทางข้อความ</item>
+    </plurals>
+    <plurals name="xchat_inbox_new_messages">
+        <item quantity="other">ข้อความใหม่ {count}+ รายการ</item>
+    </plurals>
+    <plurals name="xchat_inbox_years">
+        <item quantity="other">%d ปี</item>
+    </plurals>
+    <plurals name="xchat_pinned_messages_count">
+        <item quantity="other">ข้อความที่ปักหมุด {count} รายการ</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_days">
+        <item quantity="other">{count} วัน</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_hours">
+        <item quantity="other">{count} ชั่วโมง</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_minutes">
+        <item quantity="other">{count} นาที</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_seconds">
+        <item quantity="other">{count} วินาที</item>
+    </plurals>
+</resources>

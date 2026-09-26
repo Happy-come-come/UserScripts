@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>Értesítést kapsz majd az új bejegyzésekről.</item>
+        <item>Értesítést kapsz majd az új bejegyzésekről és válaszokról.</item>
+        <item>Értesítést kapsz majd az új, előfizetőknek szóló bejegyzésekről.</item>
+        <item>Értesítést kapsz majd az új, élő videót tartalmazó bejegyzésekről.</item>
+        <item>Nem kapsz majd értesítést az új bejegyzésekről.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>Minden bejegyzés</item>
+        <item>Minden bejegyzés és válasz</item>
+        <item>Csak előfizetői bejegyzések</item>
+        <item>Csak élő videó</item>
+        <item>Ki</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>Értesítést kaphatsz ezen felhasználói fiók minden bejegyzéséről.</item>
+        <item>Értesítést kaphatsz ezen felhasználói fiók bejegyzéseiről és válaszairól.</item>
+        <item>Csak az előfizetői bejegyzésekről kérek értesítést.</item>
+        <item>Csak az elő közvetítésekről kérek értesítést.</item>
+        <item>Értesítések kikapcsolása a felhasználói fiók minden bejegyzéséhez.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>Hivatkozás posztolása</item>
+        <item>Hivatkozás másolása</item>
+        <item>Hivatkozás küldése</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>Összességében mennyire vagy elégedett a(z) %1$s céggel?</item>
+        <item>Mennyire vagy elégedett a(z) %1$s céggel?</item>
+        <item>Összességében mennyire voltál elégedett a(z) %1$s céggel kapcsolatos jelenlegi tapasztalataid alapján?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég szolgáltatásával kapcsolatos általános tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég szolgáltatásával kapcsolatos általános tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatóval kapcsolatos eddigi tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s céggel kapcsolatos, a Twitteren szerzett tapasztalataidat?</item>
+        <item>Elégedett voltál a(z) %1$s céggel kapcsolatos jelenlegi tapasztalataid alapján?</item>
+        <item>Mennyire felel meg a(z) %1$s az elvárásaidnak?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cégnél tett látogatásoddal kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég szolgáltatásával kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég szolgáltatásával kapcsolatos jelenlegi tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég által nyújtott szolgáltatást?</item>
+        <item>Elégedett vagy-e a(z) %1$s szolgáltatóval folytatott kommunikációval?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég problémamegoldási készségét?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég válaszadási idejét?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég által nyújtott szolgáltatás gyorsaságát?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég problémamegoldásának gyorsaságát?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég problémamegoldásának gyorsaságát?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég problémamegoldásának gyorsaságát?</item>
+        <item>Hogyan értékelnéd %1$s tanácsadói szolgáltatását?</item>
+        <item>Mennyire voltál elégedett a(z) %1$s cég segítséget nyújtó munkatársával?</item>
+        <item>Mennyire voltál elégedett a(z) %1$s cég segítséget nyújtó szakértőjével?</item>
+        <item>Mennyire voltál elégedett a(z) %1$s cég segítséget nyújtó képviselőjével?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég banki szolgáltatásával kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd %1$s rendezvényével kapcsolatos általános tapasztalataidat?</item>
+        <item>Hogyan értékelnéd %1$s szolgáltatásának kifizetésével kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég szolgáltatásának beszerzésével kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cégnél tett bevásárlással kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég szállításával kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég bérleti szolgáltatásával kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s üzletében tett látogatásoddal kapcsolatos jelenlegi tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég szállodai szolgáltatásával kapcsolatos jelenlegi tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég repülési szolgáltatásával kapcsolatos jelenlegi tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég utazási szolgáltatásával kapcsolatos jelenlegi tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cég utazási szolgáltatásával kapcsolatos jelenlegi tapasztalataidat?</item>
+        <item>Hogyan értékelnéd %1$s szolgáltatónál tett látogatásoddal kapcsolatos jelenlegi tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s cégnél elfogyasztott étellel kapcsolatos jelenlegi tapasztalataidat?</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 nap</item>
+        <item>12 hónap</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0,25×</item>
+        <item>0,5×</item>
+        <item>0,75×</item>
+        <item>Normál</item>
+        <item>1,25×</item>
+        <item>1,5×</item>
+        <item>2×</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>Hogyan értékelnéd összességében a(z) %1$s szolgáltatóval kapcsolatos tapasztalataidat?</item>
+        <item>Mennyire vagy elégedett a(z) %1$s vállalkozással?</item>
+        <item>Összességében mennyire vagy elégedett a(z) %1$s szolgáltatásával kapcsolatos legutóbbi tapasztalataid alapján?</item>
+        <item>Hogyan értékelnéd általánosságban a(z) %1$s szolgáltatóval kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd összességében a(z) %1$s szolgáltatóval kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatóval kapcsolatos eddigi tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatóval kapcsolatos, az X-en szerzett tapasztalataidat?</item>
+        <item>Összességében mennyire vagy elégedett a(z) %1$s szolgáltatóval kapcsolatos legutóbbi tapasztalataid alapján?</item>
+        <item>Mennyire felel meg elvárásaidnak (z) %1$s ?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatásának keretében vendégként szerzett tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatásával kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatásával kapcsolatos legutóbbi tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s által nyújtott szolgáltatást?</item>
+        <item>Összességében mennyire vagy elégedett a(z) %1$s szolgáltatóval folytatott kommunikáció eredményével?</item>
+        <item>Hogyan értékelnéd a(z) %1$s készségét a szolgáltatásával kapcsolatos problémád megoldására?</item>
+        <item>Hogyan értékelnéd a(z) %1$s válaszadási idejét?</item>
+        <item>Hogyan értékelnéd a(z) %1$s által nyújtott szolgáltatás sebességét?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatásával kapcsolatos probléma megoldására fordított időt?</item>
+        <item>Hogyan értékelnéd a(z) %1$s problémamegoldási idejét?</item>
+        <item>Hogyan értékelnéd a(z) %1$s által nyújtott problémamegoldási sebességet?</item>
+        <item>Hogyan értékelnéd %1$s tanácsadói szolgáltatását?</item>
+        <item>Mennyire vagy elégedett %1$s szolgáltató képviselőjével, aki segített neked?</item>
+        <item>Mennyire vagy elégedett a(z) %1$s szolgáltató szakemberével, aki segített neked?</item>
+        <item>Mennyire vagy elégedett a(z) %1$s szolgáltató képviselőjével, aki segített neked?</item>
+        <item>Hogyan értékelnéd a(z) %1$s banki szolgáltatásával kapcsolatos legutóbbi tapasztalataidat?</item>
+        <item>Hogyan értékelnéd általánosságban a(z) %1$s szolgáltató által szervezett rendezvénnyel kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatásának keretében számlafizetéssel kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatásával kapcsolatos vásárlási tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatásával kapcsolatos vásárlási tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatásával kapcsolatos szállítási tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s bérleti szolgáltatásával kapcsolatos tapasztalataidat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltató üzletében tett legutóbbi látogatásodat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szállodájában töltött időt?</item>
+        <item>Hogyan értékelnéd a(z) %1$s járatán való legutóbbi utazásodat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatóval való legutóbbi utazásodat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s szolgáltatóval való legutóbbi utazásodat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s vállalkozásnál tett legutóbbi látogatásodat?</item>
+        <item>Hogyan értékelnéd a(z) %1$s vállalkozásnál elfogyasztott ételt?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>Mennyire valószínű, hogy ajánlanád a(z) %1$s céget egy barátodnak?</item>
+        <item>Mennyire valószínű, hogy ajánlanád a(z) %1$s céget egy barátodnak?</item>
+        <item>Mennyire valószínű, hogy ajánlanád a(z) %1$s céget egy kollégádnak?</item>
+        <item>Mennyire valószínű, hogy ajánlanád a(z) %1$s céget valamelyik családtagodnak?</item>
+        <item>Mennyire valószínű, hogy ajánlanád a(z) %1$s céget valaki másnak?</item>
+        <item>Mennyire valószínű, hogy ajánlanád a(z) %1$s céget egy barátodnak vagy kollégádnak?</item>
+        <item>Mennyire valószínű, hogy vásárolnál a(z) %1$s cégnél a jövőben?</item>
+        <item>Mennyire valószínű, hogy ajánlanád a(z) %1$s céget?</item>
+        <item>Ajánlanád a(z) %1$s céget egy barátodnak vagy kollégádnak?</item>
+        <item>Mennyire valószínű, hogy ajánlanád a(z) %1$s céget egy barátodnak?</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>Jó nézőszám</item>
+        <item>Pozitív közösség</item>
+        <item>Videominőség</item>
+        <item>Kellemes beszélgetés</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>Alacsony nézőszám</item>
+        <item>Zaklatás</item>
+        <item>Videoproblémák</item>
+        <item>Spam a csevegésben</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 perc</item>
+        <item>30 perc</item>
+        <item>1 óra</item>
+        <item>2 óra</item>
+        <item>4 óra</item>
+        <item>Naponta</item>
+    </string-array>
+</resources>

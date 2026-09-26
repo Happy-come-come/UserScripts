@@ -17,6 +17,203 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "‏%s بازتوییت کرد"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "پاسخ"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "بازپست"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "پسندیدن"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "نشانک"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "نمایش موارد بیشتر"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "این رشته‌توییت نشان داده شود"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "تصویر قبلی"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "تصویر بعدی"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["از"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/۵٫۰ ستاره – {{appNumRatings}} رتبه‌بندی"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "حساب‌های کاربری تأییدشده"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "مدیر"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "ناظم"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "عضو"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "بازدید"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "دیدن نقل‌قول‌ها"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "مشاهده فعالیت"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "‏یادداشت‌های کاربران"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "این یادداشت مفید بود؟"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "مفید"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "تا حدودی مفید"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "غیرمفید"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "به‌زودی"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["اکنون"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "پاسخ توسط Grok در «حالت سرگرمی»"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "پاسخ توسط Grok"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "تصویر از Grok"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "نمایش موارد بیشتر"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "نسخه خودتان را با Grok بسازید"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "خودتان از Grok بپرسید"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} صفحه وب"
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} پست"
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "پست‌ها و صفحه‌های وب {{count}}"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "مربوط"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "پسندها"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "اخیر"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "مرتب‌سازی پاسخ‌ها"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "آخرین ویرایش"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "نسخه جدیدی از این پست وجود دارد."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "سابقه ویرایش را باز می‌کند"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "مشاهده جدیدترین پست"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "نسخه جدید این پست را باز می‌کند"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "شما"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["از"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "نظرسنجی"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "این نظرسنجی نشان داده شود"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} رأی"
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "نتايج نهايى"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "بازتوییت"
@@ -53,6 +250,26 @@
 		"type": "string",
 		"value": "دنبال‌شده"
 	},
+	"follow": {
+		"type": "string",
+		"value": "دنبال کردن"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "شما هم دنبالش کنید"
+	},
+	"followers": {
+		"type": "string",
+		"value": "دنبال‌کنندگان"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "شما را دنبال می‌کند"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "اشتراک‌ها"
+	},
 	"unfollow": {
 		"type": "string",
 		"value": "دنبال نشود"
@@ -87,8 +304,7 @@
 		"value": ["دنبال‌شدهتوسط","،","،و","نفردیگرکهشمادنبالمی‌کنید"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}توت"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",

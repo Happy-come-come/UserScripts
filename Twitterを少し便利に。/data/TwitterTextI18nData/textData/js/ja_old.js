@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"固定"},
 	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%sさんがリツイートしました"},
+	"replyAction": {"type":"string","value":"返信"},
+	"repostAction": {"type":"string","value":"リポスト"},
+	"likeAction": {"type":"string","value":"いいね"},
+	"bookmarkAction": {"type":"string","value":"ブックマーク"},
+	"showMore": {"type":"string","value":"さらに表示"},
+	"viewThread": {"type":"string","value":"このスレッドを表示"},
+	"previousImage": {"type":"string","value":"前の画像"},
+	"nextImage": {"type":"string","value":"次の画像"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["","から"]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 – "+e.appNumRatings+" 評価"}
+	},
+	"verifiedAccount": {"type":"string","value":"認証済みアカウント"},
+	"communityAdminBadge": {"type":"string","value":"管理者"},
+	"communityModeratorBadge": {"type":"string","value":"モ"},
+	"communityMemberBadge": {"type":"string","value":"メンバー"},
+	"viewsLabel": {"type":"string","value":"件の表示"},
+	"viewQuotes": {"type":"string","value":"引用を表示"},
+	"viewActivity": {"type":"string","value":"アクティビティを表示"},
+	"communityNotes": {"type":"string","value":"コミュニティノート"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"このノートは役に立ちましたか？"},
+	"communityNoteHelpful": {"type":"string","value":"役に立った"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"少し役に立った"},
+	"communityNoteNotHelpful": {"type":"string","value":"役に立たなかった"},
+	"cashtagComingSoon": {"type":"string","value":"近日公開"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["現在 "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Grok（ユーモアモード）による回答"},
+	"grokAnswer": {"type":"string","value":"Grokによる回答"},
+	"grokImageBy": {"type":"string","value":"Grokによる画像"},
+	"grokShowMore": {"type":"string","value":"さらに表示"},
+	"grokCreateVersion": {"type":"string","value":"Grokでオリジナルバージョンを作成"},
+	"grokAskYourself": {"type":"string","value":"Grokに聞いてみる"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" ウェブページ"}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" 件のポスト"}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+"件のウェブページとポスト"}
+	},
+	"mostRelevant": {"type":"string","value":"関連性が高い"},
+	"mostLiked": {"type":"string","value":"いいね"},
+	"mostRecent": {"type":"string","value":"最新"},
+	"sortReplies": {"type":"string","value":"返信を並べ替え"},
+	"lastEdited": {"type":"string","value":"最終更新"},
+	"newPostVersion": {"type":"string","value":"このポストには新しいバージョンがあります"},
+	"opensEditHistory": {"type":"string","value":"編集履歴を開きます"},
+	"viewLatestPost": {"type":"string","value":"最新ポストを表示"},
+	"opensLatestPost": {"type":"string","value":"このポストの新しいバージョンを開きます"},
+	"mediaTaggedSelf": {"type":"string","value":"自分"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["投稿者: "]}
+	},
+	"poll": {"type":"string","value":"投票"},
+	"viewPoll": {"type":"string","value":"この投票を表示"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+"票"}
+	},
+	"pollEnded": {"type":"string","value":"最終結果"},
 	"retweet": {"type":"string","value":"リツイート"},
 	"unDoRetweet": {"type":"string","value":"リツイートを取り消す"},
 	"quoteTweet": {"type":"string","value":"引用ツイート"},
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": {"type":"string","value":"メディア"},
 	"profileTabTitleLikes": {"type":"string","value":"いいね"},
 	"following": {"type":"string","value":"フォロー中"},
+	"follow": {"type":"string","value":"フォロー"},
+	"followBack": {"type":"string","value":"フォローバック"},
+	"followers": {"type":"string","value":"フォロワー"},
+	"followsYou": {"type":"string","value":"フォローされています"},
+	"subscriptions": {"type":"string","value":"サブスクリプション"},
 	"unfollow": {"type":"string","value":"フォロー解除"},
 	"blocked": {"type":"string","value":"ブロック中"},
 	"unblock": {"type":"string","value":"ブロック解除"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["","さんにフォローされています"]}
+		"value": function(){return ["","さんにフォローされています"]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["","さんと","さんにフォローされています"]}
+		"value": function(){return ["","さんと","さんにフォローされています"]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["","さん、","さん、","さんにフォローされています"]}
+		"value": function(){return ["","さん、","さん、","さんにフォローされています"]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["フォローしている","さん、","さん、他","人にフォローされています"]}
+		"value": function(){return ["フォローしている","さん、","さん、他","人にフォローされています"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" 件のツイート"]}
+		"value": function(){return [props.formattedCount+" 件のツイート"]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" 件のいいね"]}
+		"value": function(){return [props.formattedCount+" 件のいいね"]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" 件の画像と動画"]}
+		"value": function(){return [props.formattedCount+" 件の画像と動画"]}
 	},
 	"home": {"type":"string","value":"ホーム"},
 	"explore": {"type":"string","value":"話題を検索"},

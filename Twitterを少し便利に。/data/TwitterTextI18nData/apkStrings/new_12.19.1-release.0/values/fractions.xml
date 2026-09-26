@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <fraction name="vertical_drag_dismiss_fling_min_translation_percentage">10.000002%</fraction>
+    <fraction name="vertical_drag_dismiss_min_translation_percentage">33.000004%</fraction>
+</resources>

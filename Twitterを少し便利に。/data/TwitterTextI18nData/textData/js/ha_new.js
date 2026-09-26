@@ -11,8 +11,63 @@ const text = {
 	},
 	"pinnedListsModuleHeader": undefined,
 	"tweetsRetweeted": undefined,
-	"retweet": {"type":"string","value":"Repost"},
-	"unDoRetweet": {"type":"string","value":"Undo repost"},
+	"replyAction": {"type":"string","value":"Amsa"},
+	"repostAction": undefined,
+	"likeAction": {"type":"string","value":"So"},
+	"bookmarkAction": {"type":"string","value":"Alama"},
+	"showMore": {"type":"string","value":"Nuna ƙari"},
+	"viewThread": {"type":"string","value":"Nuna wannan zaren tattaunwa"},
+	"previousImage": {"type":"string","value":"Hoto na baya"},
+	"nextImage": {"type":"string","value":"Hoto na gaba"},
+	"cardSource": undefined,
+	"cardAppRating": undefined,
+	"verifiedAccount": undefined,
+	"communityAdminBadge": undefined,
+	"communityModeratorBadge": undefined,
+	"communityMemberBadge": undefined,
+	"viewsLabel": undefined,
+	"viewQuotes": undefined,
+	"viewActivity": undefined,
+	"communityNotes": undefined,
+	"communityNoteHelpfulQuestion": {"type":"string","value":"Ko bayanin ya taimaka?"},
+	"communityNoteHelpful": {"type":"string","value":"Mai Taimako"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"Ɗan Taimako Kaɗan"},
+	"communityNoteNotHelpful": {"type":"string","value":"Bai Taimaka ba"},
+	"cashtagComingSoon": undefined,
+	"cashtagNowAt": undefined,
+	"grokAnswerFun": undefined,
+	"grokAnswer": undefined,
+	"grokImageBy": undefined,
+	"grokShowMore": {"type":"string","value":"Nuna ƙari"},
+	"grokCreateVersion": undefined,
+	"grokAskYourself": undefined,
+	"grokWebPages": undefined,
+	"grokPosts": undefined,
+	"grokWebAndPosts": undefined,
+	"mostRelevant": undefined,
+	"mostLiked": {"type":"string","value":"So-so"},
+	"mostRecent": {"type":"string","value":"Na kwanan nan"},
+	"sortReplies": undefined,
+	"lastEdited": {"type":"string","value":"An gyara ƙarshe"},
+	"newPostVersion": undefined,
+	"opensEditHistory": {"type":"string","value":"Yana buɗe tarihin gyara"},
+	"viewLatestPost": undefined,
+	"opensLatestPost": undefined,
+	"mediaTaggedSelf": {"type":"string","value":"Kai"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["From "]}
+	},
+	"poll": {"type":"string","value":"Zaɓe"},
+	"viewPoll": {"type":"string","value":"Show this poll"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(a){return"Ƙuri''"+t(a.count,"a","u")+" "+a.formattedCount}
+	},
+	"pollEnded": {"type":"string","value":"Sakamako na ƙarshe"},
+	"retweet": {"type":"string","value":"Sake yin tweet"},
+	"unDoRetweet": {"type":"string","value":"Fasa Sake tweet"},
 	"quoteTweet": undefined,
 	"profileTabTitleTimeline": undefined,
 	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": undefined,
@@ -20,6 +75,11 @@ const text = {
 	"profileTabTitleMedia": undefined,
 	"profileTabTitleLikes": undefined,
 	"following": {"type":"string","value":"Ana bin"},
+	"follow": {"type":"string","value":"Bi"},
+	"followBack": undefined,
+	"followers": {"type":"string","value":"Mabiya"},
+	"followsYou": {"type":"string","value":"Yana bin ka"},
+	"subscriptions": {"type":"string","value":"Biyan Kuɗi"},
 	"unfollow": {"type":"string","value":"Fasa bi"},
 	"blocked": {"type":"string","value":"An toshe"},
 	"unblock": {"type":"string","value":"Buɗe"},
@@ -30,55 +90,47 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Followed by "]}
+		"value": function(){return ["Followed by "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Followed by "," and "]}
+		"value": function(){return ["Followed by "," and "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Followed by ",", ",", and "]}
+		"value": function(){return ["Followed by ",", ",", and "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Followed by ",", ",", and "," others you follow"]}
+		"value": function(){return ["Followed by ",", ",", and "," others you follow"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" post"+o(props.count,"","s")]}
+		"value": function(){return [props.formattedCount+" Tweet"+t(props.count,"","s")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" Like"+i(props.count,"","s")]}
+		"value": function(){return [props.formattedCount+" Like"+t(props.count,"","s")]}
 	},
-	"mediaNum": {
-		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" photos & videos"]}
-	},
+	"mediaNum": undefined,
 	"home": {"type":"string","value":"Gida"},
 	"explore": {"type":"string","value":"Bincike"},
 	"notifications": {"type":"string","value":"Sanarwa"},
-	"connect_people": {
-		"type": "webI18nFunction",
-		"arguments": ["verb"],
-		"value": function(a){return"Follow"+a.verb}
-	},
-	"chat": {"type":"string","value":"Chat"},
+	"chat": undefined,
 	"messages": {"type":"string","value":"Saƙonni"},
-	"grok": {"type":"string","value":"Grok"},
+	"grok": undefined,
 	"bookmarks": {"type":"string","value":"Alamomi"},
 	"jobs": {"type":"string","value":"Jobs"},
 	"business": {"type":"string","value":"Kasuwanci"},
 	"communities": {"type":"string","value":"Al'umma"},
-	"premium": {"type":"string","value":"Premium"},
+	"premium": undefined,
 	"verifiedOrg": {"type":"string","value":"Verified Orgs"},
 	"profile": {"type":"string","value":"My Profile"},
 	"creatorStudio": {"type":"string","value":"Sutudiyo na Mai ƙira"},
 	"lists": {"type":"string","value":"Jeri"},
 	"monetization": {"type":"string","value":"Samun kuɗi"},
-	"ads": {"type":"string","value":"Ads"},
-	"createYourSpace": {"type":"string","value":"Create your Space"},
+	"ads": undefined,
+	"createYourSpace": undefined,
 	"settingsAndPrivacy": {"type":"string","value":"Saitunan da sirrantawa"},
 	"moreMenu": {"type":"string","value":"Ƙari"},
 	"addAnExistingAccount": {"type":"string","value":"Ƙara asusun da ke akwai"},
@@ -93,19 +145,7 @@ const text = {
 	"now": {"type":"string","value":"Yanzu"},
 	"day": {"type":"string","value":"Rana"},
 	"month": {"type":"string","value":"Wata"},
-	"year": {"type":"string","value":"Shekara"},
-	"january": {"type":"string","value":"Janairu"},
-	"february": {"type":"string","value":"Faburairu"},
-	"march": {"type":"string","value":"Maris"},
-	"april": {"type":"string","value":"Afrilu"},
-	"may": {"type":"string","value":"Mayu"},
-	"june": {"type":"string","value":"Yuni"},
-	"july": {"type":"string","value":"Yuli"},
-	"august": {"type":"string","value":"Agusta"},
-	"september": {"type":"string","value":"Satumba"},
-	"october": {"type":"string","value":"Oktuba"},
-	"november": {"type":"string","value":"Nuwamba"},
-	"december": {"type":"string","value":"Disamba"}
+	"year": {"type":"string","value":"Shekara"}
 };
 
 export default text;

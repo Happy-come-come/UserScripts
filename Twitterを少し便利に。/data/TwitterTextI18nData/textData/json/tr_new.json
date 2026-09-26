@@ -17,6 +17,202 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "%s yeniden gönderi yayınladı"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "Yanıtla"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "Yeniden gönder"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "Beğen"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "Yer işareti"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "Daha fazla göster"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "Bu Tweet dizisini göster"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "Önceki resim"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "Sonraki resim"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Kaynak:"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}5,0 yıldız - {{appNumRatings}} değerlendirme"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "Onaylanmış hesaplar"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "Yntc."
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "Mod"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "Üye"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "görüntülenme"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "Alıntıları görüntüle"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "Etkinliği görüntüle"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "Topluluk Notları"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "Bu not yardımcı oldu mu?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "Yardımcı oldu"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "Biraz Yardımcı oldu"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "Yardımcı olmadı"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "Çok yakında"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["Artık"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "Yanıt Grok tarafından Eğlence Modu'nda verilmiştir"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Yanıt Grok tarafından verilmiştir"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Resim Grok tarafından oluşturuldu"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "Daha fazla göster"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Grok ile kendi versiyonunu oluştur"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "Grok'a kendin sor"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} web sayfası"
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"]
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} web sayfası ve gönderi"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "Alakalı"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "Beğeni"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "En yeni"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "Yanıtları sırala"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "Son düzenleme:"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "Bu gönderinin yeni bir sürümü var."
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "Düzenleme geçmişini açar"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "En yeni gönderileri gör"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "Bu gönderinin yeni sürümünü açar"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "Sen"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["","adlıkullanıcıdan"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "Anket"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "Bu anketi göster"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} oy"
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "Kesin sonuçlar"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Yeniden gönder"
@@ -52,6 +248,26 @@
 	"following": {
 		"type": "string",
 		"value": "Takip ediliyor"
+	},
+	"follow": {
+		"type": "string",
+		"value": "Takip et"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "Geri takip et"
+	},
+	"followers": {
+		"type": "string",
+		"value": "Takipçiler"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "Seni takip ediyor"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "Abonelikler"
 	},
 	"unfollow": {
 		"type": "string",

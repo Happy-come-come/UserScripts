@@ -10,16 +10,98 @@ const text = {
 		"value": function(e){return"பின்தொடர்கிறீர்கள்"+e.noun}
 	},
 	"pinnedListsModuleHeader": {"type":"string","value":"பின் செய்யப்பட்டவை"},
-	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s மறுஇடுகையிட்டார்"},
+	"tweetsRetweeted": {"type":"apkI18nTemplateFunction","value":"%s மறுட்வீட் செய்துள்ளார்"},
+	"replyAction": {"type":"string","value":"பதிலளி"},
+	"repostAction": {"type":"string","value":"மறுஇடுகை"},
+	"likeAction": {"type":"string","value":"விரும்பு"},
+	"bookmarkAction": {"type":"string","value":"புத்தகக்குறியிடு"},
+	"showMore": {"type":"string","value":"மேலும் காண்பி"},
+	"viewThread": {"type":"string","value":"இந்தத் தொடர்ச்சியைக் காண்பி"},
+	"previousImage": {"type":"string","value":"முந்தைய படம்"},
+	"nextImage": {"type":"string","value":"அடுத்த படம்"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return [""," இலிருந்து"]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 ஸ்டார்கள் – "+e.appNumRatings+" மதிப்பீடு"}
+	},
+	"verifiedAccount": {"type":"string","value":"சரிபார்க்கப்பட்ட கணக்குகள்"},
+	"communityAdminBadge": {"type":"string","value":"நிர்."},
+	"communityModeratorBadge": {"type":"string","value":"மதி."},
+	"communityMemberBadge": {"type":"string","value":"உறுப்பினர்"},
+	"viewsLabel": {"type":"string","value":"பார்வைகள்"},
+	"viewQuotes": {"type":"string","value":"மேற்கோள்களைக் காட்டு"},
+	"viewActivity": {"type":"string","value":"செயல்பாடு காட்டு"},
+	"communityNotes": {"type":"string","value":"கம்யூனிட்டி நோட்ஸ்"},
+	"communityNoteHelpfulQuestion": {"type":"string","value":"இந்தக் குறிப்பு உதவிகரமாக உள்ளதா?"},
+	"communityNoteHelpful": {"type":"string","value":"பயனுள்ளது"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"ஓரளவு பயனுள்ளது"},
+	"communityNoteNotHelpful": {"type":"string","value":"பயனற்றது"},
+	"cashtagComingSoon": {"type":"string","value":"விரைவில் வருகிறது"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["இப்போது "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"வேடிக்கைப் பயன்முறையில் Grok வழங்கும் பதில்"},
+	"grokAnswer": {"type":"string","value":"Grok வழங்கும் பதில்"},
+	"grokImageBy": {"type":"string","value":"Grok வழங்கும் படம்"},
+	"grokShowMore": {"type":"string","value":"மேலும் காண்பி"},
+	"grokCreateVersion": {"type":"string","value":"Grok மூலம் உங்கள் பதிப்பை உருவாக்கவும்"},
+	"grokAskYourself": {"type":"string","value":"Grok இடம் நீங்களே கேளுங்கள்"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" வலைப் பக்க"+t(e.count,"ம","ங்கள")+"்"}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" இடுகை"+t(e.count,"","கள்")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" வலைப் பக்கங்கள் மற்றும் இடுகைகள்"}
+	},
+	"mostRelevant": {"type":"string","value":"பொருத்தமானதாக உள்ளது"},
+	"mostLiked": {"type":"string","value":"விருப்பங்கள்"},
+	"mostRecent": {"type":"string","value":"சமீபத்தியவை"},
+	"sortReplies": {"type":"string","value":"பதில்களை வகைப்படுத்து"},
+	"lastEdited": {"type":"string","value":"கடைசியாகத் திருத்தியது"},
+	"newPostVersion": {"type":"string","value":"இந்த இடுகையின் புதிய பதிப்பு உள்ளது."},
+	"opensEditHistory": {"type":"string","value":"திருத்த வரலாற்றைத் திறக்கிறது"},
+	"viewLatestPost": {"type":"string","value":"சமீபத்திய இடுகையைக் காட்டு"},
+	"opensLatestPost": {"type":"string","value":"இந்த இடுகையின் புதிய பதிப்பைத் திறக்கிறது"},
+	"mediaTaggedSelf": {"type":"string","value":"நீங்கள்"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return [""," அனுப்பியுள்ளார்"]}
+	},
+	"poll": {"type":"string","value":"வாக்கெடுப்பு"},
+	"viewPoll": {"type":"string","value":"இந்த வாக்கெடுப்பைக் காட்டு"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" வாக்கு"+t(e.count,"","கள்")}
+	},
+	"pollEnded": {"type":"string","value":"இறுதி முடிவுகள்"},
 	"retweet": {"type":"string","value":"மறுஇடுகை"},
 	"unDoRetweet": {"type":"string","value":"மறுஇடுகையைச் செயல்தவிர்"},
-	"quoteTweet": {"type":"string","value":"மேற்கோள்"},
-	"profileTabTitleTimeline": {"type":"string","value":"இடுகைகள்"},
+	"quoteTweet": {"type":"string","value":"ட்விட்டை மேற்கோள் காட்டு"},
+	"profileTabTitleTimeline": {"type":"string","value":"ட்விட்கள்"},
 	"profileTabTitleTimelineTweetsAndRepliesSentenceCase": {"type":"string","value":"பதில்கள்"},
 	"profileTabTitleHighlights": {"type":"string","value":"சிறப்புக் கூறுகள்"},
 	"profileTabTitleMedia": {"type":"string","value":"ஊடகம்"},
 	"profileTabTitleLikes": {"type":"string","value":"விருப்பங்கள்"},
 	"following": {"type":"string","value":"பின்தொடர்கிறீர்கள்"},
+	"follow": {"type":"string","value":"பின்தொடர்"},
+	"followBack": {"type":"string","value":"பின்தொடர்"},
+	"followers": {"type":"string","value":"பின்தொடர்பவர்கள்"},
+	"followsYou": {"type":"string","value":"உங்களைப் பின்தொடர்கிறார்"},
+	"subscriptions": {"type":"string","value":"சப்ஸ்கிர்ப்ஷன்ஸ்"},
 	"unfollow": {"type":"string","value":"பின்தொடராதே"},
 	"blocked": {"type":"string","value":"தடைசெய்யப்பட்டது"},
 	"unblock": {"type":"string","value":"தடைநீக்கு"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[""," இவரைப் பின்தொடர்கிறார்"]}
+		"value": function(){return [""," இவரைப் பின்தொடர்கிறார்"]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", "," ஆகியோர் இவரைப் பின்தொடர்கின்றனர்"]}
+		"value": function(){return ["",", "," ஆகியோர் இவரைப் பின்தொடர்கின்றனர்"]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["",", ",", "," ஆகியோர் இவரைப் பின்தொடர்கின்றனர்"]}
+		"value": function(){return ["",", ",", "," ஆகியோர் இவரைப் பின்தொடர்கின்றனர்"]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["நீங்கள் பின்தொடரும் ",", ",", மற்றும் "," பேர் இவரைப் பின்தொடர்கின்றனர்"]}
+		"value": function(){return ["நீங்கள் பின்தொடரும் ",", ",", மற்றும் "," பேர் இவரைப் பின்தொடர்கின்றனர்"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" இடுகை"+t(props.count,"","கள்")]}
+		"value": function(){return [props.formattedCount+" இடுகை"+t(props.count,"","கள்")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" விருப்ப"+t(props.count,"ம","ங்கள")+"்"]}
+		"value": function(){return [props.formattedCount+" விருப்ப"+t(props.count,"ம","ங்கள")+"்"]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" புகைப்படங்கள் & வீடியோக்கள்"]}
+		"value": function(){return [props.formattedCount+" புகைப்படங்கள் & வீடியோக்கள்"]}
 	},
 	"home": {"type":"string","value":"முகப்பு"},
 	"explore": {"type":"string","value":"ஆராய்க"},
@@ -88,7 +170,7 @@ const text = {
 		"arguments": ["screenName"],
 		"value": function(e){return"@"+e.screenName+"க்கு மாறு"}
 	},
-	"postTweet": {"type":"string","value":"இடுகை"},
+	"postTweet": {"type":"string","value":"ட்விட் செய்"},
 	"settings": {"type":"string","value":"அமைப்புகள்"},
 	"now": {"type":"string","value":"இப்போது"},
 	"day": {"type":"string","value":"நாள்"},

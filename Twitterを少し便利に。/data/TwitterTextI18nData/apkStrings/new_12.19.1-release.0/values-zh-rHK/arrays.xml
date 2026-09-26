@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>你將收到新貼文的通知。</item>
+        <item>你將收到新貼文和回覆的通知。</item>
+        <item>你將收到新訂閱貼文的通知。</item>
+        <item>你將收到新直播視訊貼文的通知。</item>
+        <item>你將不再收到新貼文的通知。</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>所有貼文</item>
+        <item>所有貼文和回覆</item>
+        <item>僅訂閱貼文</item>
+        <item>僅限直播視訊</item>
+        <item>關閉</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>接收此帳戶所有貼文的通知。</item>
+        <item>接收此帳戶貼文和回覆的通知。</item>
+        <item>僅接收訂閱貼文的通知。</item>
+        <item>僅接收直播的通知。</item>
+        <item>關閉此帳戶貼文的通知。</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>發佈此連結</item>
+        <item>複製連結</item>
+        <item>傳送連結</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>你對於 %1$s 的整體滿意度為何？</item>
+        <item>你對於 %1$s 的滿意度為何？</item>
+        <item>整體而言，你最近對於 %1$s 的體驗是否滿意？</item>
+        <item>你會如何評價對於 %1$s 的整體體驗？</item>
+        <item>你會如何評價對於 %1$s 的整體體驗？</item>
+        <item>你會如何評價至今對於 %1$s 的體驗？</item>
+        <item>你會如何評價在 Twitter 上對於 %1$s 的體驗？</item>
+        <item>你最近對於 %1$s 的體驗是否滿意？</item>
+        <item>%1$s 符合你的預期的程度有多高？</item>
+        <item>你會如何評價對於 %1$s 的顧客體驗？</item>
+        <item>你會如何評價對於 %1$s 的服務體驗？</item>
+        <item>你會如何評價最近對於 %1$s 的服務體驗？</item>
+        <item>你會如何評價 %1$s 所提供的服務？</item>
+        <item>你對於與 %1$s 的互動結果是否滿意？</item>
+        <item>你會如何評價有關 %1$s 的解決問題能力？</item>
+        <item>你會如何評價 %1$s 的回應時間？</item>
+        <item>你會如何評價 %1$s 的服務速度？</item>
+        <item>你會如何評價有關 %1$s 解答所花費的時間？</item>
+        <item>你會如何評價有關 %1$s 解決問題所花費的時間？</item>
+        <item>你會如何評價有關 %1$s 的解答速度？</item>
+        <item>你會如何評價 %1$s 顧問的專業性？</item>
+        <item>你對於協助你的 %1$s 專員的滿意程度為何？</item>
+        <item>你對於協助你的 %1$s 專家的滿意程度為何？</item>
+        <item>你對於協助你的 %1$s 代表的滿意程度為何？</item>
+        <item>你會如何評價最近對於 %1$s 的銀行業務體驗？</item>
+        <item>你會如何評價在 %1$s 的整體活動體驗？</item>
+        <item>你會如何評價對於 %1$s 的帳單支付體驗？</item>
+        <item>你會如何評價對於 %1$s 的購買體驗？</item>
+        <item>你會如何評價對於 %1$s 的購物體驗？</item>
+        <item>你會如何評價對於 %1$s 的送貨體驗？</item>
+        <item>你會如何評價對於 %1$s 的出租體驗？</item>
+        <item>你會如何評價最近的 %1$s 商店造訪體驗？</item>
+        <item>你會如何評價最近的 %1$s 住宿體驗？</item>
+        <item>你會如何評價最近對於 %1$s 的航程體驗？</item>
+        <item>你會如何評價最近對於 %1$s 的搭乘體驗？</item>
+        <item>你會如何評價最近對於 %1$s 的旅程體驗？</item>
+        <item>你會如何評價最近到 %1$s 的造訪體驗？</item>
+        <item>你會如何評價最近在 %1$s 所食用的餐點？</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 天</item>
+        <item>12 個月</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0.25x</item>
+        <item>0.5x</item>
+        <item>0.75x</item>
+        <item>正常</item>
+        <item>1.25x</item>
+        <item>1.5x</item>
+        <item>2x</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>你對 %1$s 的整體滿意度為何？</item>
+        <item>你對 %1$s 的滿意度為如何？</item>
+        <item>整體而言，你對最近的 %1$s 體驗的滿意程度為何？</item>
+        <item>你對與 %1$s 的互動體驗整體評價如何？</item>
+        <item>你對 %1$s 的整體體驗評價如何？</item>
+        <item>你至今對 %1$s 的體驗評價如何？</item>
+        <item>你對在 X 上與 %1$s 的互動體驗評價如何？</item>
+        <item>你最近對 %1$s 的體驗還滿意嗎？</item>
+        <item>%1$s 在多大程度上符合你的期望？</item>
+        <item>你對 %1$s 的顧客體驗評價如何？</item>
+        <item>你對 %1$s 的服務體驗評價如何？</item>
+        <item>你對 %1$s 最近的服務體驗評價如何？</item>
+        <item>你對 %1$s 所提供服務的評價如何？</item>
+        <item>你對與 %1$s 的互動結果是否滿意？</item>
+        <item>你對 %1$s 為你解決問題的能力評價如何？</item>
+        <item>你對 %1$s 的回應時間評價如何？</item>
+        <item>你對 %1$s 服務速度的評價如何？</item>
+        <item>你對 %1$s 解決問題所花費時間的評價如何？</item>
+        <item>你對 %1$s 解決問題所花費時間的評價如何？</item>
+        <item>你對 %1$s 解決問題速度的評價如何？</item>
+        <item>你對 %1$s 顧問專業度的評價如何？</item>
+        <item>你對協助你的 %1$s 代理的滿意程度為何？</item>
+        <item>你對協助你的 %1$s 專員的滿意程度為何？</item>
+        <item>你對協助你的 %1$s 代表的滿意程度為何？</item>
+        <item>你對最近與 %1$s 的銀行業務體驗評價如何？</item>
+        <item>你對在 %1$s 整體活動體驗的評價如何？</item>
+        <item>你對使用 %1$s 支付帳單的體驗有何評價？</item>
+        <item>你對 %1$s 的購買體驗評價如何？</item>
+        <item>你對 %1$s 的購物體驗評價如何？</item>
+        <item>你對 %1$s 送貨體驗的評價如何？</item>
+        <item>你對 %1$s 的租賃體驗評價如何？</item>
+        <item>你對最近造訪 %1$s 商店的體驗評價如何？</item>
+        <item>你對最近在 %1$s 的住宿體驗評價如何？</item>
+        <item>你對最近搭乘 %1$s 航班體驗的評價如何？</item>
+        <item>你對最近搭乘 %1$s 的體驗評價如何？</item>
+        <item>你對最近與 %1$s 的旅程體驗評價如何？</item>
+        <item>你對最近造訪 %1$s 的體驗評價如何？</item>
+        <item>你對最近在 %1$s 用餐的評價如何？</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>你向朋友推薦 %1$s 的機率有多高？</item>
+        <item>你向朋友推薦 %1$s 的可能性有多高？</item>
+        <item>你向同事推薦 %1$s 的可能性有多高？</item>
+        <item>你向家人推薦 %1$s 的可能性有多高？</item>
+        <item>你向其他人推薦 %1$s 的可能性有多高？</item>
+        <item>你向朋友或同事推薦 %1$s 的可能性有多高？</item>
+        <item>你未來光顧 %1$s 的可能性有多高？</item>
+        <item>你推薦 %1$s 的可能性有多高？</item>
+        <item>你會向朋友或同事推薦 %1$s 嗎？</item>
+        <item>你向朋友推薦你的 %1$s 體驗的機率有多大？</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>觀眾人數眾多</item>
+        <item>積極正面的社群</item>
+        <item>視訊畫質</item>
+        <item>令人愉快的聊天</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>觀眾人數太少</item>
+        <item>騷擾</item>
+        <item>視訊問題</item>
+        <item>聊天中有垃圾訊息</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 分鐘</item>
+        <item>30 分鐘</item>
+        <item>1 小時</item>
+        <item>2 小時</item>
+        <item>4 小時</item>
+        <item>每日</item>
+    </string-array>
+</resources>

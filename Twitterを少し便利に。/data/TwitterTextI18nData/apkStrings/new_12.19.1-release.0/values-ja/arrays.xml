@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>新しいポストの通知を受け取ります。</item>
+        <item>新しいポストと返信の通知を受け取ります。</item>
+        <item>新しいサブスクリプションポストの通知を受け取ります。</item>
+        <item>新しいライブ動画ポストの通知を受け取ります。</item>
+        <item>新しいポストの通知を受け取りません。</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>すべてのポスト</item>
+        <item>すべてのポストと返信</item>
+        <item>サブスクリプションポストのみ</item>
+        <item>ライブ動画のみ</item>
+        <item>オフ</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>このアカウントによるすべてのポストの通知を受け取ります。</item>
+        <item>このアカウントによるポストと返信の通知を受け取ります。</item>
+        <item>サブスクリプションポストの通知のみ受け取ります。</item>
+        <item>放送中のライブ放送についての通知のみ受け取ります。</item>
+        <item>このアカウントのポストについての通知をオフにします。</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>リンクをポスト</item>
+        <item>リンクをコピー</item>
+        <item>リンクを送信</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>全体的な印象として%1$sはいかがでしたか？</item>
+        <item>%1$sはいかがでしたか？</item>
+        <item>全体的な印象として最近利用された%1$sはいかがでしたか？</item>
+        <item>全体的な印象として%1$sはいかがでしたか？</item>
+        <item>全体的な印象として%1$sはいかがでしたか？</item>
+        <item>これまでの印象として%1$sはいかがでしたか？</item>
+        <item>Twitterで利用された%1$sはいかがでしたか？</item>
+        <item>最近利用された%1$sはいかがでしたか？</item>
+        <item>%1$sの満足度はどれくらいですか？</item>
+        <item>利用された%1$sはいかがでしたか？</item>
+        <item>%1$sのサービスはいかがでしたか？</item>
+        <item>最近利用された%1$sのサービスはいかがでしたか？</item>
+        <item>%1$sのサービスはいかがでしたか？</item>
+        <item>%1$sとやり取りした結果はいかがでしたか？</item>
+        <item>%1$sの問題解決力はいかがでしたか？</item>
+        <item>%1$sの回答までにかかる時間はいかがでしたか？</item>
+        <item>%1$sのサービスの速さはいかがでしたか？</item>
+        <item>%1$sの解決までにかかる時間はいかがでしたか？</item>
+        <item>%1$sの問題解決までにかかる時間はいかがでしたか？</item>
+        <item>%1$sの解決の速さはいかがでしたか？</item>
+        <item>%1$sで対応されたアドバイザーの知識はいかがでしたか？</item>
+        <item>%1$sで対応されたエージェントはいかかでしたか？</item>
+        <item>%1$sで対応された専門家はいかかでしたか？</item>
+        <item>%1$sで対応された代理人はいかかでしたか？</item>
+        <item>最近取引された%1$sはいかがでしたか？</item>
+        <item>全体的な印象として%1$sでのイベントはいかがでしたか？</item>
+        <item>%1$sでのお支払いはいかがでしたか？</item>
+        <item>%1$sでのご購入はいかがでしたか？</item>
+        <item>%1$sでのショッピングはいかがでしたか？</item>
+        <item>%1$sのデリバリーはいかがでしたか？</item>
+        <item>レンタルを利用された%1$sはいかがでしたか？</item>
+        <item>最近行かれた%1$sはいかがでしたか？</item>
+        <item>最近宿泊された%1$sはいかがでしたか？</item>
+        <item>最近フライトを利用された%1$sはいかがでしたか？</item>
+        <item>最近利用された%1$sはいかがでしたか？</item>
+        <item>最近旅行された%1$sはいかがでしたか？</item>
+        <item>最近行かれた%1$sはいかがでしたか？</item>
+        <item>最近お食事された%1$sはいかがでしたか？</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30日</item>
+        <item>12ヶ月</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0.25x</item>
+        <item>0.5x</item>
+        <item>0.75x</item>
+        <item>標準</item>
+        <item>1.25x</item>
+        <item>1.5x</item>
+        <item>2x</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>%1$sの全体的な満足度はどれくらいですか？</item>
+        <item>%1$sの満足度はどれくらいですか？</item>
+        <item>全体的な印象として最近利用された%1$sはいかがでしたか？</item>
+        <item>%1$sに関する全体的な印象はいかがですか？</item>
+        <item>%1$sでの全体的な印象はいかがですか？</item>
+        <item>%1$sでのこれまでの体験はいかがですか？</item>
+        <item>Xで利用された%1$sはいかがでしたか？</item>
+        <item>最近利用された%1$sに満足しましたか？</item>
+        <item>%1$sはあなたの期待にどの程度応えていますか？</item>
+        <item>利用した%1$sはいかがでしたか？</item>
+        <item>%1$sの対応はいかがでしたか？</item>
+        <item>最近利用した%1$sの対応はいかがでしたか？</item>
+        <item>%1$sでのサービスはいかがでしたか？</item>
+        <item>%1$sとのやり取りの結果には満足いただけましたか？</item>
+        <item>%1$sの不具合に対する解決力はいかがでしたか？</item>
+        <item>%1$sの回答までにかかる時間はいかがでしたか？</item>
+        <item>%1$sの対応の早さはいかがでしたか？</item>
+        <item>%1$sの解決までにかかる時間はいかがでしたか？</item>
+        <item>%1$sの不具合解決までにかかった早さはいかがでしたか？</item>
+        <item>%1$sの問題解決の早さはいかがでしたか？</item>
+        <item>%1$sで対応されたアドバイザーの知識はいかがでしたか？</item>
+        <item>%1$sで対応したスタッフいかかでしたか？</item>
+        <item>%1$sで対応した専門家はいかかでしたか？</item>
+        <item>%1$sで対応したスタッフはいかかでしたか？</item>
+        <item>最近取引された%1$sはいかがでしたか？</item>
+        <item>全体的な印象として%1$sでのイベントはいかがでしたか？</item>
+        <item>%1$sでの支払い時の対応はいかがでしたか？</item>
+        <item>%1$sでの購入はいかがでしたか？</item>
+        <item>%1$sでのショッピングはいかがでしたか？</item>
+        <item>%1$sの配送サービスはいかがでしたか？</item>
+        <item>%1$sでのレンタル体験はいかがでしたか？</item>
+        <item>最近利用した%1$sはいかがでしたか？</item>
+        <item>最近宿泊した%1$sホテルについてはいかがでしたか？</item>
+        <item>最近フライトを利用された%1$sはいかがでしたか？</item>
+        <item>最近利用された%1$sはいかがでしたか？</item>
+        <item>%1$sでの最近の旅行はいかがでしたか？</item>
+        <item>最近利用した%1$sはいかがでしたか？</item>
+        <item>最近お食事された%1$sはいかがでしたか？</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>%1$sをどの程度お友だちにおすすめしますか？</item>
+        <item>%1$sをどの程度お友だちにおすすめしますか？</item>
+        <item>%1$sをどの程度同僚におすすめしますか？</item>
+        <item>%1$sをどの程度ご家族におすすめしますか？</item>
+        <item>%1$sをどの程度他のユーザーにおすすめしますか？</item>
+        <item>%1$sをどの程度お友だちや同僚におすすめしますか？</item>
+        <item>%1$sでどの程度今後もショッピングしたいですか？</item>
+        <item>%1$sをどの程度おすすめしますか？</item>
+        <item>%1$sをお友だちや同僚におすすめしますか？</item>
+        <item>利用された%1$sをどの程度お友だちにおすすめしますか？</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>視聴者数が多い</item>
+        <item>コミュニティが前向きである</item>
+        <item>画質が高い</item>
+        <item>チャットが魅力的である</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>視聴者数が少ない</item>
+        <item>嫌がらせ</item>
+        <item>動画に問題がある</item>
+        <item>チャットにスパムがある</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15分</item>
+        <item>30分</item>
+        <item>1時間</item>
+        <item>2時間</item>
+        <item>4時間</item>
+        <item>毎日</item>
+    </string-array>
+</resources>

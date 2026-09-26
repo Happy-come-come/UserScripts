@@ -1,0 +1,1107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="a11y_composer_poll_choice_characters_remaining">
+        <item quantity="zero">‏{count} من الأحرف المتبقية</item>
+        <item quantity="one">‏{count} حرف واحد متبقٍ</item>
+        <item quantity="two">‏{count} حرفان متبقيان</item>
+        <item quantity="few">‏{count} حرف متبقية</item>
+        <item quantity="many">‏{count} حرفًا متبقيًا</item>
+        <item quantity="other">‏{count} حرف متبقٍ</item>
+    </plurals>
+    <plurals name="admin_tools_subtitle_members">
+        <item quantity="one">‏%d من الأعضاء</item>
+        <item quantity="other">‏%d من الأعضاء</item>
+    </plurals>
+    <plurals name="av_group_call_member_count">
+        <item quantity="one">‏%1$d عضو</item>
+        <item quantity="other">‏%1$d أعضاء</item>
+    </plurals>
+    <plurals name="badge_item_count">
+        <item quantity="one">‏%d عنصر جديد</item>
+        <item quantity="other">‏%d عناصر جديدة</item>
+    </plurals>
+    <plurals name="cohost_current_count">
+        <item quantity="one">‏%1$d م. شريك</item>
+        <item quantity="other">‏%1$d م. شركاء</item>
+    </plurals>
+    <plurals name="cohost_open_spots_count">
+        <item quantity="zero">‏%1$d أماكن مفتوحة</item>
+        <item quantity="one">‏%1$d مكان واحد مفتوح</item>
+        <item quantity="two">‏%1$d مكانان مفتوحان</item>
+        <item quantity="few">‏%1$d أماكن مفتوحة</item>
+        <item quantity="many">‏%1$d مكانًا مفتوحًا</item>
+        <item quantity="other">‏%1$d مكان مفتوح</item>
+    </plurals>
+    <plurals name="community_member_count">
+        <item quantity="one">‏%d عضو مجتمع</item>
+        <item quantity="other">‏%d عضو مجتمع</item>
+    </plurals>
+    <plurals name="community_moderator_count">
+        <item quantity="one">‏%d مشرف</item>
+        <item quantity="other">‏%d مشرف</item>
+    </plurals>
+    <plurals name="community_navigation_join_requests_label">
+        <item quantity="one">‏%s من الطلبات</item>
+        <item quantity="other">‏%s من الطلبات</item>
+    </plurals>
+    <plurals name="community_navigation_new_unread_tweets_label">
+        <item quantity="one">‏%s من المنشورات الجديدة</item>
+        <item quantity="other">‏%s منشورٍ جديد</item>
+    </plurals>
+    <plurals name="community_navigation_pending_reports_label">
+        <item quantity="one">‏%s من البلاغات</item>
+        <item quantity="other">‏%s من البلاغات</item>
+    </plurals>
+    <plurals name="composer_count_progress_overflow_warning">
+        <item quantity="one">‏النص طويل جدًا بمقدار %d من الأحرف</item>
+        <item quantity="other">‏النص طويل جدًا بمقدار %d من الأحرف</item>
+    </plurals>
+    <plurals name="composer_count_progress_warning">
+        <item quantity="one">‏متبقي %d من الأحرف</item>
+        <item quantity="other">‏متبقي %d من الأحرف</item>
+    </plurals>
+    <plurals name="content_description_fleet_item_space_with_others">
+        <item quantity="one">‏مساحة %1$s مع %2$d آخر</item>
+        <item quantity="other">‏مساحة %1$s مع %2$d آخرين</item>
+    </plurals>
+    <plurals name="data_sync_notif_title">
+        <item quantity="one">‏%d تفاعل جديد</item>
+        <item quantity="other">‏%d تفاعلات جديدة</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">‏%d يوم</item>
+        <item quantity="other">‏%d يومًا</item>
+    </plurals>
+    <plurals name="dm_add_people_failure">
+        <item quantity="one">‏تعذرت إضافة المستخدم إلى هذه المجموعة.</item>
+        <item quantity="other">‏تعذرت إضافة %d من المستخدمين إلى هذه المجموعة.</item>
+    </plurals>
+    <plurals name="dm_add_people_success">
+        <item quantity="one">‏تمت إضافة المستخدم إلى المجموعة.</item>
+        <item quantity="other">‏تمت إضافة %d من المستخدمين إلى المجموعة.</item>
+    </plurals>
+    <plurals name="dm_follower_count_no_joined_date">
+        <item quantity="one">‏{num_followers} متابِع</item>
+        <item quantity="other">‏{num_followers} من المتابِعين</item>
+    </plurals>
+    <plurals name="dm_group_account_name">
+        <item quantity="one">‏شخص واحد</item>
+        <item quantity="other">‏%d أشخاص</item>
+    </plurals>
+    <plurals name="dm_group_chat_count">
+        <item quantity="one">‏دردشة جماعية مع %d من الأشخاص</item>
+        <item quantity="other">‏دردشة جماعية مع %d من الأشخاص</item>
+    </plurals>
+    <plurals name="dm_group_conversation_participant_count">
+        <item quantity="one">‏%1$d شخص</item>
+        <item quantity="other">‏%1$d من الأشخاص</item>
+    </plurals>
+    <plurals name="dm_group_participant_count">
+        <item quantity="one">‏يوجد %1$s في هذه المجموعة</item>
+        <item quantity="other">‏يوجد %1$s في هذه المجموعة</item>
+    </plurals>
+    <plurals name="dm_group_participant_count_person_details">
+        <item quantity="one">‏%1$s من الأشخاص الآخرين</item>
+        <item quantity="other">‏%1$s من الأشخاص الآخرين</item>
+    </plurals>
+    <plurals name="dm_image_profile">
+        <item quantity="one">‏صورة الملف الشخصيّ لـ %s</item>
+        <item quantity="other">‏صور الملف الشخصيّ لـ %s</item>
+    </plurals>
+    <plurals name="dm_new_people_you_may_know">
+        <item quantity="one">‏%d شخص جديد قد تعرفه</item>
+        <item quantity="other">‏%d أشخاص جدد قد تعرفهم</item>
+    </plurals>
+    <plurals name="dm_new_requests">
+        <item quantity="one">‏%d طلب جديد</item>
+        <item quantity="other">‏طلبات %d الجديدة</item>
+    </plurals>
+    <plurals name="dm_participant_added_by_deleted_user">
+        <item quantity="one">‏تمت إضافة {participants}</item>
+        <item quantity="other">‏تمت إضافة {participants}</item>
+    </plurals>
+    <plurals name="dm_pending_requests">
+        <item quantity="one">‏%d طلب معلق</item>
+        <item quantity="other">‏طلبات %s المعلقة</item>
+    </plurals>
+    <plurals name="dm_people_you_may_know">
+        <item quantity="one">‏%d شخص قد تعرفه</item>
+        <item quantity="other">‏%d أشخاص قد تعرفهم</item>
+    </plurals>
+    <plurals name="dm_pinned_conversations_max_count_exceeded_title">
+        <item quantity="one">‏لا يمكنك تثبيت سوى %d من الدردشات</item>
+        <item quantity="other">‏لا يمكنك تثبيت سوى %d من الدردشات</item>
+    </plurals>
+    <plurals name="dm_share_group_members_and_others">
+        <item quantity="one">‏{visible_names} و{others_count} آخرون</item>
+        <item quantity="other">‏{visible_names}، و{others_count} آخرون</item>
+    </plurals>
+    <plurals name="dm_state_seen_by">
+        <item quantity="one">‏تمت مشاهدته بواسطة %d شخص</item>
+        <item quantity="other">‏تمت مشاهدة بواسطة %d من الأشخاص</item>
+    </plurals>
+    <plurals name="dm_unread_messages">
+        <item quantity="one">‏%d رسالة غير مقروءة</item>
+        <item quantity="other">‏%d رسائل غير مقروءة</item>
+    </plurals>
+    <plurals name="dm_user_joined_and_follower_count">
+        <item quantity="one">‏انضم {joined_date} • {num_followers} من المتابِعين</item>
+        <item quantity="other">‏انضم {joined_date} • {num_followers} من المتابِعين</item>
+    </plurals>
+    <plurals name="duration_picker_set_days">
+        <item quantity="one">‏يوم واحد</item>
+        <item quantity="other">‏%d يومٍ</item>
+    </plurals>
+    <plurals name="duration_picker_set_hours">
+        <item quantity="one">‏ساعة واحدة</item>
+        <item quantity="other">‏%d ساعةٍ</item>
+    </plurals>
+    <plurals name="duration_picker_set_minutes">
+        <item quantity="one">‏دقيقة واحدة</item>
+        <item quantity="other">‏%d دقيقةٍ</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="zero">تقديم سريع للفيديو بمقدار %d ثانية</item>
+        <item quantity="one">تقديم سريع للفيديو بمقدار ثانية واحدة (%d)</item>
+        <item quantity="two">تقديم سريع للفيديو بمقدار ثانيتَين (%d)</item>
+        <item quantity="few">تقديم سريع للفيديو بمقدار %d ثوانٍ</item>
+        <item quantity="many">تقديم سريع للفيديو بمقدار %d ثانية</item>
+        <item quantity="other">تقديم سريع للفيديو بمقدار %d ثانية</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="zero">ترجيع الفيديو بمقدار %d ثانية</item>
+        <item quantity="one">ترجيع الفيديو بمقدار ثانية واحدة (%d)</item>
+        <item quantity="two">ترجيع الفيديو بمقدار ثانيتَين (%d)</item>
+        <item quantity="few">ترجيع الفيديو بمقدار %d ثوانٍ</item>
+        <item quantity="many">ترجيع الفيديو بمقدار %d ثانية</item>
+        <item quantity="other">ترجيع الفيديو بمقدار %d ثانية</item>
+    </plurals>
+    <plurals name="facepile_content_description_phrase">
+        <item quantity="one">‏صورة الملف الشخصيّ لـ {user_names}</item>
+        <item quantity="other">‏صور الملف الشخصيّ لـ {user_names}</item>
+    </plurals>
+    <plurals name="full_screen_gallery_header_add">
+        <item quantity="one">‏أضف %d</item>
+        <item quantity="other">‏إضافة %d</item>
+    </plurals>
+    <plurals name="graphql_errors_button">
+        <item quantity="one">‏%d من الأخطاء</item>
+        <item quantity="other">‏%d من الأخطاء</item>
+    </plurals>
+    <plurals name="guest_management_max_cohost_count_label">
+        <item quantity="one">‏يُسمح لك فقط بإضافة %1$d من الـ م. الشركاء.</item>
+        <item quantity="other">‏يُسمح لك فقط بإضافة %1$d من الـ م. الشركاء.</item>
+    </plurals>
+    <plurals name="guest_management_open_cohost_count_label">
+        <item quantity="one">‏يمكنك إضافة %1$d شخص آخر بحد أقصى.</item>
+        <item quantity="other">‏أضف حتى %1$d من الأشخاص الآخرين.</item>
+    </plurals>
+    <plurals name="host_kudos_num_followers_gained">
+        <item quantity="one">‏لديك %1$d من المتابعين الجدد!</item>
+        <item quantity="other">‏لديك %1$d متابع جديد!</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">‏%d ساعة</item>
+        <item quantity="other">‏%d ساعة</item>
+    </plurals>
+    <plurals name="humanization_prompt_followers">
+        <item quantity="one">‏%1$s متابع %2$s.</item>
+        <item quantity="other">‏%1$s يتابع %2$s.</item>
+    </plurals>
+    <plurals name="humanization_prompt_topics">
+        <item quantity="one">‏أنت و%1$s كلاكما تتابعان الموضوع %2$s.</item>
+        <item quantity="other">‏أنت و%1$s كلاكما تتابعان المواضيع %2$s.</item>
+    </plurals>
+    <plurals name="likes">
+        <item quantity="one">‏%d إعجاب</item>
+        <item quantity="other">‏%d من الإعجابات</item>
+    </plurals>
+    <plurals name="list_member_count">
+        <item quantity="one">‏عضو</item>
+        <item quantity="other">‏عضوًا</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_message">
+        <item quantity="one">"‏تتميز أوصاف الصور الجيدة بالإيجاز والوضوح. لذا؛ احرص على تلخيص أي نص أو كتابته في الصورة نفسها.
+
+يساهم الوصف الذي تضيفه للصور في تسهيل إمكانية وصول ذوي الهمم إلى X وكذلك كل شخص يود الاطّلاع على سياق إضافي.
+
+يمكنك إيقاف تشغيل هذا التذكير من إعدادات الوصول."</item>
+        <item quantity="other">"‏تتميز أوصاف الصور الجيدة بالإيجاز والوضوح. لذا؛ احرص على تلخيص أي نص أو كتابته في الصورة نفسها.
+
+تساهم الأوصاف التي تضيفها للصور في تسهيل إمكانية وصول ذوي الهمم إلى X وكذلك كل شخص يود الاطّلاع على سياق إضافي.
+
+يمكنك إيقاف تشغيل هذا التذكير من إعدادات الوصول."</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_positive_btn_text">
+        <item quantity="one">‏إضافة وصف</item>
+        <item quantity="other">‏إضافة أوصاف</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_title">
+        <item quantity="one">‏لا تنسَ إتاحة الوصول إلى صورتك</item>
+        <item quantity="other">‏لا تنسَ إتاحة الوصول إلى صورك</item>
+    </plurals>
+    <plurals name="media_monetization_settings_categories_selected">
+        <item quantity="one">‏%d فئة محددة</item>
+        <item quantity="other">‏%d فئات محددة</item>
+    </plurals>
+    <plurals name="media_tag_remaining">
+        <item quantity="one">‏يمكنك الإشارة حتى %d من الأشخاص.</item>
+        <item quantity="other">‏يمكنك الإشارة حتى %d من الأشخاص.</item>
+    </plurals>
+    <plurals name="media_tag_tagged">
+        <item quantity="one">‏%d تمت الإشارة إلى شخص</item>
+        <item quantity="other">‏تمت الإشارة إلى %d من الأشخاص</item>
+    </plurals>
+    <plurals name="member_count">
+        <item quantity="one">‏%s عضو</item>
+        <item quantity="other">‏%s من الأعضاء</item>
+    </plurals>
+    <plurals name="members">
+        <item quantity="one">‏%s عضو</item>
+        <item quantity="other">‏%s أعضاء</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">‏%d من الدقائق</item>
+        <item quantity="other">‏%d من الدقائق</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="zero">%d إشعار جديد</item>
+        <item quantity="one">إشعار جديد واحد (%d)</item>
+        <item quantity="two">إشعاران جديدان (%d)</item>
+        <item quantity="few">%d إشعارات جديدة</item>
+        <item quantity="many">%d إشعارًا جديدًا</item>
+        <item quantity="other">%d إشعار جديد</item>
+    </plurals>
+    <plurals name="muted_keyword_bulk_delete_success">
+        <item quantity="one">‏تم حذف %d من الكلمات</item>
+        <item quantity="other">‏تم حذف %d من الكلمات</item>
+    </plurals>
+    <plurals name="muted_keyword_selected_count">
+        <item quantity="one">‏تم تحديد %d</item>
+        <item quantity="other">‏تم تحديد %d</item>
+    </plurals>
+    <plurals name="narrowcast_community_member_count">
+        <item quantity="one">‏%s عضو</item>
+        <item quantity="other">‏%s من الأعضاء</item>
+    </plurals>
+    <plurals name="narrowcast_trusted_friends_count">
+        <item quantity="one">‏%s شخص</item>
+        <item quantity="other">‏%s أشخاص</item>
+    </plurals>
+    <plurals name="notification_description_after_sending_posts">
+        <item quantity="zero">‏أرسل {total} منشورات</item>
+        <item quantity="one">‏أرسل منشورًا</item>
+        <item quantity="two">‏أرسل {total} منشورين</item>
+        <item quantity="few">‏أرسل {total} منشورات</item>
+        <item quantity="many">‏أرسل {total} منشورًا</item>
+        <item quantity="other">‏أرسل {total} منشور</item>
+    </plurals>
+    <plurals name="notification_description_before_sending_posts">
+        <item quantity="zero">‏جارٍ التحضير لإرسال {total} منشورات…</item>
+        <item quantity="one">‏جارٍ التحضير لإرسال المنشور…</item>
+        <item quantity="two">‏جارٍ التحضير لإرسال {total} منشورين…</item>
+        <item quantity="few">‏جارٍ التحضير لإرسال {total} منشورات…</item>
+        <item quantity="many">‏جارٍ التحضير لإرسال {total} منشورًا…</item>
+        <item quantity="other">‏جارٍ التحضير لإرسال {total} منشور…</item>
+    </plurals>
+    <plurals name="notification_description_deleting_drafts">
+        <item quantity="zero">‏جارٍ حذف المسودات {current} من {total}…</item>
+        <item quantity="one">‏جارٍ حذف المسوّدة…</item>
+        <item quantity="two">‏جارٍ حذف المسودات {current}من {total}…</item>
+        <item quantity="few">‏جارٍ حذف المسودات {current} من {total}…</item>
+        <item quantity="many">‏جارٍ حذف المسودات {current} من {total}…</item>
+        <item quantity="other">‏جارٍ حذف المسودات {current} من {total}…</item>
+    </plurals>
+    <plurals name="notification_description_editable_posts">
+        <item quantity="zero">‏جارٍ حذف منشور قابل للتعديل {current} من {total}…</item>
+        <item quantity="one">‏جارٍ حذف منشور واحد قابل للتعديل…</item>
+        <item quantity="two">‏جارٍ حذف منشورين قابلين للتعديل {current} من {total}…</item>
+        <item quantity="few">‏جارٍ حذف منشورات قابلة للتعديل {current} من {total}…</item>
+        <item quantity="many">‏جارٍ حذف منشور قابل للتعديل {current} من {total}…</item>
+        <item quantity="other">‏جارٍ حذف منشور قابل للتعديل {current} من {total}…</item>
+    </plurals>
+    <plurals name="notification_description_preparing_media">
+        <item quantity="zero">‏جارٍ تحضير الوسائط {current} من {total}…</item>
+        <item quantity="one">‏جارٍ تحضير الوسائط...</item>
+        <item quantity="two">‏جارٍ تحضير الوسائط {current} من {total}…</item>
+        <item quantity="few">‏جارٍ تحضير الوسائط {current} من {total}…</item>
+        <item quantity="many">‏جارٍ تحضير الوسائط {current} من {total}…</item>
+        <item quantity="other">‏جارٍ تحضير الوسائط {current} من {total}…</item>
+    </plurals>
+    <plurals name="notification_description_sending_drafts">
+        <item quantity="zero">‏جارٍ إرسال المسودات {current} من {total}…</item>
+        <item quantity="one">‏جارٍ إرسال مسوّدة…</item>
+        <item quantity="two">‏جارٍ إرسال المسودات {current} من {total}…</item>
+        <item quantity="few">‏جارٍ إرسال المسودات {current}من {total}…</item>
+        <item quantity="many">‏جارٍ إرسال المسودات {current}من {total}…</item>
+        <item quantity="other">‏جارٍ إرسال المسودات {current} من{total}…</item>
+    </plurals>
+    <plurals name="notification_description_sending_posts">
+        <item quantity="zero">‏جارٍ إرسال المنشورات {current} من {total}…</item>
+        <item quantity="one">‏جارٍ إرسال المنشور…</item>
+        <item quantity="two">‏جارٍ إرسال المنشورات {current} من {total}…</item>
+        <item quantity="few">‏جارٍ إرسال المنشورات {current} من {total}…</item>
+        <item quantity="many">‏جارٍ إرسال المنشورات {current} من {total}…</item>
+        <item quantity="other">‏جارٍ إرسال المنشورات {current} من {total}…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_media">
+        <item quantity="zero">‏جارٍ تحميل الوسائط {current} من {total}…</item>
+        <item quantity="one">‏جارٍ تحميل الوسائط…</item>
+        <item quantity="two">‏جارٍ تحميل الوسائط {current} من {total}…</item>
+        <item quantity="few">‏جارٍ تحميل الوسائط {current} من {total}…</item>
+        <item quantity="many">‏جارٍ تحميل الوسائط {current} من {total}…</item>
+        <item quantity="other">‏جارٍ تحميل الوسائط {current} من {total}…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_poll">
+        <item quantity="zero">‏جارٍ تحميل الاستطلاع {current} من {total}…</item>
+        <item quantity="one">‏جارٍ تحميل الاستطلاع…</item>
+        <item quantity="two">‏جارٍ تحميل الاستطلاع {current} من {total}…</item>
+        <item quantity="few">‏جارٍ تحميل الاستطلاع {current} من {total}…</item>
+        <item quantity="many">‏جارٍ تحميل الاستطلاع {current} من {total}…</item>
+        <item quantity="other">‏جارٍ تحميل الاستطلاع {current} من {total}…</item>
+    </plurals>
+    <plurals name="notification_title_after_sending_posts">
+        <item quantity="zero">‏منشورات غير مرسَلة</item>
+        <item quantity="one">‏منشورًا واحدًا مرسلًا</item>
+        <item quantity="two">‏منشوران غير مرسَلين</item>
+        <item quantity="few">‏منشورات مرسلة</item>
+        <item quantity="many">‏منشورًا غير مرسَلًا</item>
+        <item quantity="other">‏منشور غير مرسَل</item>
+    </plurals>
+    <plurals name="notification_title_before_sending_posts">
+        <item quantity="zero">‏جارٍ التحضير لإرسال منشورات</item>
+        <item quantity="one">‏جارٍ التحضير لإرسال منشور</item>
+        <item quantity="two">‏جارٍ التحضير لإرسال منشورين</item>
+        <item quantity="few">‏جارٍ التحضير لإرسال منشورات</item>
+        <item quantity="many">‏جارٍ التحضير لإرسال منشور</item>
+        <item quantity="other">‏جارٍ التحضير لإرسال منشور</item>
+    </plurals>
+    <plurals name="notification_title_deleting_drafts">
+        <item quantity="zero">‏حذف مسودات</item>
+        <item quantity="one">‏حذف مسوّدة واحدة</item>
+        <item quantity="two">‏حذف مسودتين</item>
+        <item quantity="few">‏حذف مسودات</item>
+        <item quantity="many">‏حذف مسودة</item>
+        <item quantity="other">‏حذف مسودة</item>
+    </plurals>
+    <plurals name="notification_title_deleting_editable_posts">
+        <item quantity="zero">‏جارٍ حذف منشورات قابلة للتعديل</item>
+        <item quantity="one">‏جارٍ حذف منشور قابل للتعديل</item>
+        <item quantity="two">‏جارٍ حذف منشورين قابلين للتعديل</item>
+        <item quantity="few">‏حذف منشورات قابلة للتعديل</item>
+        <item quantity="many">‏حذف منشور قابل للتعديل</item>
+        <item quantity="other">‏حذف منشور قابل للتعديل</item>
+    </plurals>
+    <plurals name="notification_title_preparing_media">
+        <item quantity="zero">‏جارٍ تحضير الوسائط</item>
+        <item quantity="one">‏جارٍ تحضير الوسائط</item>
+        <item quantity="two">‏جارٍ تحضير الوسائط</item>
+        <item quantity="few">‏جارٍ تحضير الوسائط</item>
+        <item quantity="many">‏جارٍ تحضير الوسائط</item>
+        <item quantity="other">‏جارٍ تحضير الوسائط</item>
+    </plurals>
+    <plurals name="notification_title_sending_drafts">
+        <item quantity="zero">‏إرسال مسودات</item>
+        <item quantity="one">‏إرسال مسوّدة واحدة</item>
+        <item quantity="two">‏إرسال مسودتين</item>
+        <item quantity="few">‏إرسال مسودات</item>
+        <item quantity="many">‏إرسال مسودة</item>
+        <item quantity="other">‏إرسال مسودة</item>
+    </plurals>
+    <plurals name="notification_title_sending_posts">
+        <item quantity="zero">‏جارٍ إرسال منشورات</item>
+        <item quantity="one">‏جارٍ إرسال منشور واحد</item>
+        <item quantity="two">‏جارٍ إرسال منشورين</item>
+        <item quantity="few">‏جارٍ إرسال منشورات</item>
+        <item quantity="many">‏جارٍ إرسال منشورًا</item>
+        <item quantity="other">‏جارٍ إرسال منشور</item>
+    </plurals>
+    <plurals name="notification_title_uploading_media">
+        <item quantity="zero">‏جارٍ تحميل الوسائط</item>
+        <item quantity="one">‏جارٍ تحميل الوسائط</item>
+        <item quantity="two">‏جارٍ تحميل الوسائط</item>
+        <item quantity="few">‏جارٍ تحميل الوسائط</item>
+        <item quantity="many">‏جارٍ تحميل الوسائط</item>
+        <item quantity="other">‏جارٍ تحميل الوسائط</item>
+    </plurals>
+    <plurals name="notification_title_uploading_poll">
+        <item quantity="zero">‏جارٍ تحميل استطلاع</item>
+        <item quantity="one">‏جارٍ تحميل استطلاع واحد</item>
+        <item quantity="two">‏جارٍ تحميل استطلاعين</item>
+        <item quantity="few">‏جارٍ تحميل استطلاعات</item>
+        <item quantity="many">‏جارٍ تحميل استطلاعًا</item>
+        <item quantity="other">‏جارٍ تحميل استطلاع</item>
+    </plurals>
+    <plurals name="notification_undo_nudge">
+        <item quantity="zero">‏فترة انتظار التراجع</item>
+        <item quantity="one">‏فترة انتظار التراجع</item>
+        <item quantity="two">‏فترة انتظار التراجع</item>
+        <item quantity="few">‏فترة انتظار التراجع</item>
+        <item quantity="many">‏فترة انتظار التراجع</item>
+        <item quantity="other">‏فترة انتظار التراجع</item>
+    </plurals>
+    <plurals name="others">
+        <item quantity="one">‏شخص واحد آخر</item>
+        <item quantity="other">‏%d آخر</item>
+    </plurals>
+    <plurals name="payment_ach_merchant_authorization_transactions_count">
+        <item quantity="zero">‏{count} من المعاملات</item>
+        <item quantity="one">‏معاملة واحدة</item>
+        <item quantity="two">‏{count} معاملتان</item>
+        <item quantity="few">‏{count} معاملات</item>
+        <item quantity="many">‏{count} معاملة</item>
+        <item quantity="other">‏{count} معاملة</item>
+    </plurals>
+    <plurals name="payment_onboarding_terms_invitation_subtitle">
+        <item quantity="one">‏تابع قبل انتهاء صلاحية المدفوعات.</item>
+        <item quantity="other">‏تابع قبل انتهاء صلاحية المدفوعات.</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_hours">
+        <item quantity="zero">‏%d ساعة</item>
+        <item quantity="one">‏%d ساعة واحدة</item>
+        <item quantity="two">‏%d ساعتان</item>
+        <item quantity="few">‏%d ساعات</item>
+        <item quantity="many">‏%d ساعة</item>
+        <item quantity="other">‏%d ساعة</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_minutes">
+        <item quantity="zero">‏%d دقيقة</item>
+        <item quantity="one">‏%d دقيقة واحدة</item>
+        <item quantity="two">‏%d دقيقتان</item>
+        <item quantity="few">‏%d دقائق</item>
+        <item quantity="many">‏%d دقيقة</item>
+        <item quantity="other">‏%d دقيقة</item>
+    </plurals>
+    <plurals name="premium_cancel_time_saved_seconds">
+        <item quantity="zero">‏%d ثانية</item>
+        <item quantity="one">‏%d ثانية واحدة</item>
+        <item quantity="two">‏%d ثانيتان</item>
+        <item quantity="few">‏%d ثوانٍ</item>
+        <item quantity="many">‏%d ثانية</item>
+        <item quantity="other">‏%d ثانية</item>
+    </plurals>
+    <plurals name="product_count">
+        <item quantity="one">‏%1$d من المنتجات</item>
+        <item quantity="other">‏%1$d من المنتجات</item>
+    </plurals>
+    <plurals name="profile_about_username_changes">
+        <item quantity="one">‏تغيير واحد في اسم المستخدم%s</item>
+        <item quantity="other">‏%s تغييرات في أسماء المستخدمين</item>
+    </plurals>
+    <plurals name="profile_creator_subscriptions_count">
+        <item quantity="one">‏اشتراك واحد</item>
+        <item quantity="other">‏اشتراك</item>
+    </plurals>
+    <plurals name="profile_follower_count">
+        <item quantity="one">‏متابِع</item>
+        <item quantity="other">‏متابِعًا</item>
+    </plurals>
+    <plurals name="profile_friends_following_others">
+        <item quantity="one">‏%d آخر</item>
+        <item quantity="other">‏%d آخرون</item>
+    </plurals>
+    <plurals name="profile_stat_followers_text">
+        <item quantity="zero">‏متابعون</item>
+        <item quantity="one">‏متابع واحد</item>
+        <item quantity="two">‏متابعون</item>
+        <item quantity="few">‏متابع</item>
+        <item quantity="many">‏متابعًا</item>
+        <item quantity="other">‏متابع</item>
+    </plurals>
+    <plurals name="profile_stat_following_text">
+        <item quantity="zero">‏متابَعة</item>
+        <item quantity="one">‏متابَعة واحدة</item>
+        <item quantity="two">‏متابَعتان</item>
+        <item quantity="few">‏متابَعات</item>
+        <item quantity="many">‏متابَعة</item>
+        <item quantity="other">‏متابَعة</item>
+    </plurals>
+    <plurals name="profile_stat_subscribers_text">
+        <item quantity="zero">‏مشتركَين</item>
+        <item quantity="one">‏مشترك</item>
+        <item quantity="two">‏مشتركان</item>
+        <item quantity="few">‏مشتركين</item>
+        <item quantity="many">‏مشتركًا</item>
+        <item quantity="other">‏مشترك</item>
+    </plurals>
+    <plurals name="profile_stat_subscriptions_text">
+        <item quantity="zero">‏اشتراكات</item>
+        <item quantity="one">‏اشتراك واحد</item>
+        <item quantity="two">‏اشتراكان</item>
+        <item quantity="few">‏اشتراكات</item>
+        <item quantity="many">‏اشتراكًا</item>
+        <item quantity="other">‏اشتراك</item>
+    </plurals>
+    <plurals name="profile_super_followers_count">
+        <item quantity="one">‏مشترك</item>
+        <item quantity="other">‏المشتركون</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_articles">
+        <item quantity="one">‏%s مقالة</item>
+        <item quantity="other">‏%s من المقالات</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_likes">
+        <item quantity="one">‏%s أعجبه</item>
+        <item quantity="other">‏%s يعجبه</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_media">
+        <item quantity="one">‏%s صورة</item>
+        <item quantity="other">‏الصور ومقاطع الفيديو لـ %s</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_timeline">
+        <item quantity="one">‏%s من المنشورات</item>
+        <item quantity="other">‏%s منشور</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_peak_msg">
+        <item quantity="zero">‏إحصائية مشاهدي البث.</item>
+        <item quantity="one">‏إحصائية مشاهدي البث. كان لديك %1$d كأعلى مشاهديين في %2$s.</item>
+        <item quantity="other">‏إحصائية مشاهدي البث. كان لديك %1$d كأعلى مشاهديين في %2$s.</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_point_msg">
+        <item quantity="one">‏كان لديك %1$d مشاهد في %2$s.</item>
+        <item quantity="other">‏كان لديك %1$d مشاهد في %2$s.</item>
+    </plurals>
+    <plurals name="ps__invite_follower">
+        <item quantity="zero">‏لا يوجد متابعين</item>
+        <item quantity="one">‏%d متابع</item>
+        <item quantity="other">‏%d متابعين</item>
+    </plurals>
+    <plurals name="ps__invited_num_followers_embolden">
+        <item quantity="one">‏قام *%1$s* بدعوة %2$s شخص</item>
+        <item quantity="other">‏قام *%1$s* بدعوة %2$s أشخاص</item>
+    </plurals>
+    <plurals name="ps__moderation_report_muted_by_moderator">
+        <item quantity="one">‏*تم الكتم بواسطة* %1$s</item>
+        <item quantity="other">‏*تم الكتم بواسطة* %1$s (%2$d)</item>
+    </plurals>
+    <plurals name="ps__moderation_report_unmuted_by_moderator">
+        <item quantity="one">‏*إلغاء الكتم بواسطة* %1$s</item>
+        <item quantity="other">‏*تم إلغاء الكتم بواسطة* %1$s (%2$d)</item>
+    </plurals>
+    <plurals name="ps__new_messages">
+        <item quantity="one">‏%1$d من الرسائل الجديدة</item>
+        <item quantity="other">‏%1$d من الرسائل الجديدة</item>
+    </plurals>
+    <plurals name="ps__num_hearts">
+        <item quantity="one">‏%s قلب</item>
+        <item quantity="other">‏%s قلوب</item>
+    </plurals>
+    <plurals name="ps__stats_live_viewers">
+        <item quantity="one">‏مُشاهِد مباشر</item>
+        <item quantity="other">‏مشاهِدون مباشرون</item>
+    </plurals>
+    <plurals name="ps__stats_replay_viewers">
+        <item quantity="one">‏مشاهِد أعاد المشاهدة</item>
+        <item quantity="other">‏مشاهدو الإعادة</item>
+    </plurals>
+    <plurals name="ps__time_format_days">
+        <item quantity="one">‏%d يوم</item>
+        <item quantity="other">‏%d أيام</item>
+    </plurals>
+    <plurals name="ps__time_format_hours">
+        <item quantity="one">‏%d ساعة</item>
+        <item quantity="other">‏%d ساعات</item>
+    </plurals>
+    <plurals name="ps__time_format_minutes">
+        <item quantity="one">‏%d دقيقة</item>
+        <item quantity="other">‏%d من الدقائق</item>
+    </plurals>
+    <plurals name="ps__time_format_seconds">
+        <item quantity="one">‏%d ثانية</item>
+        <item quantity="other">‏%d ثواني</item>
+    </plurals>
+    <plurals name="recording_replay_count_preview">
+        <item quantity="one">‏%s إعادة تشغيل</item>
+        <item quantity="other">‏%s رد/ردود</item>
+    </plurals>
+    <plurals name="relationship_followers_following_others">
+        <item quantity="one">‏%d آخر</item>
+        <item quantity="other">‏%d آخرين</item>
+    </plurals>
+    <plurals name="replies">
+        <item quantity="one">‏%d رد</item>
+        <item quantity="other">‏%d من الردود</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others">
+        <item quantity="other">‏ردا على ﻿%1$s و%2$d آخرين﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_exclusive">
+        <item quantity="other">‏ردًا على ﻿%1$s و %2$d آخرين﻿. سيظهر ردّك أيضًا للمشتركين الآخرين.</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_in_space">
+        <item quantity="other">‏ردًّا على ﻿%1$s و%2$d آخرين﻿ في ﻿%3$s﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others">
+        <item quantity="other">‏ردًا على ﻿%1$s %2$s و%3$d آخرين﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_exclusive">
+        <item quantity="other">‏ردًا على ﻿%1$s %2$s و%3$d آخرين﻿. سيظهر ردّك أيضًا للمشتركين الآخرين.</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_in_space">
+        <item quantity="other">‏ردًّا على ﻿%1$s %2$s و%3$d آخرين﻿ في ﻿%4$s﻿</item>
+    </plurals>
+    <plurals name="reported_tweet_reported_by">
+        <item quantity="one">‏تم التبليغ بواسطة {{}}%1$s{{}}</item>
+        <item quantity="other">‏تم التبليغ بواسطة {{}}%1$s عضو{{}}</item>
+    </plurals>
+    <plurals name="retweets">
+        <item quantity="one">‏%d من عمليات إعادة النشر</item>
+        <item quantity="other">‏%d إعادة نشر</item>
+    </plurals>
+    <plurals name="safety_mode_preview_description">
+        <item quantity="one">‏أبلغنا عن %d الذي قد يكون حسابًا مسيئًا أو مزعجًا.</item>
+        <item quantity="other">‏أبلغنا عن %d التي قد تكون حسابات مسيئة أو مزعجة.</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">‏%d من الثواني</item>
+        <item quantity="other">‏%d من الثواني</item>
+    </plurals>
+    <plurals name="send_cohost_invite">
+        <item quantity="one">‏إرسال دعوة م. شريك</item>
+        <item quantity="other">‏إرسال دعوات م. شركاء</item>
+    </plurals>
+    <plurals name="settings_notif_tweets_count">
+        <item quantity="one">‏%d شخص</item>
+        <item quantity="other">‏%d أشخاص</item>
+    </plurals>
+    <plurals name="share_card_likes">
+        <item quantity="zero">‏{num} إعجابات</item>
+        <item quantity="one">‏{num} إعجاب واحد</item>
+        <item quantity="two">‏{num} إعجابين</item>
+        <item quantity="few">‏{num} إعجابات</item>
+        <item quantity="many">‏{num} إعجابًا</item>
+        <item quantity="other">‏{num} إعجاب</item>
+    </plurals>
+    <plurals name="share_card_replies">
+        <item quantity="zero">‏{num} ردود</item>
+        <item quantity="one">‏{num} ردّ واحد</item>
+        <item quantity="two">‏{num} ردّان</item>
+        <item quantity="few">‏{num} ردود</item>
+        <item quantity="many">‏{num} ردًا</item>
+        <item quantity="other">‏{num} رد</item>
+    </plurals>
+    <plurals name="social_follow_and_follow_and_others">
+        <item quantity="one">‏قام %1$sو %2$s و%3$d آخر بمتابعة</item>
+        <item quantity="other">‏قام %1$s و %2$s و%3$d آخرون بمتابعة</item>
+    </plurals>
+    <plurals name="spaces_additional_participants">
+        <item quantity="one">‏+%1$s مستمع آخر</item>
+        <item quantity="other">‏+%1$s من المستمعين الآخرين</item>
+    </plurals>
+    <plurals name="spaces_blocked_warning">
+        <item quantity="one">‏لقد قمت بحظر %1$d شخص يتحدث</item>
+        <item quantity="other">‏لقد قمت بحظر %1$d من الأشخاص الذين يتحدثون</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_in_progress">
+        <item quantity="one">‏%1$s في هذه المساحة</item>
+        <item quantity="other">‏%1$s في هذه المساحة</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_replay">
+        <item quantity="one">‏%1$s كان في هذه المساحة</item>
+        <item quantity="other">‏%1$s كانوا في هذا المساحة</item>
+    </plurals>
+    <plurals name="spaces_cohost_invites_sent_toast">
+        <item quantity="zero">‏تم إرسال %1$d من دعوات م. شريك</item>
+        <item quantity="one">‏تم إرسال %1$d دعوة م. شريك واحدة</item>
+        <item quantity="two">‏تم إرسال %1$d دعوتي م. شريك</item>
+        <item quantity="few">‏تم إرسال %1$d دعوات م. شريك</item>
+        <item quantity="many">‏تم إرسال %1$d دعوة م. شريك</item>
+        <item quantity="other">‏تم إرسال %1$d دعوة م. شريك</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle">
+        <item quantity="zero">‏أضف حتى %1$d من الأشخاص الآخرين.</item>
+        <item quantity="one">‏أضف حتى %1$d شخص واحد آخر.</item>
+        <item quantity="two">‏أضف حتى %1$d شخصين آخرين.</item>
+        <item quantity="few">‏أضف حتى %1$d أشخاص آخرين.</item>
+        <item quantity="many">‏أضف حتى %1$d شخصًا آخر.</item>
+        <item quantity="other">‏أضف حتى %1$d شخص آخر.</item>
+    </plurals>
+    <plurals name="spaces_invite_cohosts_subtitle_full">
+        <item quantity="zero">‏يُسمح لك فقط بإضافة %1$d من الـ م. الشركاء.</item>
+        <item quantity="one">‏يُسمح لك فقط بإضافة %1$d م. شريك واحد.</item>
+        <item quantity="two">‏يُسمح لك فقط بإضافة %1$d م. شريكين.</item>
+        <item quantity="few">‏يُسمح لك فقط بإضافة %1$d م. شركاء.</item>
+        <item quantity="many">‏يُسمح لك فقط بإضافة %1$d م. شريكًا.</item>
+        <item quantity="other">‏يُسمح لك فقط بإضافة %1$d م. شريك.</item>
+    </plurals>
+    <plurals name="spaces_invite_confirmation">
+        <item quantity="one">‏تمت دعوة %1$d من الأشخاص إلى هذه المساحة</item>
+        <item quantity="other">‏تمت دعوة %1$d من الأشخاص إلى هذه المساحة</item>
+    </plurals>
+    <plurals name="spaces_invite_send_cohost_cta">
+        <item quantity="zero">‏إرسال دعوات م. شركاء</item>
+        <item quantity="one">‏إرسال دعوة م. شريك واحدة</item>
+        <item quantity="two">‏إرسال دعوتي م. شريك</item>
+        <item quantity="few">‏إرسال دعوات م. شركاء</item>
+        <item quantity="many">‏إرسال دعوات م. شركاء</item>
+        <item quantity="other">‏إرسال دعوات م. شركاء</item>
+    </plurals>
+    <plurals name="spaces_invite_send_speaker_cta">
+        <item quantity="zero">‏إرسال دعوة متحدث</item>
+        <item quantity="one">‏إرسال دعوة متحدث واحدة</item>
+        <item quantity="two">‏إرسال دعوتي متحدث</item>
+        <item quantity="few">‏إرسال دعوة متحدث</item>
+        <item quantity="many">‏إرسال دعوة متحدث</item>
+        <item quantity="other">‏إرسال دعوة متحدث</item>
+    </plurals>
+    <plurals name="spaces_invite_sent_toast">
+        <item quantity="zero">‏تمت دعوة %1$d من الأشخاص إلى هذه المساحة</item>
+        <item quantity="one">‏تمت دعوة %1$d شخص واحد إلى هذه المساحة</item>
+        <item quantity="two">‏تمت دعوة %1$d شخصان إلى هذه المساحة</item>
+        <item quantity="few">‏تمت دعوة %1$d أشخاص إلى هذه المساحة</item>
+        <item quantity="many">‏تمت دعوة %1$d شخصًا إلى هذه المساحة</item>
+        <item quantity="other">‏تمت دعوة %1$d شخص إلى هذه المساحة</item>
+    </plurals>
+    <plurals name="spaces_invite_speakers_subtitle">
+        <item quantity="zero">‏يمكنك دعوة ما يصل إلى %1$d من الأشخاص للتحدث</item>
+        <item quantity="one">‏يمكنك دعوة ما يصل إلى %1$d شخص واحد للتحدث</item>
+        <item quantity="two">‏يمكنك دعوة ما يصل إلى %1$d شخصين للتحدث</item>
+        <item quantity="few">‏يمكنك دعوة ما يصل إلى %1$d أشخاص للتحدث</item>
+        <item quantity="many">‏يمكنك دعوة ما يصل إلى %1$d شخصًا للتحدث</item>
+        <item quantity="other">‏يمكنك دعوة ما يصل إلى %1$d شخص للتحدث</item>
+    </plurals>
+    <plurals name="spaces_requested_pill_label">
+        <item quantity="zero">‏تم طلب (%1$d)</item>
+        <item quantity="one">‏تم طلب (%1$d)</item>
+        <item quantity="two">‏تم طلب (%1$d)</item>
+        <item quantity="few">‏تم طلب (%1$d)</item>
+        <item quantity="many">‏تم طلب (%1$d)</item>
+        <item quantity="other">‏تم طلب (%1$d)</item>
+    </plurals>
+    <plurals name="spaces_sheet_anonymous_others">
+        <item quantity="zero">‏+%1$s آخرون</item>
+        <item quantity="one">‏+%1$s آخر</item>
+        <item quantity="two">‏+%1$s آخران</item>
+        <item quantity="few">‏+%1$s آخرون</item>
+        <item quantity="many">‏+%1$s آخر</item>
+        <item quantity="other">‏+%1$s آخر</item>
+    </plurals>
+    <plurals name="spaces_speak_request_toast_label_many">
+        <item quantity="zero">‏يطلب %1$d شخص الإذن بالتحدث</item>
+        <item quantity="one">‏يطلب شخص واحد (%1$d) الإذن بالتحدث</item>
+        <item quantity="two">‏يطلب شخصان (%1$d) الإذن بالتحدث</item>
+        <item quantity="few">‏يطلب %1$d أشخاص الإذن بالتحدث</item>
+        <item quantity="many">‏يطلب %1$d شخصًا الإذن بالتحدث</item>
+        <item quantity="other">‏يطلب %1$d شخص الإذن بالتحدث</item>
+    </plurals>
+    <plurals name="speakers_current_count">
+        <item quantity="one">‏%1$d متحدث</item>
+        <item quantity="other">‏%1$d من المتحدثين</item>
+    </plurals>
+    <plurals name="speakers_listeners_count">
+        <item quantity="one">‏%1$d شخص يستمع</item>
+        <item quantity="other">‏%1$d من الأشخاص يستمعون</item>
+    </plurals>
+    <plurals name="speakers_open_spots_count">
+        <item quantity="one">‏%1$d من الأماكن المفتوحة</item>
+        <item quantity="other">‏%1$d من الأماكن المفتوحة</item>
+    </plurals>
+    <plurals name="speakers_requests_count">
+        <item quantity="one">‏%1$d طلب</item>
+        <item quantity="other">‏%1$d من الطلبات</item>
+    </plurals>
+    <plurals name="stat_label_bookmarks">
+        <item quantity="one">‏إضافة إلى العلامات المرجعية</item>
+        <item quantity="other">‏العلامات المرجعية</item>
+    </plurals>
+    <plurals name="stat_label_likes_sentence_case">
+        <item quantity="one">‏إعجاب</item>
+        <item quantity="other">‏إعجابات</item>
+    </plurals>
+    <plurals name="stat_label_quote_tweets">
+        <item quantity="one">‏اقتباس</item>
+        <item quantity="other">‏اقتباسات</item>
+    </plurals>
+    <plurals name="stat_label_retweets_sentence_case">
+        <item quantity="one">‏إعادة النشر</item>
+        <item quantity="other">‏المنشورات المُعاد نشرها</item>
+    </plurals>
+    <plurals name="stat_label_verified_views_sentence_case">
+        <item quantity="one">‏مشاهدة موَثّقة</item>
+        <item quantity="other">‏مشاهدات موَثّقة</item>
+    </plurals>
+    <plurals name="stat_label_views_sentence_case">
+        <item quantity="one">‏من المشاهدات</item>
+        <item quantity="other">‏من المشاهدات</item>
+    </plurals>
+    <plurals name="subscription_duration_days">
+        <item quantity="one">‏يوم</item>
+        <item quantity="other">‏%d من الأيام</item>
+    </plurals>
+    <plurals name="subscription_duration_months">
+        <item quantity="one">‏شهر</item>
+        <item quantity="other">‏%d من الأشهر</item>
+    </plurals>
+    <plurals name="subscription_duration_years">
+        <item quantity="one">‏سنة</item>
+        <item quantity="other">‏%d من السنوات</item>
+    </plurals>
+    <plurals name="subscription_offer_price_description_months">
+        <item quantity="one">‏{offer_price} للشهر الأول، ويتم التجديد مقابل {original_price}</item>
+        <item quantity="other">‏{offer_price} لأول %d شهر، ويتم التجديد مقابل {original_price}</item>
+    </plurals>
+    <plurals name="subscription_offer_title_special_offer_months">
+        <item quantity="one">‏{original_price_strike_through} {offer_price} للشهر الأول</item>
+        <item quantity="other">‏{original_price_strike_through} {offer_price} لأول %d من الشهور</item>
+    </plurals>
+    <plurals name="thread_draft_more_post">
+        <item quantity="zero">‏+{num} منشورات ضافية</item>
+        <item quantity="one">‏+{num} منشور إضافي واحد</item>
+        <item quantity="two">‏+{num} منشوران إضافيان</item>
+        <item quantity="few">‏+ {num} منشورات ضافية</item>
+        <item quantity="many">‏+ {num} منشورًا ضافيًا</item>
+        <item quantity="other">‏+ {num} منشور ضافي</item>
+    </plurals>
+    <plurals name="time_days">
+        <item quantity="one">‏%d ي</item>
+        <item quantity="other">‏%d ي</item>
+    </plurals>
+    <plurals name="time_days_ago">
+        <item quantity="one">‏مُنذ %d يوم</item>
+        <item quantity="other">‏مُنذ %d يوم</item>
+    </plurals>
+    <plurals name="time_hours">
+        <item quantity="one">‏%d س</item>
+        <item quantity="other">‏%d س</item>
+    </plurals>
+    <plurals name="time_hours_ago">
+        <item quantity="one">‏منذ %d ساعة</item>
+        <item quantity="other">‏منذ %d ساعة</item>
+    </plurals>
+    <plurals name="time_mins">
+        <item quantity="one">‏%d د</item>
+        <item quantity="other">‏%d د</item>
+    </plurals>
+    <plurals name="time_mins_ago">
+        <item quantity="one">‏منذ %d دقيقة</item>
+        <item quantity="other">‏منذ %d دقيقة</item>
+    </plurals>
+    <plurals name="time_secs">
+        <item quantity="one">‏%d ث</item>
+        <item quantity="other">‏%d ث</item>
+    </plurals>
+    <plurals name="time_weeks">
+        <item quantity="one">‏%d أسبوع</item>
+        <item quantity="other">‏%d أسبوع</item>
+    </plurals>
+    <plurals name="top_articles_time_window">
+        <item quantity="one">‏آخر ساعة</item>
+        <item quantity="other">‏آخر %s من الساعات</item>
+    </plurals>
+    <plurals name="tweet_stat_followers">
+        <item quantity="one">‏{num} متابِع</item>
+        <item quantity="other">‏{num} من المتابِعين</item>
+    </plurals>
+    <plurals name="tweet_visibility_education_dialog_non_followers_text">
+        <item quantity="one">‏%1$s لا يتابعك.</item>
+        <item quantity="other">‏%1$s وآخرين لا تتابعهم.</item>
+    </plurals>
+    <plurals name="undo_nudge_message">
+        <item quantity="zero">‏سيتم إرسال منشورك خلال %d ثوانٍ.</item>
+        <item quantity="one">‏سيتم إرسال منشورك خلال %d ثانية واحدة.</item>
+        <item quantity="two">‏سيتم إرسال منشورك خلال %d ثانيتين.</item>
+        <item quantity="few">‏سيتم إرسال منشورك خلال %d ثوانٍ.</item>
+        <item quantity="many">‏سيتم إرسال منشورك خلال %d ثانية.</item>
+        <item quantity="other">‏سيتم إرسال منشورك خلال %d ثانية.</item>
+    </plurals>
+    <plurals name="undo_send_period_in_seconds">
+        <item quantity="one">‏%d ثانية</item>
+        <item quantity="other">‏%d ثانية</item>
+    </plurals>
+    <plurals name="upload_progress_sending_posts">
+        <item quantity="one">‏جارٍ إرسال المنشور…</item>
+        <item quantity="other">‏جارٍ إرسال %d من المنشورات…</item>
+    </plurals>
+    <plurals name="verified_views">
+        <item quantity="one">‏%d من المشاهدات الموَثّقة</item>
+        <item quantity="other">‏%d من المشاهدات الموَثّقة</item>
+    </plurals>
+    <plurals name="weeks">
+        <item quantity="one">‏%d أسبوع</item>
+        <item quantity="other">‏%d أسبوع</item>
+    </plurals>
+    <plurals name="x_lite_time_weeks">
+        <item quantity="one">‏%d أسبوع</item>
+        <item quantity="other">‏%d أسابيع</item>
+    </plurals>
+    <plurals name="x_lite_time_years">
+        <item quantity="one">‏%d سنة</item>
+        <item quantity="other">‏%d سنوات</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_gifs">
+        <item quantity="zero">‏{count} ملفات GIF</item>
+        <item quantity="one">‏{count} ملف GIF واحد</item>
+        <item quantity="two">‏{count} ملفا GIF</item>
+        <item quantity="few">‏{count} ملفات GIF</item>
+        <item quantity="many">‏{count} ملف GIF</item>
+        <item quantity="other">‏{count} ملف GIF</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_other">
+        <item quantity="zero">‏{count} مرفقات</item>
+        <item quantity="one">‏{count} مرفق واحد</item>
+        <item quantity="two">‏{count} مرفقان</item>
+        <item quantity="few">‏{count} مرفقات</item>
+        <item quantity="many">‏{count} مرفقًا</item>
+        <item quantity="other">‏{count} مرفق</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_photos">
+        <item quantity="zero">‏{count} صور</item>
+        <item quantity="one">‏{count} صورة واحدة</item>
+        <item quantity="two">‏{count} صورتان</item>
+        <item quantity="few">‏{count} صور</item>
+        <item quantity="many">‏{count} صورة</item>
+        <item quantity="other">‏{count} صورة</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_videos">
+        <item quantity="zero">‏{count} مقاطع فيديو</item>
+        <item quantity="one">‏{count} مقطع فيديو واحد</item>
+        <item quantity="two">‏{count} مقطعا فيديو</item>
+        <item quantity="few">‏{count} مقاطع فيديو</item>
+        <item quantity="many">‏{count} مقطع فيديو</item>
+        <item quantity="other">‏{count} مقطع فيديو</item>
+    </plurals>
+    <plurals name="xchat_back_badge_unread_messages">
+        <item quantity="zero">‏%1$d رسائل غير مقروءة</item>
+        <item quantity="one">‏%1$d رسالة واحدة غير مقروءة</item>
+        <item quantity="two">‏%1$d رسالتان غير مقروءتين</item>
+        <item quantity="few">‏%1$d رسائل غير مقروءة</item>
+        <item quantity="many">‏%1$d رسالة غير مقروءة</item>
+        <item quantity="other">‏%1$d رسالة غير مقروءة</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_over_limit">
+        <item quantity="zero">‏%1$d وحدات بايت تتجاوز الحد المسموح به</item>
+        <item quantity="one">‏%1$d وحدة بايت تتجاوز الحد المسموح به</item>
+        <item quantity="two">‏%1$d وحدتا بايت تتجاوزان الحد المسموح به</item>
+        <item quantity="few">‏%1$d وحدات بايت تتجاوز الحد المسموح به</item>
+        <item quantity="many">‏%1$d وحدة بايت تتجاوز الحد المسموح به</item>
+        <item quantity="other">‏%1$d وحدة بايت تتجاوز الحد المسموح به</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_remaining">
+        <item quantity="zero">‏%1$d وحدات بايت متبقية</item>
+        <item quantity="one">‏%1$d وحدة بايت متبقية</item>
+        <item quantity="two">‏%1$d وحدتا بايت متبقية</item>
+        <item quantity="few">‏%1$d وحدات بايت متبقية</item>
+        <item quantity="many">‏%1$d وحدة بايت متبقية</item>
+        <item quantity="other">‏%1$d وحدة بايت متبقية</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_gifs">
+        <item quantity="zero">‏{count} ملفات GIF مرفقة</item>
+        <item quantity="one">‏{count} ملف GIF واحد مرفق</item>
+        <item quantity="two">‏{count} ملفا GIF مرفقان</item>
+        <item quantity="few">‏{count} ملفات GIF مرفقة</item>
+        <item quantity="many">‏{count} ملف GIF مرفق</item>
+        <item quantity="other">‏{count}ملف GIF مرفق</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_other">
+        <item quantity="zero">‏{count} مُرفقات مرفقة</item>
+        <item quantity="one">‏{count} مُرفق واحد مرفق</item>
+        <item quantity="two">‏{count} مُرفقان مرفقان</item>
+        <item quantity="few">‏{count} مُرفقات مرفقة</item>
+        <item quantity="many">‏{count} مُرفقًا مرفقًا</item>
+        <item quantity="other">‏{count} مُرفق مرفق</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_photos">
+        <item quantity="zero">‏{count} صور مرفقة</item>
+        <item quantity="one">‏{count} صورة واحدة مرفقة</item>
+        <item quantity="two">‏{count} صورتان مرفقتان</item>
+        <item quantity="few">‏{count} صور مرفقة</item>
+        <item quantity="many">‏{count} صورة مرفقة</item>
+        <item quantity="other">‏{count} صورة مرفقة</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_videos">
+        <item quantity="zero">‏{count} مقاطع فيديو مرفقة</item>
+        <item quantity="one">‏{count} مقطع فيديو واحد مُرفق</item>
+        <item quantity="two">‏{count} مقطعا فيديو مُرفقان</item>
+        <item quantity="few">‏{count} مقاطع فيديو مرفقة</item>
+        <item quantity="many">‏{count} مقطع فيديو مرفقًا</item>
+        <item quantity="other">‏{count} مقطع فيديو مرفق</item>
+    </plurals>
+    <plurals name="xchat_forward_media_max_conversations">
+        <item quantity="zero">‏يمكنك إعادة توجيه الوسائط إلى ما يصل إلى {num} محادثات</item>
+        <item quantity="one">‏يمكنك إعادة توجيه الوسائط إلى ما يصل إلى {num} محادثة واحدة</item>
+        <item quantity="two">‏يمكنك إعادة توجيه الوسائط إلى ما يصل إلى {num} محادثتين</item>
+        <item quantity="few">‏يمكنك إعادة توجيه الوسائط إلى ما يصل إلى {num} محادثات</item>
+        <item quantity="many">‏يمكنك إعادة توجيه الوسائط إلى ما يصل إلى {num} محادثة</item>
+        <item quantity="other">‏يمكنك إعادة توجيه الوسائط إلى ما يصل إلى {num} محادثة</item>
+    </plurals>
+    <plurals name="xchat_group_members_count">
+        <item quantity="zero">‏{num} أعضاء</item>
+        <item quantity="one">‏{num} عضو واحد</item>
+        <item quantity="two">‏{num} عضوان</item>
+        <item quantity="few">‏{num} أعضاء</item>
+        <item quantity="many">‏{num} عضوًا</item>
+        <item quantity="other">‏{num} عضو</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_and_others">
+        <item quantity="zero">‏{names} و{count} آخرين</item>
+        <item quantity="one">‏{names} و{count} آخر</item>
+        <item quantity="two">‏{names} و{count} آخرَين</item>
+        <item quantity="few">‏{names} و{count} آخرين</item>
+        <item quantity="many">‏{names} و{count} آخر</item>
+        <item quantity="other">‏{names} و{count} آخر</item>
+    </plurals>
+    <plurals name="xchat_inbox_message_requests_row_subtitle_count">
+        <item quantity="zero">‏{count} طلبات الرسائل</item>
+        <item quantity="one">‏{count} طلب رسالة واحد</item>
+        <item quantity="two">‏{count} طلبا رسالتين</item>
+        <item quantity="few">‏{count} طلبات رسائل</item>
+        <item quantity="many">‏{count} طلب رسالة</item>
+        <item quantity="other">‏{count} طلب رسالة</item>
+    </plurals>
+    <plurals name="xchat_inbox_new_messages">
+        <item quantity="zero">‏{count}+ رسالة جديدة</item>
+        <item quantity="one">‏{count}+ رسالة جديدة</item>
+        <item quantity="two">‏{count}+ رسالتان جديدتان</item>
+        <item quantity="few">‏{count}+ رسائل جديدة</item>
+        <item quantity="many">‏{count}+ رسالة جديدة</item>
+        <item quantity="other">‏{count}+ رسالة جديدة</item>
+    </plurals>
+    <plurals name="xchat_inbox_years">
+        <item quantity="zero">‏%d سنوات</item>
+        <item quantity="one">‏%d سنة واحدة</item>
+        <item quantity="two">‏%d سنتان</item>
+        <item quantity="few">‏%d سنوات</item>
+        <item quantity="many">‏%d سنة</item>
+        <item quantity="other">‏%d سنة</item>
+    </plurals>
+    <plurals name="xchat_pinned_messages_count">
+        <item quantity="zero">‏{count} من الرسائل المثبّتة</item>
+        <item quantity="one">‏{count} رسالة مثبّتة واحدة</item>
+        <item quantity="two">‏{count} رسالتان مثبّتتان</item>
+        <item quantity="few">‏{count} رسائل مثبّتة</item>
+        <item quantity="many">‏{count} رسالة مثبّتة</item>
+        <item quantity="other">‏{count} رسالة مثبّتة</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_days">
+        <item quantity="zero">‏{count} أيام</item>
+        <item quantity="one">‏{count} يومًا واحدًا</item>
+        <item quantity="two">‏{count} يومان</item>
+        <item quantity="few">‏{count} أيام</item>
+        <item quantity="many">‏{count} يومًا</item>
+        <item quantity="other">‏{count} يوم</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_hours">
+        <item quantity="zero">‏{count} ساعات</item>
+        <item quantity="one">‏{count} ساعة واحدة</item>
+        <item quantity="two">‏{count} ساعتان</item>
+        <item quantity="few">‏{count} ساعات</item>
+        <item quantity="many">‏{count} ساعة</item>
+        <item quantity="other">‏{count} ساعة</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_minutes">
+        <item quantity="zero">‏{count} دقائق</item>
+        <item quantity="one">‏{count} دقيقة واحدة</item>
+        <item quantity="two">‏{count} دقيقتان</item>
+        <item quantity="few">‏{count} دقائق</item>
+        <item quantity="many">‏{count} دقيقة</item>
+        <item quantity="other">‏{count} دقيقة</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_seconds">
+        <item quantity="zero">‏{count} ثواني</item>
+        <item quantity="one">‏{count} ثانية واحدة</item>
+        <item quantity="two">‏{count} ثانيتان</item>
+        <item quantity="few">‏{count} ثوانٍ</item>
+        <item quantity="many">‏{count} ثانية</item>
+        <item quantity="other">‏{count} ثانية</item>
+    </plurals>
+</resources>

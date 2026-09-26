@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>Yeni gönderiler için bildirim alacaksın.</item>
+        <item>Yeni gönderiler ve yanıtlar için bildirim alacaksın.</item>
+        <item>Yeni Abonelik gönderileri için bildirim alacaksın.</item>
+        <item>Yeni canlı video gönderileri için bildirim alacaksın.</item>
+        <item>Bundan sonra yeni gönderiler için bildirim almayacaksın.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>Tüm Gönderiler</item>
+        <item>Tüm Gönderiler ve Yanıtlar</item>
+        <item>Yalnızca Abonelik Gönderileri</item>
+        <item>Yalnızca canlı video</item>
+        <item>Kapalı</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>Bu hesabın tüm gönderileri için bildirim al.</item>
+        <item>Bu hesabın gönderileri ve yanıtları için bildirim al.</item>
+        <item>Yalnızca Abonelik gönderileri için bildirim al.</item>
+        <item>Yalnızca canlı yayın için bildirim al.</item>
+        <item>Bu hesabın gönderileri için bildirimleri kapat.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>Bağlantıyı gönderi olarak yayınla</item>
+        <item>Bağlantıyı kopyala</item>
+        <item>Bağlantı gönder</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>%1$s ile genel memnuniyet düzeyin nedir?</item>
+        <item>%1$s seni ne kadar memnun ediyor?</item>
+        <item>Genel olarak, son %1$s deneyiminden ne kadar memnun kaldın?</item>
+        <item>%1$s ile genel deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile genel deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile şimdiye kadarki deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile Twitter deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile son deneyiminden memnun kaldın mı?</item>
+        <item>%1$s beklentilerini ne kadar karşılıyor?</item>
+        <item>%1$s ile konuk olma deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile hizmet deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile son hizmet deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ekibinden aldığın hizmeti nasıl değerlendirirsin?</item>
+        <item>%1$s ile etkileşiminin sonucundan memnun kaldın mı?</item>
+        <item>%1$s ile sorun çözme imkanını nasıl değerlendirirsin?</item>
+        <item>%1$s ekibinin yanıt süresini nasıl değerlendirirsin?</item>
+        <item>%1$s ekibinin hizmet hızını nasıl değerlendirirsin?</item>
+        <item>%1$s ile çözüm süresini nasıl değerlendirirsin?</item>
+        <item>%1$s ile sorununu çözme süresini nasıl değerlendirirsin?</item>
+        <item>%1$s ile çözüm üretme hızını nasıl değerlendirirsin?</item>
+        <item>%1$s danışmanının uzmanlığını nasıl değerlendirirsin?</item>
+        <item>Sana yardımcı olan %1$s temsilcisinden ne kadar memnun kaldın?</item>
+        <item>Sana yardımcı olan %1$s uzmanından ne kadar memnun kaldın?</item>
+        <item>Sana yardımcı olan %1$s temsilcisinden ne kadar memnun kaldın?</item>
+        <item>%1$s ile son bankacılık deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s genel etkinlik deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile fatura ödeme deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile satın alma deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile alışveriş deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile teslimat deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile kiralama deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s mağazasına son ziyaretini nasıl değerlendirirsin?</item>
+        <item>%1$s otelindeki son konaklamanı nasıl değerlendirirsin?</item>
+        <item>%1$s ile son uçuşunu nasıl değerlendirirsin?</item>
+        <item>%1$s ile son yolculuğunu nasıl değerlendirirsin?</item>
+        <item>%1$s ile son gezintini nasıl değerlendirirsin?</item>
+        <item>Son %1$s ziyaretini nasıl değerlendirirsin?</item>
+        <item>%1$s ekibinin sana sunduğu son yemeği nasıl değerlendirirsin?</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 gün</item>
+        <item>12 ay</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0,25x</item>
+        <item>0,5x</item>
+        <item>0,75x</item>
+        <item>Normal</item>
+        <item>1,25x</item>
+        <item>1,5x</item>
+        <item>2x</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>%1$s ile genel memnuniyet düzeyin nedir?</item>
+        <item>%1$s ile memnuniyet düzeyin nedir?</item>
+        <item>Yakın zamanda edindiğin %1$s deneyiminden genel olarak ne kadar memnun kaldın?</item>
+        <item>%1$s ile genel deneyimi nasıl değerlendirirsin?</item>
+        <item>%1$s ile genel deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile şu ana kadarki deneyimini nasıl değerlendirirsin?</item>
+        <item>"X'te %1$s ile son deneyimini nasıl değerlendirirsin?"</item>
+        <item>%1$s ile yakın zaman önceki deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s beklentilerini ne ölçüde karşılıyor?</item>
+        <item>%1$s ile konaklama deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile servis deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile yakın zamandaki servis deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ekibinden aldığın servisi nasıl değerlendirirsin?</item>
+        <item>%1$s ile kurduğun etkileşimin sonucundan memnun kaldın mı?</item>
+        <item>%1$s ile sorun çözme deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ekibinin yanıt süresini nasıl değerlendirirsin?</item>
+        <item>%1$s ekibinin servis hızını nasıl değerlendirirsin?</item>
+        <item>%1$s ekibinin çözüm üretme süresini nasıl değerlendirirsin?</item>
+        <item>%1$s ile çözüm üretme süresini nasıl değerlendirirsin?</item>
+        <item>%1$s ile çözüm üretme hızını nasıl değerlendirirsin?</item>
+        <item>%1$s danışmanının uzmanlığını nasıl değerlendirirsin?</item>
+        <item>Sana yardımcı olan %1$s çalışanından ne ölçüde memnun kaldın?</item>
+        <item>Sana yardımcı olan %1$s uzmanından ne ölçüde memnun kaldın?</item>
+        <item>Sana yardımcı olan %1$s temsilcisinden ne ölçüde memnun kaldın?</item>
+        <item>%1$s ile yakın zaman önce edindiğin bankacılık deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile genel etkinlik deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile fatura ödeme deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile satın alma deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile alışveriş deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile teslimat deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s ile kiralama deneyimini nasıl değerlendirirsin?</item>
+        <item>%1$s mağazasına son ziyaretini nasıl değerlendirirsin?</item>
+        <item>%1$s otelindeki son konaklamanı nasıl değerlendirirsin?</item>
+        <item>%1$s ile yakın zaman önce yaptığın uçuşu nasıl değerlendirirsin?</item>
+        <item>%1$s ile en son yaptığın yolculuğu nasıl değerlendirirsin?</item>
+        <item>%1$s ile yakın zaman önce yaptığın geziyi nasıl değerlendirirsin?</item>
+        <item>Yakın zamandaki%1$s ziyaretini nasıl değerlendirirsin?</item>
+        <item>%1$s ekibinin sana yakın zaman önce sunduğu yemeği nasıl değerlendirirsin?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>%1$s ürününü bir arkadaşına tavsiye etme olasılığın nedir?</item>
+        <item>%1$s ürününü bir arkadaşına tavsiye etme olasılığın nedir?</item>
+        <item>%1$s ürününü bir iş arkadaşına önerme olasılığın nedir?</item>
+        <item>Bir aile üyesine %1$s tavsiye etme olasılığın nedir?</item>
+        <item>%1$s ürününü bir başkasına tavsiye etme olasılığın nedir?</item>
+        <item>%1$s ürününü bir arkadaşına veya iş arkadaşına önerme olasılığın nedir?</item>
+        <item>%1$s üzerinden gelecekte alışveriş yapma olasılığın nedir?</item>
+        <item>%1$s önerme olasılığın nedir?</item>
+        <item>%1$s ürününü bir arkadaşına veya iş arkadaşına önerir miydin?</item>
+        <item>%1$s ile deneyimini bir arkadaşına tavsiye etme olasılığın nedir?</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>İyi İzleyici Sayısı</item>
+        <item>Pozitif Topluluk</item>
+        <item>Video Kalitesi</item>
+        <item>İlgi Çekici Sohbet</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>Düşük İzleyici Sayısı</item>
+        <item>Taciz</item>
+        <item>Video Sorunları</item>
+        <item>Sohbette Spam</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 dakika</item>
+        <item>30 dakika</item>
+        <item>1 saat</item>
+        <item>2 saat</item>
+        <item>4 saat</item>
+        <item>Günlük</item>
+    </string-array>
+</resources>

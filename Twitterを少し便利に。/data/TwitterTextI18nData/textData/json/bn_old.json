@@ -17,6 +17,203 @@
 		"type": "apkI18nTemplateFunction",
 		"value": "%s দ্বারা পুনঃ টুইটকৃত"
 	},
+	"replyAction": {
+		"type": "string",
+		"value": "উত্তর"
+	},
+	"repostAction": {
+		"type": "string",
+		"value": "রিপোস্ট"
+	},
+	"likeAction": {
+		"type": "string",
+		"value": "পছন্দ করুন"
+	},
+	"bookmarkAction": {
+		"type": "string",
+		"value": "বুকমার্ক"
+	},
+	"showMore": {
+		"type": "string",
+		"value": "আরও দেখান"
+	},
+	"viewThread": {
+		"type": "string",
+		"value": "এই থ্রেডটি দেখান"
+	},
+	"previousImage": {
+		"type": "string",
+		"value": "পূর্ববর্তী ছবি"
+	},
+	"nextImage": {
+		"type": "string",
+		"value": "পরবর্তী ছবি"
+	},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": ["","-এরতরফথেকে"]
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": "{{appStarRating}}/5.0 স্টার – {{appNumRatings}} রেটিং"
+	},
+	"verifiedAccount": {
+		"type": "string",
+		"value": "যাচাইকৃত অ্যাকাউন্ট"
+	},
+	"communityAdminBadge": {
+		"type": "string",
+		"value": "অ্যাড"
+	},
+	"communityModeratorBadge": {
+		"type": "string",
+		"value": "মডঃ"
+	},
+	"communityMemberBadge": {
+		"type": "string",
+		"value": "সদস্য"
+	},
+	"viewsLabel": {
+		"type": "string",
+		"value": "ভিউ"
+	},
+	"viewQuotes": {
+		"type": "string",
+		"value": "উদ্ধৃতিগুলো দেখুন"
+	},
+	"viewActivity": {
+		"type": "string",
+		"value": "কার্যকলাপ দেখুন"
+	},
+	"communityNotes": {
+		"type": "string",
+		"value": "কমিউনিটি নোট"
+	},
+	"communityNoteHelpfulQuestion": {
+		"type": "string",
+		"value": "এই নোটটি কি সহায়ক?"
+	},
+	"communityNoteHelpful": {
+		"type": "string",
+		"value": "সহায়ক"
+	},
+	"communityNoteSomewhatHelpful": {
+		"type": "string",
+		"value": "আপাতত সহায়ক"
+	},
+	"communityNoteNotHelpful": {
+		"type": "string",
+		"value": "অসহায়ক"
+	},
+	"cashtagComingSoon": {
+		"type": "string",
+		"value": "শীঘ্রই আসছে"
+	},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": ["এখন","এ"]
+	},
+	"grokAnswerFun": {
+		"type": "string",
+		"value": "মজাদার মোডে Grok-এর উত্তর"
+	},
+	"grokAnswer": {
+		"type": "string",
+		"value": "Grok প্রদত্ত উত্তর"
+	},
+	"grokImageBy": {
+		"type": "string",
+		"value": "Grok-এর তৈরি ছবি"
+	},
+	"grokShowMore": {
+		"type": "string",
+		"value": "আরও দেখান"
+	},
+	"grokCreateVersion": {
+		"type": "string",
+		"value": "Grok-এর সাথে আপনার সংস্করণ তৈরি করুন"
+	},
+	"grokAskYourself": {
+		"type": "string",
+		"value": "নিজেই Grok-কে জিজ্ঞাসা করুন"
+	},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} ওয়েব পেজ"
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}} পোস্ট"
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": "{{count}}টি ওয়েব পেজ এবং পোস্ট"
+	},
+	"mostRelevant": {
+		"type": "string",
+		"value": "প্রাসঙ্গিক"
+	},
+	"mostLiked": {
+		"type": "string",
+		"value": "পছন্দ"
+	},
+	"mostRecent": {
+		"type": "string",
+		"value": "সাম্প্রতিক"
+	},
+	"sortReplies": {
+		"type": "string",
+		"value": "উত্তরগুলো বাছুন"
+	},
+	"lastEdited": {
+		"type": "string",
+		"value": "শেষ এডিট করা হয়েছে"
+	},
+	"newPostVersion": {
+		"type": "string",
+		"value": "এই পোস্টের একটি নতুন সংস্করণ আছে।"
+	},
+	"opensEditHistory": {
+		"type": "string",
+		"value": "এডিটের ইতিহাস খোলে"
+	},
+	"viewLatestPost": {
+		"type": "string",
+		"value": "সর্বশেষ পোস্টটি দেখুন"
+	},
+	"opensLatestPost": {
+		"type": "string",
+		"value": "এই পোস্টের একটি নতুন সংস্করণ খোলে"
+	},
+	"mediaTaggedSelf": {
+		"type": "string",
+		"value": "আপনি"
+	},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": ["","-এরথেকে"]
+	},
+	"poll": {
+		"type": "string",
+		"value": "পোল"
+	},
+	"viewPoll": {
+		"type": "string",
+		"value": "এই পোলটি দেখান"
+	},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} টি ভোট"
+	},
+	"pollEnded": {
+		"type": "string",
+		"value": "চূড়ান্ত ফলাফল"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "পুনঃটুইট"
@@ -53,6 +250,26 @@
 		"type": "string",
 		"value": "অনুসরণ করছেন"
 	},
+	"follow": {
+		"type": "string",
+		"value": "অনুসরণ করুন"
+	},
+	"followBack": {
+		"type": "string",
+		"value": "ফিরে অনুসরণ করুন"
+	},
+	"followers": {
+		"type": "string",
+		"value": "অনুসরণকারীগণ"
+	},
+	"followsYou": {
+		"type": "string",
+		"value": "আপনাকে অনুসরণ করছে"
+	},
+	"subscriptions": {
+		"type": "string",
+		"value": "সাবস্ক্রিপশন"
+	},
 	"unfollow": {
 		"type": "string",
 		"value": "অনুসরণ বাতিল করুন"
@@ -87,12 +304,10 @@
 		"value": ["আপনারঅনুসরণকরা",",",",এবংঅন্য","জনঅনুসরণকরেছেন"]
 	},
 	"postedTweetsNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}টুইট"]
+		"type": "webI18nTemplateFunction"
 	},
 	"likesNum": {
-		"type": "webI18nTemplateFunction",
-		"value": ["{{formattedCount}}পছন্দ"]
+		"type": "webI18nTemplateFunction"
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",

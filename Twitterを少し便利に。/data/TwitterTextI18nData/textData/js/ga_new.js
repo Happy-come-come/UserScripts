@@ -11,6 +11,83 @@ const text = {
 	},
 	"pinnedListsModuleHeader": undefined,
 	"tweetsRetweeted": undefined,
+	"replyAction": {"type":"string","value":"Freagair"},
+	"repostAction": {"type":"string","value":"Repost"},
+	"likeAction": {"type":"string","value":"Thaitin seo le"},
+	"bookmarkAction": {"type":"string","value":"Leabharmharc"},
+	"showMore": {"type":"string","value":"Taispeáin tuilleadh"},
+	"viewThread": {"type":"string","value":"Taispeáin an snáithe seo"},
+	"previousImage": {"type":"string","value":"An íomhá roimhe"},
+	"nextImage": {"type":"string","value":"An chéad íomhá eile"},
+	"cardSource": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["From "]}
+	},
+	"cardAppRating": {
+		"type": "webI18nFunction",
+		"arguments": ["appStarRating","appNumRatings"],
+		"value": function(e){return e.appStarRating+"/5.0 stars – "+e.appNumRatings+" ratings"}
+	},
+	"verifiedAccount": {"type":"string","value":"Verified accounts"},
+	"communityAdminBadge": {"type":"string","value":"Riarachán"},
+	"communityModeratorBadge": {"type":"string","value":"Modhnóir"},
+	"communityMemberBadge": {"type":"string","value":"Ball"},
+	"viewsLabel": {"type":"string","value":"views"},
+	"viewQuotes": {"type":"string","value":"Féach ar shleachta"},
+	"viewActivity": {"type":"string","value":"Féach ar ghníomhaíocht"},
+	"communityNotes": undefined,
+	"communityNoteHelpfulQuestion": {"type":"string","value":"An bhfuil an nóta seo úsáideach?"},
+	"communityNoteHelpful": {"type":"string","value":"Cuidiúil"},
+	"communityNoteSomewhatHelpful": {"type":"string","value":"Beagáinín Cuidiúil"},
+	"communityNoteNotHelpful": {"type":"string","value":"Nach Raibh Cuidiúil"},
+	"cashtagComingSoon": {"type":"string","value":"Ag teacht go luath"},
+	"cashtagNowAt": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Now at "]}
+	},
+	"grokAnswerFun": {"type":"string","value":"Answer by Grok in Fun Mode"},
+	"grokAnswer": {"type":"string","value":"Answer by Grok"},
+	"grokImageBy": {"type":"string","value":"Image by Grok"},
+	"grokShowMore": {"type":"string","value":"Taispeáin tuilleadh"},
+	"grokCreateVersion": {"type":"string","value":"Create your version with Grok"},
+	"grokAskYourself": {"type":"string","value":"Ask Grok yourself"},
+	"grokWebPages": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" web page"+c(e.count,"","s")}
+	},
+	"grokPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" post"+c(e.count,"","s")}
+	},
+	"grokWebAndPosts": {
+		"type": "webI18nFunction",
+		"arguments": ["count"],
+		"value": function(e){return e.count+" web pages and posts"}
+	},
+	"mostRelevant": {"type":"string","value":"Ábhartha"},
+	"mostLiked": {"type":"string","value":"Thaitin siad seo le"},
+	"mostRecent": {"type":"string","value":"Le déanaí"},
+	"sortReplies": {"type":"string","value":"Sort replies"},
+	"lastEdited": {"type":"string","value":"Last edited"},
+	"newPostVersion": {"type":"string","value":"There’s a new version of this post."},
+	"opensEditHistory": {"type":"string","value":"Opens edit history"},
+	"viewLatestPost": {"type":"string","value":"See the latest post"},
+	"opensLatestPost": {"type":"string","value":"Opens the new version of this post"},
+	"mediaTaggedSelf": {"type":"string","value":"Tusa"},
+	"mediaSourcePrefix": {
+		"type": "webI18nTemplateFunction",
+		"value": function(){return ["Ó "]}
+	},
+	"poll": {"type":"string","value":"Vótáil"},
+	"viewPoll": {"type":"string","value":"Taispeáin an phobalbhreith seo"},
+	"pollVotes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return o(e.count,""+e.count,""+e.count,"1",""+e.count,""+e.count)+" vóta "+e.formattedCount}
+	},
+	"pollEnded": {"type":"string","value":"Torthaí deiridh"},
 	"retweet": {"type":"string","value":"Repost"},
 	"unDoRetweet": {"type":"string","value":"Undo repost"},
 	"quoteTweet": undefined,
@@ -20,6 +97,11 @@ const text = {
 	"profileTabTitleMedia": undefined,
 	"profileTabTitleLikes": undefined,
 	"following": {"type":"string","value":"Á Leanúint"},
+	"follow": {"type":"string","value":"Lean"},
+	"followBack": {"type":"string","value":"Lean ar ais"},
+	"followers": {"type":"string","value":"Leantóirí"},
+	"followsYou": {"type":"string","value":"Tá an duine seo do do leanúint"},
+	"subscriptions": {"type":"string","value":"Subscriptions"},
 	"unfollow": {"type":"string","value":"Ná lean"},
 	"blocked": {"type":"string","value":"Coiscthe"},
 	"unblock": {"type":"string","value":"Díchoisc"},
@@ -30,31 +112,31 @@ const text = {
 	},
 	"followedBy1": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Á leanúint ag "]}
+		"value": function(){return ["Á leanúint ag "]}
 	},
 	"followedBy2": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Á leanúint ag "," agus "]}
+		"value": function(){return ["Á leanúint ag "," agus "]}
 	},
 	"followedBy3": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Á leanúint ag ",", "," agus "]}
+		"value": function(){return ["Á leanúint ag ",", "," agus "]}
 	},
 	"followedByLots": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return["Á leanúint ag ",", "," agus ag "," eile atá á leanúint agat"]}
+		"value": function(){return ["Á leanúint ag ",", "," agus ag "," eile atá á leanúint agat"]}
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" post"+o(props.count,"","s")]}
+		"value": function(){return [props.formattedCount+" post"+c(props.count,"","s")]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" "+i(props.count,""+props.count,""+props.count,"1",""+props.count,"2")+" Is maith liom"]}
+		"value": function(){return [props.formattedCount+" "+o(props.count,""+props.count,""+props.count,"1",""+props.count,"2")+" Is maith liom"]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return[props.formattedCount+" photos & videos"]}
+		"value": function(){return [props.formattedCount+" photos & videos"]}
 	},
 	"home": {"type":"string","value":"Baile"},
 	"explore": {"type":"string","value":"Féach thart"},

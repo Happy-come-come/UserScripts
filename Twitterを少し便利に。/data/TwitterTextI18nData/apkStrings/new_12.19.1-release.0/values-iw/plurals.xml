@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="admin_tools_subtitle_members">
+        <item quantity="one">‏חבר %d</item>
+        <item quantity="other">‏%d חברים</item>
+    </plurals>
+    <plurals name="av_group_call_member_count">
+        <item quantity="one">‏חבר %1$d</item>
+        <item quantity="other">‏%1$d חברים</item>
+    </plurals>
+    <plurals name="badge_item_count">
+        <item quantity="one">‏פריט חדש %d</item>
+        <item quantity="other">‏%d פריטים חדשים</item>
+    </plurals>
+    <plurals name="cohost_current_count">
+        <item quantity="one">‏%1$d מנחה-שותף</item>
+        <item quantity="other">‏%1$d מנחים-שותפים</item>
+    </plurals>
+    <plurals name="community_member_count">
+        <item quantity="one">‏%d חבר קהילה</item>
+        <item quantity="other">‏%d חברי קהילה</item>
+    </plurals>
+    <plurals name="community_moderator_count">
+        <item quantity="one">‏%d מנחה</item>
+        <item quantity="other">‏%d מגשרים</item>
+    </plurals>
+    <plurals name="community_navigation_join_requests_label">
+        <item quantity="one">‏בקשה %s</item>
+        <item quantity="other">‏%s בקשות</item>
+    </plurals>
+    <plurals name="community_navigation_new_unread_tweets_label">
+        <item quantity="one">‏%s פוסט חדש</item>
+        <item quantity="other">‏%s פוסטים חדשים</item>
+    </plurals>
+    <plurals name="community_navigation_pending_reports_label">
+        <item quantity="one">‏דיווח %s</item>
+        <item quantity="other">‏%s דיווחים</item>
+    </plurals>
+    <plurals name="composer_count_progress_overflow_warning">
+        <item quantity="one">‏%d תווים עודפים</item>
+        <item quantity="other">‏%d תווים עודפים</item>
+    </plurals>
+    <plurals name="composer_count_progress_warning">
+        <item quantity="one">‏נשארו %d תווים</item>
+        <item quantity="other">‏נשארו %d תווים</item>
+    </plurals>
+    <plurals name="content_description_fleet_item_space_with_others">
+        <item quantity="one">‏המקום של %1$s עם %2$d משתמש נוסף</item>
+        <item quantity="other">‏המקום של %1$s עם %2$d משתמשים נוספים</item>
+    </plurals>
+    <plurals name="data_sync_notif_title">
+        <item quantity="one">‏%d קשר חדש</item>
+        <item quantity="other">‏%d קשרים חדשים</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">‏יום %d</item>
+        <item quantity="other">‏%d ימים</item>
+    </plurals>
+    <plurals name="dm_add_people_failure">
+        <item quantity="one">‏לא ניתן להוסיף משתמש לקבוצה זו.</item>
+        <item quantity="other">‏לא ניתן להוסיף %d משתמשים לקבוצה זו.</item>
+    </plurals>
+    <plurals name="dm_add_people_success">
+        <item quantity="one">‏משתמש התווסף לקבוצה.</item>
+        <item quantity="other">‏%d משתמשים התווספו לקבוצה.</item>
+    </plurals>
+    <plurals name="dm_follower_count_no_joined_date">
+        <item quantity="one">‏עוקב {num_followers}</item>
+        <item quantity="other">‏{num_followers} עוקבים</item>
+    </plurals>
+    <plurals name="dm_group_account_name">
+        <item quantity="one">‏אדם אחד</item>
+        <item quantity="other">‏%d אנשים</item>
+    </plurals>
+    <plurals name="dm_group_chat_count">
+        <item quantity="one">"‏צ'אט קבוצתי עם %d אדם"</item>
+        <item quantity="other">"‏צ'אט קבוצתי עם %d אנשים"</item>
+    </plurals>
+    <plurals name="dm_group_conversation_participant_count">
+        <item quantity="one">‏אדם %1$d</item>
+        <item quantity="other">‏%1$d אנשים</item>
+    </plurals>
+    <plurals name="dm_group_participant_count">
+        <item quantity="one">‏יש %1$s בקבוצה זו</item>
+        <item quantity="other">‏יש %1$s בקבוצה זו</item>
+    </plurals>
+    <plurals name="dm_group_participant_count_person_details">
+        <item quantity="one">‏אדם אחר %1$s</item>
+        <item quantity="other">‏%1$s אנשים אחרים</item>
+    </plurals>
+    <plurals name="dm_image_profile">
+        <item quantity="one">‏תמונת הפרופיל של %s</item>
+        <item quantity="other">‏תמונות הפרופיל של %s</item>
+    </plurals>
+    <plurals name="dm_new_people_you_may_know">
+        <item quantity="one">‏אדם חדש %d שייתכן שאתה מכיר</item>
+        <item quantity="other">‏%d אנשים חדשים שייתכן שאתה מכיר</item>
+    </plurals>
+    <plurals name="dm_new_requests">
+        <item quantity="one">‏%d בקשות חדשות</item>
+        <item quantity="other">‏%d בקשות חדשות</item>
+    </plurals>
+    <plurals name="dm_participant_added_by_deleted_user">
+        <item quantity="one">‏{participants} נוסף</item>
+        <item quantity="other">‏{participants} נוספו</item>
+    </plurals>
+    <plurals name="dm_pending_requests">
+        <item quantity="one">‏בקשה %d ממתינה</item>
+        <item quantity="other">‏%s בקשות ממתינות</item>
+    </plurals>
+    <plurals name="dm_people_you_may_know">
+        <item quantity="one">‏אדם %d שייתכן שאתה מכיר</item>
+        <item quantity="other">‏%d אנשים שייתכן שאתה מכיר</item>
+    </plurals>
+    <plurals name="dm_pinned_conversations_max_count_exceeded_title">
+        <item quantity="one">"‏אפשר לנעוץ רק צ'אט %d"</item>
+        <item quantity="other">"‏אפשר לנעוץ רק %d צ'אטים"</item>
+    </plurals>
+    <plurals name="dm_share_group_members_and_others">
+        <item quantity="one">‏{visible_names}ועוד {others_count} אחרים</item>
+        <item quantity="other">‏{visible_names} ועוד {others_count} אחרים</item>
+    </plurals>
+    <plurals name="dm_state_seen_by">
+        <item quantity="one">‏נצפה על־ידי משתמש %d</item>
+        <item quantity="other">‏נצפה על־ידי %d אנשים</item>
+    </plurals>
+    <plurals name="dm_unread_messages">
+        <item quantity="one">‏מסר %d שלא נקרא</item>
+        <item quantity="other">‏%d מסרים שלא נקראו</item>
+    </plurals>
+    <plurals name="dm_user_joined_and_follower_count">
+        <item quantity="one">‏הצטרפת ב-{joined_date} • עוקב {num_followers}</item>
+        <item quantity="other">‏הצטרפת ב-{joined_date} • {num_followers} עוקבים</item>
+    </plurals>
+    <plurals name="duration_picker_set_days">
+        <item quantity="one">‏יום אחד</item>
+        <item quantity="other">‏%d ימים</item>
+    </plurals>
+    <plurals name="duration_picker_set_hours">
+        <item quantity="one">‏שעה אחת</item>
+        <item quantity="other">‏%d שעות</item>
+    </plurals>
+    <plurals name="duration_picker_set_minutes">
+        <item quantity="one">‏דקה</item>
+        <item quantity="other">‏%d דקות</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">הרצה %d שניות קדימה</item>
+        <item quantity="two">הרצה %d שניות קדימה</item>
+        <item quantity="other">הרצה %d שניות קדימה</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">הרצה %d שניות אחורה</item>
+        <item quantity="two">הרצה %d שניות אחורה</item>
+        <item quantity="other">הרצה %d שניות אחורה</item>
+    </plurals>
+    <plurals name="facepile_content_description_phrase">
+        <item quantity="one">‏תמונת הפרופיל של {user_names}</item>
+        <item quantity="other">‏תמונות הפרופיל של {user_names}</item>
+    </plurals>
+    <plurals name="full_screen_gallery_header_add">
+        <item quantity="one">‏הוסף %d</item>
+        <item quantity="other">‏הוסף %d</item>
+    </plurals>
+    <plurals name="graphql_errors_button">
+        <item quantity="one">‏שגיאה %d</item>
+        <item quantity="other">‏%d שגיאות</item>
+    </plurals>
+    <plurals name="guest_management_max_cohost_count_label">
+        <item quantity="one">‏מותר לך להוסיף %1$d מנחים-שותפים בלבד.</item>
+        <item quantity="other">‏מותר לך להוסיף %1$d מנחים-שותפים בלבד.</item>
+    </plurals>
+    <plurals name="guest_management_open_cohost_count_label">
+        <item quantity="one">‏הוסף עד %1$d אנשים.</item>
+        <item quantity="other">‏הוסף עד %1$d אנשים.</item>
+    </plurals>
+    <plurals name="host_kudos_num_followers_gained">
+        <item quantity="one">‏יש לך %1$d עוקב חדש!</item>
+        <item quantity="other">‏יש לך %1$d עוקבים חדשים!</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">‏%d שעה</item>
+        <item quantity="other">‏%d שעות</item>
+    </plurals>
+    <plurals name="humanization_prompt_followers">
+        <item quantity="one">‏%1$s עוקב אחרי %2$s.</item>
+        <item quantity="other">‏%1$s עוקבים אחרי %2$s.</item>
+    </plurals>
+    <plurals name="humanization_prompt_topics">
+        <item quantity="one">‏אתה וגם %1$s עוקבים אחרי הנושא %2$s.</item>
+        <item quantity="other">‏אתה וגם %1$s עוקבים אחרי הנושאים %2$s.</item>
+    </plurals>
+    <plurals name="likes">
+        <item quantity="one">"‏%d סימון 'אהבתי'"</item>
+        <item quantity="other">"‏%d סימוני 'אהבתי'"</item>
+    </plurals>
+    <plurals name="list_member_count">
+        <item quantity="one">‏חבר</item>
+        <item quantity="other">‏חברים</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_message">
+        <item quantity="one">"‏תיאורים טובים של תמונות הם תיאורים תמציתיים אך מפורטים. הקפד לסכם או להרחיב את הטקסט שמופיע בתמונה עצמה.
+
+התיאור הופך את X לנגיש לאנשים עם מוגבלויות ולכל מי שמעוניין בהקשר נוסף.
+
+אפשר לכבות תזכורת זו בהגדרות הנגישות."</item>
+        <item quantity="other">"‏תיאורים טובים של תמונות הם תיאורים תמציתיים אך מפורטים. הקפד לסכם או להרחיב את הטקסט שמופיע בתמונה עצמה.
+
+התיאורים הופכים את X לנגיש לאנשים עם מוגבלויות ולכל מי שמעוניין בהקשר נוסף.
+
+אפשר לכבות תזכורת זו בהגדרות הנגישות."</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_positive_btn_text">
+        <item quantity="one">‏הוסף תיאור</item>
+        <item quantity="other">‏הוסף תיאורים</item>
+    </plurals>
+    <plurals name="media_alt_text_prompt_dialog_title">
+        <item quantity="one">‏אל תשכח להפוך את התמונה לנגישה</item>
+        <item quantity="other">‏אל תשכח להפוך את התמונות לנגישות</item>
+    </plurals>
+    <plurals name="media_monetization_settings_categories_selected">
+        <item quantity="one">‏נבחרה קטגוריה %d</item>
+        <item quantity="other">‏נבחרו %d קטגוריות</item>
+    </plurals>
+    <plurals name="media_tag_remaining">
+        <item quantity="one">‏תייג עד אדם %d נוסף.</item>
+        <item quantity="other">‏תייג עד %d אנשים נוספים.</item>
+    </plurals>
+    <plurals name="media_tag_tagged">
+        <item quantity="one">‏אדם %d תויג</item>
+        <item quantity="other">‏%d אנשים תויגו</item>
+    </plurals>
+    <plurals name="member_count">
+        <item quantity="one">‏%s חבר</item>
+        <item quantity="other">‏%s חברים</item>
+    </plurals>
+    <plurals name="members">
+        <item quantity="one">‏חבר %s</item>
+        <item quantity="other">‏%s חברים</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">‏דקה %d</item>
+        <item quantity="other">‏%d דקות</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d התראות חדשות</item>
+        <item quantity="two">%d התראות חדשות</item>
+        <item quantity="other">%d התראות חדשות</item>
+    </plurals>
+    <plurals name="muted_keyword_bulk_delete_success">
+        <item quantity="one">‏נמחקה מילה %d</item>
+        <item quantity="other">‏נמחקו %d מילים</item>
+    </plurals>
+    <plurals name="muted_keyword_selected_count">
+        <item quantity="one">‏%d נבחרה</item>
+        <item quantity="other">‏%d נבחרו</item>
+    </plurals>
+    <plurals name="narrowcast_community_member_count">
+        <item quantity="one">‏%s חבר</item>
+        <item quantity="other">‏%s חברים</item>
+    </plurals>
+    <plurals name="narrowcast_trusted_friends_count">
+        <item quantity="one">‏אדם %s</item>
+        <item quantity="other">‏%s אנשים</item>
+    </plurals>
+    <plurals name="notification_description_after_sending_posts">
+        <item quantity="one">‏Sent post</item>
+        <item quantity="two">‏{total} פוסטים נשלחו</item>
+        <item quantity="other">‏{total} פוסטים נשלחו</item>
+    </plurals>
+    <plurals name="notification_description_before_sending_posts">
+        <item quantity="one">‏Preparing to send post…</item>
+        <item quantity="two">‏מתכונן לשלוח {total} פוסטים...</item>
+        <item quantity="other">‏מתכונן לשלוח {total} פוסטים...</item>
+    </plurals>
+    <plurals name="notification_description_deleting_drafts">
+        <item quantity="one">‏Deleting draft…</item>
+        <item quantity="other">‏Deleting drafts {current} of {total}…</item>
+    </plurals>
+    <plurals name="notification_description_editable_posts">
+        <item quantity="one">‏Deleting editable post…</item>
+        <item quantity="other">‏Deleting editable post {current} of {total}…</item>
+    </plurals>
+    <plurals name="notification_description_preparing_media">
+        <item quantity="one">‏הכנת קובץ מדיה...</item>
+        <item quantity="two">‏הכנת {current} מתוך {total} קובצי מדיה...</item>
+        <item quantity="other">‏הכנת {current} מתוך {total} קובצי מדיה...</item>
+    </plurals>
+    <plurals name="notification_description_sending_posts">
+        <item quantity="one">‏שולח פוסט...</item>
+        <item quantity="two">‏שולח {current} מתוך {total} פוסטים...</item>
+        <item quantity="other">‏שולח {current} מתוך {total} פוסטים...</item>
+    </plurals>
+    <plurals name="notification_description_uploading_media">
+        <item quantity="one">‏Uploading media…</item>
+        <item quantity="other">‏Uploading medias {current} of {total}…</item>
+    </plurals>
+    <plurals name="notification_description_uploading_poll">
+        <item quantity="one">‏מעלה סקר…</item>
+        <item quantity="two">‏מעלה סקר {current} מתוך {total}…</item>
+        <item quantity="other">‏מעלה סקר {current} מתוך {total}...</item>
+    </plurals>
+    <plurals name="notification_title_after_sending_posts">
+        <item quantity="one">‏שליחת פוסט</item>
+        <item quantity="other">‏שליחת פוסטים</item>
+    </plurals>
+    <plurals name="notification_title_before_sending_posts">
+        <item quantity="one">‏Preparing to send post</item>
+        <item quantity="other">‏Preparing to send posts</item>
+    </plurals>
+    <plurals name="notification_title_deleting_drafts">
+        <item quantity="one">‏מחיקת טיוטה</item>
+        <item quantity="two">‏מחיקת טיוטות</item>
+        <item quantity="other">‏Deleting drafts</item>
+    </plurals>
+    <plurals name="notification_title_deleting_editable_posts">
+        <item quantity="one">‏Deleting editable post</item>
+        <item quantity="other">‏Deleting editable posts</item>
+    </plurals>
+    <plurals name="notification_title_preparing_media">
+        <item quantity="one">‏Preparing medias</item>
+        <item quantity="two">‏הכנת קובצי מדיה</item>
+        <item quantity="other">‏Preparing medias</item>
+    </plurals>
+    <plurals name="notification_title_sending_drafts">
+        <item quantity="one">‏Sending draft</item>
+        <item quantity="other">‏Sending drafts</item>
+    </plurals>
+    <plurals name="notification_title_sending_posts">
+        <item quantity="one">‏שולח פוסט</item>
+        <item quantity="two">‏שולח פוסטים</item>
+        <item quantity="other">‏שולח פוסטים</item>
+    </plurals>
+    <plurals name="notification_title_uploading_media">
+        <item quantity="one">‏העלאת קובץ מדיה</item>
+        <item quantity="other">‏העלאת קובצי מדיה</item>
+    </plurals>
+    <plurals name="notification_undo_nudge">
+        <item quantity="one">‏Waiting for undo period</item>
+        <item quantity="two">‏ממתין לתקופות ביטול</item>
+        <item quantity="other">‏ממתין לתקופות ביטול</item>
+    </plurals>
+    <plurals name="others">
+        <item quantity="one">‏משתמש אחד נוסף</item>
+        <item quantity="other">‏%d משתמשים נוספים</item>
+    </plurals>
+    <plurals name="payment_onboarding_terms_invitation_subtitle">
+        <item quantity="one">‏המשך לפני שתוקף התשלום פוקע.</item>
+        <item quantity="other">‏המשך לפני שתוקף התשלומים פוקע.</item>
+    </plurals>
+    <plurals name="product_count">
+        <item quantity="one">‏מוצר %1$d</item>
+        <item quantity="other">‏%1$d מוצרים</item>
+    </plurals>
+    <plurals name="profile_about_username_changes">
+        <item quantity="one">‏שינוי %s בשם המשתמש</item>
+        <item quantity="other">‏%s שינויים בשם המשתמש</item>
+    </plurals>
+    <plurals name="profile_creator_subscriptions_count">
+        <item quantity="one">‏מינוי</item>
+        <item quantity="other">‏מנויים</item>
+    </plurals>
+    <plurals name="profile_follower_count">
+        <item quantity="one">‏עוקב</item>
+        <item quantity="other">‏עוקבים</item>
+    </plurals>
+    <plurals name="profile_friends_following_others">
+        <item quantity="one">‏%d נוסף</item>
+        <item quantity="other">‏%d נוספים</item>
+    </plurals>
+    <plurals name="profile_stat_followers_text">
+        <item quantity="one">‏Follower</item>
+        <item quantity="other">‏Followers</item>
+    </plurals>
+    <plurals name="profile_stat_following_text">
+        <item quantity="one">‏עוקב</item>
+        <item quantity="two">‏עוקבים</item>
+        <item quantity="other">‏עוקבים</item>
+    </plurals>
+    <plurals name="profile_stat_subscribers_text">
+        <item quantity="one">‏מנוי</item>
+        <item quantity="two">‏מנויים</item>
+        <item quantity="other">‏מנויים</item>
+    </plurals>
+    <plurals name="profile_stat_subscriptions_text">
+        <item quantity="one">‏מינוי</item>
+        <item quantity="other">‏Subscriptions</item>
+    </plurals>
+    <plurals name="profile_super_followers_count">
+        <item quantity="one">‏מנוי</item>
+        <item quantity="other">‏מנויים</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_articles">
+        <item quantity="one">‏מאמר %s</item>
+        <item quantity="other">‏%s מאמרים</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_likes">
+        <item quantity="one">‏סימון %s כאהוב</item>
+        <item quantity="other">‏%s סימונים כאהוב</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_media">
+        <item quantity="one">‏תמונה %s</item>
+        <item quantity="other">‏%s תמונות וסרטונים</item>
+    </plurals>
+    <plurals name="profile_toolbar_subtitle_timeline">
+        <item quantity="one">‏פוסט %s</item>
+        <item quantity="other">‏%s פוסטים</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_peak_msg">
+        <item quantity="zero">‏תרשים הצופים בשידור</item>
+        <item quantity="one">‏תרשים הצופים בשידור. היה לך %1$d צופה שיא בשעה %2$s.</item>
+        <item quantity="other">‏תרשים הצופים בשידור. היו לך %1$d צופי שיא בשעה %2$s.</item>
+    </plurals>
+    <plurals name="ps__accessibility_broadcaster_stats_graph_point_msg">
+        <item quantity="one">‏היה לך %1$d צופה בשעה %2$s.</item>
+        <item quantity="other">‏היו לך %1$d צופים בשעה %2$s.</item>
+    </plurals>
+    <plurals name="ps__invite_follower">
+        <item quantity="zero">‏אין עוקבים</item>
+        <item quantity="one">‏עוקב %d</item>
+        <item quantity="other">‏%d עוקבים</item>
+    </plurals>
+    <plurals name="ps__invited_num_followers_embolden">
+        <item quantity="one">‏*%1$s* הזמין אדם %2$s</item>
+        <item quantity="other">‏*%1$s* הזמין %2$s אנשים</item>
+    </plurals>
+    <plurals name="ps__moderation_report_muted_by_moderator">
+        <item quantity="one">‏*הושתק על-ידי* %1$s</item>
+        <item quantity="other">‏*הושתק על-ידי* %1$s ‏(%2$d)</item>
+    </plurals>
+    <plurals name="ps__moderation_report_unmuted_by_moderator">
+        <item quantity="one">‏*ההשתקה בוטלה על-ידי* %1$s</item>
+        <item quantity="other">‏*ההשתקה בוטלה על-ידי* %1$s ‏(%2$d)</item>
+    </plurals>
+    <plurals name="ps__new_messages">
+        <item quantity="one">‏מסר חדש %1$d</item>
+        <item quantity="other">‏%1$d הודעות חדשות</item>
+    </plurals>
+    <plurals name="ps__num_hearts">
+        <item quantity="one">‏%s לב</item>
+        <item quantity="other">‏%s לבבות</item>
+    </plurals>
+    <plurals name="ps__stats_live_viewers">
+        <item quantity="one">‏צופה בשידור חי</item>
+        <item quantity="other">‏צופים בשידור חי</item>
+    </plurals>
+    <plurals name="ps__stats_replay_viewers">
+        <item quantity="one">‏צופה בשידור חוזר</item>
+        <item quantity="other">‏צופים בשידור חוזר</item>
+    </plurals>
+    <plurals name="ps__time_format_days">
+        <item quantity="one">‏יום %d</item>
+        <item quantity="other">‏%d ימים</item>
+    </plurals>
+    <plurals name="ps__time_format_hours">
+        <item quantity="one">‏שעה %d</item>
+        <item quantity="other">‏%d שעות</item>
+    </plurals>
+    <plurals name="ps__time_format_minutes">
+        <item quantity="one">‏דקה %d</item>
+        <item quantity="other">‏%d דקות</item>
+    </plurals>
+    <plurals name="ps__time_format_seconds">
+        <item quantity="one">‏שנייה %d</item>
+        <item quantity="other">‏%d שניות</item>
+    </plurals>
+    <plurals name="recording_replay_count_preview">
+        <item quantity="one">‏שידור חוזר %s</item>
+        <item quantity="other">‏%s שידורים חוזרים</item>
+    </plurals>
+    <plurals name="relationship_followers_following_others">
+        <item quantity="one">‏%d נוסף</item>
+        <item quantity="other">‏%d נוספים</item>
+    </plurals>
+    <plurals name="replies">
+        <item quantity="one">‏%d תשובה</item>
+        <item quantity="other">‏%d תשובות</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others">
+        <item quantity="other">‏בתשובה ל-﻿‏%1$s ול-%2$d אחרים﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_exclusive">
+        <item quantity="other">‏בתשובה ל-﻿%1$s, ול-%2$d נוספים﻿. התשובה שלך תהיה גלויה גם למנויים אחרים.</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_and_n_others_in_space">
+        <item quantity="other">‏בתשובה ל-﻿%1$s ול-%2$d משתמשים נוספים﻿ ב-﻿%3$s﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others">
+        <item quantity="other">‏בתשובה ל-﻿%1$s %2$s ולעוד %3$d נוספים﻿</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_exclusive">
+        <item quantity="other">‏בתשובה ל-﻿%1$s %2$s, ול-%3$d נוספים﻿. התשובה שלך תהיה גלויה גם למנויים אחרים.</item>
+    </plurals>
+    <plurals name="reply_context_to_someone_someone_and_n_others_in_space">
+        <item quantity="other">‏בתשובה ל-﻿%1$s %2$s ול-%3$d משתמשים נוספים﻿ ב-﻿%4$s﻿</item>
+    </plurals>
+    <plurals name="reported_tweet_reported_by">
+        <item quantity="one">‏דווח על-ידי {{}}%1$s{{}}</item>
+        <item quantity="other">‏דווח על ידי {{}}%1$s חברים{{}}</item>
+    </plurals>
+    <plurals name="retweets">
+        <item quantity="one">‏%d פרסום מחדש</item>
+        <item quantity="other">‏%d פרסומים מחדש</item>
+    </plurals>
+    <plurals name="safety_mode_preview_description">
+        <item quantity="one">‏סימנו %d חשבונות שעשויים להיות פוגעניים או להפיץ ספאם.</item>
+        <item quantity="other">‏סימנו %d חשבונות שעשויים להיות פוגעניים או להפיץ ספאם.</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">‏שנייה %d</item>
+        <item quantity="other">‏%d שניות</item>
+    </plurals>
+    <plurals name="send_cohost_invite">
+        <item quantity="one">‏שלח הזמנה למנחה-שותף</item>
+        <item quantity="other">‏שלח הזמנות למנחים-שותפים</item>
+    </plurals>
+    <plurals name="settings_notif_tweets_count">
+        <item quantity="one">‏אדם %d</item>
+        <item quantity="other">‏%d אנשים</item>
+    </plurals>
+    <plurals name="share_card_likes">
+        <item quantity="one">‏{num} like</item>
+        <item quantity="other">‏{num} likes</item>
+    </plurals>
+    <plurals name="share_card_replies">
+        <item quantity="one">‏{num} reply</item>
+        <item quantity="other">‏{num} תשובות</item>
+    </plurals>
+    <plurals name="social_follow_and_follow_and_others">
+        <item quantity="one">‏%1$s, ‏%2$s ועוד %3$d נוסף עוקבים</item>
+        <item quantity="other">‏%1$s‏, %2$s ו-%3$d אנשים נוספים עוקבים אחרי המשתמש</item>
+    </plurals>
+    <plurals name="spaces_additional_participants">
+        <item quantity="one">‏מאזין %1$s נוסף</item>
+        <item quantity="other">‏+%1$s מאזינים נוספים</item>
+    </plurals>
+    <plurals name="spaces_blocked_warning">
+        <item quantity="one">‏חסמת אדם %1$d שמדבר</item>
+        <item quantity="other">‏חסמת %1$d אנשים שמדברים</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_in_progress">
+        <item quantity="one">‏%1$s במקום הזה</item>
+        <item quantity="other">‏%1$s נמצאים במקום הזה</item>
+    </plurals>
+    <plurals name="spaces_card_social_proof_replay">
+        <item quantity="one">‏%1$s היה במקום זה</item>
+        <item quantity="other">‏%1$s היו במקום זה</item>
+    </plurals>
+    <plurals name="spaces_invite_confirmation">
+        <item quantity="one">‏אדם %1$d הוזמן למקום זה</item>
+        <item quantity="other">‏%1$d אנשים הוזמנו למקום הזה</item>
+    </plurals>
+    <plurals name="speakers_current_count">
+        <item quantity="one">‏דובר %1$d</item>
+        <item quantity="other">‏%1$d דוברים</item>
+    </plurals>
+    <plurals name="speakers_listeners_count">
+        <item quantity="one">‏אדם %1$d נמצא בהאזנה</item>
+        <item quantity="other">‏%1$d אנשים נמצאים בהאזנה</item>
+    </plurals>
+    <plurals name="speakers_open_spots_count">
+        <item quantity="one">‏מקום פנוי %1$d</item>
+        <item quantity="other">‏%1$d מקומות פנויים</item>
+    </plurals>
+    <plurals name="speakers_requests_count">
+        <item quantity="one">‏בקשה %1$d</item>
+        <item quantity="other">‏%1$d בקשות</item>
+    </plurals>
+    <plurals name="stat_label_bookmarks">
+        <item quantity="one">‏הוסף לסימניות</item>
+        <item quantity="other">‏סימניות</item>
+    </plurals>
+    <plurals name="stat_label_likes_sentence_case">
+        <item quantity="one">‏סימון כאהוב</item>
+        <item quantity="other">‏סימונים כאהוב</item>
+    </plurals>
+    <plurals name="stat_label_quote_tweets">
+        <item quantity="one">‏ציטוט</item>
+        <item quantity="other">‏ציטוטים</item>
+    </plurals>
+    <plurals name="stat_label_retweets_sentence_case">
+        <item quantity="one">‏פרסום מחדש</item>
+        <item quantity="other">‏פרסומים מחדש</item>
+    </plurals>
+    <plurals name="stat_label_verified_views_sentence_case">
+        <item quantity="one">‏צפייה מאומתת</item>
+        <item quantity="other">‏צפיות מאומתות</item>
+    </plurals>
+    <plurals name="stat_label_views_sentence_case">
+        <item quantity="one">‏צפייה</item>
+        <item quantity="other">‏צפיות</item>
+    </plurals>
+    <plurals name="subscription_duration_days">
+        <item quantity="one">‏יום</item>
+        <item quantity="other">‏%d ימים</item>
+    </plurals>
+    <plurals name="subscription_duration_months">
+        <item quantity="one">‏חודש</item>
+        <item quantity="other">‏%d חודשים</item>
+    </plurals>
+    <plurals name="subscription_duration_years">
+        <item quantity="one">‏שנה</item>
+        <item quantity="other">‏%d שנים</item>
+    </plurals>
+    <plurals name="subscription_offer_price_description_months">
+        <item quantity="one">‏{offer_price} עבור החודש הראשון, מתחדש במחיר של {original_price}</item>
+        <item quantity="other">‏{offer_price} עבור %d החודשים הראשונים, מתחדש במחיר של {original_price}</item>
+    </plurals>
+    <plurals name="subscription_offer_title_special_offer_months">
+        <item quantity="one">‏{original_price_strike_through} {offer_price} עבור החודש הראשון</item>
+        <item quantity="other">‏{original_price_strike_through} {offer_price} עבור %d החודשים הראשונים</item>
+    </plurals>
+    <plurals name="thread_draft_more_post">
+        <item quantity="one">‏ועוד פוסט {num}</item>
+        <item quantity="other">‏+{num} more posts</item>
+    </plurals>
+    <plurals name="time_days">
+        <item quantity="one">"‏%d ימ'"</item>
+        <item quantity="other">"‏%dימ'"</item>
+    </plurals>
+    <plurals name="time_days_ago">
+        <item quantity="one">‏לפני יום %d</item>
+        <item quantity="other">‏לפני %d ימים</item>
+    </plurals>
+    <plurals name="time_hours">
+        <item quantity="one">"‏%d שע'"</item>
+        <item quantity="other">"‏%d שע'"</item>
+    </plurals>
+    <plurals name="time_hours_ago">
+        <item quantity="one">‏לפני שעה %d</item>
+        <item quantity="other">‏לפני %d שעות</item>
+    </plurals>
+    <plurals name="time_mins">
+        <item quantity="one">"‏%d דק'"</item>
+        <item quantity="other">"‏%d דק'"</item>
+    </plurals>
+    <plurals name="time_mins_ago">
+        <item quantity="one">‏לפני דקה %d</item>
+        <item quantity="other">‏לפני %d</item>
+    </plurals>
+    <plurals name="time_secs">
+        <item quantity="one">‏%d שניות</item>
+        <item quantity="other">‏%d שנ׳</item>
+    </plurals>
+    <plurals name="time_weeks">
+        <item quantity="one">‏שבוע %d</item>
+        <item quantity="other">‏%d שבועות</item>
+    </plurals>
+    <plurals name="top_articles_time_window">
+        <item quantity="one">‏בשעה האחרונה</item>
+        <item quantity="other">‏%s השעות אחרונות</item>
+    </plurals>
+    <plurals name="tweet_stat_followers">
+        <item quantity="one">‏עוקב {num}</item>
+        <item quantity="other">‏{num} עוקבים</item>
+    </plurals>
+    <plurals name="tweet_visibility_education_dialog_non_followers_text">
+        <item quantity="one">‏%1$s לא עוקב אחריך.</item>
+        <item quantity="other">‏%1$s ומשתמשים אחרים לא עוקבים אחריך.</item>
+    </plurals>
+    <plurals name="undo_nudge_message">
+        <item quantity="one">‏הפוסט יישלח תוך שנייה %d.</item>
+        <item quantity="two">‏הפוסט יישלח תוך %d שניות.</item>
+        <item quantity="other">‏הפוסט יישלח תוך %d שניות.</item>
+    </plurals>
+    <plurals name="undo_send_period_in_seconds">
+        <item quantity="one">‏%d שנייה</item>
+        <item quantity="other">‏%d שניות</item>
+    </plurals>
+    <plurals name="upload_progress_sending_posts">
+        <item quantity="one">‏שולח פוסט...</item>
+        <item quantity="other">‏שולח %d פוסטים...</item>
+    </plurals>
+    <plurals name="verified_views">
+        <item quantity="one">‏צפייה מאומתת %d</item>
+        <item quantity="other">‏%d צפיות מאומתות</item>
+    </plurals>
+    <plurals name="weeks">
+        <item quantity="one">‏שבוע %d</item>
+        <item quantity="other">‏%d שבועות</item>
+    </plurals>
+    <plurals name="x_lite_time_weeks">
+        <item quantity="one">‏שבוע %d</item>
+        <item quantity="other">‏%d שבועות</item>
+    </plurals>
+    <plurals name="x_lite_time_years">
+        <item quantity="one">‏שנה %d</item>
+        <item quantity="other">‏%d שנים</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_gifs">
+        <item quantity="one">‏קובץ GIF {count}</item>
+        <item quantity="other">‏{count} קובצי GIF</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_other">
+        <item quantity="one">‏קובץ מצורף {count}</item>
+        <item quantity="two">‏{count} קבצים מצורפים</item>
+        <item quantity="other">‏{count} קבצים מצורפים</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_photos">
+        <item quantity="one">‏{count} photo</item>
+        <item quantity="other">‏{count} photos</item>
+    </plurals>
+    <plurals name="xchat_attachment_count_videos">
+        <item quantity="one">‏{count} video</item>
+        <item quantity="two">‏{count} סרטונים</item>
+        <item quantity="other">‏{count} videos</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_over_limit">
+        <item quantity="one">‏בית %1$d מעל המגבלה</item>
+        <item quantity="two">‏%1$d בתים מעל המגבלה</item>
+        <item quantity="other">‏%1$d בתים מעל המגבלה</item>
+    </plurals>
+    <plurals name="xchat_composer_bytes_remaining">
+        <item quantity="one">‏%1$d byte remaining</item>
+        <item quantity="other">‏נותרו %1$d בתים</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_gifs">
+        <item quantity="one">‏{count} GIF attached</item>
+        <item quantity="other">‏{count} GIFs attached</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_other">
+        <item quantity="one">‏{count} attachment attached</item>
+        <item quantity="other">‏{count} attachments attached</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_photos">
+        <item quantity="one">‏{count} photo attached</item>
+        <item quantity="two">‏{count} תמונות מצורפות</item>
+        <item quantity="other">‏{count} photos attached</item>
+    </plurals>
+    <plurals name="xchat_draft_attachment_count_videos">
+        <item quantity="one">‏{count} video attached</item>
+        <item quantity="two">‏{count} סרטונים מצורפים</item>
+        <item quantity="other">‏{count} סרטונים מצורפים</item>
+    </plurals>
+    <plurals name="xchat_forward_media_max_conversations">
+        <item quantity="one">‏אפשר להעביר מדיה לשיחה {num} בלבד</item>
+        <item quantity="two">‏אפשר להעביר מדיה לעד {num} שיחות</item>
+        <item quantity="other">‏אפשר להעביר מדיה לעד {num} שיחות</item>
+    </plurals>
+    <plurals name="xchat_group_members_count">
+        <item quantity="one">‏{num} member</item>
+        <item quantity="two">‏{num} חברים</item>
+        <item quantity="other">‏{num} members</item>
+    </plurals>
+    <plurals name="xchat_inbox_new_messages">
+        <item quantity="one">‏{count}+ new message</item>
+        <item quantity="two">‏{count}+ מסרים חדשים</item>
+        <item quantity="other">‏{count}+ new messages</item>
+    </plurals>
+    <plurals name="xchat_inbox_years">
+        <item quantity="one">‏%d year</item>
+        <item quantity="two">‏%d שנים</item>
+        <item quantity="other">‏%d שנים</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_days">
+        <item quantity="one">‏{count} day</item>
+        <item quantity="other">‏{count} days</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_hours">
+        <item quantity="one">‏שעה {count}</item>
+        <item quantity="other">‏{count} שעות</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_minutes">
+        <item quantity="one">‏{count} minute</item>
+        <item quantity="other">‏{count} minutes</item>
+    </plurals>
+    <plurals name="xchat_time_remaining_seconds">
+        <item quantity="one">‏שנייה {count}</item>
+        <item quantity="other">‏{count} seconds</item>
+    </plurals>
+</resources>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_notif_confirmations">
+        <item>Bạn sẽ nhận được thông báo khi có Bài đăng mới.</item>
+        <item>Bạn sẽ nhận được thông báo khi có Bài đăng và câu trả lời mới.</item>
+        <item>Bạn sẽ nhận được thông báo khi có Bài đăng thuê bao mới.</item>
+        <item>Bạn sẽ nhận được thông báo khi có Bài đăng video Trực tuyến mới.</item>
+        <item>Bạn sẽ không còn nhận được thông báo khi có Bài đăng mới nữa.</item>
+    </string-array>
+    <string-array name="account_notif_options">
+        <item>Tất cả bài đăng</item>
+        <item>Tất cả bài đăng và câu trả lời</item>
+        <item>Chỉ Bài đăng thuê bao</item>
+        <item>Chỉ video trực tuyến</item>
+        <item>Tắt</item>
+    </string-array>
+    <string-array name="account_notif_subtitles">
+        <item>Nhận thông báo về tất cả Bài đăng của tài khoản này.</item>
+        <item>Nhận thông báo về tất cả Bài đăng và câu trả lời của tài khoản này.</item>
+        <item>Chỉ nhận thông báo cho các Bài đăng thuê bao.</item>
+        <item>Chỉ nhận thông báo cho các nguồn phát trực tuyến.</item>
+        <item>Tắt thông báo cho các Bài đăng của tài khoản này.</item>
+    </string-array>
+    <string-array name="card_long_press_options">
+        <item>Liên kết đến bài đăng</item>
+        <item>Sao chép liên kết</item>
+        <item>Gửi liên kết</item>
+    </string-array>
+    <string-array name="csat_prompt_feedback_variants">
+        <item>Mức độ hài lòng tổng thể của bạn với %1$s là bao nhiêu?</item>
+        <item>Bạn hài lòng như thế nào với %1$s?</item>
+        <item>Nhìn chung, bạn hài lòng với trải nghiệm %1$s gần đây của bạn như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm tổng thể với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm tổng thể của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm cho đến nay của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm của bạn trên Twitter với %1$s như thế nào?</item>
+        <item>Bạn có hài lòng với trải nghiệm gần đây của bạn với %1$s không?</item>
+        <item>%1$s đáp ứng mong đợi của bạn tốt như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm khách của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm dịch vụ của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm dịch vụ gần đây của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá dịch vụ bạn nhận từ %1$s như thế nào?</item>
+        <item>Bạn có hài lòng với kết quả tương tác của bạn với %1$s không?</item>
+        <item>Bạn đánh giá khả năng giải quyết vấn đề của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá thời gian phản hồi từ %1$s như thế nào?</item>
+        <item>Bạn đánh giá tốc độ dịch vụ bạn nhận được từ %1$s như thế nào?</item>
+        <item>Bạn đánh giá thời gian để giải quyết với %1$s như thế nào?</item>
+        <item>Bạn đánh giá thời gian để giải quyết vấn đề của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá tốc độ giải quyết với %1$s như thế nào?</item>
+        <item>Bạn đánh giá chuyên môn của chuyên gia tư vấn %1$s như thế nào?</item>
+        <item>Bạn hài lòng với đại lý %1$s đã giúp đỡ bạn như thế nào?</item>
+        <item>Bạn hài lòng với chuyên gia %1$s đã giúp đỡ bạn như thế nào?</item>
+        <item>Bạn hài lòng với người đại diện %1$s đã giúp đỡ bạn như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm ngân hàng gần đây của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm sự kiện tổng thể này tại %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm thanh toán hóa đơn của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm mua hàng của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm mua sắm của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm giao hàng của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm cho thuê của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá lần tới cửa hàng %1$s gần đây của bạn như thế nào?</item>
+        <item>Bạn đánh giá lần ở khách sạn %1$s gần đây của bạn như thế nào?</item>
+        <item>Bạn đánh giá chuyến bay gần đây của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá chuyến đi xe gần đây của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá chuyến đi gần đây của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá chuyến đi gần đây của bạn đến %1$s như thế nào?</item>
+        <item>Bạn đánh giá bữa ăn gần đây của bạn tại %1$s như thế nào?</item>
+    </string-array>
+    <string-array name="data_retention_periods">
+        <item>30 ngày</item>
+        <item>12 tháng</item>
+    </string-array>
+    <string-array name="exo_controls_playback_speeds">
+        <item>0,25x</item>
+        <item>0,5x</item>
+        <item>0,75x</item>
+        <item>Bình thường</item>
+        <item>1,25x</item>
+        <item>1,5x</item>
+        <item>2x</item>
+    </string-array>
+    <string-array name="feedback_csat_question_variants">
+        <item>Mức độ hài lòng tổng thể của bạn với %1$s ra sao?</item>
+        <item>Bạn có hài lòng với %1$s không?</item>
+        <item>Nhìn chung, bạn hài lòng với trải nghiệm %1$s gần đây của bạn như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm tổng thể với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm tổng thể của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm của bạn với %1$s từ trước đến nay như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm của bạn trên X với %1$s như thế nào?</item>
+        <item>Bạn có hài lòng với trải nghiệm gần đây của bạn với %1$s không?</item>
+        <item>%1$s đáp ứng các mong đợi của bạn như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm khách hàng của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm dịch vụ của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm dịch vụ gần đây của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá dịch vụ bạn đã nhận từ %1$s như thế nào?</item>
+        <item>Bạn có hài lòng với kết quả tương tác giữa bạn với %1$s không?</item>
+        <item>Bạn đánh giá khả năng giải quyết vấn đề của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá thời gian phản hồi từ %1$s như thế nào?</item>
+        <item>Bạn đánh giá tốc độ dịch vụ từ %1$s như thế nào?</item>
+        <item>Bạn đánh giá thời gian để giải quyết với %1$s như thế nào?</item>
+        <item>Bạn đánh giá thời gian để giải quyết vấn đề của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá tốc độ giải quyết với %1$s như thế nào?</item>
+        <item>Bạn đánh giá chuyên môn của chuyên gia tư vấn %1$s như thế nào?</item>
+        <item>Bạn có hài lòng với sự giúp đỡ của nhân viên %1$s không?</item>
+        <item>Bạn có hài lòng với sự giúp đỡ của chuyên gia %1$s không?</item>
+        <item>Bạn có hài lòng với sự giúp đỡ của người đại diện %1$s không?</item>
+        <item>Bạn đánh giá trải nghiệm ngân hàng gần đây của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm sự kiện tổng thể tại %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm thanh toán hóa đơn của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm mua hàng của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm mua sắm của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm giao hàng của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá trải nghiệm thuê của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá chuyến thăm cửa hàng %1$s gần đây của bạn như thế nào?</item>
+        <item>Bạn đánh giá lần lưu trú khách sạn %1$s gần đây của bạn như thế nào?</item>
+        <item>Bạn đánh giá chuyến bay gần đây của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá chuyến xe gần đây của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá chuyến đi gần đây của bạn với %1$s như thế nào?</item>
+        <item>Bạn đánh giá chuyến thăm gần đây của bạn đến %1$s như thế nào?</item>
+        <item>Bạn đánh giá bữa ăn gần đây của bạn tại %1$s như thế nào?</item>
+    </string-array>
+    <string-array name="nps_prompt_feedback_variants">
+        <item>Khả năng bạn sẽ giới thiệu %1$s cho bạn bè là bao nhiêu?</item>
+        <item>Khả năng bạn sẽ giới thiệu %1$s cho bạn bè là bao nhiêu?</item>
+        <item>Khả năng bạn sẽ giới thiệu %1$s cho đồng nghiệp là bao nhiêu?</item>
+        <item>Khả năng bạn sẽ giới thiệu %1$s cho thành viên gia đình mình là bao nhiêu?</item>
+        <item>Khả năng bạn sẽ giới thiệu %1$s cho người khác là bao nhiêu?</item>
+        <item>Khả năng bạn sẽ giới thiệu %1$s cho bạn bè hoặc đồng nghiệp là bao nhiêu?</item>
+        <item>Khả năng bạn sẽ mua sắm tại %1$s trong tương lai là bao nhiêu?</item>
+        <item>Khả năng bạn giới thiệu %1$s là bao nhiêu?</item>
+        <item>Bạn có muốn giới thiệu %1$s cho bạn bè hoặc đồng nghiệp không?</item>
+        <item>Khả năng bạn sẽ giới thiệu trải nghiệm của mình với %1$s cho bạn bè là bao nhiêu?</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_high_rating_reasons">
+        <item>Số Người xem Tốt</item>
+        <item>Cộng đồng Tích cực</item>
+        <item>Chất lượng Video</item>
+        <item>Đang tham gia Trò chuyện</item>
+    </string-array>
+    <string-array name="ps__broadcaster_survey_low_rating_reasons">
+        <item>Số Người xem Thấp</item>
+        <item>Quấy rối</item>
+        <item>Vấn đề về Video</item>
+        <item>Tin rác Trong Cuộc trò chuyện</item>
+    </string-array>
+    <string-array name="reader_text_sizes">
+        <item>\@string/reader_mode_text_size_large</item>
+        <item>\@string/reader_mode_text_size_medium</item>
+        <item>\@string/reader_mode_text_size_small</item>
+    </string-array>
+    <string-array name="reader_text_sizes_label">
+        <item>\@string/reader_mode_text_size_large_label</item>
+        <item>\@string/reader_mode_text_size_medium_label</item>
+        <item>\@string/reader_mode_text_size_small_label</item>
+    </string-array>
+    <string-array name="refresh_intervals">
+        <item>15 phút</item>
+        <item>30 phút</item>
+        <item>1 giờ</item>
+        <item>2 giờ</item>
+        <item>4 giờ</item>
+        <item>Hàng ngày</item>
+    </string-array>
+</resources>
