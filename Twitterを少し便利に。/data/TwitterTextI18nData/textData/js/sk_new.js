@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Páči sa"},
 	"bookmarkAction": {"type":"string","value":"Uložiť ako záložku"},
 	"showMore": {"type":"string","value":"Zobraziť viac"},
+	"translatePost": {"type":"string","value":"Preložiť príspevok"},
+	"showTranslation": {"type":"string","value":"Zobraziť preklad"},
+	"showOriginal": {"type":"string","value":"Zobraziť originál"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Preložené z jazyka "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Skryť preložený príspevok"},
+	"showTranslatedPost": {"type":"string","value":"Zobraziť preložený príspevok"},
+	"translatedByGrok": {"type":"string","value":"Preložené Grokom"},
 	"viewThread": {"type":"string","value":"Zobraziť toto vlákno"},
 	"previousImage": {"type":"string","value":"Predchádzajúci obrázok"},
 	"nextImage": {"type":"string","value":"Nasledujúci obrázok"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" hlas"+i(e.count,"y","u","","ov")}
 	},
 	"pollEnded": {"type":"string","value":"Konečné výsledky"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Zostáva"+i(e.count,"jú "+e.formattedCount+" minúty"," "+e.formattedCount+" minúty"," "+e.formattedCount+" minúta"," "+e.formattedCount+" minút")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Zostáva"+i(e.count,"jú "+e.formattedCount+" hodiny"," "+e.formattedCount+" hodiny"," "+e.formattedCount+" hodina"," "+e.formattedCount+" hodín")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Zostáva"+i(e.count,"jú "+e.formattedCount+" dni"," "+e.formattedCount+" dňa"," "+e.formattedCount+" deň"," "+e.formattedCount+" dní")}
+	},
+	"imageAltTitle": {"type":"string","value":"Popis obrázka"},
+	"imageAltRead": {"type":"string","value":"prečítať popis obrázka"},
+	"imageAltHide": {"type":"string","value":"Zrušiť"},
 	"retweet": {"type":"string","value":"Opätovné uverejnenie"},
 	"unDoRetweet": {"type":"string","value":"Zrušiť opätovné uverejnenie"},
 	"quoteTweet": {"type":"string","value":"Citovať Tweet"},

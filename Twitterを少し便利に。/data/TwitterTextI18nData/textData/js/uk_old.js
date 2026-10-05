@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Вподобати"},
 	"bookmarkAction": {"type":"string","value":"Закладка"},
 	"showMore": {"type":"string","value":"Показати більше"},
+	"translatePost": {"type":"string","value":"Перекласти пост"},
+	"showTranslation": {"type":"string","value":"Показати переклад"},
+	"showOriginal": {"type":"string","value":"Показати оригінал"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Мова оригіналу: "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Приховати переклад посту"},
+	"showTranslatedPost": {"type":"string","value":"Показати переклад посту"},
+	"translatedByGrok": {"type":"string","value":"Перекладено Grok"},
 	"viewThread": {"type":"string","value":"Показати цей потік"},
 	"previousImage": {"type":"string","value":"Попереднє зображення"},
 	"nextImage": {"type":"string","value":"Наступне зображення"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" голос"+n(e.count,"и","ів","","у")}
 	},
 	"pollEnded": {"type":"string","value":"Остаточні результати"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Залишил"+n(e.count,"ося "+e.formattedCount+" хвилини","ося "+e.formattedCount+" хвилин","ася "+e.formattedCount+" хвилина","ося "+e.formattedCount+" хвилини")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Залишил"+n(e.count,"ося "+e.formattedCount+" години","ося "+e.formattedCount+" годин","ася "+e.formattedCount+" година","ося "+e.formattedCount+" години")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Залиши"+n(e.count,"лося "+e.formattedCount+" дні","лося "+e.formattedCount+" днів","вся "+e.formattedCount+" день","лося "+e.formattedCount+" дня")}
+	},
+	"imageAltTitle": {"type":"string","value":"Опис зображення"},
+	"imageAltRead": {"type":"string","value":"читати опис зображення"},
+	"imageAltHide": {"type":"string","value":"Відхилити"},
 	"retweet": {"type":"string","value":"Ретвітнути"},
 	"unDoRetweet": {"type":"string","value":"Скасувати ретвіт"},
 	"quoteTweet": {"type":"string","value":"Цитувати твіт"},

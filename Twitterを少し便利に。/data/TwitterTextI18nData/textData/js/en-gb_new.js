@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Like"},
 	"bookmarkAction": {"type":"string","value":"Bookmark"},
 	"showMore": {"type":"string","value":"Show more"},
+	"translatePost": {"type":"string","value":"Translate post"},
+	"showTranslation": {"type":"string","value":"Show translation"},
+	"showOriginal": {"type":"string","value":"Show original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Translated from "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Hide translated post"},
+	"showTranslatedPost": {"type":"string","value":"Show translated post"},
+	"translatedByGrok": {"type":"string","value":"Translated by Grok"},
 	"viewThread": {"type":"string","value":"Show this thread"},
 	"previousImage": {"type":"string","value":"Previous image"},
 	"nextImage": {"type":"string","value":"Next image"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" vote"+r(e.count,"","s")}
 	},
 	"pollEnded": {"type":"string","value":"Final results"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" minute"+r(e.count,"","s")+" left"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" hour"+r(e.count,"","s")+" left"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" day"+r(e.count,"","s")+" left"}
+	},
+	"imageAltTitle": {"type":"string","value":"Image description"},
+	"imageAltRead": {"type":"string","value":"read image description"},
+	"imageAltHide": {"type":"string","value":"Dismiss"},
 	"retweet": {"type":"string","value":"Repost"},
 	"unDoRetweet": {"type":"string","value":"Undo repost"},
 	"quoteTweet": {"type":"string","value":"Quote"},

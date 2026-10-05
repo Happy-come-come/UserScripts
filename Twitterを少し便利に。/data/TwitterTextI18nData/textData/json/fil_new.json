@@ -29,6 +29,35 @@
 		"type": "string",
 		"value": "Magpakita pa"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Isalin ang post"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Ipakita ang pagsasalin"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Ipakita ang Orihinal"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Isinalin mula sa {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Itago ang isinaling post"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Ipakita ang isinaling post"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Isinalin ng Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Ipakita ang thread na ito"
@@ -198,6 +227,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Pinal na mga resulta"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Paglalarawan ng larawan"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "basahin ang paglalarawan sa imahe"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "I-dismiss"
 	},
 	"retweet": {
 		"type": "string",

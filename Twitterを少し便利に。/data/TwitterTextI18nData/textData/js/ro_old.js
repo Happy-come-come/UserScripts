@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Apreciază"},
 	"bookmarkAction": {"type":"string","value":"Marcaj"},
 	"showMore": {"type":"string","value":"Arată mai multe"},
+	"translatePost": {"type":"string","value":"Tradu postarea"},
+	"showTranslation": {"type":"string","value":"Afișează traducerea"},
+	"showOriginal": {"type":"string","value":"Afișează versiunea originală"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Tradus din "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Ascunde postarea tradusă"},
+	"showTranslatedPost": {"type":"string","value":"Afișează postarea tradusă"},
+	"translatedByGrok": {"type":"string","value":"Tradus de Grok"},
 	"viewThread": {"type":"string","value":"Afișează acest fir"},
 	"previousImage": {"type":"string","value":"Imaginea anterioară"},
 	"nextImage": {"type":"string","value":"Imaginea următoare"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" "+r(e.count,"voturi","vot","de voturi")}
 	},
 	"pollEnded": {"type":"string","value":"Rezultatele finale"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" "+r(e.count,"minute rămase","minut rămas","de minute rămase")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" "+r(e.count,"ore rămase","oră rămasă","de ore rămase")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" "+r(e.count,"zile rămase","zi rămasă","de zile rămase")}
+	},
+	"imageAltTitle": {"type":"string","value":"Descriere imagine"},
+	"imageAltRead": {"type":"string","value":"citește descrierea imaginii"},
+	"imageAltHide": {"type":"string","value":"Renunță"},
 	"retweet": {"type":"string","value":"Redistribuie"},
 	"unDoRetweet": {"type":"string","value":"Anulează Retweetul"},
 	"quoteTweet": {"type":"string","value":"Citează Tweetul"},

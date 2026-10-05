@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Gustuhin"},
 	"bookmarkAction": {"type":"string","value":"Bookmark"},
 	"showMore": {"type":"string","value":"Magpakita pa"},
+	"translatePost": {"type":"string","value":"Isalin ang post"},
+	"showTranslation": {"type":"string","value":"Ipakita ang pagsasalin"},
+	"showOriginal": {"type":"string","value":"Ipakita ang Orihinal"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(a){return"Isinalin mula sa "+a.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Itago ang isinaling post"},
+	"showTranslatedPost": {"type":"string","value":"Ipakita ang isinaling post"},
+	"translatedByGrok": {"type":"string","value":"Isinalin ng Grok"},
 	"viewThread": {"type":"string","value":"Ipakita ang thread na ito"},
 	"previousImage": {"type":"string","value":"Nakaraang larawan"},
 	"nextImage": {"type":"string","value":"Susunod na larawan"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(a){return a.formattedCount+" "+e(a.count,"","(na) ")+"boto"}
 	},
 	"pollEnded": {"type":"string","value":"Pinal na mga resulta"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(a){return a.formattedCount+" "+e(a.count,"","(na) ")+"minuto ang natitira"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(a){return a.formattedCount+" "+e(a.count,"","(na) ")+"oras ang natitira"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(a){return a.formattedCount+" "+e(a.count,"","(na) ")+"araw ang natitira"}
+	},
+	"imageAltTitle": {"type":"string","value":"Paglalarawan ng larawan"},
+	"imageAltRead": {"type":"string","value":"basahin ang paglalarawan sa imahe"},
+	"imageAltHide": {"type":"string","value":"I-dismiss"},
 	"retweet": {"type":"string","value":"I-repost"},
 	"unDoRetweet": {"type":"string","value":"I-undo ang repost"},
 	"quoteTweet": undefined,

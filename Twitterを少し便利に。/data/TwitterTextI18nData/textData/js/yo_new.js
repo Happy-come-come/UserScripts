@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Fẹ́rán"},
 	"bookmarkAction": {"type":"string","value":"Búkúmáàkì"},
 	"showMore": {"type":"string","value":"Fihàn sii"},
+	"translatePost": {"type":"string","value":"Translate post"},
+	"showTranslation": {"type":"string","value":"Show translation"},
+	"showOriginal": {"type":"string","value":"Show original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Translated from "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Hide translated post"},
+	"showTranslatedPost": {"type":"string","value":"Show translated post"},
+	"translatedByGrok": {"type":"string","value":"Translated by Grok"},
 	"viewThread": {"type":"string","value":"Ṣàfihàn tírẹ́ẹ̀dì yìí"},
 	"previousImage": {"type":"string","value":"Àwòran ti tẹ́lẹ̀"},
 	"nextImage": {"type":"string","value":"Àwọ̀ran tó kàn"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return"Àwọn ìbò "+e.formattedCount}
 	},
 	"pollEnded": {"type":"string","value":"Àwọn àbájáde ìkẹyìn"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"Ó ku ìṣẹ́jú "+e.formattedCount}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"Ó ku wákàtí "+e.formattedCount}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"Ó ku ọjọ́ "+e.formattedCount}
+	},
+	"imageAltTitle": {"type":"string","value":"Àpèjúwe àwòran"},
+	"imageAltRead": {"type":"string","value":"read image description"},
+	"imageAltHide": {"type":"string","value":"Pa á tì"},
 	"retweet": {"type":"string","value":"Repost"},
 	"unDoRetweet": {"type":"string","value":"Undo repost"},
 	"quoteTweet": undefined,

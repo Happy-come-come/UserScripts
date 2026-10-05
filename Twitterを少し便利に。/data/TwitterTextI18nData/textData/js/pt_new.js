@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Curtir"},
 	"bookmarkAction": {"type":"string","value":"Salvar post"},
 	"showMore": {"type":"string","value":"Mostrar mais"},
+	"translatePost": {"type":"string","value":"Traduzir post"},
+	"showTranslation": {"type":"string","value":"Mostrar tradução"},
+	"showOriginal": {"type":"string","value":"Mostrar original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(a){return"Traduzido do "+a.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Ocultar post traduzido"},
+	"showTranslatedPost": {"type":"string","value":"Mostrar post traduzido"},
+	"translatedByGrok": {"type":"string","value":"Traduzido pelo Grok"},
 	"viewThread": {"type":"string","value":"Mostrar esta sequência"},
 	"previousImage": {"type":"string","value":"Imagem anterior"},
 	"nextImage": {"type":"string","value":"Próxima imagem"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(a){return a.formattedCount+" voto"+i(a.count,"","s")}
 	},
 	"pollEnded": {"type":"string","value":"Resultados finais"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(a){return a.formattedCount+" minuto"+i(a.count," restante","s restantes")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(a){return a.formattedCount+" hora"+i(a.count," restante","s restantes")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(a){return"faltando "+a.formattedCount+" dia"+i(a.count,"","s")}
+	},
+	"imageAltTitle": {"type":"string","value":"Descrição da imagem"},
+	"imageAltRead": {"type":"string","value":"ler descrição da imagem"},
+	"imageAltHide": {"type":"string","value":"Dispensar"},
 	"retweet": {"type":"string","value":"Repostar"},
 	"unDoRetweet": {"type":"string","value":"Desfazer repost"},
 	"quoteTweet": {"type":"string","value":"Comentário"},

@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Gefällt mir"},
 	"bookmarkAction": {"type":"string","value":"Lesezeichen"},
 	"showMore": {"type":"string","value":"Mehr anzeigen"},
+	"translatePost": {"type":"string","value":"Post übersetzen"},
+	"showTranslation": {"type":"string","value":"Übersetzung zeigen"},
+	"showOriginal": {"type":"string","value":"Original zeigen"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Übersetzt (Originalsprache "+e.sourceLanguageDisplayName+")"}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Übersetzten Post ausblenden"},
+	"showTranslatedPost": {"type":"string","value":"Übersetzten Post zeigen"},
+	"translatedByGrok": {"type":"string","value":"Übersetzt von Grok"},
 	"viewThread": {"type":"string","value":"Diesen Thread anzeigen"},
 	"previousImage": {"type":"string","value":"Vorheriges Bild"},
 	"nextImage": {"type":"string","value":"Nächstes Bild"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" Stimme"+r(e.count,"","n")}
 	},
 	"pollEnded": {"type":"string","value":"Endergebnisse"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return"Noch "+e.formattedCount+" Minute"+r(e.count,"","n")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return"Noch "+e.formattedCount+" Stunde"+r(e.count,"","n")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return"Noch "+e.formattedCount+" Tag"+r(e.count,"","e")}
+	},
+	"imageAltTitle": {"type":"string","value":"Bildbeschreibung"},
+	"imageAltRead": {"type":"string","value":"Bildbeschreibung lesen"},
+	"imageAltHide": {"type":"string","value":"Verwerfen"},
 	"retweet": {"type":"string","value":"Retweeten"},
 	"unDoRetweet": {"type":"string","value":"Retweet rückgängig machen"},
 	"quoteTweet": {"type":"string","value":"Tweet zitieren"},

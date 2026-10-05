@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Thích"},
 	"bookmarkAction": {"type":"string","value":"Đánh dấu trang"},
 	"showMore": {"type":"string","value":"Hiển thị thêm"},
+	"translatePost": {"type":"string","value":"Dịch bài đăng"},
+	"showTranslation": {"type":"string","value":"Hiện bản dịch"},
+	"showOriginal": {"type":"string","value":"Hiện bản gốc"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(n){return"Được dịch từ "+n.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Ẩn bài đăng đã dịch"},
+	"showTranslatedPost": {"type":"string","value":"Hiện bài đăng đã dịch"},
+	"translatedByGrok": {"type":"string","value":"Bản dịch của Grok"},
 	"viewThread": {"type":"string","value":"Hiển thị chuỗi hội thoại này"},
 	"previousImage": {"type":"string","value":"Ảnh trước"},
 	"nextImage": {"type":"string","value":"Ảnh tiếp theo"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(n){return n.formattedCount+" bầu chọn"}
 	},
 	"pollEnded": {"type":"string","value":"Kết quả cuối cùng"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(n){return"Còn "+n.formattedCount+" phút"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(n){return"Còn "+n.formattedCount+" giờ"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(n){return"Còn "+n.formattedCount+" ngày"}
+	},
+	"imageAltTitle": {"type":"string","value":"Mô tả ảnh"},
+	"imageAltRead": {"type":"string","value":"đọc mô tả ảnh"},
+	"imageAltHide": {"type":"string","value":"Hủy bỏ"},
 	"retweet": {"type":"string","value":"Đăng lại"},
 	"unDoRetweet": {"type":"string","value":"Hoàn tác đăng lại"},
 	"quoteTweet": {"type":"string","value":"Trích dẫn"},

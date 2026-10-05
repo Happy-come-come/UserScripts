@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Mmasị"},
 	"bookmarkAction": {"type":"string","value":"Ebenrụtụakā"},
 	"showMore": {"type":"string","value":"Gosikwuo"},
+	"translatePost": {"type":"string","value":"Translate post"},
+	"showTranslation": {"type":"string","value":"Show translation"},
+	"showOriginal": {"type":"string","value":"Show original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Translated from "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Hide translated post"},
+	"showTranslatedPost": {"type":"string","value":"Show translated post"},
+	"translatedByGrok": {"type":"string","value":"Translated by Grok"},
 	"viewThread": {"type":"string","value":"Gosi eriri okwu a"},
 	"previousImage": {"type":"string","value":"Onyonyo gara aga"},
 	"nextImage": {"type":"string","value":"Onyonyo na-esote"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" votu gasi"}
 	},
 	"pollEnded": {"type":"string","value":"Nsonaazụ ikpeazụ"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" nkeji fọdụrụ"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" awa fọdụrụ"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" ụbọchị fọdụrụ"}
+	},
+	"imageAltTitle": {"type":"string","value":"nkọwa onyonyo"},
+	"imageAltRead": {"type":"string","value":"read image description"},
+	"imageAltHide": {"type":"string","value":"Wepụ"},
 	"retweet": {"type":"string","value":"Repost"},
 	"unDoRetweet": {"type":"string","value":"Undo repost"},
 	"quoteTweet": undefined,

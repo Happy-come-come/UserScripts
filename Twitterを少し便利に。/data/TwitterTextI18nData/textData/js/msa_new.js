@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Suka"},
 	"bookmarkAction": {"type":"string","value":"Tandai"},
 	"showMore": {"type":"string","value":"Tunjukkan lagi"},
+	"translatePost": {"type":"string","value":"Terjemahkan siaran"},
+	"showTranslation": {"type":"string","value":"Tunjukkan terjemahan"},
+	"showOriginal": {"type":"string","value":"Tunjukkan yang asal"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(a){return"Diterjemah daripada "+a.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Sembunyikan siaran yang diterjemahkan"},
+	"showTranslatedPost": {"type":"string","value":"Tunjukkan siaran yang diterjemahkan"},
+	"translatedByGrok": {"type":"string","value":"Diterjemahkan oleh Grok"},
 	"viewThread": {"type":"string","value":"Tunjukkan thread ini"},
 	"previousImage": {"type":"string","value":"Imej sebelumnya"},
 	"nextImage": {"type":"string","value":"Imej seterusnya"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(a){return a.formattedCount+" undi"}
 	},
 	"pollEnded": {"type":"string","value":"Keputusan akhir"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(a){return"Tinggal "+a.formattedCount+" minit"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(a){return"Tinggal "+a.formattedCount+" jam"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(a){return"Tinggal "+a.formattedCount+" hari"}
+	},
+	"imageAltTitle": {"type":"string","value":"Penerangan imej"},
+	"imageAltRead": {"type":"string","value":"baca perihalan imej"},
+	"imageAltHide": {"type":"string","value":"Abaikan"},
 	"retweet": {"type":"string","value":"Siaran semula"},
 	"unDoRetweet": {"type":"string","value":"Buat asal siaran semula"},
 	"quoteTweet": {"type":"string","value":"Petikan"},

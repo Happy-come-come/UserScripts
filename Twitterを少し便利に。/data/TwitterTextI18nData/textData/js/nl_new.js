@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Leuk"},
 	"bookmarkAction": {"type":"string","value":"Bladwijzer"},
 	"showMore": {"type":"string","value":"Meer weergeven"},
+	"translatePost": {"type":"string","value":"Post vertalen"},
+	"showTranslation": {"type":"string","value":"Vertaling tonen"},
+	"showOriginal": {"type":"string","value":"Origineel tonen"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Vertaald uit het "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Vertaalde post verbergen"},
+	"showTranslatedPost": {"type":"string","value":"Vertaalde post weergeven"},
+	"translatedByGrok": {"type":"string","value":"Vertaald door Grok"},
 	"viewThread": {"type":"string","value":"Deze collectie weergeven"},
 	"previousImage": {"type":"string","value":"Vorige afbeelding"},
 	"nextImage": {"type":"string","value":"Volgende afbeelding"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" stem"+i(e.count,"","men")}
 	},
 	"pollEnded": {"type":"string","value":"Eindresultaten"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" minu"+i(e.count,"ut","ten")+" resterend"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" uur resterend"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" dag"+i(e.count,"","en")+" resterend"}
+	},
+	"imageAltTitle": {"type":"string","value":"Beschrijving van afbeelding"},
+	"imageAltRead": {"type":"string","value":"afbeeldingsbeschrijving lezen"},
+	"imageAltHide": {"type":"string","value":"Afwijzen"},
 	"retweet": {"type":"string","value":"Repost"},
 	"unDoRetweet": {"type":"string","value":"Maak repost ongedaan"},
 	"quoteTweet": {"type":"string","value":"Geciteerde post"},

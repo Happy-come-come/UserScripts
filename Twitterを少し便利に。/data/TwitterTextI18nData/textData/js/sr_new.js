@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Свиђа ми се"},
 	"bookmarkAction": {"type":"string","value":"Обележивач"},
 	"showMore": {"type":"string","value":"Прикажи још"},
+	"translatePost": {"type":"string","value":"Преведи објаву"},
+	"showTranslation": {"type":"string","value":"Прикажи превод"},
+	"showOriginal": {"type":"string","value":"Прикажи оригинал"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Преведено са "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Сакриј преведене објаве"},
+	"showTranslatedPost": {"type":"string","value":"Прикажи преведену објаву"},
+	"translatedByGrok": {"type":"string","value":"Превод омогућава Grok"},
 	"viewThread": {"type":"string","value":"Прикажи овај низ"},
 	"previousImage": {"type":"string","value":"Претходна слика"},
 	"nextImage": {"type":"string","value":"Следећа слика"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" глас"+n(e.count,"а","","ова")}
 	},
 	"pollEnded": {"type":"string","value":"Коначни резултат"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" минут"+n(e.count,"а су остала"," је остао","а је остало")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" сат"+n(e.count,"а су остала"," је остао","и је остало")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" дан"+n(e.count,"а су остала"," је остао","а је остало")}
+	},
+	"imageAltTitle": {"type":"string","value":"Опис слике"},
+	"imageAltRead": {"type":"string","value":"прочитај опис слике"},
+	"imageAltHide": {"type":"string","value":"Одбаци"},
 	"retweet": {"type":"string","value":"Поново објави"},
 	"unDoRetweet": {"type":"string","value":"Опозови поновну објаву"},
 	"quoteTweet": {"type":"string","value":"Цитирај твит"},

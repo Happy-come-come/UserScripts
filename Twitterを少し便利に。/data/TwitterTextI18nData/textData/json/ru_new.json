@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Показать ещё"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Перевести пост"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Показать перевод"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Показать оригинал"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Исходный язык: {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Скрыть перевод поста"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Показать перевод поста"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Переведено Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Показать эту ветку"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Конечные результаты"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Описание изображения"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "прочитать описание изображения"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Отклонить"
 	},
 	"retweet": {
 		"type": "string",

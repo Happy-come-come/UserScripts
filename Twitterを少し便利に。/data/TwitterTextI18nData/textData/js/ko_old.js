@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"마음에 들어요"},
 	"bookmarkAction": {"type":"string","value":"북마크"},
 	"showMore": {"type":"string","value":"더 보기"},
+	"translatePost": {"type":"string","value":"게시물 번역하기"},
+	"showTranslation": {"type":"string","value":"번역 보기"},
+	"showOriginal": {"type":"string","value":"원본 보기"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"원문 언어 "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"번역된 게시물 숨기기"},
+	"showTranslatedPost": {"type":"string","value":"번역된 게시물 보기"},
+	"translatedByGrok": {"type":"string","value":"번역 제공: Grok"},
 	"viewThread": {"type":"string","value":"이 스레드 보기"},
 	"previousImage": {"type":"string","value":"이전 이미지"},
 	"nextImage": {"type":"string","value":"다음 이미지"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+"표"}
 	},
 	"pollEnded": {"type":"string","value":"최종 결과"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+"분 남음"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+"시간 남음"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+"일 남음"}
+	},
+	"imageAltTitle": {"type":"string","value":"이미지 설명"},
+	"imageAltRead": {"type":"string","value":"이미지 설명 읽기"},
+	"imageAltHide": {"type":"string","value":"숨기기"},
 	"retweet": {"type":"string","value":"리트윗"},
 	"unDoRetweet": {"type":"string","value":"리트윗 취소"},
 	"quoteTweet": {"type":"string","value":"트윗 인용하기"},

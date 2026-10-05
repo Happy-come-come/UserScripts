@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Aimer"},
 	"bookmarkAction": {"type":"string","value":"Ajouter aux signets"},
 	"showMore": {"type":"string","value":"Voir plus"},
+	"translatePost": {"type":"string","value":"Traduire le post"},
+	"showTranslation": {"type":"string","value":"Afficher la traduction"},
+	"showOriginal": {"type":"string","value":"Afficher l'original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"À l'origine en "+e.sourceLanguageDisplayName+" et traduit"}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Masquer le post traduit"},
+	"showTranslatedPost": {"type":"string","value":"Voir le post traduit"},
+	"translatedByGrok": {"type":"string","value":"Traduit par Grok"},
 	"viewThread": {"type":"string","value":"Afficher cette discussion"},
 	"previousImage": {"type":"string","value":"Image précédente"},
 	"nextImage": {"type":"string","value":"Image suivante"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" vote"+r(e.count,"","s")}
 	},
 	"pollEnded": {"type":"string","value":"Résultats finaux"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" minute"+r(e.count," restante","s restantes")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" heure"+r(e.count," restante","s restantes")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" jour"+r(e.count," restant","s restants")}
+	},
+	"imageAltTitle": {"type":"string","value":"Description de l'image"},
+	"imageAltRead": {"type":"string","value":"lire la description de l'image"},
+	"imageAltHide": {"type":"string","value":"Ignorer"},
 	"retweet": {"type":"string","value":"Retweeter"},
 	"unDoRetweet": {"type":"string","value":"Annuler le Retweet"},
 	"quoteTweet": {"type":"string","value":"Citer le Tweet"},

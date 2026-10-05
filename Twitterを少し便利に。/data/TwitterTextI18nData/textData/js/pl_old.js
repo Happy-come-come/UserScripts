@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Lubię"},
 	"bookmarkAction": {"type":"string","value":"Zakładka"},
 	"showMore": {"type":"string","value":"Pokaż więcej"},
+	"translatePost": {"type":"string","value":"Przetłumacz wpis"},
+	"showTranslation": {"type":"string","value":"Pokaż tłumaczenie"},
+	"showOriginal": {"type":"string","value":"Pokaż oryginał"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(a){return"Tłumaczenie z języka "+a.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Ukryj przetłumaczony wpis"},
+	"showTranslatedPost": {"type":"string","value":"Pokaż przetłumaczony wpis"},
+	"translatedByGrok": {"type":"string","value":"Przetłumaczone przez Groka"},
 	"viewThread": {"type":"string","value":"Pokaż ten wątek"},
 	"previousImage": {"type":"string","value":"Poprzedni obraz"},
 	"nextImage": {"type":"string","value":"Następny obraz"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" głos"+n(e.count,"y","ów","","ów")}
 	},
 	"pollEnded": {"type":"string","value":"Wyniki końcowe"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Pozostał"+n(e.count,"y "+e.formattedCount+" minuty","o "+e.formattedCount+" minut","a "+e.formattedCount+" minuta","o "+e.formattedCount+" minut")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Pozostał"+n(e.count,"y "+e.formattedCount+" godziny","o "+e.formattedCount+" godzin","a "+e.formattedCount+" godzina","o "+e.formattedCount+" godzin")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Pozostał"+n(e.count,"y "+e.formattedCount+" dni","o "+e.formattedCount+" dni"," "+e.formattedCount+" dzień","o "+e.formattedCount+" dni")}
+	},
+	"imageAltTitle": {"type":"string","value":"Opis obrazu"},
+	"imageAltRead": {"type":"string","value":"przeczytaj opis obrazu"},
+	"imageAltHide": {"type":"string","value":"Odrzuć"},
 	"retweet": {"type":"string","value":"Podaj dalej"},
 	"unDoRetweet": {"type":"string","value":"Cofnij podanie dalej"},
 	"quoteTweet": {"type":"string","value":"Cytuj tweeta"},

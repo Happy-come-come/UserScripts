@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Prikaži još"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Prevedi objavu"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Prikaži prijevod"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Prikaži original"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Prevedeno s jezika {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Sakrij prevedenu objavu"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Prikaži prevedenu objavu"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Preveo Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Pokaži tu nit razgovora"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Konačni rezultati"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Opis slike"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "pročitaj opis slike"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Odbaci"
 	},
 	"retweet": {
 		"type": "string",

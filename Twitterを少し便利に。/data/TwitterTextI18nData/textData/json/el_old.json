@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Εμφάνιση περισσότερων"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Μετάφραση ανάρτησης"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Εμφάνιση μετάφρασης"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Εμφάνιση πρωτότυπου"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Μεταφράστηκε από: {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Απόκρυψη μεταφρασμένης ανάρτησης"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Εμφάνιση μεταφρασμένης ανάρτησης"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Μεταφράστηκε από το Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Προβολή αυτού του νήματος Tweet"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Τελικά αποτελέσματα"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Περιγραφή εικόνας"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "διαβάστε την περιγραφή εικόνας"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Απόρριψη"
 	},
 	"retweet": {
 		"type": "string",

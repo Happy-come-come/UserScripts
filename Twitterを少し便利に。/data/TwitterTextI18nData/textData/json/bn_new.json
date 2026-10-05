@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "আরও দেখান"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "পোস্ট অনুবাদ করুন"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "অনুবাদ দেখান"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "আসল দেখান"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "{{sourceLanguageDisplayName}} থেকে অনুবাদ করা হয়েছে"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "অনুবাদ করা পোস্ট লোকান"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "অনুবাদ করা নোট দেখান"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Grok দ্বারা অনুবাদ করা"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "এই থ্রেডটি দেখান"
@@ -213,6 +242,33 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "চূড়ান্ত ফলাফল"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} মিনিট বাকি"
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} ঘণ্টা বাকি"
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} দিন বাকি"
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "ছবির বর্ণনা"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "ছবির বিবরণ পড়ুন"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "খারিজ করুন"
 	},
 	"retweet": {
 		"type": "string",

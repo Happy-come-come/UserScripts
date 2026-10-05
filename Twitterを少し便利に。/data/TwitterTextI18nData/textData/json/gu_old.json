@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "વધુ દર્શાવો"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "પોસ્ટનો અનુવાદ કરો"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "અનુવાદ બતાવો"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "ઓરિજીનલ બતાવો"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "માંથી અનુવાદિત કરવામાં આવ્યું {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "અનુવાદિત પોસ્ટ છુપાવો"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "અનુવાદિત પોસ્ટ બતાવો"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Grok દ્વારા અનુવાદિત"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "આ થ્રેડ બતાવો"
@@ -211,6 +240,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "અંતિમ પરિણામો"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "છબીનું વર્ણન"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "ઈમેજનું વર્ણન વાંચો"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "બરતરફ કરો"
 	},
 	"retweet": {
 		"type": "string",

@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"پسندیدن"},
 	"bookmarkAction": {"type":"string","value":"نشانک"},
 	"showMore": {"type":"string","value":"نمایش موارد بیشتر"},
+	"translatePost": {"type":"string","value":"ترجمه پست"},
+	"showTranslation": {"type":"string","value":"نشان دادن ترجمه"},
+	"showOriginal": {"type":"string","value":"نشان دادن متن اصلی"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"ترجمه‌شده از "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"پست ترجمه‌شده پنهان شود"},
+	"showTranslatedPost": {"type":"string","value":"نمایش پست ترجمه‌شده"},
+	"translatedByGrok": {"type":"string","value":"ترجمه توسط Grok"},
 	"viewThread": {"type":"string","value":"این رشته‌توییت نشان داده شود"},
 	"previousImage": {"type":"string","value":"تصویر قبلی"},
 	"nextImage": {"type":"string","value":"تصویر بعدی"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" رأی"}
 	},
 	"pollEnded": {"type":"string","value":"نتايج نهايى"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" دقیقه باقی مانده است"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" ساعت باقی مانده است"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" روز باقی مانده است"}
+	},
+	"imageAltTitle": {"type":"string","value":"توصیف تصویر"},
+	"imageAltRead": {"type":"string","value":"خواندن شرح تصویر"},
+	"imageAltHide": {"type":"string","value":"رد کردن"},
 	"retweet": {"type":"string","value":"بازپست"},
 	"unDoRetweet": {"type":"string","value":"واگرد بازپست"},
 	"quoteTweet": {"type":"string","value":"‏نقل‌توییت"},

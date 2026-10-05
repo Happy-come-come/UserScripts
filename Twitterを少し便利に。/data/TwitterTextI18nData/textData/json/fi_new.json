@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Näytä lisää"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Käännä julkaisu"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Näytä käännös"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Näytä alkuperäinen"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Käännetty kielestä {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Piilota käännetty julkaisu"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Näytä käännetty julkaisu"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Kääntänyt Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Näytä tämä ketju"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Lopulliset tulokset"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Kuvan kuvaus"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "lue kuvan kuvaus"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Hylkää"
 	},
 	"retweet": {
 		"type": "string",

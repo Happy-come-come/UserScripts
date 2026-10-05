@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Mostrar más"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Traducir post"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Mostrar traducción"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Mostrar original"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Traducido del {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Ocultar post traducido"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Mostrar post traducido"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Traducido por Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Mostrar este hilo"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Resultados finales"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Descripción de la imagen"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "leer descripción de la imagen"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Descartar"
 	},
 	"retweet": {
 		"type": "string",

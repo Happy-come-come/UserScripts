@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "さらに表示"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "ポストを翻訳"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "翻訳を表示"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "原文を表示"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "{{sourceLanguageDisplayName}}からの翻訳"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "翻訳済みポストを非表示"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "翻訳済みポストを表示"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Grokによる翻訳"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "このスレッドを表示"
@@ -213,6 +242,33 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "最終結果"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "残り{{formattedCount}}分"
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "残り{{formattedCount}}時間"
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "残り{{formattedCount}}日"
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "画像の説明"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "画像の説明を読む"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "非表示にする"
 	},
 	"retweet": {
 		"type": "string",

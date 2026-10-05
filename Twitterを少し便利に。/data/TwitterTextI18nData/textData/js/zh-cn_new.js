@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"喜欢"},
 	"bookmarkAction": {"type":"string","value":"书签"},
 	"showMore": {"type":"string","value":"显示更多"},
+	"translatePost": {"type":"string","value":"翻译帖子"},
+	"showTranslation": {"type":"string","value":"显示翻译"},
+	"showOriginal": {"type":"string","value":"显示原文"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"翻译自 "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"隐藏已翻译帖子"},
+	"showTranslatedPost": {"type":"string","value":"显示翻译后的帖子"},
+	"translatedByGrok": {"type":"string","value":"由 Grok 翻译"},
 	"viewThread": {"type":"string","value":"显示这个主题帖"},
 	"previousImage": {"type":"string","value":"上一张图片"},
 	"nextImage": {"type":"string","value":"下一张图片"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" 次投票"}
 	},
 	"pollEnded": {"type":"string","value":"最终结果"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"剩下 "+e.formattedCount+" 分钟"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"剩下 "+e.formattedCount+" 小时"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"剩下 "+e.formattedCount+" 天"}
+	},
+	"imageAltTitle": {"type":"string","value":"图片描述"},
+	"imageAltRead": {"type":"string","value":"查看图片描述"},
+	"imageAltHide": {"type":"string","value":"忽略"},
 	"retweet": {"type":"string","value":"转帖"},
 	"unDoRetweet": {"type":"string","value":"撤销转帖"},
 	"quoteTweet": {"type":"string","value":"引用"},

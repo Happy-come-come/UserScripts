@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Tunjukkan lagi"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Terjemahkan siaran"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Tunjukkan terjemahan"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Tunjukkan yang asal"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Diterjemah daripada {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Sembunyikan siaran yang diterjemahkan"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Tunjukkan siaran yang diterjemahkan"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Diterjemahkan oleh Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Tunjukkan thread ini"
@@ -213,6 +242,33 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Keputusan akhir"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "Tinggal {{formattedCount}} minit"
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "Tinggal {{formattedCount}} jam"
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "Tinggal {{formattedCount}} hari"
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Penerangan imej"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "baca perihalan imej"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Abaikan"
 	},
 	"retweet": {
 		"type": "string",

@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "अधिक प्रमाणामध्ये दाखवा"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "पोस्ट भाषांतरित करा"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "भाषांतर दाखवा"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "मूळ दाखवा"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "{{sourceLanguageDisplayName}}मधून भाषांतरित केले"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "अनुवादित पोस्ट लपवा"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "भाषांतरित पोस्ट दाखवा"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Grok द्वारा भाषांतरित"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "हा थ्रेड दाखवा"
@@ -210,6 +239,32 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "अंतिम निकाल"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} तास शिल्लक"
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} दिवस शिल्लक"
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "प्रतिमेचे वर्णन"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "प्रतिमेचे वर्णन वाचा"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "डिसमिस करा"
 	},
 	"retweet": {
 		"type": "string",

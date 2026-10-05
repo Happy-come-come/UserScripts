@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Hiển thị thêm"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Dịch bài đăng"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Hiện bản dịch"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Hiện bản gốc"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Được dịch từ {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Ẩn bài đăng đã dịch"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Hiện bài đăng đã dịch"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Bản dịch của Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Hiển thị chuỗi hội thoại này"
@@ -213,6 +242,33 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Kết quả cuối cùng"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "Còn {{formattedCount}} phút"
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "Còn {{formattedCount}} giờ"
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "Còn {{formattedCount}} ngày"
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Mô tả ảnh"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "đọc mô tả ảnh"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Hủy bỏ"
 	},
 	"retweet": {
 		"type": "string",

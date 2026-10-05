@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"M'agrada"},
 	"bookmarkAction": {"type":"string","value":"Afegeix als preferits"},
 	"showMore": {"type":"string","value":"Mostra'n més"},
+	"translatePost": {"type":"string","value":"Tradueix la publicació"},
+	"showTranslation": {"type":"string","value":"Mostra la traducció"},
+	"showOriginal": {"type":"string","value":"Mostra l'original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Traduït del: "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Amaga la publicació traduïda"},
+	"showTranslatedPost": {"type":"string","value":"Mostra la publicació traduïda"},
+	"translatedByGrok": {"type":"string","value":"Traduït per Grok"},
 	"viewThread": {"type":"string","value":"Mostra el fil"},
 	"previousImage": {"type":"string","value":"Imatge anterior"},
 	"nextImage": {"type":"string","value":"Imatge següent"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" vot"+s(e.count,"","s")}
 	},
 	"pollEnded": {"type":"string","value":"Resultats finals"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Qued"+s(e.count,"a "+e.formattedCount+" minut","en "+e.formattedCount+" minuts")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Qued"+s(e.count,"a "+e.formattedCount+" hora","en "+e.formattedCount+" hores")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Qued"+s(e.count,"a "+e.formattedCount+" dia","en "+e.formattedCount+" dies")}
+	},
+	"imageAltTitle": {"type":"string","value":"Descripció de la imatge"},
+	"imageAltRead": {"type":"string","value":"Lectura de la descripció de la imatge"},
+	"imageAltHide": {"type":"string","value":"Descarta"},
 	"retweet": {"type":"string","value":"Republicació"},
 	"unDoRetweet": {"type":"string","value":"Desfés la republicació"},
 	"quoteTweet": {"type":"string","value":"Cita el tuit"},

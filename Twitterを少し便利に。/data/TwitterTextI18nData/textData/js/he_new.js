@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"סמן כאהוב"},
 	"bookmarkAction": {"type":"string","value":"הוסף לסימניות"},
 	"showMore": {"type":"string","value":"הצג עוד"},
+	"translatePost": {"type":"string","value":"תרגם את הפוסט"},
+	"showTranslation": {"type":"string","value":"הצגת תרגום"},
+	"showOriginal": {"type":"string","value":"הצגת טקסט מקורי"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"תרגום מ"+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"הסתרת פוסט מתורגם"},
+	"showTranslatedPost": {"type":"string","value":"הצגת תרגום של הפוסט"},
+	"translatedByGrok": {"type":"string","value":"תרגום של Grok"},
 	"viewThread": {"type":"string","value":"הצג שרשור זה"},
 	"previousImage": {"type":"string","value":"תמונה קודמת"},
 	"nextImage": {"type":"string","value":"התמונה הבאה"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return""+n(e.count,e.formattedCount+" קולות","קול "+e.formattedCount,e.formattedCount+" קולות",e.formattedCount+" קולות")}
 	},
 	"pollEnded": {"type":"string","value":"תוצאות סופיות"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"נשאר"+n(e.count,"ו "+e.formattedCount+" דקות","ה דקה "+e.formattedCount,"ו "+e.formattedCount+" דקות","ו "+e.formattedCount+" דקות")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"נשאר"+n(e.count,"ו "+e.formattedCount+" שעות","ה שעה "+e.formattedCount,"ו "+e.formattedCount+" שעות","ו "+e.formattedCount+" שעות")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"נשאר"+n(e.count,"ו "+e.formattedCount+" ימים"," יום "+e.formattedCount,"ו "+e.formattedCount+" ימים","ו "+e.formattedCount+" ימים")}
+	},
+	"imageAltTitle": {"type":"string","value":"תיאור תמונה"},
+	"imageAltRead": {"type":"string","value":"קרא תיאור תמונה"},
+	"imageAltHide": {"type":"string","value":"בטל"},
 	"retweet": {"type":"string","value":"לפרסם מחדש"},
 	"unDoRetweet": {"type":"string","value":"ביטול פרסום מחדש"},
 	"quoteTweet": undefined,

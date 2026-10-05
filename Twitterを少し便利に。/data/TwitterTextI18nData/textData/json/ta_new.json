@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "மேலும் காண்பி"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "இடுகையை மொழிபெயர்"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "மொழிபெயர்ப்பைக் காட்டு"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "அசலைக் காட்டு"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "{{sourceLanguageDisplayName}} -இலிருந்து மொழிபெயர்க்கப்பட்டது"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "மொழிபெயர்க்கப்பட்ட இடுகையை மறை"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "மொழிபெயர்க்கப்பட்ட இடுகையைக் காட்டு"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Grok -ஆல் மொழிபெயர்க்கப்பட்டது"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "இந்தத் தொடர்ச்சியைக் காண்பி"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "இறுதி முடிவுகள்"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "பட விளக்கம்"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "பட விளக்கத்தைப் படிக்கவும்"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "நிராகரி"
 	},
 	"retweet": {
 		"type": "string",

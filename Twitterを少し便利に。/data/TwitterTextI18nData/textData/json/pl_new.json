@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Pokaż więcej"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Przetłumacz wpis"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Pokaż tłumaczenie"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Pokaż oryginał"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Tłumaczenie z języka {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Ukryj przetłumaczony wpis"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Pokaż przetłumaczony wpis"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Przetłumaczone przez Groka"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Pokaż ten wątek"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Wyniki końcowe"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Opis obrazu"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "przeczytaj opis obrazu"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Odrzuć"
 	},
 	"retweet": {
 		"type": "string",

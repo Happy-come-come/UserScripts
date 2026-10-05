@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Visa fler"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Översätt inlägget"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Visa översättningen"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Visa originalet"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Översatt från {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Dölj det översatta inlägget"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Visa det översatta inlägget"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Översatt av Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Visa denna tråd"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Slutresultat"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Bildbeskrivning"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "läs bildbeskrivningen"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Avfärda"
 	},
 	"retweet": {
 		"type": "string",

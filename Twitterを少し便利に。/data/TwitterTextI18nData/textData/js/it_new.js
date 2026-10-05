@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Mi piace"},
 	"bookmarkAction": {"type":"string","value":"Salva nei segnalibri"},
 	"showMore": {"type":"string","value":"Mostra altro"},
+	"translatePost": {"type":"string","value":"Traduci post"},
+	"showTranslation": {"type":"string","value":"Mostra traduzione"},
+	"showOriginal": {"type":"string","value":"Mostra originale"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(i){return"Lingua originale: "+i.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Nascondi post tradotto"},
+	"showTranslatedPost": {"type":"string","value":"Mostra post tradotto"},
+	"translatedByGrok": {"type":"string","value":"Traduzione di Grok"},
 	"viewThread": {"type":"string","value":"Mostra questa discussione"},
 	"previousImage": {"type":"string","value":"Immagine precedente"},
 	"nextImage": {"type":"string","value":"Immagine successiva"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(i){return i.formattedCount+" vot"+n(i.count,"o","i")}
 	},
 	"pollEnded": {"type":"string","value":"Risultati finali"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(i){return i.formattedCount+" minut"+n(i.count,"o rimasto","i rimasti")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(i){return i.formattedCount+" or"+n(i.count,"a rimasta","e rimaste")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(i){return i.formattedCount+" giorn"+n(i.count,"o rimasto","i rimasti")}
+	},
+	"imageAltTitle": {"type":"string","value":"Descrizione immagine"},
+	"imageAltRead": {"type":"string","value":"leggi descrizione immagine"},
+	"imageAltHide": {"type":"string","value":"Chiudi"},
 	"retweet": {"type":"string","value":"Repost"},
 	"unDoRetweet": {"type":"string","value":"Annulla repost"},
 	"quoteTweet": {"type":"string","value":"Cita"},

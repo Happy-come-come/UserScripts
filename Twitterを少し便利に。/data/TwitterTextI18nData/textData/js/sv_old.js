@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Gilla"},
 	"bookmarkAction": {"type":"string","value":"Bokmärke"},
 	"showMore": {"type":"string","value":"Visa fler"},
+	"translatePost": {"type":"string","value":"Översätt inlägget"},
+	"showTranslation": {"type":"string","value":"Visa översättningen"},
+	"showOriginal": {"type":"string","value":"Visa originalet"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Översatt från "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Dölj det översatta inlägget"},
+	"showTranslatedPost": {"type":"string","value":"Visa det översatta inlägget"},
+	"translatedByGrok": {"type":"string","value":"Översatt av Grok"},
 	"viewThread": {"type":"string","value":"Visa denna tråd"},
 	"previousImage": {"type":"string","value":"Föregående bild"},
 	"nextImage": {"type":"string","value":"Nästa bild"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" röst"+r(e.count,"","er")}
 	},
 	"pollEnded": {"type":"string","value":"Slutresultat"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" minut"+r(e.count,"","er")+" kvar"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" timm"+r(e.count,"e","ar")+" kvar"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" dag"+r(e.count,"","ar")+" kvar"}
+	},
+	"imageAltTitle": {"type":"string","value":"Bildbeskrivning"},
+	"imageAltRead": {"type":"string","value":"läs bildbeskrivningen"},
+	"imageAltHide": {"type":"string","value":"Avfärda"},
 	"retweet": {"type":"string","value":"Retweeta"},
 	"unDoRetweet": {"type":"string","value":"Ångra retweeten"},
 	"quoteTweet": {"type":"string","value":"Citat-tweet"},

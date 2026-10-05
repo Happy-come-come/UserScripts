@@ -97,6 +97,30 @@
 		"type": "string",
 		"value": "Sakamako na ƙarshe"
 	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Bayanin hoto"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "read image description"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Kore"
+	},
 	"retweet": {
 		"type": "string",
 		"value": "Sake yin tweet"

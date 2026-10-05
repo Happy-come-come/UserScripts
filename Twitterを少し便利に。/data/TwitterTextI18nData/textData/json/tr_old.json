@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Daha fazla göster"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Gönderiyi çevir"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Çeviriyi göster"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Orijinali göster"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Kaynak dil: {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Gönderi çevirisini gizle"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Gönderinin çevirisini göster"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Grok tarafından çevrildi"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Bu Tweet dizisini göster"
@@ -212,6 +241,33 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Kesin sonuçlar"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} dakika kaldı"
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} saat kaldı"
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} gün kaldı"
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Resim açıklaması"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "resim açıklamasını oku"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Gizle"
 	},
 	"retweet": {
 		"type": "string",

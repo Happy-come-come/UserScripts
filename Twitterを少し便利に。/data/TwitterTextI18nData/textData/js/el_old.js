@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Σήμανση \"Μου αρέσει\""},
 	"bookmarkAction": {"type":"string","value":"Προσθήκη στους σελιδοδείκτες"},
 	"showMore": {"type":"string","value":"Εμφάνιση περισσότερων"},
+	"translatePost": {"type":"string","value":"Μετάφραση ανάρτησης"},
+	"showTranslation": {"type":"string","value":"Εμφάνιση μετάφρασης"},
+	"showOriginal": {"type":"string","value":"Εμφάνιση πρωτότυπου"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Μεταφράστηκε από: "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Απόκρυψη μεταφρασμένης ανάρτησης"},
+	"showTranslatedPost": {"type":"string","value":"Εμφάνιση μεταφρασμένης ανάρτησης"},
+	"translatedByGrok": {"type":"string","value":"Μεταφράστηκε από το Grok"},
 	"viewThread": {"type":"string","value":"Προβολή αυτού του νήματος Tweet"},
 	"previousImage": {"type":"string","value":"Προηγούμενη εικόνα"},
 	"nextImage": {"type":"string","value":"Επόμενη εικόνα"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" ψήφο"+n(e.count,"ς","ι")}
 	},
 	"pollEnded": {"type":"string","value":"Τελικά αποτελέσματα"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" λεπτ"+n(e.count,"ό","ά")+" ακόμα"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" ώρ"+n(e.count,"α","ες")+" ακόμα"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" ημέρ"+n(e.count,"α","ες")+" ακόμα"}
+	},
+	"imageAltTitle": {"type":"string","value":"Περιγραφή εικόνας"},
+	"imageAltRead": {"type":"string","value":"διαβάστε την περιγραφή εικόνας"},
+	"imageAltHide": {"type":"string","value":"Απόρριψη"},
 	"retweet": {"type":"string","value":"Retweet"},
 	"unDoRetweet": {"type":"string","value":"Αναίρεση Retweet"},
 	"quoteTweet": {"type":"string","value":"Παράθεση Tweet"},

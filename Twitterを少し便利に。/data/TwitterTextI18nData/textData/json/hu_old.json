@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Még több megjelenítése"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Bejegyzés lefordítása"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Fordítás megjelenítése"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Eredeti megjelenítése"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Fordítás {{sourceLanguageDisplayName}} nyelvről"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Lefordított bejegyzés elrejtése"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Lefordított bejegyzés megjelenítése"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "A Grok fordítása"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Hozzászóláslánc megjelenítése"
@@ -213,6 +242,33 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Végeredmények"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} perc van hátra"
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} óra van hátra"
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} nap van hátra"
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Képleírás"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "képleírás elolvasása"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Kihagyás"
 	},
 	"retweet": {
 		"type": "string",

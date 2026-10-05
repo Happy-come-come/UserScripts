@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Like"},
 	"bookmarkAction": {"type":"string","value":"Føj til bogmærker"},
 	"showMore": {"type":"string","value":"Vis mere"},
+	"translatePost": {"type":"string","value":"Oversæt post"},
+	"showTranslation": {"type":"string","value":"Vis oversættelse"},
+	"showOriginal": {"type":"string","value":"Vis original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Oversat fra "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Skjul oversat post"},
+	"showTranslatedPost": {"type":"string","value":"Vis oversat post"},
+	"translatedByGrok": {"type":"string","value":"Oversat af Grok"},
 	"viewThread": {"type":"string","value":"Vis denne tråd"},
 	"previousImage": {"type":"string","value":"Forrige billede"},
 	"nextImage": {"type":"string","value":"Næste billede"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" stemme"+a(e.count,"","r")}
 	},
 	"pollEnded": {"type":"string","value":"Endelige resultater"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" minut"+a(e.count,"","ter")+" tilbage"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" time"+a(e.count,"","r")+" tilbage"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" dag"+a(e.count,"","e")+" tilbage"}
+	},
+	"imageAltTitle": {"type":"string","value":"Billedbeskrivelse"},
+	"imageAltRead": {"type":"string","value":"læs billedbeskrivelse"},
+	"imageAltHide": {"type":"string","value":"Afvis"},
 	"retweet": {"type":"string","value":"Repost"},
 	"unDoRetweet": {"type":"string","value":"Fortryd repost"},
 	"quoteTweet": {"type":"string","value":"Citér tweet"},

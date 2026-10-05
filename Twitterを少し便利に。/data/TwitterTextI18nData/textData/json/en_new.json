@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Show more"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Translate post"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Show translation"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Show original"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Translated from {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Hide translated post"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Show translated post"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Translated by Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Show this thread"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Final results"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Image description"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "read image description"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Dismiss"
 	},
 	"retweet": {
 		"type": "string",

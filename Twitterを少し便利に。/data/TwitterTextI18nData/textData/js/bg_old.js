@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Харесване"},
 	"bookmarkAction": {"type":"string","value":"Добавяне към отметките"},
 	"showMore": {"type":"string","value":"Показване на още"},
+	"translatePost": {"type":"string","value":"Превод на публикация"},
+	"showTranslation": {"type":"string","value":"Показване на превод"},
+	"showOriginal": {"type":"string","value":"Показване на оригинал"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Преведено от "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Скриване на преведената публикация"},
+	"showTranslatedPost": {"type":"string","value":"Показване на преведената публикация"},
+	"translatedByGrok": {"type":"string","value":"Преведено от Grok"},
 	"viewThread": {"type":"string","value":"Покажи тази нишка"},
 	"previousImage": {"type":"string","value":"Предишното изображение"},
 	"nextImage": {"type":"string","value":"Следващото изображение"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" глас"+n(e.count,"","а")}
 	},
 	"pollEnded": {"type":"string","value":"Крайни резултати"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Остава"+n(e.count," "+e.formattedCount+" минута","т "+e.formattedCount+" минути")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Остава"+n(e.count," "+e.formattedCount+" час","т "+e.formattedCount+" часа")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Остава"+n(e.count," "+e.formattedCount+" ден","т "+e.formattedCount+" дни")}
+	},
+	"imageAltTitle": {"type":"string","value":"Описание на изображението"},
+	"imageAltRead": {"type":"string","value":"четене на описанието на изображението"},
+	"imageAltHide": {"type":"string","value":"Отхвърляне"},
 	"retweet": {"type":"string","value":"Ретуитване"},
 	"unDoRetweet": {"type":"string","value":"Отмяна на ретуитването"},
 	"quoteTweet": {"type":"string","value":"Цитиране на туита"},

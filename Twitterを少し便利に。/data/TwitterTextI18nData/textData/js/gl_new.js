@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Gústame"},
 	"bookmarkAction": {"type":"string","value":"Engadir aos marcadores"},
 	"showMore": {"type":"string","value":"Amosar máis"},
+	"translatePost": {"type":"string","value":"Translate post"},
+	"showTranslation": {"type":"string","value":"Show translation"},
+	"showOriginal": {"type":"string","value":"Show original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Translated from "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Hide translated post"},
+	"showTranslatedPost": {"type":"string","value":"Show translated post"},
+	"translatedByGrok": {"type":"string","value":"Translated by Grok"},
 	"viewThread": {"type":"string","value":"Amosar este fío"},
 	"previousImage": {"type":"string","value":"Imaxe anterior"},
 	"nextImage": {"type":"string","value":"Seguinte imaxe"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" voto"+r(e.count,"","s")}
 	},
 	"pollEnded": {"type":"string","value":"Resultados finais"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" minute"+s(e.count,"","s")+" left"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" hour"+s(e.count,"","s")+" left"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" day"+s(e.count,"","s")+" left"}
+	},
+	"imageAltTitle": {"type":"string","value":"Descrición da imaxe"},
+	"imageAltRead": {"type":"string","value":"read image description"},
+	"imageAltHide": {"type":"string","value":"Rexeitar"},
 	"retweet": {"type":"string","value":"Repost"},
 	"unDoRetweet": {"type":"string","value":"Undo repost"},
 	"quoteTweet": undefined,

@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"喜歡"},
 	"bookmarkAction": {"type":"string","value":"書籤"},
 	"showMore": {"type":"string","value":"顯示更多"},
+	"translatePost": {"type":"string","value":"翻譯貼文"},
+	"showTranslation": {"type":"string","value":"顯示翻譯"},
+	"showOriginal": {"type":"string","value":"顯示原文"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"翻譯自"+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"隱藏翻譯的貼文"},
+	"showTranslatedPost": {"type":"string","value":"顯示翻譯的貼文"},
+	"translatedByGrok": {"type":"string","value":"由 Grok 翻譯"},
 	"viewThread": {"type":"string","value":"顯示此對話串"},
 	"previousImage": {"type":"string","value":"上一張圖片"},
 	"nextImage": {"type":"string","value":"下一張圖片"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" 票"}
 	},
 	"pollEnded": {"type":"string","value":"最終結果"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"剩下 "+e.formattedCount+" 分鐘"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"剩下 "+e.formattedCount+" 小時"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"剩下 "+e.formattedCount+" 天"}
+	},
+	"imageAltTitle": {"type":"string","value":"圖片描述"},
+	"imageAltRead": {"type":"string","value":"閱讀圖片描述"},
+	"imageAltHide": {"type":"string","value":"關閉"},
 	"retweet": {"type":"string","value":"轉推"},
 	"unDoRetweet": {"type":"string","value":"取消轉推"},
 	"quoteTweet": {"type":"string","value":"引用推文"},

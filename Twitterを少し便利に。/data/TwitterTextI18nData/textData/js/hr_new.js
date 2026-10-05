@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Označi sa \"sviđa mi se\""},
 	"bookmarkAction": {"type":"string","value":"Dodaj u knjižne oznake"},
 	"showMore": {"type":"string","value":"Prikaži još"},
+	"translatePost": {"type":"string","value":"Prevedi objavu"},
+	"showTranslation": {"type":"string","value":"Prikaži prijevod"},
+	"showOriginal": {"type":"string","value":"Prikaži original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(a){return"Prevedeno s jezika "+a.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Sakrij prevedenu objavu"},
+	"showTranslatedPost": {"type":"string","value":"Prikaži prevedenu objavu"},
+	"translatedByGrok": {"type":"string","value":"Preveo Grok"},
 	"viewThread": {"type":"string","value":"Pokaži tu nit razgovora"},
 	"previousImage": {"type":"string","value":"Prethodna slika"},
 	"nextImage": {"type":"string","value":"Sljedeća slika"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(a){return a.formattedCount+" glas"+t(a.count,"a","","ova")}
 	},
 	"pollEnded": {"type":"string","value":"Konačni rezultati"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(a){return"Preostal"+t(a.count,"e su još "+a.formattedCount+" minute","a je još "+a.formattedCount+" minuta","o je još "+a.formattedCount+" minuta")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(a){return"Preosta"+t(a.count,"la su još "+a.formattedCount+" sata","o je još "+a.formattedCount+" sat","lo je još "+a.formattedCount+" sati")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(a){return"Preosta"+t(a.count,"la su još "+a.formattedCount+" dana","o je još "+a.formattedCount+" dan","lo je još "+a.formattedCount+" dana")}
+	},
+	"imageAltTitle": {"type":"string","value":"Opis slike"},
+	"imageAltRead": {"type":"string","value":"pročitaj opis slike"},
+	"imageAltHide": {"type":"string","value":"Odbaci"},
 	"retweet": {"type":"string","value":"Proslijedi objavu"},
 	"unDoRetweet": {"type":"string","value":"Poništi prosljeđivanje objave"},
 	"quoteTweet": {"type":"string","value":"Citiraj Tweet"},

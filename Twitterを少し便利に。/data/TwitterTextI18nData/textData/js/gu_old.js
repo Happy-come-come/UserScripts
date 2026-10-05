@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"લાઈક"},
 	"bookmarkAction": {"type":"string","value":"બુકમાર્ક"},
 	"showMore": {"type":"string","value":"વધુ દર્શાવો"},
+	"translatePost": {"type":"string","value":"પોસ્ટનો અનુવાદ કરો"},
+	"showTranslation": {"type":"string","value":"અનુવાદ બતાવો"},
+	"showOriginal": {"type":"string","value":"ઓરિજીનલ બતાવો"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"માંથી અનુવાદિત કરવામાં આવ્યું "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"અનુવાદિત પોસ્ટ છુપાવો"},
+	"showTranslatedPost": {"type":"string","value":"અનુવાદિત પોસ્ટ બતાવો"},
+	"translatedByGrok": {"type":"string","value":"Grok દ્વારા અનુવાદિત"},
 	"viewThread": {"type":"string","value":"આ થ્રેડ બતાવો"},
 	"previousImage": {"type":"string","value":"અગાઉની છબી"},
 	"nextImage": {"type":"string","value":"આગામીની છબી"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" મત"}
 	},
 	"pollEnded": {"type":"string","value":"અંતિમ પરિણામો"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" મિનિટ"+n(e.count,"","ો")+" બાકી"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" કલાક"+n(e.count,"","ો")+" બાકી"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" દિવસ"+n(e.count,"","ો")+" બાકી"}
+	},
+	"imageAltTitle": {"type":"string","value":"છબીનું વર્ણન"},
+	"imageAltRead": {"type":"string","value":"ઈમેજનું વર્ણન વાંચો"},
+	"imageAltHide": {"type":"string","value":"બરતરફ કરો"},
 	"retweet": {"type":"string","value":"પુનટ્વીટ"},
 	"unDoRetweet": {"type":"string","value":"પુનટ્વીટને પૂર્વવત કરો"},
 	"quoteTweet": {"type":"string","value":"અવતરણની સાથે ટ્વીટ કરો"},

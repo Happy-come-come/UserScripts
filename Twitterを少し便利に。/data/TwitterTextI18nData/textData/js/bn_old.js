@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"পছন্দ করুন"},
 	"bookmarkAction": {"type":"string","value":"বুকমার্ক"},
 	"showMore": {"type":"string","value":"আরও দেখান"},
+	"translatePost": {"type":"string","value":"পোস্ট অনুবাদ করুন"},
+	"showTranslation": {"type":"string","value":"অনুবাদ দেখান"},
+	"showOriginal": {"type":"string","value":"আসল দেখান"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return e.sourceLanguageDisplayName+" থেকে অনুবাদ করা হয়েছে"}
+	},
+	"hideTranslatedPost": {"type":"string","value":"অনুবাদ করা পোস্ট লোকান"},
+	"showTranslatedPost": {"type":"string","value":"অনুবাদ করা নোট দেখান"},
+	"translatedByGrok": {"type":"string","value":"Grok দ্বারা অনুবাদ করা"},
 	"viewThread": {"type":"string","value":"এই থ্রেডটি দেখান"},
 	"previousImage": {"type":"string","value":"পূর্ববর্তী ছবি"},
 	"nextImage": {"type":"string","value":"পরবর্তী ছবি"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" টি ভোট"}
 	},
 	"pollEnded": {"type":"string","value":"চূড়ান্ত ফলাফল"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" মিনিট বাকি"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" ঘণ্টা বাকি"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" দিন বাকি"}
+	},
+	"imageAltTitle": {"type":"string","value":"ছবির বর্ণনা"},
+	"imageAltRead": {"type":"string","value":"ছবির বিবরণ পড়ুন"},
+	"imageAltHide": {"type":"string","value":"খারিজ করুন"},
 	"retweet": {"type":"string","value":"পুনঃটুইট"},
 	"unDoRetweet": {"type":"string","value":"পুনঃ টুইট পুর্বাবস্থায় ফেরান"},
 	"quoteTweet": {"type":"string","value":"টুইট উদ্ধৃত করুন"},

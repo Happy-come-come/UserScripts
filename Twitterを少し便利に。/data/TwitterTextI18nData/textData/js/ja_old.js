@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"いいね"},
 	"bookmarkAction": {"type":"string","value":"ブックマーク"},
 	"showMore": {"type":"string","value":"さらに表示"},
+	"translatePost": {"type":"string","value":"ポストを翻訳"},
+	"showTranslation": {"type":"string","value":"翻訳を表示"},
+	"showOriginal": {"type":"string","value":"原文を表示"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return e.sourceLanguageDisplayName+"からの翻訳"}
+	},
+	"hideTranslatedPost": {"type":"string","value":"翻訳済みポストを非表示"},
+	"showTranslatedPost": {"type":"string","value":"翻訳済みポストを表示"},
+	"translatedByGrok": {"type":"string","value":"Grokによる翻訳"},
 	"viewThread": {"type":"string","value":"このスレッドを表示"},
 	"previousImage": {"type":"string","value":"前の画像"},
 	"nextImage": {"type":"string","value":"次の画像"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+"票"}
 	},
 	"pollEnded": {"type":"string","value":"最終結果"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"残り"+e.formattedCount+"分"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"残り"+e.formattedCount+"時間"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"残り"+e.formattedCount+"日"}
+	},
+	"imageAltTitle": {"type":"string","value":"画像の説明"},
+	"imageAltRead": {"type":"string","value":"画像の説明を読む"},
+	"imageAltHide": {"type":"string","value":"非表示にする"},
 	"retweet": {"type":"string","value":"リツイート"},
 	"unDoRetweet": {"type":"string","value":"リツイートを取り消す"},
 	"quoteTweet": {"type":"string","value":"引用ツイート"},

@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Atsegin"},
 	"bookmarkAction": {"type":"string","value":"Laster-marka"},
 	"showMore": {"type":"string","value":"Gehiago erakutsi"},
+	"translatePost": {"type":"string","value":"Translate post"},
+	"showTranslation": {"type":"string","value":"Show translation"},
+	"showOriginal": {"type":"string","value":"Show original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Translated from "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Hide translated post"},
+	"showTranslatedPost": {"type":"string","value":"Show translated post"},
+	"translatedByGrok": {"type":"string","value":"Translated by Grok"},
 	"viewThread": {"type":"string","value":"Erakutsi haria"},
 	"previousImage": {"type":"string","value":"Aurreko irudia"},
 	"nextImage": {"type":"string","value":"Hurrengo irudia"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return""+r(e.count,"bozka "+e.formattedCount,e.formattedCount+" bozka")}
 	},
 	"pollEnded": {"type":"string","value":"Azken emaitzak"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" minute"+n(e.count,"","s")+" left"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" hour"+n(e.count,"","s")+" left"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" day"+n(e.count,"","s")+" left"}
+	},
+	"imageAltTitle": {"type":"string","value":"Irudiaren deskribapena"},
+	"imageAltRead": {"type":"string","value":"read image description"},
+	"imageAltHide": {"type":"string","value":"Baztertu"},
 	"retweet": {"type":"string","value":"Bertxiotu"},
 	"unDoRetweet": {"type":"string","value":"Desegin birtxiokatzea"},
 	"quoteTweet": undefined,

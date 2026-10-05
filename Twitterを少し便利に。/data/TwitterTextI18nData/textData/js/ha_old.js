@@ -16,6 +16,13 @@ const text = {
 	"likeAction": {"type":"string","value":"So"},
 	"bookmarkAction": {"type":"string","value":"Alama"},
 	"showMore": {"type":"string","value":"Nuna ƙari"},
+	"translatePost": undefined,
+	"showTranslation": undefined,
+	"showOriginal": undefined,
+	"translatedFrom": undefined,
+	"hideTranslatedPost": undefined,
+	"showTranslatedPost": undefined,
+	"translatedByGrok": undefined,
 	"viewThread": {"type":"string","value":"Nuna wannan zaren tattaunwa"},
 	"previousImage": {"type":"string","value":"Hoto na baya"},
 	"nextImage": {"type":"string","value":"Hoto na gaba"},
@@ -66,6 +73,24 @@ const text = {
 		"value": function(a){return"Ƙuri''"+t(a.count,"a","u")+" "+a.formattedCount}
 	},
 	"pollEnded": {"type":"string","value":"Sakamako na ƙarshe"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(a){return"Saura mint"+t(a.count,"i","una")+" "+a.formattedCount}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(a){return"Saura "+t(a.count,"sa''a"," sa''o''i")+" "+a.formattedCount}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(a){return"Saura kwana"+t(a.count,"","ki")+" "+a.formattedCount}
+	},
+	"imageAltTitle": {"type":"string","value":"Bayanin hoto"},
+	"imageAltRead": {"type":"string","value":"read image description"},
+	"imageAltHide": {"type":"string","value":"Kore"},
 	"retweet": {"type":"string","value":"Sake yin tweet"},
 	"unDoRetweet": {"type":"string","value":"Fasa Sake tweet"},
 	"quoteTweet": undefined,

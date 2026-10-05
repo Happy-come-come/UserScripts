@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Показати більше"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Перекласти пост"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Показати переклад"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Показати оригінал"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Мова оригіналу: {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Приховати переклад посту"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Показати переклад посту"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Перекладено Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Показати цей потік"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Остаточні результати"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Опис зображення"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "читати опис зображення"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Відхилити"
 	},
 	"retweet": {
 		"type": "string",

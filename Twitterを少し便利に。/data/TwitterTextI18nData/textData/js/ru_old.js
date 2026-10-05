@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Нравится"},
 	"bookmarkAction": {"type":"string","value":"Закладка"},
 	"showMore": {"type":"string","value":"Показать еще"},
+	"translatePost": {"type":"string","value":"Перевести пост"},
+	"showTranslation": {"type":"string","value":"Показать перевод"},
+	"showOriginal": {"type":"string","value":"Показать оригинал"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Исходный язык: "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Скрыть перевод поста"},
+	"showTranslatedPost": {"type":"string","value":"Показать перевод поста"},
+	"translatedByGrok": {"type":"string","value":"Переведено Grok"},
 	"viewThread": {"type":"string","value":"Показать эту ветку"},
 	"previousImage": {"type":"string","value":"Предыдущее изображение"},
 	"nextImage": {"type":"string","value":"Следующее изображение"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" голос"+n(e.count,"а","ов","","а")}
 	},
 	"pollEnded": {"type":"string","value":"Конечные результаты"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Остал"+n(e.count,"ось "+e.formattedCount+" минуты","ось "+e.formattedCount+" минут","ась "+e.formattedCount+" минута","ось "+e.formattedCount+" минуты")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Остал"+n(e.count,"ось "+e.formattedCount+" часа","ось "+e.formattedCount+" часов","ся "+e.formattedCount+" час","ось "+e.formattedCount+" часа")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Остал"+n(e.count,"ось "+e.formattedCount+" дня","ось "+e.formattedCount+" дней","ся "+e.formattedCount+" день","ось "+e.formattedCount+" дня")}
+	},
+	"imageAltTitle": {"type":"string","value":"Описание изображения"},
+	"imageAltRead": {"type":"string","value":"прочитать описание изображения"},
+	"imageAltHide": {"type":"string","value":"Отклонить"},
 	"retweet": {"type":"string","value":"Ретвитнуть"},
 	"unDoRetweet": {"type":"string","value":"Отменить ретвит"},
 	"quoteTweet": {"type":"string","value":"Цитировать твит"},

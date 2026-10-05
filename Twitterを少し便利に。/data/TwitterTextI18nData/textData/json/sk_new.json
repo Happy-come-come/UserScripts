@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Zobraziť viac"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Preložiť príspevok"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Zobraziť preklad"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Zobraziť originál"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Preložené z jazyka {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Skryť preložený príspevok"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Zobraziť preložený príspevok"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Preložené Grokom"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Zobraziť toto vlákno"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Konečné výsledky"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Popis obrázka"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "prečítať popis obrázka"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Zrušiť"
 	},
 	"retweet": {
 		"type": "string",

@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"விரும்பு"},
 	"bookmarkAction": {"type":"string","value":"புத்தகக்குறியிடு"},
 	"showMore": {"type":"string","value":"மேலும் காண்பி"},
+	"translatePost": {"type":"string","value":"இடுகையை மொழிபெயர்"},
+	"showTranslation": {"type":"string","value":"மொழிபெயர்ப்பைக் காட்டு"},
+	"showOriginal": {"type":"string","value":"அசலைக் காட்டு"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return e.sourceLanguageDisplayName+" -இலிருந்து மொழிபெயர்க்கப்பட்டது"}
+	},
+	"hideTranslatedPost": {"type":"string","value":"மொழிபெயர்க்கப்பட்ட இடுகையை மறை"},
+	"showTranslatedPost": {"type":"string","value":"மொழிபெயர்க்கப்பட்ட இடுகையைக் காட்டு"},
+	"translatedByGrok": {"type":"string","value":"Grok -ஆல் மொழிபெயர்க்கப்பட்டது"},
 	"viewThread": {"type":"string","value":"இந்தத் தொடர்ச்சியைக் காண்பி"},
 	"previousImage": {"type":"string","value":"முந்தைய படம்"},
 	"nextImage": {"type":"string","value":"அடுத்த படம்"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" வாக்கு"+n(e.count,"","கள்")}
 	},
 	"pollEnded": {"type":"string","value":"இறுதி முடிவுகள்"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" நிமிட"+n(e.count,"ம் மீதமுள்ளது","ங்கள் மீதமுள்ளன")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" மணிநேர"+n(e.count,"ம் மீதமுள்ளது","ங்கள் மீதமுள்ளன")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" நா"+n(e.count,"ள் மீதமுள்ளது","ட்கள் மீதமுள்ளன")}
+	},
+	"imageAltTitle": {"type":"string","value":"பட விளக்கம்"},
+	"imageAltRead": {"type":"string","value":"பட விளக்கத்தைப் படிக்கவும்"},
+	"imageAltHide": {"type":"string","value":"நிராகரி"},
 	"retweet": {"type":"string","value":"மறுட்விட் செய்"},
 	"unDoRetweet": {"type":"string","value":"மறுகீச்சை செயல்தவிர்"},
 	"quoteTweet": {"type":"string","value":"ட்விட்டை மேற்கோள் காட்டு"},

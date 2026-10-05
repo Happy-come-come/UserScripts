@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Vis mer"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Oversett innlegg"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Vis oversettelse"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Vis original"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Oversatt fra {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Skjul oversatt innlegg"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Vis oversatt innlegg"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Oversatt av Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Vis denne tråden"
@@ -211,6 +240,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Endelige resultater"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Bildebeskrivelse"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "les bildebeskrivelse"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Forkast"
 	},
 	"retweet": {
 		"type": "string",

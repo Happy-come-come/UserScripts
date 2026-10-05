@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"पसंत केले"},
 	"bookmarkAction": {"type":"string","value":"बुकमार्क"},
 	"showMore": {"type":"string","value":"अधिक प्रमाणामध्ये दाखवा"},
+	"translatePost": {"type":"string","value":"पोस्ट भाषांतरित करा"},
+	"showTranslation": {"type":"string","value":"भाषांतर दाखवा"},
+	"showOriginal": {"type":"string","value":"मूळ दाखवा"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return e.sourceLanguageDisplayName+"मधून भाषांतरित केले"}
+	},
+	"hideTranslatedPost": {"type":"string","value":"अनुवादित पोस्ट लपवा"},
+	"showTranslatedPost": {"type":"string","value":"भाषांतरित पोस्ट दाखवा"},
+	"translatedByGrok": {"type":"string","value":"Grok द्वारा भाषांतरित"},
 	"viewThread": {"type":"string","value":"हा थ्रेड दाखवा"},
 	"previousImage": {"type":"string","value":"मागील प्रतिमा"},
 	"nextImage": {"type":"string","value":"पुढील प्रतिमा"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" मत"+n(e.count,"","े")}
 	},
 	"pollEnded": {"type":"string","value":"अंतिम निकाल"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" मिनिट"+n(e.count,"","े")+" शिल्लक"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" तास शिल्लक"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" दिवस शिल्लक"}
+	},
+	"imageAltTitle": {"type":"string","value":"प्रतिमेचे वर्णन"},
+	"imageAltRead": {"type":"string","value":"प्रतिमेचे वर्णन वाचा"},
+	"imageAltHide": {"type":"string","value":"डिसमिस करा"},
 	"retweet": {"type":"string","value":"पुन्हा ट्विट"},
 	"unDoRetweet": {"type":"string","value":"पुनर्ट्विट पूर्ववत करा"},
 	"quoteTweet": {"type":"string","value":"ट्विट वर भाष्य करा"},

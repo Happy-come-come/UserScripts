@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Mostra'n més"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Tradueix la publicació"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Mostra la traducció"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Mostra l'original"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Traduït del: {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Amaga la publicació traduïda"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Mostra la publicació traduïda"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Traduït per Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Mostra el fil"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Resultats finals"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Descripció de la imatge"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "Lectura de la descripció de la imatge"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Descarta"
 	},
 	"retweet": {
 		"type": "string",

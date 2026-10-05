@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Me gusta"},
 	"bookmarkAction": {"type":"string","value":"Marcador"},
 	"showMore": {"type":"string","value":"Mostrar más"},
+	"translatePost": {"type":"string","value":"Traducir post"},
+	"showTranslation": {"type":"string","value":"Mostrar traducción"},
+	"showOriginal": {"type":"string","value":"Mostrar original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Traducido del "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Ocultar post traducido"},
+	"showTranslatedPost": {"type":"string","value":"Mostrar post traducido"},
+	"translatedByGrok": {"type":"string","value":"Traducido por Grok"},
 	"viewThread": {"type":"string","value":"Mostrar este hilo"},
 	"previousImage": {"type":"string","value":"Imagen anterior"},
 	"nextImage": {"type":"string","value":"Siguiente imagen"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" voto"+r(e.count,"","s")}
 	},
 	"pollEnded": {"type":"string","value":"Resultados finales"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" minuto"+r(e.count," restante","s restantes")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" hora"+r(e.count," restante","s restantes")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" día"+r(e.count," restante","s restantes")}
+	},
+	"imageAltTitle": {"type":"string","value":"Descripción de la imagen"},
+	"imageAltRead": {"type":"string","value":"leer descripción de la imagen"},
+	"imageAltHide": {"type":"string","value":"Descartar"},
 	"retweet": {"type":"string","value":"Retwittear"},
 	"unDoRetweet": {"type":"string","value":"Deshacer Retweet"},
 	"quoteTweet": {"type":"string","value":"Citar Tweet"},

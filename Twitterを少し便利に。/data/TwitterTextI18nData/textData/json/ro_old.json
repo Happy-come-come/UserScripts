@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Arată mai multe"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Tradu postarea"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Afișează traducerea"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Afișează versiunea originală"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Tradus din {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Ascunde postarea tradusă"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Afișează postarea tradusă"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Tradus de Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Afișează acest fir"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Rezultatele finale"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Descriere imagine"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "citește descrierea imaginii"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Renunță"
 	},
 	"retweet": {
 		"type": "string",

@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Liker"},
 	"bookmarkAction": {"type":"string","value":"Bokmerke"},
 	"showMore": {"type":"string","value":"Vis mer"},
+	"translatePost": {"type":"string","value":"Oversett innlegg"},
+	"showTranslation": {"type":"string","value":"Vis oversettelse"},
+	"showOriginal": {"type":"string","value":"Vis original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Oversatt fra "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Skjul oversatt innlegg"},
+	"showTranslatedPost": {"type":"string","value":"Vis oversatt innlegg"},
+	"translatedByGrok": {"type":"string","value":"Oversatt av Grok"},
 	"viewThread": {"type":"string","value":"Vis denne tråden"},
 	"previousImage": {"type":"string","value":"Forrige bilde"},
 	"nextImage": {"type":"string","value":"Neste bilde"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" stemme"+i(e.count,"","r")}
 	},
 	"pollEnded": {"type":"string","value":"Endelige resultater"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" minutt"+i(e.count,"","er")+" igjen"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" time"+i(e.count,"","r")+" igjen"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" dag"+i(e.count,"","er")+" igjen"}
+	},
+	"imageAltTitle": {"type":"string","value":"Bildebeskrivelse"},
+	"imageAltRead": {"type":"string","value":"les bildebeskrivelse"},
+	"imageAltHide": {"type":"string","value":"Forkast"},
 	"retweet": {"type":"string","value":"Retweet"},
 	"unDoRetweet": {"type":"string","value":"Angre Retweet"},
 	"quoteTweet": {"type":"string","value":"Sitat-Tweet"},

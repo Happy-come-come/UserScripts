@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"ชื่นชอบ"},
 	"bookmarkAction": {"type":"string","value":"บุ๊คมาร์ก"},
 	"showMore": {"type":"string","value":"แสดงเพิ่มเติม"},
+	"translatePost": {"type":"string","value":"แปลโพสต์"},
+	"showTranslation": {"type":"string","value":"แสดงการแปล"},
+	"showOriginal": {"type":"string","value":"แสดงต้นฉบับ"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"แปลจาก "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"ซ่อนโพสต์ที่แปล"},
+	"showTranslatedPost": {"type":"string","value":"แสดงโพสต์ที่แปลแล้ว"},
+	"translatedByGrok": {"type":"string","value":"แปลโดย Grok"},
 	"viewThread": {"type":"string","value":"แสดงเธรดนี้"},
 	"previousImage": {"type":"string","value":"รูปภาพก่อนหน้า"},
 	"nextImage": {"type":"string","value":"รูปภาพถัดไป"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" โหวต"}
 	},
 	"pollEnded": {"type":"string","value":"ผลลัพธ์สุดท้าย"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"เหลืออีก "+e.formattedCount+" นาที"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"เหลืออีก "+e.formattedCount+" ชั่วโมง"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return"เหลืออีก "+e.formattedCount+" วัน"}
+	},
+	"imageAltTitle": {"type":"string","value":"คำอธิบายรูปภาพ"},
+	"imageAltRead": {"type":"string","value":"อ่านคำอธิบายรูปภาพ"},
+	"imageAltHide": {"type":"string","value":"ยกเลิก"},
 	"retweet": {"type":"string","value":"รีทวีต"},
 	"unDoRetweet": {"type":"string","value":"ยกเลิกการรีทวีต"},
 	"quoteTweet": {"type":"string","value":"อ้างอิงทวีต"},

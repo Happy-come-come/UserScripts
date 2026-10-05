@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"ಇಷ್ಟಪಡಿ"},
 	"bookmarkAction": {"type":"string","value":"ಬುಕ್‌ಮಾರ್ಕ್"},
 	"showMore": {"type":"string","value":"ಇನ್ನಷ್ಟು ತೋರಿಸಿ"},
+	"translatePost": {"type":"string","value":"ಪೋಸ್ಟ್ ಅನ್ನು ಅನುವಾದಿಸಿ"},
+	"showTranslation": {"type":"string","value":"ಅನುವಾದವನ್ನು ತೋರಿಸಿ"},
+	"showOriginal": {"type":"string","value":"ಮೂಲವನ್ನು ತೋರಿಸಿ"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"ಇದರಿಂದ ಅನುವಾದಿಸಲಾಗಿದೆ "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"ಅನುವಾದಿಸಿದ ಪೋಸ್ಟ್ ಅನ್ನು ಮರೆಮಾಡಿ"},
+	"showTranslatedPost": {"type":"string","value":"ಅನುವಾದಿತ ಪೋಸ್ಟ್ ಅನ್ನು ತೋರಿಸಿ"},
+	"translatedByGrok": {"type":"string","value":"Grok ಮೂಲಕ ಅನುವಾದಿಸಲಾಗಿದೆ"},
 	"viewThread": {"type":"string","value":"ಈ ಥ್ರೆಡ್ ತೋರಿಸಿ"},
 	"previousImage": {"type":"string","value":"ಹಿಂದಿನ ಇಮೇಜ್"},
 	"nextImage": {"type":"string","value":"ಮುಂದಿನ ಇಮೇಜ್"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" ಮತ"+n(e.count,"","ಗಳು")}
 	},
 	"pollEnded": {"type":"string","value":"ಅಂತಿಮ ಫಲಿತಾಂಶಗಳು"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" ನಿಮಿಷ"+n(e.count," ಉಳಿದಿದ","ಗಳು ಉಳಿದಿವ")+"ೆ"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" ಗಂಟೆ"+n(e.count," ಉಳಿದಿದ","ಗಳು ಉಳಿದಿವ")+"ೆ"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" ದಿನ"+n(e.count,"","ಗಳು")+" ಉಳಿದಿದೆ"}
+	},
+	"imageAltTitle": {"type":"string","value":"ಚಿತ್ರ ವಿವರಣೆ"},
+	"imageAltRead": {"type":"string","value":"ಚಿತ್ರ ವಿವರಣೆ ಓದಿ"},
+	"imageAltHide": {"type":"string","value":"ವಜಾಗೊಳಿಸಿ"},
 	"retweet": {"type":"string","value":"ಮರುಪೋಸ್ಟ್ ಮಾಡಿ"},
 	"unDoRetweet": {"type":"string","value":"ಮರುಪೋಸ್ಟ್ ಅನ್ನು ರದ್ದುಗೊಳಿಸಿ"},
 	"quoteTweet": {"type":"string","value":"ಟ್ವೀಟ್ ಕೋಟ್ ಮಾಡಿ"},

@@ -29,6 +29,35 @@
 		"type": "string",
 		"value": "Tampilkan lebih banyak"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Terjemahkan postingan"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Tampilkan terjemahan"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Tampilkan yang asli"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Diterjemahkan dari {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Sembunyikan postingan yang sudah diterjemahkan"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Tampilkan postingan yang diterjemahkan"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Diterjemahkan oleh Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Tampilkan utas ini"
@@ -201,6 +230,33 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Hasil akhir"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} menit tersisa"
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} jam tersisa"
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} hari tersisa"
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Deskripsi gambar"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "membaca deskripsi gambar"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Tutup"
 	},
 	"retweet": {
 		"type": "string",

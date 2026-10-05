@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"أعجبني"},
 	"bookmarkAction": {"type":"string","value":"إضافة إلى العلامات المرجعية"},
 	"showMore": {"type":"string","value":"عرض المزيد"},
+	"translatePost": {"type":"string","value":"ترجمة المنشور"},
+	"showTranslation": {"type":"string","value":"عرض الترجمة"},
+	"showOriginal": {"type":"string","value":"عرض الأصلي"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"مترجمة من "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"إخفاء المنشور المترجم"},
+	"showTranslatedPost": {"type":"string","value":"عرض المنشور المترجم"},
+	"translatedByGrok": {"type":"string","value":"تمت الترجمة بواسطة Grok"},
 	"viewThread": {"type":"string","value":"عرض هذه السلسلة"},
 	"previousImage": {"type":"string","value":"الصورة السابقة"},
 	"nextImage": {"type":"string","value":"الصورة التالية"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" "+n(e.count,"أصوات","صوتًا","صوت","صوت","صوتان","صوت")}
 	},
 	"pollEnded": {"type":"string","value":"النتائج النهائية"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" دق"+n(e.count,"ائق متبقية","يقة متبقية","يقة متبقية","يقة متبقية","يقتان متبقيتان","يقة متبقية")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" ساع"+n(e.count,"ات متبقية","ة متبقية","ة متبقية","ة متبقية","تان متبقيتان","ة متبقية")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" "+n(e.count,"أيام متبقية","يومًا متبقيًا","يوم متبقٍ","يوم متبقٍ","يومان متبقيان","يوم متبقٍ")}
+	},
+	"imageAltTitle": {"type":"string","value":"وصف الصورة"},
+	"imageAltRead": {"type":"string","value":"قراءة وصف الصورة"},
+	"imageAltHide": {"type":"string","value":"تجاهل"},
 	"retweet": {"type":"string","value":"إعادة النشر"},
 	"unDoRetweet": {"type":"string","value":"التراجع عن إعادة النشر"},
 	"quoteTweet": {"type":"string","value":"‏اقتباس"},

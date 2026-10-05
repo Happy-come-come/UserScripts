@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Lajknout"},
 	"bookmarkAction": {"type":"string","value":"Záložka"},
 	"showMore": {"type":"string","value":"Zobrazit více"},
+	"translatePost": {"type":"string","value":"Přeložit post"},
+	"showTranslation": {"type":"string","value":"Zobrazit překlad"},
+	"showOriginal": {"type":"string","value":"Zobrazit originál"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Přeloženo z: "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Skrýt přeložený post"},
+	"showTranslatedPost": {"type":"string","value":"Zobrazit přeložený příspěvek"},
+	"translatedByGrok": {"type":"string","value":"Přeložil Grok"},
 	"viewThread": {"type":"string","value":"Zobrazit toto vlákno"},
 	"previousImage": {"type":"string","value":"Předchozí obrázek"},
 	"nextImage": {"type":"string","value":"Další obrázek"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" hlas"+r(e.count,"y","y","","ů")}
 	},
 	"pollEnded": {"type":"string","value":"Finální výsledky"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Zbýv"+r(e.count,"ají "+e.formattedCount+" minuty","á "+e.formattedCount+" minut","á "+e.formattedCount+" minuta","á "+e.formattedCount+" minut")}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Zbýv"+r(e.count,"ají "+e.formattedCount+" hodiny","á "+e.formattedCount+" hodin","á "+e.formattedCount+" hodina","á "+e.formattedCount+" hodin")}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"],
+		"value": function(e){return"Zbýv"+r(e.count,"ají "+e.formattedCount+" dny","á "+e.formattedCount+" dnů","á "+e.formattedCount+" den","á "+e.formattedCount+" dnů")}
+	},
+	"imageAltTitle": {"type":"string","value":"Popis obrázku"},
+	"imageAltRead": {"type":"string","value":"přečíst popis obrázku"},
+	"imageAltHide": {"type":"string","value":"Zavřít"},
 	"retweet": {"type":"string","value":"Repost"},
 	"unDoRetweet": {"type":"string","value":"Zrušit repost"},
 	"quoteTweet": {"type":"string","value":"Citovat Tweet"},

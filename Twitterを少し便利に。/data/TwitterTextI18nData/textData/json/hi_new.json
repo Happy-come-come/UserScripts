@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "और अधिक दिखाएं"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "पोस्ट का अनुवाद करें"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "अनुवाद दिखाएं"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "ओरिजिनल दिखाएं"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "{{sourceLanguageDisplayName}} से अनुवादित"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "अनुवादित पोस्ट छिपाएं"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "अनुवादित पोस्ट दिखाएँ"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Grok द्वारा अनुवादित"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "यह थ्रेड दिखाएं"
@@ -212,6 +241,32 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "अंतिम परिणाम"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} मिनट शेष"
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "{{formattedCount}} दिन शेष"
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "छवि विवरण"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "छवि विवरण पढ़ें"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "ख़ारिज करें"
 	},
 	"retweet": {
 		"type": "string",

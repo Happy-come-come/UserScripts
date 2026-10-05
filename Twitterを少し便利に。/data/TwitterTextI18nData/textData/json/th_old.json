@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "แสดงเพิ่มเติม"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "แปลโพสต์"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "แสดงการแปล"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "แสดงต้นฉบับ"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "แปลจาก {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "ซ่อนโพสต์ที่แปล"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "แสดงโพสต์ที่แปลแล้ว"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "แปลโดย Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "แสดงเธรดนี้"
@@ -213,6 +242,33 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "ผลลัพธ์สุดท้าย"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "เหลืออีก {{formattedCount}} นาที"
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "เหลืออีก {{formattedCount}} ชั่วโมง"
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "เหลืออีก {{formattedCount}} วัน"
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "คำอธิบายรูปภาพ"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "อ่านคำอธิบายรูปภาพ"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "ยกเลิก"
 	},
 	"retweet": {
 		"type": "string",

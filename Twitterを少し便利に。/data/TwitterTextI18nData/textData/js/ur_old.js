@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"لائک"},
 	"bookmarkAction": {"type":"string","value":"بک مارک کریں"},
 	"showMore": {"type":"string","value":"مزید دکھائیں"},
+	"translatePost": {"type":"string","value":"Translate post"},
+	"showTranslation": {"type":"string","value":"Show translation"},
+	"showOriginal": {"type":"string","value":"Show original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Translated from "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Hide translated post"},
+	"showTranslatedPost": {"type":"string","value":"Show translated post"},
+	"translatedByGrok": {"type":"string","value":"Translated by Grok"},
 	"viewThread": {"type":"string","value":"یہ تھریڈ دکھائیں"},
 	"previousImage": {"type":"string","value":"پچھلی تصویر"},
 	"nextImage": {"type":"string","value":"اگلی تصویر"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" ووٹ"+c(e.count,"","س")}
 	},
 	"pollEnded": {"type":"string","value":"حتمی نتائج"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" منٹ"+c(e.count,"","س")+" باقی"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" گھنٹ"+c(e.count,"ہ","ے")+" باقی"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" دن باقی"}
+	},
+	"imageAltTitle": {"type":"string","value":"تصویر کی تفصیل"},
+	"imageAltRead": {"type":"string","value":"read image description"},
+	"imageAltHide": {"type":"string","value":"بند کریں"},
 	"retweet": {"type":"string","value":"ریٹویٹ"},
 	"unDoRetweet": {"type":"string","value":"ری ٹویٹ کو کالعدم کریں"},
 	"quoteTweet": undefined,

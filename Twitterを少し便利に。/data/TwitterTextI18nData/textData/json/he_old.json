@@ -29,6 +29,35 @@
 		"type": "string",
 		"value": "הצג עוד"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "תרגם את הפוסט"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "הצגת תרגום"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "הצגת טקסט מקורי"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "תרגום מ{{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "הסתרת פוסט מתורגם"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "הצגת תרגום של הפוסט"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "תרגום של Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "הצג שרשור זה"
@@ -198,6 +227,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "תוצאות סופיות"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "תיאור תמונה"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "קרא תיאור תמונה"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "בטל"
 	},
 	"retweet": {
 		"type": "string",

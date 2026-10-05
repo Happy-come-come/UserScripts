@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Thaitin seo le"},
 	"bookmarkAction": {"type":"string","value":"Leabharmharc"},
 	"showMore": {"type":"string","value":"Taispeáin tuilleadh"},
+	"translatePost": {"type":"string","value":"Translate post"},
+	"showTranslation": {"type":"string","value":"Show translation"},
+	"showOriginal": {"type":"string","value":"Show original"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Translated from "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Hide translated post"},
+	"showTranslatedPost": {"type":"string","value":"Show translated post"},
+	"translatedByGrok": {"type":"string","value":"Translated by Grok"},
 	"viewThread": {"type":"string","value":"Taispeáin an snáithe seo"},
 	"previousImage": {"type":"string","value":"An íomhá roimhe"},
 	"nextImage": {"type":"string","value":"An chéad íomhá eile"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return o(e.count,""+e.count,""+e.count,"1",""+e.count,""+e.count)+" vóta "+e.formattedCount}
 	},
 	"pollEnded": {"type":"string","value":"Torthaí deiridh"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" minute"+c(e.count,"","s")+" left"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" hour"+c(e.count,"","s")+" left"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" day"+c(e.count,"","s")+" left"}
+	},
+	"imageAltTitle": {"type":"string","value":"Cur síos ar an íomhá"},
+	"imageAltRead": {"type":"string","value":"read image description"},
+	"imageAltHide": {"type":"string","value":"Ruaig"},
 	"retweet": {"type":"string","value":"Repost"},
 	"unDoRetweet": {"type":"string","value":"Undo repost"},
 	"quoteTweet": undefined,

@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Tykkää"},
 	"bookmarkAction": {"type":"string","value":"Lisää kirjanmerkkeihin"},
 	"showMore": {"type":"string","value":"Näytä lisää"},
+	"translatePost": {"type":"string","value":"Käännä julkaisu"},
+	"showTranslation": {"type":"string","value":"Näytä käännös"},
+	"showOriginal": {"type":"string","value":"Näytä alkuperäinen"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(a){return"Käännetty kielestä "+a.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Piilota käännetty julkaisu"},
+	"showTranslatedPost": {"type":"string","value":"Näytä käännetty julkaisu"},
+	"translatedByGrok": {"type":"string","value":"Kääntänyt Grok"},
 	"viewThread": {"type":"string","value":"Näytä tämä ketju"},
 	"previousImage": {"type":"string","value":"Edellinen kuva"},
 	"nextImage": {"type":"string","value":"Seuraava kuva"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(t){return t.formattedCount+" ään"+n(t.count,"i","tä")}
 	},
 	"pollEnded": {"type":"string","value":"Lopulliset tulokset"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(t){return t.formattedCount+" minuutti"+n(t.count,"","a")+" jäljellä"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(t){return t.formattedCount+" tunti"+n(t.count,"","a")+" jäljellä"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(t){return t.formattedCount+" päivä"+n(t.count,"","ä")+" jäljellä"}
+	},
+	"imageAltTitle": {"type":"string","value":"Kuvan kuvaus"},
+	"imageAltRead": {"type":"string","value":"lue kuvan kuvaus"},
+	"imageAltHide": {"type":"string","value":"Hylkää"},
 	"retweet": {"type":"string","value":"Uudelleentwiittaa"},
 	"unDoRetweet": {"type":"string","value":"Kumoa uudelleentwiittaus"},
 	"quoteTweet": {"type":"string","value":"Lainaa twiittiä"},

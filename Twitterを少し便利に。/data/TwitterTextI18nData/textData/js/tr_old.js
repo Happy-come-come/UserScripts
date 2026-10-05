@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Beğen"},
 	"bookmarkAction": {"type":"string","value":"Yer işareti"},
 	"showMore": {"type":"string","value":"Daha fazla göster"},
+	"translatePost": {"type":"string","value":"Gönderiyi çevir"},
+	"showTranslation": {"type":"string","value":"Çeviriyi göster"},
+	"showOriginal": {"type":"string","value":"Orijinali göster"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Kaynak dil: "+e.sourceLanguageDisplayName}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Gönderi çevirisini gizle"},
+	"showTranslatedPost": {"type":"string","value":"Gönderinin çevirisini göster"},
+	"translatedByGrok": {"type":"string","value":"Grok tarafından çevrildi"},
 	"viewThread": {"type":"string","value":"Bu Tweet dizisini göster"},
 	"previousImage": {"type":"string","value":"Önceki resim"},
 	"nextImage": {"type":"string","value":"Sonraki resim"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" oy"}
 	},
 	"pollEnded": {"type":"string","value":"Kesin sonuçlar"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" dakika kaldı"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" saat kaldı"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" gün kaldı"}
+	},
+	"imageAltTitle": {"type":"string","value":"Resim açıklaması"},
+	"imageAltRead": {"type":"string","value":"resim açıklamasını oku"},
+	"imageAltHide": {"type":"string","value":"Gizle"},
 	"retweet": {"type":"string","value":"Retweet"},
 	"unDoRetweet": {"type":"string","value":"Retweeti Geri Al"},
 	"quoteTweet": {"type":"string","value":"Tweeti Alıntıla"},

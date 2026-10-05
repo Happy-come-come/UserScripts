@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Показване на още"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Превод на публикация"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Показване на превод"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Показване на оригинал"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Преведено от {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Скриване на преведената публикация"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Показване на преведената публикация"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Преведено от Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Покажи тази нишка"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Крайни резултати"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["count","formattedCount"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Описание на изображението"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "четене на описанието на изображението"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Отхвърляне"
 	},
 	"retweet": {
 		"type": "string",

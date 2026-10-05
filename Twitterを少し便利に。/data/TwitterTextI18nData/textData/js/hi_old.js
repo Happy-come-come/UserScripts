@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"पसंद करें"},
 	"bookmarkAction": {"type":"string","value":"बुकमार्क"},
 	"showMore": {"type":"string","value":"और अधिक दिखाएं"},
+	"translatePost": {"type":"string","value":"पोस्ट का अनुवाद करें"},
+	"showTranslation": {"type":"string","value":"अनुवाद दिखाएं"},
+	"showOriginal": {"type":"string","value":"ओरिजिनल दिखाएं"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return e.sourceLanguageDisplayName+" से अनुवादित"}
+	},
+	"hideTranslatedPost": {"type":"string","value":"अनुवादित पोस्ट छिपाएं"},
+	"showTranslatedPost": {"type":"string","value":"अनुवादित पोस्ट दिखाएँ"},
+	"translatedByGrok": {"type":"string","value":"Grok द्वारा अनुवादित"},
 	"viewThread": {"type":"string","value":"यह थ्रेड दिखाएं"},
 	"previousImage": {"type":"string","value":"पिछली छवि"},
 	"nextImage": {"type":"string","value":"अगली छवि"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" वोट"}
 	},
 	"pollEnded": {"type":"string","value":"अंतिम परिणाम"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" मिनट शेष"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"],
+		"value": function(e){return e.formattedCount+" घंट"+n(e.count,"ा","े")+" शेष"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" दिन शेष"}
+	},
+	"imageAltTitle": {"type":"string","value":"छवि विवरण"},
+	"imageAltRead": {"type":"string","value":"छवि विवरण पढ़ें"},
+	"imageAltHide": {"type":"string","value":"ख़ारिज करें"},
 	"retweet": {"type":"string","value":"रीट्वीट करें"},
 	"unDoRetweet": {"type":"string","value":"रीट्वीट को पूर्ववत करें"},
 	"quoteTweet": {"type":"string","value":"कोट ट्वीट"},

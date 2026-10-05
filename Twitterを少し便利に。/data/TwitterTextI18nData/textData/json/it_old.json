@@ -37,6 +37,35 @@
 		"type": "string",
 		"value": "Mostra altro"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Traduci post"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Mostra traduzione"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Mostra originale"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Lingua originale: {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Nascondi post tradotto"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Mostra post tradotto"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Traduzione di Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Mostra questa discussione"
@@ -210,6 +239,30 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Risultati finali"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount","count"]
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Descrizione immagine"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "leggi descrizione immagine"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Cestina"
 	},
 	"retweet": {
 		"type": "string",

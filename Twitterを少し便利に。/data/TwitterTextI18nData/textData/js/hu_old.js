@@ -16,6 +16,17 @@ const text = {
 	"likeAction": {"type":"string","value":"Kedvelés"},
 	"bookmarkAction": {"type":"string","value":"Könyvjelző"},
 	"showMore": {"type":"string","value":"Még több megjelenítése"},
+	"translatePost": {"type":"string","value":"Bejegyzés lefordítása"},
+	"showTranslation": {"type":"string","value":"Fordítás megjelenítése"},
+	"showOriginal": {"type":"string","value":"Eredeti megjelenítése"},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": function(e){return"Fordítás "+e.sourceLanguageDisplayName+" nyelvről"}
+	},
+	"hideTranslatedPost": {"type":"string","value":"Lefordított bejegyzés elrejtése"},
+	"showTranslatedPost": {"type":"string","value":"Lefordított bejegyzés megjelenítése"},
+	"translatedByGrok": {"type":"string","value":"A Grok fordítása"},
 	"viewThread": {"type":"string","value":"Hozzászóláslánc megjelenítése"},
 	"previousImage": {"type":"string","value":"Előző kép"},
 	"nextImage": {"type":"string","value":"Következő kép"},
@@ -88,6 +99,24 @@ const text = {
 		"value": function(e){return e.formattedCount+" szavazat"}
 	},
 	"pollEnded": {"type":"string","value":"Végeredmények"},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" perc van hátra"}
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" óra van hátra"}
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": function(e){return e.formattedCount+" nap van hátra"}
+	},
+	"imageAltTitle": {"type":"string","value":"Képleírás"},
+	"imageAltRead": {"type":"string","value":"képleírás elolvasása"},
+	"imageAltHide": {"type":"string","value":"Kihagyás"},
 	"retweet": {"type":"string","value":"Retweet"},
 	"unDoRetweet": {"type":"string","value":"Retweet visszavonása"},
 	"quoteTweet": {"type":"string","value":"Tweet idézése"},

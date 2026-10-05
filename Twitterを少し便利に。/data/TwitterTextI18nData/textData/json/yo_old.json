@@ -29,6 +29,35 @@
 		"type": "string",
 		"value": "Fihàn sii"
 	},
+	"translatePost": {
+		"type": "string",
+		"value": "Translate post"
+	},
+	"showTranslation": {
+		"type": "string",
+		"value": "Show translation"
+	},
+	"showOriginal": {
+		"type": "string",
+		"value": "Show original"
+	},
+	"translatedFrom": {
+		"type": "webI18nFunction",
+		"arguments": ["sourceLanguageDisplayName"],
+		"value": "Translated from {{sourceLanguageDisplayName}}"
+	},
+	"hideTranslatedPost": {
+		"type": "string",
+		"value": "Hide translated post"
+	},
+	"showTranslatedPost": {
+		"type": "string",
+		"value": "Show translated post"
+	},
+	"translatedByGrok": {
+		"type": "string",
+		"value": "Translated by Grok"
+	},
 	"viewThread": {
 		"type": "string",
 		"value": "Ṣàfihàn tírẹ́ẹ̀dì yìí"
@@ -199,6 +228,33 @@
 	"pollEnded": {
 		"type": "string",
 		"value": "Àwọn àbájáde ìkẹyìn"
+	},
+	"pollTimeLeftMinutes": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "Ó ku ìṣẹ́jú {{formattedCount}}"
+	},
+	"pollTimeLeftHours": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "Ó ku wákàtí {{formattedCount}}"
+	},
+	"pollTimeLeftDays": {
+		"type": "webI18nFunction",
+		"arguments": ["formattedCount"],
+		"value": "Ó ku ọjọ́ {{formattedCount}}"
+	},
+	"imageAltTitle": {
+		"type": "string",
+		"value": "Àpèjúwe àwòran"
+	},
+	"imageAltRead": {
+		"type": "string",
+		"value": "read image description"
+	},
+	"imageAltHide": {
+		"type": "string",
+		"value": "Pa á tì"
 	},
 	"retweet": {
 		"type": "string",
