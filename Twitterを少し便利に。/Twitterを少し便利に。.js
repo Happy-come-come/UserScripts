@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.7.0.3
+// @version			2.7.0.4
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -2021,6 +2021,11 @@
 					"defaultSettings": true,
 					"icon": svgIconPaths.bookmark,
 					"text": twitterTextI18n.getText("bookmarks")
+				},
+				"historyButton": {
+					"href": "/i/history",
+					"defaultSettings": true,
+					"text": twitterTextI18n.getText("history")
 				},
 				"communitiesButton": {
 					"href": `/${userData.screenName}/communities`,
@@ -4822,6 +4827,7 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 				{id: "grokButton", name: twitterTextI18n.getText("grok"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
 				{id: "listsButton", name: twitterTextI18n.getText("lists"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
 				{id: "bookmarksButton", name: twitterTextI18n.getText("bookmarks"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
+				{id: "historyButton", name: twitterTextI18n.getText("history"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
 				{id: "communitiesButton", name: twitterTextI18n.getText("communities"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
 				{id: "businessButton", name: twitterTextI18n.getText("business"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
 				{id: "premiumButton", name: twitterTextI18n.getText("premium"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
@@ -4888,7 +4894,7 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			page.appendChild(createSettingsElement({type: 'button', text: settingText.sortOrderRestoreDefault, width: "fit-content", event: restoreDefaultSorting}).container);
 
 			const buttonNames = ["homeButton", "exploreButton", "notificationsButton", "connect_peopleButton", "chatButton",
-				"grokButton", "listsButton", "bookmarksButton", "communitiesButton", "premiumButton", "businessButton",
+				"grokButton", "listsButton", "bookmarksButton", "historyButton", "communitiesButton", "premiumButton", "businessButton",
 				"profileButton" , "creatorStudioButton", "adsButton", "createYourSpaceButton", "settingsAndPrivacy",
 				"shortCutButton1", "shortCutButton2", "shortCutButton3", "shortCutButton4"];
 			const buttonList = scriptSetting?.buttonSorting?.length === buttonNames.length ? scriptSetting.buttonSorting : buttonNames;
@@ -5536,7 +5542,7 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 	const colors = new Colors();
 
 	class TwitterTextI18n {
-		#version = 202512208000;
+		#version = 202610060800;
 		#langList = ["ja", "en", "ar", "ar-x-fm", "bg", "bn", "ca", "cs", "da", "de", "el", "en-gb", "es", "eu", "fa", "fi", "fil",
 			"fr", "ga", "gl", "gu", "ha", "he", "hi", "hr", "hu", "id", "ig", "it", "kn", "ko", "mr", "msa", "nb",
 			"nl", "pl", "pt", "ro", "ru", "sk", "sr", "sv", "ta", "th", "tr", "uk", "ur", "vi", "yo", "zh-cn", "zh-tw"];
@@ -9497,7 +9503,7 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 				if(!challengeKeyMatch && !storedChallengeData){
 					console.error("Challenge key not found in HTML and no stored challenge data available");
 					for(let i=0; i<20; i++){
-						await sleep(1000); // 1秒待機
+						await sleep(100); // 0.1秒待機
 						html = await request({ url: 'https://x.com/home', respType: 'text', anonymous: true });
 						challengeKeyMatch = html.match(/(\d+):"ondemand.s"/);
 						if(challengeKeyMatch)break;
