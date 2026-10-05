@@ -403,6 +403,10 @@
 		"type": "string",
 		"value": "Yer İşaretleri"
 	},
+	"history": {
+		"type": "string",
+		"value": "Geçmiş"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "İşler"

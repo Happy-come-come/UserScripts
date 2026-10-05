@@ -362,6 +362,10 @@
 		"type": "string",
 		"value": "بُک مارکس"
 	},
+	"history": {
+		"type": "string",
+		"value": "History"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Jobs"

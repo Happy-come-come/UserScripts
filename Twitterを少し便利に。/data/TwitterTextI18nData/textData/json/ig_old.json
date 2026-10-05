@@ -366,6 +366,10 @@
 		"type": "string",
 		"value": "Ebenrụtụakā gasị"
 	},
+	"history": {
+		"type": "string",
+		"value": "History"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Jobs"

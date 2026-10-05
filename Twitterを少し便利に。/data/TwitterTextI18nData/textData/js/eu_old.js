@@ -179,6 +179,7 @@ const text = {
 	"messages": {"type":"string","value":"Mezuak"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Laster-markak"},
+	"history": {"type":"string","value":"History"},
 	"jobs": {"type":"string","value":"Jobs"},
 	"business": {"type":"string","value":"Enpresa"},
 	"communities": {"type":"string","value":"Erkidegoa"},

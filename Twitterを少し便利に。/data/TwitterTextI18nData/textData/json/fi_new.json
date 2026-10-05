@@ -396,6 +396,10 @@
 		"type": "string",
 		"value": "Kirjanmerkit"
 	},
+	"history": {
+		"type": "string",
+		"value": "Historia"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Työpaikat"

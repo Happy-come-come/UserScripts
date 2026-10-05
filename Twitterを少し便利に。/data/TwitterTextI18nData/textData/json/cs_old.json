@@ -396,6 +396,10 @@
 		"type": "string",
 		"value": "Záložky"
 	},
+	"history": {
+		"type": "string",
+		"value": "Historie"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Práce"

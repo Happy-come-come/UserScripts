@@ -179,6 +179,7 @@ const text = {
 	"messages": {"type":"string","value":"Teachtaireachtaí"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Leabharmharcanna"},
+	"history": {"type":"string","value":"History"},
 	"jobs": {"type":"string","value":"Jobs"},
 	"business": {"type":"string","value":"Gnó"},
 	"communities": {"type":"string","value":"Pobal"},

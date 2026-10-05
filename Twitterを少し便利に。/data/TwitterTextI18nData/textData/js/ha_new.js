@@ -145,6 +145,7 @@ const text = {
 	"messages": {"type":"string","value":"Saƙonni"},
 	"grok": undefined,
 	"bookmarks": {"type":"string","value":"Alamomi"},
+	"history": undefined,
 	"jobs": {"type":"string","value":"Jobs"},
 	"business": {"type":"string","value":"Kasuwanci"},
 	"communities": {"type":"string","value":"Al'umma"},

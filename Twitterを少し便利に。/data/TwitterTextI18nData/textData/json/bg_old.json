@@ -396,6 +396,10 @@
 		"type": "string",
 		"value": "Отметки"
 	},
+	"history": {
+		"type": "string",
+		"value": "История"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Кариери"

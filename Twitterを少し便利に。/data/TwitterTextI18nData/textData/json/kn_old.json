@@ -395,6 +395,10 @@
 		"type": "string",
 		"value": "ಬುಕ್‌ಮಾರ್ಕ್‌ಗಳು"
 	},
+	"history": {
+		"type": "string",
+		"value": "ಇತಿಹಾಸ"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "ಉದ್ಯೋಗಗಳು"

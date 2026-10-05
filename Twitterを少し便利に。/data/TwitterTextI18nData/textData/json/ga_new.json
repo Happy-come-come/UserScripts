@@ -360,6 +360,10 @@
 		"type": "string",
 		"value": "Leabharmharcanna"
 	},
+	"history": {
+		"type": "string",
+		"value": "History"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Jobs"

@@ -178,6 +178,7 @@ const vm = require('vm');
 			"messages": "a2f81050", // "メッセージ"
 			"grok": "h5860a68", // "Grok"
 			"bookmarks": "i3145aa0", // "ブックマーク"
+			"history": "b61ad410", // "履歴"
 			"jobs": "b007440a", // "求人"
 			"business": "j0e2cfa8", // "ビジネス"
 			"communities": "h5245afa", // "コミュニティ"

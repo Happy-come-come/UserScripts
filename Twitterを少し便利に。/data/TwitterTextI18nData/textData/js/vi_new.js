@@ -179,6 +179,7 @@ const text = {
 	"messages": {"type":"string","value":"Tin nhắn"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Dấu trang"},
+	"history": {"type":"string","value":"Lịch sử"},
 	"jobs": {"type":"string","value":"Công việc"},
 	"business": {"type":"string","value":"Doanh nghiệp"},
 	"communities": {"type":"string","value":"Cộng đồng"},

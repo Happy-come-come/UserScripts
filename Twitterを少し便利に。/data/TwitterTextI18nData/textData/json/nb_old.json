@@ -398,6 +398,10 @@
 		"type": "string",
 		"value": "Bokmerker"
 	},
+	"history": {
+		"type": "string",
+		"value": "Historikk"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Jobber"

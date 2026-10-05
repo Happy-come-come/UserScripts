@@ -359,6 +359,10 @@
 		"type": "string",
 		"value": "Mga Bookmark"
 	},
+	"history": {
+		"type": "string",
+		"value": "History"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Mga Trabaho"

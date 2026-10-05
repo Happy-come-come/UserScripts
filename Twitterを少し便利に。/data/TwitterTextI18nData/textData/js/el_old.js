@@ -179,6 +179,7 @@ const text = {
 	"messages": {"type":"string","value":"Μηνύματα"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Σελιδοδείκτες"},
+	"history": {"type":"string","value":"Ιστορία"},
 	"jobs": {"type":"string","value":"Αγγελίες εργασίας"},
 	"business": {"type":"string","value":"Επιχείρηση"},
 	"communities": {"type":"string","value":"Κοινότητα"},

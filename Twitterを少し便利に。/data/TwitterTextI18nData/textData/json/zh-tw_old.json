@@ -404,6 +404,10 @@
 		"type": "string",
 		"value": "書籤"
 	},
+	"history": {
+		"type": "string",
+		"value": "歷史記錄"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "工作機會"

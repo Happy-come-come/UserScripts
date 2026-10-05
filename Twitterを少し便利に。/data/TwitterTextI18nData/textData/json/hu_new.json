@@ -404,6 +404,10 @@
 		"type": "string",
 		"value": "Könyvjelzők"
 	},
+	"history": {
+		"type": "string",
+		"value": "Előzmények"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Munkalehetőségek"

@@ -396,6 +396,10 @@
 		"type": "string",
 		"value": "Bogmærker"
 	},
+	"history": {
+		"type": "string",
+		"value": "Historik"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Job"

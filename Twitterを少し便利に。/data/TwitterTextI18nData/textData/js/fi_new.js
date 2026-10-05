@@ -179,6 +179,7 @@ const text = {
 	"messages": {"type":"string","value":"Viestit"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Kirjanmerkit"},
+	"history": {"type":"string","value":"Historia"},
 	"jobs": {"type":"string","value":"Työpaikat"},
 	"business": {"type":"string","value":"Yritys"},
 	"communities": {"type":"string","value":"Yhteisö"},

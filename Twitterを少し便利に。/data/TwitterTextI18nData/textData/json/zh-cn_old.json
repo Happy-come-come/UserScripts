@@ -404,6 +404,10 @@
 		"type": "string",
 		"value": "书签"
 	},
+	"history": {
+		"type": "string",
+		"value": "历史"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "工作"

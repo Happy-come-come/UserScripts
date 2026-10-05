@@ -397,6 +397,10 @@
 		"type": "string",
 		"value": "Guardados"
 	},
+	"history": {
+		"type": "string",
+		"value": "Historia"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Trabajos"

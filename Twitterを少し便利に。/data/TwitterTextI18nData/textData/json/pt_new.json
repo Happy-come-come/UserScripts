@@ -396,6 +396,10 @@
 		"type": "string",
 		"value": "Itens salvos"
 	},
+	"history": {
+		"type": "string",
+		"value": "História"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Empregos"

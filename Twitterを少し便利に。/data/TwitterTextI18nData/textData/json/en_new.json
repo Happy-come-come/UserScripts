@@ -396,6 +396,10 @@
 		"type": "string",
 		"value": "Bookmarks"
 	},
+	"history": {
+		"type": "string",
+		"value": "History"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Jobs"

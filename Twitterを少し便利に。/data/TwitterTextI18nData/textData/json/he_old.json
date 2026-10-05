@@ -360,6 +360,10 @@
 		"type": "string",
 		"value": "סימניות"
 	},
+	"history": {
+		"type": "string",
+		"value": "היסטוריה"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "משרות"

@@ -179,6 +179,7 @@ const text = {
 	"messages": {"type":"string","value":"מסרים"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"סימניות"},
+	"history": {"type":"string","value":"היסטוריה"},
 	"jobs": {"type":"string","value":"משרות"},
 	"business": {"type":"string","value":"עסק"},
 	"communities": {"type":"string","value":"קהילה"},

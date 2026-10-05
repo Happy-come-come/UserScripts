@@ -368,6 +368,10 @@
 		"type": "string",
 		"value": "Markah"
 	},
+	"history": {
+		"type": "string",
+		"value": "Riwayat"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Karier"

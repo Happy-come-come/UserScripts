@@ -396,6 +396,10 @@
 		"type": "string",
 		"value": "Σελιδοδείκτες"
 	},
+	"history": {
+		"type": "string",
+		"value": "Ιστορία"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Αγγελίες εργασίας"

@@ -360,6 +360,10 @@
 		"type": "string",
 		"value": "Marcadores"
 	},
+	"history": {
+		"type": "string",
+		"value": "History"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Jobs"

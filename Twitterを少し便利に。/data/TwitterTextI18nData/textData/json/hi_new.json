@@ -400,6 +400,10 @@
 		"type": "string",
 		"value": "बुकमार्क"
 	},
+	"history": {
+		"type": "string",
+		"value": "इतिहास"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "जॉब"

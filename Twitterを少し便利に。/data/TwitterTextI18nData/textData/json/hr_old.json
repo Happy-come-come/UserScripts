@@ -395,6 +395,10 @@
 		"type": "string",
 		"value": "Knjižne oznake"
 	},
+	"history": {
+		"type": "string",
+		"value": "Povijest"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Poslovi"

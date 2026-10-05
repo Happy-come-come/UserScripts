@@ -179,6 +179,7 @@ const text = {
 	"messages": {"type":"string","value":"پیغامات"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"بُک مارکس"},
+	"history": {"type":"string","value":"History"},
 	"jobs": {"type":"string","value":"Jobs"},
 	"business": {"type":"string","value":"کاروبار"},
 	"communities": {"type":"string","value":"کمیونٹی"},

@@ -404,6 +404,10 @@
 		"type": "string",
 		"value": "Bookmark"
 	},
+	"history": {
+		"type": "string",
+		"value": "Sejarah"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Pekerjaan"

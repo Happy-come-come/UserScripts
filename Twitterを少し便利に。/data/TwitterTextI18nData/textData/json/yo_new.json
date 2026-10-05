@@ -365,6 +365,10 @@
 		"type": "string",
 		"value": "Àwọn Búkúmáàkì"
 	},
+	"history": {
+		"type": "string",
+		"value": "History"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Jobs"

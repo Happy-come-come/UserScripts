@@ -404,6 +404,10 @@
 		"type": "string",
 		"value": "บุ๊คมาร์ก"
 	},
+	"history": {
+		"type": "string",
+		"value": "ประวัติ"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "งาน"

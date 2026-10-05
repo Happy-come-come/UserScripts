@@ -404,6 +404,10 @@
 		"type": "string",
 		"value": "نشانک‌ها"
 	},
+	"history": {
+		"type": "string",
+		"value": "تاریخ"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "شغل‌ها"

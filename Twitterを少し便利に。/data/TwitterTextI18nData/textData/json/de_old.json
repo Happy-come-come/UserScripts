@@ -396,6 +396,10 @@
 		"type": "string",
 		"value": "Lesezeichen"
 	},
+	"history": {
+		"type": "string",
+		"value": "Verlauf"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Jobs"

@@ -396,6 +396,10 @@
 		"type": "string",
 		"value": "Закладки"
 	},
+	"history": {
+		"type": "string",
+		"value": "Історія"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Вакансії"

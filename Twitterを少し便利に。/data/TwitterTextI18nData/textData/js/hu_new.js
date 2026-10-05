@@ -179,6 +179,7 @@ const text = {
 	"messages": {"type":"string","value":"Üzenetek"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Könyvjelzők"},
+	"history": {"type":"string","value":"Előzmények"},
 	"jobs": {"type":"string","value":"Munkalehetőségek"},
 	"business": {"type":"string","value":"Üzleti"},
 	"communities": {"type":"string","value":"Közösség"},

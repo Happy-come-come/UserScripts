@@ -404,6 +404,10 @@
 		"type": "string",
 		"value": "Dấu trang"
 	},
+	"history": {
+		"type": "string",
+		"value": "Lịch sử"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Công việc"

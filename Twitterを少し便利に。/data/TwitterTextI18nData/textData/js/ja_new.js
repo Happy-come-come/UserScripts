@@ -179,6 +179,7 @@ const text = {
 	"messages": {"type":"string","value":"メッセージ"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"ブックマーク"},
+	"history": {"type":"string","value":"履歴"},
 	"jobs": {"type":"string","value":"求人"},
 	"business": {"type":"string","value":"ビジネス"},
 	"communities": {"type":"string","value":"コミュニティ"},

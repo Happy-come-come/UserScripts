@@ -398,6 +398,10 @@
 		"type": "string",
 		"value": "Segnalibri"
 	},
+	"history": {
+		"type": "string",
+		"value": "Storia"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Lavora con noi"

@@ -179,6 +179,7 @@ const text = {
 	"messages": {"type":"string","value":"Mesajlar"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Yer İşaretleri"},
+	"history": {"type":"string","value":"Geçmiş"},
 	"jobs": {"type":"string","value":"İşler"},
 	"business": {"type":"string","value":"Kurumsal"},
 	"communities": {"type":"string","value":"Topluluk"},

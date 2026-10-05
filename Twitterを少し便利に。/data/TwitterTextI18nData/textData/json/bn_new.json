@@ -403,6 +403,10 @@
 		"type": "string",
 		"value": "বুকমার্কগুলি"
 	},
+	"history": {
+		"type": "string",
+		"value": "কাহিনী"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "কাজ"

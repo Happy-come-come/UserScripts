@@ -179,6 +179,7 @@ const text = {
 	"messages": {"type":"string","value":"訊息"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"書籤"},
+	"history": {"type":"string","value":"歷史記錄"},
 	"jobs": {"type":"string","value":"工作機會"},
 	"business": {"type":"string","value":"商業"},
 	"communities": {"type":"string","value":"社群"},

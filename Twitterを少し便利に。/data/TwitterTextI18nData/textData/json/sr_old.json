@@ -395,6 +395,10 @@
 		"type": "string",
 		"value": "Обележивачи"
 	},
+	"history": {
+		"type": "string",
+		"value": "Историја"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Послови"

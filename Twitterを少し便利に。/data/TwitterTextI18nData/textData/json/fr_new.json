@@ -397,6 +397,10 @@
 		"type": "string",
 		"value": "Signets"
 	},
+	"history": {
+		"type": "string",
+		"value": "Historique"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Emplois"

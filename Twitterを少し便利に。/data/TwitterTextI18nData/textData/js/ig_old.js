@@ -179,6 +179,7 @@ const text = {
 	"messages": {"type":"string","value":"Ozi"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Ebenrụtụakā gasị"},
+	"history": {"type":"string","value":"History"},
 	"jobs": {"type":"string","value":"Jobs"},
 	"business": {"type":"string","value":"Azụmahịa"},
 	"communities": {"type":"string","value":"Ogbe"},

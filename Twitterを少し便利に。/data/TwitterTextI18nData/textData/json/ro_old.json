@@ -395,6 +395,10 @@
 		"type": "string",
 		"value": "Marcaje"
 	},
+	"history": {
+		"type": "string",
+		"value": "Istoric"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Locuri de muncă"

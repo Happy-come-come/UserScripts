@@ -396,6 +396,10 @@
 		"type": "string",
 		"value": "Bokmärken"
 	},
+	"history": {
+		"type": "string",
+		"value": "Historia"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Jobb"

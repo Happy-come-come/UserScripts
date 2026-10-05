@@ -397,6 +397,10 @@
 		"type": "string",
 		"value": "Bladwijzers"
 	},
+	"history": {
+		"type": "string",
+		"value": "Geschiedenis"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "Banen"

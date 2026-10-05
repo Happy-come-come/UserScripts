@@ -395,6 +395,10 @@
 		"type": "string",
 		"value": "العلامات المرجعية"
 	},
+	"history": {
+		"type": "string",
+		"value": "السجل"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "الوظائف"

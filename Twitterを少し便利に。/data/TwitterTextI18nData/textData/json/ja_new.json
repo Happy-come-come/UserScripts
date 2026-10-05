@@ -404,6 +404,10 @@
 		"type": "string",
 		"value": "ブックマーク"
 	},
+	"history": {
+		"type": "string",
+		"value": "履歴"
+	},
 	"jobs": {
 		"type": "string",
 		"value": "求人"
