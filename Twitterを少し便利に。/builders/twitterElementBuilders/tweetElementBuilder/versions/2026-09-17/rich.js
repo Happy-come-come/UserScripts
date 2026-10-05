@@ -1,9 +1,11 @@
 /* 6687/63857: legacy card変換、153256: poll判定、983808/303084: メディアprops。
- * DOM境界・native videoはアダプター。原版のReact/player全体の移植ではない。
+ * DOM境界と動画の再生エンジンはアダプター。原版のReact/HLSプレイヤー全体の移植ではない。
  */
 (function(root){
 	'use strict';
 	const imagePollName = '1906814671912599552:poll_choice_images';
+	let altSerial = 0;
+	let quoteAvatarSerial = 0;
 	// 893059/114197/896192/54756のSVG factoryを隔離テスト環境で木構造へ変換。
 	const authorIcons = {"verified":{"tag":"svg","props":{"aria-hidden":true,"style":[{},null],"viewBox":"0 0 22 22","children":{"tag":"g","props":{"children":{"tag":"path","props":{"d":"M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.854-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.688-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.634.433 1.218.877 1.688.47.443 1.054.747 1.687.878.633.132 1.29.084 1.897-.136.274.586.705 1.084 1.246 1.439.54.354 1.17.551 1.816.569.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.239 1.266.296 1.903.164.636-.132 1.22-.447 1.68-.907.46-.46.776-1.044.908-1.681s.075-1.299-.165-1.903c.586-.274 1.084-.705 1.439-1.246.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"}}}}}},"business":{"tag":"svg","props":{"aria-hidden":true,"style":[{},null],"viewBox":"0 0 22 22","children":{"tag":"g","props":{"children":[{"tag":"linearGradient","props":{"gradientUnits":"userSpaceOnUse","id":"TEB_BADGE_ID-a","x1":"4.411","x2":"18.083","y1":"2.495","y2":"21.508","children":[{"tag":"stop","props":{"offset":"0","stopColor":"#f4e72a"}},{"tag":"stop","props":{"offset":".539","stopColor":"#cd8105"}},{"tag":"stop","props":{"offset":".68","stopColor":"#cb7b00"}},{"tag":"stop","props":{"offset":"1","stopColor":"#f4ec26"}},{"tag":"stop","props":{"offset":"1","stopColor":"#f4e72a"}}]}},{"tag":"linearGradient","props":{"gradientUnits":"userSpaceOnUse","id":"TEB_BADGE_ID-b","x1":"5.355","x2":"16.361","y1":"3.395","y2":"19.133","children":[{"tag":"stop","props":{"offset":"0","stopColor":"#f9e87f"}},{"tag":"stop","props":{"offset":".406","stopColor":"#e2b719"}},{"tag":"stop","props":{"offset":".989","stopColor":"#e2b719"}}]}},{"tag":"g","props":{"clipRule":"evenodd","fillRule":"evenodd","children":[{"tag":"path","props":{"d":"M13.324 3.848L11 1.6 8.676 3.848l-3.201-.453-.559 3.184L2.06 8.095 3.48 11l-1.42 2.904 2.856 1.516.559 3.184 3.201-.452L11 20.4l2.324-2.248 3.201.452.559-3.184 2.856-1.516L18.52 11l1.42-2.905-2.856-1.516-.559-3.184zm-7.09 7.575l3.428 3.428 5.683-6.206-1.347-1.247-4.4 4.795-2.072-2.072z","fill":"url(#TEB_BADGE_ID-a)"}},{"tag":"path","props":{"d":"M13.101 4.533L11 2.5 8.899 4.533l-2.895-.41-.505 2.88-2.583 1.37L4.2 11l-1.284 2.627 2.583 1.37.505 2.88 2.895-.41L11 19.5l2.101-2.033 2.895.41.505-2.88 2.583-1.37L17.8 11l1.284-2.627-2.583-1.37-.505-2.88zm-6.868 6.89l3.429 3.428 5.683-6.206-1.347-1.247-4.4 4.795-2.072-2.072z","fill":"url(#TEB_BADGE_ID-b)"}},{"tag":"path","props":{"d":"M6.233 11.423l3.429 3.428 5.65-6.17.038-.033-.005 1.398-5.683 6.206-3.429-3.429-.003-1.405.005.003z","fill":"#d18800"}}]}}]}}}},"government":{"tag":"svg","props":{"aria-hidden":true,"style":[{},null],"viewBox":"0 0 22 22","children":{"tag":"g","props":{"children":{"tag":"path","props":{"clipRule":"evenodd","d":"M12.05 2.056c-.568-.608-1.532-.608-2.1 0l-1.393 1.49c-.284.303-.685.47-1.1.455L5.42 3.932c-.832-.028-1.514.654-1.486 1.486l.069 2.039c.014.415-.152.816-.456 1.1l-1.49 1.392c-.608.568-.608 1.533 0 2.101l1.49 1.393c.304.284.47.684.456 1.1l-.07 2.038c-.027.832.655 1.514 1.487 1.486l2.038-.069c.415-.014.816.152 1.1.455l1.392 1.49c.569.609 1.533.609 2.102 0l1.393-1.49c.283-.303.684-.47 1.099-.455l2.038.069c.832.028 1.515-.654 1.486-1.486L18 14.542c-.015-.415.152-.815.455-1.099l1.49-1.393c.608-.568.608-1.533 0-2.101l-1.49-1.393c-.303-.283-.47-.684-.455-1.1l.068-2.038c.029-.832-.654-1.514-1.486-1.486l-2.038.07c-.415.013-.816-.153-1.1-.456zm-5.817 9.367l3.429 3.428 5.683-6.206-1.347-1.247-4.4 4.795-2.072-2.072z","fill":"#829aab","fillRule":"evenodd"}}}}}},"protected":{"tag":"svg","props":{"aria-hidden":true,"style":[{},null],"viewBox":"0 0 24 24","children":{"tag":"g","props":{"children":{"tag":"path","props":{"clipRule":"evenodd","d":"M12 1.5c2.761 0 5 2.239 5 5v.745c.22.06.431.138.638.235 1.045.495 1.887 1.337 2.381 2.382.267.563.378 1.165.43 1.849.052.673.051 1.505.051 2.539 0 1.034 0 1.866-.05 2.54-.053.683-.164 1.285-.43 1.848-.495 1.045-1.337 1.887-2.382 2.381-.563.267-1.165.378-1.849.43-.673.052-1.505.051-2.539.051h-2.5c-1.034 0-1.866 0-2.54-.05-.683-.053-1.285-.164-1.848-.43-1.045-.495-1.887-1.337-2.382-2.382-.266-.563-.377-1.165-.43-1.849-.05-.673-.05-1.505-.05-2.539 0-1.034 0-1.866.05-2.54.053-.683.164-1.285.43-1.848.495-1.045 1.337-1.887 2.382-2.382.207-.097.419-.174.638-.235V6.5c0-2.761 2.239-5 5-5zM9.5 15h5v-2h-5v2zM12 3.5c-1.657 0-3 1.343-3 3v.515C9.508 7 10.088 7 10.75 7h2.5l1.405.006c.119.002.234.006.345.009V6.5c0-1.657-1.343-3-3-3z","fillRule":"evenodd"}}}}}}};
 	// 797572 / 684246。2026-09-25の配信icons chunkから保存。
@@ -409,6 +411,24 @@
 			cleanups.push(view.dispose);
 			view.element.tebImage = view;
 			return view.element;
+		}
+		function quoteAvatar(user, part){
+			// 885048 ShapeClip: mediaと同じ背景div + semantic imgを形状ごと切り抜く。
+			const avatar = image({url:user.profile_image_url_https}, '');
+			avatar.dataset.tebPart = part;
+			avatar.dataset.testid = `UserAvatar-Container-${user.screen_name || 'unknown'}`;
+			const requested = user.profile_image_shape?.toLowerCase();
+			const shape = requested === 'square' ? 'square' : ['hex','hexagon'].includes(requested) ? 'hexagon' : 'circle';
+			avatar.dataset.tebAvatarShape = shape;
+			avatar.style.borderRadius = shape === 'circle' ? '50%' : shape === 'square' ? '8%' : '0';
+			if(shape === 'hexagon'){
+				const id=`teb-quote-avatar-hex-${++quoteAvatarSerial}`;
+				const svg=doc.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('width','0');svg.setAttribute('height','0');svg.setAttribute('aria-hidden','true');svg.style.position='absolute';
+				const clip=doc.createElementNS(svg.namespaceURI,'clipPath');clip.id=id;clip.setAttribute('clipPathUnits','objectBoundingBox');
+				const path=doc.createElementNS(svg.namespaceURI,'path');path.setAttribute('transform','scale(.005 .005319148936170213)');path.setAttribute('d','M193.248 69.51C185.95 54.1634 177.44 39.4234 167.798 25.43L164.688 20.96C160.859 15.4049 155.841 10.7724 149.998 7.3994C144.155 4.02636 137.633 1.99743 130.908 1.46004L125.448 1.02004C108.508-.340012 91.4873-.340012 74.5479 1.02004L69.0879 1.46004C62.3625 1.99743 55.8413 4.02636 49.9981 7.3994C44.155 10.7724 39.1367 15.4049 35.3079 20.96L32.1979 25.47C22.5561 39.4634 14.0458 54.2034 6.74789 69.55L4.39789 74.49C1.50233 80.5829 0 87.2441 0 93.99C0 100.736 1.50233 107.397 4.39789 113.49L6.74789 118.43C14.0458 133.777 22.5561 148.517 32.1979 162.51L35.3079 167.02C39.1367 172.575 44.155 177.208 49.9981 180.581C55.8413 183.954 62.3625 185.983 69.0879 186.52L74.5479 186.96C91.4873 188.32 108.508 188.32 125.448 186.96L130.908 186.52C137.638 185.976 144.163 183.938 150.006 180.554C155.85 177.17 160.865 172.526 164.688 166.96L167.798 162.45C177.44 148.457 185.95 133.717 193.248 118.37L195.598 113.43C198.493 107.337 199.996 100.676 199.996 93.93C199.996 87.1841 198.493 80.5229 195.598 74.43L193.248 69.51Z');
+				clip.append(path);svg.append(clip);avatar.prepend(svg);avatar.style.clipPath=`url(#${id})`;
+			}
+			return avatar;
 		}
 		function cashtagSearchUrl(restId, ticker){
 			const tag = `$${String(restId).replace(/^\$/, '')}`;
@@ -1096,7 +1116,14 @@
 			const cells = Array.from(group.children);
 			if(!cells.length){ group.remove(); return; }
 			group.dataset.tebMediaCount = String(cells.length);
-			if(cells.length === 1)return;
+			if(cells.length === 1){
+				if(cells[0].querySelector('[data-teb-image]')){
+					const frame = node('div', `${base} r-1kqtdi0 r-1phboty r-rs99b7 r-1867qdf r-1udh08x r-o7ynqc r-6416eg r-1ny4l3l`, 'mediaSingleFrame');
+					frame.append(cells[0]);
+					group.append(frame);
+				}
+				return;
+			}
 			if(!condensed && options.mediaLayout !== 'grid'){ arrangeCarousel(group, target, compact); return; }
 			group.dataset.tebLayout = 'grid';
 			group.style.aspectRatio = String(condensed ? 1 : 16 / 9);
@@ -1182,15 +1209,85 @@
 					cleanups.push(() => observer.disconnect());
 					imageView.cropLayer = layer;
 					a.append(img);
-					group.append(a);
+					let altButton = null, altDialog = null;
+					// 879747:_getMediaMemoized。ALTバッジは説明があり、投稿者本人か常時表示指定の場合だけ出る。
+					const showAltLabel = !!item.ext_alt_text && (options.withAltTextBadge === true || options.shouldShowAltLabelAlways === true || options.viewerId != null && String(options.viewerId) === String(tweet.user?.id_str));
+					if(showAltLabel){
+						const cell = node('div', base, 'mediaCell');
+						altButton = node('button', 'css-g5y9jx r-1loqt21 r-o7ynqc r-6416eg r-1ny4l3l r-105ug2t', 'mediaAltButton');
+						altButton.type = 'button';
+						const badge = node('div', 'css-g5y9jx r-1awozwy r-k200y r-z2wwpe r-z80fyv r-1777fci r-is05cd r-13w96dm r-105ug2t', 'mediaAltBadge');
+						const badgeText = node('div', 'css-146c3p1 r-bcqeeo r-qvutc0 r-1tl8opc r-q4m81j r-n6v787 r-1cwl3u0 r-b88u0q r-lrvibr', 'mediaAltBadgeText');
+						badgeText.textContent = 'ALT';badge.append(badgeText);altButton.append(badge);
+						altButton.setAttribute('aria-label', text('imageAltRead', 'Read image description'));
+						// 347940:HoverCard と 947032:position。ポータル内にhoverCardParentを作る。
+						const altLayer = doc.createElement('div');
+						altLayer.className = 'tweet-element-builder';
+						altLayer.dataset.tebUiVersion = '2026-09-17';
+						altLayer.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:0;z-index:2147483646;pointer-events:none;background:transparent;';
+						const mask = node('div', base, 'mediaAltMask');
+						const hoverParent = node('div', 'css-g5y9jx r-u8s1d', 'mediaAltHoverParent');hoverParent.dataset.testid = 'hoverCardParent';
+						const focusRoot = node('div', 'css-g5y9jx r-1pz39u2 r-16y2uox r-1wbh5a2', 'mediaAltFocusRoot');
+						const beforeGuard = node('div', base);beforeGuard.tabIndex = 0;
+						const focusGroup = node('div', 'css-g5y9jx r-1ny4l3l');focusGroup.setAttribute('role', 'group');focusGroup.tabIndex = 0;
+						const afterGuard = node('div', base);afterGuard.tabIndex = 0;
+						const frame = node('div', 'css-g5y9jx r-cl2sl0 r-1jyoszn r-1867qdf', 'mediaAltFrame');frame.dataset.testid = 'HoverCard';
+						const arrow = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');arrow.setAttribute('viewBox', '0 0 24 24');arrow.setAttribute('aria-hidden', 'true');arrow.dataset.tebPart = 'mediaAltArrow';
+						const arrowPath = doc.createElementNS('http://www.w3.org/2000/svg', 'path');arrowPath.setAttribute('d', 'M22 17H2L12 6l10 11z');arrow.append(arrowPath);
+						altDialog = node('div', 'css-g5y9jx r-t3ofa r-1vzmqqg r-1cj0bla r-494qqr', 'mediaAltDialog');
+						const altId = ++altSerial, titleId = `teb-alt-title-${altId}`, descriptionId = `teb-alt-description-${altId}`;
+						altDialog.setAttribute('role', 'dialog');altDialog.setAttribute('aria-labelledby', `${titleId} ${descriptionId}`);
+						const heading = node('h1', 'css-146c3p1 r-bcqeeo r-1ttztb7 r-qvutc0 r-1tl8opc r-yy2aun r-37tt59 r-b88u0q', 'mediaAltTitle');heading.id = titleId;heading.textContent = text('imageAltTitle', 'Image description');
+						const description = node('div', 'css-146c3p1', 'mediaAltDescription'); description.textContent = item.ext_alt_text;
+						description.id = descriptionId;
+						const hide = node('button', 'css-g5y9jx r-sdzlij r-1phboty r-rs99b7 r-lrvibr r-nsbfu8 r-19yznuf r-64el8z r-1fkl15p r-1loqt21 r-o7ynqc r-6416eg r-1ny4l3l', 'mediaAltHide');hide.type = 'button';hide.textContent = text('imageAltHide', 'Hide');
+						altDialog.append(heading, description, hide);
+						frame.append(arrow, altDialog);focusGroup.append(frame);focusRoot.append(beforeGuard, focusGroup, afterGuard);hoverParent.append(focusRoot);altLayer.append(mask, hoverParent);
+						function positionAlt(){
+							if(!altLayer.isConnected || !altButton.isConnected)return;
+							const rect = altButton.getBoundingClientRect(), width = hoverParent.offsetWidth, height = hoverParent.offsetHeight;
+							const viewport = doc.defaultView;
+							const center = rect.left + rect.width / 2;
+							const left = Math.max(0, Math.min(center - width / 2, viewport.innerWidth - width));
+							const spaceAbove = rect.top - 25, spaceBelow = viewport.innerHeight - rect.bottom - 25;
+							const above = spaceBelow < height && spaceAbove > spaceBelow;
+							hoverParent.style.left = `${left}px`;
+							hoverParent.style.top = `${viewport.scrollY + (above ? rect.top - height - 10 : rect.bottom + 10)}px`;
+							arrow.style.left = `${Math.max(0, Math.min(center - left - 12, width - 24))}px`;
+							arrow.dataset.tebDirection = above ? 'down' : 'up';
+						}
+						function closeAlt(){altLayer.remove();doc.removeEventListener('pointerdown', onOutside, true);doc.removeEventListener('keydown', onEscape);doc.defaultView.removeEventListener('scroll', positionAlt, true);doc.defaultView.removeEventListener('resize', positionAlt);altButton.setAttribute('aria-expanded', 'false');altButton.focus();}
+						function onOutside(event){if(!altDialog.contains(event.target) && event.target !== altButton)closeAlt();}
+						function onEscape(event){if(event.key === 'Escape'){event.preventDefault();closeAlt();}}
+						altButton.setAttribute('aria-haspopup', 'dialog');altButton.setAttribute('aria-expanded', 'false');
+						altButton.addEventListener('click', event => {
+							event.preventDefault();event.stopPropagation();
+							if(altLayer.isConnected){closeAlt();return;}
+							altLayer.dataset.tebTheme = container.closest('.tweet-element-builder')?.dataset.tebTheme || options.theme || 'dark';
+							doc.body.append(altLayer);altButton.setAttribute('aria-expanded', 'true');
+							positionAlt();
+							doc.addEventListener('pointerdown', onOutside, true);doc.addEventListener('keydown', onEscape);
+							doc.defaultView.addEventListener('scroll', positionAlt, true);doc.defaultView.addEventListener('resize', positionAlt);
+							hide.focus();
+						});
+						hide.addEventListener('click', closeAlt);
+						cleanups.push(() => {doc.removeEventListener('pointerdown', onOutside, true);doc.removeEventListener('keydown', onEscape);doc.defaultView.removeEventListener('scroll', positionAlt, true);doc.defaultView.removeEventListener('resize', positionAlt);altLayer.remove();});
+						cell.append(a, altButton);group.append(cell);
+					}else group.append(a);
 					imageView.preview = preview;
-					target.push({type: 'photo', id: item.id_str, element: img.tebImage.img, image: img.tebImage, link: a, original: picture, cropCandidates: item.original_info?.focus_rects});
+					target.push({type: 'photo', id: item.id_str, element: img.tebImage.img, image: img.tebImage, link: a, altButton, altDialog, original: picture, cropCandidates: item.original_info?.focus_rects});
 				}else if(['video', 'animated_gif', 'vine'].includes(item.type)){
 					const props = videoProps(item);
+					const isGif = item.type === 'animated_gif';
+					const player = node('div', `${base} r-1p0dtai r-1d2f490 r-u8s1d r-zchlnj r-ipm5af`, 'videoPlayer');
+					player.dataset.testid = 'videoPlayer';
+					player.dataset.tebPlayerMode = isGif ? 'gif' : media.length > 1 ? 'mini' : 'full';
+					if(props.poster?.width > 0 && props.poster?.height > 0)player.style.aspectRatio = `${props.poster.width} / ${props.poster.height}`;
+					const component = node('div', base, 'videoComponent');component.dataset.testid = 'videoComponent';
 					const video = node('video', 'r-13qz1uu');
-					video.controls = true;
+					video.controls = false;
 					video.playsInline = true;
-					video.preload = 'none';
+					video.preload = isGif ? 'auto' : 'none';
 					video.setAttribute('aria-label', item.ext_alt_text || tweet.post_video_description || text('video', 'Video'));
 					if(safeUrl(props.poster?.url))video.poster = safeUrl(props.poster.url);
 					// 配信順序を保持。最高bitrateは原版ではdownload用であり再生選択に流用しない。
@@ -1201,9 +1298,67 @@
 						source.type = variant.content_type;
 						video.append(source);
 					}
-					if(item.type === 'animated_gif'){ video.muted = true; video.loop = true; }
-					group.append(video);
-					target.push({type: item.type, id: item.id_str, element: video, props, variants: props.source.variants});
+					if(isGif)video.muted = true;
+					// 404167:_getLoopingThreshold。tweet動画は60秒以下、GIF/vineは常時loop。
+					video.loop = isGif || item.type === 'vine' || (props.durationMs > 0 && props.durationMs <= 60000);
+					component.append(video);player.append(component);
+					const posterButton = node('button', '', 'videoPosterButton');posterButton.type = 'button';posterButton.setAttribute('aria-label', text('videoPlay', 'Play video'));
+					const posterIcon = doc.createElementNS('http://www.w3.org/2000/svg','svg');posterIcon.setAttribute('viewBox','0 0 60 61');posterIcon.setAttribute('aria-hidden','true');
+					const circle = doc.createElementNS(posterIcon.namespaceURI,'circle');circle.setAttribute('cx','30');circle.setAttribute('cy','30.4219');circle.setAttribute('r','30');circle.setAttribute('fill','#333');circle.setAttribute('opacity','.6');
+					const triangle = doc.createElementNS(posterIcon.namespaceURI,'path');triangle.setAttribute('d','M22.2275 17.1971V43.6465L43.0304 30.4218L22.2275 17.1971Z');triangle.setAttribute('fill','#fff');posterIcon.append(circle,triangle);posterButton.append(posterIcon);player.append(posterButton);
+					const controls = node('div', base, 'videoControls');
+					const mini = node('div', `${base} r-18u37iz r-vampta r-u8s1d r-rki7wi r-1f55h46 r-633pao`, 'videoMiniUi');
+					mini.dataset.testid = 'video-player-mini-ui-';
+					const play = node('button', `${base} r-xoduu5 r-tuq35u r-105ug2t r-1loqt21 r-o7ynqc r-6416eg r-1ny4l3l`, 'videoPlay');play.type = 'button';
+					const playIcon = doc.createElementNS('http://www.w3.org/2000/svg','svg');playIcon.setAttribute('viewBox','0 0 24 24');playIcon.setAttribute('aria-hidden','true');
+					const playPath = doc.createElementNS(playIcon.namespaceURI,'path');playPath.setAttribute('d','M7.00 4.30L13.30 8.45L13.30 15.55L7.00 19.70Z M13.30 8.45L18.70 12.00L18.70 12.00L13.30 15.55Z');playIcon.append(playPath);play.append(playIcon);
+					const time = node('span', 'css-1jxf684', 'videoTime');
+					const seek = node('input', '', 'videoSeek');seek.type = 'range';seek.min = '0';seek.max = '1000';seek.value = '0';seek.setAttribute('aria-label', text('videoSeek', 'Seek'));
+					const volume = node('input', '', 'videoVolume');volume.type = 'range';volume.min = '0';volume.max = '100';volume.value = video.muted ? '0' : '100';volume.setAttribute('aria-label', text('videoVolume', 'Volume'));
+					const mute = node('button', '', 'videoMute');mute.type = 'button';
+					const icon = (button,path) => {const svg=doc.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('aria-hidden','true');const shape=doc.createElementNS(svg.namespaceURI,'path');shape.setAttribute('d',path);svg.append(shape);button.append(svg);return shape;};
+					const mutePath = icon(mute,'M14 22h-2.35l-.275-.219L6.648 18H4.5C2.567 18 1 16.433 1 14.5v-5C1 7.567 2.567 6 4.5 6h2.148l4.727-3.781.274-.219H14v20zM7.625 7.781L7.351 8H4.5C3.672 8 3 8.672 3 9.5v5c0 .828.672 1.5 1.5 1.5h2.85l.275.219 4.375 3.5V4.28l-4.375 3.5zM20.817 5.098C22.192 7.05 23 9.432 23 12c0 2.568-.808 4.95-2.183 6.902l-1.634-1.152C20.328 16.124 21 14.142 21 12s-.672-4.124-1.817-5.75l1.634-1.152z');
+					const settings = node('button', '', 'videoSettings');settings.type = 'button';settings.setAttribute('aria-label', text('videoSettings', 'Video settings'));icon(settings,'M10.54 1.75h2.92l1.57 2.36c.11.17.32.25.53.21l2.53-.59 2.17 2.17-.58 2.54c-.05.2.04.41.21.53l2.36 1.57v2.92l-2.36 1.57c-.17.12-.26.33-.21.53l.58 2.54-2.17 2.17-2.53-.59c-.21-.04-.42.04-.53.21l-1.57 2.36h-2.92l-1.58-2.36c-.11-.17-.32-.25-.52-.21l-2.54.59-2.17-2.17.58-2.54c.05-.2-.03-.41-.21-.53l-2.35-1.57v-2.92L4.1 8.97c.18-.12.26-.33.21-.53L3.73 5.9 5.9 3.73l2.54.59c.2.04.41-.04.52-.21l1.58-2.36zm1.07 2l-.98 1.47C10.05 6.08 9 6.5 7.99 6.27l-1.46-.34-.6.6.33 1.46c.24 1.01-.18 2.07-1.05 2.64l-1.46.98v.78l1.46.98c.87.57 1.29 1.63 1.05 2.64l-.33 1.46.6.6 1.46-.34c1.01-.23 2.06.19 2.64 1.05l.98 1.47h.78l.97-1.47c.58-.86 1.63-1.28 2.65-1.05l1.45.34.61-.6-.34-1.46c-.23-1.01.18-2.07 1.05-2.64l1.47-.98v-.78l-1.47-.98c-.87-.57-1.28-1.63-1.05-2.64l.34-1.46-.61-.6-1.45.34c-1.02.23-2.07-.19-2.65-1.05l-.97-1.47h-.78zM12 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5c.82 0 1.5-.67 1.5-1.5s-.68-1.5-1.5-1.5zM8.5 12c0-1.93 1.56-3.5 3.5-3.5 1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5c-1.94 0-3.5-1.57-3.5-3.5z');
+					const settingsMenu = node('div', base, 'videoSettingsMenu');settingsMenu.hidden = true;settingsMenu.setAttribute('role','menu');settings.setAttribute('aria-expanded','false');
+					for(const rate of [0.5,1,1.5,2]){const choice=node('button','','videoSpeed');choice.type='button';choice.setAttribute('role','menuitemradio');choice.setAttribute('aria-checked',String(rate===1));choice.textContent=`${rate}×`;choice.addEventListener('click',()=>{video.playbackRate=rate;for(const button of settingsMenu.children)button.setAttribute('aria-checked',String(button===choice));settingsMenu.hidden=true;settings.setAttribute('aria-expanded','false');});settingsMenu.append(choice);}
+					const pip = node('button', '', 'videoPictureInPicture');pip.type = 'button';pip.setAttribute('aria-label', text('videoPictureInPicture', 'Picture in picture'));icon(pip,'M3.457 2.04L9 7.59V3h2v8H3V9h4.586L2.043 3.46l1.414-1.42zM19.5 8H14V6h5.5C20.881 6 22 7.12 22 8.5v11c0 1.38-1.119 2.5-2.5 2.5h-11C7.119 22 6 20.88 6 19.5V14h2v5.5c0 .28.224.5.5.5h11c.276 0 .5-.22.5-.5v-11c0-.28-.224-.5-.5-.5z');
+					const full = node('button', '', 'videoFullscreen');full.type = 'button';full.setAttribute('aria-label', text('videoFullscreen', 'Fullscreen'));icon(full,'M13 3h8v8h-2V6.41l-5.043 5.05-1.414-1.42L17.586 5H13V3zm-1.543 10.96L6.414 19H11v2H3v-8h2v4.59l5.043-5.05 1.414 1.42z');
+					const formatTime = value => {const seconds = Number.isFinite(value) ? Math.max(0,Math.round(value)) : 0,hours = Math.floor(seconds / 3600),minutes = Math.floor(seconds % 3600 / 60),tail = String(seconds % 60).padStart(2,'0');return hours ? `${hours}:${String(minutes).padStart(2,'0')}:${tail}` : `${minutes}:${tail}`;};
+					const update = () => {
+						const playing = !video.paused && !video.ended;
+						play.setAttribute('aria-label', text(video.ended && !video.loop ? 'videoReplay' : playing ? 'videoPause' : 'videoPlay', video.ended && !video.loop ? 'Replay' : playing ? 'Pause' : 'Play'));
+						playPath.setAttribute('d', playing ? 'M6 6h3v12H6z M15 6h3v12h-3z' : 'M7.00 4.30L13.30 8.45L13.30 15.55L7.00 19.70Z M13.30 8.45L18.70 12.00L18.70 12.00L13.30 15.55Z');
+						const duration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : props.durationMs / 1000;
+						time.textContent = isGif ? 'GIF' : player.dataset.tebPlayerMode === 'full' ? `${formatTime(video.currentTime)} / ${formatTime(duration)}` : formatTime(video.ended && !video.loop ? duration : duration - video.currentTime);
+						posterButton.hidden = playing || video.currentTime > 0;
+						player.dataset.tebPlaying = String(playing);
+						seek.value = Number.isFinite(video.duration) && video.duration > 0 ? String(Math.round(video.currentTime / video.duration * 1000)) : '0';
+						seek.disabled = !(Number.isFinite(video.duration) && video.duration > 0);
+						mutePath.setAttribute('d',video.muted || video.volume === 0 ? 'M14 22h-2.35l-.275-.219L6.648 18H4.5C2.567 18 1 16.433 1 14.5v-5C1 7.567 2.567 6 4.5 6h2.148l4.727-3.781.274-.219H14v20zM7.625 7.781L7.351 8H4.5C3.672 8 3 8.672 3 9.5v5c0 .828.672 1.5 1.5 1.5h2.85l.275.219 4.375 3.5V4.28l-4.375 3.5zM17.707 7.293l-1.414 1.414L19.586 12l-3.293 3.293 1.414 1.414L21 13.414l3.293 3.293 1.414-1.414L22.414 12l3.293-3.293-1.414-1.414L21 10.586l-3.293-3.293z' : 'M14 22h-2.35l-.275-.219L6.648 18H4.5C2.567 18 1 16.433 1 14.5v-5C1 7.567 2.567 6 4.5 6h2.148l4.727-3.781.274-.219H14v20zM7.625 7.781L7.351 8H4.5C3.672 8 3 8.672 3 9.5v5c0 .828.672 1.5 1.5 1.5h2.85l.275.219 4.375 3.5V4.28l-4.375 3.5zM20.817 5.098C22.192 7.05 23 9.432 23 12c0 2.568-.808 4.95-2.183 6.902l-1.634-1.152C20.328 16.124 21 14.142 21 12s-.672-4.124-1.817-5.75l1.634-1.152z');
+						mute.setAttribute('aria-label', text(video.muted || video.volume === 0 ? 'videoUnmute' : 'videoMute', video.muted || video.volume === 0 ? 'Unmute' : 'Mute'));
+						volume.value = video.muted ? '0' : String(Math.round(video.volume * 100));
+					};
+					let gifUserPaused = false;
+					const togglePlay = () => {if(video.paused){gifUserPaused=false;video.play().catch(() => {});}else{gifUserPaused=true;video.pause();}};
+					play.addEventListener('click', togglePlay);
+					posterButton.addEventListener('click', togglePlay);
+					video.addEventListener('click', togglePlay);
+					seek.addEventListener('input', () => {if(Number.isFinite(video.duration) && video.duration > 0)video.currentTime = Number(seek.value) / 1000 * video.duration;});
+					volume.addEventListener('input', () => {video.volume = Number(volume.value) / 100;video.muted = video.volume === 0;update();});
+					mute.addEventListener('click', () => {video.muted = !video.muted;update();});
+					settings.addEventListener('click', () => {settingsMenu.hidden=!settingsMenu.hidden;settings.setAttribute('aria-expanded',String(!settingsMenu.hidden));});
+					pip.addEventListener('click', () => {if(doc.pictureInPictureElement === video)doc.exitPictureInPicture?.();else video.requestPictureInPicture?.().catch(() => {});});
+					full.addEventListener('click', () => {if(doc.fullscreenElement)doc.exitFullscreen?.();else player.requestFullscreen?.();});
+					for(const event of ['play','pause','ended','timeupdate','durationchange','volumechange'])video.addEventListener(event, update);
+					mini.append(play,time);controls.append(mini,seek,mute,volume,settings,pip,full);player.append(controls,settingsMenu);update();
+					let visibilityObserver = null;
+					if(isGif && options.autoplayGifs !== false && doc.defaultView.IntersectionObserver){
+						visibilityObserver = new doc.defaultView.IntersectionObserver(entries => {if(entries[0]?.isIntersecting){if(!gifUserPaused)video.play().catch(() => {});}else video.pause();},{threshold:.5});
+						visibilityObserver.observe(player);
+					}
+					cleanups.push(() => {visibilityObserver?.disconnect();video.pause();if(doc.fullscreenElement === player)doc.exitFullscreen?.();});
+					group.append(player);
+					target.push({type: item.type, id: item.id_str, element: video, player, controls: {play, time, seek, mute, volume, settings, pictureInPicture: pip, fullscreen: full}, props, variants: props.source.variants});
 					if(!video.children.length)notice('この動画にはブラウザで再生できるsourceがありません。Xで確認してください。');
 				}else notice(`未対応メディア: ${item.type}`);
 			}
@@ -1298,10 +1453,12 @@
 				let button = null;
 				if(state.showResults){
 					for(const cls of ['r-18u37iz', 'r-1awozwy', 'r-1wtj0ep'])row.classList.add(cls, `teb-${cls}`);
+					const result = card.type === 'image_poll' ? node('div', base, 'pollResult') : row;
+					if(result !== row)row.append(result);
 					const bar = node('div', '', 'pollBar');
 					bar.style.width = choice.barWidth;
 					bar.setAttribute('aria-hidden', 'true');
-					row.append(bar);
+					result.append(bar);
 					const label = node('span', 'css-1jxf684');
 					renderChoiceLabel(label,labelText);
 					if(choice.isSelected)label.append(doc.createTextNode(' ✓'));
@@ -1309,7 +1466,7 @@
 					const percentage = node('span', 'css-1jxf684');
 					percentage.textContent = `${choice.percentage}%`;
 					if(choice.isWinner)percentage.classList.add('r-b88u0q', 'teb-r-b88u0q');
-					row.append(label, percentage);
+					result.append(label, percentage);
 				}else{
 					button = node('button', 'css-1jxf684 r-13qz1uu', 'pollVote');
 					button.type = 'button';
@@ -1348,10 +1505,12 @@
 			function refreshStatus(){
 				const remaining = pollTimeLeft(card.endDatetimeUtc, options.now ?? Date.now());
 				const locale = options.locale;
-				const duration = remaining ? new Intl.NumberFormat(locale, {style: 'unit', unit: remaining.unit, unitDisplay: 'long'}).format(remaining.value) : '';
+				const formattedRemaining = remaining ? new Intl.NumberFormat(locale).format(remaining.value) : '';
 				const formattedVotes = new Intl.NumberFormat(locale).format(card.totalVotes);
-				const votes = text('pollVotes', `${formattedVotes} ${card.totalVotes === 1 ? 'vote' : 'votes'}`, [], {formattedCount: formattedVotes});
-				const label = card.isFinal ? text('pollEnded', 'Final results') : duration ? text('pollTimeLeft', `${duration} left`, {formattedCount: duration}) : '';
+				const votes = text('pollVotes', `${formattedVotes} ${card.totalVotes === 1 ? 'vote' : 'votes'}`, [formattedVotes]);
+				const timeKey = remaining ? {minute:'pollTimeLeftMinutes',hour:'pollTimeLeftHours',day:'pollTimeLeftDays'}[remaining.unit] : null;
+				const duration = remaining ? new Intl.NumberFormat(locale, {style:'unit', unit:remaining.unit, unitDisplay:'long'}).format(remaining.value) : '';
+				const label = card.isFinal ? text('pollEnded', 'Final results') : timeKey ? text(timeKey, `${duration} left`, [formattedRemaining]) : '';
 				status.textContent = `${votes}${label ? ' · ' + label : ''}`;
 			}
 			refreshStatus();
@@ -1509,8 +1668,7 @@
 				});
 			}
 			const header = node('div', `${base} r-18u37iz r-1awozwy`, 'quoteHeader');
-			const avatar = image({url: tweet.user.profile_image_url_https}, '');
-			avatar.dataset.tebPart = 'quoteAvatar';
+			const avatar = quoteAvatar(tweet.user, 'quoteAvatar');
 			const profileUrl = `https://x.com/${encodeURIComponent(tweet.user.screen_name)}`;
 			const author = withHeaderLinks ? link(tweet.user.name || '', profileUrl, 'profile') : node('span', 'css-1jxf684', 'quoteName');
 			if(!withHeaderLinks)author.textContent = tweet.user.name || '';
@@ -1626,7 +1784,9 @@
 			}
 			// 315101: 添付もrich contentもない引用でのみJetfuel frameを使う。
 			if(!hasMedia && !tweet.article && !tweet.card)renderJetfuel(tweet, element, target, true);
-			if(options.quoteLayout === 'condensed' && hasMedia){
+			// 398338:_richContentProps: timelineで元ポストにmediaがあれば引用は縮約する（明示指定は優先）。
+			const condensedQuote = options.quoteLayout === 'condensed' || options.quoteLayout == null && options.displayMode !== 'detail' && !!model.extended_entities?.media?.length;
+			if(condensedQuote && hasMedia){
 				// 392773:condensedContentBody/MediaSide/ContentSide (2:8)。
 				element.dataset.tebQuoteLayout = 'condensed';
 				const row = node('div', `${base} r-18u37iz`, 'quoteContent');
@@ -1642,6 +1802,57 @@
 				element.append(textContent);
 				quoteArticle(element);
 				target.mediaInfo = renderMedia(tweet, element, target.media, false, true);
+			}
+			// 376934.getNestedQuotePreviewTweet → 315101.NestedQuotePreview。
+			// 内側の引用は通常の引用カードを再帰描画せず、縦線付きの2行プレビューにする。
+			const nestedResult = raw?.nested_quoted_tweet_results?.result || raw?.quoted_status_result?.result || raw?.quoted_status;
+			const nestedRaw = nestedResult?.tweet || nestedResult;
+			let nested;
+			try{nested = nestedRaw ? normalize(nestedRaw) : null;}catch{nested = null;}
+			const hasRichSurface = item => !!item?.extended_entities?.media?.length && !item.possibly_sensitive || !!item?.article || !!item?.jetfuel_payload || !!item?.card && !isPoll(item.card.name);
+			const nestedMedia = (nested?.extended_entities?.media || []).filter(item => ['photo','video','animated_gif'].includes(item.type));
+			const canPreviewNested = options.withNestedQuotePreview !== false && nested && !nested.unavailable && nested.user?.screen_name && nested.id_str === tweet.quoted_status_id_str &&
+				!model.retweeted_status && !model.in_reply_to_status_id_str && tweet.quoted_status_id_str !== model.id_str &&
+				(!model.user?.id_str || model.user.id_str !== tweet.user.id_str) && tweet.user.id_str !== nested.user.id_str &&
+				!tweet.possibly_sensitive && !tweet.withheld_scope && !tweet.birdwatch_pivot &&
+				!nested.user.blocking && !nested.isDeleted && !nested.withheld_scope && !nested.tombstoneInfo && !nested.isPreviewDisplay && !nested.possibly_sensitive &&
+				!nested.article && !nested.jetfuel_payload && !nested.card && !nested.birdwatch_pivot &&
+				(nested.extended_entities?.media || []).every(item => ['photo','video','animated_gif'].includes(item.type) && !item.sensitive_media_warning) &&
+				Number(hasRichSurface(model)) + Number(hasRichSurface(tweet)) + Number(hasRichSurface(nested)) <= 1;
+			if(canPreviewNested){
+				const wrapper = node('div', base, 'quoteNestedWrapper');
+				wrapper.dataset.tebAfterBlock = String(!!tweet.extended_entities?.media?.length || !!tweet.article || !!tweet.card || !!tweet.jetfuel_payload);
+				const preview = node('div', `${base} r-18u37iz r-o7ynqc r-6416eg r-1ny4l3l r-1loqt21`, 'quoteNestedPreview');
+				preview.dataset.testid = 'nestedQuotePreview';preview.setAttribute('role','link');preview.tabIndex = 0;
+				const nestedUrl = `https://x.com/${encodeURIComponent(nested.user.screen_name)}/status/${encodeURIComponent(nested.id_str)}`;
+				const navigation = {element:preview,href:nestedUrl,kind:'tweet'};parts.navigation.push(navigation);
+				const activate = event => {if(event.type === 'keydown' && event.key !== 'Enter' || event.type === 'click' && event.button !== 0)return;event.preventDefault();event.stopPropagation();preview.dispatchEvent(new doc.defaultView.CustomEvent('teb:navigate',{bubbles:true,cancelable:true,detail:{...navigation,originalEvent:event}}));};
+				preview.addEventListener('click',activate);preview.addEventListener('keydown',activate);
+				cleanups.push(()=>{preview.removeEventListener('click',activate);preview.removeEventListener('keydown',activate);});
+				const bar = node('div','css-g5y9jx r-1fkb3t2 r-1jkafct r-1q142lx r-432wen','quoteNestedBar');
+				const content = node('div','css-g5y9jx r-13awgt0 r-1cwvpvk r-bcqeeo r-tskmnb','quoteNestedContent');
+				const nestedHeader = node('div',`${base} r-1awozwy r-18u37iz`,'quoteNestedHeader');
+				const nestedAvatar = quoteAvatar(nested.user,'quoteNestedAvatar');nestedHeader.append(nestedAvatar);
+				const nestedName = node('strong','css-1jxf684 r-rjixqe r-1udh08x','quoteNestedName');nestedName.textContent=nested.user.name || nested.user.screen_name;
+				const nestedHandle = node('span','css-1jxf684 r-rjixqe r-1udh08x','quoteNestedScreenName');nestedHandle.textContent=`@${nested.user.screen_name}`;
+				nestedHeader.append(nestedName,nestedHandle);
+				const nestedDate = new Date(nested.created_at);
+				if(Number.isFinite(nestedDate.getTime())){const stamp=node('time','css-1jxf684','quoteNestedTimestamp');stamp.dateTime=nestedDate.toISOString();stamp.textContent=new Intl.DateTimeFormat(options.locale,{...(options.timeZone ? {timeZone:options.timeZone} : {}),...(new Date(options.now ?? Date.now()).getFullYear() !== nestedDate.getFullYear() ? {year:'numeric'} : {}),month:'long',day:'numeric'}).format(nestedDate);nestedHeader.append(stamp);}
+				content.append(nestedHeader);
+				const [start,end]=nested.display_text_range || [0,Array.from(nested.text).length];
+				const nestedTextValue=textPort.decodeHtmlEntities(Array.from(nested.text).slice(start,end).join('').trim());
+				let nestedText=null,nestedThumbnail=null;
+				if(nestedMedia.length){
+					const row=node('div',`${base} r-18u37iz`,'quoteNestedMediaRow');
+					const media=nestedMedia[0];nestedThumbnail=image({url:media.media_url_https || media.media_url,alt:media.ext_alt_text || ''},'');nestedThumbnail.dataset.tebPart='quoteNestedThumbnail';nestedThumbnail.dataset.testid='nestedQuotePreviewMedia';
+					if(media.type==='video'){const playIcon=node('span','css-1jxf684','quoteNestedPlayIcon');playIcon.textContent='▶';nestedThumbnail.append(playIcon);}
+					if(nestedMedia.length>1){const extra=node('span','css-1jxf684','quoteNestedMediaCount');extra.textContent=`+${nestedMedia.length-1}`;nestedThumbnail.append(extra);}
+					row.append(nestedThumbnail);
+					if(nestedTextValue){const textSide=node('div',base,'quoteNestedMediaText');nestedText=node('div','css-1jxf684','quoteNestedText');nestedText.textContent=nestedTextValue;textSide.append(nestedText);row.append(textSide);}
+					content.append(row);
+				}else if(nestedTextValue){nestedText=node('div','css-1jxf684','quoteNestedText');nestedText.textContent=nestedTextValue;content.append(nestedText);}
+				preview.append(bar,content);wrapper.append(preview);element.append(wrapper);
+				target.nestedQuote={element:preview,wrapper,bar,content,header:nestedHeader,avatar:nestedAvatar,name:nestedName,screenName:nestedHandle,text:nestedText,thumbnail:nestedThumbnail,navigation,model:nested};
 			}
 			target.cashtags = [];
 			target.cashtagContainer = renderCashtags(tweet, element, target.cashtags, {inQuote:true});
@@ -1702,7 +1913,44 @@
 			}
 		}};
 	}
-	const api = Object.freeze({replyParticipants, mergeTaggedUsers, imageVersions, selectImageUrl, selectPreviewUrl, imageCrop, createImage, bindings, isPoll, convertCard, pollResults, pollChoiceOrder, pollTimeLeft, originalImage, videoProps, carouselLayout, mount, actionIcons, actionClasses, actionSvgClasses, authorIcons, verifiedDisplayType, labelTextFragments, labelTextHref, renderLabelText});
+	function mediaGridPreview(raw){
+		const tweet=raw?.tweet_results?.result || raw?.tweet || raw,media=tweet?.legacy?.extended_entities?.media || tweet?.extended_entities?.media || tweet?.legacy?.entities?.media || tweet?.entities?.media || [],first=media[0];
+		if(first)return {url:first.media_url_https || first.media_url,alt:first.ext_alt_text || '',link:first.expanded_url || tweet?.legacy?.permalink || tweet?.permalink,type:['video','vine'].includes(first.type)?'video':first.type,durationMs:first.video_info?.duration_millis || 0,multiple:media.length>1,media:first};
+		const card=tweet?.card?.legacy || tweet?.card;
+		for(const key of ['player_image_original','player_image','player_image_large','player_image_x_large','player_image_small','thumbnail_image_original','thumbnail_image','thumbnail_image_large','thumbnail_image_x_large','thumbnail_image_small']){
+			const value=card?.binding_values?.find(item=>item.key===key)?.value,image=value?.image_value || value?.image_val;
+			if(image?.url)return {url:image.url,alt:image.alt || '',link:tweet?.legacy?.permalink || tweet?.permalink,type:'card',durationMs:0,multiple:false,media:null};
+		}
+		return null;
+	}
+	function mediaGridImageUrl(url){try{const result=new URL(url);if(result.hostname!=='pbs.twimg.com')return result.href;const match=result.pathname.match(/\.(jpe?g|png|webp)$/i);if(match){result.pathname=result.pathname.slice(0,-match[0].length);result.searchParams.set('format',match[1].toLowerCase()==='jpeg'?'jpg':match[1].toLowerCase());}result.searchParams.set('name','360x360');return result.href;}catch{return url;}}
+	function mediaGridDuration(milliseconds){const seconds=Math.max(0,Math.round(milliseconds/1000)),minutes=Math.floor(seconds/60),hours=Math.floor(minutes/60);return hours?`${hours}:${String(minutes%60).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`:`${minutes}:${String(seconds%60).padStart(2,'0')}`;}
+	function createMediaGridTile(raw,{document:doc,preview=mediaGridPreview(raw)}={}){
+		if(!doc?.createElement || !preview?.url)return null;
+		if(!doc.getElementById('teb-media-grid-tile-styles-2026-09-17')){const style=doc.createElement('style');style.id='teb-media-grid-tile-styles-2026-09-17';style.textContent=`
+			[data-teb-grid-tile]{position:relative;display:block;width:100%;aspect-ratio:1;overflow:hidden;background:#16181c;color:#fff;text-decoration:none;cursor:pointer}
+			[data-teb-grid-tile]:focus-visible{outline:2px solid #1d9bf0;outline-offset:-2px}
+			[data-teb-grid-tile] [data-teb-part="mediaGridImage"]{position:absolute;inset:0;background-position:center;background-size:cover;transition:filter .2s}
+			[data-teb-grid-tile]:hover [data-teb-part="mediaGridImage"]{filter:brightness(.85)}
+			[data-teb-grid-tile] [data-teb-part="mediaGridImage"] img{display:block;width:100%;height:100%;opacity:0}
+			[data-teb-grid-tile] [data-teb-part="mediaGridDuration"]{position:absolute;left:8px;bottom:8px;display:flex;align-items:center;justify-content:center;padding:0 8px;border-radius:4px;background:rgba(0,0,0,.77);color:#fff;font:13px/16px "Segoe UI",Meiryo,system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
+			[data-teb-grid-tile] [data-teb-part="mediaGridGif"]{position:absolute;left:16px;bottom:10px;color:#fff;font:700 13px/16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;text-shadow:0 1px 2px #0009}
+			[data-teb-grid-tile] [data-teb-part="mediaGridLayers"]{position:absolute;right:8px;bottom:8px;width:20px;height:20px;fill:#fff}
+		`; (doc.head || doc.documentElement).append(style);}
+		const tweet=raw?.tweet_results?.result || raw?.tweet || raw,tweetId=tweet?.rest_id || tweet?.legacy?.id_str || tweet?.id_str,screenName=tweet?.core?.user_results?.result?.core?.screen_name || tweet?.user?.screen_name;
+		const tile=doc.createElement('a');tile.className='css-g5y9jx r-o7ynqc r-6416eg r-1ny4l3l r-1loqt21';tile.dataset.tebGridTile='2026-09-17';tile.dataset.tlbPart='mediaTile';tile.href=preview.link || (tweetId && screenName ? `https://x.com/${encodeURIComponent(screenName)}/status/${tweetId}/${preview.type==='video'||preview.type==='animated_gif'?'video':'photo'}/1` : '#');
+		const imageUrl=mediaGridImageUrl(preview.url),imageBox=doc.createElement('div');imageBox.dataset.tebPart='mediaGridImage';imageBox.dataset.tlbPart='mediaTileImage';imageBox.style.backgroundImage=`url(${JSON.stringify(imageUrl)})`;
+		const image=doc.createElement('img');image.src=imageUrl;image.loading='lazy';image.alt=preview.alt;image.draggable=true;imageBox.append(image);tile.append(imageBox);
+		if(preview.type==='video' || preview.type==='animated_gif'){const duration=doc.createElement('span');duration.dataset.tebPart=preview.type==='video'?'mediaGridDuration':'mediaGridGif';duration.dataset.tlbPart=preview.type==='video'?'mediaTileDuration':'mediaTileGif';duration.textContent=preview.type==='video'?mediaGridDuration(preview.durationMs):'GIF';tile.append(duration);}
+		if(preview.multiple){const icon=doc.createElementNS('http://www.w3.org/2000/svg','svg');icon.setAttribute('viewBox','0 0 24 24');icon.setAttribute('aria-hidden','true');icon.dataset.tebPart='mediaGridLayers';icon.dataset.tlbPart='mediaTileLayers';const path=doc.createElementNS(icon.namespaceURI,'path');path.setAttribute('d','M2 8.5C2 7.12 3.12 6 4.5 6h11C16.88 6 18 7.12 18 8.5v11c0 1.38-1.12 2.5-2.5 2.5h-11C3.12 22 2 20.88 2 19.5v-11zM19.5 4c.28 0 .5.22.5.5v13.45c1.14-.23 2-1.24 2-2.45v-11C22 3.12 20.88 2 19.5 2h-11c-1.21 0-2.22.86-2.45 2H19.5z');icon.append(path);tile.append(icon);}
+		return {element:tile,preview};
+	}
+	function createAuthorIcon(doc,kind,id){
+		const tree=authorIcons[kind];if(!tree)return null;
+		function build(part){const element=doc.createElementNS('http://www.w3.org/2000/svg',part.tag);for(const [key,value] of Object.entries(part.props || {})){if(['children','style','aria-hidden'].includes(key)||value==null)continue;element.setAttribute({clipRule:'clip-rule',fillRule:'fill-rule',stopColor:'stop-color'}[key] || key,String(value).replaceAll('TEB_BADGE_ID',id));}for(const child of [part.props?.children].flat().filter(Boolean))element.append(build(child));return element;}
+		return build(tree);
+	}
+	const api = Object.freeze({replyParticipants, mergeTaggedUsers, imageVersions, selectImageUrl, selectPreviewUrl, imageCrop, createImage, bindings, isPoll, convertCard, pollResults, pollChoiceOrder, pollTimeLeft, originalImage, videoProps, carouselLayout, mount, actionIcons, actionClasses, actionSvgClasses, authorIcons, createAuthorIcon, verifiedDisplayType, labelTextFragments, labelTextHref, renderLabelText, mediaGridPreview, createMediaGridTile});
 	if(typeof module === 'object' && module.exports)module.exports = api;
 	else root.TEBRich20260917 = api;
 })(globalThis);

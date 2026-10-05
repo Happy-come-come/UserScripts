@@ -50,6 +50,9 @@
 	& [data-teb-part="pollVideo"]{ display:block; width:100%; max-height:510px; margin-top:12px; border-radius:12px; background:#000; object-fit:contain; }
 	& [data-teb-part="avatar"]{ width: 40px; height: 40px; object-fit: cover; }
 	& [data-teb-part="avatarLink"]{ width: 40px; height: 40px; }
+	& [data-teb-part="avatarCell"]{ align-self:stretch; }
+	& [data-teb-part="conversationBottomLine"]{ width:2px; min-height:8px; margin-top:4px; flex:1 1 auto; background:var(--teb-conversation-line); }
+	& [data-teb-part="conversationBottomLine"][hidden]{ display:none; }
 	& [data-teb-part="authorLabel"]{ display: flex; max-width: 100%; align-items: flex-start; margin-top: 4px; color: var(--teb-muted, #71767b); font-size: 15px; line-height: 20px; text-decoration: none; }
 	& [data-teb-part="authorLabel"]:is(:hover,:focus-visible) [data-teb-part="authorLabelText"]{ text-decoration: underline; }
 	& [data-teb-part="authorLabelIcon"]{ width: 17px; height: 17px; margin-top: 1px; margin-inline-end: 4px; flex: 0 0 auto; color: var(--teb-muted, #71767b); }
@@ -330,6 +333,10 @@
 		model.text = legacy.withheld_text || legacy.full_text || legacy.text || '';
 		model.entities = legacy.withheld_text ? legacy.withheld_entities || {} : legacy.entities || {};
 		model.display_text_range = legacy.display_text_range || [0, model.text.length];
+		model.is_translatable = raw.is_translatable ?? legacy.is_translatable ?? false;
+		// 336715: availabilityだけでは本文を置換しない。利用可能なdataを翻訳モデルへ渡す。
+		const availableTranslation = raw.grok_translated_post_with_availability;
+		model.grok_translated_post = availableTranslation?.is_available ? copy(availableTranslation.data || {}) : copy(raw.grok_translated_post || legacy.grok_translated_post || null);
 		model.card = raw.card?.legacy ? {...raw.card.legacy, url: raw.card.legacy.url || raw.card.rest_id} : raw.card;
 		model.author_community_relationship = raw.author_community_relationship || legacy.author_community_relationship;
 		// 336715: APIのjetfuel_attachment.payloadはTweetモデルのjetfuel_payloadになる。
@@ -419,6 +426,8 @@
 	}
 	function tweetElementBuilder(input, options = {}){
 		if(!textPort || !savedCss || !richPort)throw new Error('text.js、styles.js、rich.jsを先に読み込んでください。');
+		const snapshot = input?.__tebViewSnapshotVersion === version ? input : null;
+		if(snapshot)options = {...options,...snapshot.settings,document:options.document};
 		if((options.uiVersion || version) !== version)throw new RangeError('未対応のUIバージョンです。');
 		if(options.mediaLayout != null && !['carousel', 'grid'].includes(options.mediaLayout))throw new RangeError('mediaLayoutはcarouselまたはgridです。');
 		if(options.displayMode != null && !['timeline', 'detail'].includes(options.displayMode))throw new RangeError('displayModeはtimelineまたはdetailです。');
@@ -439,14 +448,15 @@
 			}catch{return fallback;}
 		}
 		options.uiText = uiText;
-		const envelope = normalize(input);
+		const envelope = snapshot ? null : normalize(input);
 		// 376934:getOriginalTweet。操作・本文・著者はリポスト元に属する。
-		const repost = !envelope.unavailable && envelope.retweeted_status ? {id: envelope.id_str, user: envelope.user} : null;
-		const model = repost ? normalize(envelope.retweeted_status) : envelope;
+		const repost = snapshot ? copy(snapshot.repost) : !envelope.unavailable && envelope.retweeted_status ? {id: envelope.id_str, user: envelope.user} : null;
+		const model = snapshot ? copy(snapshot.model) : repost ? normalize(envelope.retweeted_status) : envelope;
+		let showGrokTranslation = snapshot ? !!snapshot.ui?.showGrokTranslation : typeof model.grok_translated_post?.translation === 'string';
 		let disposed = false;
 		let selectedTheme = 'dark', themeObserver = null;
-		let noteExpanded = false;
-		let promotedExpanded = false;
+		let noteExpanded = !!snapshot?.ui?.noteExpanded;
+		let promotedExpanded = !!snapshot?.ui?.promotedExpanded;
 		let richView = null;
 		const articleEmbeddedTweets = new Map();
 		installStyles(doc);
@@ -476,7 +486,7 @@
 		const headerSlot = node('div', `${base} r-ttdzmv`);
 		const row = node('div', `${base} r-18u37iz`);
 		row.dataset.tebPart = 'authorRow';
-		const avatarCell = node('div', `${base} r-onrtq4 r-1wron08 r-1awozwy`);
+		const avatarCell = node('div', `${base} r-onrtq4 r-1wron08 r-1awozwy`, 'avatarCell');
 		avatarCell.dataset.testid = 'Tweet-User-Avatar';
 		const avatarLink = node('a', base, 'avatarLink');
 		// 885048 ShapeClip.hex: 200x188の原版pathをobjectBoundingBoxへ正規化する。
@@ -496,7 +506,10 @@
 		avatar.alt = '';
 		avatar.hidden = true;
 		avatarLink.append(avatarShapeSvg, avatarImage.element);
-		avatarCell.append(avatarLink);
+		const conversationBottomLine = node('div', `${base}`, 'conversationBottomLine');
+		conversationBottomLine.hidden = true;
+		conversationBottomLine.setAttribute('aria-hidden', 'true');
+		avatarCell.append(avatarLink, conversationBottomLine);
 		const content = node('div', `${base} r-1iusvr4 r-16y2uox r-kzbkwu`);
 		const identity = node('div', `${base} r-18u37iz r-1awozwy r-zl2h9q`);
 		identity.dataset.tebPart = 'identity';
@@ -520,6 +533,17 @@
 		const tweetMenu = node('div', base, 'tweetMenu'); tweetMenu.hidden = true; tweetMenu.setAttribute('role', 'menu'); menuLayer.append(tweetMenu);
 		identity.append(nameLine, screenName, menuButton);
 		const text = node('div', textClasses, 'text');
+		const translationHeader = node('div', `${base} r-1s2bzr4`, 'translationHeader');
+		const translationIcon = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');
+		translationIcon.dataset.tebPart = 'translationIcon'; translationIcon.setAttribute('viewBox', '0 0 33 32'); translationIcon.setAttribute('aria-hidden', 'true');
+		const translationIconPath = doc.createElementNS('http://www.w3.org/2000/svg', 'path');
+		translationIconPath.setAttribute('d', 'M12.745 20.54l10.97-8.19c.539-.4 1.307-.244 1.564.38 1.349 3.288.746 7.241-1.938 9.955-2.683 2.714-6.417 3.31-9.83 1.954l-3.728 1.745c5.347 3.697 11.84 2.782 15.898-1.324 3.219-3.255 4.216-7.692 3.284-11.693l.008.009c-1.351-5.878.332-8.227 3.782-13.031L33 0l-4.54 4.59v-.014L12.743 20.544m-2.263 1.987c-3.837-3.707-3.175-9.446.1-12.755 2.42-2.449 6.388-3.448 9.852-1.979l3.72-1.737c-.67-.49-1.53-1.017-2.515-1.387-4.455-1.854-9.789-.931-13.41 2.728-3.483 3.523-4.579 8.94-2.697 13.561 1.405 3.454-.899 5.898-3.22 8.364C1.49 30.2.666 31.074 0 32l10.478-9.466');
+		translationIcon.append(translationIconPath);
+		const translationLabel = node('span', 'css-1jxf684 r-n6v787 r-1cwl3u0', 'translationLabel');
+		const translationButton = node('button', 'css-1jxf684 r-1loqt21', 'translationButton');
+		translationButton.type = 'button';
+		translationHeader.append(translationIcon, translationLabel, translationButton);
+		translationHeader.hidden = true;
 		const showMore = node('button', 'css-1jxf684', 'showMore');
 		showMore.type = 'button';
 		showMore.textContent = uiText('showMore', 'Show more');
@@ -534,7 +558,7 @@
 		const permalink = node('a', 'css-1jxf684', 'permalink');
 		// 互換用の参照だけ残す。原版にない補助リンクは表示しない。
 		permalink.hidden = true;
-		content.append(identity, authorLabel, replyContext, text, attachments, notices, permalink);
+		content.append(identity, authorLabel, replyContext, translationHeader, text, attachments, notices, permalink);
 		const detailBody = node('div', base, 'detailBody');
 		const metadata = node('div', 'css-1jxf684', 'metadata');
 		const editLabel = node('a', 'css-1jxf684', 'editLabel');
@@ -572,11 +596,11 @@
 		const parts = {
 			root: element,
 			repost: repost ? {element: socialContext, link: repostLink, icon: repostIcon, id: repost.id, user: copy(repost.user)} : null,
-			author: {avatar, avatarImage, avatarLink, avatarShapeDefinition: avatarShapeSvg, avatarClipPath, profileLink: name, name, screenName, badges, label: authorLabel, labelIcon: authorLabelIcon, labelText: authorLabelText, affiliate: null},
+			author: {avatar, avatarImage, avatarCell, avatarLink, conversationBottomLine, avatarShapeDefinition: avatarShapeSvg, avatarClipPath, profileLink: name, name, screenName, badges, label: authorLabel, labelIcon: authorLabelIcon, labelText: authorLabelText, affiliate: null},
 			menu: {button: menuButton, element: tweetMenu, layer: menuLayer, items: []},
 			timestamp: {element: time, link: timestampLink}, views: viewsLink, metadata,
 			edit: {label: editLabel, staleCallout: staleEditCallout, staleText: staleEditText, staleLink: staleEditLink},
-			text: {element: text, links: []},
+			text: {element: text, links: [], translationHeader, translationIcon, translationLabel, translationButton},
 			replyContext: {element: replyContext, participants: [], links: []},
 			permalink, attachments, notices, navigation: [], actions: {}, actionCells: {}, actionCounts: {}, actionsContainer: null,
 			media: [], inlineMedia: [], carousels: [], cashtags: [], grokShare: null, grokFollowups: null, jetfuel: null, article: null, card: null, quote: null, poll: null, communityNote: null,
@@ -590,7 +614,7 @@
 		}
 		const actionFields = {reply: ['reply_count'], repost: ['retweet_count', 'retweeted'], like: ['favorite_count', 'favorited'], analytics: ['views'], bookmark: ['bookmark_count', 'bookmarked'], share: [null]};
 		const actionLabels = {reply: uiText('replyAction', 'Reply'), repost: uiText('repostAction', 'Repost'), like: uiText('likeAction', 'Like'), analytics: uiText('viewPostAnalytics', 'View post analytics'), bookmark: uiText('bookmarkAction', 'Bookmark'), share: uiText('shareAction', 'Share')};
-		const actionOverrides = {};
+		const actionOverrides = snapshot?.ui?.actionOverrides ? copy(snapshot.ui.actionOverrides) : {};
 		let actionContainerWidth = Number.isFinite(options.actionContainerWidth) ? options.actionContainerWidth : Infinity;
 		const footer = node('div', `${base} r-18u37iz`, 'actions');
 		parts.actionsContainer = footer;
@@ -688,7 +712,18 @@
 		function getTheme(){return selectedTheme;}
 		element.addEventListener('keydown',handleShortcut);
 		parts.text.showMore = showMore;
-		const view = {element, parts, warnings, uiVersion: version, displayMode: options.displayMode, setExpanded, setDisplayMode, setTheme, getTheme, refreshTimestamp: updateMetadata, setCreatedAt, setViewCount, setReplyCount, setQuoteCount, setReplySort, setEditControl, setAvatarShape, setAuthorBadges, setAuthorLabel, setAvatar, setAvater: setAvatar, setScreenName, setName, setText, setId, setCard, setPollTranslations, setMedia, setQuote, setJetfuelPayload, setCommunityNote, setCashtagAttachments, setGrokShareAttachment, setGrokAnalysisFollowups, setArticleEmbeddedTweet, setActionState, setMenuItems, openMenu, closeMenu, setShareItems, openShareMenu, closeShareMenu, refreshLayout, getState, dispose};
+		const view = {element, parts, warnings, uiVersion: version, displayMode: options.displayMode, setExpanded, setDisplayMode, setConversationBottomLine, setTheme, getTheme, refreshTimestamp: updateMetadata, setCreatedAt, setViewCount, setReplyCount, setQuoteCount, setReplySort, setEditControl, setAvatarShape, setAuthorBadges, setAuthorLabel, setAvatar, setAvater: setAvatar, setScreenName, setName, setText, setTranslation, setId, setCard, setPollTranslations, setMedia, setQuote, setJetfuelPayload, setCommunityNote, setCashtagAttachments, setGrokShareAttachment, setGrokAnalysisFollowups, setArticleEmbeddedTweet, setActionState, setMenuItems, openMenu, closeMenu, setShareItems, openShareMenu, closeShareMenu, refreshLayout, getState, getSnapshot, dispose};
+		translationButton.addEventListener('click', event => {
+			if(disposed)return;
+			if(typeof model.grok_translated_post?.translation !== 'string'){
+				element.dispatchEvent(new doc.defaultView.CustomEvent('teb:translation-request', {bubbles: true, cancelable: true, detail: {id: model.id_str, sourceLanguage: model.lang, originalEvent: event, view}}));
+				return;
+			}
+			showGrokTranslation = !showGrokTranslation;
+			updateText();
+			element.dispatchEvent(new doc.defaultView.CustomEvent('teb:translation-toggle', {bubbles: true, detail: {translated: showGrokTranslation, view}}));
+		});
+		function setConversationBottomLine(value){assertActive();conversationBottomLine.hidden = !value;return view;}
 		let menuItems = [], menuOpen = false;
 		function positionFloatingMenu(button, menu){
 			const rect = button.getBoundingClientRect(), viewportWidth = doc.defaultView.innerWidth, viewportHeight = doc.defaultView.innerHeight;
@@ -848,19 +883,9 @@
 			if(model.unavailable)return;
 			const type = richPort.verifiedDisplayType(user);
 			const entries = [...(type === 'none' ? [] : [type === 'blue' ? 'verified' : type])];
-			function svgNode(tree){
-				const svgElement = doc.createElementNS('http://www.w3.org/2000/svg', tree.tag);
-				for(const [key, value] of Object.entries(tree.props || {})){
-					if(['children', 'style', 'aria-hidden'].includes(key) || value == null)continue;
-					const attr = {clipRule: 'clip-rule', fillRule: 'fill-rule', stopColor: 'stop-color'}[key] || key;
-					svgElement.setAttribute(attr, String(value).replaceAll('TEB_BADGE_ID', `teb-badge-${badgeSerial}`));
-				}
-				for(const child of [tree.props?.children].flat().filter(Boolean))svgElement.append(svgNode(child));
-				return svgElement;
-			}
 			for(const kind of entries){
 				++badgeSerial;
-				const icon = svgNode(richPort.authorIcons[kind]);
+				const icon = richPort.createAuthorIcon(doc,kind,`teb-badge-${badgeSerial}`);
 				const classes = richPort.actionSvgClasses.split(' ');
 				icon.setAttribute('class', [...classes, ...classes.map(cls => `teb-${cls}`)].join(' '));
 				icon.dataset.testid = kind === 'protected' ? 'icon-lock' : 'icon-verified';
@@ -877,22 +902,16 @@
 				target.append(affiliate); if(target === badges)parts.author.affiliate = affiliate;
 			}
 			if(displayContext === 'content' && (user.has_super_follower || model.has_super_follower)){
-				const icon = svgNode(richPort.authorIcons.subscriber), classes = richPort.actionSvgClasses.split(' ');
+				const icon = richPort.createAuthorIcon(doc,'subscriber',`teb-badge-${++badgeSerial}`), classes = richPort.actionSvgClasses.split(' ');
 				icon.setAttribute('class',[...classes,...classes.map(cls=>`teb-${cls}`)].join(' '));icon.dataset.testid='icon-subscriber';icon.setAttribute('role','img');icon.setAttribute('aria-label',uiText('subscriber','Subscriber'));icon.dataset.tebBadge='subscriber';target.append(icon);
 			}
 			const translatorType = String(user.translator_type || '').toLowerCase();
 			if(displayContext !== 'content' && ['badged','moderator'].includes(translatorType)){
-				const icon = svgNode(richPort.authorIcons.translator), classes = richPort.actionSvgClasses.split(' ');
+				const icon = richPort.createAuthorIcon(doc,'translator',`teb-badge-${++badgeSerial}`), classes = richPort.actionSvgClasses.split(' ');
 				icon.setAttribute('class',[...classes,...classes.map(cls=>`teb-${cls}`)].join(' '));icon.setAttribute('role','img');icon.setAttribute('aria-label',uiText('translator','Translator'));icon.dataset.tebBadge='translator';icon.dataset.tebTranslatorType=translatorType;target.append(icon);
 			}
 			if(user.protected){
-				const id = `teb-badge-${++badgeSerial}`;
-				function svgNode(tree){
-					const node = doc.createElementNS('http://www.w3.org/2000/svg', tree.tag);
-					for(const [key, value] of Object.entries(tree.props || {})){if(['children','style','aria-hidden'].includes(key)||value==null)continue;node.setAttribute({clipRule:'clip-rule',fillRule:'fill-rule',stopColor:'stop-color'}[key]||key,String(value).replaceAll('TEB_BADGE_ID',id));}
-					for(const child of [tree.props?.children].flat().filter(Boolean))node.append(svgNode(child)); return node;
-				}
-				const icon = svgNode(richPort.authorIcons.protected), classes = richPort.actionSvgClasses.split(' '); icon.setAttribute('class',[...classes,...classes.map(cls=>`teb-${cls}`)].join(' '));icon.dataset.testid='icon-lock';icon.setAttribute('role','img');icon.setAttribute('aria-label',uiText('protectedAccount','Protected account'));icon.dataset.tebBadge='protected';target.append(icon);
+				const icon = richPort.createAuthorIcon(doc,'protected',`teb-badge-${++badgeSerial}`), classes = richPort.actionSvgClasses.split(' '); icon.setAttribute('class',[...classes,...classes.map(cls=>`teb-${cls}`)].join(' '));icon.dataset.testid='icon-lock';icon.setAttribute('role','img');icon.setAttribute('aria-label',uiText('protectedAccount','Protected account'));icon.dataset.tebBadge='protected';target.append(icon);
 			}
 			if(target === badges)updateAuthorLabel();
 			return {affiliate: target.querySelector('[data-teb-badge="affiliate"]'), dispose:()=>disposeBadgeImages(target)};
@@ -1054,6 +1073,27 @@
 			if(model.unavailable)return;
 			const articleBody = options.displayMode === 'detail' && !model.isPreviewDisplay && model.article?.content_state?.blocks?.length;
 			text.hidden = !!articleBody;
+			const translation = model.grok_translated_post;
+			const hasTranslation = typeof translation?.translation === 'string';
+			if(!hasTranslation)showGrokTranslation = false;
+			const canRequestTranslation = !hasTranslation && !!model.is_translatable && !model.user.protected;
+			translationHeader.hidden = !!articleBody || (!hasTranslation && !canRequestTranslation);
+			translationHeader.dataset.tebTranslationStatus = hasTranslation ? showGrokTranslation ? 'translated' : 'original' : 'available';
+			if(hasTranslation && showGrokTranslation){
+				let sourceName = translation.localized_source_language;
+				if(!sourceName && translation.source_language){
+					try{ sourceName = new Intl.DisplayNames([options.locale], {type: 'language'}).of(translation.source_language); }catch{}
+				}
+				translationLabel.textContent = sourceName ? uiText('translatedFrom', `Translated from ${sourceName}`, [sourceName]) : uiText('translatedByGrok', 'Translated by Grok');
+				translationButton.textContent = uiText('showOriginal', 'Show original');
+			}else{
+				translationLabel.textContent = '';
+				translationButton.textContent = hasTranslation ? uiText('showTranslation', 'Show translation') : uiText('translatePost', 'Translate post');
+			}
+			translationLabel.hidden = !translationLabel.textContent;
+			translationIcon.hidden = !translationLabel.textContent;
+			translationButton.setAttribute('aria-label', translationButton.textContent);
+			text.dataset.tebTranslation = hasTranslation && showGrokTranslation ? 'translated' : 'original';
 			if(articleBody){
 				text.replaceChildren(); parts.text.links.splice(0, parts.text.links.length); showMore.hidden = true; text.style.removeProperty('display'); text.style.removeProperty('-webkit-line-clamp'); text.style.removeProperty('-webkit-box-orient'); text.style.removeProperty('overflow'); text.after(showMore); refreshNavigation();
 				element.dispatchEvent(new doc.defaultView.CustomEvent('teb:partschange', {detail: {part: 'text', view}})); return;
@@ -1063,8 +1103,13 @@
 			const mediaCount = model.extended_entities?.media?.length || 0;
 			// 398338:_renderTweetText → 842122:Xe。詳細では長文本文を選択する。
 			// 398338:_renderTweetTextHWTweetのisExpanded → 842122:Xe。
-			const note = (noteExpanded || options.displayMode === 'detail' && options.expandNote !== false) && model.note_tweet;
-			const textModel = note && typeof note.text === 'string' ? {...model, text: note.text, entities: note.entity_set || {}, display_text_range: [0, note.text.length]} : model;
+			const translated = hasTranslation && showGrokTranslation;
+			text.lang = translated ? translation.destination_language || '' : model.lang || '';
+			const note = !translated && (noteExpanded || options.displayMode === 'detail' && options.expandNote !== false) && model.note_tweet;
+			const translationPreview = translated && !noteExpanded && typeof translation.preview_translation === 'string';
+			const translatedText = translationPreview ? translation.preview_translation : translation?.translation;
+			const translatedEntities = translationPreview ? Object.fromEntries(Object.entries(translation.entities || {}).map(([key, values]) => [key, Array.isArray(values) ? values.filter(value => !value.indices || value.indices[1] <= translatedText.length) : values])) : translation?.entities || {};
+			const textModel = translated ? {...model, text: translatedText, entities: translatedEntities, display_text_range: [0, translatedText.length]} : note && typeof note.text === 'string' ? {...model, text: note.text, entities: note.entity_set || {}, display_text_range: [0, note.text.length]} : model;
 			let items = textPort.displayParts(textModel, {
 				withMediaLinks: !mediaCount || parts.media.length !== mediaCount,
 				withQuoteLinks: !parts.quote || parts.quote.unavailable,
@@ -1118,7 +1163,8 @@
 				fragment.append(child);
 			}
 			text.replaceChildren(fragment);
-			const noteShowMore = !note && !!model.note_tweet?.is_expandable && typeof model.note_tweet?.text === 'string';
+			const translationShowMore = !!translationPreview;
+			const noteShowMore = !translated && !note && !!model.note_tweet?.is_expandable && typeof model.note_tweet?.text === 'string';
 			// 398338:_renderTweetTextHWTweet。広告のcard/media付き本文のみ、既定2行に制限する。
 			const promotedLines = options.promotedMaxTextLines ?? 2;
 			const promotedShowMore = options.displayMode === 'timeline' && !!options.promotedContent && !promotedExpanded && !noteShowMore && promotedLines > 0 && !!(model.card || mediaCount);
@@ -1126,7 +1172,7 @@
 			text.style.webkitLineClamp = promotedShowMore ? String(promotedLines) : '';
 			text.style.webkitBoxOrient = promotedShowMore ? 'vertical' : '';
 			text.style.overflow = promotedShowMore ? 'hidden' : '';
-			showMore.hidden = !noteShowMore && !promotedShowMore;
+			showMore.hidden = !translationShowMore && !noteShowMore && !promotedShowMore;
 			showMore.setAttribute('aria-expanded', String(!!note || promotedExpanded));
 			text.after(showMore);
 			refreshNavigation();
@@ -1326,10 +1372,20 @@
 			model.text = value;
 			// 明示setterは詳細表示の長文データより優先する。
 			delete model.note_tweet;
+			delete model.grok_translated_post;
+			showGrokTranslation = false;
 			model.entities = copy(entities);
 			model.display_text_range = [0, value.length];
 			updateText();
 			updateWarnings();
+			return view;
+		}
+		function setTranslation(value){
+			assertActive();
+			if(value !== null && (typeof value !== 'object' || typeof value.translation !== 'string'))throw new TypeError('translationを含むオブジェクトまたはnullを指定してください。');
+			model.grok_translated_post = value === null ? null : copy(value);
+			showGrokTranslation = value !== null;
+			updateText();
 			return view;
 		}
 		function setId(value){
@@ -1340,6 +1396,15 @@
 			return view;
 		}
 		function getState(){ return copy(model); }
+		function getSnapshot(){
+			assertActive();
+			return {
+				__tebViewSnapshotVersion:version,
+				model:copy(model),repost:copy(repost),
+				settings:{theme:options.theme,displayMode:options.displayMode,textVersion:options.textVersion,locale:options.locale,pollTranslations:options.pollTranslations == null ? null : [...options.pollTranslations]},
+				ui:{noteExpanded,promotedExpanded,showGrokTranslation,replySort,actionOverrides:copy(actionOverrides),conversationBottomLine:!conversationBottomLine.hidden,menuItems:menuItems.map(item=>({...item})),shareItems:shareItems.map(item=>({...item}))},
+			};
+		}
 		let actionResizeObserver = null;
 		if(typeof doc.defaultView.ResizeObserver === 'function'){
 			actionResizeObserver = new doc.defaultView.ResizeObserver(entries => {const width=entries[0]?.contentRect?.width;if(width>0)refreshLayout(width);});
@@ -1356,8 +1421,10 @@
 		if(!model.unavailable)updateText();
 		else identity.hidden = true;
 		updateWarnings();
-		setMenuItems(options.menuItems || []);
-		setShareItems(options.shareItems);
+		setMenuItems(snapshot?.ui?.menuItems || options.menuItems || []);
+		setShareItems(snapshot?.ui?.shareItems || options.shareItems);
+		if(snapshot?.ui?.replySort)setReplySort(snapshot.ui.replySort);
+		if(snapshot?.ui?.conversationBottomLine !== undefined)setConversationBottomLine(snapshot.ui.conversationBottomLine);
 		if(profilePort && options.withProfileHover !== false){
 			profileView = profilePort.attach({view, options, node, safeUrl, richPort, textPort, normalize, renderBadges: updateBadges});
 			parts.profileHover = profileView.parts;
@@ -1366,6 +1433,9 @@
 	}
 	tweetElementBuilder.versions = Object.freeze([version]);
 	tweetElementBuilder.normalize = normalize;
+	tweetElementBuilder.installStyles = installStyles;
+	tweetElementBuilder.mediaGridPreview = richPort.mediaGridPreview;
+	tweetElementBuilder.createMediaGridTile = richPort.createMediaGridTile;
 	tweetElementBuilder.detectTheme = detectTheme;
 	tweetElementBuilder.themes = themes;
 	tweetElementBuilder.i18n = i18nPort;

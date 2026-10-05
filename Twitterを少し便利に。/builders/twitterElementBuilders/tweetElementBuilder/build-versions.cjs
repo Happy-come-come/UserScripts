@@ -1,5 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
+require('./build-styles.cjs');
 
 const versionsDir = path.join(__dirname, 'versions');
 const files = ['text.js', 'styles.js', 'rich.js', 'profile-hover.js', 'tweet-element-builder-core.js'];

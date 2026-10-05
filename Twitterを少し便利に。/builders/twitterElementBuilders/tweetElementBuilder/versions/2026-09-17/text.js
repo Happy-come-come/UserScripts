@@ -163,6 +163,21 @@
 		else if(cursor < slice.length)parts.push(plain(slice.substring(cursor), [cursor, slice.length]));
 		return parts;
 	}
+	// 737745.descriptionTextParts: URL entityとは別に自己紹介中のhashtagを検出する。
+	function descriptionTextParts(text, entities = {}){
+		const urls = entities.description?.urls || entities.urls || [];
+		const occupied = urls.filter(item => Array.isArray(item.indices)).map(item => toUTF16(text, ...item.indices));
+		for(const match of text.matchAll(/https?:\/\/[^\s]+/gu))occupied.push([match.index, match.index + match[0].length]);
+		const hashtags = [];
+		for(const match of text.matchAll(/(?:^|[^\p{L}\p{N}_])([#＃])([\p{L}\p{N}\p{M}_]+)/gu)){
+			const tag = match[2];
+			if(!/[\p{L}\p{M}_]/u.test(tag))continue;
+			const from = match.index + match[0].indexOf(match[1]), to = from + match[1].length + tag.length;
+			if(occupied.some(([start, end]) => from < end && to > start))continue;
+			hashtags.push({text: tag, indices: [Array.from(text.slice(0, from)).length, Array.from(text.slice(0, to)).length]});
+		}
+		return tweetTextParts(text, [0, Array.from(text).length], {urls, hashtags}).map(part => part.entityType === 'hashtag' ? {...part, url: `https://x.com/search?q=${encodeURIComponent(`#${part.text}`)}&src=hashtag_click`} : part);
+	}
 	function displayParts(model, options = {}){
 		const text = model.text || '';
 		const range = model.display_text_range || [0, text.length];
@@ -195,7 +210,7 @@
 			return last ? {...part, text: part.text.replace(/(\s+$)/g, '')} : part;
 		}).filter(Boolean);
 	}
-	const api = Object.freeze({toUTF16, tweetTextParts, displayParts, normalizeRichTextTags, richTextSegments, inlineMediaParts, decodeHtmlEntities, twemojiSegments});
+	const api = Object.freeze({toUTF16, tweetTextParts, descriptionTextParts, displayParts, normalizeRichTextTags, richTextSegments, inlineMediaParts, decodeHtmlEntities, twemojiSegments});
 	if(typeof module === 'object' && module.exports)module.exports = api;
 	else root.TEBText20260917 = api;
 })(globalThis);

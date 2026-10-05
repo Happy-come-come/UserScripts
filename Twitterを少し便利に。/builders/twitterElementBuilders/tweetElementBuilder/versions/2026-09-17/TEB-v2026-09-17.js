@@ -170,6 +170,21 @@ const module = undefined;
 		else if(cursor < slice.length)parts.push(plain(slice.substring(cursor), [cursor, slice.length]));
 		return parts;
 	}
+	// 737745.descriptionTextParts: URL entityとは別に自己紹介中のhashtagを検出する。
+	function descriptionTextParts(text, entities = {}){
+		const urls = entities.description?.urls || entities.urls || [];
+		const occupied = urls.filter(item => Array.isArray(item.indices)).map(item => toUTF16(text, ...item.indices));
+		for(const match of text.matchAll(/https?:\/\/[^\s]+/gu))occupied.push([match.index, match.index + match[0].length]);
+		const hashtags = [];
+		for(const match of text.matchAll(/(?:^|[^\p{L}\p{N}_])([#＃])([\p{L}\p{N}\p{M}_]+)/gu)){
+			const tag = match[2];
+			if(!/[\p{L}\p{M}_]/u.test(tag))continue;
+			const from = match.index + match[0].indexOf(match[1]), to = from + match[1].length + tag.length;
+			if(occupied.some(([start, end]) => from < end && to > start))continue;
+			hashtags.push({text: tag, indices: [Array.from(text.slice(0, from)).length, Array.from(text.slice(0, to)).length]});
+		}
+		return tweetTextParts(text, [0, Array.from(text).length], {urls, hashtags}).map(part => part.entityType === 'hashtag' ? {...part, url: `https://x.com/search?q=${encodeURIComponent(`#${part.text}`)}&src=hashtag_click`} : part);
+	}
 	function displayParts(model, options = {}){
 		const text = model.text || '';
 		const range = model.display_text_range || [0, text.length];
@@ -202,7 +217,7 @@ const module = undefined;
 			return last ? {...part, text: part.text.replace(/(\s+$)/g, '')} : part;
 		}).filter(Boolean);
 	}
-	const api = Object.freeze({toUTF16, tweetTextParts, displayParts, normalizeRichTextTags, richTextSegments, inlineMediaParts, decodeHtmlEntities, twemojiSegments});
+	const api = Object.freeze({toUTF16, tweetTextParts, descriptionTextParts, displayParts, normalizeRichTextTags, richTextSegments, inlineMediaParts, decodeHtmlEntities, twemojiSegments});
 	if(typeof module === 'object' && module.exports)module.exports = api;
 	else root.TEBText20260917 = api;
 })(globalThis);
@@ -211,9 +226,9 @@ const module = undefined;
 
 /* styles.js */
 (function(root){
-	'use strict';
-	const css = "/* 原文: upstream/2026-09-17/css-rules.json。選択した30ルールの限定移植。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t&.teb-css-146c3p1,\n\t& .teb-css-146c3p1:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tbackground-color: rgba(0, 0, 0, 0); border: 0px solid black; box-sizing: border-box; color: inherit; display: inline; font: 14px -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; list-style: none; margin: 0px; padding: 0px; position: relative; text-align: start; text-decoration: none; white-space: pre-wrap; overflow-wrap: break-word;\n\t}\n\t&.teb-css-1jxf684,\n\t& .teb-css-1jxf684:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tbackground-color: rgba(0, 0, 0, 0); border: 0px solid black; box-sizing: border-box; color: inherit; display: inline; font: inherit; list-style: none; margin: 0px; padding: 0px; position: relative; text-align: inherit; text-decoration: none; white-space: inherit; overflow-wrap: break-word;\n\t}\n\t&.teb-css-g5y9jx,\n\t& .teb-css-g5y9jx:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\talign-content: flex-start; align-items: stretch; background-color: rgba(0, 0, 0, 0); border: 0px solid black; box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-shrink: 0; list-style: none; margin: 0px; min-height: 0px; min-width: 0px; padding: 0px; position: relative; text-decoration: none; z-index: 0;\n\t}\n\t&.teb-r-1udh08x,\n\t& .teb-r-1udh08x:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\toverflow: hidden;\n\t}\n\t&.teb-r-sdzlij,\n\t& .teb-r-sdzlij:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tborder-radius: 9999px;\n\t}\n\t&.teb-r-1wron08,\n\t& .teb-r-1wron08:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tmargin-right: 8px;\n\t}\n\t&.teb-r-1c4vpko,\n\t& .teb-r-1c4vpko:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tpadding-right: 16px;\n\t}\n\t&.teb-r-1c7gwzm,\n\t& .teb-r-1c7gwzm:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tpadding-left: 16px;\n\t}\n\t&.teb-r-16dba41,\n\t& .teb-r-16dba41:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tfont-weight: 400;\n\t}\n\t&.teb-r-16y2uox,\n\t& .teb-r-16y2uox:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tflex-grow: 1;\n\t}\n\t&.teb-r-1777fci,\n\t& .teb-r-1777fci:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tjustify-content: center;\n\t}\n\t&.teb-r-18u37iz,\n\t& .teb-r-18u37iz:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tflex-direction: row;\n\t}\n\t&.teb-r-1awozwy,\n\t& .teb-r-1awozwy:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\talign-items: center;\n\t}\n\t&.teb-r-1iusvr4,\n\t& .teb-r-1iusvr4:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tflex-basis: 0px;\n\t}\n\t&.teb-r-1loqt21,\n\t& .teb-r-1loqt21:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tcursor: pointer;\n\t}\n\t&.teb-r-1s2bzr4,\n\t& .teb-r-1s2bzr4:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tmargin-top: 12px;\n\t}\n\t&.teb-r-1tl8opc,\n\t& .teb-r-1tl8opc:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tfont-family: \"Segoe UI\", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;\n\t}\n\t&.teb-r-1wbh5a2,\n\t& .teb-r-1wbh5a2:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tflex-shrink: 1;\n\t}\n\t&.teb-r-1wtj0ep,\n\t& .teb-r-1wtj0ep:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tjustify-content: space-between;\n\t}\n\t&.teb-r-a023e6,\n\t& .teb-r-a023e6:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tfont-size: 15px;\n\t}\n\t&.teb-r-b88u0q,\n\t& .teb-r-b88u0q:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tfont-weight: 700;\n\t}\n\t&.teb-r-bcqeeo,\n\t& .teb-r-bcqeeo:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tmin-width: 0px;\n\t}\n\t&.teb-r-kzbkwu,\n\t& .teb-r-kzbkwu:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tpadding-bottom: 12px;\n\t}\n\t&.teb-r-onrtq4,\n\t& .teb-r-onrtq4:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tflex-basis: 40px;\n\t}\n\t&.teb-r-poiln3,\n\t& .teb-r-poiln3:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tfont-family: inherit;\n\t}\n\t&.teb-r-qvutc0,\n\t& .teb-r-qvutc0:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\toverflow-wrap: break-word;\n\t}\n\t&.teb-r-rjixqe,\n\t& .teb-r-rjixqe:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tline-height: 20px;\n\t}\n\t&.teb-r-ttdzmv,\n\t& .teb-r-ttdzmv:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tpadding-top: 12px;\n\t}\n\t&.teb-r-1d09ksm,\n\t& .teb-r-1d09ksm:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\talign-items: baseline;\n\t}\n\t&.teb-r-zl2h9q,\n\t& .teb-r-zl2h9q:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tmargin-bottom: 2px;\n\t}\n}\n\n/* 392773:X/153256:t5,tD,tM,tUの配置をDOMへ写したルールとnative media用アダプター。\n * carousel操作・playerは原版と同一ではない。scopeは自作DOMのみに限定。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t&.teb-r-1867qdf, & .teb-r-1867qdf:where([data-teb-owner-version=\"2026-09-17\"]){ border-radius: 16px; }\n\t&.teb-r-1phboty, & .teb-r-1phboty:where([data-teb-owner-version=\"2026-09-17\"]){ border-style: solid; }\n\t&.teb-r-rs99b7, & .teb-r-rs99b7:where([data-teb-owner-version=\"2026-09-17\"]){ border-width: 1px; }\n\t&.teb-r-1kqtdi0, & .teb-r-1kqtdi0:where([data-teb-owner-version=\"2026-09-17\"]){ border-color: var(--teb-border, rgb(47, 51, 54)); }\n\t&.teb-r-1ez5h0i, & .teb-r-1ez5h0i:where([data-teb-owner-version=\"2026-09-17\"]){ margin-left: 4px; }\n\t& .teb-r-1inkyih:where([data-teb-owner-version=\"2026-09-17\"]){ font-size: 17px; }\n\t& .teb-r-135wba7:where([data-teb-owner-version=\"2026-09-17\"]){ line-height: 24px; }\n\t&.teb-r-13qz1uu, & .teb-r-13qz1uu:where([data-teb-owner-version=\"2026-09-17\"]){ width: 100%; }\n\t&.teb-r-14gqq1x, & .teb-r-14gqq1x:where([data-teb-owner-version=\"2026-09-17\"]){ margin-top: 4px; }\n\t&.teb-r-9aw3ui, & .teb-r-9aw3ui:where([data-teb-owner-version=\"2026-09-17\"]){ gap: 4px; }\n\t& [data-teb-part=\"card\"]{ color: inherit; }\n\t& [data-teb-part=\"card\"][data-teb-size=\"small\"]{ flex-direction: row; }\n\t& [data-teb-part=\"card\"][data-teb-size=\"small\"] > [data-teb-image]{ width: 120px; flex-shrink: 0; }\n\t& [data-teb-part=\"card\"] [data-teb-image]{ object-fit: cover; }\n\t& [data-teb-part=\"cardDetails\"]{ padding: 12px; min-width: 0; }\n\t& [data-teb-part=\"mediaGroup\"] [data-teb-image]{ object-fit: contain; max-height: 510px; }\n\t& [data-teb-part=\"mediaGroup\"] video{ max-height: 510px; }\n\t/* 274488:E、963893:T。負marginとpaddingでavatar側までスクロール領域を拡張。 */\n\t& [data-teb-layout=\"carousel\"]{ gap: 0; }\n\t& [data-teb-layout=\"carousel\"][data-teb-compact=\"true\"]{ margin: 0 12px 12px; }\n\t& [data-teb-part=\"mediaSizer\"]{ height: 0; }\n\t& [data-teb-part=\"mediaScroller\"]{ position: absolute; inset: -2px; margin-inline-start: calc(2px - var(--teb-scroll-start)); margin-inline-end: calc(2px - var(--teb-scroll-end)); padding: 2px var(--teb-scroll-end) 2px var(--teb-scroll-start); overflow-x: auto; overflow-y: hidden; scrollbar-width: none; scroll-snap-type: x mandatory; scroll-padding: 0 var(--teb-scroll-end) 0 var(--teb-scroll-start); overscroll-behavior-x: contain; }\n\t& [data-teb-part=\"mediaScroller\"]:dir(rtl){ padding-right: var(--teb-scroll-start); padding-left: var(--teb-scroll-end); scroll-padding: 0 var(--teb-scroll-start) 0 var(--teb-scroll-end); }\n\t& [data-teb-part=\"mediaCarouselCell\"]{ height: 100%; min-width: auto; flex-shrink: 0; scroll-snap-align: start; }\n\t& .teb-r-1xfd6ze:where([data-teb-owner-version=\"2026-09-17\"]){ border-radius: 8px; }\n\t& [data-teb-part=\"mediaCarouselCell\"] > a{ display: flex; height: 100%; min-height: 0; }\n\t& [data-teb-part=\"mediaCarouselCell\"] [data-teb-image], & [data-teb-part=\"mediaCarouselCell\"] video{ width: 100%; height: 100%; max-height: none; object-fit: cover; }\n\t& [data-teb-part=\"mediaPrevious\"], & [data-teb-part=\"mediaNext\"]{ position: absolute; top: 50%; transform: translateY(-50%); border: 0; border-radius: 50%; width: 32px; height: 32px; color: white; background: #000b; cursor: pointer; z-index: 1; }\n\t& [data-teb-part=\"mediaPrevious\"]{ inset-inline-start: 4px; }\n\t& [data-teb-part=\"mediaNext\"]{ inset-inline-end: 4px; }\n\t& [data-teb-part=\"mediaIndicator\"]{ display: flex; gap: 5px; height: 4px; margin: -8px 0 12px; align-items: center; }\n\t& [data-teb-part=\"mediaIndicator\"] > span{ height: 4px; border-radius: 2px; background: var(--teb-muted, #71767b); }\n\t/* 548812:m: row/column、2px gutter、均等flex。aspect-ratioはDOMアダプター。 */\n\t& [data-teb-layout=\"grid\"], & [data-teb-part=\"mediaGridBranch\"]{ gap: 2px; }\n\t& [data-teb-part=\"mediaGridCell\"]{ overflow: hidden; }\n\t& [data-teb-part=\"mediaGridCell\"] > a{ display: flex; height: 100%; min-height: 0; }\n\t& [data-teb-part=\"mediaGridCell\"] [data-teb-image], & [data-teb-part=\"mediaGridCell\"] video{ width: 100%; height: 100%; min-height: 0; object-fit: cover; }\n\t& [data-teb-part=\"quote\"]{ min-height: 64px; }\n\t& [data-teb-part=\"quoteHeader\"]{ margin: 12px 12px 0; }\n\t& [data-teb-part=\"quoteText\"]{ margin: 4px 12px 12px; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }\n\t& [data-teb-part=\"quoteMediaSide\"]{ flex: 2; align-self: flex-start; margin: 12px 0 12px 12px; overflow: hidden; border-radius: 16px; border-style: solid; border-color: transparent; }\n\t& [data-teb-part=\"quoteContentSide\"]{ flex: 8; flex-basis: 0%; }\n\t& [data-teb-part=\"quoteContentSide\"] [data-teb-part=\"quoteText\"]{ margin-top: 8px; }\n\t& [data-teb-part=\"quoteMediaSide\"] [data-teb-media-count=\"1\"] [data-teb-image],\n\t& [data-teb-part=\"quoteMediaSide\"] [data-teb-media-count=\"1\"] video{ aspect-ratio: 1; object-fit: cover; }\n\t& [data-teb-part=\"quoteAvatar\"]{ width: 20px; height: 20px; border-radius: 50%; margin-right: 4px; }\n\t& [data-teb-part=\"quote\"] a{ color: inherit; }\n\t& [data-teb-part=\"pollChoice\"]{ min-height: 32px; justify-content: center; }\n\t& [data-teb-part=\"pollChoice\"] > span{ padding: 0 12px; z-index: 1; }\n\t& [data-teb-part=\"pollBar\"]{ position: absolute; top: 0; bottom: 0; left: 0; border-radius: 4px; background: var(--teb-poll-bar, #2f3336); }\n\t& [data-teb-winner=\"true\"] [data-teb-part=\"pollBar\"]{ background: var(--teb-poll-winner, #123d57); }\n\t& [data-teb-part=\"pollVote\"]{ color: var(--teb-link, #1d9bf0); border: 1px solid currentColor; border-radius: 9999px; padding: 4px 12px; cursor: pointer; min-height: 32px; }\n\t& [data-teb-part=\"pollVote\"]:disabled{ opacity: .5; cursor: default; }\n\t& [data-teb-poll-type=\"image_poll\"] [data-teb-part=\"pollChoice\"] [data-teb-image]{ object-fit: cover; aspect-ratio: 1; max-width: 240px; }\n\t& [data-teb-poll-type=\"image_poll\"][data-teb-poll-results=\"false\"] [data-teb-part=\"pollChoices\"]{ flex-direction: row; overflow-x: auto; gap: 12px; }\n\t& [data-teb-poll-type=\"image_poll\"][data-teb-poll-results=\"false\"] [data-teb-part=\"pollChoice\"]{ width: 240px; flex-shrink: 0; }\n\t& [data-teb-poll-type=\"image_poll\"][data-teb-poll-results=\"true\"] [data-teb-part=\"pollChoice\"]{ flex-direction: row; align-items: center; min-height: 48px; }\n\t& [data-teb-poll-type=\"image_poll\"][data-teb-poll-results=\"true\"] [data-teb-part=\"pollChoice\"] > a{ width: 48px; z-index: 1; }\n}\n\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t/* 398338:isFocal / 984627:withFullWidthChildren / 228604:stacked。 */\n\t& [data-teb-part=\"avatarLink\"]{ display: block; overflow: hidden; border-radius: 50%; background: var(--teb-avatar-placeholder, #16181c); }\n\t/* 180577: avatarも共通画像部品で表示。 */\n\t& [data-teb-part=\"avatarLink\"] > [data-teb-image]{ height: 100%; }\n\t& [data-teb-avatar-shape=\"square\"], & [data-teb-avatar-shape=\"square\"] [data-teb-part=\"avatar\"]{ border-radius: 8%; }\n\t& [data-teb-part=\"nameLine\"]{ min-width: 0; flex-shrink: 1; }\n\t& [data-teb-part=\"name\"]{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n\t& [data-teb-part=\"screenName\"]{ color: var(--teb-muted, #71767b); }\n\t& [data-teb-part=\"authorBadges\"]{ display: inline-flex; flex-direction: row; flex-wrap: nowrap; align-items: center; flex-shrink: 0; }\n\t& [data-teb-badge]{ width: 20px; height: 20px; margin-inline-start: 2px; fill: #1d9bf0; }\n\t& [data-teb-badge=\"protected\"]{ fill: currentColor; }\n\t& [data-teb-part=\"metadata\"]{ color: var(--teb-muted, #71767b); }\n\t& [data-teb-part=\"timestampLink\"]{ white-space: nowrap; }\n\t&[data-teb-display-mode=\"timeline\"] [data-teb-part=\"metadata\"]{ margin-inline-start: 4px; white-space: nowrap; }\n\t&[data-teb-display-mode=\"timeline\"] [data-teb-part=\"metadata\"]::before{ content: '· '; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-part=\"identity\"]{ flex-direction: column; align-items: flex-start; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-part=\"screenName\"]{ margin-left: 0; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-part=\"text\"]{ margin-top: 12px; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-part=\"metadata\"]{ margin: 16px 12px 16px 0; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-part=\"actions\"]{ border-top: 1px solid var(--teb-border, #2f3336); height: 48px; margin-top: 0; align-items: stretch; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-action] svg{ width: 24px; height: 24px; }\n}\n\n/* 180577:R/P、616377:c。サイズ配置は呼び出し側、描画は背景div。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t& :where([data-teb-image]){ aspect-ratio: var(--teb-image-ratio, auto); position: relative; overflow: hidden; z-index: 0; flex-basis: auto; backface-visibility: hidden; transform: translateZ(0); dynamic-range-limit: standard; }\n\t& [data-teb-image] > [data-teb-part=\"imageBackground\"]{ position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; background-color: transparent; background-position: center; background-repeat: no-repeat; background-size: cover; filter: brightness(1); }\n\t& [data-teb-image] > .teb-css-9pa8cd{ position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: -1; }\n\t& [data-teb-media-count=\"1\"] > a > [data-teb-image]{ max-height: 510px; }\n\t& [data-teb-media-count=\"1\"] > a > [data-teb-image] > [data-teb-part=\"imageBackground\"]{ background-size: contain; }\n\t& [data-teb-part=\"quoteMediaSide\"] [data-teb-image] > [data-teb-part=\"imageBackground\"]{ background-size: cover; }\n}\n\n/* 228604:C: shrinkable nameContainer / fixed badges and timestamp suffix.\n * min-width:0は通常DOMのflex自動最小幅を解除する境界補正。固定の最小幅は設けない。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t& [data-teb-part=\"identity\"], & [data-teb-part=\"nameLine\"], & [data-teb-part=\"quoteHeader\"], & [data-teb-part=\"quoteNameLine\"]{ min-width: 0; max-width: 100%; flex-shrink: 1; }\n\t& [data-teb-part=\"name\"], & [data-teb-part=\"screenName\"], & [data-teb-part=\"quoteName\"], & [data-teb-part=\"quoteScreenName\"]{ display: block; min-width: 0; max-width: 100%; flex-shrink: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n\t& [data-teb-part=\"quoteName\"]{ font-weight: 700; }\n\t& [data-teb-part=\"screenName\"], & [data-teb-part=\"quoteScreenName\"]{ color: var(--teb-muted, #71767b); }\n\t& [data-teb-part=\"quoteScreenName\"]{ margin-inline-start: 4px; }\n\t& [data-teb-part=\"quoteTimestamp\"], & [data-teb-part=\"metadata\"], & [data-teb-part=\"quoteAvatar\"], & [data-teb-part=\"avatarLink\"], & [data-teb-badge]{ flex-shrink: 0; }\n\t& [data-teb-part=\"quoteTimestamp\"]{ white-space: nowrap; color: var(--teb-muted, #71767b); margin-inline-start: 4px; }\n\t& [data-teb-part=\"quoteTimestamp\"]::before{ content: '· '; }\n}\n\n/* 392773:X textContentSpacing / marginTopXXSmall / condensedContentSide。\n * 269066 → 885048: size medium = 24px。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t& [data-teb-part=\"quote\"]{ font-size: 15px; line-height: 20px; }\n\t& [data-teb-part=\"quoteAvatar\"]{ width: 24px; height: 24px; background-color: var(--teb-avatar-placeholder, #16181c); }\n\t& [data-teb-part=\"quoteTextContent\"]{ margin: 0 12px 12px; min-width: 0; }\n\t& [data-teb-part=\"quoteText\"]{ margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: break-word; }\n\t& [data-teb-part=\"quoteContentSide\"] [data-teb-part=\"quoteText\"]{ margin-top: 8px; }\n\t& [data-teb-part=\"quoteReplyContext\"]{ margin-top: 4px; color: var(--teb-muted, #71767b); overflow-wrap: break-word; }\n\t& [data-teb-part=\"quoteShowMore\"]{ margin-top: 4px; color: var(--teb-link, #1d9bf0); }\n\t& [data-teb-part=\"quoteText\"] a{ color: var(--teb-link, #1d9bf0); }\n\t& [data-teb-part=\"quoteContentSide\"]{ min-width: 0; }\n\t/* 738425 / 630663: 最新版はtimestamp suffix、旧版はgray700本文＋space8のinline callout。 */\n\t& [data-teb-part=\"quoteEditLabel\"]{ flex-shrink: 0; margin-inline-start: 4px; color: var(--teb-muted, #71767b); white-space: nowrap; }\n\t& [data-teb-quote-stale-edit=\"true\"] :is([data-teb-part=\"quoteText\"],[data-teb-part=\"quoteText\"] a){ color: var(--teb-muted, #71767b); }\n\t& [data-teb-part=\"quoteStaleEditCallout\"]{ align-self: flex-start; margin: 8px 12px 12px; color: var(--teb-muted, #71767b); font-size: 13px; line-height: 16px; }\n}\n\n/* 879747: media content後のmetadata / caption / tags / source attribution。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t& [data-teb-part=\"mediaMetadata\"]{ display: flex; flex: 1; flex-direction: column; padding: 12px 12px 4px; }\n\t& :is([data-teb-part=\"mediaMetadataTitle\"],[data-teb-part=\"mediaMetadataDescription\"]){ margin-bottom: 4px; }\n\t& [data-teb-part=\"mediaMetadataTitle\"]{ font-weight: 700; }\n\t& :is([data-teb-part=\"mediaCaption\"],[data-teb-part=\"mediaAttribution\"]){ margin-top: 8px; color: var(--teb-muted, #71767b); font-size: 13px; line-height: 16px; }\n\t& [data-teb-part=\"mediaTags\"]{ align-self: flex-start; margin-top: 4px; color: var(--teb-muted, #71767b); font-size: 13px; line-height: 16px; }\n\t& [data-teb-part=\"mediaAttribution\"] a{ color: inherit; }\n}\n\n/* 91154 / 876679 / 384618: リポストsocial context。2026-09-18の実DOMでも確認。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t& [data-teb-part=\"socialContext\"]{ margin-top: -4px; margin-bottom: 4px; color: var(--teb-muted, #71767b); align-items: center; }\n\t& [data-teb-part=\"repostIconCell\"]{ align-items: flex-end; }\n\t& [data-teb-part=\"repostIcon\"]{ width: 16px; height: 16px; flex-shrink: 0; fill: currentColor; }\n\t& [data-teb-part=\"repostLink\"]{ font-size: 13px; line-height: 16px; font-weight: 700; min-width: 0; flex-shrink: 1; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }\n}\n";
-	if(typeof module === 'object' && module.exports)module.exports = css;
+	"use strict";
+	const css = "/* 原文: upstream/2026-09-17/css-rules.json。選択した30ルールの限定移植。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t&.teb-css-146c3p1,\n\t& .teb-css-146c3p1:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tbackground-color: rgba(0, 0, 0, 0); border: 0px solid black; box-sizing: border-box; color: inherit; display: inline; font: 14px -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; list-style: none; margin: 0px; padding: 0px; position: relative; text-align: start; text-decoration: none; white-space: pre-wrap; overflow-wrap: break-word;\n\t}\n\t&.teb-css-1jxf684,\n\t& .teb-css-1jxf684:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tbackground-color: rgba(0, 0, 0, 0); border: 0px solid black; box-sizing: border-box; color: inherit; display: inline; font: inherit; list-style: none; margin: 0px; padding: 0px; position: relative; text-align: inherit; text-decoration: none; white-space: inherit; overflow-wrap: break-word;\n\t}\n\t&.teb-css-g5y9jx,\n\t& .teb-css-g5y9jx:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\talign-content: flex-start; align-items: stretch; background-color: rgba(0, 0, 0, 0); border: 0px solid black; box-sizing: border-box; display: flex; flex-basis: auto; flex-direction: column; flex-shrink: 0; list-style: none; margin: 0px; min-height: 0px; min-width: 0px; padding: 0px; position: relative; text-decoration: none; z-index: 0;\n\t}\n\t&.teb-r-1udh08x,\n\t& .teb-r-1udh08x:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\toverflow: hidden;\n\t}\n\t&.teb-r-sdzlij,\n\t& .teb-r-sdzlij:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tborder-radius: 9999px;\n\t}\n\t&.teb-r-1wron08,\n\t& .teb-r-1wron08:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tmargin-right: 8px;\n\t}\n\t&.teb-r-1c4vpko,\n\t& .teb-r-1c4vpko:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tpadding-right: 16px;\n\t}\n\t&.teb-r-1c7gwzm,\n\t& .teb-r-1c7gwzm:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tpadding-left: 16px;\n\t}\n\t&.teb-r-16dba41,\n\t& .teb-r-16dba41:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tfont-weight: 400;\n\t}\n\t&.teb-r-16y2uox,\n\t& .teb-r-16y2uox:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tflex-grow: 1;\n\t}\n\t&.teb-r-1777fci,\n\t& .teb-r-1777fci:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tjustify-content: center;\n\t}\n\t&.teb-r-18u37iz,\n\t& .teb-r-18u37iz:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tflex-direction: row;\n\t}\n\t&.teb-r-1awozwy,\n\t& .teb-r-1awozwy:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\talign-items: center;\n\t}\n\t&.teb-r-1iusvr4,\n\t& .teb-r-1iusvr4:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tflex-basis: 0px;\n\t}\n\t&.teb-r-1loqt21,\n\t& .teb-r-1loqt21:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tcursor: pointer;\n\t}\n\t&.teb-r-1s2bzr4,\n\t& .teb-r-1s2bzr4:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tmargin-top: 12px;\n\t}\n\t&.teb-r-1tl8opc,\n\t& .teb-r-1tl8opc:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tfont-family: \"Segoe UI\", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;\n\t}\n\t&.teb-r-1wbh5a2,\n\t& .teb-r-1wbh5a2:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tflex-shrink: 1;\n\t}\n\t&.teb-r-1wtj0ep,\n\t& .teb-r-1wtj0ep:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tjustify-content: space-between;\n\t}\n\t&.teb-r-a023e6,\n\t& .teb-r-a023e6:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tfont-size: 15px;\n\t}\n\t&.teb-r-b88u0q,\n\t& .teb-r-b88u0q:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tfont-weight: 700;\n\t}\n\t&.teb-r-bcqeeo,\n\t& .teb-r-bcqeeo:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tmin-width: 0px;\n\t}\n\t&.teb-r-kzbkwu,\n\t& .teb-r-kzbkwu:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tpadding-bottom: 12px;\n\t}\n\t&.teb-r-onrtq4,\n\t& .teb-r-onrtq4:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tflex-basis: 40px;\n\t}\n\t&.teb-r-poiln3,\n\t& .teb-r-poiln3:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tfont-family: inherit;\n\t}\n\t&.teb-r-qvutc0,\n\t& .teb-r-qvutc0:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\toverflow-wrap: break-word;\n\t}\n\t&.teb-r-rjixqe,\n\t& .teb-r-rjixqe:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tline-height: 20px;\n\t}\n\t&.teb-r-ttdzmv,\n\t& .teb-r-ttdzmv:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tpadding-top: 12px;\n\t}\n\t&.teb-r-1d09ksm,\n\t& .teb-r-1d09ksm:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\talign-items: baseline;\n\t}\n\t&.teb-r-zl2h9q,\n\t& .teb-r-zl2h9q:where([data-teb-owner-version=\"2026-09-17\"]){\n\t\tmargin-bottom: 2px;\n\t}\n}\n\n/* 392773:X/153256:t5,tD,tM,tUの配置をDOMへ写したルールとnative media用アダプター。\n * carousel操作・playerは原版と同一ではない。scopeは自作DOMのみに限定。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t&.teb-r-1867qdf, & .teb-r-1867qdf:where([data-teb-owner-version=\"2026-09-17\"]){ border-radius: 16px; }\n\t&.teb-r-1phboty, & .teb-r-1phboty:where([data-teb-owner-version=\"2026-09-17\"]){ border-style: solid; }\n\t&.teb-r-rs99b7, & .teb-r-rs99b7:where([data-teb-owner-version=\"2026-09-17\"]){ border-width: 1px; }\n\t&.teb-r-1kqtdi0, & .teb-r-1kqtdi0:where([data-teb-owner-version=\"2026-09-17\"]){ border-color: var(--teb-border, rgb(47, 51, 54)); }\n\t&.teb-r-1ez5h0i, & .teb-r-1ez5h0i:where([data-teb-owner-version=\"2026-09-17\"]){ margin-left: 4px; }\n\t& .teb-r-1inkyih:where([data-teb-owner-version=\"2026-09-17\"]){ font-size: 17px; }\n\t& .teb-r-135wba7:where([data-teb-owner-version=\"2026-09-17\"]){ line-height: 24px; }\n\t&.teb-r-13qz1uu, & .teb-r-13qz1uu:where([data-teb-owner-version=\"2026-09-17\"]){ width: 100%; }\n\t&.teb-r-14gqq1x, & .teb-r-14gqq1x:where([data-teb-owner-version=\"2026-09-17\"]){ margin-top: 4px; }\n\t&.teb-r-9aw3ui, & .teb-r-9aw3ui:where([data-teb-owner-version=\"2026-09-17\"]){ gap: 4px; }\n\t& [data-teb-part=\"card\"]{ color: inherit; }\n\t& [data-teb-part=\"card\"][data-teb-size=\"small\"]{ flex-direction: row; }\n\t& [data-teb-part=\"card\"][data-teb-size=\"small\"] > [data-teb-image]{ width: 120px; flex-shrink: 0; }\n\t& [data-teb-part=\"card\"] [data-teb-image]{ object-fit: cover; }\n\t& [data-teb-part=\"cardDetails\"]{ padding: 12px; min-width: 0; }\n\t& [data-teb-part=\"mediaGroup\"] [data-teb-image]{ object-fit: contain; max-height: 510px; }\n\t& [data-teb-part=\"mediaGroup\"] video{ max-height: 510px; }\n\t& [data-teb-part=\"videoPlayer\"]{ position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 510px; overflow: hidden; border-radius: 12px; background: #000; color: #fff; container-type: inline-size; }\n\t& [data-teb-part=\"videoComponent\"], & [data-teb-part=\"videoComponent\"] video{ width: 100%; height: 100%; }\n\t& [data-teb-part=\"videoComponent\"] video{ display: block; max-height: none; object-fit: cover; cursor: pointer; }\n\t& [data-teb-part=\"videoPosterButton\"]{ position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: pointer; }\n\t& [data-teb-part=\"videoPosterButton\"][hidden], & [data-teb-player-mode=\"mini\"] [data-teb-part=\"videoPosterButton\"]{ display: none; }\n\t& [data-teb-part=\"videoPosterButton\"] svg{ width: 60px; height: 61px; }\n\t& [data-teb-part=\"videoControls\"]{ position: absolute; inset: auto 0 0; display: flex; flex-direction: row; align-items: center; gap: 8px; padding: 28px 12px 10px; color: #fff; background: linear-gradient(transparent,rgba(0,0,0,.68)); font-size: 13px; line-height: 16px; }\n\t& [data-teb-player-mode=\"full\"] [data-teb-part=\"videoControls\"]{ gap: 0; padding: 28px 4px 4px; opacity: 0; transition: opacity 250ms ease; }\n\t& [data-teb-player-mode=\"full\"]:is(:hover,:focus-within) [data-teb-part=\"videoControls\"]{ opacity: 1; }\n\t& [data-teb-part=\"videoMiniUi\"]{ display: flex; align-items: center; gap: 8px; flex: none; }\n\t& [data-teb-part=\"videoControls\"] button{ display: inline-flex; align-items: center; justify-content: center; flex: none; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; color: #fff; background: transparent; cursor: pointer; }\n\t& [data-teb-part=\"videoControls\"] button:hover{ background: rgba(255,255,255,.18); }\n\t& [data-teb-part=\"videoControls\"] button svg{ width: 20px; height: 20px; fill: currentColor; }\n\t& [data-teb-player-mode=\"full\"] [data-teb-part=\"videoControls\"] button{ width: 36px; height: 36px; }\n\t& [data-teb-player-mode=\"mini\"] [data-teb-part=\"videoPlay\"]{ width: 24px; height: 24px; }\n\t& [data-teb-part=\"videoPlay\"] svg{ width: 20px; height: 20px; fill: currentColor; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }\n\t& [data-teb-part=\"videoTime\"]{ white-space: nowrap; }\n\t& [data-teb-part=\"videoSeek\"], & [data-teb-part=\"videoVolume\"]{ height: 4px; min-width: 0; accent-color: #fff; cursor: pointer; }\n\t& [data-teb-part=\"videoSeek\"]{ flex: 1; }\n\t& [data-teb-part=\"videoVolume\"]{ position: absolute; right: 112px; bottom: 40px; box-sizing: border-box; width: 36px; height: 128px; margin: 0; padding: 16px; border-radius: 0; background: transparent; appearance: none; writing-mode: vertical-lr; direction: rtl; opacity: 0; pointer-events: none; }\n\t& [data-teb-part=\"videoVolume\"]::-webkit-slider-runnable-track{ width: 4px; border-radius: 2px; background: rgba(255,255,255,.33); }\n\t& [data-teb-part=\"videoVolume\"]::-webkit-slider-thumb{ width: 32px; height: 32px; margin-left: -14px; border: 0; border-radius: 50%; background: radial-gradient(circle,#fff 0 4px,transparent 4px); appearance: none; cursor: pointer; }\n\t& [data-teb-part=\"videoMute\"]:hover + [data-teb-part=\"videoVolume\"], & [data-teb-part=\"videoVolume\"]:is(:hover,:focus){ opacity: 1; pointer-events: auto; }\n\t& [data-teb-player-mode=\"full\"] [data-teb-part=\"videoSeek\"]{ position: absolute; left: 4px; right: 4px; top: 17px; width: calc(100% - 8px); }\n\t& [data-teb-player-mode=\"full\"] [data-teb-part=\"videoMiniUi\"]{ margin-right: auto; }\n\t& [data-teb-player-mode=\"mini\"] [data-teb-part=\"videoControls\"]{ left: 12px; right: auto; bottom: 12px; width: auto; padding: 0; background: transparent; }\n\t& [data-teb-player-mode=\"mini\"] [data-teb-part=\"videoMiniUi\"]{ gap: 0; border-radius: 4px; background: rgba(0,0,0,.77); font-family: \"Segoe UI\",Meiryo,system-ui,-apple-system,BlinkMacSystemFont,sans-serif; }\n\t& [data-teb-player-mode=\"mini\"] [data-teb-part=\"videoPlay\"]{ width: 20px; height: 20px; padding: 4px; border-radius: 0; }\n\t& [data-teb-player-mode=\"mini\"] [data-teb-part=\"videoPlay\"] svg{ width: 12px; height: 12px; }\n\t& [data-teb-player-mode=\"mini\"] [data-teb-part=\"videoTime\"]{ padding: 0 4px; }\n\t& [data-teb-player-mode=\"mini\"] :is([data-teb-part=\"videoSeek\"],[data-teb-part=\"videoMute\"],[data-teb-part=\"videoVolume\"],[data-teb-part=\"videoSettings\"],[data-teb-part=\"videoPictureInPicture\"],[data-teb-part=\"videoFullscreen\"]){ display: none; }\n\t& [data-teb-player-mode=\"gif\"] [data-teb-part=\"videoControls\"]{ left: 10px; right: auto; bottom: 10px; width: auto; gap: 0; padding: 0 4px; border-radius: 4px; background: rgba(0,0,0,.65); }\n\t& [data-teb-player-mode=\"gif\"] [data-teb-part=\"videoMiniUi\"]{ gap: 2px; }\n\t& [data-teb-player-mode=\"gif\"] [data-teb-part=\"videoPlay\"]{ width: 22px; height: 22px; }\n\t& [data-teb-player-mode=\"gif\"] [data-teb-part=\"videoPlay\"] svg{ width: 16px; height: 16px; }\n\t& [data-teb-player-mode=\"gif\"] [data-teb-part=\"videoTime\"]{ font-size: 13px; line-height: 20px; font-weight: 700; }\n\t& [data-teb-player-mode=\"gif\"] :is([data-teb-part=\"videoSeek\"],[data-teb-part=\"videoMute\"],[data-teb-part=\"videoVolume\"],[data-teb-part=\"videoSettings\"],[data-teb-part=\"videoPictureInPicture\"],[data-teb-part=\"videoFullscreen\"]){ display: none; }\n\t& [data-teb-part=\"videoSettingsMenu\"]{ position: absolute; right: 60px; bottom: 65px; z-index: 4; min-width: 90px; padding: 6px; border-radius: 8px; background: rgba(20,20,20,.96); box-shadow: 0 4px 12px #0008; }\n\t& [data-teb-part=\"videoSettingsMenu\"][hidden]{ display: none; }\n\t& [data-teb-part=\"videoSettingsMenu\"] button{ display: block; width: 100%; padding: 8px; border: 0; border-radius: 4px; color: #fff; background: transparent; text-align: left; cursor: pointer; }\n\t& [data-teb-part=\"videoSettingsMenu\"] button[aria-checked=\"true\"], & [data-teb-part=\"videoSettingsMenu\"] button:hover{ background: #ffffff30; }\n\t@container (max-width: 430px){ & [data-teb-player-mode=\"full\"] [data-teb-part=\"videoVolume\"]{ display: none; } }\n\t@container (max-width: 350px){ & [data-teb-player-mode=\"full\"] :is([data-teb-part=\"videoSettings\"],[data-teb-part=\"videoPictureInPicture\"]){ display: none; } }\n\t& [data-teb-part=\"videoPlayer\"]:fullscreen{ width: 100vw; height: 100vh; max-height: none; border-radius: 0; }\n\t& [data-teb-part=\"videoPlayer\"]:fullscreen [data-teb-part=\"videoComponent\"] video{ object-fit: contain; }\n\t& [data-teb-part=\"mediaCarouselCell\"] > [data-teb-part=\"videoPlayer\"], & [data-teb-part=\"mediaGridCell\"] > [data-teb-part=\"videoPlayer\"]{ width: 100%; height: 100%; aspect-ratio: auto !important; max-height: none; }\n\t& [data-teb-part=\"quoteMediaSide\"] [data-teb-part=\"videoControls\"]{ display: none; }\n\t& [data-teb-part=\"mediaCell\"]{ position: relative; width: 100%; height: 100%; min-width: 0; min-height: 0; }\n\t& [data-teb-part=\"mediaCell\"] > a{ display: flex; width: 100%; height: 100%; min-height: 0; }\n\t& [data-teb-part=\"mediaCell\"] > a > [data-teb-image]{ width: 100%; height: 100%; }\n\t& [data-teb-part=\"mediaAltButton\"]{ position: absolute; inset-inline-start: 12px; bottom: 12px; z-index: 3; height: 20px; padding: 0; border: 0; background: transparent; cursor: pointer; }\n\t& [data-teb-part=\"mediaAltBadge\"]{ align-items: center; justify-content: center; height: 20px; padding: 0 8px; border-radius: 4px; background: rgba(0,0,0,.3); }\n\t& [data-teb-part=\"mediaAltBadgeText\"]{ color: #fff; font-family: \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; font-size: 13px; line-height: 16px; font-weight: 700; }\n\t&[data-teb-theme=\"light\"]{ --teb-alt-dialog-background: rgb(255,255,255); --teb-alt-dialog-button-border: rgb(207,217,222); }\n\t&[data-teb-theme=\"dim\"]{ --teb-alt-dialog-background: rgb(30,39,50); --teb-alt-dialog-button-border: rgb(139,152,165); }\n\t&[data-teb-theme=\"dark\"]{ --teb-alt-dialog-background: rgb(20,20,20); --teb-alt-dialog-button-border: rgb(83,100,113); }\n\t& [data-teb-part=\"mediaAltMask\"]{ position: fixed; inset: 0; pointer-events: auto; background: transparent; }\n\t& [data-teb-part=\"mediaAltHoverParent\"]{ position: absolute; width: 260px; pointer-events: auto; }\n\t& [data-teb-part=\"mediaAltFrame\"]{ position: relative; width: 260px; border-radius: 16px; background: var(--teb-alt-dialog-background, rgb(20,20,20)); box-shadow: 0 4px 12px rgba(0,0,0,.5), 0 0 2px rgba(0,0,0,.35); }\n\t& [data-teb-part=\"mediaAltArrow\"]{ position: absolute; top: -11px; width: 24px; height: 16.25px; fill: var(--teb-alt-dialog-background, rgb(20,20,20)); }\n\t& [data-teb-part=\"mediaAltArrow\"][data-teb-direction=\"down\"]{ top: auto; bottom: -11px; transform: rotate(180deg); }\n\t& [data-teb-part=\"mediaAltDialog\"]{ width: 260px; box-sizing: border-box; gap: 0; padding: 32px; }\n\t& [data-teb-part=\"mediaAltTitle\"]{ font-size: 26px; line-height: 32px; font-weight: 700; }\n\t& [data-teb-part=\"mediaAltDescription\"]{ padding: 8px 0 20px; color: var(--teb-muted); font-size: 15px; line-height: 20px; white-space: pre-wrap; overflow-wrap: anywhere; }\n\t& [data-teb-part=\"mediaAltHide\"]{ align-items: center; justify-content: center; min-height: 54px; padding: 16px 32px; border: 1px solid var(--teb-alt-dialog-button-border, rgb(83,100,113)); border-radius: 9999px; color: inherit; background: transparent; font-size: 15px; line-height: 20px; font-weight: 700; cursor: pointer; }\n\t/* 274488:E、963893:T。負marginとpaddingでavatar側までスクロール領域を拡張。 */\n\t& [data-teb-layout=\"carousel\"]{ gap: 0; }\n\t& [data-teb-layout=\"carousel\"][data-teb-compact=\"true\"]{ margin: 0 12px 12px; }\n\t& [data-teb-part=\"mediaSizer\"]{ height: 0; }\n\t& [data-teb-part=\"mediaScroller\"]{ position: absolute; inset: -2px; margin-inline-start: calc(2px - var(--teb-scroll-start)); margin-inline-end: calc(2px - var(--teb-scroll-end)); padding: 2px var(--teb-scroll-end) 2px var(--teb-scroll-start); overflow-x: auto; overflow-y: hidden; scrollbar-width: none; scroll-snap-type: x mandatory; scroll-padding: 0 var(--teb-scroll-end) 0 var(--teb-scroll-start); overscroll-behavior-x: contain; }\n\t& [data-teb-part=\"mediaScroller\"]:dir(rtl){ padding-right: var(--teb-scroll-start); padding-left: var(--teb-scroll-end); scroll-padding: 0 var(--teb-scroll-start) 0 var(--teb-scroll-end); }\n\t& [data-teb-part=\"mediaCarouselCell\"]{ height: 100%; min-width: auto; flex-shrink: 0; scroll-snap-align: start; }\n\t& .teb-r-1xfd6ze:where([data-teb-owner-version=\"2026-09-17\"]){ border-radius: 8px; }\n\t& [data-teb-part=\"mediaCarouselCell\"] > a{ display: flex; height: 100%; min-height: 0; }\n\t& [data-teb-part=\"mediaCarouselCell\"] [data-teb-image], & [data-teb-part=\"mediaCarouselCell\"] video{ width: 100%; height: 100%; max-height: none; object-fit: cover; }\n\t& [data-teb-part=\"mediaPrevious\"], & [data-teb-part=\"mediaNext\"]{ position: absolute; top: 50%; transform: translateY(-50%); border: 0; border-radius: 50%; width: 32px; height: 32px; color: white; background: #000b; cursor: pointer; z-index: 1; }\n\t& [data-teb-part=\"mediaPrevious\"]{ inset-inline-start: 4px; }\n\t& [data-teb-part=\"mediaNext\"]{ inset-inline-end: 4px; }\n\t& [data-teb-part=\"mediaIndicator\"]{ display: flex; gap: 5px; height: 4px; margin: -8px 0 12px; align-items: center; }\n\t& [data-teb-part=\"mediaIndicator\"] > span{ height: 4px; border-radius: 2px; background: var(--teb-muted, #71767b); }\n\t/* 548812:m: row/column、2px gutter、均等flex。aspect-ratioはDOMアダプター。 */\n\t& [data-teb-layout=\"grid\"], & [data-teb-part=\"mediaGridBranch\"]{ gap: 2px; }\n\t& [data-teb-part=\"mediaGridCell\"]{ overflow: hidden; }\n\t& [data-teb-part=\"mediaGridCell\"] > a{ display: flex; height: 100%; min-height: 0; }\n\t& [data-teb-part=\"mediaGridCell\"] [data-teb-image], & [data-teb-part=\"mediaGridCell\"] video{ width: 100%; height: 100%; min-height: 0; object-fit: cover; }\n\t& [data-teb-part=\"quote\"]{ min-height: 64px; }\n\t& [data-teb-part=\"quoteHeader\"]{ margin: 12px 12px 0; }\n\t& [data-teb-part=\"quoteText\"]{ margin: 4px 12px 12px; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }\n\t& [data-teb-part=\"quoteMediaSide\"]{ flex: 2; align-self: flex-start; margin: 12px 0 12px 12px; overflow: hidden; border-radius: 16px; border-style: solid; border-color: transparent; }\n\t& [data-teb-part=\"quoteContentSide\"]{ flex: 8; flex-basis: 0%; }\n\t& [data-teb-part=\"quoteContentSide\"] [data-teb-part=\"quoteText\"]{ margin-top: 8px; }\n\t& [data-teb-part=\"quoteMediaSide\"] [data-teb-media-count=\"1\"] [data-teb-image],\n\t& [data-teb-part=\"quoteMediaSide\"] [data-teb-media-count=\"1\"] video{ aspect-ratio: 1; object-fit: cover; }\n\t& [data-teb-part=\"quoteAvatar\"]{ width: 20px; height: 20px; border-radius: 50%; margin-right: 4px; }\n\t& [data-teb-part=\"quote\"] a{ color: inherit; }\n\t& [data-teb-part=\"poll\"]{ gap: 0; }\n\t& [data-teb-part=\"pollChoice\"]{ min-height: 32px; justify-content: space-between; }\n\t& [data-teb-part=\"pollChoice\"] > span{ padding: 0 12px; z-index: 1; }\n\t& [data-teb-poll-type=\"poll\"][data-teb-poll-results=\"true\"] [data-teb-part=\"pollBar\"]{ min-width: 7px; }\n\t& [data-teb-part=\"pollBar\"]{ position: absolute; top: 0; bottom: 0; left: 0; border-radius: 4px; background: var(--teb-poll-bar, #2f3336); }\n\t& [data-teb-winner=\"true\"] [data-teb-part=\"pollBar\"]{ background: var(--teb-poll-winner, #123d57); }\n\t& [data-teb-part=\"pollVote\"]{ color: var(--teb-link, #1d9bf0); border: 1px solid currentColor; border-radius: 9999px; padding: 4px 12px; cursor: pointer; min-height: 32px; }\n\t& [data-teb-part=\"pollVote\"]:disabled{ opacity: .5; cursor: default; }\n\t& [data-teb-poll-type=\"image_poll\"] [data-teb-part=\"pollChoice\"] [data-teb-image]{ object-fit: cover; aspect-ratio: 1; max-width: 240px; }\n\t& [data-teb-poll-type=\"image_poll\"][data-teb-poll-results=\"false\"] [data-teb-part=\"pollChoices\"]{ flex-direction: row; overflow-x: auto; gap: 12px; }\n\t& [data-teb-poll-type=\"image_poll\"][data-teb-poll-results=\"false\"] [data-teb-part=\"pollChoice\"]{ width: 240px; flex-shrink: 0; }\n\t& [data-teb-poll-type=\"image_poll\"][data-teb-poll-results=\"true\"] [data-teb-part=\"pollChoice\"]{ flex-direction: row; align-items: center; justify-content: flex-start; min-height: 56px; gap: 8px; }\n\t& [data-teb-poll-type=\"image_poll\"][data-teb-poll-results=\"true\"] [data-teb-part=\"pollChoice\"] > a{ width: 48px; height: 48px; flex: 0 0 48px; z-index: 1; overflow: hidden; border-radius: 4px; }\n\t& [data-teb-poll-type=\"image_poll\"][data-teb-poll-results=\"true\"] [data-teb-part=\"pollChoice\"] > a [data-teb-image]{ width: 48px; height: 48px; }\n\t& [data-teb-part=\"pollResult\"]{ min-width: 0; height: 48px; flex: 1; flex-direction: row; align-items: center; justify-content: space-between; border-radius: 4px; }\n\t& [data-teb-part=\"pollResult\"] > span{ padding: 0 12px; z-index: 1; }\n}\n\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t/* 398338:isFocal / 984627:withFullWidthChildren / 228604:stacked。 */\n\t& [data-teb-part=\"avatarLink\"]{ display: block; overflow: hidden; border-radius: 50%; background: var(--teb-avatar-placeholder, #16181c); }\n\t/* 180577: avatarも共通画像部品で表示。 */\n\t& [data-teb-part=\"avatarLink\"] > [data-teb-image]{ height: 100%; }\n\t& [data-teb-avatar-shape=\"square\"], & [data-teb-avatar-shape=\"square\"] [data-teb-part=\"avatar\"]{ border-radius: 8%; }\n\t& [data-teb-part=\"nameLine\"]{ min-width: 0; flex-shrink: 1; }\n\t& [data-teb-part=\"name\"]{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n\t& [data-teb-part=\"screenName\"]{ color: var(--teb-muted, #71767b); }\n\t& [data-teb-part=\"authorBadges\"]{ display: inline-flex; flex-direction: row; flex-wrap: nowrap; align-items: center; flex-shrink: 0; }\n\t& [data-teb-badge]{ width: 20px; height: 20px; margin-inline-start: 2px; fill: #1d9bf0; }\n\t& [data-teb-badge=\"protected\"]{ fill: currentColor; }\n\t& [data-teb-part=\"metadata\"]{ color: var(--teb-muted, #71767b); }\n\t& [data-teb-part=\"timestampLink\"]{ white-space: nowrap; }\n\t&[data-teb-display-mode=\"timeline\"] [data-teb-part=\"metadata\"]{ margin-inline-start: 4px; white-space: nowrap; }\n\t&[data-teb-display-mode=\"timeline\"] [data-teb-part=\"metadata\"]::before{ content: '· '; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-part=\"identity\"]{ flex-direction: column; align-items: flex-start; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-part=\"screenName\"]{ margin-left: 0; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-part=\"text\"]{ margin-top: 12px; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-part=\"translationHeader\"]:not([hidden]) + [data-teb-part=\"text\"]{ margin-top: 0; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-part=\"metadata\"]{ margin: 16px 12px 16px 0; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-part=\"actions\"]{ border-top: 1px solid var(--teb-border, #2f3336); height: 48px; margin-top: 0; align-items: stretch; }\n\t&[data-teb-display-mode=\"detail\"] [data-teb-action] svg{ width: 24px; height: 24px; }\n}\n\n/* 398338:_renderGrokTranslationHeader。翻訳済み本文は上部の言語表示から原文へ戻せる。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t& [data-teb-part=\"translationHeader\"]{ display: flex; flex-direction: row; align-items: center; flex-wrap: wrap; gap: 4px; min-height: 24px; margin-top: 12px; color: var(--teb-muted, #71767b); font-size: 13px; line-height: 16px; }\n\t& [data-teb-part=\"translationHeader\"][hidden]{ display: none; }\n\t& [data-teb-part=\"translationIcon\"]{ width: 16px; height: 16px; fill: currentColor; flex: none; }\n\t& [data-teb-part=\"translationHeader\"] [hidden]{ display: none; }\n\t& [data-teb-part=\"translationButton\"]{ padding: 0 4px; border: 0; background: none; color: var(--teb-link, #1d9bf0); font: inherit; cursor: pointer; }\n\t& [data-teb-part=\"translationButton\"]:hover{ text-decoration: underline; }\n}\n\n/* 180577:R/P、616377:c。サイズ配置は呼び出し側、描画は背景div。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t& :where([data-teb-image]){ aspect-ratio: var(--teb-image-ratio, auto); position: relative; overflow: hidden; z-index: 0; flex-basis: auto; backface-visibility: hidden; transform: translateZ(0); dynamic-range-limit: standard; }\n\t& [data-teb-image] > [data-teb-part=\"imageBackground\"]{ position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; background-color: transparent; background-position: center; background-repeat: no-repeat; background-size: cover; filter: brightness(1); }\n\t& [data-teb-image] > .teb-css-9pa8cd{ position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: -1; }\n\t& [data-teb-part=\"mediaSingleFrame\"]{ border: 1px solid var(--teb-border, #2f3336); border-radius: 16px; overflow: hidden; }\n\t& [data-teb-part=\"mediaSingleFrame\"] > a > [data-teb-image]{ max-height: 510px; }\n\t& [data-teb-part=\"mediaSingleFrame\"] > a > [data-teb-image] > [data-teb-part=\"imageBackground\"]{ background-size: contain; }\n\t& [data-teb-part=\"quoteMediaSide\"] [data-teb-image] > [data-teb-part=\"imageBackground\"]{ background-size: cover; }\n}\n\n/* 228604:C: shrinkable nameContainer / fixed badges and timestamp suffix.\n * min-width:0は通常DOMのflex自動最小幅を解除する境界補正。固定の最小幅は設けない。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t& [data-teb-part=\"identity\"], & [data-teb-part=\"nameLine\"], & [data-teb-part=\"quoteHeader\"], & [data-teb-part=\"quoteNameLine\"]{ min-width: 0; max-width: 100%; flex-shrink: 1; }\n\t& [data-teb-part=\"name\"], & [data-teb-part=\"screenName\"], & [data-teb-part=\"quoteName\"], & [data-teb-part=\"quoteScreenName\"]{ display: block; min-width: 0; max-width: 100%; flex-shrink: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n\t& [data-teb-part=\"quoteName\"]{ font-weight: 700; }\n\t& [data-teb-part=\"screenName\"], & [data-teb-part=\"quoteScreenName\"]{ color: var(--teb-muted, #71767b); }\n\t& [data-teb-part=\"quoteScreenName\"]{ margin-inline-start: 4px; }\n\t& [data-teb-part=\"quoteTimestamp\"], & [data-teb-part=\"metadata\"], & [data-teb-part=\"quoteAvatar\"], & [data-teb-part=\"avatarLink\"], & [data-teb-badge]{ flex-shrink: 0; }\n\t& [data-teb-part=\"quoteTimestamp\"]{ white-space: nowrap; color: var(--teb-muted, #71767b); margin-inline-start: 4px; }\n\t& [data-teb-part=\"quoteTimestamp\"]::before{ content: '· '; }\n}\n\n/* 392773:X textContentSpacing / marginTopXXSmall / condensedContentSide。\n * 269066 → 885048: size medium = 24px。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t& [data-teb-part=\"quote\"]{ font-size: 15px; line-height: 20px; }\n\t& [data-teb-part=\"quoteAvatar\"]{ width: 24px; height: 24px; background-color: var(--teb-avatar-placeholder, #16181c); }\n\t& [data-teb-part=\"quoteTextContent\"]{ margin: 0 12px 12px; min-width: 0; }\n\t& [data-teb-part=\"quoteText\"]{ margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: break-word; }\n\t& [data-teb-part=\"quoteContentSide\"] [data-teb-part=\"quoteText\"]{ margin-top: 8px; }\n\t& [data-teb-part=\"quoteReplyContext\"]{ margin-top: 4px; color: var(--teb-muted, #71767b); overflow-wrap: break-word; }\n\t& [data-teb-part=\"quoteShowMore\"]{ margin-top: 4px; color: var(--teb-link, #1d9bf0); }\n\t& [data-teb-part=\"quoteText\"] a{ color: var(--teb-link, #1d9bf0); }\n\t& [data-teb-part=\"quoteContentSide\"]{ min-width: 0; }\n\t/* 315101.NestedQuotePreview: quote-of-quote is a compact preview, not another bordered card. */\n\t& [data-teb-part=\"quoteNestedWrapper\"]{ margin: -8px 12px 12px; }\n\t& [data-teb-part=\"quoteNestedWrapper\"][data-teb-after-block=\"true\"]{ margin-top: 4px; }\n\t& [data-teb-part=\"quoteNestedPreview\"]{ display: flex; min-width: 0; cursor: pointer; }\n\t& [data-teb-part=\"quoteNestedBar\"]{ flex: none; width: 3px; border-radius: 2px; background: var(--teb-nested-quote-bar, rgb(42,45,48)); }\n\t& [data-teb-part=\"quoteNestedContent\"]{ flex: 1; min-width: 0; margin-inline-start: 12px; padding-top: 8px; }\n\t& [data-teb-part=\"quoteNestedHeader\"]{ display: flex; align-items: center; min-width: 0; min-height: 21px; gap: 4px; white-space: nowrap; }\n\t& [data-teb-part=\"quoteNestedAvatar\"]{ flex: none; width: 20px; height: 20px; }\n\t& [data-teb-part=\"quoteNestedName\"]{ min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 700; }\n\t& [data-teb-part=\"quoteNestedScreenName\"]{ min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--teb-muted, #71767b); }\n\t& [data-teb-part=\"quoteNestedTimestamp\"]{ flex: none; white-space: nowrap; color: var(--teb-muted, #71767b); }\n\t& [data-teb-part=\"quoteNestedTimestamp\"]::before{ content: '· '; }\n\t& [data-teb-part=\"quoteNestedText\"]{ display: -webkit-box; margin-top: 2px; overflow: hidden; overflow-wrap: break-word; white-space: pre-wrap; line-height: 21px; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }\n\t& [data-teb-part=\"quoteNestedMediaRow\"]{ display: flex; align-items: flex-start; gap: 8px; margin-top: 8px; }\n\t& [data-teb-part=\"quoteNestedThumbnail\"]{ position: relative; flex: none; width: 64px; height: 64px; overflow: hidden; border: 1px solid var(--teb-border, #2f3336); border-radius: 12px; }\n\t& [data-teb-part=\"quoteNestedThumbnail\"] [data-teb-image]{ width: 100%; height: 100%; object-fit: cover; }\n\t& [data-teb-part=\"quoteNestedMediaText\"]{ flex: 1; min-width: 0; min-height: 64px; display: flex; align-items: center; }\n\t& [data-teb-part=\"quoteNestedMediaText\"] [data-teb-part=\"quoteNestedText\"]{ margin-top: 0; }\n\t& :is([data-teb-part=\"quoteNestedPlayIcon\"],[data-teb-part=\"quoteNestedMediaCount\"]){ position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #fff; background: #0008; font-weight: 700; }\n\t/* 738425 / 630663: 最新版はtimestamp suffix、旧版はgray700本文＋space8のinline callout。 */\n\t& [data-teb-part=\"quoteEditLabel\"]{ flex-shrink: 0; margin-inline-start: 4px; color: var(--teb-muted, #71767b); white-space: nowrap; }\n\t& [data-teb-quote-stale-edit=\"true\"] :is([data-teb-part=\"quoteText\"],[data-teb-part=\"quoteText\"] a){ color: var(--teb-muted, #71767b); }\n\t& [data-teb-part=\"quoteStaleEditCallout\"]{ align-self: flex-start; margin: 8px 12px 12px; color: var(--teb-muted, #71767b); font-size: 13px; line-height: 16px; }\n}\n\n/* 879747: media content後のmetadata / caption / tags / source attribution。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t& [data-teb-part=\"mediaMetadata\"]{ display: flex; flex: 1; flex-direction: column; padding: 12px 12px 4px; }\n\t& :is([data-teb-part=\"mediaMetadataTitle\"],[data-teb-part=\"mediaMetadataDescription\"]){ margin-bottom: 4px; }\n\t& [data-teb-part=\"mediaMetadataTitle\"]{ font-weight: 700; }\n\t& :is([data-teb-part=\"mediaCaption\"],[data-teb-part=\"mediaAttribution\"]){ margin-top: 8px; color: var(--teb-muted, #71767b); font-size: 13px; line-height: 16px; }\n\t& [data-teb-part=\"mediaTags\"]{ align-self: flex-start; margin-top: 4px; color: var(--teb-muted, #71767b); font-size: 13px; line-height: 16px; }\n\t& [data-teb-part=\"mediaAttribution\"] a{ color: inherit; }\n}\n\n/* 91154 / 876679 / 384618: リポストsocial context。2026-09-18の実DOMでも確認。 */\n:where(.tweet-element-builder[data-teb-ui-version=\"2026-09-17\"]){\n\t& [data-teb-part=\"socialContext\"]{ margin-top: -4px; margin-bottom: 4px; color: var(--teb-muted, #71767b); align-items: center; }\n\t& [data-teb-part=\"repostIconCell\"]{ align-items: flex-end; }\n\t& [data-teb-part=\"repostIcon\"]{ width: 16px; height: 16px; flex-shrink: 0; fill: currentColor; }\n\t& [data-teb-part=\"repostLink\"]{ font-size: 13px; line-height: 16px; font-weight: 700; min-width: 0; flex-shrink: 1; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }\n}\n";
+	if(typeof module === "object" && module.exports)module.exports = css;
 	else root.TEBStyles20260917 = css;
 })(globalThis);
 
@@ -221,11 +236,13 @@ const module = undefined;
 
 /* rich.js */
 /* 6687/63857: legacy card変換、153256: poll判定、983808/303084: メディアprops。
- * DOM境界・native videoはアダプター。原版のReact/player全体の移植ではない。
+ * DOM境界と動画の再生エンジンはアダプター。原版のReact/HLSプレイヤー全体の移植ではない。
  */
 (function(root){
 	'use strict';
 	const imagePollName = '1906814671912599552:poll_choice_images';
+	let altSerial = 0;
+	let quoteAvatarSerial = 0;
 	// 893059/114197/896192/54756のSVG factoryを隔離テスト環境で木構造へ変換。
 	const authorIcons = {"verified":{"tag":"svg","props":{"aria-hidden":true,"style":[{},null],"viewBox":"0 0 22 22","children":{"tag":"g","props":{"children":{"tag":"path","props":{"d":"M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.854-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.688-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.634.433 1.218.877 1.688.47.443 1.054.747 1.687.878.633.132 1.29.084 1.897-.136.274.586.705 1.084 1.246 1.439.54.354 1.17.551 1.816.569.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.239 1.266.296 1.903.164.636-.132 1.22-.447 1.68-.907.46-.46.776-1.044.908-1.681s.075-1.299-.165-1.903c.586-.274 1.084-.705 1.439-1.246.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"}}}}}},"business":{"tag":"svg","props":{"aria-hidden":true,"style":[{},null],"viewBox":"0 0 22 22","children":{"tag":"g","props":{"children":[{"tag":"linearGradient","props":{"gradientUnits":"userSpaceOnUse","id":"TEB_BADGE_ID-a","x1":"4.411","x2":"18.083","y1":"2.495","y2":"21.508","children":[{"tag":"stop","props":{"offset":"0","stopColor":"#f4e72a"}},{"tag":"stop","props":{"offset":".539","stopColor":"#cd8105"}},{"tag":"stop","props":{"offset":".68","stopColor":"#cb7b00"}},{"tag":"stop","props":{"offset":"1","stopColor":"#f4ec26"}},{"tag":"stop","props":{"offset":"1","stopColor":"#f4e72a"}}]}},{"tag":"linearGradient","props":{"gradientUnits":"userSpaceOnUse","id":"TEB_BADGE_ID-b","x1":"5.355","x2":"16.361","y1":"3.395","y2":"19.133","children":[{"tag":"stop","props":{"offset":"0","stopColor":"#f9e87f"}},{"tag":"stop","props":{"offset":".406","stopColor":"#e2b719"}},{"tag":"stop","props":{"offset":".989","stopColor":"#e2b719"}}]}},{"tag":"g","props":{"clipRule":"evenodd","fillRule":"evenodd","children":[{"tag":"path","props":{"d":"M13.324 3.848L11 1.6 8.676 3.848l-3.201-.453-.559 3.184L2.06 8.095 3.48 11l-1.42 2.904 2.856 1.516.559 3.184 3.201-.452L11 20.4l2.324-2.248 3.201.452.559-3.184 2.856-1.516L18.52 11l1.42-2.905-2.856-1.516-.559-3.184zm-7.09 7.575l3.428 3.428 5.683-6.206-1.347-1.247-4.4 4.795-2.072-2.072z","fill":"url(#TEB_BADGE_ID-a)"}},{"tag":"path","props":{"d":"M13.101 4.533L11 2.5 8.899 4.533l-2.895-.41-.505 2.88-2.583 1.37L4.2 11l-1.284 2.627 2.583 1.37.505 2.88 2.895-.41L11 19.5l2.101-2.033 2.895.41.505-2.88 2.583-1.37L17.8 11l1.284-2.627-2.583-1.37-.505-2.88zm-6.868 6.89l3.429 3.428 5.683-6.206-1.347-1.247-4.4 4.795-2.072-2.072z","fill":"url(#TEB_BADGE_ID-b)"}},{"tag":"path","props":{"d":"M6.233 11.423l3.429 3.428 5.65-6.17.038-.033-.005 1.398-5.683 6.206-3.429-3.429-.003-1.405.005.003z","fill":"#d18800"}}]}}]}}}},"government":{"tag":"svg","props":{"aria-hidden":true,"style":[{},null],"viewBox":"0 0 22 22","children":{"tag":"g","props":{"children":{"tag":"path","props":{"clipRule":"evenodd","d":"M12.05 2.056c-.568-.608-1.532-.608-2.1 0l-1.393 1.49c-.284.303-.685.47-1.1.455L5.42 3.932c-.832-.028-1.514.654-1.486 1.486l.069 2.039c.014.415-.152.816-.456 1.1l-1.49 1.392c-.608.568-.608 1.533 0 2.101l1.49 1.393c.304.284.47.684.456 1.1l-.07 2.038c-.027.832.655 1.514 1.487 1.486l2.038-.069c.415-.014.816.152 1.1.455l1.392 1.49c.569.609 1.533.609 2.102 0l1.393-1.49c.283-.303.684-.47 1.099-.455l2.038.069c.832.028 1.515-.654 1.486-1.486L18 14.542c-.015-.415.152-.815.455-1.099l1.49-1.393c.608-.568.608-1.533 0-2.101l-1.49-1.393c-.303-.283-.47-.684-.455-1.1l.068-2.038c.029-.832-.654-1.514-1.486-1.486l-2.038.07c-.415.013-.816-.153-1.1-.456zm-5.817 9.367l3.429 3.428 5.683-6.206-1.347-1.247-4.4 4.795-2.072-2.072z","fill":"#829aab","fillRule":"evenodd"}}}}}},"protected":{"tag":"svg","props":{"aria-hidden":true,"style":[{},null],"viewBox":"0 0 24 24","children":{"tag":"g","props":{"children":{"tag":"path","props":{"clipRule":"evenodd","d":"M12 1.5c2.761 0 5 2.239 5 5v.745c.22.06.431.138.638.235 1.045.495 1.887 1.337 2.381 2.382.267.563.378 1.165.43 1.849.052.673.051 1.505.051 2.539 0 1.034 0 1.866-.05 2.54-.053.683-.164 1.285-.43 1.848-.495 1.045-1.337 1.887-2.382 2.381-.563.267-1.165.378-1.849.43-.673.052-1.505.051-2.539.051h-2.5c-1.034 0-1.866 0-2.54-.05-.683-.053-1.285-.164-1.848-.43-1.045-.495-1.887-1.337-2.382-2.382-.266-.563-.377-1.165-.43-1.849-.05-.673-.05-1.505-.05-2.539 0-1.034 0-1.866.05-2.54.053-.683.164-1.285.43-1.848.495-1.045 1.337-1.887 2.382-2.382.207-.097.419-.174.638-.235V6.5c0-2.761 2.239-5 5-5zM9.5 15h5v-2h-5v2zM12 3.5c-1.657 0-3 1.343-3 3v.515C9.508 7 10.088 7 10.75 7h2.5l1.405.006c.119.002.234.006.345.009V6.5c0-1.657-1.343-3-3-3z","fillRule":"evenodd"}}}}}}};
 	// 797572 / 684246。2026-09-25の配信icons chunkから保存。
@@ -631,6 +648,24 @@ const module = undefined;
 			cleanups.push(view.dispose);
 			view.element.tebImage = view;
 			return view.element;
+		}
+		function quoteAvatar(user, part){
+			// 885048 ShapeClip: mediaと同じ背景div + semantic imgを形状ごと切り抜く。
+			const avatar = image({url:user.profile_image_url_https}, '');
+			avatar.dataset.tebPart = part;
+			avatar.dataset.testid = `UserAvatar-Container-${user.screen_name || 'unknown'}`;
+			const requested = user.profile_image_shape?.toLowerCase();
+			const shape = requested === 'square' ? 'square' : ['hex','hexagon'].includes(requested) ? 'hexagon' : 'circle';
+			avatar.dataset.tebAvatarShape = shape;
+			avatar.style.borderRadius = shape === 'circle' ? '50%' : shape === 'square' ? '8%' : '0';
+			if(shape === 'hexagon'){
+				const id=`teb-quote-avatar-hex-${++quoteAvatarSerial}`;
+				const svg=doc.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('width','0');svg.setAttribute('height','0');svg.setAttribute('aria-hidden','true');svg.style.position='absolute';
+				const clip=doc.createElementNS(svg.namespaceURI,'clipPath');clip.id=id;clip.setAttribute('clipPathUnits','objectBoundingBox');
+				const path=doc.createElementNS(svg.namespaceURI,'path');path.setAttribute('transform','scale(.005 .005319148936170213)');path.setAttribute('d','M193.248 69.51C185.95 54.1634 177.44 39.4234 167.798 25.43L164.688 20.96C160.859 15.4049 155.841 10.7724 149.998 7.3994C144.155 4.02636 137.633 1.99743 130.908 1.46004L125.448 1.02004C108.508-.340012 91.4873-.340012 74.5479 1.02004L69.0879 1.46004C62.3625 1.99743 55.8413 4.02636 49.9981 7.3994C44.155 10.7724 39.1367 15.4049 35.3079 20.96L32.1979 25.47C22.5561 39.4634 14.0458 54.2034 6.74789 69.55L4.39789 74.49C1.50233 80.5829 0 87.2441 0 93.99C0 100.736 1.50233 107.397 4.39789 113.49L6.74789 118.43C14.0458 133.777 22.5561 148.517 32.1979 162.51L35.3079 167.02C39.1367 172.575 44.155 177.208 49.9981 180.581C55.8413 183.954 62.3625 185.983 69.0879 186.52L74.5479 186.96C91.4873 188.32 108.508 188.32 125.448 186.96L130.908 186.52C137.638 185.976 144.163 183.938 150.006 180.554C155.85 177.17 160.865 172.526 164.688 166.96L167.798 162.45C177.44 148.457 185.95 133.717 193.248 118.37L195.598 113.43C198.493 107.337 199.996 100.676 199.996 93.93C199.996 87.1841 198.493 80.5229 195.598 74.43L193.248 69.51Z');
+				clip.append(path);svg.append(clip);avatar.prepend(svg);avatar.style.clipPath=`url(#${id})`;
+			}
+			return avatar;
 		}
 		function cashtagSearchUrl(restId, ticker){
 			const tag = `$${String(restId).replace(/^\$/, '')}`;
@@ -1318,7 +1353,14 @@ const module = undefined;
 			const cells = Array.from(group.children);
 			if(!cells.length){ group.remove(); return; }
 			group.dataset.tebMediaCount = String(cells.length);
-			if(cells.length === 1)return;
+			if(cells.length === 1){
+				if(cells[0].querySelector('[data-teb-image]')){
+					const frame = node('div', `${base} r-1kqtdi0 r-1phboty r-rs99b7 r-1867qdf r-1udh08x r-o7ynqc r-6416eg r-1ny4l3l`, 'mediaSingleFrame');
+					frame.append(cells[0]);
+					group.append(frame);
+				}
+				return;
+			}
 			if(!condensed && options.mediaLayout !== 'grid'){ arrangeCarousel(group, target, compact); return; }
 			group.dataset.tebLayout = 'grid';
 			group.style.aspectRatio = String(condensed ? 1 : 16 / 9);
@@ -1404,15 +1446,85 @@ const module = undefined;
 					cleanups.push(() => observer.disconnect());
 					imageView.cropLayer = layer;
 					a.append(img);
-					group.append(a);
+					let altButton = null, altDialog = null;
+					// 879747:_getMediaMemoized。ALTバッジは説明があり、投稿者本人か常時表示指定の場合だけ出る。
+					const showAltLabel = !!item.ext_alt_text && (options.withAltTextBadge === true || options.shouldShowAltLabelAlways === true || options.viewerId != null && String(options.viewerId) === String(tweet.user?.id_str));
+					if(showAltLabel){
+						const cell = node('div', base, 'mediaCell');
+						altButton = node('button', 'css-g5y9jx r-1loqt21 r-o7ynqc r-6416eg r-1ny4l3l r-105ug2t', 'mediaAltButton');
+						altButton.type = 'button';
+						const badge = node('div', 'css-g5y9jx r-1awozwy r-k200y r-z2wwpe r-z80fyv r-1777fci r-is05cd r-13w96dm r-105ug2t', 'mediaAltBadge');
+						const badgeText = node('div', 'css-146c3p1 r-bcqeeo r-qvutc0 r-1tl8opc r-q4m81j r-n6v787 r-1cwl3u0 r-b88u0q r-lrvibr', 'mediaAltBadgeText');
+						badgeText.textContent = 'ALT';badge.append(badgeText);altButton.append(badge);
+						altButton.setAttribute('aria-label', text('imageAltRead', 'Read image description'));
+						// 347940:HoverCard と 947032:position。ポータル内にhoverCardParentを作る。
+						const altLayer = doc.createElement('div');
+						altLayer.className = 'tweet-element-builder';
+						altLayer.dataset.tebUiVersion = '2026-09-17';
+						altLayer.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:0;z-index:2147483646;pointer-events:none;background:transparent;';
+						const mask = node('div', base, 'mediaAltMask');
+						const hoverParent = node('div', 'css-g5y9jx r-u8s1d', 'mediaAltHoverParent');hoverParent.dataset.testid = 'hoverCardParent';
+						const focusRoot = node('div', 'css-g5y9jx r-1pz39u2 r-16y2uox r-1wbh5a2', 'mediaAltFocusRoot');
+						const beforeGuard = node('div', base);beforeGuard.tabIndex = 0;
+						const focusGroup = node('div', 'css-g5y9jx r-1ny4l3l');focusGroup.setAttribute('role', 'group');focusGroup.tabIndex = 0;
+						const afterGuard = node('div', base);afterGuard.tabIndex = 0;
+						const frame = node('div', 'css-g5y9jx r-cl2sl0 r-1jyoszn r-1867qdf', 'mediaAltFrame');frame.dataset.testid = 'HoverCard';
+						const arrow = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');arrow.setAttribute('viewBox', '0 0 24 24');arrow.setAttribute('aria-hidden', 'true');arrow.dataset.tebPart = 'mediaAltArrow';
+						const arrowPath = doc.createElementNS('http://www.w3.org/2000/svg', 'path');arrowPath.setAttribute('d', 'M22 17H2L12 6l10 11z');arrow.append(arrowPath);
+						altDialog = node('div', 'css-g5y9jx r-t3ofa r-1vzmqqg r-1cj0bla r-494qqr', 'mediaAltDialog');
+						const altId = ++altSerial, titleId = `teb-alt-title-${altId}`, descriptionId = `teb-alt-description-${altId}`;
+						altDialog.setAttribute('role', 'dialog');altDialog.setAttribute('aria-labelledby', `${titleId} ${descriptionId}`);
+						const heading = node('h1', 'css-146c3p1 r-bcqeeo r-1ttztb7 r-qvutc0 r-1tl8opc r-yy2aun r-37tt59 r-b88u0q', 'mediaAltTitle');heading.id = titleId;heading.textContent = text('imageAltTitle', 'Image description');
+						const description = node('div', 'css-146c3p1', 'mediaAltDescription'); description.textContent = item.ext_alt_text;
+						description.id = descriptionId;
+						const hide = node('button', 'css-g5y9jx r-sdzlij r-1phboty r-rs99b7 r-lrvibr r-nsbfu8 r-19yznuf r-64el8z r-1fkl15p r-1loqt21 r-o7ynqc r-6416eg r-1ny4l3l', 'mediaAltHide');hide.type = 'button';hide.textContent = text('imageAltHide', 'Hide');
+						altDialog.append(heading, description, hide);
+						frame.append(arrow, altDialog);focusGroup.append(frame);focusRoot.append(beforeGuard, focusGroup, afterGuard);hoverParent.append(focusRoot);altLayer.append(mask, hoverParent);
+						function positionAlt(){
+							if(!altLayer.isConnected || !altButton.isConnected)return;
+							const rect = altButton.getBoundingClientRect(), width = hoverParent.offsetWidth, height = hoverParent.offsetHeight;
+							const viewport = doc.defaultView;
+							const center = rect.left + rect.width / 2;
+							const left = Math.max(0, Math.min(center - width / 2, viewport.innerWidth - width));
+							const spaceAbove = rect.top - 25, spaceBelow = viewport.innerHeight - rect.bottom - 25;
+							const above = spaceBelow < height && spaceAbove > spaceBelow;
+							hoverParent.style.left = `${left}px`;
+							hoverParent.style.top = `${viewport.scrollY + (above ? rect.top - height - 10 : rect.bottom + 10)}px`;
+							arrow.style.left = `${Math.max(0, Math.min(center - left - 12, width - 24))}px`;
+							arrow.dataset.tebDirection = above ? 'down' : 'up';
+						}
+						function closeAlt(){altLayer.remove();doc.removeEventListener('pointerdown', onOutside, true);doc.removeEventListener('keydown', onEscape);doc.defaultView.removeEventListener('scroll', positionAlt, true);doc.defaultView.removeEventListener('resize', positionAlt);altButton.setAttribute('aria-expanded', 'false');altButton.focus();}
+						function onOutside(event){if(!altDialog.contains(event.target) && event.target !== altButton)closeAlt();}
+						function onEscape(event){if(event.key === 'Escape'){event.preventDefault();closeAlt();}}
+						altButton.setAttribute('aria-haspopup', 'dialog');altButton.setAttribute('aria-expanded', 'false');
+						altButton.addEventListener('click', event => {
+							event.preventDefault();event.stopPropagation();
+							if(altLayer.isConnected){closeAlt();return;}
+							altLayer.dataset.tebTheme = container.closest('.tweet-element-builder')?.dataset.tebTheme || options.theme || 'dark';
+							doc.body.append(altLayer);altButton.setAttribute('aria-expanded', 'true');
+							positionAlt();
+							doc.addEventListener('pointerdown', onOutside, true);doc.addEventListener('keydown', onEscape);
+							doc.defaultView.addEventListener('scroll', positionAlt, true);doc.defaultView.addEventListener('resize', positionAlt);
+							hide.focus();
+						});
+						hide.addEventListener('click', closeAlt);
+						cleanups.push(() => {doc.removeEventListener('pointerdown', onOutside, true);doc.removeEventListener('keydown', onEscape);doc.defaultView.removeEventListener('scroll', positionAlt, true);doc.defaultView.removeEventListener('resize', positionAlt);altLayer.remove();});
+						cell.append(a, altButton);group.append(cell);
+					}else group.append(a);
 					imageView.preview = preview;
-					target.push({type: 'photo', id: item.id_str, element: img.tebImage.img, image: img.tebImage, link: a, original: picture, cropCandidates: item.original_info?.focus_rects});
+					target.push({type: 'photo', id: item.id_str, element: img.tebImage.img, image: img.tebImage, link: a, altButton, altDialog, original: picture, cropCandidates: item.original_info?.focus_rects});
 				}else if(['video', 'animated_gif', 'vine'].includes(item.type)){
 					const props = videoProps(item);
+					const isGif = item.type === 'animated_gif';
+					const player = node('div', `${base} r-1p0dtai r-1d2f490 r-u8s1d r-zchlnj r-ipm5af`, 'videoPlayer');
+					player.dataset.testid = 'videoPlayer';
+					player.dataset.tebPlayerMode = isGif ? 'gif' : media.length > 1 ? 'mini' : 'full';
+					if(props.poster?.width > 0 && props.poster?.height > 0)player.style.aspectRatio = `${props.poster.width} / ${props.poster.height}`;
+					const component = node('div', base, 'videoComponent');component.dataset.testid = 'videoComponent';
 					const video = node('video', 'r-13qz1uu');
-					video.controls = true;
+					video.controls = false;
 					video.playsInline = true;
-					video.preload = 'none';
+					video.preload = isGif ? 'auto' : 'none';
 					video.setAttribute('aria-label', item.ext_alt_text || tweet.post_video_description || text('video', 'Video'));
 					if(safeUrl(props.poster?.url))video.poster = safeUrl(props.poster.url);
 					// 配信順序を保持。最高bitrateは原版ではdownload用であり再生選択に流用しない。
@@ -1423,9 +1535,67 @@ const module = undefined;
 						source.type = variant.content_type;
 						video.append(source);
 					}
-					if(item.type === 'animated_gif'){ video.muted = true; video.loop = true; }
-					group.append(video);
-					target.push({type: item.type, id: item.id_str, element: video, props, variants: props.source.variants});
+					if(isGif)video.muted = true;
+					// 404167:_getLoopingThreshold。tweet動画は60秒以下、GIF/vineは常時loop。
+					video.loop = isGif || item.type === 'vine' || (props.durationMs > 0 && props.durationMs <= 60000);
+					component.append(video);player.append(component);
+					const posterButton = node('button', '', 'videoPosterButton');posterButton.type = 'button';posterButton.setAttribute('aria-label', text('videoPlay', 'Play video'));
+					const posterIcon = doc.createElementNS('http://www.w3.org/2000/svg','svg');posterIcon.setAttribute('viewBox','0 0 60 61');posterIcon.setAttribute('aria-hidden','true');
+					const circle = doc.createElementNS(posterIcon.namespaceURI,'circle');circle.setAttribute('cx','30');circle.setAttribute('cy','30.4219');circle.setAttribute('r','30');circle.setAttribute('fill','#333');circle.setAttribute('opacity','.6');
+					const triangle = doc.createElementNS(posterIcon.namespaceURI,'path');triangle.setAttribute('d','M22.2275 17.1971V43.6465L43.0304 30.4218L22.2275 17.1971Z');triangle.setAttribute('fill','#fff');posterIcon.append(circle,triangle);posterButton.append(posterIcon);player.append(posterButton);
+					const controls = node('div', base, 'videoControls');
+					const mini = node('div', `${base} r-18u37iz r-vampta r-u8s1d r-rki7wi r-1f55h46 r-633pao`, 'videoMiniUi');
+					mini.dataset.testid = 'video-player-mini-ui-';
+					const play = node('button', `${base} r-xoduu5 r-tuq35u r-105ug2t r-1loqt21 r-o7ynqc r-6416eg r-1ny4l3l`, 'videoPlay');play.type = 'button';
+					const playIcon = doc.createElementNS('http://www.w3.org/2000/svg','svg');playIcon.setAttribute('viewBox','0 0 24 24');playIcon.setAttribute('aria-hidden','true');
+					const playPath = doc.createElementNS(playIcon.namespaceURI,'path');playPath.setAttribute('d','M7.00 4.30L13.30 8.45L13.30 15.55L7.00 19.70Z M13.30 8.45L18.70 12.00L18.70 12.00L13.30 15.55Z');playIcon.append(playPath);play.append(playIcon);
+					const time = node('span', 'css-1jxf684', 'videoTime');
+					const seek = node('input', '', 'videoSeek');seek.type = 'range';seek.min = '0';seek.max = '1000';seek.value = '0';seek.setAttribute('aria-label', text('videoSeek', 'Seek'));
+					const volume = node('input', '', 'videoVolume');volume.type = 'range';volume.min = '0';volume.max = '100';volume.value = video.muted ? '0' : '100';volume.setAttribute('aria-label', text('videoVolume', 'Volume'));
+					const mute = node('button', '', 'videoMute');mute.type = 'button';
+					const icon = (button,path) => {const svg=doc.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('aria-hidden','true');const shape=doc.createElementNS(svg.namespaceURI,'path');shape.setAttribute('d',path);svg.append(shape);button.append(svg);return shape;};
+					const mutePath = icon(mute,'M14 22h-2.35l-.275-.219L6.648 18H4.5C2.567 18 1 16.433 1 14.5v-5C1 7.567 2.567 6 4.5 6h2.148l4.727-3.781.274-.219H14v20zM7.625 7.781L7.351 8H4.5C3.672 8 3 8.672 3 9.5v5c0 .828.672 1.5 1.5 1.5h2.85l.275.219 4.375 3.5V4.28l-4.375 3.5zM20.817 5.098C22.192 7.05 23 9.432 23 12c0 2.568-.808 4.95-2.183 6.902l-1.634-1.152C20.328 16.124 21 14.142 21 12s-.672-4.124-1.817-5.75l1.634-1.152z');
+					const settings = node('button', '', 'videoSettings');settings.type = 'button';settings.setAttribute('aria-label', text('videoSettings', 'Video settings'));icon(settings,'M10.54 1.75h2.92l1.57 2.36c.11.17.32.25.53.21l2.53-.59 2.17 2.17-.58 2.54c-.05.2.04.41.21.53l2.36 1.57v2.92l-2.36 1.57c-.17.12-.26.33-.21.53l.58 2.54-2.17 2.17-2.53-.59c-.21-.04-.42.04-.53.21l-1.57 2.36h-2.92l-1.58-2.36c-.11-.17-.32-.25-.52-.21l-2.54.59-2.17-2.17.58-2.54c.05-.2-.03-.41-.21-.53l-2.35-1.57v-2.92L4.1 8.97c.18-.12.26-.33.21-.53L3.73 5.9 5.9 3.73l2.54.59c.2.04.41-.04.52-.21l1.58-2.36zm1.07 2l-.98 1.47C10.05 6.08 9 6.5 7.99 6.27l-1.46-.34-.6.6.33 1.46c.24 1.01-.18 2.07-1.05 2.64l-1.46.98v.78l1.46.98c.87.57 1.29 1.63 1.05 2.64l-.33 1.46.6.6 1.46-.34c1.01-.23 2.06.19 2.64 1.05l.98 1.47h.78l.97-1.47c.58-.86 1.63-1.28 2.65-1.05l1.45.34.61-.6-.34-1.46c-.23-1.01.18-2.07 1.05-2.64l1.47-.98v-.78l-1.47-.98c-.87-.57-1.28-1.63-1.05-2.64l.34-1.46-.61-.6-1.45.34c-1.02.23-2.07-.19-2.65-1.05l-.97-1.47h-.78zM12 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5c.82 0 1.5-.67 1.5-1.5s-.68-1.5-1.5-1.5zM8.5 12c0-1.93 1.56-3.5 3.5-3.5 1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5c-1.94 0-3.5-1.57-3.5-3.5z');
+					const settingsMenu = node('div', base, 'videoSettingsMenu');settingsMenu.hidden = true;settingsMenu.setAttribute('role','menu');settings.setAttribute('aria-expanded','false');
+					for(const rate of [0.5,1,1.5,2]){const choice=node('button','','videoSpeed');choice.type='button';choice.setAttribute('role','menuitemradio');choice.setAttribute('aria-checked',String(rate===1));choice.textContent=`${rate}×`;choice.addEventListener('click',()=>{video.playbackRate=rate;for(const button of settingsMenu.children)button.setAttribute('aria-checked',String(button===choice));settingsMenu.hidden=true;settings.setAttribute('aria-expanded','false');});settingsMenu.append(choice);}
+					const pip = node('button', '', 'videoPictureInPicture');pip.type = 'button';pip.setAttribute('aria-label', text('videoPictureInPicture', 'Picture in picture'));icon(pip,'M3.457 2.04L9 7.59V3h2v8H3V9h4.586L2.043 3.46l1.414-1.42zM19.5 8H14V6h5.5C20.881 6 22 7.12 22 8.5v11c0 1.38-1.119 2.5-2.5 2.5h-11C7.119 22 6 20.88 6 19.5V14h2v5.5c0 .28.224.5.5.5h11c.276 0 .5-.22.5-.5v-11c0-.28-.224-.5-.5-.5z');
+					const full = node('button', '', 'videoFullscreen');full.type = 'button';full.setAttribute('aria-label', text('videoFullscreen', 'Fullscreen'));icon(full,'M13 3h8v8h-2V6.41l-5.043 5.05-1.414-1.42L17.586 5H13V3zm-1.543 10.96L6.414 19H11v2H3v-8h2v4.59l5.043-5.05 1.414 1.42z');
+					const formatTime = value => {const seconds = Number.isFinite(value) ? Math.max(0,Math.round(value)) : 0,hours = Math.floor(seconds / 3600),minutes = Math.floor(seconds % 3600 / 60),tail = String(seconds % 60).padStart(2,'0');return hours ? `${hours}:${String(minutes).padStart(2,'0')}:${tail}` : `${minutes}:${tail}`;};
+					const update = () => {
+						const playing = !video.paused && !video.ended;
+						play.setAttribute('aria-label', text(video.ended && !video.loop ? 'videoReplay' : playing ? 'videoPause' : 'videoPlay', video.ended && !video.loop ? 'Replay' : playing ? 'Pause' : 'Play'));
+						playPath.setAttribute('d', playing ? 'M6 6h3v12H6z M15 6h3v12h-3z' : 'M7.00 4.30L13.30 8.45L13.30 15.55L7.00 19.70Z M13.30 8.45L18.70 12.00L18.70 12.00L13.30 15.55Z');
+						const duration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : props.durationMs / 1000;
+						time.textContent = isGif ? 'GIF' : player.dataset.tebPlayerMode === 'full' ? `${formatTime(video.currentTime)} / ${formatTime(duration)}` : formatTime(video.ended && !video.loop ? duration : duration - video.currentTime);
+						posterButton.hidden = playing || video.currentTime > 0;
+						player.dataset.tebPlaying = String(playing);
+						seek.value = Number.isFinite(video.duration) && video.duration > 0 ? String(Math.round(video.currentTime / video.duration * 1000)) : '0';
+						seek.disabled = !(Number.isFinite(video.duration) && video.duration > 0);
+						mutePath.setAttribute('d',video.muted || video.volume === 0 ? 'M14 22h-2.35l-.275-.219L6.648 18H4.5C2.567 18 1 16.433 1 14.5v-5C1 7.567 2.567 6 4.5 6h2.148l4.727-3.781.274-.219H14v20zM7.625 7.781L7.351 8H4.5C3.672 8 3 8.672 3 9.5v5c0 .828.672 1.5 1.5 1.5h2.85l.275.219 4.375 3.5V4.28l-4.375 3.5zM17.707 7.293l-1.414 1.414L19.586 12l-3.293 3.293 1.414 1.414L21 13.414l3.293 3.293 1.414-1.414L22.414 12l3.293-3.293-1.414-1.414L21 10.586l-3.293-3.293z' : 'M14 22h-2.35l-.275-.219L6.648 18H4.5C2.567 18 1 16.433 1 14.5v-5C1 7.567 2.567 6 4.5 6h2.148l4.727-3.781.274-.219H14v20zM7.625 7.781L7.351 8H4.5C3.672 8 3 8.672 3 9.5v5c0 .828.672 1.5 1.5 1.5h2.85l.275.219 4.375 3.5V4.28l-4.375 3.5zM20.817 5.098C22.192 7.05 23 9.432 23 12c0 2.568-.808 4.95-2.183 6.902l-1.634-1.152C20.328 16.124 21 14.142 21 12s-.672-4.124-1.817-5.75l1.634-1.152z');
+						mute.setAttribute('aria-label', text(video.muted || video.volume === 0 ? 'videoUnmute' : 'videoMute', video.muted || video.volume === 0 ? 'Unmute' : 'Mute'));
+						volume.value = video.muted ? '0' : String(Math.round(video.volume * 100));
+					};
+					let gifUserPaused = false;
+					const togglePlay = () => {if(video.paused){gifUserPaused=false;video.play().catch(() => {});}else{gifUserPaused=true;video.pause();}};
+					play.addEventListener('click', togglePlay);
+					posterButton.addEventListener('click', togglePlay);
+					video.addEventListener('click', togglePlay);
+					seek.addEventListener('input', () => {if(Number.isFinite(video.duration) && video.duration > 0)video.currentTime = Number(seek.value) / 1000 * video.duration;});
+					volume.addEventListener('input', () => {video.volume = Number(volume.value) / 100;video.muted = video.volume === 0;update();});
+					mute.addEventListener('click', () => {video.muted = !video.muted;update();});
+					settings.addEventListener('click', () => {settingsMenu.hidden=!settingsMenu.hidden;settings.setAttribute('aria-expanded',String(!settingsMenu.hidden));});
+					pip.addEventListener('click', () => {if(doc.pictureInPictureElement === video)doc.exitPictureInPicture?.();else video.requestPictureInPicture?.().catch(() => {});});
+					full.addEventListener('click', () => {if(doc.fullscreenElement)doc.exitFullscreen?.();else player.requestFullscreen?.();});
+					for(const event of ['play','pause','ended','timeupdate','durationchange','volumechange'])video.addEventListener(event, update);
+					mini.append(play,time);controls.append(mini,seek,mute,volume,settings,pip,full);player.append(controls,settingsMenu);update();
+					let visibilityObserver = null;
+					if(isGif && options.autoplayGifs !== false && doc.defaultView.IntersectionObserver){
+						visibilityObserver = new doc.defaultView.IntersectionObserver(entries => {if(entries[0]?.isIntersecting){if(!gifUserPaused)video.play().catch(() => {});}else video.pause();},{threshold:.5});
+						visibilityObserver.observe(player);
+					}
+					cleanups.push(() => {visibilityObserver?.disconnect();video.pause();if(doc.fullscreenElement === player)doc.exitFullscreen?.();});
+					group.append(player);
+					target.push({type: item.type, id: item.id_str, element: video, player, controls: {play, time, seek, mute, volume, settings, pictureInPicture: pip, fullscreen: full}, props, variants: props.source.variants});
 					if(!video.children.length)notice('この動画にはブラウザで再生できるsourceがありません。Xで確認してください。');
 				}else notice(`未対応メディア: ${item.type}`);
 			}
@@ -1520,10 +1690,12 @@ const module = undefined;
 				let button = null;
 				if(state.showResults){
 					for(const cls of ['r-18u37iz', 'r-1awozwy', 'r-1wtj0ep'])row.classList.add(cls, `teb-${cls}`);
+					const result = card.type === 'image_poll' ? node('div', base, 'pollResult') : row;
+					if(result !== row)row.append(result);
 					const bar = node('div', '', 'pollBar');
 					bar.style.width = choice.barWidth;
 					bar.setAttribute('aria-hidden', 'true');
-					row.append(bar);
+					result.append(bar);
 					const label = node('span', 'css-1jxf684');
 					renderChoiceLabel(label,labelText);
 					if(choice.isSelected)label.append(doc.createTextNode(' ✓'));
@@ -1531,7 +1703,7 @@ const module = undefined;
 					const percentage = node('span', 'css-1jxf684');
 					percentage.textContent = `${choice.percentage}%`;
 					if(choice.isWinner)percentage.classList.add('r-b88u0q', 'teb-r-b88u0q');
-					row.append(label, percentage);
+					result.append(label, percentage);
 				}else{
 					button = node('button', 'css-1jxf684 r-13qz1uu', 'pollVote');
 					button.type = 'button';
@@ -1570,10 +1742,12 @@ const module = undefined;
 			function refreshStatus(){
 				const remaining = pollTimeLeft(card.endDatetimeUtc, options.now ?? Date.now());
 				const locale = options.locale;
-				const duration = remaining ? new Intl.NumberFormat(locale, {style: 'unit', unit: remaining.unit, unitDisplay: 'long'}).format(remaining.value) : '';
+				const formattedRemaining = remaining ? new Intl.NumberFormat(locale).format(remaining.value) : '';
 				const formattedVotes = new Intl.NumberFormat(locale).format(card.totalVotes);
-				const votes = text('pollVotes', `${formattedVotes} ${card.totalVotes === 1 ? 'vote' : 'votes'}`, [], {formattedCount: formattedVotes});
-				const label = card.isFinal ? text('pollEnded', 'Final results') : duration ? text('pollTimeLeft', `${duration} left`, {formattedCount: duration}) : '';
+				const votes = text('pollVotes', `${formattedVotes} ${card.totalVotes === 1 ? 'vote' : 'votes'}`, [formattedVotes]);
+				const timeKey = remaining ? {minute:'pollTimeLeftMinutes',hour:'pollTimeLeftHours',day:'pollTimeLeftDays'}[remaining.unit] : null;
+				const duration = remaining ? new Intl.NumberFormat(locale, {style:'unit', unit:remaining.unit, unitDisplay:'long'}).format(remaining.value) : '';
+				const label = card.isFinal ? text('pollEnded', 'Final results') : timeKey ? text(timeKey, `${duration} left`, [formattedRemaining]) : '';
 				status.textContent = `${votes}${label ? ' · ' + label : ''}`;
 			}
 			refreshStatus();
@@ -1731,8 +1905,7 @@ const module = undefined;
 				});
 			}
 			const header = node('div', `${base} r-18u37iz r-1awozwy`, 'quoteHeader');
-			const avatar = image({url: tweet.user.profile_image_url_https}, '');
-			avatar.dataset.tebPart = 'quoteAvatar';
+			const avatar = quoteAvatar(tweet.user, 'quoteAvatar');
 			const profileUrl = `https://x.com/${encodeURIComponent(tweet.user.screen_name)}`;
 			const author = withHeaderLinks ? link(tweet.user.name || '', profileUrl, 'profile') : node('span', 'css-1jxf684', 'quoteName');
 			if(!withHeaderLinks)author.textContent = tweet.user.name || '';
@@ -1848,7 +2021,9 @@ const module = undefined;
 			}
 			// 315101: 添付もrich contentもない引用でのみJetfuel frameを使う。
 			if(!hasMedia && !tweet.article && !tweet.card)renderJetfuel(tweet, element, target, true);
-			if(options.quoteLayout === 'condensed' && hasMedia){
+			// 398338:_richContentProps: timelineで元ポストにmediaがあれば引用は縮約する（明示指定は優先）。
+			const condensedQuote = options.quoteLayout === 'condensed' || options.quoteLayout == null && options.displayMode !== 'detail' && !!model.extended_entities?.media?.length;
+			if(condensedQuote && hasMedia){
 				// 392773:condensedContentBody/MediaSide/ContentSide (2:8)。
 				element.dataset.tebQuoteLayout = 'condensed';
 				const row = node('div', `${base} r-18u37iz`, 'quoteContent');
@@ -1864,6 +2039,57 @@ const module = undefined;
 				element.append(textContent);
 				quoteArticle(element);
 				target.mediaInfo = renderMedia(tweet, element, target.media, false, true);
+			}
+			// 376934.getNestedQuotePreviewTweet → 315101.NestedQuotePreview。
+			// 内側の引用は通常の引用カードを再帰描画せず、縦線付きの2行プレビューにする。
+			const nestedResult = raw?.nested_quoted_tweet_results?.result || raw?.quoted_status_result?.result || raw?.quoted_status;
+			const nestedRaw = nestedResult?.tweet || nestedResult;
+			let nested;
+			try{nested = nestedRaw ? normalize(nestedRaw) : null;}catch{nested = null;}
+			const hasRichSurface = item => !!item?.extended_entities?.media?.length && !item.possibly_sensitive || !!item?.article || !!item?.jetfuel_payload || !!item?.card && !isPoll(item.card.name);
+			const nestedMedia = (nested?.extended_entities?.media || []).filter(item => ['photo','video','animated_gif'].includes(item.type));
+			const canPreviewNested = options.withNestedQuotePreview !== false && nested && !nested.unavailable && nested.user?.screen_name && nested.id_str === tweet.quoted_status_id_str &&
+				!model.retweeted_status && !model.in_reply_to_status_id_str && tweet.quoted_status_id_str !== model.id_str &&
+				(!model.user?.id_str || model.user.id_str !== tweet.user.id_str) && tweet.user.id_str !== nested.user.id_str &&
+				!tweet.possibly_sensitive && !tweet.withheld_scope && !tweet.birdwatch_pivot &&
+				!nested.user.blocking && !nested.isDeleted && !nested.withheld_scope && !nested.tombstoneInfo && !nested.isPreviewDisplay && !nested.possibly_sensitive &&
+				!nested.article && !nested.jetfuel_payload && !nested.card && !nested.birdwatch_pivot &&
+				(nested.extended_entities?.media || []).every(item => ['photo','video','animated_gif'].includes(item.type) && !item.sensitive_media_warning) &&
+				Number(hasRichSurface(model)) + Number(hasRichSurface(tweet)) + Number(hasRichSurface(nested)) <= 1;
+			if(canPreviewNested){
+				const wrapper = node('div', base, 'quoteNestedWrapper');
+				wrapper.dataset.tebAfterBlock = String(!!tweet.extended_entities?.media?.length || !!tweet.article || !!tweet.card || !!tweet.jetfuel_payload);
+				const preview = node('div', `${base} r-18u37iz r-o7ynqc r-6416eg r-1ny4l3l r-1loqt21`, 'quoteNestedPreview');
+				preview.dataset.testid = 'nestedQuotePreview';preview.setAttribute('role','link');preview.tabIndex = 0;
+				const nestedUrl = `https://x.com/${encodeURIComponent(nested.user.screen_name)}/status/${encodeURIComponent(nested.id_str)}`;
+				const navigation = {element:preview,href:nestedUrl,kind:'tweet'};parts.navigation.push(navigation);
+				const activate = event => {if(event.type === 'keydown' && event.key !== 'Enter' || event.type === 'click' && event.button !== 0)return;event.preventDefault();event.stopPropagation();preview.dispatchEvent(new doc.defaultView.CustomEvent('teb:navigate',{bubbles:true,cancelable:true,detail:{...navigation,originalEvent:event}}));};
+				preview.addEventListener('click',activate);preview.addEventListener('keydown',activate);
+				cleanups.push(()=>{preview.removeEventListener('click',activate);preview.removeEventListener('keydown',activate);});
+				const bar = node('div','css-g5y9jx r-1fkb3t2 r-1jkafct r-1q142lx r-432wen','quoteNestedBar');
+				const content = node('div','css-g5y9jx r-13awgt0 r-1cwvpvk r-bcqeeo r-tskmnb','quoteNestedContent');
+				const nestedHeader = node('div',`${base} r-1awozwy r-18u37iz`,'quoteNestedHeader');
+				const nestedAvatar = quoteAvatar(nested.user,'quoteNestedAvatar');nestedHeader.append(nestedAvatar);
+				const nestedName = node('strong','css-1jxf684 r-rjixqe r-1udh08x','quoteNestedName');nestedName.textContent=nested.user.name || nested.user.screen_name;
+				const nestedHandle = node('span','css-1jxf684 r-rjixqe r-1udh08x','quoteNestedScreenName');nestedHandle.textContent=`@${nested.user.screen_name}`;
+				nestedHeader.append(nestedName,nestedHandle);
+				const nestedDate = new Date(nested.created_at);
+				if(Number.isFinite(nestedDate.getTime())){const stamp=node('time','css-1jxf684','quoteNestedTimestamp');stamp.dateTime=nestedDate.toISOString();stamp.textContent=new Intl.DateTimeFormat(options.locale,{...(options.timeZone ? {timeZone:options.timeZone} : {}),...(new Date(options.now ?? Date.now()).getFullYear() !== nestedDate.getFullYear() ? {year:'numeric'} : {}),month:'long',day:'numeric'}).format(nestedDate);nestedHeader.append(stamp);}
+				content.append(nestedHeader);
+				const [start,end]=nested.display_text_range || [0,Array.from(nested.text).length];
+				const nestedTextValue=textPort.decodeHtmlEntities(Array.from(nested.text).slice(start,end).join('').trim());
+				let nestedText=null,nestedThumbnail=null;
+				if(nestedMedia.length){
+					const row=node('div',`${base} r-18u37iz`,'quoteNestedMediaRow');
+					const media=nestedMedia[0];nestedThumbnail=image({url:media.media_url_https || media.media_url,alt:media.ext_alt_text || ''},'');nestedThumbnail.dataset.tebPart='quoteNestedThumbnail';nestedThumbnail.dataset.testid='nestedQuotePreviewMedia';
+					if(media.type==='video'){const playIcon=node('span','css-1jxf684','quoteNestedPlayIcon');playIcon.textContent='▶';nestedThumbnail.append(playIcon);}
+					if(nestedMedia.length>1){const extra=node('span','css-1jxf684','quoteNestedMediaCount');extra.textContent=`+${nestedMedia.length-1}`;nestedThumbnail.append(extra);}
+					row.append(nestedThumbnail);
+					if(nestedTextValue){const textSide=node('div',base,'quoteNestedMediaText');nestedText=node('div','css-1jxf684','quoteNestedText');nestedText.textContent=nestedTextValue;textSide.append(nestedText);row.append(textSide);}
+					content.append(row);
+				}else if(nestedTextValue){nestedText=node('div','css-1jxf684','quoteNestedText');nestedText.textContent=nestedTextValue;content.append(nestedText);}
+				preview.append(bar,content);wrapper.append(preview);element.append(wrapper);
+				target.nestedQuote={element:preview,wrapper,bar,content,header:nestedHeader,avatar:nestedAvatar,name:nestedName,screenName:nestedHandle,text:nestedText,thumbnail:nestedThumbnail,navigation,model:nested};
 			}
 			target.cashtags = [];
 			target.cashtagContainer = renderCashtags(tweet, element, target.cashtags, {inQuote:true});
@@ -1924,7 +2150,44 @@ const module = undefined;
 			}
 		}};
 	}
-	const api = Object.freeze({replyParticipants, mergeTaggedUsers, imageVersions, selectImageUrl, selectPreviewUrl, imageCrop, createImage, bindings, isPoll, convertCard, pollResults, pollChoiceOrder, pollTimeLeft, originalImage, videoProps, carouselLayout, mount, actionIcons, actionClasses, actionSvgClasses, authorIcons, verifiedDisplayType, labelTextFragments, labelTextHref, renderLabelText});
+	function mediaGridPreview(raw){
+		const tweet=raw?.tweet_results?.result || raw?.tweet || raw,media=tweet?.legacy?.extended_entities?.media || tweet?.extended_entities?.media || tweet?.legacy?.entities?.media || tweet?.entities?.media || [],first=media[0];
+		if(first)return {url:first.media_url_https || first.media_url,alt:first.ext_alt_text || '',link:first.expanded_url || tweet?.legacy?.permalink || tweet?.permalink,type:['video','vine'].includes(first.type)?'video':first.type,durationMs:first.video_info?.duration_millis || 0,multiple:media.length>1,media:first};
+		const card=tweet?.card?.legacy || tweet?.card;
+		for(const key of ['player_image_original','player_image','player_image_large','player_image_x_large','player_image_small','thumbnail_image_original','thumbnail_image','thumbnail_image_large','thumbnail_image_x_large','thumbnail_image_small']){
+			const value=card?.binding_values?.find(item=>item.key===key)?.value,image=value?.image_value || value?.image_val;
+			if(image?.url)return {url:image.url,alt:image.alt || '',link:tweet?.legacy?.permalink || tweet?.permalink,type:'card',durationMs:0,multiple:false,media:null};
+		}
+		return null;
+	}
+	function mediaGridImageUrl(url){try{const result=new URL(url);if(result.hostname!=='pbs.twimg.com')return result.href;const match=result.pathname.match(/\.(jpe?g|png|webp)$/i);if(match){result.pathname=result.pathname.slice(0,-match[0].length);result.searchParams.set('format',match[1].toLowerCase()==='jpeg'?'jpg':match[1].toLowerCase());}result.searchParams.set('name','360x360');return result.href;}catch{return url;}}
+	function mediaGridDuration(milliseconds){const seconds=Math.max(0,Math.round(milliseconds/1000)),minutes=Math.floor(seconds/60),hours=Math.floor(minutes/60);return hours?`${hours}:${String(minutes%60).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`:`${minutes}:${String(seconds%60).padStart(2,'0')}`;}
+	function createMediaGridTile(raw,{document:doc,preview=mediaGridPreview(raw)}={}){
+		if(!doc?.createElement || !preview?.url)return null;
+		if(!doc.getElementById('teb-media-grid-tile-styles-2026-09-17')){const style=doc.createElement('style');style.id='teb-media-grid-tile-styles-2026-09-17';style.textContent=`
+			[data-teb-grid-tile]{position:relative;display:block;width:100%;aspect-ratio:1;overflow:hidden;background:#16181c;color:#fff;text-decoration:none;cursor:pointer}
+			[data-teb-grid-tile]:focus-visible{outline:2px solid #1d9bf0;outline-offset:-2px}
+			[data-teb-grid-tile] [data-teb-part="mediaGridImage"]{position:absolute;inset:0;background-position:center;background-size:cover;transition:filter .2s}
+			[data-teb-grid-tile]:hover [data-teb-part="mediaGridImage"]{filter:brightness(.85)}
+			[data-teb-grid-tile] [data-teb-part="mediaGridImage"] img{display:block;width:100%;height:100%;opacity:0}
+			[data-teb-grid-tile] [data-teb-part="mediaGridDuration"]{position:absolute;left:8px;bottom:8px;display:flex;align-items:center;justify-content:center;padding:0 8px;border-radius:4px;background:rgba(0,0,0,.77);color:#fff;font:13px/16px "Segoe UI",Meiryo,system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
+			[data-teb-grid-tile] [data-teb-part="mediaGridGif"]{position:absolute;left:16px;bottom:10px;color:#fff;font:700 13px/16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;text-shadow:0 1px 2px #0009}
+			[data-teb-grid-tile] [data-teb-part="mediaGridLayers"]{position:absolute;right:8px;bottom:8px;width:20px;height:20px;fill:#fff}
+		`; (doc.head || doc.documentElement).append(style);}
+		const tweet=raw?.tweet_results?.result || raw?.tweet || raw,tweetId=tweet?.rest_id || tweet?.legacy?.id_str || tweet?.id_str,screenName=tweet?.core?.user_results?.result?.core?.screen_name || tweet?.user?.screen_name;
+		const tile=doc.createElement('a');tile.className='css-g5y9jx r-o7ynqc r-6416eg r-1ny4l3l r-1loqt21';tile.dataset.tebGridTile='2026-09-17';tile.dataset.tlbPart='mediaTile';tile.href=preview.link || (tweetId && screenName ? `https://x.com/${encodeURIComponent(screenName)}/status/${tweetId}/${preview.type==='video'||preview.type==='animated_gif'?'video':'photo'}/1` : '#');
+		const imageUrl=mediaGridImageUrl(preview.url),imageBox=doc.createElement('div');imageBox.dataset.tebPart='mediaGridImage';imageBox.dataset.tlbPart='mediaTileImage';imageBox.style.backgroundImage=`url(${JSON.stringify(imageUrl)})`;
+		const image=doc.createElement('img');image.src=imageUrl;image.loading='lazy';image.alt=preview.alt;image.draggable=true;imageBox.append(image);tile.append(imageBox);
+		if(preview.type==='video' || preview.type==='animated_gif'){const duration=doc.createElement('span');duration.dataset.tebPart=preview.type==='video'?'mediaGridDuration':'mediaGridGif';duration.dataset.tlbPart=preview.type==='video'?'mediaTileDuration':'mediaTileGif';duration.textContent=preview.type==='video'?mediaGridDuration(preview.durationMs):'GIF';tile.append(duration);}
+		if(preview.multiple){const icon=doc.createElementNS('http://www.w3.org/2000/svg','svg');icon.setAttribute('viewBox','0 0 24 24');icon.setAttribute('aria-hidden','true');icon.dataset.tebPart='mediaGridLayers';icon.dataset.tlbPart='mediaTileLayers';const path=doc.createElementNS(icon.namespaceURI,'path');path.setAttribute('d','M2 8.5C2 7.12 3.12 6 4.5 6h11C16.88 6 18 7.12 18 8.5v11c0 1.38-1.12 2.5-2.5 2.5h-11C3.12 22 2 20.88 2 19.5v-11zM19.5 4c.28 0 .5.22.5.5v13.45c1.14-.23 2-1.24 2-2.45v-11C22 3.12 20.88 2 19.5 2h-11c-1.21 0-2.22.86-2.45 2H19.5z');icon.append(path);tile.append(icon);}
+		return {element:tile,preview};
+	}
+	function createAuthorIcon(doc,kind,id){
+		const tree=authorIcons[kind];if(!tree)return null;
+		function build(part){const element=doc.createElementNS('http://www.w3.org/2000/svg',part.tag);for(const [key,value] of Object.entries(part.props || {})){if(['children','style','aria-hidden'].includes(key)||value==null)continue;element.setAttribute({clipRule:'clip-rule',fillRule:'fill-rule',stopColor:'stop-color'}[key] || key,String(value).replaceAll('TEB_BADGE_ID',id));}for(const child of [part.props?.children].flat().filter(Boolean))element.append(build(child));return element;}
+		return build(tree);
+	}
+	const api = Object.freeze({replyParticipants, mergeTaggedUsers, imageVersions, selectImageUrl, selectPreviewUrl, imageCrop, createImage, bindings, isPoll, convertCard, pollResults, pollChoiceOrder, pollTimeLeft, originalImage, videoProps, carouselLayout, mount, actionIcons, actionClasses, actionSvgClasses, authorIcons, createAuthorIcon, verifiedDisplayType, labelTextFragments, labelTextHref, renderLabelText, mediaGridPreview, createMediaGridTile});
 	if(typeof module === 'object' && module.exports)module.exports = api;
 	else root.TEBRich20260917 = api;
 })(globalThis);
@@ -1938,12 +2201,19 @@ const module = undefined;
 (function(root){
 	'use strict';
 	const version = '2026-09-17';
-	const css = `
+const css = `
+:where(.tweet-element-builder[data-teb-ui-version="2026-09-17"])[data-teb-profile-portal]{
+	position: absolute; top: 0; left: 0; width: 100%; height: 0; z-index: 2147483645; pointer-events: none; background: transparent;
+	&[data-teb-theme="light"]{ --teb-hover-card-background: rgb(255,255,255); }
+	&[data-teb-theme="dim"]{ --teb-hover-card-background: rgb(30,39,50); }
+	&[data-teb-theme="dark"]{ --teb-hover-card-background: rgb(20,20,20); }
+	& [data-teb-part="profileHoverParent"]{ position: absolute; width: 300px; max-width: calc(100vw - 30px); pointer-events: auto; }
+	& [data-teb-part="profileHoverFrame"]{ width: 100%; border-radius: 16px; overflow: hidden; background: var(--teb-hover-card-background, #141414); box-shadow: var(--teb-profile-shadow, 0 4px 12px rgba(0,0,0,.5), 0 0 2px rgba(0,0,0,.35)); }
+}
 :where(.tweet-element-builder[data-teb-ui-version="2026-09-17"])[data-teb-profile-layer]{
-	position: fixed; z-index: 10000; width: 300px; max-width: calc(100vw - 30px); min-height: 130px;
-	box-sizing: border-box; padding: 16px; border-radius: 16px; overflow: hidden;
-	background: var(--teb-profile-background, #141414); color: var(--teb-text, #e7e9ea);
-	box-shadow: var(--teb-profile-shadow, 0 4px 12px rgba(0,0,0,.5), 0 0 2px rgba(0,0,0,.35));
+	position: relative; width: 100%; min-height: 130px;
+	box-sizing: border-box; padding: 16px; overflow: hidden;
+	background: transparent; color: var(--teb-text, #e7e9ea);
 	font: 15px/20px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 	& [data-teb-part="profileTop"]{ display: flex; flex-direction: row; justify-content: space-between; }
 	& [data-teb-part="profileAvatar"]{ display: block; width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: var(--teb-profile-placeholder, #333639); }
@@ -1958,7 +2228,7 @@ const module = undefined;
 	& [data-teb-part="profileFollowsYou"]{ flex-shrink: 0; font-size: 11px; line-height: 12px; color: var(--teb-muted, #71767b); }
 	& [data-teb-part="profileDescription"]{ display: block; margin-top: 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
 	& [data-teb-part="profileDescription"] a{ color: var(--teb-link, #1d9bf0); }
-	& [data-teb-part="profileStats"]{ display: flex; flex-direction: row; flex-wrap: wrap; gap: 4px 20px; margin-top: 12px; font-size: 14px; line-height: 16px; }
+	& [data-teb-part="profileStats"]{ display: flex; flex-direction: row; flex-wrap: wrap; gap: 4px 20px; margin-top: 12px; font-size: 15px; line-height: 20px; }
 	& [data-teb-part="profileStatLabel"]{ color: var(--teb-muted, #71767b); }
 	& [data-teb-part="profileStats"] strong{ font-weight: 700; }
 	& [data-teb-part="profileFollow"]{ display: inline-flex; align-items: center; justify-content: center; border: 1px solid transparent; border-radius: 9999px; min-height: 36px; min-width: 36px; padding: 0 16px; font-family: inherit; font-size: 15px; font-weight: 700; line-height: 20px; cursor: pointer; white-space: nowrap; color: var(--teb-profile-button-text, #0f1419); background: var(--teb-profile-button, #eff3f4); transition: background-color .2s; }
@@ -1981,7 +2251,9 @@ const module = undefined;
 }`;
 	function normalizeUser(raw = {}){
 		const user = {...(raw.legacy || raw), ...raw.core, ...raw.relationship_perspectives};
-		for(const [key, value] of Object.entries({id_str: raw.rest_id, profile_image_url_https: raw.avatar?.image_url, description: raw.profile_bio?.description, protected: raw.privacy?.protected, verified: raw.verification?.verified, verified_type: raw.verification?.verified_type, is_blue_verified: raw.is_blue_verified}))if(value !== undefined)user[key] = value;
+		for(const [key, value] of Object.entries({id_str: raw.rest_id, profile_image_url_https: raw.avatar?.image_url, description: raw.profile_bio?.description, entities: raw.profile_bio?.entities, protected: raw.privacy?.protected, verified: raw.verification?.verified, verified_type: raw.verification?.verified_type, is_blue_verified: raw.is_blue_verified}))if(value !== undefined)user[key] = value;
+		if(user.friends_count == null && raw.relationship_counts?.following != null)user.friends_count = raw.relationship_counts.following;
+		if(user.followers_count == null && raw.relationship_counts?.followers != null)user.followers_count = raw.relationship_counts.followers;
 		if(raw.affiliates_highlighted_label?.label)user.highlightedLabel = raw.affiliates_highlighted_label.label;
 		for(const key of ['creator_subscriptions_count', 'has_hidden_subscriptions_on_profile'])if(raw[key] !== undefined)user[key] = raw[key];
 		return user;
@@ -2020,7 +2292,7 @@ const module = undefined;
 		const fallback = `${shown.join(', ')}${count > shown.length ? ` and ${count - shown.length} others` : ''} follow this account`;
 		return text('knownFollowers', fallback, {count, names: shown});
 	}
-	// 947032: 通常のdown/center横位置。固定配置はDOMアダプター。
+	// 947032: 通常のdown/center横位置。表示層ではscrollYを加えた文書座標へ変換する。
 	function position(anchor, width, height, viewportWidth, viewportHeight){
 		const below = viewportHeight - anchor.bottom - 25, above = anchor.top - 25;
 		const up = below < height && above > below;
@@ -2031,18 +2303,19 @@ const module = undefined;
 		left = Math.max(0, Math.min(left, viewportWidth - width));
 		return {left, top: Math.max(0, up ? anchor.top - 10 - height : anchor.bottom + 10)};
 	}
-	function attach({view, options, node, safeUrl, richPort, textPort, normalize, renderBadges}){
+	function attach({view, options, node, safeUrl, richPort, textPort, normalize, renderBadges, profileTargets}){
 		const doc = view.element.ownerDocument, win = doc.defaultView;
 		const uiText = options.uiText || ((key, fallback) => fallback);
 		if(!doc.querySelector('style[data-teb-profile-styles]')){
 			const style = doc.createElement('style'); style.dataset.tebProfileStyles = version; style.textContent = css; doc.head.append(style);
 		}
-		let anchor = null, layer = null, image = null, enterTimer, leaveTimer, disposed = false, request = null, generation = 0, cardHovered = false, actionCleanup = null, badgeCleanup = null;
+		let anchor = null, layer = null, portal = null, hoverParent = null, hoverFrame = null, image = null, enterTimer, leaveTimer, disposed = false, request = null, generation = 0, cardHovered = false, actionCleanup = null, badgeCleanup = null;
 		let knownFollowers = null, knownGeneration = 0, knownRequest = null, followPending = false, justFollowed = false;
 		const faceImages = [];
 		const parts = {element: null, user: null, navigation: [], actions: null};
 		function emit(type, detail){return view.element.dispatchEvent(new win.CustomEvent(type, {bubbles: true, cancelable: true, detail}));}
 		function targets(){
+			if(typeof profileTargets === 'function')return profileTargets();
 			const state = view.getState(), author = view.parts.author;
 			const items = [author.avatarLink, author.profileLink, author.screenName].map(element => ({element, user: state.user}));
 			if(view.parts.repost?.link)items.push({element: view.parts.repost.link, user: view.parts.repost.user});
@@ -2067,7 +2340,7 @@ const module = undefined;
 		function clearTimers(){win.clearTimeout(enterTimer); win.clearTimeout(leaveTimer);}
 		function clearContent(){actionCleanup?.(); actionCleanup = null; badgeCleanup?.(); badgeCleanup = null; image?.dispose(); image = null; for(const image of faceImages)image.dispose(); faceImages.length = 0;}
 		function close(){
-			clearTimers(); generation++; request?.abort(); request = null; clearContent(); layer?.remove(); layer = null; anchor = null; cardHovered = false;
+			clearTimers(); generation++; request?.abort(); request = null; clearContent(); portal?.remove(); portal = null; hoverParent = null; hoverFrame = null; layer = null; anchor = null; cardHovered = false;
 			knownGeneration++; knownRequest?.abort(); knownRequest = null; knownFollowers = null; followPending = false; justFollowed = false;
 			for(const key of Object.keys(parts))delete parts[key];
 			Object.assign(parts, {element: null, user: null, navigation: [], actions: null});
@@ -2075,13 +2348,13 @@ const module = undefined;
 		function scheduleClose(){win.clearTimeout(leaveTimer); leaveTimer = win.setTimeout(() => {if(!cardHovered)close();}, 300);}
 		function layout(){
 			if(!anchor?.isConnected){close();return;}
-			const p = position(anchor.getBoundingClientRect(), layer.offsetWidth, layer.offsetHeight, win.innerWidth, win.innerHeight);
-			layer.style.left = `${p.left}px`; layer.style.top = `${p.top}px`;
+			const p = position(anchor.getBoundingClientRect(), hoverParent.offsetWidth, hoverParent.offsetHeight, win.innerWidth, win.innerHeight);
+			hoverParent.style.left = `${p.left}px`; hoverParent.style.top = `${win.scrollY + p.top}px`;
 			layer.style.maxHeight = `${Math.max(0, win.innerHeight - p.top - 15)}px`; layer.style.overflowY = 'auto';
 		}
-		function link(part, label, href){
+		function link(part, label, href, kind = 'profile'){
 			const el = node('a', 'css-1jxf684', part); el.textContent = label;
-			const url = safeUrl(href); if(url){el.href = url;parts.navigation.push({element: el, href: url, kind: 'profile'});}
+			const url = safeUrl(href); if(url){el.href = url;parts.navigation.push({element: el, href: url, kind});}
 			return el;
 		}
 		function render(raw){
@@ -2125,9 +2398,12 @@ const module = undefined;
 			if(allow.description && user.description){
 				// 418631のentity描画を既存の本文parserへ適合。自動検出/withheld置換は未移植。
 				const text = user.description;
-				for(const item of textPort.tweetTextParts(text, [0, Array.from(text).length], user.entities?.description || {})){
-					const label = `${item.prefix || ''}${item.text || ''}`, url = safeUrl(item.expandedUrl || item.url);
-					description.append(url ? link('profileDescriptionLink', label, url) : doc.createTextNode(label));
+				for(const item of textPort.descriptionTextParts(text, user.entities || {})){
+					const label = item.entityType === 'url' ? item.displayUrl || item.expandedUrl || item.url || '' : `${item.prefix || ''}${item.text || ''}`;
+					// 746144: external URL keeps the t.co destination while displaying display_url.
+					const expanded = safeUrl(item.expandedUrl || item.url), isExternal = expanded && !['x.com', 'twitter.com'].includes(new URL(expanded).hostname);
+					const url = safeUrl(item.entityType === 'url' && isExternal ? item.url || item.expandedUrl : item.expandedUrl || item.url);
+					description.append(url ? link('profileDescriptionLink', label, url, 'entity') : doc.createTextNode(label));
 				}
 				layer.append(description);
 			}
@@ -2138,7 +2414,9 @@ const module = undefined;
 			if(allow.stats)for(const [key, label, path] of statFields){
 				if(user[key] == null)continue; // 不明値を0と捏造しない。
 				const stat = allow.statsWithLink ? link('profileStat', '', `${href}/${path}`) : node('span', 'css-1jxf684', 'profileStat');
-				const count = node('strong', 'css-1jxf684'); count.textContent = new Intl.NumberFormat(options.locale).format(user[key]);
+				const count = node('strong', 'css-1jxf684');
+				// 251182 -> 683347.Gf: below 10k use full digits, otherwise compact with truncation.
+				count.textContent = new Intl.NumberFormat(options.locale, Number(user[key]) >= 10000 ? {notation: 'compact', maximumFractionDigits: 1, roundingMode: 'trunc'} : undefined).format(user[key]);
 				const text = node('span', 'css-1jxf684', 'profileStatLabel'); text.textContent = ` ${label}`;
 				stat.append(count, text); stats.append(stat);
 			}
@@ -2200,10 +2478,17 @@ const module = undefined;
 		async function open(target){
 			if(disposed || win.innerWidth < 360 || !target.element.isConnected)return;
 			close(); anchor = target.element; const token = generation;
+			portal = doc.createElement('div');portal.className = 'tweet-element-builder';portal.dataset.tebUiVersion = version;portal.dataset.tebProfilePortal = '';
+			portal.dataset.tebTheme = view.element.dataset.tebTheme || options.theme || 'dark';
+			hoverParent = node('div', 'css-g5y9jx r-u8s1d', 'profileHoverParent');hoverParent.dataset.testid = 'hoverCardParent';
+			hoverFrame = node('div', 'css-g5y9jx r-cl2sl0 r-1jyoszn r-1867qdf r-1udh08x', 'profileHoverFrame');hoverFrame.dataset.testid = 'HoverCard';
 			layer = node('section', 'r-cl2sl0 r-1jyoszn r-1867qdf r-1udh08x r-nsbfu8 r-1ipicw7 r-1r5jyh0'); layer.classList.add('tweet-element-builder'); layer.dataset.tebUiVersion = version; layer.dataset.tebProfileLayer = ''; layer.setAttribute('aria-label', uiText('profile', 'Profile'));
 			// portalでも呼出元のテーマを引き継ぐ。
 			const style = win.getComputedStyle(view.element);
-			for(const name of ['--teb-text', '--teb-muted', '--teb-link', '--teb-background', '--teb-profile-background', '--teb-profile-shadow', '--teb-profile-button', '--teb-profile-button-text', '--teb-profile-button-border'])layer.style.setProperty(name, style.getPropertyValue(name));
+			for(const name of ['--teb-text', '--teb-muted', '--teb-link', '--teb-background', '--teb-profile-background', '--teb-profile-shadow', '--teb-profile-button', '--teb-profile-button-text', '--teb-profile-button-border']){
+				portal.style.setProperty(name, style.getPropertyValue(name));layer.style.setProperty(name, style.getPropertyValue(name));
+			}
+			hoverFrame.append(layer);hoverParent.append(hoverFrame);portal.append(hoverParent);
 			layer.addEventListener('pointerenter', () => {cardHovered = true;win.clearTimeout(leaveTimer);});
 			layer.addEventListener('pointerleave', () => {cardHovered = false;scheduleClose();});
 			layer.addEventListener('focusin', () => {cardHovered = true;win.clearTimeout(leaveTimer);});
@@ -2212,7 +2497,7 @@ const module = undefined;
 				const link = event.target.closest('a[href]'); if(!link)return;
 				if(!emit('teb:navigate', {element: link, href: link.href, kind: 'profile', originalEvent: event}))event.preventDefault();
 			});
-			doc.body.append(layer); parts.element = layer; render(target.user);
+			doc.body.append(portal); parts.element = layer;parts.hoverCardParent = hoverParent;parts.hoverCard = hoverFrame;render(target.user);
 			if(!options.resolveProfile){void loadKnownFollowers(parts.user, token);return;}
 			request = new win.AbortController(); layer.setAttribute('aria-busy', 'true');
 			try{
@@ -2301,6 +2586,9 @@ const module = undefined;
 	& [data-teb-part="pollVideo"]{ display:block; width:100%; max-height:510px; margin-top:12px; border-radius:12px; background:#000; object-fit:contain; }
 	& [data-teb-part="avatar"]{ width: 40px; height: 40px; object-fit: cover; }
 	& [data-teb-part="avatarLink"]{ width: 40px; height: 40px; }
+	& [data-teb-part="avatarCell"]{ align-self:stretch; }
+	& [data-teb-part="conversationBottomLine"]{ width:2px; min-height:8px; margin-top:4px; flex:1 1 auto; background:var(--teb-conversation-line); }
+	& [data-teb-part="conversationBottomLine"][hidden]{ display:none; }
 	& [data-teb-part="authorLabel"]{ display: flex; max-width: 100%; align-items: flex-start; margin-top: 4px; color: var(--teb-muted, #71767b); font-size: 15px; line-height: 20px; text-decoration: none; }
 	& [data-teb-part="authorLabel"]:is(:hover,:focus-visible) [data-teb-part="authorLabelText"]{ text-decoration: underline; }
 	& [data-teb-part="authorLabelIcon"]{ width: 17px; height: 17px; margin-top: 1px; margin-inline-end: 4px; flex: 0 0 auto; color: var(--teb-muted, #71767b); }
@@ -2581,6 +2869,10 @@ const module = undefined;
 		model.text = legacy.withheld_text || legacy.full_text || legacy.text || '';
 		model.entities = legacy.withheld_text ? legacy.withheld_entities || {} : legacy.entities || {};
 		model.display_text_range = legacy.display_text_range || [0, model.text.length];
+		model.is_translatable = raw.is_translatable ?? legacy.is_translatable ?? false;
+		// 336715: availabilityだけでは本文を置換しない。利用可能なdataを翻訳モデルへ渡す。
+		const availableTranslation = raw.grok_translated_post_with_availability;
+		model.grok_translated_post = availableTranslation?.is_available ? copy(availableTranslation.data || {}) : copy(raw.grok_translated_post || legacy.grok_translated_post || null);
 		model.card = raw.card?.legacy ? {...raw.card.legacy, url: raw.card.legacy.url || raw.card.rest_id} : raw.card;
 		model.author_community_relationship = raw.author_community_relationship || legacy.author_community_relationship;
 		// 336715: APIのjetfuel_attachment.payloadはTweetモデルのjetfuel_payloadになる。
@@ -2670,6 +2962,8 @@ const module = undefined;
 	}
 	function tweetElementBuilder(input, options = {}){
 		if(!textPort || !savedCss || !richPort)throw new Error('text.js、styles.js、rich.jsを先に読み込んでください。');
+		const snapshot = input?.__tebViewSnapshotVersion === version ? input : null;
+		if(snapshot)options = {...options,...snapshot.settings,document:options.document};
 		if((options.uiVersion || version) !== version)throw new RangeError('未対応のUIバージョンです。');
 		if(options.mediaLayout != null && !['carousel', 'grid'].includes(options.mediaLayout))throw new RangeError('mediaLayoutはcarouselまたはgridです。');
 		if(options.displayMode != null && !['timeline', 'detail'].includes(options.displayMode))throw new RangeError('displayModeはtimelineまたはdetailです。');
@@ -2690,14 +2984,15 @@ const module = undefined;
 			}catch{return fallback;}
 		}
 		options.uiText = uiText;
-		const envelope = normalize(input);
+		const envelope = snapshot ? null : normalize(input);
 		// 376934:getOriginalTweet。操作・本文・著者はリポスト元に属する。
-		const repost = !envelope.unavailable && envelope.retweeted_status ? {id: envelope.id_str, user: envelope.user} : null;
-		const model = repost ? normalize(envelope.retweeted_status) : envelope;
+		const repost = snapshot ? copy(snapshot.repost) : !envelope.unavailable && envelope.retweeted_status ? {id: envelope.id_str, user: envelope.user} : null;
+		const model = snapshot ? copy(snapshot.model) : repost ? normalize(envelope.retweeted_status) : envelope;
+		let showGrokTranslation = snapshot ? !!snapshot.ui?.showGrokTranslation : typeof model.grok_translated_post?.translation === 'string';
 		let disposed = false;
 		let selectedTheme = 'dark', themeObserver = null;
-		let noteExpanded = false;
-		let promotedExpanded = false;
+		let noteExpanded = !!snapshot?.ui?.noteExpanded;
+		let promotedExpanded = !!snapshot?.ui?.promotedExpanded;
 		let richView = null;
 		const articleEmbeddedTweets = new Map();
 		installStyles(doc);
@@ -2727,7 +3022,7 @@ const module = undefined;
 		const headerSlot = node('div', `${base} r-ttdzmv`);
 		const row = node('div', `${base} r-18u37iz`);
 		row.dataset.tebPart = 'authorRow';
-		const avatarCell = node('div', `${base} r-onrtq4 r-1wron08 r-1awozwy`);
+		const avatarCell = node('div', `${base} r-onrtq4 r-1wron08 r-1awozwy`, 'avatarCell');
 		avatarCell.dataset.testid = 'Tweet-User-Avatar';
 		const avatarLink = node('a', base, 'avatarLink');
 		// 885048 ShapeClip.hex: 200x188の原版pathをobjectBoundingBoxへ正規化する。
@@ -2747,7 +3042,10 @@ const module = undefined;
 		avatar.alt = '';
 		avatar.hidden = true;
 		avatarLink.append(avatarShapeSvg, avatarImage.element);
-		avatarCell.append(avatarLink);
+		const conversationBottomLine = node('div', `${base}`, 'conversationBottomLine');
+		conversationBottomLine.hidden = true;
+		conversationBottomLine.setAttribute('aria-hidden', 'true');
+		avatarCell.append(avatarLink, conversationBottomLine);
 		const content = node('div', `${base} r-1iusvr4 r-16y2uox r-kzbkwu`);
 		const identity = node('div', `${base} r-18u37iz r-1awozwy r-zl2h9q`);
 		identity.dataset.tebPart = 'identity';
@@ -2771,6 +3069,17 @@ const module = undefined;
 		const tweetMenu = node('div', base, 'tweetMenu'); tweetMenu.hidden = true; tweetMenu.setAttribute('role', 'menu'); menuLayer.append(tweetMenu);
 		identity.append(nameLine, screenName, menuButton);
 		const text = node('div', textClasses, 'text');
+		const translationHeader = node('div', `${base} r-1s2bzr4`, 'translationHeader');
+		const translationIcon = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');
+		translationIcon.dataset.tebPart = 'translationIcon'; translationIcon.setAttribute('viewBox', '0 0 33 32'); translationIcon.setAttribute('aria-hidden', 'true');
+		const translationIconPath = doc.createElementNS('http://www.w3.org/2000/svg', 'path');
+		translationIconPath.setAttribute('d', 'M12.745 20.54l10.97-8.19c.539-.4 1.307-.244 1.564.38 1.349 3.288.746 7.241-1.938 9.955-2.683 2.714-6.417 3.31-9.83 1.954l-3.728 1.745c5.347 3.697 11.84 2.782 15.898-1.324 3.219-3.255 4.216-7.692 3.284-11.693l.008.009c-1.351-5.878.332-8.227 3.782-13.031L33 0l-4.54 4.59v-.014L12.743 20.544m-2.263 1.987c-3.837-3.707-3.175-9.446.1-12.755 2.42-2.449 6.388-3.448 9.852-1.979l3.72-1.737c-.67-.49-1.53-1.017-2.515-1.387-4.455-1.854-9.789-.931-13.41 2.728-3.483 3.523-4.579 8.94-2.697 13.561 1.405 3.454-.899 5.898-3.22 8.364C1.49 30.2.666 31.074 0 32l10.478-9.466');
+		translationIcon.append(translationIconPath);
+		const translationLabel = node('span', 'css-1jxf684 r-n6v787 r-1cwl3u0', 'translationLabel');
+		const translationButton = node('button', 'css-1jxf684 r-1loqt21', 'translationButton');
+		translationButton.type = 'button';
+		translationHeader.append(translationIcon, translationLabel, translationButton);
+		translationHeader.hidden = true;
 		const showMore = node('button', 'css-1jxf684', 'showMore');
 		showMore.type = 'button';
 		showMore.textContent = uiText('showMore', 'Show more');
@@ -2785,7 +3094,7 @@ const module = undefined;
 		const permalink = node('a', 'css-1jxf684', 'permalink');
 		// 互換用の参照だけ残す。原版にない補助リンクは表示しない。
 		permalink.hidden = true;
-		content.append(identity, authorLabel, replyContext, text, attachments, notices, permalink);
+		content.append(identity, authorLabel, replyContext, translationHeader, text, attachments, notices, permalink);
 		const detailBody = node('div', base, 'detailBody');
 		const metadata = node('div', 'css-1jxf684', 'metadata');
 		const editLabel = node('a', 'css-1jxf684', 'editLabel');
@@ -2823,11 +3132,11 @@ const module = undefined;
 		const parts = {
 			root: element,
 			repost: repost ? {element: socialContext, link: repostLink, icon: repostIcon, id: repost.id, user: copy(repost.user)} : null,
-			author: {avatar, avatarImage, avatarLink, avatarShapeDefinition: avatarShapeSvg, avatarClipPath, profileLink: name, name, screenName, badges, label: authorLabel, labelIcon: authorLabelIcon, labelText: authorLabelText, affiliate: null},
+			author: {avatar, avatarImage, avatarCell, avatarLink, conversationBottomLine, avatarShapeDefinition: avatarShapeSvg, avatarClipPath, profileLink: name, name, screenName, badges, label: authorLabel, labelIcon: authorLabelIcon, labelText: authorLabelText, affiliate: null},
 			menu: {button: menuButton, element: tweetMenu, layer: menuLayer, items: []},
 			timestamp: {element: time, link: timestampLink}, views: viewsLink, metadata,
 			edit: {label: editLabel, staleCallout: staleEditCallout, staleText: staleEditText, staleLink: staleEditLink},
-			text: {element: text, links: []},
+			text: {element: text, links: [], translationHeader, translationIcon, translationLabel, translationButton},
 			replyContext: {element: replyContext, participants: [], links: []},
 			permalink, attachments, notices, navigation: [], actions: {}, actionCells: {}, actionCounts: {}, actionsContainer: null,
 			media: [], inlineMedia: [], carousels: [], cashtags: [], grokShare: null, grokFollowups: null, jetfuel: null, article: null, card: null, quote: null, poll: null, communityNote: null,
@@ -2841,7 +3150,7 @@ const module = undefined;
 		}
 		const actionFields = {reply: ['reply_count'], repost: ['retweet_count', 'retweeted'], like: ['favorite_count', 'favorited'], analytics: ['views'], bookmark: ['bookmark_count', 'bookmarked'], share: [null]};
 		const actionLabels = {reply: uiText('replyAction', 'Reply'), repost: uiText('repostAction', 'Repost'), like: uiText('likeAction', 'Like'), analytics: uiText('viewPostAnalytics', 'View post analytics'), bookmark: uiText('bookmarkAction', 'Bookmark'), share: uiText('shareAction', 'Share')};
-		const actionOverrides = {};
+		const actionOverrides = snapshot?.ui?.actionOverrides ? copy(snapshot.ui.actionOverrides) : {};
 		let actionContainerWidth = Number.isFinite(options.actionContainerWidth) ? options.actionContainerWidth : Infinity;
 		const footer = node('div', `${base} r-18u37iz`, 'actions');
 		parts.actionsContainer = footer;
@@ -2939,7 +3248,18 @@ const module = undefined;
 		function getTheme(){return selectedTheme;}
 		element.addEventListener('keydown',handleShortcut);
 		parts.text.showMore = showMore;
-		const view = {element, parts, warnings, uiVersion: version, displayMode: options.displayMode, setExpanded, setDisplayMode, setTheme, getTheme, refreshTimestamp: updateMetadata, setCreatedAt, setViewCount, setReplyCount, setQuoteCount, setReplySort, setEditControl, setAvatarShape, setAuthorBadges, setAuthorLabel, setAvatar, setAvater: setAvatar, setScreenName, setName, setText, setId, setCard, setPollTranslations, setMedia, setQuote, setJetfuelPayload, setCommunityNote, setCashtagAttachments, setGrokShareAttachment, setGrokAnalysisFollowups, setArticleEmbeddedTweet, setActionState, setMenuItems, openMenu, closeMenu, setShareItems, openShareMenu, closeShareMenu, refreshLayout, getState, dispose};
+		const view = {element, parts, warnings, uiVersion: version, displayMode: options.displayMode, setExpanded, setDisplayMode, setConversationBottomLine, setTheme, getTheme, refreshTimestamp: updateMetadata, setCreatedAt, setViewCount, setReplyCount, setQuoteCount, setReplySort, setEditControl, setAvatarShape, setAuthorBadges, setAuthorLabel, setAvatar, setAvater: setAvatar, setScreenName, setName, setText, setTranslation, setId, setCard, setPollTranslations, setMedia, setQuote, setJetfuelPayload, setCommunityNote, setCashtagAttachments, setGrokShareAttachment, setGrokAnalysisFollowups, setArticleEmbeddedTweet, setActionState, setMenuItems, openMenu, closeMenu, setShareItems, openShareMenu, closeShareMenu, refreshLayout, getState, getSnapshot, dispose};
+		translationButton.addEventListener('click', event => {
+			if(disposed)return;
+			if(typeof model.grok_translated_post?.translation !== 'string'){
+				element.dispatchEvent(new doc.defaultView.CustomEvent('teb:translation-request', {bubbles: true, cancelable: true, detail: {id: model.id_str, sourceLanguage: model.lang, originalEvent: event, view}}));
+				return;
+			}
+			showGrokTranslation = !showGrokTranslation;
+			updateText();
+			element.dispatchEvent(new doc.defaultView.CustomEvent('teb:translation-toggle', {bubbles: true, detail: {translated: showGrokTranslation, view}}));
+		});
+		function setConversationBottomLine(value){assertActive();conversationBottomLine.hidden = !value;return view;}
 		let menuItems = [], menuOpen = false;
 		function positionFloatingMenu(button, menu){
 			const rect = button.getBoundingClientRect(), viewportWidth = doc.defaultView.innerWidth, viewportHeight = doc.defaultView.innerHeight;
@@ -3099,19 +3419,9 @@ const module = undefined;
 			if(model.unavailable)return;
 			const type = richPort.verifiedDisplayType(user);
 			const entries = [...(type === 'none' ? [] : [type === 'blue' ? 'verified' : type])];
-			function svgNode(tree){
-				const svgElement = doc.createElementNS('http://www.w3.org/2000/svg', tree.tag);
-				for(const [key, value] of Object.entries(tree.props || {})){
-					if(['children', 'style', 'aria-hidden'].includes(key) || value == null)continue;
-					const attr = {clipRule: 'clip-rule', fillRule: 'fill-rule', stopColor: 'stop-color'}[key] || key;
-					svgElement.setAttribute(attr, String(value).replaceAll('TEB_BADGE_ID', `teb-badge-${badgeSerial}`));
-				}
-				for(const child of [tree.props?.children].flat().filter(Boolean))svgElement.append(svgNode(child));
-				return svgElement;
-			}
 			for(const kind of entries){
 				++badgeSerial;
-				const icon = svgNode(richPort.authorIcons[kind]);
+				const icon = richPort.createAuthorIcon(doc,kind,`teb-badge-${badgeSerial}`);
 				const classes = richPort.actionSvgClasses.split(' ');
 				icon.setAttribute('class', [...classes, ...classes.map(cls => `teb-${cls}`)].join(' '));
 				icon.dataset.testid = kind === 'protected' ? 'icon-lock' : 'icon-verified';
@@ -3128,22 +3438,16 @@ const module = undefined;
 				target.append(affiliate); if(target === badges)parts.author.affiliate = affiliate;
 			}
 			if(displayContext === 'content' && (user.has_super_follower || model.has_super_follower)){
-				const icon = svgNode(richPort.authorIcons.subscriber), classes = richPort.actionSvgClasses.split(' ');
+				const icon = richPort.createAuthorIcon(doc,'subscriber',`teb-badge-${++badgeSerial}`), classes = richPort.actionSvgClasses.split(' ');
 				icon.setAttribute('class',[...classes,...classes.map(cls=>`teb-${cls}`)].join(' '));icon.dataset.testid='icon-subscriber';icon.setAttribute('role','img');icon.setAttribute('aria-label',uiText('subscriber','Subscriber'));icon.dataset.tebBadge='subscriber';target.append(icon);
 			}
 			const translatorType = String(user.translator_type || '').toLowerCase();
 			if(displayContext !== 'content' && ['badged','moderator'].includes(translatorType)){
-				const icon = svgNode(richPort.authorIcons.translator), classes = richPort.actionSvgClasses.split(' ');
+				const icon = richPort.createAuthorIcon(doc,'translator',`teb-badge-${++badgeSerial}`), classes = richPort.actionSvgClasses.split(' ');
 				icon.setAttribute('class',[...classes,...classes.map(cls=>`teb-${cls}`)].join(' '));icon.setAttribute('role','img');icon.setAttribute('aria-label',uiText('translator','Translator'));icon.dataset.tebBadge='translator';icon.dataset.tebTranslatorType=translatorType;target.append(icon);
 			}
 			if(user.protected){
-				const id = `teb-badge-${++badgeSerial}`;
-				function svgNode(tree){
-					const node = doc.createElementNS('http://www.w3.org/2000/svg', tree.tag);
-					for(const [key, value] of Object.entries(tree.props || {})){if(['children','style','aria-hidden'].includes(key)||value==null)continue;node.setAttribute({clipRule:'clip-rule',fillRule:'fill-rule',stopColor:'stop-color'}[key]||key,String(value).replaceAll('TEB_BADGE_ID',id));}
-					for(const child of [tree.props?.children].flat().filter(Boolean))node.append(svgNode(child)); return node;
-				}
-				const icon = svgNode(richPort.authorIcons.protected), classes = richPort.actionSvgClasses.split(' '); icon.setAttribute('class',[...classes,...classes.map(cls=>`teb-${cls}`)].join(' '));icon.dataset.testid='icon-lock';icon.setAttribute('role','img');icon.setAttribute('aria-label',uiText('protectedAccount','Protected account'));icon.dataset.tebBadge='protected';target.append(icon);
+				const icon = richPort.createAuthorIcon(doc,'protected',`teb-badge-${++badgeSerial}`), classes = richPort.actionSvgClasses.split(' '); icon.setAttribute('class',[...classes,...classes.map(cls=>`teb-${cls}`)].join(' '));icon.dataset.testid='icon-lock';icon.setAttribute('role','img');icon.setAttribute('aria-label',uiText('protectedAccount','Protected account'));icon.dataset.tebBadge='protected';target.append(icon);
 			}
 			if(target === badges)updateAuthorLabel();
 			return {affiliate: target.querySelector('[data-teb-badge="affiliate"]'), dispose:()=>disposeBadgeImages(target)};
@@ -3305,6 +3609,27 @@ const module = undefined;
 			if(model.unavailable)return;
 			const articleBody = options.displayMode === 'detail' && !model.isPreviewDisplay && model.article?.content_state?.blocks?.length;
 			text.hidden = !!articleBody;
+			const translation = model.grok_translated_post;
+			const hasTranslation = typeof translation?.translation === 'string';
+			if(!hasTranslation)showGrokTranslation = false;
+			const canRequestTranslation = !hasTranslation && !!model.is_translatable && !model.user.protected;
+			translationHeader.hidden = !!articleBody || (!hasTranslation && !canRequestTranslation);
+			translationHeader.dataset.tebTranslationStatus = hasTranslation ? showGrokTranslation ? 'translated' : 'original' : 'available';
+			if(hasTranslation && showGrokTranslation){
+				let sourceName = translation.localized_source_language;
+				if(!sourceName && translation.source_language){
+					try{ sourceName = new Intl.DisplayNames([options.locale], {type: 'language'}).of(translation.source_language); }catch{}
+				}
+				translationLabel.textContent = sourceName ? uiText('translatedFrom', `Translated from ${sourceName}`, [sourceName]) : uiText('translatedByGrok', 'Translated by Grok');
+				translationButton.textContent = uiText('showOriginal', 'Show original');
+			}else{
+				translationLabel.textContent = '';
+				translationButton.textContent = hasTranslation ? uiText('showTranslation', 'Show translation') : uiText('translatePost', 'Translate post');
+			}
+			translationLabel.hidden = !translationLabel.textContent;
+			translationIcon.hidden = !translationLabel.textContent;
+			translationButton.setAttribute('aria-label', translationButton.textContent);
+			text.dataset.tebTranslation = hasTranslation && showGrokTranslation ? 'translated' : 'original';
 			if(articleBody){
 				text.replaceChildren(); parts.text.links.splice(0, parts.text.links.length); showMore.hidden = true; text.style.removeProperty('display'); text.style.removeProperty('-webkit-line-clamp'); text.style.removeProperty('-webkit-box-orient'); text.style.removeProperty('overflow'); text.after(showMore); refreshNavigation();
 				element.dispatchEvent(new doc.defaultView.CustomEvent('teb:partschange', {detail: {part: 'text', view}})); return;
@@ -3314,8 +3639,13 @@ const module = undefined;
 			const mediaCount = model.extended_entities?.media?.length || 0;
 			// 398338:_renderTweetText → 842122:Xe。詳細では長文本文を選択する。
 			// 398338:_renderTweetTextHWTweetのisExpanded → 842122:Xe。
-			const note = (noteExpanded || options.displayMode === 'detail' && options.expandNote !== false) && model.note_tweet;
-			const textModel = note && typeof note.text === 'string' ? {...model, text: note.text, entities: note.entity_set || {}, display_text_range: [0, note.text.length]} : model;
+			const translated = hasTranslation && showGrokTranslation;
+			text.lang = translated ? translation.destination_language || '' : model.lang || '';
+			const note = !translated && (noteExpanded || options.displayMode === 'detail' && options.expandNote !== false) && model.note_tweet;
+			const translationPreview = translated && !noteExpanded && typeof translation.preview_translation === 'string';
+			const translatedText = translationPreview ? translation.preview_translation : translation?.translation;
+			const translatedEntities = translationPreview ? Object.fromEntries(Object.entries(translation.entities || {}).map(([key, values]) => [key, Array.isArray(values) ? values.filter(value => !value.indices || value.indices[1] <= translatedText.length) : values])) : translation?.entities || {};
+			const textModel = translated ? {...model, text: translatedText, entities: translatedEntities, display_text_range: [0, translatedText.length]} : note && typeof note.text === 'string' ? {...model, text: note.text, entities: note.entity_set || {}, display_text_range: [0, note.text.length]} : model;
 			let items = textPort.displayParts(textModel, {
 				withMediaLinks: !mediaCount || parts.media.length !== mediaCount,
 				withQuoteLinks: !parts.quote || parts.quote.unavailable,
@@ -3369,7 +3699,8 @@ const module = undefined;
 				fragment.append(child);
 			}
 			text.replaceChildren(fragment);
-			const noteShowMore = !note && !!model.note_tweet?.is_expandable && typeof model.note_tweet?.text === 'string';
+			const translationShowMore = !!translationPreview;
+			const noteShowMore = !translated && !note && !!model.note_tweet?.is_expandable && typeof model.note_tweet?.text === 'string';
 			// 398338:_renderTweetTextHWTweet。広告のcard/media付き本文のみ、既定2行に制限する。
 			const promotedLines = options.promotedMaxTextLines ?? 2;
 			const promotedShowMore = options.displayMode === 'timeline' && !!options.promotedContent && !promotedExpanded && !noteShowMore && promotedLines > 0 && !!(model.card || mediaCount);
@@ -3377,7 +3708,7 @@ const module = undefined;
 			text.style.webkitLineClamp = promotedShowMore ? String(promotedLines) : '';
 			text.style.webkitBoxOrient = promotedShowMore ? 'vertical' : '';
 			text.style.overflow = promotedShowMore ? 'hidden' : '';
-			showMore.hidden = !noteShowMore && !promotedShowMore;
+			showMore.hidden = !translationShowMore && !noteShowMore && !promotedShowMore;
 			showMore.setAttribute('aria-expanded', String(!!note || promotedExpanded));
 			text.after(showMore);
 			refreshNavigation();
@@ -3577,10 +3908,20 @@ const module = undefined;
 			model.text = value;
 			// 明示setterは詳細表示の長文データより優先する。
 			delete model.note_tweet;
+			delete model.grok_translated_post;
+			showGrokTranslation = false;
 			model.entities = copy(entities);
 			model.display_text_range = [0, value.length];
 			updateText();
 			updateWarnings();
+			return view;
+		}
+		function setTranslation(value){
+			assertActive();
+			if(value !== null && (typeof value !== 'object' || typeof value.translation !== 'string'))throw new TypeError('translationを含むオブジェクトまたはnullを指定してください。');
+			model.grok_translated_post = value === null ? null : copy(value);
+			showGrokTranslation = value !== null;
+			updateText();
 			return view;
 		}
 		function setId(value){
@@ -3591,6 +3932,15 @@ const module = undefined;
 			return view;
 		}
 		function getState(){ return copy(model); }
+		function getSnapshot(){
+			assertActive();
+			return {
+				__tebViewSnapshotVersion:version,
+				model:copy(model),repost:copy(repost),
+				settings:{theme:options.theme,displayMode:options.displayMode,textVersion:options.textVersion,locale:options.locale,pollTranslations:options.pollTranslations == null ? null : [...options.pollTranslations]},
+				ui:{noteExpanded,promotedExpanded,showGrokTranslation,replySort,actionOverrides:copy(actionOverrides),conversationBottomLine:!conversationBottomLine.hidden,menuItems:menuItems.map(item=>({...item})),shareItems:shareItems.map(item=>({...item}))},
+			};
+		}
 		let actionResizeObserver = null;
 		if(typeof doc.defaultView.ResizeObserver === 'function'){
 			actionResizeObserver = new doc.defaultView.ResizeObserver(entries => {const width=entries[0]?.contentRect?.width;if(width>0)refreshLayout(width);});
@@ -3607,8 +3957,10 @@ const module = undefined;
 		if(!model.unavailable)updateText();
 		else identity.hidden = true;
 		updateWarnings();
-		setMenuItems(options.menuItems || []);
-		setShareItems(options.shareItems);
+		setMenuItems(snapshot?.ui?.menuItems || options.menuItems || []);
+		setShareItems(snapshot?.ui?.shareItems || options.shareItems);
+		if(snapshot?.ui?.replySort)setReplySort(snapshot.ui.replySort);
+		if(snapshot?.ui?.conversationBottomLine !== undefined)setConversationBottomLine(snapshot.ui.conversationBottomLine);
 		if(profilePort && options.withProfileHover !== false){
 			profileView = profilePort.attach({view, options, node, safeUrl, richPort, textPort, normalize, renderBadges: updateBadges});
 			parts.profileHover = profileView.parts;
@@ -3617,6 +3969,9 @@ const module = undefined;
 	}
 	tweetElementBuilder.versions = Object.freeze([version]);
 	tweetElementBuilder.normalize = normalize;
+	tweetElementBuilder.installStyles = installStyles;
+	tweetElementBuilder.mediaGridPreview = richPort.mediaGridPreview;
+	tweetElementBuilder.createMediaGridTile = richPort.createMediaGridTile;
 	tweetElementBuilder.detectTheme = detectTheme;
 	tweetElementBuilder.themes = themes;
 	tweetElementBuilder.i18n = i18nPort;

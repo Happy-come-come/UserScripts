@@ -4,12 +4,19 @@
 (function(root){
 	'use strict';
 	const version = '2026-09-17';
-	const css = `
+const css = `
+:where(.tweet-element-builder[data-teb-ui-version="2026-09-17"])[data-teb-profile-portal]{
+	position: absolute; top: 0; left: 0; width: 100%; height: 0; z-index: 2147483645; pointer-events: none; background: transparent;
+	&[data-teb-theme="light"]{ --teb-hover-card-background: rgb(255,255,255); }
+	&[data-teb-theme="dim"]{ --teb-hover-card-background: rgb(30,39,50); }
+	&[data-teb-theme="dark"]{ --teb-hover-card-background: rgb(20,20,20); }
+	& [data-teb-part="profileHoverParent"]{ position: absolute; width: 300px; max-width: calc(100vw - 30px); pointer-events: auto; }
+	& [data-teb-part="profileHoverFrame"]{ width: 100%; border-radius: 16px; overflow: hidden; background: var(--teb-hover-card-background, #141414); box-shadow: var(--teb-profile-shadow, 0 4px 12px rgba(0,0,0,.5), 0 0 2px rgba(0,0,0,.35)); }
+}
 :where(.tweet-element-builder[data-teb-ui-version="2026-09-17"])[data-teb-profile-layer]{
-	position: fixed; z-index: 10000; width: 300px; max-width: calc(100vw - 30px); min-height: 130px;
-	box-sizing: border-box; padding: 16px; border-radius: 16px; overflow: hidden;
-	background: var(--teb-profile-background, #141414); color: var(--teb-text, #e7e9ea);
-	box-shadow: var(--teb-profile-shadow, 0 4px 12px rgba(0,0,0,.5), 0 0 2px rgba(0,0,0,.35));
+	position: relative; width: 100%; min-height: 130px;
+	box-sizing: border-box; padding: 16px; overflow: hidden;
+	background: transparent; color: var(--teb-text, #e7e9ea);
 	font: 15px/20px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 	& [data-teb-part="profileTop"]{ display: flex; flex-direction: row; justify-content: space-between; }
 	& [data-teb-part="profileAvatar"]{ display: block; width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: var(--teb-profile-placeholder, #333639); }
@@ -24,7 +31,7 @@
 	& [data-teb-part="profileFollowsYou"]{ flex-shrink: 0; font-size: 11px; line-height: 12px; color: var(--teb-muted, #71767b); }
 	& [data-teb-part="profileDescription"]{ display: block; margin-top: 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
 	& [data-teb-part="profileDescription"] a{ color: var(--teb-link, #1d9bf0); }
-	& [data-teb-part="profileStats"]{ display: flex; flex-direction: row; flex-wrap: wrap; gap: 4px 20px; margin-top: 12px; font-size: 14px; line-height: 16px; }
+	& [data-teb-part="profileStats"]{ display: flex; flex-direction: row; flex-wrap: wrap; gap: 4px 20px; margin-top: 12px; font-size: 15px; line-height: 20px; }
 	& [data-teb-part="profileStatLabel"]{ color: var(--teb-muted, #71767b); }
 	& [data-teb-part="profileStats"] strong{ font-weight: 700; }
 	& [data-teb-part="profileFollow"]{ display: inline-flex; align-items: center; justify-content: center; border: 1px solid transparent; border-radius: 9999px; min-height: 36px; min-width: 36px; padding: 0 16px; font-family: inherit; font-size: 15px; font-weight: 700; line-height: 20px; cursor: pointer; white-space: nowrap; color: var(--teb-profile-button-text, #0f1419); background: var(--teb-profile-button, #eff3f4); transition: background-color .2s; }
@@ -47,7 +54,9 @@
 }`;
 	function normalizeUser(raw = {}){
 		const user = {...(raw.legacy || raw), ...raw.core, ...raw.relationship_perspectives};
-		for(const [key, value] of Object.entries({id_str: raw.rest_id, profile_image_url_https: raw.avatar?.image_url, description: raw.profile_bio?.description, protected: raw.privacy?.protected, verified: raw.verification?.verified, verified_type: raw.verification?.verified_type, is_blue_verified: raw.is_blue_verified}))if(value !== undefined)user[key] = value;
+		for(const [key, value] of Object.entries({id_str: raw.rest_id, profile_image_url_https: raw.avatar?.image_url, description: raw.profile_bio?.description, entities: raw.profile_bio?.entities, protected: raw.privacy?.protected, verified: raw.verification?.verified, verified_type: raw.verification?.verified_type, is_blue_verified: raw.is_blue_verified}))if(value !== undefined)user[key] = value;
+		if(user.friends_count == null && raw.relationship_counts?.following != null)user.friends_count = raw.relationship_counts.following;
+		if(user.followers_count == null && raw.relationship_counts?.followers != null)user.followers_count = raw.relationship_counts.followers;
 		if(raw.affiliates_highlighted_label?.label)user.highlightedLabel = raw.affiliates_highlighted_label.label;
 		for(const key of ['creator_subscriptions_count', 'has_hidden_subscriptions_on_profile'])if(raw[key] !== undefined)user[key] = raw[key];
 		return user;
@@ -86,7 +95,7 @@
 		const fallback = `${shown.join(', ')}${count > shown.length ? ` and ${count - shown.length} others` : ''} follow this account`;
 		return text('knownFollowers', fallback, {count, names: shown});
 	}
-	// 947032: 通常のdown/center横位置。固定配置はDOMアダプター。
+	// 947032: 通常のdown/center横位置。表示層ではscrollYを加えた文書座標へ変換する。
 	function position(anchor, width, height, viewportWidth, viewportHeight){
 		const below = viewportHeight - anchor.bottom - 25, above = anchor.top - 25;
 		const up = below < height && above > below;
@@ -97,18 +106,19 @@
 		left = Math.max(0, Math.min(left, viewportWidth - width));
 		return {left, top: Math.max(0, up ? anchor.top - 10 - height : anchor.bottom + 10)};
 	}
-	function attach({view, options, node, safeUrl, richPort, textPort, normalize, renderBadges}){
+	function attach({view, options, node, safeUrl, richPort, textPort, normalize, renderBadges, profileTargets}){
 		const doc = view.element.ownerDocument, win = doc.defaultView;
 		const uiText = options.uiText || ((key, fallback) => fallback);
 		if(!doc.querySelector('style[data-teb-profile-styles]')){
 			const style = doc.createElement('style'); style.dataset.tebProfileStyles = version; style.textContent = css; doc.head.append(style);
 		}
-		let anchor = null, layer = null, image = null, enterTimer, leaveTimer, disposed = false, request = null, generation = 0, cardHovered = false, actionCleanup = null, badgeCleanup = null;
+		let anchor = null, layer = null, portal = null, hoverParent = null, hoverFrame = null, image = null, enterTimer, leaveTimer, disposed = false, request = null, generation = 0, cardHovered = false, actionCleanup = null, badgeCleanup = null;
 		let knownFollowers = null, knownGeneration = 0, knownRequest = null, followPending = false, justFollowed = false;
 		const faceImages = [];
 		const parts = {element: null, user: null, navigation: [], actions: null};
 		function emit(type, detail){return view.element.dispatchEvent(new win.CustomEvent(type, {bubbles: true, cancelable: true, detail}));}
 		function targets(){
+			if(typeof profileTargets === 'function')return profileTargets();
 			const state = view.getState(), author = view.parts.author;
 			const items = [author.avatarLink, author.profileLink, author.screenName].map(element => ({element, user: state.user}));
 			if(view.parts.repost?.link)items.push({element: view.parts.repost.link, user: view.parts.repost.user});
@@ -133,7 +143,7 @@
 		function clearTimers(){win.clearTimeout(enterTimer); win.clearTimeout(leaveTimer);}
 		function clearContent(){actionCleanup?.(); actionCleanup = null; badgeCleanup?.(); badgeCleanup = null; image?.dispose(); image = null; for(const image of faceImages)image.dispose(); faceImages.length = 0;}
 		function close(){
-			clearTimers(); generation++; request?.abort(); request = null; clearContent(); layer?.remove(); layer = null; anchor = null; cardHovered = false;
+			clearTimers(); generation++; request?.abort(); request = null; clearContent(); portal?.remove(); portal = null; hoverParent = null; hoverFrame = null; layer = null; anchor = null; cardHovered = false;
 			knownGeneration++; knownRequest?.abort(); knownRequest = null; knownFollowers = null; followPending = false; justFollowed = false;
 			for(const key of Object.keys(parts))delete parts[key];
 			Object.assign(parts, {element: null, user: null, navigation: [], actions: null});
@@ -141,13 +151,13 @@
 		function scheduleClose(){win.clearTimeout(leaveTimer); leaveTimer = win.setTimeout(() => {if(!cardHovered)close();}, 300);}
 		function layout(){
 			if(!anchor?.isConnected){close();return;}
-			const p = position(anchor.getBoundingClientRect(), layer.offsetWidth, layer.offsetHeight, win.innerWidth, win.innerHeight);
-			layer.style.left = `${p.left}px`; layer.style.top = `${p.top}px`;
+			const p = position(anchor.getBoundingClientRect(), hoverParent.offsetWidth, hoverParent.offsetHeight, win.innerWidth, win.innerHeight);
+			hoverParent.style.left = `${p.left}px`; hoverParent.style.top = `${win.scrollY + p.top}px`;
 			layer.style.maxHeight = `${Math.max(0, win.innerHeight - p.top - 15)}px`; layer.style.overflowY = 'auto';
 		}
-		function link(part, label, href){
+		function link(part, label, href, kind = 'profile'){
 			const el = node('a', 'css-1jxf684', part); el.textContent = label;
-			const url = safeUrl(href); if(url){el.href = url;parts.navigation.push({element: el, href: url, kind: 'profile'});}
+			const url = safeUrl(href); if(url){el.href = url;parts.navigation.push({element: el, href: url, kind});}
 			return el;
 		}
 		function render(raw){
@@ -191,9 +201,12 @@
 			if(allow.description && user.description){
 				// 418631のentity描画を既存の本文parserへ適合。自動検出/withheld置換は未移植。
 				const text = user.description;
-				for(const item of textPort.tweetTextParts(text, [0, Array.from(text).length], user.entities?.description || {})){
-					const label = `${item.prefix || ''}${item.text || ''}`, url = safeUrl(item.expandedUrl || item.url);
-					description.append(url ? link('profileDescriptionLink', label, url) : doc.createTextNode(label));
+				for(const item of textPort.descriptionTextParts(text, user.entities || {})){
+					const label = item.entityType === 'url' ? item.displayUrl || item.expandedUrl || item.url || '' : `${item.prefix || ''}${item.text || ''}`;
+					// 746144: external URL keeps the t.co destination while displaying display_url.
+					const expanded = safeUrl(item.expandedUrl || item.url), isExternal = expanded && !['x.com', 'twitter.com'].includes(new URL(expanded).hostname);
+					const url = safeUrl(item.entityType === 'url' && isExternal ? item.url || item.expandedUrl : item.expandedUrl || item.url);
+					description.append(url ? link('profileDescriptionLink', label, url, 'entity') : doc.createTextNode(label));
 				}
 				layer.append(description);
 			}
@@ -204,7 +217,9 @@
 			if(allow.stats)for(const [key, label, path] of statFields){
 				if(user[key] == null)continue; // 不明値を0と捏造しない。
 				const stat = allow.statsWithLink ? link('profileStat', '', `${href}/${path}`) : node('span', 'css-1jxf684', 'profileStat');
-				const count = node('strong', 'css-1jxf684'); count.textContent = new Intl.NumberFormat(options.locale).format(user[key]);
+				const count = node('strong', 'css-1jxf684');
+				// 251182 -> 683347.Gf: below 10k use full digits, otherwise compact with truncation.
+				count.textContent = new Intl.NumberFormat(options.locale, Number(user[key]) >= 10000 ? {notation: 'compact', maximumFractionDigits: 1, roundingMode: 'trunc'} : undefined).format(user[key]);
 				const text = node('span', 'css-1jxf684', 'profileStatLabel'); text.textContent = ` ${label}`;
 				stat.append(count, text); stats.append(stat);
 			}
@@ -266,10 +281,17 @@
 		async function open(target){
 			if(disposed || win.innerWidth < 360 || !target.element.isConnected)return;
 			close(); anchor = target.element; const token = generation;
+			portal = doc.createElement('div');portal.className = 'tweet-element-builder';portal.dataset.tebUiVersion = version;portal.dataset.tebProfilePortal = '';
+			portal.dataset.tebTheme = view.element.dataset.tebTheme || options.theme || 'dark';
+			hoverParent = node('div', 'css-g5y9jx r-u8s1d', 'profileHoverParent');hoverParent.dataset.testid = 'hoverCardParent';
+			hoverFrame = node('div', 'css-g5y9jx r-cl2sl0 r-1jyoszn r-1867qdf r-1udh08x', 'profileHoverFrame');hoverFrame.dataset.testid = 'HoverCard';
 			layer = node('section', 'r-cl2sl0 r-1jyoszn r-1867qdf r-1udh08x r-nsbfu8 r-1ipicw7 r-1r5jyh0'); layer.classList.add('tweet-element-builder'); layer.dataset.tebUiVersion = version; layer.dataset.tebProfileLayer = ''; layer.setAttribute('aria-label', uiText('profile', 'Profile'));
 			// portalでも呼出元のテーマを引き継ぐ。
 			const style = win.getComputedStyle(view.element);
-			for(const name of ['--teb-text', '--teb-muted', '--teb-link', '--teb-background', '--teb-profile-background', '--teb-profile-shadow', '--teb-profile-button', '--teb-profile-button-text', '--teb-profile-button-border'])layer.style.setProperty(name, style.getPropertyValue(name));
+			for(const name of ['--teb-text', '--teb-muted', '--teb-link', '--teb-background', '--teb-profile-background', '--teb-profile-shadow', '--teb-profile-button', '--teb-profile-button-text', '--teb-profile-button-border']){
+				portal.style.setProperty(name, style.getPropertyValue(name));layer.style.setProperty(name, style.getPropertyValue(name));
+			}
+			hoverFrame.append(layer);hoverParent.append(hoverFrame);portal.append(hoverParent);
 			layer.addEventListener('pointerenter', () => {cardHovered = true;win.clearTimeout(leaveTimer);});
 			layer.addEventListener('pointerleave', () => {cardHovered = false;scheduleClose();});
 			layer.addEventListener('focusin', () => {cardHovered = true;win.clearTimeout(leaveTimer);});
@@ -278,7 +300,7 @@
 				const link = event.target.closest('a[href]'); if(!link)return;
 				if(!emit('teb:navigate', {element: link, href: link.href, kind: 'profile', originalEvent: event}))event.preventDefault();
 			});
-			doc.body.append(layer); parts.element = layer; render(target.user);
+			doc.body.append(portal); parts.element = layer;parts.hoverCardParent = hoverParent;parts.hoverCard = hoverFrame;render(target.user);
 			if(!options.resolveProfile){void loadKnownFollowers(parts.user, token);return;}
 			request = new win.AbortController(); layer.setAttribute('aria-busy', 'true');
 			try{
