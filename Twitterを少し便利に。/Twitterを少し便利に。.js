@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.7.0.4
+// @version			2.7.0.5
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -3130,11 +3130,11 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 	function openIndexedDB(dbName, storeName){
 		return new Promise((resolve, reject) => {
 			const request = indexedDB.open(dbName);
-
+	
 			request.onerror = (event) => {
-				reject("Database error: " + event.target.errorCode);
+				reject('Database error: ' + event.target.errorCode);
 			};
-
+	
 			request.onsuccess = (event) => {
 				let db = event.target.result;
 				if(db.objectStoreNames.contains(storeName)){
@@ -3151,66 +3151,94 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 						resolve(event.target.result);
 					};
 					versionRequest.onerror = (event) => {
-						reject("Database error: " + event.target.errorCode);
+						reject('Database error: ' + event.target.errorCode);
 					};
 				}
 			};
-
+	
 			request.onupgradeneeded = (event) => {
 				const db = event.target.result;
 				db.createObjectStore(storeName, { keyPath: 'id' });
 			};
 		});
 	}
-
-	function saveToIndexedDB(dbName, storeName, data, id = 522){
-		return new Promise(async (resolve, reject) => {
-			try{
-				const db = await openIndexedDB(dbName, storeName);
+	
+	/**
+	 * IndexedDBの指定されたオブジェクトストアにデータを保存する。
+	 * オブジェクトストアが存在しない場合は、データベースのバージョンを更新して作成する。
+	 *
+	 * @template T
+	 * @param {string} dbName データベース名。
+	 * @param {string} storeName 保存先のオブジェクトストア名。
+	 * @param {T} data 保存するデータ。
+	 * @param {IDBValidKey} [id=522] レコードのキーとして使用するID。
+	 * @returns {Promise<string>} 保存に成功した場合は成功メッセージで解決し、失敗した場合はエラーで拒否されるPromise。
+	 */
+	async function saveToIndexedDB(dbName, storeName, data, id = 522){
+		const db = await openIndexedDB(dbName, storeName);
+		try{
+			return await new Promise((resolve, reject) => {
 				const transaction = db.transaction(storeName, 'readwrite');
 				const store = transaction.objectStore(storeName);
-				const putRequest = store.put({ id: id, data: data });
-
-				putRequest.onsuccess = () => {
-					resolve("Data saved successfully.");
+				store.put({ id: id, data: data });
+	
+				transaction.oncomplete = () => {
+					resolve('Data saved successfully.');
 				};
-
-				putRequest.onerror = (event) => {
-					reject("Data save error: " + event.target.errorCode);
+	
+				transaction.onerror = () => {
+					reject('Data save error: ' + transaction.error?.message);
 				};
-			}catch(error){
-				reject(error);
-			}
-		});
+	
+				transaction.onabort = () => {
+					reject('Data save error: ' + transaction.error?.message);
+				};
+			});
+		}finally{
+			db.close();
+		}
 	}
-
-	function getFromIndexedDB(dbName, storeName, id = 522){
-		return new Promise(async (resolve, reject) => {
-			try{
-				const db = await openIndexedDB(dbName, storeName);
+	
+	/**
+	 * IndexedDBの指定されたオブジェクトストアから、IDに対応するデータを取得する。
+	 * Firefox系ブラウザとの互換性を保つため、取得したデータはクローンして返す。
+	 *
+	 * @param {string} dbName データベース名。
+	 * @param {string} storeName 取得元のオブジェクトストア名。
+	 * @param {IDBValidKey} [id=522] 取得するレコードのID。
+	 * @returns {Promise<any|null>} レコードが存在する場合は保存されているデータ、存在しない場合はnullで解決し、取得に失敗した場合はエラーで拒否されるPromise。
+	 */
+	async function getFromIndexedDB(dbName, storeName, id = 522){
+		const db = await openIndexedDB(dbName, storeName);
+		try{
+			return await new Promise((resolve, reject) => {
 				const transaction = db.transaction(storeName, 'readonly');
 				const store = transaction.objectStore(storeName);
 				const getRequest = store.get(id);
-
+	
 				getRequest.onsuccess = (event) => {
-					if(event.target.result){
-						// こうしないとfirefox系ブラウザで
-						// Error: Not allowed to define cross-origin object as property on [Object] or [Array] XrayWrapper
-						// というエラーが出ることがあるので、構造化クローンを使ってコピーする
-						// でかいオブジェクトだと効率が悪いのでなにかいい方法があれば教えてください
-						resolve(_cloneInto(event.target.result.data));
-					}else{
-						resolve(null);
+					try{
+						if(event?.target?.result?.data){
+							// こうしないとfirefox系ブラウザで
+							// Error: Not allowed to define cross-origin object as property on [Object] or [Array] XrayWrapper
+							// というエラーが出ることがあるので、構造化クローンを使ってコピーする
+							// でかいオブジェクトだと効率が悪いのでなにかいい方法があれば教えてください
+							resolve(_cloneInto(event.target.result.data));
+						}else{
+							resolve(null);
+						}
+					}catch(error){
+						reject(error);
 					}
 				};
-
+	
 				getRequest.onerror = (event) => {
-					reject("Data fetch error: " + event.target.errorCode);
+					reject('Data fetch error: ' + event.target.errorCode);
 				};
-			}catch(error){
-				reject(error);
-			}
-		});
+			});
+		}finally{
+			db.close();
+		}
 	}
 
 	function processTweetCardBindingValues(card){
@@ -9489,7 +9517,7 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 
 		// challenge 情報を取得
 		async #getChallengeData(force = false){
-			if((this.#challengeData?.expires && this.#challengeData?.expires > Date.now()) && !force){
+			if((this.#challengeData?.expires && this.#challengeData?.expires > Date.now() && this.#challengeData?.challengeCode) && !force){
 				return;
 			}
 			if(this.#challengeDataPromise){
@@ -9497,10 +9525,10 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			}
 			if(force)this.#resetTransactionIdSolverTimes++;
 			this.#challengeDataPromise = (async () => {
-				let html = await request({ url: 'https://x.com/home', respType: 'text', anonymous: true });
-				const storedChallengeData = await getFromIndexedDB('MTLU_twitterApi', 'challengeData');
+				let html = document.documentElement.outerHTML;
+				//const storedChallengeData = await getFromIndexedDB('MTLU_twitterApi', 'challengeData');
 				let challengeKeyMatch = html.match(/(\d+):"ondemand.s"/);
-				if(!challengeKeyMatch && !storedChallengeData){
+				if(!challengeKeyMatch /*&& !storedChallengeData*/){
 					console.error("Challenge key not found in HTML and no stored challenge data available");
 					for(let i=0; i<20; i++){
 						await sleep(100); // 0.1秒待機
@@ -9539,8 +9567,8 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 						expires: Date.now() + 60 * 60 * 1000, // 60 min
 					};
 				}else{
-					console.error("Using stored challenge data");
-					this.#challengeData = storedChallengeData;
+					//console.error("Using stored challenge data");
+					//this.#challengeData = storedChallengeData;
 				}
 				await saveToIndexedDB('MTLU_twitterApi', 'challengeData', this.#challengeData);
 			})();
