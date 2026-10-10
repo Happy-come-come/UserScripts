@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"Читать"+e.verb}
 	},
 	"chat": {"type":"string","value":"Чат"},
-	"call": {"type":"string","value":"Звонки"},
+	"calls": {"type":"string","value":"Звонки"},
 	"messages": {"type":"string","value":"Сообщения"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Закладки"},

@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"フォローする"+e.verb}
 	},
 	"chat": {"type":"string","value":"チャット"},
-	"call": {"type":"string","value":"通話"},
+	"calls": {"type":"string","value":"通話"},
 	"messages": {"type":"string","value":"メッセージ"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"ブックマーク"},

@@ -391,7 +391,7 @@
 		"type": "string",
 		"value": "চ্যাট করুন"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "কল"
 	},

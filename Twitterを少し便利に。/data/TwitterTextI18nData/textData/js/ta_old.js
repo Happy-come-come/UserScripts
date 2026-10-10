@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"பின்தொடர்"+e.verb}
 	},
 	"chat": {"type":"string","value":"அரட்டை"},
-	"call": {"type":"string","value":"அழைப்புகள்"},
+	"calls": {"type":"string","value":"அழைப்புகள்"},
 	"messages": {"type":"string","value":"செய்திகள்"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"புத்தகக்குறிகள்"},

@@ -385,7 +385,7 @@
 		"type": "string",
 		"value": "Chatten"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "Bellen"
 	},

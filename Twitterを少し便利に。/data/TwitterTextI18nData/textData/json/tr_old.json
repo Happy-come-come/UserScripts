@@ -391,7 +391,7 @@
 		"type": "string",
 		"value": "Sohbet"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "Aramalar"
 	},

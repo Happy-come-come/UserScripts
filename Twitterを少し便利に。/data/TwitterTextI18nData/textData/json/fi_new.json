@@ -384,7 +384,7 @@
 		"type": "string",
 		"value": "Keskustelu"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "Puhelut"
 	},

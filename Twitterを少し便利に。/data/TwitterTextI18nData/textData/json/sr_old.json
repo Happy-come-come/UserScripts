@@ -383,7 +383,7 @@
 		"type": "string",
 		"value": "Ћаскање"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "Позиви"
 	},

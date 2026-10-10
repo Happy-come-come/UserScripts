@@ -387,7 +387,7 @@
 		"type": "string",
 		"value": "चॅट"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "कॉल्स"
 	},

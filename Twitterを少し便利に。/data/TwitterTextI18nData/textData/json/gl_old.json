@@ -348,7 +348,7 @@
 		"type": "string",
 		"value": "Chat"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "Calls"
 	},

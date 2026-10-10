@@ -383,7 +383,7 @@
 		"type": "string",
 		"value": "Czat"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "Połączenia"
 	},

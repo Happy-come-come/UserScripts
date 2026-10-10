@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"متابعة"+e.verb}
 	},
 	"chat": {"type":"string","value":"الدردشة"},
-	"call": {"type":"string","value":"المكالمات"},
+	"calls": {"type":"string","value":"المكالمات"},
 	"messages": {"type":"string","value":"الرسائل"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"العلامات المرجعية"},

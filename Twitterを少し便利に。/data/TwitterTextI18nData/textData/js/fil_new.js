@@ -176,7 +176,7 @@ const text = {
 		"value": function(a){return"I-follow"+a.verb}
 	},
 	"chat": {"type":"string","value":"Chat"},
-	"call": {"type":"string","value":"Mga Tawag"},
+	"calls": {"type":"string","value":"Mga Tawag"},
 	"messages": {"type":"string","value":"Mga Message"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Mga Bookmark"},

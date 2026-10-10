@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"팔로우하기"+e.verb}
 	},
 	"chat": {"type":"string","value":"채팅"},
-	"call": {"type":"string","value":"통화"},
+	"calls": {"type":"string","value":"통화"},
 	"messages": {"type":"string","value":"쪽지"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"북마크"},

@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"跟隨"+e.verb}
 	},
 	"chat": {"type":"string","value":"聊天"},
-	"call": {"type":"string","value":"通話"},
+	"calls": {"type":"string","value":"通話"},
 	"messages": {"type":"string","value":"訊息"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"書籤"},

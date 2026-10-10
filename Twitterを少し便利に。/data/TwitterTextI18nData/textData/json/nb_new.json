@@ -387,7 +387,7 @@
 		"type": "string",
 		"value": "Nettprat"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "Anrop"
 	},

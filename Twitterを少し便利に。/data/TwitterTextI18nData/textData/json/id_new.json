@@ -356,7 +356,7 @@
 		"type": "string",
 		"value": "Obrolan"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "Panggilan"
 	},

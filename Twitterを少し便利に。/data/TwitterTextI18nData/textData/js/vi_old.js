@@ -176,7 +176,7 @@ const text = {
 		"value": function(n){return"Theo dõi"+n.verb}
 	},
 	"chat": {"type":"string","value":"Chat"},
-	"call": {"type":"string","value":"Cuộc gọi"},
+	"calls": {"type":"string","value":"Cuộc gọi"},
 	"messages": {"type":"string","value":"Tin nhắn"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Dấu trang"},

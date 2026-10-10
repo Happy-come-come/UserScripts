@@ -348,7 +348,7 @@
 		"type": "string",
 		"value": "צ'אט"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "שיחות"
 	},

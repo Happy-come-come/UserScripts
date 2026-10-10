@@ -392,7 +392,7 @@
 		"type": "string",
 		"value": "گپ"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "تماس‌ها"
 	},

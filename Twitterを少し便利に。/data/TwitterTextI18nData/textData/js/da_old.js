@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"Følg"+e.verb}
 	},
 	"chat": {"type":"string","value":"Chat"},
-	"call": {"type":"string","value":"Opkald"},
+	"calls": {"type":"string","value":"Opkald"},
 	"messages": {"type":"string","value":"Beskeder"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Bogmærker"},

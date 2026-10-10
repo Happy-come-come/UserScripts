@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"Suivre"+e.verb}
 	},
 	"chat": {"type":"string","value":"Chat"},
-	"call": {"type":"string","value":"Appels"},
+	"calls": {"type":"string","value":"Appels"},
 	"messages": {"type":"string","value":"Messages"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Signets"},

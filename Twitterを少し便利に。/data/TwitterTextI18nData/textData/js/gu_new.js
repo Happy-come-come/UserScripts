@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"અનુસરો"+e.verb}
 	},
 	"chat": {"type":"string","value":"ચૅટ"},
-	"call": {"type":"string","value":"કૉલ્સ"},
+	"calls": {"type":"string","value":"કૉલ્સ"},
 	"messages": {"type":"string","value":"સંદેશાઓ"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"બુકમાર્ક્સ"},

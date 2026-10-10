@@ -392,7 +392,7 @@
 		"type": "string",
 		"value": "채팅"
 	},
-	"call": {
+	"calls": {
 		"type": "string",
 		"value": "통화"
 	},

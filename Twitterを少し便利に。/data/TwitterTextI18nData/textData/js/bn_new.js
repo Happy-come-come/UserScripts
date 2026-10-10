@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return e.verb+"অনুসরণ করুন"}
 	},
 	"chat": {"type":"string","value":"চ্যাট করুন"},
-	"call": {"type":"string","value":"কল"},
+	"calls": {"type":"string","value":"কল"},
 	"messages": {"type":"string","value":"বার্তাগুলি"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"বুকমার্কগুলি"},
