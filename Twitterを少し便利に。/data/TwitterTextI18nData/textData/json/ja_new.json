@@ -392,6 +392,10 @@
 		"type": "string",
 		"value": "チャット"
 	},
+	"call": {
+		"type": "string",
+		"value": "通話"
+	},
 	"messages": {
 		"type": "string",
 		"value": "メッセージ"

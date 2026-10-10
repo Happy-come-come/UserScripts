@@ -176,6 +176,7 @@ const text = {
 		"value": function(a){return"Počni pratiti"+a.verb}
 	},
 	"chat": {"type":"string","value":"Čavrljanje"},
+	"call": undefined,
 	"messages": {"type":"string","value":"Poruke"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Knjižne oznake"},

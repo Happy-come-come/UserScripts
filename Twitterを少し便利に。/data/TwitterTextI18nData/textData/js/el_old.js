@@ -176,6 +176,7 @@ const text = {
 		"value": function(e){return"Ακολουθήστε"+e.verb}
 	},
 	"chat": {"type":"string","value":"Συνομιλία"},
+	"call": undefined,
 	"messages": {"type":"string","value":"Μηνύματα"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Σελιδοδείκτες"},

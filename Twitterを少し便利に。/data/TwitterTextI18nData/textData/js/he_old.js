@@ -176,6 +176,7 @@ const text = {
 		"value": function(e){return"עקוב"+e.verb}
 	},
 	"chat": {"type":"string","value":"צ'אט"},
+	"call": undefined,
 	"messages": {"type":"string","value":"מסרים"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"סימניות"},

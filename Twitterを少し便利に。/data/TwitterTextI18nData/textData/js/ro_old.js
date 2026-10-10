@@ -176,6 +176,7 @@ const text = {
 		"value": function(e){return"Urmărește"+e.verb}
 	},
 	"chat": {"type":"string","value":"Chat"},
+	"call": undefined,
 	"messages": {"type":"string","value":"Mesaje"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Marcaje"},

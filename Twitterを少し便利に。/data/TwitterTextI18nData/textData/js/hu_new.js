@@ -176,6 +176,7 @@ const text = {
 		"value": function(e){return"Követés"+e.verb}
 	},
 	"chat": {"type":"string","value":"Csevegés"},
+	"call": undefined,
 	"messages": {"type":"string","value":"Üzenetek"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Könyvjelzők"},

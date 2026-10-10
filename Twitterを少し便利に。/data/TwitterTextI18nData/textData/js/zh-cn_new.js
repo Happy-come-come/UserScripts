@@ -176,6 +176,7 @@ const text = {
 		"value": function(e){return"关注"+e.verb}
 	},
 	"chat": {"type":"string","value":"聊天"},
+	"call": undefined,
 	"messages": {"type":"string","value":"私信"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"书签"},

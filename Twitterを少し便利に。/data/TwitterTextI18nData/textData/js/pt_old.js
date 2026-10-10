@@ -176,6 +176,7 @@ const text = {
 		"value": function(a){return"Seguir"+a.verb}
 	},
 	"chat": {"type":"string","value":"Bate-papo"},
+	"call": undefined,
 	"messages": {"type":"string","value":"Mensagens"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Itens salvos"},

@@ -176,6 +176,7 @@ const text = {
 		"value": function(e){return"Takip et"+e.verb}
 	},
 	"chat": {"type":"string","value":"Sohbet"},
+	"call": undefined,
 	"messages": {"type":"string","value":"Mesajlar"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Yer İşaretleri"},

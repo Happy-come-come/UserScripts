@@ -176,6 +176,7 @@ const text = {
 		"value": function(e){return"ಹಿಂಬಾಲಿಸಿ"+e.verb}
 	},
 	"chat": {"type":"string","value":"ಚಾಟ್ ಮಾಡಿ"},
+	"call": undefined,
 	"messages": {"type":"string","value":"ಸಂದೇಶಗಳು"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"ಬುಕ್‌ಮಾರ್ಕ್‌ಗಳು"},

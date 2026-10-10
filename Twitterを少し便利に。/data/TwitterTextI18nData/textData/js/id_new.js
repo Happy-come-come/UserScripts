@@ -176,6 +176,7 @@ const text = {
 		"value": function(a){return"Ikuti"+a.verb}
 	},
 	"chat": {"type":"string","value":"Obrolan"},
+	"call": undefined,
 	"messages": {"type":"string","value":"Pesan"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Markah"},

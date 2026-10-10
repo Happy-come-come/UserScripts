@@ -142,6 +142,7 @@ const text = {
 	"explore": {"type":"string","value":"Bincike"},
 	"notifications": {"type":"string","value":"Sanarwa"},
 	"chat": undefined,
+	"call": undefined,
 	"messages": {"type":"string","value":"Saƙonni"},
 	"grok": undefined,
 	"bookmarks": {"type":"string","value":"Alamomi"},

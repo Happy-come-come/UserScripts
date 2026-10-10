@@ -176,6 +176,7 @@ const text = {
 		"value": function(i){return"Segui"+i.verb}
 	},
 	"chat": {"type":"string","value":"Chat"},
+	"call": undefined,
 	"messages": {"type":"string","value":"Messaggi"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Segnalibri"},

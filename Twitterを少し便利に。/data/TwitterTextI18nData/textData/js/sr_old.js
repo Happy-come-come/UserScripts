@@ -176,6 +176,7 @@ const text = {
 		"value": function(e){return"Прати"+e.verb}
 	},
 	"chat": {"type":"string","value":"Ћаскање"},
+	"call": undefined,
 	"messages": {"type":"string","value":"Поруке"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Обележивачи"},

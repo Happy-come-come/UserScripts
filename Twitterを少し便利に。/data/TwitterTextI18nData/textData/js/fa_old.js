@@ -176,6 +176,7 @@ const text = {
 		"value": function(e){return"دنبال کردن"+e.verb}
 	},
 	"chat": {"type":"string","value":"گپ"},
+	"call": undefined,
 	"messages": {"type":"string","value":"پیام‌ها"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"نشانک‌ها"},

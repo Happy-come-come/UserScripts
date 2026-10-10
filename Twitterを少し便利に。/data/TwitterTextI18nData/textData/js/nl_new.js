@@ -176,6 +176,7 @@ const text = {
 		"value": function(e){return"Volgen"+e.verb}
 	},
 	"chat": {"type":"string","value":"Chatten"},
+	"call": undefined,
 	"messages": {"type":"string","value":"Berichten"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Bladwijzers"},
