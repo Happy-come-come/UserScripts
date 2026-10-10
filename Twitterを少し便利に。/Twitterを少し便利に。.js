@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.7.0.5
+// @version			2.7.0.6
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -1365,13 +1365,15 @@
 				return new Promise(async (resolve) => {
 					//上限は「24117249」だったけどユーザーのアップロード上限が10MBになっちゃったので「10485760」にするかもしれない
 					// 2025/02/13 上限が 「10485760」 になりました。
+					// 2026/09 上限が 「20MB」 になりました。
+					const MAX_FILE_SIZE = 20 * 1024 * 1024;
 					const fileSize = await getFileSize(url);
-					if(fileSize < 10485760){
+					if(fileSize < MAX_FILE_SIZE){
 						return resolve({"files": [{attachment: await request({url: url, respType: "blob", maxRetries: 1}), name: url.split('/').pop()}]});
 					}else{
 						if(!fileSize){
-							const file = await request({url: url, respType: "blob", maxRetries: 1, headers: {"Range": "bytes=0-10485760"}});
-							if(file.size < 10485760)return resolve({"files": [{attachment: file, name: url.split('/').pop()}]});
+							const file = await request({url: url, respType: "blob", maxRetries: 1, headers: {"Range": `bytes=0-${MAX_FILE_SIZE}`}});
+							if(file.size < MAX_FILE_SIZE)return resolve({"files": [{attachment: file, name: url.split('/').pop()}]});
 						}
 						return resolve({"content": url});
 					}
@@ -2004,6 +2006,11 @@
 					"href": "/i/chat",
 					"defaultSettings": true,
 					//"text": twitterTextI18n.getText("chat"),
+				},
+				"callsButton": {
+					"href": "/i/calls",
+					"defaultSettings": true,
+					"text": twitterTextI18n.getText("calls"),
 				},
 				"grokButton": {
 					"href": "/i/grok",
@@ -4852,6 +4859,7 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 				{type: 'text', text: settingText.toAdd, size: "2em", weight: "400", position: "left", isHTML: false},
 				{id: "connect_peopleButton", name: twitterTextI18n.getText("connect_people"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
 				{id: "chatButton", name: twitterTextI18n.getText("chat"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
+				{id: "callsButton", name: twitterTextI18n.getText("calls"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
 				{id: "grokButton", name: twitterTextI18n.getText("grok"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
 				{id: "listsButton", name: twitterTextI18n.getText("lists"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: false},
 				{id: "bookmarksButton", name: twitterTextI18n.getText("bookmarks"), type: 'toggleSwitch', category: "toAddOptions", defaultValue: true},
@@ -4921,7 +4929,7 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			page.appendChild(createSettingsElement({type: 'text', text: settingText.sortOrder, size: "2.5em", weight: "400", position: "left", isHTML: false}).container);
 			page.appendChild(createSettingsElement({type: 'button', text: settingText.sortOrderRestoreDefault, width: "fit-content", event: restoreDefaultSorting}).container);
 
-			const buttonNames = ["homeButton", "exploreButton", "notificationsButton", "connect_peopleButton", "chatButton",
+			const buttonNames = ["homeButton", "exploreButton", "notificationsButton", "connect_peopleButton", "chatButton", "callsButton",
 				"grokButton", "listsButton", "bookmarksButton", "historyButton", "communitiesButton", "premiumButton", "businessButton",
 				"profileButton" , "creatorStudioButton", "adsButton", "createYourSpaceButton", "settingsAndPrivacy",
 				"shortCutButton1", "shortCutButton2", "shortCutButton3", "shortCutButton4"];
@@ -5570,7 +5578,7 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 	const colors = new Colors();
 
 	class TwitterTextI18n {
-		#version = 202610060800;
+		#version = 202610110600;
 		#langList = ["ja", "en", "ar", "ar-x-fm", "bg", "bn", "ca", "cs", "da", "de", "el", "en-gb", "es", "eu", "fa", "fi", "fil",
 			"fr", "ga", "gl", "gu", "ha", "he", "hi", "hr", "hu", "id", "ig", "it", "kn", "ko", "mr", "msa", "nb",
 			"nl", "pl", "pt", "ro", "ru", "sk", "sr", "sv", "ta", "th", "tr", "uk", "ur", "vi", "yo", "zh-cn", "zh-tw"];
