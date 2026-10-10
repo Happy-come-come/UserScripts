@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"Följ"+e.verb}
 	},
 	"chat": {"type":"string","value":"Chatta"},
-	"call": undefined,
+	"call": {"type":"string","value":"Samtal"},
 	"messages": {"type":"string","value":"Meddelanden"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Bokmärken"},

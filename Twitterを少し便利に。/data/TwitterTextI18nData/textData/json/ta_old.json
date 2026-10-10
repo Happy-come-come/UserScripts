@@ -384,6 +384,10 @@
 		"type": "string",
 		"value": "அரட்டை"
 	},
+	"call": {
+		"type": "string",
+		"value": "அழைப்புகள்"
+	},
 	"messages": {
 		"type": "string",
 		"value": "செய்திகள்"

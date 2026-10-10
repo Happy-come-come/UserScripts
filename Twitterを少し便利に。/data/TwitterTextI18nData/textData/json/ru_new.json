@@ -384,6 +384,10 @@
 		"type": "string",
 		"value": "Чат"
 	},
+	"call": {
+		"type": "string",
+		"value": "Звонки"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Сообщения"

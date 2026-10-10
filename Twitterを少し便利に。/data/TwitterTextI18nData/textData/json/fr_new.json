@@ -385,6 +385,10 @@
 		"type": "string",
 		"value": "Chat"
 	},
+	"call": {
+		"type": "string",
+		"value": "Appels"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Messages"

@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"फॉलो करा"+e.verb}
 	},
 	"chat": {"type":"string","value":"चॅट"},
-	"call": undefined,
+	"call": {"type":"string","value":"कॉल्स"},
 	"messages": {"type":"string","value":"संदेश"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"बुकमार्क्स"},

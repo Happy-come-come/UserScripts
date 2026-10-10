@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"ติดตาม"+e.verb}
 	},
 	"chat": {"type":"string","value":"สนทนา"},
-	"call": undefined,
+	"call": {"type":"string","value":"การโทร"},
 	"messages": {"type":"string","value":"ข้อความ"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"บุ๊คมาร์ก"},

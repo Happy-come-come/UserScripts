@@ -392,6 +392,10 @@
 		"type": "string",
 		"value": "สนทนา"
 	},
+	"call": {
+		"type": "string",
+		"value": "การโทร"
+	},
 	"messages": {
 		"type": "string",
 		"value": "ข้อความ"

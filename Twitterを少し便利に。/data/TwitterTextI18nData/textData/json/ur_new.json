@@ -350,6 +350,10 @@
 		"type": "string",
 		"value": "Chat"
 	},
+	"call": {
+		"type": "string",
+		"value": "Calls"
+	},
 	"messages": {
 		"type": "string",
 		"value": "پیغامات"

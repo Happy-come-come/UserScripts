@@ -356,6 +356,10 @@
 		"type": "string",
 		"value": "Obrolan"
 	},
+	"call": {
+		"type": "string",
+		"value": "Panggilan"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Pesan"

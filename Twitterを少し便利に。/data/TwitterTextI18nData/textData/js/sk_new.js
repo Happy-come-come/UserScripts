@@ -176,7 +176,7 @@ const text = {
 		"value": function(e){return"Sledovať"+e.verb}
 	},
 	"chat": {"type":"string","value":"Četovať"},
-	"call": undefined,
+	"call": {"type":"string","value":"Hovory"},
 	"messages": {"type":"string","value":"Správy"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Záložky"},

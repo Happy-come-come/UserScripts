@@ -176,7 +176,7 @@ const text = {
 		"value": function(a){return"Obserwuj"+a.verb}
 	},
 	"chat": {"type":"string","value":"Czat"},
-	"call": undefined,
+	"call": {"type":"string","value":"Połączenia"},
 	"messages": {"type":"string","value":"Wiadomości"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Zakładki"},

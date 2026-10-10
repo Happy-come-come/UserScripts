@@ -175,7 +175,7 @@ const vm = require('vm');
 			"notifications": "eb75875e", // "通知"
 			"connect_people": {key: "eb2cad43", force: 'new'}, // "フォローする"  "つながる"だったが、変更された
 			"chat": "h5e38204", // "チャット"
-			"call": "f7d4d2e0", // "通話"
+			"calls": "f7d4d2e0", // "通話"
 			"messages": "a2f81050", // "メッセージ"
 			"grok": "h5860a68", // "Grok"
 			"bookmarks": "i3145aa0", // "ブックマーク"

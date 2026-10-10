@@ -383,6 +383,10 @@
 		"type": "string",
 		"value": "Četovať"
 	},
+	"call": {
+		"type": "string",
+		"value": "Hovory"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Správy"

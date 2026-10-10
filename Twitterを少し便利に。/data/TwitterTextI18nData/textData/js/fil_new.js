@@ -65,12 +65,12 @@ const text = {
 	"grokWebPages": {
 		"type": "webI18nFunction",
 		"arguments": ["count"],
-		"value": function(a){return a.count+" "+e(a.count,"","mga ")+"web page"}
+		"value": function(a){return a.count+" "+t(a.count,"","mga ")+"web page"}
 	},
 	"grokPosts": {
 		"type": "webI18nFunction",
 		"arguments": ["count"],
-		"value": function(a){return a.count+" "+e(a.count,"","(na) ")+"post"}
+		"value": function(a){return a.count+" "+t(a.count,"","(na) ")+"post"}
 	},
 	"grokWebAndPosts": {
 		"type": "webI18nFunction",
@@ -96,23 +96,23 @@ const text = {
 	"pollVotes": {
 		"type": "webI18nFunction",
 		"arguments": ["formattedCount","count"],
-		"value": function(a){return a.formattedCount+" "+e(a.count,"","(na) ")+"boto"}
+		"value": function(a){return a.formattedCount+" "+t(a.count,"","(na) ")+"boto"}
 	},
 	"pollEnded": {"type":"string","value":"Pinal na mga resulta"},
 	"pollTimeLeftMinutes": {
 		"type": "webI18nFunction",
 		"arguments": ["formattedCount","count"],
-		"value": function(a){return a.formattedCount+" "+e(a.count,"","(na) ")+"minuto ang natitira"}
+		"value": function(a){return a.formattedCount+" "+t(a.count,"","(na) ")+"minuto ang natitira"}
 	},
 	"pollTimeLeftHours": {
 		"type": "webI18nFunction",
 		"arguments": ["formattedCount","count"],
-		"value": function(a){return a.formattedCount+" "+e(a.count,"","(na) ")+"oras ang natitira"}
+		"value": function(a){return a.formattedCount+" "+t(a.count,"","(na) ")+"oras ang natitira"}
 	},
 	"pollTimeLeftDays": {
 		"type": "webI18nFunction",
 		"arguments": ["formattedCount","count"],
-		"value": function(a){return a.formattedCount+" "+e(a.count,"","(na) ")+"araw ang natitira"}
+		"value": function(a){return a.formattedCount+" "+t(a.count,"","(na) ")+"araw ang natitira"}
 	},
 	"imageAltTitle": {"type":"string","value":"Paglalarawan ng larawan"},
 	"imageAltRead": {"type":"string","value":"basahin ang paglalarawan sa imahe"},
@@ -157,15 +157,15 @@ const text = {
 	},
 	"postedTweetsNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return [props.formattedCount+" "+e(props.count,"","(na) ")+"post"]}
+		"value": function(){return [props.formattedCount+" "+t(props.count,"","(na) ")+"post"]}
 	},
 	"likesNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return [props.formattedCount+" "+e(props.count,"","Mga ")+"Like"]}
+		"value": function(){return [props.formattedCount+" "+t(props.count,"","Mga ")+"Like"]}
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return [props.formattedCount+" "+e(props.count,"","(na) ")+"larawan at video"]}
+		"value": function(){return [props.formattedCount+" "+t(props.count,"","(na) ")+"larawan at video"]}
 	},
 	"home": {"type":"string","value":"Home"},
 	"explore": {"type":"string","value":"Mag-explore"},
@@ -176,7 +176,7 @@ const text = {
 		"value": function(a){return"I-follow"+a.verb}
 	},
 	"chat": {"type":"string","value":"Chat"},
-	"call": undefined,
+	"call": {"type":"string","value":"Mga Tawag"},
 	"messages": {"type":"string","value":"Mga Message"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Mga Bookmark"},

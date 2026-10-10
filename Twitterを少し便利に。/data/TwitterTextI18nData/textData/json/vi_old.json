@@ -392,6 +392,10 @@
 		"type": "string",
 		"value": "Chat"
 	},
+	"call": {
+		"type": "string",
+		"value": "Cuộc gọi"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Tin nhắn"

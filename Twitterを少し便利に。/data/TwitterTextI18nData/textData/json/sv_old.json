@@ -384,6 +384,10 @@
 		"type": "string",
 		"value": "Chatta"
 	},
+	"call": {
+		"type": "string",
+		"value": "Samtal"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Meddelanden"

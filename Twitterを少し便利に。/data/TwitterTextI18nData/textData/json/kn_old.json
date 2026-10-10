@@ -383,6 +383,10 @@
 		"type": "string",
 		"value": "ಚಾಟ್ ಮಾಡಿ"
 	},
+	"call": {
+		"type": "string",
+		"value": "ಕರೆಗಳು"
+	},
 	"messages": {
 		"type": "string",
 		"value": "ಸಂದೇಶಗಳು"

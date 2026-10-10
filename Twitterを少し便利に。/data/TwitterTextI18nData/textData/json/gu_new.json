@@ -385,6 +385,10 @@
 		"type": "string",
 		"value": "ચૅટ"
 	},
+	"call": {
+		"type": "string",
+		"value": "કૉલ્સ"
+	},
 	"messages": {
 		"type": "string",
 		"value": "સંદેશાઓ"

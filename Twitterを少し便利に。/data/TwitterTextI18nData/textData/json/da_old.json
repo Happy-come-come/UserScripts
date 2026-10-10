@@ -384,6 +384,10 @@
 		"type": "string",
 		"value": "Chat"
 	},
+	"call": {
+		"type": "string",
+		"value": "Opkald"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Beskeder"

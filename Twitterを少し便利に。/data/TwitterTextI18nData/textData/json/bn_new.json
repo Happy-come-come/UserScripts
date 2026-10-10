@@ -391,6 +391,10 @@
 		"type": "string",
 		"value": "চ্যাট করুন"
 	},
+	"call": {
+		"type": "string",
+		"value": "কল"
+	},
 	"messages": {
 		"type": "string",
 		"value": "বার্তাগুলি"

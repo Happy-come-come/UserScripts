@@ -383,6 +383,10 @@
 		"type": "string",
 		"value": "Ћаскање"
 	},
+	"call": {
+		"type": "string",
+		"value": "Позиви"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Поруке"

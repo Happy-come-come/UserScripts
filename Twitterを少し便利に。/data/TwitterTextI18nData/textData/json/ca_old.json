@@ -384,6 +384,10 @@
 		"type": "string",
 		"value": "Xat"
 	},
+	"call": {
+		"type": "string",
+		"value": "Trucades"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Missatges"

@@ -383,6 +383,10 @@
 		"type": "string",
 		"value": "Czat"
 	},
+	"call": {
+		"type": "string",
+		"value": "Połączenia"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Wiadomości"

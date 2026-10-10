@@ -348,6 +348,10 @@
 		"type": "string",
 		"value": "צ'אט"
 	},
+	"call": {
+		"type": "string",
+		"value": "שיחות"
+	},
 	"messages": {
 		"type": "string",
 		"value": "מסרים"

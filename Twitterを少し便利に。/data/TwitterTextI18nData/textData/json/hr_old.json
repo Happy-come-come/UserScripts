@@ -383,6 +383,10 @@
 		"type": "string",
 		"value": "Čavrljanje"
 	},
+	"call": {
+		"type": "string",
+		"value": "Pozivi"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Poruke"

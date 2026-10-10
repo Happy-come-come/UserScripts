@@ -392,6 +392,10 @@
 		"type": "string",
 		"value": "聊天"
 	},
+	"call": {
+		"type": "string",
+		"value": "呼叫"
+	},
 	"messages": {
 		"type": "string",
 		"value": "私信"

@@ -392,6 +392,10 @@
 		"type": "string",
 		"value": "Csevegés"
 	},
+	"call": {
+		"type": "string",
+		"value": "Hívások"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Üzenetek"

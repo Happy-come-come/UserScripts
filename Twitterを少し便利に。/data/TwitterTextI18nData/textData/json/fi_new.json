@@ -384,6 +384,10 @@
 		"type": "string",
 		"value": "Keskustelu"
 	},
+	"call": {
+		"type": "string",
+		"value": "Puhelut"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Viestit"

@@ -384,6 +384,10 @@
 		"type": "string",
 		"value": "Bate-papo"
 	},
+	"call": {
+		"type": "string",
+		"value": "Chamadas"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Mensagens"

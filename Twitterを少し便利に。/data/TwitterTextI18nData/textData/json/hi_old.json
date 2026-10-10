@@ -388,6 +388,10 @@
 		"type": "string",
 		"value": "चैट"
 	},
+	"call": {
+		"type": "string",
+		"value": "कॉल"
+	},
 	"messages": {
 		"type": "string",
 		"value": "संदेश"

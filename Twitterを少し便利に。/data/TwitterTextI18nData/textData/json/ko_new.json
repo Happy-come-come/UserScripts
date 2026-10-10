@@ -392,6 +392,10 @@
 		"type": "string",
 		"value": "채팅"
 	},
+	"call": {
+		"type": "string",
+		"value": "통화"
+	},
 	"messages": {
 		"type": "string",
 		"value": "쪽지"

@@ -65,12 +65,12 @@ const text = {
 	"grokWebPages": {
 		"type": "webI18nFunction",
 		"arguments": ["count"],
-		"value": function(a){return a.count+" "+e(a.count,"","mga ")+"web page"}
+		"value": function(a){return a.count+" "+t(a.count,"","mga ")+"web page"}
 	},
 	"grokPosts": {
 		"type": "webI18nFunction",
 		"arguments": ["count"],
-		"value": function(a){return a.count+" "+e(a.count,"","(na) ")+"post"}
+		"value": function(a){return a.count+" "+t(a.count,"","(na) ")+"post"}
 	},
 	"grokWebAndPosts": {
 		"type": "webI18nFunction",
@@ -165,7 +165,7 @@ const text = {
 	},
 	"mediaNum": {
 		"type": "webI18nTemplateFunction",
-		"value": function(){return [props.formattedCount+" "+e(props.count,"","(na) ")+"larawan at video"]}
+		"value": function(){return [props.formattedCount+" "+t(props.count,"","(na) ")+"larawan at video"]}
 	},
 	"home": {"type":"string","value":"Home"},
 	"explore": {"type":"string","value":"Mag-explore"},
@@ -176,7 +176,7 @@ const text = {
 		"value": function(a){return"I-follow"+a.verb}
 	},
 	"chat": {"type":"string","value":"Chat"},
-	"call": undefined,
+	"call": {"type":"string","value":"Mga Tawag"},
 	"messages": {"type":"string","value":"Mga Mensahe"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Mga Bookmark"},

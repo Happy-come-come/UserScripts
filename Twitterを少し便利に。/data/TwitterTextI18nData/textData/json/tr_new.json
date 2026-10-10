@@ -391,6 +391,10 @@
 		"type": "string",
 		"value": "Sohbet"
 	},
+	"call": {
+		"type": "string",
+		"value": "Aramalar"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Mesajlar"

@@ -385,6 +385,10 @@
 		"type": "string",
 		"value": "Chatten"
 	},
+	"call": {
+		"type": "string",
+		"value": "Bellen"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Berichten"

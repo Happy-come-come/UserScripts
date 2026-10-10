@@ -176,7 +176,7 @@ const text = {
 		"value": function(a){return"Ikut"+a.verb}
 	},
 	"chat": {"type":"string","value":"Perbualan"},
-	"call": undefined,
+	"call": {"type":"string","value":"Panggilan"},
 	"messages": {"type":"string","value":"Mesej"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Bookmark"},

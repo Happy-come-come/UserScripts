@@ -392,6 +392,10 @@
 		"type": "string",
 		"value": "Perbualan"
 	},
+	"call": {
+		"type": "string",
+		"value": "Panggilan"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Mesej"

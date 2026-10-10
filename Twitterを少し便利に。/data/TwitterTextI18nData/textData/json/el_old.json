@@ -385,6 +385,10 @@
 		"type": "string",
 		"value": "Συνομιλία"
 	},
+	"call": {
+		"type": "string",
+		"value": "Κλήσεις"
+	},
 	"messages": {
 		"type": "string",
 		"value": "Μηνύματα"

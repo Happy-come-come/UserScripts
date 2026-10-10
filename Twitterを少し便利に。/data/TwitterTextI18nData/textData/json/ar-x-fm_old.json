@@ -383,6 +383,10 @@
 		"type": "string",
 		"value": "الدردشة"
 	},
+	"call": {
+		"type": "string",
+		"value": "المكالمات"
+	},
 	"messages": {
 		"type": "string",
 		"value": "الرسائل"

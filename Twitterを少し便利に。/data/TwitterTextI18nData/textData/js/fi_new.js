@@ -176,7 +176,7 @@ const text = {
 		"value": function(a){return"Seuraa"+a.verb}
 	},
 	"chat": {"type":"string","value":"Keskustelu"},
-	"call": undefined,
+	"call": {"type":"string","value":"Puhelut"},
 	"messages": {"type":"string","value":"Viestit"},
 	"grok": {"type":"string","value":"Grok"},
 	"bookmarks": {"type":"string","value":"Kirjanmerkit"},

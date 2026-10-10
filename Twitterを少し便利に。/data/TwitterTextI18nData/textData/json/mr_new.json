@@ -387,6 +387,10 @@
 		"type": "string",
 		"value": "चॅट"
 	},
+	"call": {
+		"type": "string",
+		"value": "कॉल्स"
+	},
 	"messages": {
 		"type": "string",
 		"value": "संदेश"

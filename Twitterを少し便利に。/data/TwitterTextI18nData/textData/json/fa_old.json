@@ -391,6 +391,10 @@
 		"type": "string",
 		"value": "گپ"
 	},
+	"call": {
+		"type": "string",
+		"value": "تماس‌ها"
+	},
 	"messages": {
 		"type": "string",
 		"value": "پیام‌ها"
