@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.7.0.6
+// @version			2.7.0.7
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -55,6 +55,7 @@
 
 (async function(){
 	'use strict';
+	const twitterHTML = document.documentElement.outerHTML;
 	if(!getCookie('ct0')){
 		console.log('TwitterのCookieが取得できませんでした。');
 		console.log('プライベートモードなど、Twitterにログインしていない状態では動作しません。');
@@ -9533,21 +9534,11 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			}
 			if(force)this.#resetTransactionIdSolverTimes++;
 			this.#challengeDataPromise = (async () => {
-				let html = document.documentElement.outerHTML;
-				//const storedChallengeData = await getFromIndexedDB('MTLU_twitterApi', 'challengeData');
-				let challengeKeyMatch = html.match(/(\d+):"ondemand.s"/);
-				if(!challengeKeyMatch /*&& !storedChallengeData*/){
-					console.error("Challenge key not found in HTML and no stored challenge data available");
-					for(let i=0; i<20; i++){
-						await sleep(100); // 0.1秒待機
-						html = await request({ url: 'https://x.com/home', respType: 'text', anonymous: true });
-						challengeKeyMatch = html.match(/(\d+):"ondemand.s"/);
-						if(challengeKeyMatch)break;
-					}
-				}
+				let html = twitterHTML;
+				const storedChallengeData = await getFromIndexedDB('MTLU_twitterApi', 'challengeData');
+				let challengeKeyMatch = html.match(/(\d+):\s*["']ondemand\.s["']/);
 				if(challengeKeyMatch){
-					const parser = new DOMParser();
-					const doc = parser.parseFromString(html, "text/html");
+					const doc = unsafeWindow.document;
 
 					const metaTag = doc.querySelector('meta[name="twitter-site-verification"]');
 					const verificationCode = metaTag?.content;
@@ -9561,10 +9552,9 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 					}
 
 					const challengeCode = challengeCodeMatch[1];
-
-					const svgs = Array.from(doc.querySelectorAll('svg[id^="loading-x"]'));
-					const challengeAnimationSvgCodes = svgs.map(svg => svg.outerHTML);
-
+					const svgRegex = /<svg\b[^>]*\bid="loading-x-anim-\d+"[^>]*>[\s\S]*?<\/svg>/g;
+					const svgs = [...html.matchAll(svgRegex)].map((match) => match[0]);
+					const challengeAnimationSvgCodes = svgs;
 					const jsUrl = `https://abs.twimg.com/responsive-web/client-web/ondemand.s.${challengeCode}a.js`;
 					const challengeJsCode = await request({ url: jsUrl, respType: 'text' });
 					this.#challengeData = {
