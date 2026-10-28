@@ -3,7 +3,7 @@
 // @name:ja			Twitterを少し便利に。
 // @name:en			Make Twitter a Little more Useful.
 // @namespace		https://greasyfork.org/ja/users/1023652
-// @version			2.7.0.9
+// @version			2.7.0.10
 // @description			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:ja			で？みたいな機能の集まりだけど、きっとTwitterを少し便利にしてくれるはず。
 // @description:en			It's a collection of features like "So what?", but it will surely make Twitter a little more useful.
@@ -8669,7 +8669,19 @@ button[data-testid="UserCell"] div:has(> [href="https://help.x.com/rules-and-pol
 			}
 			if(getChallengeDataPromise)return getChallengeDataPromise;
 			getChallengeDataPromise = (async () => {
-				let html = twitterHTML;
+				const res = await request({
+					url: 'https://x.com/home',
+					respType: 'text',
+					anonymous: false,
+					dontUseGenericHeaders: true,
+					headers: {
+						Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+						'Accept-Language': 'ja,en;q=0.9',
+						'Cache-Control': 'no-cache',
+					},
+					onlyResponse: false,
+				});
+				const html = res?.response ?? twitterHTML;
 				const storedChallengeData = await getFromIndexedDB('MTLU_twitterApi', 'challengeData');
 				let challengeKeyMatch = html.match(/(\d+):\s*["']ondemand\.s["']/);
 				if(challengeKeyMatch){
